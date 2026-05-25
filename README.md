@@ -38,12 +38,14 @@ preview/
 
 That's it. No `npm install`, no dev server.
 
-## What's in v1
+## What's in v1.1
 
 - **Tokens** — grayscale ramp, type scale, spacing scale, radii, borders, shadows, motion. All in `css/tokens.css`. Components reference; nothing hardcodes.
-- **Components** — buttons, badges, tags, dividers, breadcrumb, pagination, full form set, top nav + mega menu + sidebar + in-page nav + mobile drawer, cards (content/person/resource/stat), heroes (editorial/split/centered/stat), feature grid, two-column, accordion, tabs, callout, quote, timeline, media placeholders, gallery, lists (linked/definition/article), tables (data/comparison), footers (compact/standard/expanded).
+- **Components** — buttons, badges, tags, dividers, breadcrumb, pagination, full form set, top nav + mega menu + sidebar + in-page nav + mobile drawer (with focus trap), cards (content/person/resource/stat), heroes (editorial/split/centered/stat), feature grid, two-column, accordion, tabs, callout, quote, timeline, media placeholders, gallery, lists (linked/definition/article), tables (data/comparison), footers (compact/standard/expanded).
+- **Healthcare/higher-ed patterns** — persistent help bar, phone link, text-size control, print stylesheet.
 - **Page shells** — documented HTML scaffolds for landing, article, listing, and detail pages.
 - **SRALab demo** — four representative page templates as the pressure test.
+- **Research foundation** — `docs/research.html` documents the evidence basis for every meaningful decision (WCAG criteria, NN/g articles, Baymard findings) and is honest about what's convention vs. evidence.
 
 ## Naming
 
@@ -54,14 +56,20 @@ That's it. No `npm install`, no dev server.
 
 Files and class names: lowercase, kebab-case. Always.
 
-## Accessibility commitments (v1)
+## Accessibility commitments (v1.1)
 
-- WCAG 2.2 AA contrast on every text/background pair.
-- Visible focus ring (`:focus-visible`) on every interactive element.
-- Touch targets ≥44×44px on buttons, links, and form controls.
+The system targets **WCAG 2.2 Level AA**. v1.1 documents what's verified, what's authored-against, and what's out of scope. See `docs/research.html` for the full compliance map and audit results.
+
+- Contrast 4.5:1 minimum (1.4.3); UI components 3:1 minimum (1.4.11) — `--color-border-strong` bumped to gray-50 in v1.1 to clear this.
+- Visible focus ring on every interactive element (2.4.7); inverse contexts override `--color-focus` to white so the ring stays visible on dark surfaces.
+- Touch targets ≥44×44px on primary controls; ≥28px on inline link patterns (footer, breadcrumb, in-page nav) — meets WCAG 2.5.8 AA.
 - `prefers-reduced-motion: reduce` zeroes all transitions.
 - Skip-to-content link in every page shell.
+- Mobile drawer implements modal dialog pattern: `role="dialog"`, `aria-modal`, focus trap, Esc to close.
+- `scroll-margin-block-start` on headings keeps anchor jumps unobstructed (2.4.11).
 - Component docs spell out ARIA, keyboard, and screen-reader expectations.
+
+Out of scope for v1.1, documented honestly: live screen-reader pass (NVDA/VoiceOver), automated tooling (axe/Pa11y/Lighthouse CI), AAA criteria, Section 508 mapping.
 
 ## Consumption surfaces
 

@@ -30,3 +30,7 @@
 @import url("components/list.css");
 @import url("components/table.css");
 @import url("components/footer.css");
+@import url("components/help-bar.css");
+@import url("components/text-size-control.css");
+
+@import url("print.css");

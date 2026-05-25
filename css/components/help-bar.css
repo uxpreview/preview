@@ -1,0 +1,103 @@
+/* ============================================================
+   Help bar — persistent, healthcare-specific affordance.
+   "Find care now" / "Talk to someone" patterns. Renders fixed
+   at the bottom on mobile, inline within page flow on desktop
+   (when paired with .p-help-bar--sticky). Reference: NIA
+   "Making Your Website Senior Friendly" recommends persistent,
+   high-contrast contact affordances for older-adult users.
+   ============================================================ */
+
+.p-help-bar {
+  --help-bar-bg: var(--color-bg-inverse);
+  --help-bar-fg: var(--color-text-inverse);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--help-bar-bg);
+  color: var(--help-bar-fg);
+  border-radius: var(--radius-lg);
+  /* Focus must remain visible on dark surface (WCAG 2.4.7). */
+  --color-focus: var(--color-text-inverse);
+}
+
+.p-help-bar__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border: var(--border-thin) solid var(--gray-40);
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-weight: var(--weight-bold);
+}
+
+.p-help-bar__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.p-help-bar__title {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.p-help-bar__desc {
+  font-size: var(--text-sm);
+  color: var(--gray-30);
+  line-height: var(--leading-snug);
+}
+
+.p-help-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Fixed-to-viewport variant — appears on every page, sticks to bottom on
+   small screens. Use sparingly; one per page. */
+.p-help-bar--fixed {
+  position: fixed;
+  inset-block-end: var(--space-md);
+  inset-inline-end: var(--space-md);
+  inset-inline-start: var(--space-md);
+  z-index: var(--z-sticky);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 48em) {
+  .p-help-bar--fixed {
+    inset-inline-start: auto;
+    max-inline-size: 28rem;
+  }
+}
+
+/* Compact phone link, common in topnav */
+.p-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  min-block-size: 2.75rem;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+}
+
+.p-phone-link:hover {
+  background-color: var(--color-bg-muted);
+  text-decoration: none;
+}
+
+.p-phone-link__icon {
+  font-size: var(--text-lg);
+}

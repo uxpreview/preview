@@ -66,6 +66,9 @@ h4,
 h5,
 h6 {
   text-wrap: balance;
+  /* WCAG 2.4.11 Focus Not Obscured — leave clearance for sticky chrome
+     when an in-page anchor jumps to a heading. */
+  scroll-margin-block-start: var(--space-2xl);
 }
 
 ul[role="list"],

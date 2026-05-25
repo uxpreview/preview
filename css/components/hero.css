@@ -141,6 +141,8 @@
 .p-hero--inverse {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
+  /* WCAG 2.4.7 — keep focus visible on dark surfaces. */
+  --color-focus: var(--color-text-inverse);
 }
 
 .p-hero--inverse .p-hero__eyebrow,

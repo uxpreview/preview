@@ -30,6 +30,8 @@
 .p-callout--inverse {
   --callout-bg: var(--color-bg-inverse);
   --callout-fg: var(--color-text-inverse);
+  /* WCAG 2.4.7 — focus must remain visible on the dark surface. */
+  --color-focus: var(--color-text-inverse);
 }
 
 .p-callout__eyebrow {

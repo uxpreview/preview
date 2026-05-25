@@ -87,7 +87,9 @@
     });
   }
 
-  /* ---------- Mobile drawer ---------- */
+  /* ---------- Mobile drawer (with focus trap — WCAG 2.1.2) ---------- */
+  const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
   function initDrawer() {
     const toggles = document.querySelectorAll("[data-p-drawer-open]");
     toggles.forEach((toggle) => {
@@ -98,11 +100,15 @@
         ? drawer.nextElementSibling
         : null;
 
+      drawer.setAttribute("role", drawer.getAttribute("role") || "dialog");
+      drawer.setAttribute("aria-modal", "true");
+
       function open() {
         drawer.classList.add("is-open");
         if (backdrop) backdrop.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
-        const first = drawer.querySelector("button, a, input, select, textarea");
+        document.body.style.overflow = "hidden";
+        const first = drawer.querySelector(FOCUSABLE);
         if (first) first.focus();
       }
 
@@ -110,7 +116,23 @@
         drawer.classList.remove("is-open");
         if (backdrop) backdrop.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
         toggle.focus();
+      }
+
+      function trap(e) {
+        if (e.key !== "Tab" || !drawer.classList.contains("is-open")) return;
+        const items = Array.from(drawer.querySelectorAll(FOCUSABLE)).filter((el) => !el.disabled && el.offsetParent !== null);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
 
       toggle.setAttribute("aria-controls", targetId);
@@ -123,6 +145,7 @@
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && drawer.classList.contains("is-open")) close();
+        trap(e);
       });
     });
   }
@@ -151,6 +174,36 @@
     });
   }
 
+  /* ---------- Text-size control (NIA senior-friendly recommendation) ---------- */
+  function initTextSize() {
+    const widgets = document.querySelectorAll("[data-p-text-size]");
+    if (!widgets.length) return;
+
+    const STORAGE_KEY = "p-text-scale";
+    const SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
+
+    function apply(value) {
+      const scale = SCALES[value] || 1;
+      document.documentElement.style.setProperty("--p-text-scale", String(scale));
+      widgets.forEach((w) => {
+        w.querySelectorAll("[data-p-text-size-value]").forEach((btn) => {
+          btn.setAttribute("aria-pressed", btn.dataset.pTextSizeValue === value ? "true" : "false");
+        });
+      });
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
+    }
+
+    widgets.forEach((widget) => {
+      widget.querySelectorAll("[data-p-text-size-value]").forEach((btn) => {
+        btn.addEventListener("click", () => apply(btn.dataset.pTextSizeValue));
+      });
+    });
+
+    let saved = "md";
+    try { saved = localStorage.getItem(STORAGE_KEY) || "md"; } catch (_) {}
+    apply(saved);
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-p-tabs]").forEach(initTabs);
@@ -158,6 +211,7 @@
     document.querySelectorAll("[data-p-megamenu]").forEach(initMegamenu);
     initDrawer();
     initInPageNav();
+    initTextSize();
   }
 
   if (document.readyState === "loading") {

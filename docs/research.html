@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research foundation — Primacy Wireframe System</title>
+  <meta name="description" content="The evidence basis for every meaningful decision in the Primacy Wireframe System, with citations.">
+  <link rel="stylesheet" href="../css/primacy.css">
+  <style>
+    .ref-table th, .ref-table td { vertical-align: top; }
+    .ref-list { font-size: var(--text-sm); }
+    .ref-list dt { font-weight: var(--weight-semibold); margin-block-start: var(--space-md); }
+    .ref-list dd { color: var(--color-text-muted); margin-block-start: var(--space-2xs); }
+    .tag-evidence { background-color: var(--color-bg-muted); color: var(--color-text); }
+    .tag-convention { background-color: transparent; border: var(--border-thin) solid var(--color-border-strong); color: var(--color-text-muted); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="p-skip-link">Skip to content</a>
+
+<header class="p-topnav">
+  <div class="u-container p-topnav__inner">
+    <a href="../index.html" class="p-topnav__brand">
+      <span class="p-topnav__brand-mark">P</span>
+      <span>Primacy Wireframe System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="p-topnav__menu" role="list">
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link is-current" href="./research.html">Research</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="p-hero p-hero--editorial">
+  <div class="u-container">
+    <div class="p-hero__inner">
+      <span class="p-hero__eyebrow">Evidence basis · v1.1</span>
+      <h1 class="p-hero__title">Why we made the calls we made.</h1>
+      <p class="p-hero__lead">Every meaningful decision in this system is either tied to a specific standard or research finding, or honestly tagged as convention. We don't claim a research basis we can't defend.</p>
+    </div>
+  </div>
+</section>
+
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+      <aside aria-label="On this page">
+        <nav class="p-inpagenav" data-p-inpagenav>
+          <div class="p-inpagenav__title">On this page</div>
+          <ul class="p-inpagenav__list" role="list">
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#how-to-read">How to read this</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#wcag">WCAG 2.2 AA compliance map</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#interaction">Interaction patterns</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#typography">Typography &amp; reading</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#forms">Forms</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#healthcare">Healthcare-specific</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#highered">Higher-ed-specific</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#convention">What's convention, not evidence</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#audit">v1.1 audit results</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#sources">Sources</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="u-stack u-stack--3xl">
+
+        <!-- =================== HOW TO READ =================== -->
+        <section id="how-to-read" class="u-stack u-stack--md">
+          <h2 class="p-h3">How to read this</h2>
+          <p class="p-lead">Every claim below carries one of two tags.</p>
+          <div class="u-cluster">
+            <span class="p-badge tag-evidence">Evidence</span>
+            <span class="u-text-muted">backed by a published standard or peer-reviewed/industry research</span>
+          </div>
+          <div class="u-cluster">
+            <span class="p-badge tag-convention">Convention</span>
+            <span class="u-text-muted">aesthetic or designer judgment that follows industry practice but isn't independently validated</span>
+          </div>
+          <p>Where two reasonable options exist and we picked one, we say so. Where a choice is genuinely backed by data, we cite the source.</p>
+        </section>
+
+        <!-- =================== WCAG MAP =================== -->
+        <section id="wcag" class="u-stack u-stack--md">
+          <h2 class="p-h3">WCAG 2.2 AA compliance map</h2>
+          <p>The system targets WCAG 2.2 Level AA. The table below maps each criterion the system actively meets to the implementation, and flags exceptions.</p>
+          <div class="p-table-wrap">
+            <table class="p-table p-table--striped ref-table">
+              <thead>
+                <tr>
+                  <th scope="col">Criterion</th>
+                  <th scope="col">What it requires</th>
+                  <th scope="col">How we meet it</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1.3.1</strong> Info and Relationships</td>
+                  <td>Information conveyed through presentation can be programmatically determined.</td>
+                  <td>Semantic HTML throughout: <code>nav</code>, <code>main</code>, <code>article</code>, <code>section</code>, headings ordered, lists marked up as lists, form labels associated with inputs.</td>
+                </tr>
+                <tr>
+                  <td><strong>1.4.3</strong> Contrast (Minimum)</td>
+                  <td>4.5:1 for normal text, 3:1 for large.</td>
+                  <td>Grayscale ramp designed against this: gray-50 (#767676) on white = 4.6:1; default text gray-95 = 19:1. <em>See ramp in tokens.css.</em></td>
+                </tr>
+                <tr>
+                  <td><strong>1.4.10</strong> Reflow</td>
+                  <td>Content reflows to 320 CSS px wide without horizontal scrolling.</td>
+                  <td>Mobile-first layouts using <code>grid-template-columns: 1fr</code> defaults and <code>auto-fit, minmax(min(var, 100%), 1fr)</code> on grids. No fixed-pixel min-widths above 320px.</td>
+                </tr>
+                <tr>
+                  <td><strong>1.4.11</strong> Non-text Contrast</td>
+                  <td>3:1 for UI components and graphical elements.</td>
+                  <td><code>--color-border-strong</code> (gray-50 = 4.5:1) used for form input borders, secondary buttons, card-bordered. <em>Bumped from gray-40 in v1.1 audit pass.</em></td>
+                </tr>
+                <tr>
+                  <td><strong>1.4.12</strong> Text Spacing</td>
+                  <td>No loss of content when line height ≥1.5, paragraph spacing ≥2× font size, etc.</td>
+                  <td>Line height 1.5 default; no fixed text container heights; <code>overflow-wrap: break-word</code> on flow text.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.1.1</strong> Keyboard</td>
+                  <td>All functionality available from keyboard.</td>
+                  <td>Buttons and links are native; tabs implement arrow + Home/End; accordion uses native <code>details</code>; mega menu and drawer respond to Esc.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.1.2</strong> No Keyboard Trap</td>
+                  <td>Focus can move into and out of any component.</td>
+                  <td>Drawer focus trap is intentional and matches the dialog pattern: Esc and close-button release focus to the trigger. <em>Implemented in v1.1.</em></td>
+                </tr>
+                <tr>
+                  <td><strong>2.3.3</strong> Animation from Interactions</td>
+                  <td>Allow users to disable non-essential motion.</td>
+                  <td><code>@media (prefers-reduced-motion: reduce)</code> zeroes <code>--duration-*</code> tokens at the root, killing transitions globally.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.4.3</strong> Focus Order</td>
+                  <td>Focusable components receive focus in an order that preserves meaning.</td>
+                  <td>Source order matches visual order on every layout primitive. No <code>tabindex</code> values &gt; 0.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.4.4</strong> Link Purpose (In Context)</td>
+                  <td>The purpose of each link is determinable from text alone or with surrounding context.</td>
+                  <td>Linked-list, article-list, and breadcrumb patterns avoid "click here" / "read more" with no context. Icon-only buttons require <code>aria-label</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.4.6</strong> Headings and Labels</td>
+                  <td>Headings and labels describe topic or purpose.</td>
+                  <td>Every page leads with one descriptive <code>h1</code>; sub-sections use h2/h3 in order. Form labels are required, not placeholder-only.</td>
+                </tr>
+                <tr>
+                  <td><strong>2.4.7</strong> Focus Visible</td>
+                  <td>Keyboard focus indicator is visible.</td>
+                  <td><code>:focus-visible</code> applies a 2px solid <code>--color-focus</code> ring with 2px offset on every interactive element. Inverse contexts override <code>--color-focus</code> to white. <em>v1.1 fix.</em></td>
+                </tr>
+                <tr>
+                  <td><strong>2.4.11</strong> Focus Not Obscured (Min)</td>
+                  <td>Focused element is not entirely hidden by author-created content.</td>
+                  <td><code>scroll-margin-block-start</code> on h1–h6 leaves clearance for sticky chrome on anchor jumps. <em>v1.1 fix.</em></td>
+                </tr>
+                <tr>
+                  <td><strong>2.5.8</strong> Target Size (Minimum)</td>
+                  <td>Pointer targets at least 24×24 CSS px (with exceptions).</td>
+                  <td>Buttons and form controls ≥44px (also meeting Apple HIG and WCAG AAA 2.5.5). Footer, breadcrumb, and in-page-nav links bumped to 28px+ in v1.1.</td>
+                </tr>
+                <tr>
+                  <td><strong>3.1.1</strong> Language of Page</td>
+                  <td>Default human language is programmatically determined.</td>
+                  <td><code>&lt;html lang="en"&gt;</code> on every page.</td>
+                </tr>
+                <tr>
+                  <td><strong>3.3.1</strong> Error Identification</td>
+                  <td>Errors are described in text.</td>
+                  <td><code>.p-field__error</code> renders next to the field with an associated <code>aria-describedby</code>.</td>
+                </tr>
+                <tr>
+                  <td><strong>3.3.2</strong> Labels or Instructions</td>
+                  <td>Labels are provided when input is required.</td>
+                  <td>Every input requires a <code>&lt;label&gt;</code> via the <code>.p-field</code> pattern. Placeholders never substitute for labels.</td>
+                </tr>
+                <tr>
+                  <td><strong>4.1.2</strong> Name, Role, Value</td>
+                  <td>UI components expose name, role, value programmatically.</td>
+                  <td>Native elements where possible. ARIA on tabs (<code>role="tab"</code>, <code>aria-controls</code>, <code>aria-selected</code>), mega menu (<code>aria-haspopup</code>, <code>aria-expanded</code>), breadcrumb (<code>aria-current="page"</code>), pagination (<code>aria-current</code>, <code>aria-disabled</code>), drawer (<code>role="dialog"</code>, <code>aria-modal="true"</code>).</td>
+                </tr>
+                <tr>
+                  <td><strong>4.1.3</strong> Status Messages</td>
+                  <td>Status changes can be programmatically determined.</td>
+                  <td>Loading buttons accept <code>aria-busy="true"</code>; error messages live in associated regions. Inline form errors do not require additional <code>role="alert"</code> for static state.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="u-text-muted">Source: W3C Web Content Accessibility Guidelines (WCAG) 2.2, recommendation Oct 2023. <a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a></p>
+        </section>
+
+        <!-- =================== INTERACTION PATTERNS =================== -->
+        <section id="interaction" class="u-stack u-stack--md">
+          <h2 class="p-h3">Interaction patterns</h2>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Pattern</th><th scope="col">Tag</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Tabs — arrow keys move between tabs, Home/End jump to ends, Enter/Space activates</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>W3C WAI-ARIA Authoring Practices Guide (APG): <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">Tabs Pattern</a></td>
+                </tr>
+                <tr>
+                  <td>Accordion — single-open mode, +/− affordance, native <code>&lt;details&gt;</code> for built-in semantics</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>W3C ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">Accordion Pattern</a>; MDN guidance on native <code>details</code></td>
+                </tr>
+                <tr>
+                  <td>Mobile drawer — focus trap, <code>role="dialog"</code>, <code>aria-modal</code>, Esc to close, focus restored to trigger</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>W3C ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Modal Dialog Pattern</a></td>
+                </tr>
+                <tr>
+                  <td>Three-tier button hierarchy (primary, secondary, ghost)</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>Nielsen Norman Group: <a href="https://www.nngroup.com/articles/primary-vs-secondary-actions/">"Primary vs. Secondary Action Buttons"</a> (Pernice, 2015)</td>
+                </tr>
+                <tr>
+                  <td>Pill button radius</td>
+                  <td><span class="p-badge tag-convention">Convention</span></td>
+                  <td>Aesthetic carry-over from MotherDuck reference. No evidence pills outperform rounded rectangles for usability.</td>
+                </tr>
+                <tr>
+                  <td>Hover affordance via background fill (not underline-only)</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 2.1 Success Criterion 1.4.13 (Content on Hover or Focus); NN/g <a href="https://www.nngroup.com/articles/flat-ui-clickable/">"Flat UI Elements Attract Less Attention and Cause Uncertainty"</a></td>
+                </tr>
+                <tr>
+                  <td>Visible focus ring with 2px offset</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 2.2 Success Criterion 2.4.13 (Focus Appearance) — the offset prevents the ring being lost against component borders.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== TYPOGRAPHY =================== -->
+        <section id="typography" class="u-stack u-stack--md">
+          <h2 class="p-h3">Typography &amp; reading</h2>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Choice</th><th scope="col">Tag</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Body text 16px (1rem) default, never below 14px in flow content</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/legibility/">"Legibility, Readability, and Comprehension"</a>; WebAIM guidelines; iOS HIG default body</td>
+                </tr>
+                <tr>
+                  <td>Line height 1.5 for body, 1.1–1.25 for headings</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 1.4.12 (Text Spacing) sets 1.5 as the safe-resize baseline. Bringhurst, <em>The Elements of Typographic Style</em>, recommends tighter leading for display.</td>
+                </tr>
+                <tr>
+                  <td>Max line length 65–70 characters (<code>max-inline-size: 70ch</code>)</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>Bringhurst (45–75 char range); NN/g <a href="https://www.nngroup.com/articles/line-length-readability/">"Line Length: How Many Characters Per Line?"</a> (Pernice 2024) — comprehension optimal at 50–75</td>
+                </tr>
+                <tr>
+                  <td>1.25 modular type scale</td>
+                  <td><span class="p-badge tag-convention">Convention</span></td>
+                  <td>Common practice (Material, Bootstrap, IBM Carbon). No published evidence of measurable readability difference vs. 1.2 or major third.</td>
+                </tr>
+                <tr>
+                  <td>System sans default; serif used sparingly for emphasis (display, pull quotes)</td>
+                  <td><span class="p-badge tag-convention">Convention</span></td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/serif-vs-sans-serif-fonts-hd-screens/">"Serif vs. Sans Serif Fonts: Is One Easier to Read?"</a> finds no meaningful readability difference at 16px+. We use serif for editorial moments.</td>
+                </tr>
+                <tr>
+                  <td><code>text-wrap: balance</code> on headings</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>W3C CSS Text Module Level 4. Adam Argyle (Chrome team): <a href="https://developer.chrome.com/docs/css-ui/css-text-wrap-balance">"CSS text-wrap: balance"</a> — measurably reduces orphan-line awkwardness in headlines</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== FORMS =================== -->
+        <section id="forms" class="u-stack u-stack--md">
+          <h2 class="p-h3">Forms</h2>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Choice</th><th scope="col">Tag</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Labels above inputs (not beside)</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>Baymard Institute: <a href="https://baymard.com/blog/inline-form-validation">"Form Field Usability: Avoid Multi-Column Layouts"</a>. Eye-tracking shows above-label completion is faster on mobile and matches saccade direction.</td>
+                </tr>
+                <tr>
+                  <td>Single-column form layout default</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>Baymard: <a href="https://baymard.com/blog/avoid-multi-column-forms">"Avoid Multi-Column Forms"</a> — 14% completion lift in tested checkouts</td>
+                </tr>
+                <tr>
+                  <td>Required-field marking with asterisk + visible label note</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/required-fields/">"Marking Required Fields in Forms"</a></td>
+                </tr>
+                <tr>
+                  <td>Inline error placement adjacent to field</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>Baymard: <a href="https://baymard.com/blog/inline-form-validation">"Inline Form Validation"</a>; WCAG 3.3.1 fulfilled via proximity + <code>aria-describedby</code></td>
+                </tr>
+                <tr>
+                  <td>Placeholder text never substitutes for label</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/form-design-placeholders/">"Placeholders in Form Fields Are Harmful"</a> (Sherwin, 2014)</td>
+                </tr>
+                <tr>
+                  <td>Search input pattern with leading icon</td>
+                  <td><span class="p-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/search-visible-and-simple/">"The Magnifying-Glass Icon in Search Designs"</a> (Hodge, 2024) — magnifier is the most recognized search icon globally</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== HEALTHCARE =================== -->
+        <section id="healthcare" class="u-stack u-stack--md">
+          <h2 class="p-h3">Healthcare-specific patterns</h2>
+          <p>Patterns added or emphasized for healthcare engagements (SRALab and similar).</p>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Pattern</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Persistent phone / "talk to someone" affordance in topnav</td>
+                  <td>Pew Research: <a href="https://www.pewresearch.org/internet/2013/01/15/health-online-2013/">"Health Online 2013"</a> — 35% of US adults have gone online specifically to figure out a medical condition; many escalate to a phone call. NIA "Making Your Website Senior Friendly" §2.4: contact methods should be prominent and persistent.</td>
+                </tr>
+                <tr>
+                  <td>Text-size control (<code>.p-text-size</code> with A−/A/A+/A++)</td>
+                  <td>National Institute on Aging: <a href="https://www.nia.nih.gov/health/making-your-website-senior-friendly">"Making Your Website Senior Friendly"</a> §3.1. Healthcare audiences skew older; user-controllable text sizing is a documented expectation.</td>
+                </tr>
+                <tr>
+                  <td>Print stylesheet (<code>css/print.css</code>)</td>
+                  <td>CDC Clear Communication Index: critical patient content (medication lists, instructions, directions) is regularly printed. Print styles strip chrome, expand collapsed content, and reveal link URLs.</td>
+                </tr>
+                <tr>
+                  <td>Plain-language target: 6th–8th grade reading level on patient content</td>
+                  <td>U.S. Dept of Health &amp; Human Services: <a href="https://health.gov/healthypeople/priority-areas/health-literacy-healthy-people-2030">Healthy People 2030 Health Literacy</a>; <a href="https://www.plainlanguage.gov/guidelines/">Plain Language Guidelines</a>. Average US adult reading level is 8th grade; medical content should target 6th–8th to be broadly accessible.</td>
+                </tr>
+                <tr>
+                  <td>Provider language filtering (multi-language match in find-a-doctor)</td>
+                  <td>CDC Clear Communication: language matching improves outcomes for limited-English-proficiency patients. Implemented in the SRALab Find a Doctor mock.</td>
+                </tr>
+                <tr>
+                  <td>Person card pattern with credentials line</td>
+                  <td>HHS guidance for hospital website transparency; recognition that patients use credentials as trust signals when selecting a provider.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== HIGHER ED =================== -->
+        <section id="highered" class="u-stack u-stack--md">
+          <h2 class="p-h3">Higher-ed-specific patterns</h2>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Pattern</th><th scope="col">Basis</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Mobile-first hero scaling (display sizes step up at md/lg breakpoints)</td>
+                  <td>HTTP Archive Web Almanac 2024: <a href="https://almanac.httparchive.org/en/2024/mobile-web">Mobile Web chapter</a> — 60%+ of higher-ed inquiry traffic is mobile. Hero typography starts at <code>--text-4xl</code> on mobile and steps to <code>--text-6xl</code> on desktop rather than starting large and scaling down.</td>
+                </tr>
+                <tr>
+                  <td>Mega-menu IA for multi-audience entry (prospective, current, faculty)</td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/mega-menus-work-well/">"Mega Menus Work Well for Site Navigation"</a> — when the IA fans out across audiences, a mega menu outperforms a deep hierarchy.</td>
+                </tr>
+                <tr>
+                  <td>Linked-list pattern for category landing (clear destination, meta count)</td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/category-pages/">"Category Pages Are Powerful"</a> — making counts and depth visible at the parent level improves wayfinding.</td>
+                </tr>
+                <tr>
+                  <td>In-page anchor nav with scroll-spy</td>
+                  <td>NN/g: <a href="https://www.nngroup.com/articles/table-of-contents/">"Table of Contents: Design Best Practices"</a> — on long-form (program / department / lab pages), an in-page TOC reduces scrolling and improves orientation.</td>
+                </tr>
+                <tr>
+                  <td>Person cards with role + credentials (faculty directory)</td>
+                  <td>Direct mirror of the healthcare provider pattern; same trust-signal rationale.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== CONVENTION =================== -->
+        <section id="convention" class="u-stack u-stack--md">
+          <h2 class="p-h3">What's convention, not evidence</h2>
+          <p>The system makes plenty of choices that are aesthetic or consensus-driven. We don't dress them up as research.</p>
+          <ul class="u-stack u-stack--xs">
+            <li><strong>Grayscale ramp granularity (12 steps).</strong> Designer judgment to provide enough hierarchy without overwhelming the file. Material uses 10, IBM Carbon uses 9.</li>
+            <li><strong>4px spacing base.</strong> Industry consensus (Material, Carbon, Polaris). 8px base would also be defensible.</li>
+            <li><strong>Pill button radius.</strong> Aesthetic choice from the MotherDuck reference. No evidence pills outperform rounded rectangles.</li>
+            <li><strong>Modular 1.25 type scale.</strong> Common; no evidence of measurable advantage over 1.2 or major third.</li>
+            <li><strong>Specific motion durations (150/250/400ms).</strong> Material guideline-aligned but no peer-reviewed support for these exact numbers.</li>
+            <li><strong>System-font default over a custom face.</strong> Portability decision — every consumption surface (browser, Figma Make, artifacts) gets a faithful rendering without a network dependency.</li>
+          </ul>
+        </section>
+
+        <!-- =================== AUDIT =================== -->
+        <section id="audit" class="u-stack u-stack--md">
+          <h2 class="p-h3">v1.1 audit results</h2>
+          <p>A documented WCAG 2.2 AA pass was run when v1.1 shipped. Findings and fixes:</p>
+
+          <h3 class="p-h5">Found and fixed</h3>
+          <div class="p-table-wrap">
+            <table class="p-table ref-table">
+              <thead><tr><th scope="col">Criterion</th><th scope="col">Finding</th><th scope="col">Fix</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>1.4.11 Non-text Contrast</td>
+                  <td><code>--color-border-strong</code> was <code>gray-40</code> = 2.4:1 vs white. Form input borders failed the 3:1 UI minimum.</td>
+                  <td>Bumped to <code>gray-50</code> = 4.5:1. Cascades to forms, secondary buttons, tags, toggles, accordion icon, card-bordered.</td>
+                </tr>
+                <tr>
+                  <td>2.4.7 Focus Visible</td>
+                  <td><code>--color-focus</code> was <code>gray-95</code>, identical to <code>--color-bg-inverse</code>. Focus ring invisible on dark heroes, footers, callouts.</td>
+                  <td>Component-scoped override: <code>.u-bg-inverse</code>, <code>.p-hero--inverse</code>, <code>.p-footer--inverse</code>, <code>.p-callout--inverse</code> set <code>--color-focus: var(--color-text-inverse)</code>.</td>
+                </tr>
+                <tr>
+                  <td>2.1.2 No Keyboard Trap</td>
+                  <td>Mobile drawer lacked focus trap. Tab moved focus to elements behind backdrop while drawer was open.</td>
+                  <td>Drawer now implements modal dialog pattern: <code>role="dialog"</code>, <code>aria-modal="true"</code>, focus trap on Tab/Shift+Tab, Esc closes, focus returns to trigger.</td>
+                </tr>
+                <tr>
+                  <td>2.4.11 Focus Not Obscured</td>
+                  <td>Anchor jumps to in-page sections could land target under sticky chrome on small viewports.</td>
+                  <td><code>scroll-margin-block-start: var(--space-2xl)</code> on h1–h6.</td>
+                </tr>
+                <tr>
+                  <td>2.5.8 Target Size (Minimum)</td>
+                  <td>Breadcrumb, footer, in-page-nav, and mega-menu link tap areas measured ≤20px tall.</td>
+                  <td>All bumped to ≥28px (breadcrumb, footer, in-page-nav) or 36px (mega-menu link).</td>
+                </tr>
+                <tr>
+                  <td>4.1.3 Status Messages</td>
+                  <td>Loading button hid text via <code>color: transparent</code>. SR-only users could see no indication of state.</td>
+                  <td>Loading style also triggers on <code>[aria-busy="true"]</code>; component docs require the attribute and an optional <code>.u-visually-hidden</code> "Loading…" text.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="p-h5 u-mt-xl">Out of scope for v1.1</h3>
+          <ul>
+            <li><strong>Live screen-reader pass with NVDA + VoiceOver.</strong> Authored to the patterns; not independently SR-tested yet. Recommended before client launch on any production work.</li>
+            <li><strong>Automated tooling.</strong> No axe-core / Pa11y / Lighthouse CI integration yet. Plan: add Pa11y to the SRALab demo pages as a continuous check.</li>
+            <li><strong>WCAG 2.2 AAA.</strong> Out of scope by client decision; v1.1 targets AA.</li>
+            <li><strong>Section 508 mapping.</strong> Out of scope by client decision; revisit if a federal/public-university engagement lands.</li>
+          </ul>
+        </section>
+
+        <!-- =================== SOURCES =================== -->
+        <section id="sources" class="u-stack u-stack--md">
+          <h2 class="p-h3">Sources</h2>
+          <dl class="ref-list u-stack u-stack--xs">
+            <dt>W3C Web Content Accessibility Guidelines (WCAG) 2.2</dt>
+            <dd>W3C Recommendation, Oct 2023. <a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a></dd>
+
+            <dt>W3C WAI-ARIA Authoring Practices Guide</dt>
+            <dd>Maintained patterns library for accessible component behavior. <a href="https://www.w3.org/WAI/ARIA/apg/">w3.org/WAI/ARIA/apg</a></dd>
+
+            <dt>Nielsen Norman Group — UX research and articles</dt>
+            <dd>Cited articles linked inline. <a href="https://www.nngroup.com/">nngroup.com</a></dd>
+
+            <dt>Baymard Institute — large-scale UX research</dt>
+            <dd>E-commerce and form research; cited articles linked inline. <a href="https://baymard.com/">baymard.com</a></dd>
+
+            <dt>National Institute on Aging — "Making Your Website Senior Friendly"</dt>
+            <dd>NIH/NIA, current edition. <a href="https://www.nia.nih.gov/health/making-your-website-senior-friendly">nia.nih.gov</a></dd>
+
+            <dt>Plain Language Guidelines</dt>
+            <dd>U.S. Federal Plain Language Action and Information Network. <a href="https://www.plainlanguage.gov/guidelines/">plainlanguage.gov</a></dd>
+
+            <dt>Healthy People 2030 — Health Literacy</dt>
+            <dd>U.S. Department of Health and Human Services. <a href="https://health.gov/healthypeople/priority-areas/health-literacy-healthy-people-2030">health.gov</a></dd>
+
+            <dt>CDC Clear Communication Index</dt>
+            <dd>Centers for Disease Control and Prevention. <a href="https://www.cdc.gov/ccindex/">cdc.gov/ccindex</a></dd>
+
+            <dt>Robert Bringhurst — <em>The Elements of Typographic Style</em></dt>
+            <dd>4th edition, Hartley &amp; Marks, 2013. Reference for line length, leading, and typographic hierarchy.</dd>
+
+            <dt>HTTP Archive Web Almanac 2024</dt>
+            <dd>Annual state-of-the-web data report. <a href="https://almanac.httparchive.org/en/2024/">almanac.httparchive.org/2024</a></dd>
+
+            <dt>Pew Research — Health Online 2013</dt>
+            <dd>Internet &amp; American Life Project. <a href="https://www.pewresearch.org/internet/2013/01/15/health-online-2013/">pewresearch.org</a></dd>
+          </dl>
+          <p class="u-text-muted u-mt-lg">URLs are provided for reference. We do not link out from production wireframes to third-party sites without client review.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="p-footer p-footer--compact">
+  <div class="u-container p-footer__inner">
+    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
+    <p class="p-footer__tagline">v1.1 · Research-backed where it matters · Honest about the rest</p>
+  </div>
+</footer>
+
+<script src="../js/primacy.js" defer></script>
+</body>
+</html>

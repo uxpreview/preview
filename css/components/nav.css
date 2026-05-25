@@ -159,7 +159,8 @@
 
 .p-megamenu__link {
   display: block;
-  padding: var(--space-xs) var(--space-sm);
+  min-block-size: 2.25rem; /* WCAG 2.5.8 — comfortable target */
+  padding: var(--space-sm) var(--space-sm);
   margin-inline: calc(-1 * var(--space-sm));
   border-radius: var(--radius-sm);
 
@@ -262,8 +263,10 @@
 .p-inpagenav__item { margin: 0; }
 
 .p-inpagenav__link {
-  display: block;
-  padding-block: var(--space-2xs);
+  display: flex;
+  align-items: center;
+  min-block-size: 1.75rem; /* WCAG 2.5.8 */
+  padding-block: var(--space-xs);
   padding-inline: var(--space-md);
   margin-inline-start: -1px;
   border-inline-start: var(--border-md) solid transparent;

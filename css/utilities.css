@@ -23,6 +23,9 @@
 .u-bg-inverse {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
+  /* Focus ring must remain visible on dark backgrounds (WCAG 2.4.7). */
+  --color-focus: var(--color-text-inverse);
+  --color-border: var(--color-border-inverse);
 }
 
 .u-bg-inverse a {
