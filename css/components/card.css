@@ -1,0 +1,174 @@
+/* ============================================================
+   Card — content, person, resource, stat.
+   ============================================================ */
+
+.p-card {
+  --card-bg: var(--color-bg);
+  --card-border: var(--color-border);
+  --card-pad: var(--space-lg);
+  --card-radius: var(--radius-lg);
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border: var(--border-thin) solid var(--card-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+  block-size: 100%;
+}
+
+.p-card--subtle {
+  --card-bg: var(--color-bg-subtle);
+  --card-border: transparent;
+}
+
+.p-card--bordered {
+  --card-border: var(--color-border-strong);
+}
+
+.p-card--inverse {
+  --card-bg: var(--color-bg-inverse);
+  --card-border: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.p-card--linked {
+  cursor: pointer;
+}
+.p-card--linked:hover {
+  --card-border: var(--color-text);
+}
+
+.p-card__media {
+  margin: 0;
+}
+
+.p-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--card-pad);
+  flex-grow: 1;
+}
+
+.p-card__eyebrow {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-muted);
+}
+
+.p-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.p-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.p-card__title a:hover {
+  text-decoration: underline;
+}
+
+.p-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}
+
+.p-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.p-card__meta-item + .p-card__meta-item::before {
+  content: "·";
+  margin-inline-end: var(--space-sm);
+  color: var(--color-text-subtle);
+}
+
+.p-card__footer {
+  margin-block-start: auto;
+  padding-block-start: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* ---------- Person card ---------- */
+.p-card--person .p-card__media {
+  aspect-ratio: 1 / 1;
+}
+
+.p-card--person .p-card__title {
+  font-size: var(--text-lg);
+}
+
+.p-card__role {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.p-card__credentials {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+/* ---------- Resource card ---------- */
+.p-card--resource .p-card__body {
+  gap: var(--space-md);
+}
+
+.p-card__resource-type {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Stat card ---------- */
+.p-card--stat {
+  --card-pad: var(--space-xl);
+}
+
+.p-card--stat .p-card__body {
+  gap: var(--space-xs);
+}
+
+.p-card__stat-value {
+  font-size: var(--text-5xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-feature-settings: "tnum";
+}
+
+.p-card__stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+.p-card__stat-trend {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}

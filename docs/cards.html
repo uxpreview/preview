@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cards — Primacy Wireframe System</title>
+  <link rel="stylesheet" href="../css/primacy.css">
+  <style>
+    /* Doc-page-only scaffold. Keep tiny. */
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .doc-snippet { padding: var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto; white-space: pre; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="p-skip-link">Skip to content</a>
+
+<header class="p-topnav">
+  <div class="u-container p-topnav__inner">
+    <a href="../index.html" class="p-topnav__brand">
+      <span class="p-topnav__brand-mark">P</span>
+      <span>Primacy Wireframe System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="p-topnav__menu" role="list">
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero p-hero--editorial">
+    <div class="u-container">
+      <div class="p-hero__inner">
+        <span class="p-hero__eyebrow">Component</span>
+        <h1 class="p-hero__title">Cards</h1>
+        <p class="p-hero__lead">A single shell — <code>.p-card</code> — extended by purpose: content, person, resource, stat. Variants change emphasis (subtle, bordered, inverse, linked), never identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-section">
+    <div class="u-container">
+      <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section">
+          <h2 class="p-h3">Anatomy</h2>
+          <p class="u-text-muted u-mt-sm">Every card is a container, an optional media slot, and a body with eyebrow, title, description, optional meta row, and an optional footer that pins to the bottom on equal-height grids.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default content card</span>
+            <article class="p-card">
+              <div class="p-card__media"><div class="p-media" data-ratio="16:9"></div></div>
+              <div class="p-card__body">
+                <span class="p-card__eyebrow">Research</span>
+                <h3 class="p-card__title"><a href="#">A new approach to spinal cord injury recovery</a></h3>
+                <p class="p-card__desc">Dr. Mitchell's lab combines robotics with intensive therapy to test what's possible after injury.</p>
+                <div class="p-card__meta">
+                  <span class="p-card__meta-item">Apr 12, 2026</span>
+                  <span class="p-card__meta-item">6 min read</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">When to use</h2>
+          <ul>
+            <li>Use a <strong>content card</strong> for a teaser to a long-form item (article, story, news).</li>
+            <li>Use a <strong>person card</strong> for staff, clinicians, researchers — anything with a face and a role.</li>
+            <li>Use a <strong>resource card</strong> for a downloadable or watchable asset; the resource type sits in the eyebrow slot.</li>
+            <li>Use a <strong>stat card</strong> to land a single number prominently in a grid.</li>
+          </ul>
+          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <ul>
+            <li>Do not use a card when a linked list will do — long single-line entries belong in <code>.p-linked-list</code>.</li>
+            <li>Do not mix card types in the same grid; the silhouette break is jarring.</li>
+            <li>Do not wrap a card in a stray <code>&lt;a&gt;</code>; link the title and use <code>.p-card--linked</code> for the hover affordance.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Variants</h2>
+          <p class="u-text-muted u-mt-sm">Purpose modifiers come first (person, resource, stat); style modifiers stack on top (subtle, bordered, inverse, linked).</p>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Person cards</span>
+            <div class="u-grid u-grid--3">
+              <article class="p-card p-card--person">
+                <div class="p-card__media"><div class="p-media p-media--square" data-ratio="1:1"></div></div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title"><a href="#">Dr. Ana Mitchell</a></h3>
+                  <span class="p-card__role">Director, Spinal Cord Injury Program</span>
+                  <span class="p-card__credentials">MD, PhD</span>
+                </div>
+              </article>
+              <article class="p-card p-card--person">
+                <div class="p-card__media"><div class="p-media p-media--square" data-ratio="1:1"></div></div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title"><a href="#">Dr. James Okafor</a></h3>
+                  <span class="p-card__role">Attending Physician, Stroke Recovery</span>
+                  <span class="p-card__credentials">MD</span>
+                </div>
+              </article>
+              <article class="p-card p-card--person">
+                <div class="p-card__media"><div class="p-media p-media--square" data-ratio="1:1"></div></div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title"><a href="#">Lila Park</a></h3>
+                  <span class="p-card__role">Senior Physical Therapist</span>
+                  <span class="p-card__credentials">DPT, NCS</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Resource cards (bordered)</span>
+            <div class="u-grid u-grid--2">
+              <article class="p-card p-card--resource p-card--bordered">
+                <div class="p-card__body">
+                  <span class="p-card__resource-type">Guide · PDF</span>
+                  <h3 class="p-card__title"><a href="#">Preparing for your first outpatient appointment</a></h3>
+                  <p class="p-card__desc">What to bring, what to expect, and how to make the most of your evaluation.</p>
+                  <div class="p-card__footer">
+                    <span class="p-card__meta-item">12 pages</span>
+                    <a class="p-button p-button--ghost p-button--sm" href="#">Download →</a>
+                  </div>
+                </div>
+              </article>
+              <article class="p-card p-card--resource p-card--bordered">
+                <div class="p-card__body">
+                  <span class="p-card__resource-type">Video · 8:32</span>
+                  <h3 class="p-card__title"><a href="#">A tour of the SRALab Innovation Center</a></h3>
+                  <p class="p-card__desc">Walk through the labs where research becomes therapy.</p>
+                  <div class="p-card__footer">
+                    <a class="p-button p-button--ghost p-button--sm" href="#">Watch →</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Stat cards (subtle)</span>
+            <div class="u-grid u-grid--4">
+              <div class="p-card p-card--stat p-card--subtle">
+                <div class="p-card__body">
+                  <span class="p-card__stat-value">36</span>
+                  <span class="p-card__stat-label">Years ranked #1 in rehab</span>
+                </div>
+              </div>
+              <div class="p-card p-card--stat p-card--subtle">
+                <div class="p-card__body">
+                  <span class="p-card__stat-value">50K+</span>
+                  <span class="p-card__stat-label">Patients treated each year</span>
+                </div>
+              </div>
+              <div class="p-card p-card--stat p-card--subtle">
+                <div class="p-card__body">
+                  <span class="p-card__stat-value">242</span>
+                  <span class="p-card__stat-label">Active research studies</span>
+                  <span class="p-card__stat-trend">+18 from 2025</span>
+                </div>
+              </div>
+              <div class="p-card p-card--stat p-card--subtle">
+                <div class="p-card__body">
+                  <span class="p-card__stat-value">1,800</span>
+                  <span class="p-card__stat-label">Clinicians and scientists</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Style — subtle, bordered, inverse, linked</span>
+            <div class="u-grid u-grid--2">
+              <article class="p-card p-card--subtle">
+                <div class="p-card__body">
+                  <span class="p-card__eyebrow">Subtle</span>
+                  <h3 class="p-card__title">Quieter surface</h3>
+                  <p class="p-card__desc">Use inside a white section to pull the card back without losing its container.</p>
+                </div>
+              </article>
+              <article class="p-card p-card--bordered">
+                <div class="p-card__body">
+                  <span class="p-card__eyebrow">Bordered</span>
+                  <h3 class="p-card__title">Stronger frame</h3>
+                  <p class="p-card__desc">A heavier border when the card needs to feel separated from a busy background.</p>
+                </div>
+              </article>
+              <article class="p-card p-card--inverse">
+                <div class="p-card__body">
+                  <span class="p-card__eyebrow">Inverse</span>
+                  <h3 class="p-card__title">Dark moment</h3>
+                  <p class="p-card__desc">For high-emphasis CTAs or featured editorial blocks inside a light page.</p>
+                </div>
+              </article>
+              <article class="p-card p-card--linked" tabindex="0">
+                <div class="p-card__body">
+                  <span class="p-card__eyebrow">Linked</span>
+                  <h3 class="p-card__title"><a href="#">Whole card is clickable</a></h3>
+                  <p class="p-card__desc">Hover gives a strong border to signal the entire card is the affordance.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Accessibility</h2>
+          <ul>
+            <li>Wrap content cards in <code>&lt;article&gt;</code>; stat and resource cards in <code>&lt;div&gt;</code> unless the content is article-like.</li>
+            <li>Link the title only; do not link the whole card via nested anchors. Use <code>.p-card--linked</code> for the hover affordance and rely on the title link for navigation.</li>
+            <li>Person card images are decorative greyboxes here; in production, ensure the alt text describes the person if the photo is meaningful, or leave it empty if the name beside it carries the meaning.</li>
+            <li>Maintain a consistent eyebrow→title→description→meta order so screen readers traverse a predictable structure.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Code</h2>
+          <details>
+            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;article class="p-card"&gt;
+  &lt;div class="p-card__media"&gt;&lt;div class="p-media" data-ratio="16:9"&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="p-card__body"&gt;
+    &lt;span class="p-card__eyebrow"&gt;Research&lt;/span&gt;
+    &lt;h3 class="p-card__title"&gt;&lt;a href="/article"&gt;A new approach to recovery&lt;/a&gt;&lt;/h3&gt;
+    &lt;p class="p-card__desc"&gt;Combining robotics with intensive therapy.&lt;/p&gt;
+    &lt;div class="p-card__meta"&gt;
+      &lt;span class="p-card__meta-item"&gt;Apr 12, 2026&lt;/span&gt;
+      &lt;span class="p-card__meta-item"&gt;6 min read&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+          </details>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="p-footer p-footer--compact">
+  <div class="u-container p-footer__inner">
+    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
+    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+  </div>
+</footer>
+
+<script src="../js/primacy.js" defer></script>
+</body>
+</html>

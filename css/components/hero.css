@@ -1,0 +1,163 @@
+/* ============================================================
+   Hero — 4 variants: editorial, split, centered, stat-led.
+   ============================================================ */
+
+.p-hero {
+  padding-block: var(--space-3xl);
+}
+
+@media (min-width: 48em) {
+  .p-hero {
+    padding-block: var(--space-4xl);
+  }
+}
+
+.p-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.p-hero__eyebrow {
+  display: inline-block;
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-muted);
+}
+
+.p-hero__title {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+  margin: 0;
+}
+
+@media (min-width: 48em) {
+  .p-hero__title { font-size: var(--text-5xl); }
+}
+
+@media (min-width: 64em) {
+  .p-hero__title { font-size: var(--text-6xl); }
+}
+
+.p-hero__lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  max-inline-size: 50ch;
+}
+
+@media (min-width: 48em) {
+  .p-hero__lead { font-size: var(--text-xl); }
+}
+
+.p-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-md);
+}
+
+/* ---------- Editorial variant (default — big type, left-aligned) ---------- */
+.p-hero--editorial .p-hero__title em,
+.p-hero--editorial .p-hero__title i {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+}
+
+/* ---------- Split variant ---------- */
+.p-hero--split .p-hero__inner {
+  display: grid;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .p-hero--split .p-hero__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+  }
+}
+
+.p-hero__media {
+  display: block;
+}
+
+/* ---------- Centered variant ---------- */
+.p-hero--centered .p-hero__inner {
+  align-items: center;
+  text-align: center;
+  max-inline-size: var(--container-md);
+  margin-inline: auto;
+}
+
+.p-hero--centered .p-hero__lead {
+  margin-inline: auto;
+}
+
+.p-hero--centered .p-hero__actions {
+  justify-content: center;
+}
+
+/* ---------- Stat-led variant ---------- */
+.p-hero--stat .p-hero__stats {
+  display: grid;
+  gap: var(--space-xl);
+  margin-block-start: var(--space-2xl);
+  padding-block-start: var(--space-2xl);
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+
+@media (min-width: 48em) {
+  .p-hero--stat .p-hero__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.p-hero__stat-value {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-feature-settings: "tnum";
+}
+
+@media (min-width: 48em) {
+  .p-hero__stat-value { font-size: var(--text-5xl); }
+}
+
+.p-hero__stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-2xs);
+}
+
+/* ---------- Inverse hero (dark background) ---------- */
+.p-hero--inverse {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.p-hero--inverse .p-hero__eyebrow,
+.p-hero--inverse .p-hero__lead,
+.p-hero--inverse .p-hero__stat-label {
+  color: var(--gray-30);
+}
+
+.p-hero--inverse .p-hero__stats {
+  border-block-start-color: var(--color-border-inverse);
+}
+
+.p-hero--inverse .p-button--secondary {
+  --btn-fg: var(--color-text-inverse);
+  --btn-border: var(--gray-40);
+}
+.p-hero--inverse .p-button--secondary:hover {
+  --btn-bg: var(--gray-80);
+  --btn-border: var(--color-text-inverse);
+}

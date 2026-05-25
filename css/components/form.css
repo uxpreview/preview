@@ -1,0 +1,292 @@
+/* ============================================================
+   Form — input, textarea, select, checkbox, radio, toggle,
+   search, fieldset, help text, error state.
+   ============================================================ */
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.p-field__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.p-field__label-required::after {
+  content: " *";
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+}
+
+.p-field__hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.p-field__error {
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.p-field__error::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1rem;
+  block-size: 1rem;
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-radius: 50%;
+}
+
+/* ---------- Input / textarea / select ---------- */
+.p-input,
+.p-textarea,
+.p-select {
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-md);
+
+  font-family: inherit;
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.p-input::placeholder,
+.p-textarea::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.p-input:hover,
+.p-textarea:hover,
+.p-select:hover {
+  border-color: var(--color-text);
+}
+
+.p-input:focus-visible,
+.p-textarea:focus-visible,
+.p-select:focus-visible {
+  border-color: var(--color-text);
+}
+
+.p-input:disabled,
+.p-textarea:disabled,
+.p-select:disabled {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.p-input.is-invalid,
+.p-textarea.is-invalid,
+.p-select.is-invalid {
+  border-color: var(--color-text);
+  border-width: var(--border-md);
+}
+
+.p-textarea {
+  min-block-size: 7rem;
+  padding-block: var(--space-sm);
+  resize: vertical;
+}
+
+.p-select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--color-text) 50%),
+                    linear-gradient(135deg, var(--color-text) 50%, transparent 50%);
+  background-position: calc(100% - var(--space-md) - 6px) 50%, calc(100% - var(--space-md)) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+  padding-inline-end: calc(var(--space-md) * 2 + 6px);
+}
+
+/* ---------- Search ---------- */
+.p-search {
+  position: relative;
+  inline-size: 100%;
+}
+
+.p-search__icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--space-md);
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+}
+
+.p-search__input {
+  inline-size: 100%;
+  padding-inline-start: calc(var(--space-md) * 2 + 1.125rem);
+}
+
+/* ---------- Checkbox & Radio ---------- */
+.p-checkbox,
+.p-radio {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  min-block-size: 2.75rem;
+  padding-block: var(--space-xs);
+}
+
+.p-checkbox__input,
+.p-radio__input {
+  appearance: none;
+  flex-shrink: 0;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  margin-block-start: 0.125rem;
+  background-color: var(--color-bg);
+  border: var(--border-md) solid var(--color-border-strong);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.p-checkbox__input {
+  border-radius: var(--radius-xs);
+}
+
+.p-radio__input {
+  border-radius: 50%;
+}
+
+.p-checkbox__input:hover,
+.p-radio__input:hover {
+  border-color: var(--color-text);
+}
+
+.p-checkbox__input:checked,
+.p-radio__input:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.p-checkbox__input:checked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(45deg, transparent 38%, var(--color-bg) 38%, var(--color-bg) 50%, transparent 50%),
+                    linear-gradient(-45deg, transparent 62%, var(--color-bg) 62%, var(--color-bg) 74%, transparent 74%);
+  background-position: 35% 60%, 70% 40%;
+  background-repeat: no-repeat;
+  background-size: 50% 4px, 80% 4px;
+}
+
+.p-radio__input:checked::after {
+  content: "";
+  position: absolute;
+  inset: 25%;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+}
+
+.p-checkbox__input:disabled,
+.p-radio__input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ---------- Toggle (switch) ---------- */
+.p-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  min-block-size: 2.75rem;
+  padding-block: var(--space-xs);
+}
+
+.p-toggle__input {
+  appearance: none;
+  position: relative;
+  inline-size: 2.5rem;
+  block-size: 1.5rem;
+  background-color: var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.p-toggle__input::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0.125rem;
+  inset-inline-start: 0.125rem;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.p-toggle__input:checked {
+  background-color: var(--color-accent);
+}
+
+.p-toggle__input:checked::after {
+  transform: translateX(1rem);
+}
+
+/* ---------- Fieldset ---------- */
+.p-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.p-fieldset__legend {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  padding: 0;
+  margin-block-end: var(--space-xs);
+}
+
+/* ---------- Form layout helper ---------- */
+.p-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.p-form__row {
+  display: grid;
+  gap: var(--space-md);
+}
+
+@media (min-width: 48em) {
+  .p-form__row--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
