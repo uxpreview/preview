@@ -43,6 +43,15 @@
   --tag-border: var(--color-accent);
 }
 
+/* ---------- Small variant — for dense metadata rows (e.g. citation entries). ---------- */
+.wire-tag--sm {
+  padding-block: var(--space-3xs);
+  padding-inline: var(--space-xs);
+  min-block-size: 1.25rem;
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+}
+
 .wire-tag__remove {
   display: inline-flex;
   align-items: center;
