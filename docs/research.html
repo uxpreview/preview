@@ -42,7 +42,7 @@
 <section class="wire-hero wire-hero--editorial">
   <div class="u-container">
     <div class="wire-hero__inner">
-      <span class="wire-hero__eyebrow">Evidence basis · v1.1</span>
+      <span class="wire-hero__eyebrow">Evidence basis · v1.2</span>
       <h1 class="wire-hero__title">Why we made the calls we made.</h1>
       <p class="wire-hero__lead">Every meaningful decision in this system is either tied to a specific standard or research finding, or honestly tagged as convention. We don't claim a research basis we can't defend.</p>
     </div>
@@ -64,7 +64,7 @@
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#healthcare">Healthcare-specific</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#highered">Higher-ed-specific</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#convention">What's convention, not evidence</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#audit">v1.1 audit results</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#audit">Audit history</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#sources">Sources</a></li>
           </ul>
         </nav>
@@ -418,10 +418,10 @@
 
         <!-- =================== AUDIT =================== -->
         <section id="audit" class="u-stack u-stack--md">
-          <h2 class="wire-h3">v1.1 audit results</h2>
-          <p>A documented WCAG 2.2 AA pass was run when v1.1 shipped. Findings and fixes:</p>
+          <h2 class="wire-h3">Audit history</h2>
+          <p>Two documented WCAG 2.2 AA passes have run against the system. Each pass produced a table of findings and the specific fix; both are reproduced below for the public record.</p>
 
-          <h3 class="wire-h5">Found and fixed</h3>
+          <h3 class="wire-h5">v1.1 — initial audit, found and fixed</h3>
           <div class="wire-table-wrap">
             <table class="wire-table ref-table">
               <thead><tr><th scope="col">Criterion</th><th scope="col">Finding</th><th scope="col">Fix</th></tr></thead>
@@ -460,11 +460,59 @@
             </table>
           </div>
 
-          <h3 class="wire-h5 u-mt-xl">Out of scope for v1.1</h3>
+          <h3 class="wire-h5 u-mt-xl">v1.2 follow-up audit</h3>
+          <p>A second pass run after the rebrand caught one silent functional regression and a handful of mobile / semantic gaps. All fixed in v1.2:</p>
+          <div class="wire-table-wrap">
+            <table class="wire-table ref-table">
+              <thead><tr><th scope="col">Criterion</th><th scope="col">Finding</th><th scope="col">Fix</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Functional regression</td>
+                  <td>The rebrand renamed HTML attributes to <code>data-wire-*</code> but missed three <code>dataset.p*</code> reads in <code>js/wire.js</code>. Accordion single-mode and the text-size widget were silently broken.</td>
+                  <td>Renamed to <code>dataset.wireAccordion</code> / <code>dataset.wireTextSizeValue</code>. Verified the accordion's one-open-at-a-time behavior and text-size persistence both work end-to-end.</td>
+                </tr>
+                <tr>
+                  <td>1.1.1 Non-text Content</td>
+                  <td>Empty <code>.wire-media</code> placeholders (103 across the site) were exposed to assistive tech as "empty group" with no role or label.</td>
+                  <td>Added <code>aria-hidden="true"</code> to every bare <code>.wire-media</code> div. Placeholders that carry a caption stay accessible.</td>
+                </tr>
+                <tr>
+                  <td>2.4.6 Headings and Labels</td>
+                  <td><code>docs/heroes.html</code>, <code>docs/typography.html</code>, and <code>index.html</code> each rendered multiple <code>&lt;h1&gt;</code>s — one per variant example — fragmenting the document outline.</td>
+                  <td>Each page now has exactly one <code>&lt;h1&gt;</code>. Variant examples in <code>.doc-example</code> blocks demote to <code>&lt;h2&gt;</code>; the type-scale row in <code>typography.html</code> uses <code>&lt;p class="wire-h1"&gt;</code> etc. to keep the visual without polluting the outline.</td>
+                </tr>
+                <tr>
+                  <td>2.5.8 Target Size (Minimum)</td>
+                  <td><code>.wire-tag--sm</code> measured 20px tall, below the AA 24px floor. The <code>.wire-text-size__btn</code> widget — the user-facing accessibility affordance — measured 32px, well under the 44px target appropriate for primary a11y controls.</td>
+                  <td><code>.wire-tag--sm</code> bumped to 24px (AA floor). <code>.wire-text-size__btn</code> bumped to 44px (AAA / Apple HIG) — the widget that exists to help vision-impaired users deserves the strictest target.</td>
+                </tr>
+                <tr>
+                  <td>1.4.10 Reflow</td>
+                  <td>Sticky <code>.wire-inpagenav</code> consumed ~40% of viewport height on a 568px phone. <code>.wire-gallery--mosaic</code> forced horizontal scroll at 320px due to a 6-column grid with multi-span tiles. <code>.wire-help-bar</code> wrapped awkwardly when three children competed for row space on narrow viewports.</td>
+                  <td>In-page nav becomes <code>position: static</code> below 48em. Mosaic gallery collapses to a single stacked column below 48em; the asymmetric grid only activates at tablet+. Help bar uses <code>flex-direction: column</code> mobile-first; switches to row at 48em.</td>
+                </tr>
+                <tr>
+                  <td>4.1.3 Status Messages</td>
+                  <td>The text-size widget updated <code>aria-pressed</code> on each button but never announced the new scale to assistive tech — a screen-reader user heard "pressed" with no value context.</td>
+                  <td>Added a polite live region (<code>role="status"</code> + <code>aria-live="polite"</code>) that announces "Text size: small / medium / large / extra-large" on each change.</td>
+                </tr>
+                <tr>
+                  <td>Print legibility</td>
+                  <td>Collapsed <code>&lt;details&gt;</code> elements lost their content on print — accordion bodies were stripped by the UA stylesheet before the print rules ran. Healthcare users routinely print pre-visit and measure-detail pages.</td>
+                  <td><code>print.css</code> now force-expands every <code>&lt;details&gt;</code> child with <code>display: block !important;</code> and hides the disclosure marker so the printed page reads as flat prose.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="wire-h5 u-mt-xl">Megamenu trigger — deliberate pattern</h3>
+          <p>The mega-menu uses an <code>&lt;a href&gt;</code> as the popup trigger, not a <code>&lt;button&gt;</code>. ARIA APG prefers a button for popup triggers; we accept the trade-off so the menu links remain useful when JavaScript is unavailable or hasn't loaded yet — the parent link navigates to a sensible landing page, and the JS upgrade adds <code>aria-haspopup="true"</code> + <code>aria-expanded</code> and toggle behavior on click. This is the same compromise the W3C describes in the WAI-ARIA "Menubar (Editor)" example for navigation menus.</p>
+
+          <h3 class="wire-h5 u-mt-xl">Out of scope for v1.2</h3>
           <ul>
             <li><strong>Live screen-reader pass with NVDA + VoiceOver.</strong> Authored to the patterns; not independently SR-tested yet. Recommended before client launch on any production work.</li>
             <li><strong>Automated tooling.</strong> No axe-core / Pa11y / Lighthouse CI integration yet. Plan: add Pa11y to the Riverside demo pages as a continuous check.</li>
-            <li><strong>WCAG 2.2 AAA.</strong> Out of scope by client decision; v1.1 targets AA.</li>
+            <li><strong>WCAG 2.2 AAA.</strong> Out of scope by client decision; v1.2 targets AA with selective AAA wins on the text-size widget.</li>
             <li><strong>Section 508 mapping.</strong> Out of scope by client decision; revisit if a federal/public-university engagement lands.</li>
           </ul>
         </section>
@@ -519,7 +567,7 @@
 <footer class="wire-footer wire-footer--compact">
   <div class="u-container wire-footer__inner">
     <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
-    <p class="wire-footer__tagline">v1.1 · Research-backed where it matters · Honest about the rest</p>
+    <p class="wire-footer__tagline">v1.2 · Research-backed where it matters · Honest about the rest</p>
   </div>
 </footer>
 

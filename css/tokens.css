@@ -51,6 +51,7 @@
      scoped rules. */
   --color-focus: var(--gray-95);
   --color-overlay: rgba(15, 15, 15, 0.6);
+  --color-overlay-light: rgba(15, 15, 15, 0.1);
 
   /* ---------- Spacing scale (4px base) ---------- */
   --space-3xs: 0.125rem;  /* 2 */

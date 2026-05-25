@@ -45,7 +45,7 @@
 
   /* ---------- Accordion (single-open option) ---------- */
   function initAccordion(root) {
-    if (root.dataset.pAccordion !== "single") return;
+    if (root.dataset.wireAccordion !== "single") return;
     const items = root.querySelectorAll("details");
     items.forEach((d) => {
       d.addEventListener("toggle", () => {
@@ -181,27 +181,41 @@
 
     const STORAGE_KEY = "wire-text-scale";
     const SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
+    const LABELS = { sm: "small", md: "medium", lg: "large", xl: "extra-large" };
+
+    // Polite live region so assistive tech announces scale changes.
+    const announcer = document.createElement("span");
+    announcer.className = "u-visually-hidden";
+    announcer.setAttribute("role", "status");
+    announcer.setAttribute("aria-live", "polite");
+    document.body.appendChild(announcer);
+
+    let initialized = false;
 
     function apply(value) {
       const scale = SCALES[value] || 1;
       document.documentElement.style.setProperty("--wire-text-scale", String(scale));
       widgets.forEach((w) => {
         w.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
-          btn.setAttribute("aria-pressed", btn.dataset.pTextSizeValue === value ? "true" : "false");
+          btn.setAttribute("aria-pressed", btn.dataset.wireTextSizeValue === value ? "true" : "false");
         });
       });
+      if (initialized) {
+        announcer.textContent = "Text size: " + (LABELS[value] || "default");
+      }
       try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
     }
 
     widgets.forEach((widget) => {
       widget.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
-        btn.addEventListener("click", () => apply(btn.dataset.pTextSizeValue));
+        btn.addEventListener("click", () => apply(btn.dataset.wireTextSizeValue));
       });
     });
 
     let saved = "md";
     try { saved = localStorage.getItem(STORAGE_KEY) || "md"; } catch (_) {}
     apply(saved);
+    initialized = true;
   }
 
   /* ---------- Boot ---------- */

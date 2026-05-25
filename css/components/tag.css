@@ -43,11 +43,12 @@
   --tag-border: var(--color-accent);
 }
 
-/* ---------- Small variant — for dense metadata rows (e.g. citation entries). ---------- */
+/* ---------- Small variant — for dense metadata rows (e.g. citation entries).
+   min-block-size meets the WCAG 2.5.8 AA floor of 24px. ---------- */
 .wire-tag--sm {
-  padding-block: var(--space-3xs);
+  padding-block: var(--space-2xs);
   padding-inline: var(--space-xs);
-  min-block-size: 1.25rem;
+  min-block-size: 1.5rem;
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
 }
@@ -65,7 +66,7 @@
   cursor: pointer;
 }
 .wire-tag__remove:hover {
-  background-color: rgba(15, 15, 15, 0.1);
+  background-color: var(--color-overlay-light);
 }
 
 .wire-tag-list {

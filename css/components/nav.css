@@ -236,9 +236,16 @@
 
 /* ---------- In-page nav (table of contents / anchors) ---------- */
 .wire-inpagenav {
-  position: sticky;
-  inset-block-start: var(--space-lg);
   font-size: var(--text-sm);
+}
+
+/* Sticky only on tablet+ — on phones a sticky 8-link TOC eats too much
+   viewport height. Below 48em the nav scrolls with the page. */
+@media (min-width: 48em) {
+  .wire-inpagenav {
+    position: sticky;
+    inset-block-start: var(--space-lg);
+  }
 }
 
 .wire-inpagenav__title {

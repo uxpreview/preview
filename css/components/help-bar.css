@@ -11,8 +11,11 @@
   --help-bar-bg: var(--color-bg-inverse);
   --help-bar-fg: var(--color-text-inverse);
 
+  /* Mobile-first: stack vertically so icon, text, and actions each get
+     full width on narrow phones. Switches to a row at tablet+. */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
   background-color: var(--help-bar-bg);
@@ -20,6 +23,13 @@
   border-radius: var(--radius-lg);
   /* Focus must remain visible on dark surface (WCAG 2.4.7). */
   --color-focus: var(--color-text-inverse);
+}
+
+@media (min-width: 48em) {
+  .wire-help-bar {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .wire-help-bar__icon {

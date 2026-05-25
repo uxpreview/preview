@@ -122,7 +122,7 @@
         <div class="wire-feature">
           <span class="wire-feature__icon">05</span>
           <h3 class="wire-feature__title">BEM-ish &amp; prefixed</h3>
-          <p class="wire-feature__desc">Every class starts with <code>p-</code> for components, <code>u-</code> for utilities. No collisions when embedded.</p>
+          <p class="wire-feature__desc">Every class starts with <code>wire-</code> for components, <code>u-</code> for utilities. No collisions when embedded.</p>
         </div>
         <div class="wire-feature">
           <span class="wire-feature__icon">06</span>
@@ -241,7 +241,7 @@
     <div class="doc-example">
       <span class="doc-example__label">Display + lead + body</span>
       <p class="wire-eyebrow">Eyebrow label</p>
-      <h1 class="wire-display">A confident headline. <em>With an editorial moment.</em></h1>
+      <h2 class="wire-display">A confident headline. <em>With an editorial moment.</em></h2>
       <p class="wire-lead u-mt-md">A lead paragraph carries the next layer of information — short, important, slightly muted so it doesn't compete with the headline.</p>
       <p class="u-mt-md u-max-prose">Body text sits in the workhorse role. It's set in a generous size for screen reading, with relaxed line height. Sentences and paragraphs should stay readable up to about 70 characters wide — the system enforces this with a default <code>max-inline-size</code> on <code>p</code>.</p>
     </div>
@@ -433,7 +433,7 @@
       <span class="doc-example__label">Content cards</span>
       <div class="u-grid u-grid--3">
         <article class="wire-card">
-          <div class="wire-card__media"><div class="wire-media" data-ratio="16:9"></div></div>
+          <div class="wire-card__media"><div class="wire-media" aria-hidden="true" data-ratio="16:9"></div></div>
           <div class="wire-card__body">
             <span class="wire-card__eyebrow">Research</span>
             <h3 class="wire-card__title"><a href="#">A new approach to spinal cord injury recovery</a></h3>
@@ -445,7 +445,7 @@
           </div>
         </article>
         <article class="wire-card">
-          <div class="wire-card__media"><div class="wire-media" data-ratio="16:9"></div></div>
+          <div class="wire-card__media"><div class="wire-media" aria-hidden="true" data-ratio="16:9"></div></div>
           <div class="wire-card__body">
             <span class="wire-card__eyebrow">News</span>
             <h3 class="wire-card__title"><a href="#">Riverside named #1 rehabilitation hospital for 36th year</a></h3>
@@ -456,7 +456,7 @@
           </div>
         </article>
         <article class="wire-card">
-          <div class="wire-card__media"><div class="wire-media" data-ratio="16:9"></div></div>
+          <div class="wire-card__media"><div class="wire-media" aria-hidden="true" data-ratio="16:9"></div></div>
           <div class="wire-card__body">
             <span class="wire-card__eyebrow">Story</span>
             <h3 class="wire-card__title"><a href="#">After the marathon, Maya learned to run again</a></h3>
@@ -474,7 +474,7 @@
       <span class="doc-example__label">Person cards</span>
       <div class="u-grid u-grid--4">
         <article class="wire-card wire-card--person">
-          <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+          <div class="wire-card__media"><div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div></div>
           <div class="wire-card__body">
             <h3 class="wire-card__title"><a href="#">Dr. Ana Mitchell</a></h3>
             <span class="wire-card__role">Director, Spinal Cord Injury Program</span>
@@ -482,7 +482,7 @@
           </div>
         </article>
         <article class="wire-card wire-card--person">
-          <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+          <div class="wire-card__media"><div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div></div>
           <div class="wire-card__body">
             <h3 class="wire-card__title"><a href="#">Dr. James Okafor</a></h3>
             <span class="wire-card__role">Attending Physician, Stroke Recovery</span>
@@ -490,7 +490,7 @@
           </div>
         </article>
         <article class="wire-card wire-card--person">
-          <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+          <div class="wire-card__media"><div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div></div>
           <div class="wire-card__body">
             <h3 class="wire-card__title"><a href="#">Lila Park, PT, DPT</a></h3>
             <span class="wire-card__role">Senior Physical Therapist</span>
@@ -498,7 +498,7 @@
           </div>
         </article>
         <article class="wire-card wire-card--person">
-          <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+          <div class="wire-card__media"><div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div></div>
           <div class="wire-card__body">
             <h3 class="wire-card__title"><a href="#">Marcus Bell</a></h3>
             <span class="wire-card__role">Clinical Research Lead</span>
@@ -591,7 +591,7 @@
       <div class="wire-hero wire-hero--editorial" style="padding-block: var(--space-xl)">
         <div class="wire-hero__inner">
           <span class="wire-hero__eyebrow">Patient story</span>
-          <h1 class="wire-hero__title">After her stroke, Maya walked again. Now she's <em>running marathons.</em></h1>
+          <h2 class="wire-hero__title">After her stroke, Maya walked again. Now she's <em>running marathons.</em></h2>
           <p class="wire-hero__lead">Twelve months of intensive therapy at the Riverside — and a team that wouldn't quit.</p>
           <div class="wire-hero__actions">
             <a class="wire-button" href="#">Read Maya's story</a>
@@ -607,7 +607,7 @@
         <div class="wire-hero__inner">
           <div>
             <span class="wire-hero__eyebrow">Spinal cord injury</span>
-            <h1 class="wire-hero__title">Built around what you can do.</h1>
+            <h2 class="wire-hero__title">Built around what you can do.</h2>
             <p class="wire-hero__lead">Specialized care, applied research, and a recovery plan tailored to your goals.</p>
             <div class="wire-hero__actions">
               <a class="wire-button" href="#">Make an appointment</a>
@@ -615,7 +615,7 @@
             </div>
           </div>
           <div class="wire-hero__media">
-            <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+            <div class="wire-media wire-media--4-3" aria-hidden="true" data-ratio="4:3"></div>
           </div>
         </div>
       </div>
@@ -626,7 +626,7 @@
       <div class="wire-hero wire-hero--centered" style="padding-block: var(--space-xl)">
         <div class="wire-hero__inner">
           <span class="wire-hero__eyebrow">Research</span>
-          <h1 class="wire-hero__title">Where rehabilitation science <em>becomes therapy.</em></h1>
+          <h2 class="wire-hero__title">Where rehabilitation science <em>becomes therapy.</em></h2>
           <p class="wire-hero__lead">Our labs sit one floor away from the patients whose lives our findings will change.</p>
           <div class="wire-hero__actions">
             <a class="wire-button" href="#">Explore our labs</a>
@@ -640,7 +640,7 @@
       <div class="wire-hero wire-hero--stat wire-hero--inverse" style="padding-block: var(--space-xl); padding-inline: var(--space-xl); border-radius: var(--radius-xl)">
         <div class="wire-hero__inner">
           <span class="wire-hero__eyebrow">Innovation Center</span>
-          <h1 class="wire-hero__title">A hospital built like a research lab.</h1>
+          <h2 class="wire-hero__title">A hospital built like a research lab.</h2>
           <p class="wire-hero__lead">Bench science and bedside care, one floor apart.</p>
           <div class="wire-hero__stats">
             <div>
@@ -702,7 +702,7 @@
             <a class="wire-button wire-button--secondary" href="#">Read the research</a>
           </div>
         </div>
-        <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+        <div class="wire-media wire-media--4-3" aria-hidden="true" data-ratio="4:3"></div>
       </div>
     </div>
 
@@ -820,24 +820,24 @@
     <div class="doc-example">
       <span class="doc-example__label">Ratios</span>
       <div class="u-grid u-grid--4">
-        <div class="wire-media wire-media--16-9" data-ratio="16:9"></div>
-        <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
-        <div class="wire-media wire-media--square" data-ratio="1:1"></div>
-        <div class="wire-media wire-media--portrait" data-ratio="3:4"></div>
+        <div class="wire-media wire-media--16-9" aria-hidden="true" data-ratio="16:9"></div>
+        <div class="wire-media wire-media--4-3" aria-hidden="true" data-ratio="4:3"></div>
+        <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+        <div class="wire-media wire-media--portrait" aria-hidden="true" data-ratio="3:4"></div>
       </div>
     </div>
     <div class="doc-example">
       <span class="doc-example__label">Video placeholder</span>
-      <div class="wire-media wire-media--video wire-media--16-9" data-ratio="16:9"></div>
+      <div class="wire-media wire-media--video wire-media--16-9" aria-hidden="true" data-ratio="16:9"></div>
     </div>
     <div class="doc-example">
       <span class="doc-example__label">Gallery — mosaic</span>
       <div class="wire-gallery wire-gallery--mosaic">
-        <div class="wire-media" data-ratio="A"></div>
-        <div class="wire-media" data-ratio="B"></div>
-        <div class="wire-media" data-ratio="C"></div>
-        <div class="wire-media" data-ratio="D"></div>
-        <div class="wire-media" data-ratio="E"></div>
+        <div class="wire-media" aria-hidden="true" data-ratio="A"></div>
+        <div class="wire-media" aria-hidden="true" data-ratio="B"></div>
+        <div class="wire-media" aria-hidden="true" data-ratio="C"></div>
+        <div class="wire-media" aria-hidden="true" data-ratio="D"></div>
+        <div class="wire-media" aria-hidden="true" data-ratio="E"></div>
       </div>
     </div>
   </div>
