@@ -1,6 +1,6 @@
 /* ============================================================
-   Primacy Wireframe System — behavior.
-   One script. Auto-initializes anything with a data-p-* attribute.
+   Wireframe Design System — behavior.
+   One script. Auto-initializes anything with a data-wire-* attribute.
    No dependencies. Drop in <body> with `defer`.
    ============================================================ */
 
@@ -58,8 +58,8 @@
 
   /* ---------- Mega menu (click-toggle) ---------- */
   function initMegamenu(root) {
-    const trigger = root.querySelector("[data-p-megamenu-trigger]");
-    const panel = root.querySelector(".p-megamenu__panel");
+    const trigger = root.querySelector("[data-wire-megamenu-trigger]");
+    const panel = root.querySelector(".wire-megamenu__panel");
     if (!trigger || !panel) return;
 
     trigger.setAttribute("aria-haspopup", "true");
@@ -91,12 +91,12 @@
   const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
   function initDrawer() {
-    const toggles = document.querySelectorAll("[data-p-drawer-open]");
+    const toggles = document.querySelectorAll("[data-wire-drawer-open]");
     toggles.forEach((toggle) => {
-      const targetId = toggle.getAttribute("data-p-drawer-open");
+      const targetId = toggle.getAttribute("data-wire-drawer-open");
       const drawer = document.getElementById(targetId);
       if (!drawer) return;
-      const backdrop = drawer.nextElementSibling && drawer.nextElementSibling.classList.contains("p-drawer-backdrop")
+      const backdrop = drawer.nextElementSibling && drawer.nextElementSibling.classList.contains("wire-drawer-backdrop")
         ? drawer.nextElementSibling
         : null;
 
@@ -139,7 +139,7 @@
       toggle.setAttribute("aria-expanded", "false");
       toggle.addEventListener("click", open);
 
-      const closeBtns = drawer.querySelectorAll("[data-p-drawer-close]");
+      const closeBtns = drawer.querySelectorAll("[data-wire-drawer-close]");
       closeBtns.forEach((btn) => btn.addEventListener("click", close));
       if (backdrop) backdrop.addEventListener("click", close);
 
@@ -152,7 +152,7 @@
 
   /* ---------- In-page nav: highlight current section on scroll ---------- */
   function initInPageNav() {
-    const navs = document.querySelectorAll("[data-p-inpagenav]");
+    const navs = document.querySelectorAll("[data-wire-inpagenav]");
     navs.forEach((nav) => {
       const links = Array.from(nav.querySelectorAll("a[href^='#']"));
       if (!links.length) return;
@@ -176,17 +176,17 @@
 
   /* ---------- Text-size control (NIA senior-friendly recommendation) ---------- */
   function initTextSize() {
-    const widgets = document.querySelectorAll("[data-p-text-size]");
+    const widgets = document.querySelectorAll("[data-wire-text-size]");
     if (!widgets.length) return;
 
-    const STORAGE_KEY = "p-text-scale";
+    const STORAGE_KEY = "wire-text-scale";
     const SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
 
     function apply(value) {
       const scale = SCALES[value] || 1;
-      document.documentElement.style.setProperty("--p-text-scale", String(scale));
+      document.documentElement.style.setProperty("--wire-text-scale", String(scale));
       widgets.forEach((w) => {
-        w.querySelectorAll("[data-p-text-size-value]").forEach((btn) => {
+        w.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
           btn.setAttribute("aria-pressed", btn.dataset.pTextSizeValue === value ? "true" : "false");
         });
       });
@@ -194,7 +194,7 @@
     }
 
     widgets.forEach((widget) => {
-      widget.querySelectorAll("[data-p-text-size-value]").forEach((btn) => {
+      widget.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
         btn.addEventListener("click", () => apply(btn.dataset.pTextSizeValue));
       });
     });
@@ -206,9 +206,9 @@
 
   /* ---------- Boot ---------- */
   function boot() {
-    document.querySelectorAll("[data-p-tabs]").forEach(initTabs);
-    document.querySelectorAll("[data-p-accordion]").forEach(initAccordion);
-    document.querySelectorAll("[data-p-megamenu]").forEach(initMegamenu);
+    document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
+    document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
+    document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);
     initDrawer();
     initInPageNav();
     initTextSize();

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lists — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Lists — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Lists</h1>
-        <p class="p-hero__lead">Three list patterns for three jobs: a large clickable row, a label-and-value pairing, and a news-style article list with meta column.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Lists</h1>
+        <p class="wire-hero__lead">Three list patterns for three jobs: a large clickable row, a label-and-value pairing, and a news-style article list with meta column.</p>
       </div>
     </div>
   </section>
@@ -51,122 +51,122 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Anatomy</h2>
+          <h2 class="wire-h3">Anatomy</h2>
           <p class="u-text-muted u-mt-sm">A linked list is an <code>&lt;ul&gt;</code> of rows where the whole row is a link. A definition list pairs terms with descriptions. An article list arranges editorial entries with a meta column and a content column.</p>
           <div class="doc-example">
             <span class="doc-example__label">Linked list — default</span>
-            <ul class="p-linked-list" role="list">
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Spinal cord injury</span><span class="p-linked-list__meta">14 conditions</span></a>
+            <ul class="wire-linked-list" role="list">
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Spinal cord injury</span><span class="wire-linked-list__meta">14 conditions</span></a>
               </li>
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Stroke</span><span class="p-linked-list__meta">22 conditions</span></a>
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Stroke</span><span class="wire-linked-list__meta">22 conditions</span></a>
               </li>
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Brain injury</span><span class="p-linked-list__meta">18 conditions</span></a>
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Brain injury</span><span class="wire-linked-list__meta">18 conditions</span></a>
               </li>
             </ul>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to use</h2>
+          <h2 class="wire-h3">When to use</h2>
           <ul>
             <li>Use a <strong>linked list</strong> for category indexes — long lists where every entry is a destination.</li>
             <li>Use a <strong>definition list</strong> for labelled facts (insurance accepted, visit types, credentials).</li>
             <li>Use an <strong>article list</strong> for news, research, or story indexes where each item has a date and category.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
           <ul>
             <li>Do not use a linked list when items need images or rich previews — reach for cards.</li>
-            <li>Do not use a definition list as a workaround for two-column layout; use <code>.u-grid</code> or <code>.p-twocol</code>.</li>
+            <li>Do not use a definition list as a workaround for two-column layout; use <code>.u-grid</code> or <code>.wire-twocol</code>.</li>
             <li>Do not nest article lists; one flat sequence per page section.</li>
           </ul>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Variants</h2>
+          <h2 class="wire-h3">Variants</h2>
 
           <div class="doc-example">
             <span class="doc-example__label">Linked list (with meta)</span>
-            <ul class="p-linked-list" role="list">
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Amputation &amp; limb loss</span><span class="p-linked-list__meta">9 conditions</span></a>
+            <ul class="wire-linked-list" role="list">
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Amputation &amp; limb loss</span><span class="wire-linked-list__meta">9 conditions</span></a>
               </li>
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Pediatric rehabilitation</span><span class="p-linked-list__meta">27 conditions</span></a>
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Pediatric rehabilitation</span><span class="wire-linked-list__meta">27 conditions</span></a>
               </li>
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Cancer rehabilitation</span><span class="p-linked-list__meta">11 conditions</span></a>
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Cancer rehabilitation</span><span class="wire-linked-list__meta">11 conditions</span></a>
               </li>
-              <li class="p-linked-list__item">
-                <a class="p-linked-list__link" href="#"><span>Pain management</span><span class="p-linked-list__meta">7 conditions</span></a>
+              <li class="wire-linked-list__item">
+                <a class="wire-linked-list__link" href="#"><span>Pain management</span><span class="wire-linked-list__meta">7 conditions</span></a>
               </li>
             </ul>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Definition list (single column)</span>
-            <dl class="p-deflist">
-              <dt class="p-deflist__term">Inpatient</dt>
-              <dd class="p-deflist__desc">Round-the-clock care delivered while the patient lives on the unit. Average stay: 14–21 days.</dd>
-              <dt class="p-deflist__term">Day rehab</dt>
-              <dd class="p-deflist__desc">Half-day intensive therapy, 3–5 days a week, for patients who can live at home.</dd>
-              <dt class="p-deflist__term">Outpatient</dt>
-              <dd class="p-deflist__desc">Targeted physical, occupational, or speech therapy scheduled flexibly.</dd>
+            <dl class="wire-deflist">
+              <dt class="wire-deflist__term">Inpatient</dt>
+              <dd class="wire-deflist__desc">Round-the-clock care delivered while the patient lives on the unit. Average stay: 14–21 days.</dd>
+              <dt class="wire-deflist__term">Day rehab</dt>
+              <dd class="wire-deflist__desc">Half-day intensive therapy, 3–5 days a week, for patients who can live at home.</dd>
+              <dt class="wire-deflist__term">Outpatient</dt>
+              <dd class="wire-deflist__desc">Targeted physical, occupational, or speech therapy scheduled flexibly.</dd>
             </dl>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Definition list (two column)</span>
-            <dl class="p-deflist p-deflist--two-col">
-              <dt class="p-deflist__term">Patient programs</dt>
-              <dd class="p-deflist__desc">Inpatient, day rehab, outpatient, and telehealth across four locations.</dd>
-              <dt class="p-deflist__term">Research focus</dt>
-              <dd class="p-deflist__desc">Translational rehabilitation science — bench to bedside in months, not years.</dd>
-              <dt class="p-deflist__term">Education</dt>
-              <dd class="p-deflist__desc">Fellowships, residencies, and an APTA-accredited DPT residency program.</dd>
-              <dt class="p-deflist__term">Insurance</dt>
-              <dd class="p-deflist__desc">Most major plans accepted; financial counselors available pre-visit.</dd>
+            <dl class="wire-deflist wire-deflist--two-col">
+              <dt class="wire-deflist__term">Patient programs</dt>
+              <dd class="wire-deflist__desc">Inpatient, day rehab, outpatient, and telehealth across four locations.</dd>
+              <dt class="wire-deflist__term">Research focus</dt>
+              <dd class="wire-deflist__desc">Translational rehabilitation science — bench to bedside in months, not years.</dd>
+              <dt class="wire-deflist__term">Education</dt>
+              <dd class="wire-deflist__desc">Fellowships, residencies, and an APTA-accredited DPT residency program.</dd>
+              <dt class="wire-deflist__term">Insurance</dt>
+              <dd class="wire-deflist__desc">Most major plans accepted; financial counselors available pre-visit.</dd>
             </dl>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Article list</span>
-            <ul class="p-article-list" role="list">
-              <li class="p-article-list__item">
-                <article class="p-article-list__article">
-                  <div class="p-article-list__meta">
-                    <span class="p-article-list__category">Research</span>
-                    <time class="p-article-list__date">Apr 18, 2026</time>
+            <ul class="wire-article-list" role="list">
+              <li class="wire-article-list__item">
+                <article class="wire-article-list__article">
+                  <div class="wire-article-list__meta">
+                    <span class="wire-article-list__category">Research</span>
+                    <time class="wire-article-list__date">Apr 18, 2026</time>
                   </div>
                   <div>
-                    <h3 class="p-article-list__title"><a href="#">Robotic exoskeletons improve gait speed in chronic stroke</a></h3>
-                    <p class="p-article-list__excerpt">A new randomized trial led by Dr. Okafor's team shows sustained gains six months post-intervention.</p>
+                    <h3 class="wire-article-list__title"><a href="#">Robotic exoskeletons improve gait speed in chronic stroke</a></h3>
+                    <p class="wire-article-list__excerpt">A new randomized trial led by Dr. Okafor's team shows sustained gains six months post-intervention.</p>
                   </div>
                 </article>
               </li>
-              <li class="p-article-list__item">
-                <article class="p-article-list__article">
-                  <div class="p-article-list__meta">
-                    <span class="p-article-list__category">Story</span>
-                    <time class="p-article-list__date">Apr 04, 2026</time>
+              <li class="wire-article-list__item">
+                <article class="wire-article-list__article">
+                  <div class="wire-article-list__meta">
+                    <span class="wire-article-list__category">Story</span>
+                    <time class="wire-article-list__date">Apr 04, 2026</time>
                   </div>
                   <div>
-                    <h3 class="p-article-list__title"><a href="#">A father, a son, and the first steps after a spinal cord injury</a></h3>
-                    <p class="p-article-list__excerpt">Daniel's family rallied behind him for six months of inpatient rehab. Here's what carried them through.</p>
+                    <h3 class="wire-article-list__title"><a href="#">A father, a son, and the first steps after a spinal cord injury</a></h3>
+                    <p class="wire-article-list__excerpt">Daniel's family rallied behind him for six months of inpatient rehab. Here's what carried them through.</p>
                   </div>
                 </article>
               </li>
-              <li class="p-article-list__item">
-                <article class="p-article-list__article">
-                  <div class="p-article-list__meta">
-                    <span class="p-article-list__category">News</span>
-                    <time class="p-article-list__date">Mar 22, 2026</time>
+              <li class="wire-article-list__item">
+                <article class="wire-article-list__article">
+                  <div class="wire-article-list__meta">
+                    <span class="wire-article-list__category">News</span>
+                    <time class="wire-article-list__date">Mar 22, 2026</time>
                   </div>
                   <div>
-                    <h3 class="p-article-list__title"><a href="#">SRALab receives $24M NIH award for pediatric mobility research</a></h3>
-                    <p class="p-article-list__excerpt">The five-year award will fund three concurrent studies focused on cerebral palsy and acquired brain injury.</p>
+                    <h3 class="wire-article-list__title"><a href="#">Riverside receives $24M NIH award for pediatric mobility research</a></h3>
+                    <p class="wire-article-list__excerpt">The five-year award will fund three concurrent studies focused on cerebral palsy and acquired brain injury.</p>
                   </div>
                 </article>
               </li>
@@ -175,7 +175,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
             <li>Use <code>&lt;ul role="list"&gt;</code> so Safari preserves list semantics when <code>list-style</code> is removed in CSS.</li>
             <li>Each linked list row is a single anchor with the full text — do not nest additional interactive elements inside the row.</li>
@@ -185,14 +185,14 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;ul class="p-linked-list" role="list"&gt;
-  &lt;li class="p-linked-list__item"&gt;
-    &lt;a class="p-linked-list__link" href="/conditions/sci"&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;ul class="wire-linked-list" role="list"&gt;
+  &lt;li class="wire-linked-list__item"&gt;
+    &lt;a class="wire-linked-list__link" href="/conditions/sci"&gt;
       &lt;span&gt;Spinal cord injury&lt;/span&gt;
-      &lt;span class="p-linked-list__meta"&gt;14 conditions&lt;/span&gt;
+      &lt;span class="wire-linked-list__meta"&gt;14 conditions&lt;/span&gt;
     &lt;/a&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
@@ -204,13 +204,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

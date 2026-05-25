@@ -2,14 +2,14 @@
    Pagination — page navigation control.
    ============================================================ */
 
-.p-pagination {
+.wire-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
 }
 
-.p-pagination__list {
+.wire-pagination__list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2xs);
@@ -18,12 +18,12 @@
   list-style: none;
 }
 
-.p-pagination__item {
+.wire-pagination__item {
   margin: 0;
 }
 
-.p-pagination__link,
-.p-pagination__current {
+.wire-pagination__link,
+.wire-pagination__current {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,19 +43,19 @@
   transition: background-color var(--duration-fast) var(--ease-out);
 }
 
-.p-pagination__link:hover {
+.wire-pagination__link:hover {
   background-color: var(--color-bg-muted);
   text-decoration: none;
 }
 
-.p-pagination__current {
+.wire-pagination__current {
   background-color: var(--color-accent);
   color: var(--color-text-inverse);
   border-color: var(--color-accent);
   cursor: default;
 }
 
-.p-pagination__ellipsis {
+.wire-pagination__ellipsis {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +63,7 @@
   color: var(--color-text-subtle);
 }
 
-.p-pagination__nav {
+.wire-pagination__nav {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   text-decoration: none;
@@ -73,11 +73,11 @@
   padding: var(--space-xs) var(--space-md);
   border-radius: var(--radius-pill);
 }
-.p-pagination__nav:hover {
+.wire-pagination__nav:hover {
   background-color: var(--color-bg-muted);
   color: var(--color-text);
 }
-.p-pagination__nav[aria-disabled="true"] {
+.wire-pagination__nav[aria-disabled="true"] {
   opacity: 0.4;
   pointer-events: none;
 }

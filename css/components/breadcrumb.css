@@ -2,12 +2,12 @@
    Breadcrumb — navigation trail with separator.
    ============================================================ */
 
-.p-breadcrumb {
+.wire-breadcrumb {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
 
-.p-breadcrumb__list {
+.wire-breadcrumb__list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -17,21 +17,21 @@
   list-style: none;
 }
 
-.p-breadcrumb__item {
+.wire-breadcrumb__item {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
   margin: 0;
 }
 
-.p-breadcrumb__item + .p-breadcrumb__item::before {
+.wire-breadcrumb__item + .wire-breadcrumb__item::before {
   content: "/";
   margin-inline-end: var(--space-2xs);
   color: var(--color-text-subtle);
   font-weight: var(--weight-regular);
 }
 
-.p-breadcrumb__link {
+.wire-breadcrumb__link {
   display: inline-flex;
   align-items: center;
   min-block-size: 1.75rem; /* WCAG 2.5.8 — 28px tap target */
@@ -41,12 +41,12 @@
   padding: var(--space-2xs) var(--space-xs);
   margin-inline: calc(-1 * var(--space-xs));
 }
-.p-breadcrumb__link:hover {
+.wire-breadcrumb__link:hover {
   color: var(--color-text);
   text-decoration: underline;
 }
 
-.p-breadcrumb__current {
+.wire-breadcrumb__current {
   color: var(--color-text);
   font-weight: var(--weight-medium);
 }

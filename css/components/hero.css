@@ -2,23 +2,23 @@
    Hero — 4 variants: editorial, split, centered, stat-led.
    ============================================================ */
 
-.p-hero {
+.wire-hero {
   padding-block: var(--space-3xl);
 }
 
 @media (min-width: 48em) {
-  .p-hero {
+  .wire-hero {
     padding-block: var(--space-4xl);
   }
 }
 
-.p-hero__inner {
+.wire-hero__inner {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-.p-hero__eyebrow {
+.wire-hero__eyebrow {
   display: inline-block;
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
@@ -27,7 +27,7 @@
   color: var(--color-text-muted);
 }
 
-.p-hero__title {
+.wire-hero__title {
   font-size: var(--text-4xl);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
@@ -37,14 +37,14 @@
 }
 
 @media (min-width: 48em) {
-  .p-hero__title { font-size: var(--text-5xl); }
+  .wire-hero__title { font-size: var(--text-5xl); }
 }
 
 @media (min-width: 64em) {
-  .p-hero__title { font-size: var(--text-6xl); }
+  .wire-hero__title { font-size: var(--text-6xl); }
 }
 
-.p-hero__lead {
+.wire-hero__lead {
   font-size: var(--text-lg);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
@@ -52,10 +52,10 @@
 }
 
 @media (min-width: 48em) {
-  .p-hero__lead { font-size: var(--text-xl); }
+  .wire-hero__lead { font-size: var(--text-xl); }
 }
 
-.p-hero__actions {
+.wire-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
@@ -63,49 +63,49 @@
 }
 
 /* ---------- Editorial variant (default — big type, left-aligned) ---------- */
-.p-hero--editorial .p-hero__title em,
-.p-hero--editorial .p-hero__title i {
+.wire-hero--editorial .wire-hero__title em,
+.wire-hero--editorial .wire-hero__title i {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: var(--weight-regular);
 }
 
 /* ---------- Split variant ---------- */
-.p-hero--split .p-hero__inner {
+.wire-hero--split .wire-hero__inner {
   display: grid;
   gap: var(--space-2xl);
   align-items: center;
 }
 
 @media (min-width: 64em) {
-  .p-hero--split .p-hero__inner {
+  .wire-hero--split .wire-hero__inner {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-4xl);
   }
 }
 
-.p-hero__media {
+.wire-hero__media {
   display: block;
 }
 
 /* ---------- Centered variant ---------- */
-.p-hero--centered .p-hero__inner {
+.wire-hero--centered .wire-hero__inner {
   align-items: center;
   text-align: center;
   max-inline-size: var(--container-md);
   margin-inline: auto;
 }
 
-.p-hero--centered .p-hero__lead {
+.wire-hero--centered .wire-hero__lead {
   margin-inline: auto;
 }
 
-.p-hero--centered .p-hero__actions {
+.wire-hero--centered .wire-hero__actions {
   justify-content: center;
 }
 
 /* ---------- Stat-led variant ---------- */
-.p-hero--stat .p-hero__stats {
+.wire-hero--stat .wire-hero__stats {
   display: grid;
   gap: var(--space-xl);
   margin-block-start: var(--space-2xl);
@@ -114,12 +114,12 @@
 }
 
 @media (min-width: 48em) {
-  .p-hero--stat .p-hero__stats {
+  .wire-hero--stat .wire-hero__stats {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.p-hero__stat-value {
+.wire-hero__stat-value {
   font-size: var(--text-4xl);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
@@ -128,38 +128,38 @@
 }
 
 @media (min-width: 48em) {
-  .p-hero__stat-value { font-size: var(--text-5xl); }
+  .wire-hero__stat-value { font-size: var(--text-5xl); }
 }
 
-.p-hero__stat-label {
+.wire-hero__stat-label {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   margin-block-start: var(--space-2xs);
 }
 
 /* ---------- Inverse hero (dark background) ---------- */
-.p-hero--inverse {
+.wire-hero--inverse {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   /* WCAG 2.4.7 — keep focus visible on dark surfaces. */
   --color-focus: var(--color-text-inverse);
 }
 
-.p-hero--inverse .p-hero__eyebrow,
-.p-hero--inverse .p-hero__lead,
-.p-hero--inverse .p-hero__stat-label {
+.wire-hero--inverse .wire-hero__eyebrow,
+.wire-hero--inverse .wire-hero__lead,
+.wire-hero--inverse .wire-hero__stat-label {
   color: var(--gray-30);
 }
 
-.p-hero--inverse .p-hero__stats {
+.wire-hero--inverse .wire-hero__stats {
   border-block-start-color: var(--color-border-inverse);
 }
 
-.p-hero--inverse .p-button--secondary {
+.wire-hero--inverse .wire-button--secondary {
   --btn-fg: var(--color-text-inverse);
   --btn-border: var(--gray-40);
 }
-.p-hero--inverse .p-button--secondary:hover {
+.wire-hero--inverse .wire-button--secondary:hover {
   --btn-bg: var(--gray-80);
   --btn-border: var(--color-text-inverse);
 }

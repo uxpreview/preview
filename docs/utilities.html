@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Utilities — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Utilities — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -17,32 +17,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Foundation</span>
-        <h1 class="p-hero__title">Utilities, primitives &amp; layout</h1>
-        <p class="p-hero__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Foundation</span>
+        <h1 class="wire-hero__title">Utilities, primitives &amp; layout</h1>
+        <p class="wire-hero__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
       </div>
     </div>
   </section>
@@ -52,95 +52,95 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section" id="visual-primitives">
-          <h2 class="p-h3">Visual primitives</h2>
+          <h2 class="wire-h3">Visual primitives</h2>
           <p class="u-text-muted u-mt-sm">Small, semantic UI atoms. They sit one level above tokens — close to components, but with no internal structure of their own.</p>
 
-          <h3 class="p-h5 u-mt-xl">Badge</h3>
-          <p class="u-text-muted u-mt-sm">An inline status label. Four variants: default, subtle, outline, inverse. An optional <code>.p-badge__dot</code> precedes the label for "live" indicators.</p>
+          <h3 class="wire-h5 u-mt-xl">Badge</h3>
+          <p class="u-text-muted u-mt-sm">An inline status label. Four variants: default, subtle, outline, inverse. An optional <code>.wire-badge__dot</code> precedes the label for "live" indicators.</p>
           <div class="doc-example">
             <span class="doc-example__label">Variants</span>
             <div class="u-cluster">
-              <span class="p-badge">Default</span>
-              <span class="p-badge p-badge--subtle">Subtle</span>
-              <span class="p-badge p-badge--outline">Outline</span>
-              <span class="p-badge p-badge--inverse">Inverse</span>
-              <span class="p-badge"><span class="p-badge__dot" aria-hidden="true"></span>Live</span>
+              <span class="wire-badge">Default</span>
+              <span class="wire-badge wire-badge--subtle">Subtle</span>
+              <span class="wire-badge wire-badge--outline">Outline</span>
+              <span class="wire-badge wire-badge--inverse">Inverse</span>
+              <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Live</span>
             </div>
           </div>
 
-          <h3 class="p-h5 u-mt-xl">Tag</h3>
-          <p class="u-text-muted u-mt-sm">A filterable or removable chip. Use inside a <code>.p-tag-list</code> for grouped filter sets. Add <code>.is-selected</code> (or <code>.p-tag--selected</code>) for the active state and a <code>.p-tag__remove</code> child for removability.</p>
+          <h3 class="wire-h5 u-mt-xl">Tag</h3>
+          <p class="u-text-muted u-mt-sm">A filterable or removable chip. Use inside a <code>.wire-tag-list</code> for grouped filter sets. Add <code>.is-selected</code> (or <code>.wire-tag--selected</code>) for the active state and a <code>.wire-tag__remove</code> child for removability.</p>
           <div class="doc-example">
             <span class="doc-example__label">Filter set</span>
-            <ul class="p-tag-list" role="list">
-              <li><button class="p-tag p-tag--selected">All conditions</button></li>
-              <li><button class="p-tag">Spinal cord injury</button></li>
-              <li><button class="p-tag">Stroke</button></li>
-              <li><button class="p-tag">Brain injury</button></li>
+            <ul class="wire-tag-list" role="list">
+              <li><button class="wire-tag wire-tag--selected">All conditions</button></li>
+              <li><button class="wire-tag">Spinal cord injury</button></li>
+              <li><button class="wire-tag">Stroke</button></li>
+              <li><button class="wire-tag">Brain injury</button></li>
             </ul>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Removable (active filters)</span>
-            <ul class="p-tag-list" role="list">
-              <li><button class="p-tag">Streeterville <span class="p-tag__remove" aria-label="Remove">×</span></button></li>
-              <li><button class="p-tag">Accepting new patients <span class="p-tag__remove" aria-label="Remove">×</span></button></li>
+            <ul class="wire-tag-list" role="list">
+              <li><button class="wire-tag">Streeterville <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+              <li><button class="wire-tag">Accepting new patients <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
             </ul>
           </div>
 
-          <h3 class="p-h5 u-mt-xl">Divider</h3>
+          <h3 class="wire-h5 u-mt-xl">Divider</h3>
           <p class="u-text-muted u-mt-sm">Horizontal rules with weight and style modifiers. Use a labeled divider when separating two unlike sections.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <hr class="p-divider">
+            <hr class="wire-divider">
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Strong</span>
-            <hr class="p-divider p-divider--strong">
+            <hr class="wire-divider wire-divider--strong">
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Thick</span>
-            <hr class="p-divider p-divider--thick">
+            <hr class="wire-divider wire-divider--thick">
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Dashed</span>
-            <hr class="p-divider p-divider--dashed">
+            <hr class="wire-divider wire-divider--dashed">
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Labeled</span>
-            <div class="p-divider-labeled">or continue with</div>
+            <div class="wire-divider-labeled">or continue with</div>
           </div>
 
-          <h3 class="p-h5 u-mt-xl">Breadcrumb</h3>
+          <h3 class="wire-h5 u-mt-xl">Breadcrumb</h3>
           <p class="u-text-muted u-mt-sm">A horizontal trail of links ending with the current page. Always wrap in a <code>&lt;nav aria-label="Breadcrumb"&gt;</code> with the list as <code>&lt;ol&gt;</code>; mark the current item with <code>aria-current="page"</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <nav class="p-breadcrumb" aria-label="Breadcrumb">
-              <ol class="p-breadcrumb__list" role="list">
-                <li class="p-breadcrumb__item"><a class="p-breadcrumb__link" href="#">Home</a></li>
-                <li class="p-breadcrumb__item"><a class="p-breadcrumb__link" href="#">Conditions we treat</a></li>
-                <li class="p-breadcrumb__item"><span class="p-breadcrumb__current" aria-current="page">Spinal cord injury</span></li>
+            <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+              <ol class="wire-breadcrumb__list" role="list">
+                <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Home</a></li>
+                <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Conditions we treat</a></li>
+                <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Spinal cord injury</span></li>
               </ol>
             </nav>
           </div>
 
-          <h3 class="p-h5 u-mt-xl">Pagination</h3>
+          <h3 class="wire-h5 u-mt-xl">Pagination</h3>
           <p class="u-text-muted u-mt-sm">Page navigation for listings. Disable the previous/next nav with <code>aria-disabled="true"</code> at boundaries; mark the current page with <code>aria-current="page"</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <nav class="p-pagination" aria-label="Pagination">
-              <a class="p-pagination__nav" href="#" aria-disabled="true">← Previous</a>
-              <ul class="p-pagination__list" role="list">
-                <li><a class="p-pagination__link" href="#">1</a></li>
-                <li><span class="p-pagination__current" aria-current="page">2</span></li>
-                <li><a class="p-pagination__link" href="#">3</a></li>
-                <li><span class="p-pagination__ellipsis">…</span></li>
-                <li><a class="p-pagination__link" href="#">12</a></li>
+            <nav class="wire-pagination" aria-label="Pagination">
+              <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
+              <ul class="wire-pagination__list" role="list">
+                <li><a class="wire-pagination__link" href="#">1</a></li>
+                <li><span class="wire-pagination__current" aria-current="page">2</span></li>
+                <li><a class="wire-pagination__link" href="#">3</a></li>
+                <li><span class="wire-pagination__ellipsis">…</span></li>
+                <li><a class="wire-pagination__link" href="#">12</a></li>
               </ul>
-              <a class="p-pagination__nav" href="#">Next →</a>
+              <a class="wire-pagination__nav" href="#">Next →</a>
             </nav>
           </div>
 
-          <h4 class="p-h6 u-mt-xl">When to use these primitives</h4>
+          <h4 class="wire-h6 u-mt-xl">When to use these primitives</h4>
           <ul>
             <li><strong>Badge</strong> — short, persistent status (live, new, draft, accepting patients). Not for actions.</li>
             <li><strong>Tag</strong> — interactive: filter chips, active-filter pills, removable selections.</li>
@@ -151,7 +151,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Container</h2>
+          <h2 class="wire-h3">Container</h2>
           <p class="u-text-muted u-mt-sm">Centers content with a responsive max width. Override per-instance with the <code>--container-max</code> custom property or the size modifiers.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-container — default (wide)</span>
@@ -171,7 +171,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Stack</h2>
+          <h2 class="wire-h3">Stack</h2>
           <p class="u-text-muted u-mt-sm">Vertical rhythm with a configurable gap. Use size modifiers <code>--3xs</code> through <code>--3xl</code> or set <code>--stack-gap</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default (md gap)</span>
@@ -192,35 +192,35 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Cluster</h2>
+          <h2 class="wire-h3">Cluster</h2>
           <p class="u-text-muted u-mt-sm">Horizontal wrapping with gap. Modifiers control gap, alignment, and justification.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default — items aligned center, packed start</span>
             <div class="u-cluster">
-              <button class="p-button p-button--sm">One</button>
-              <button class="p-button p-button--sm">Two</button>
-              <button class="p-button p-button--sm">Three</button>
-              <button class="p-button p-button--sm">Four</button>
+              <button class="wire-button wire-button--sm">One</button>
+              <button class="wire-button wire-button--sm">Two</button>
+              <button class="wire-button wire-button--sm">Three</button>
+              <button class="wire-button wire-button--sm">Four</button>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">.u-cluster--between</span>
             <div class="u-cluster u-cluster--between">
-              <span class="p-eyebrow">Section title</span>
-              <a class="p-button p-button--ghost p-button--sm" href="#">View all →</a>
+              <span class="wire-eyebrow">Section title</span>
+              <a class="wire-button wire-button--ghost wire-button--sm" href="#">View all →</a>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">.u-cluster--end</span>
             <div class="u-cluster u-cluster--end">
-              <button class="p-button p-button--secondary">Cancel</button>
-              <button class="p-button">Save</button>
+              <button class="wire-button wire-button--secondary">Cancel</button>
+              <button class="wire-button">Save</button>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Grid</h2>
+          <h2 class="wire-h3">Grid</h2>
           <p class="u-text-muted u-mt-sm">Auto-fit responsive grid. Choose <code>--2</code>, <code>--3</code>, <code>--4</code>, or rely on default auto-fit with <code>--grid-min</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-grid--3</span>
@@ -245,7 +245,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Sidebar</h2>
+          <h2 class="wire-h3">Sidebar</h2>
           <p class="u-text-muted u-mt-sm">Two-track layout: fixed-width sidebar, fluid main. Wraps gracefully on narrow screens.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-sidebar</span>
@@ -257,7 +257,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Section</h2>
+          <h2 class="wire-h3">Section</h2>
           <p class="u-text-muted u-mt-sm">Vertical padding for page sections. Use size modifiers <code>--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-section</span>
@@ -270,35 +270,35 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Flow</h2>
+          <h2 class="wire-h3">Flow</h2>
           <p class="u-text-muted u-mt-sm">Owl-selector spacing for prose-like blocks where children come from different sources. Override the gap with <code>--flow-gap</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-flow</span>
             <div class="u-flow">
-              <h3 class="p-h4">Heading</h3>
+              <h3 class="wire-h4">Heading</h3>
               <p>First paragraph. The flow utility puts a comfortable margin between each child without requiring a flex/grid wrapper.</p>
               <p>Second paragraph. Override the gap with <code>style="--flow-gap: var(--space-lg)"</code>.</p>
-              <h4 class="p-h5">Subhead</h4>
+              <h4 class="wire-h5">Subhead</h4>
               <p>Third paragraph still gets even spacing.</p>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Center</h2>
+          <h2 class="wire-h3">Center</h2>
           <p class="u-text-muted u-mt-sm">Horizontally centers its children, with centered text alignment. Useful for empty states and landing CTAs.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-center</span>
             <div class="u-center u-stack u-stack--md">
-              <h3 class="p-h4">Centered moment</h3>
+              <h3 class="wire-h4">Centered moment</h3>
               <p class="u-max-prose">A simple block of centered text and a button below it.</p>
-              <a class="p-button" href="#">Take action</a>
+              <a class="wire-button" href="#">Take action</a>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Text utilities</h2>
+          <h2 class="wire-h3">Text utilities</h2>
           <p class="u-text-muted u-mt-sm">Alignment, color, balance.</p>
           <div class="doc-example">
             <span class="doc-example__label">Alignment</span>
@@ -318,13 +318,13 @@
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Balance / pretty</span>
-            <h3 class="p-h3 u-text-balance">A headline that wraps in balanced lines instead of orphaning one word.</h3>
+            <h3 class="wire-h3 u-text-balance">A headline that wraps in balanced lines instead of orphaning one word.</h3>
             <p class="u-text-pretty u-max-prose u-mt-md">Body text with text-wrap pretty avoids river gaps and lonely lines without forcing balance on long passages.</p>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Background utilities</h2>
+          <h2 class="wire-h3">Background utilities</h2>
           <p class="u-text-muted u-mt-sm">Apply a token-backed surface color.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-bg-* surfaces</span>
@@ -338,7 +338,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Visibility</h2>
+          <h2 class="wire-h3">Visibility</h2>
           <p class="u-text-muted u-mt-sm">Hide on every screen, only on mobile, only on desktop, or visually-hide for screen-reader-only text.</p>
           <div class="doc-example">
             <span class="doc-example__label">Responsive visibility</span>
@@ -352,12 +352,12 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Width &amp; spacing helpers</h2>
+          <h2 class="wire-h3">Width &amp; spacing helpers</h2>
           <p class="u-text-muted u-mt-sm">Tiny escape hatches. Prefer stack/cluster gap for spacing; reach for margin utilities only when no parent gap fits.</p>
           <div class="doc-example">
             <span class="doc-example__label">.u-full-width / .u-max-prose</span>
             <div class="u-stack u-stack--sm">
-              <button class="p-button p-button--secondary u-full-width">Full-width button</button>
+              <button class="wire-button wire-button--secondary u-full-width">Full-width button</button>
               <p class="u-max-prose">A paragraph constrained to roughly 65 characters per line — useful for placing text inside containers wider than comfortable reading.</p>
             </div>
           </div>
@@ -375,13 +375,13 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to reach for utilities</h2>
+          <h2 class="wire-h3">When to reach for utilities</h2>
           <ul>
             <li>Use a utility when you need a single, one-off behavior that does not belong in a component.</li>
             <li>Prefer layout primitives (<code>.u-stack</code>, <code>.u-cluster</code>, <code>.u-grid</code>) over margin utilities; gap-based spacing scales better.</li>
             <li>Use <code>.u-visually-hidden</code> liberally for screen-reader labels — it is the cheapest accessibility win in the system.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use a utility</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use a utility</h2>
           <ul>
             <li>Do not build a recurring pattern from a stack of utilities; once you reach for three or more, the pattern wants to be a component.</li>
             <li>Do not chain margin utilities to recreate a stack — use the stack primitive.</li>
@@ -393,13 +393,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

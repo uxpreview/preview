@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tables — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Tables — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Tables</h1>
-        <p class="p-hero__lead">A workhorse data table and a comparison table for plans, programs, and feature matrices. Both scroll horizontally on small screens via the required <code>.p-table-wrap</code> container.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Tables</h1>
+        <p class="wire-hero__lead">A workhorse data table and a comparison table for plans, programs, and feature matrices. Both scroll horizontally on small screens via the required <code>.wire-table-wrap</code> container.</p>
       </div>
     </div>
   </section>
@@ -51,26 +51,26 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Anatomy</h2>
-          <p class="u-text-muted u-mt-sm">Every table is wrapped in <code>.p-table-wrap</code> for overflow handling. The table itself uses standard HTML semantics — <code>thead</code>, <code>tbody</code>, <code>th[scope]</code> — with optional numeric column alignment via <code>.p-table__num</code>.</p>
+          <h2 class="wire-h3">Anatomy</h2>
+          <p class="u-text-muted u-mt-sm">Every table is wrapped in <code>.wire-table-wrap</code> for overflow handling. The table itself uses standard HTML semantics — <code>thead</code>, <code>tbody</code>, <code>th[scope]</code> — with optional numeric column alignment via <code>.wire-table__num</code>.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default data table</span>
-            <div class="p-table-wrap">
-              <table class="p-table">
+            <div class="wire-table-wrap">
+              <table class="wire-table">
                 <caption class="u-visually-hidden">Annual ranking history</caption>
                 <thead>
                   <tr>
                     <th scope="col">Year</th>
                     <th scope="col">Rank</th>
                     <th scope="col">Specialty</th>
-                    <th scope="col" class="p-table__num">Patients treated</th>
+                    <th scope="col" class="wire-table__num">Patients treated</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>2026</td><td>#1</td><td>Rehabilitation</td><td class="p-table__num">52,140</td></tr>
-                  <tr><td>2025</td><td>#1</td><td>Rehabilitation</td><td class="p-table__num">50,802</td></tr>
-                  <tr><td>2024</td><td>#1</td><td>Rehabilitation</td><td class="p-table__num">49,228</td></tr>
-                  <tr><td>2023</td><td>#1</td><td>Rehabilitation</td><td class="p-table__num">47,910</td></tr>
+                  <tr><td>2026</td><td>#1</td><td>Rehabilitation</td><td class="wire-table__num">52,140</td></tr>
+                  <tr><td>2025</td><td>#1</td><td>Rehabilitation</td><td class="wire-table__num">50,802</td></tr>
+                  <tr><td>2024</td><td>#1</td><td>Rehabilitation</td><td class="wire-table__num">49,228</td></tr>
+                  <tr><td>2023</td><td>#1</td><td>Rehabilitation</td><td class="wire-table__num">47,910</td></tr>
                 </tbody>
               </table>
             </div>
@@ -78,42 +78,42 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to use</h2>
+          <h2 class="wire-h3">When to use</h2>
           <ul>
             <li>Use a <strong>data table</strong> when rows share a structure and users need to scan across columns.</li>
             <li>Use <strong>striped</strong> when row count crosses ten and zebra striping helps the eye stay on row.</li>
             <li>Use <strong>compact</strong> in dashboards or admin contexts where vertical density matters.</li>
             <li>Use a <strong>comparison</strong> table when three or fewer options are being weighed against the same criteria.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
           <ul>
             <li>Do not use a table for layout; use <code>.u-grid</code> or <code>.u-sidebar</code> instead.</li>
-            <li>Do not use a table for two- or three-row label-value content; use <code>.p-deflist</code>.</li>
+            <li>Do not use a table for two- or three-row label-value content; use <code>.wire-deflist</code>.</li>
             <li>Do not nest tables; flatten the data or split into multiple tables.</li>
           </ul>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Variants</h2>
+          <h2 class="wire-h3">Variants</h2>
 
           <div class="doc-example">
             <span class="doc-example__label">Striped</span>
-            <div class="p-table-wrap">
-              <table class="p-table p-table--striped">
+            <div class="wire-table-wrap">
+              <table class="wire-table wire-table--striped">
                 <thead>
                   <tr>
                     <th scope="col">Program</th>
                     <th scope="col">Location</th>
                     <th scope="col">Director</th>
-                    <th scope="col" class="p-table__num">Cohort size</th>
+                    <th scope="col" class="wire-table__num">Cohort size</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Spinal cord injury</td><td>Streeterville</td><td>Dr. Ana Mitchell</td><td class="p-table__num">48</td></tr>
-                  <tr><td>Stroke recovery</td><td>Streeterville</td><td>Dr. James Okafor</td><td class="p-table__num">62</td></tr>
-                  <tr><td>Brain injury</td><td>Burr Ridge</td><td>Dr. Priya Shah</td><td class="p-table__num">36</td></tr>
-                  <tr><td>Pediatric rehab</td><td>Streeterville</td><td>Dr. Marcus Bell</td><td class="p-table__num">54</td></tr>
-                  <tr><td>Amputation</td><td>Homewood</td><td>Dr. Lila Park</td><td class="p-table__num">28</td></tr>
+                  <tr><td>Spinal cord injury</td><td>Streeterville</td><td>Dr. Ana Mitchell</td><td class="wire-table__num">48</td></tr>
+                  <tr><td>Stroke recovery</td><td>Streeterville</td><td>Dr. James Okafor</td><td class="wire-table__num">62</td></tr>
+                  <tr><td>Brain injury</td><td>Burr Ridge</td><td>Dr. Priya Shah</td><td class="wire-table__num">36</td></tr>
+                  <tr><td>Pediatric rehab</td><td>Streeterville</td><td>Dr. Marcus Bell</td><td class="wire-table__num">54</td></tr>
+                  <tr><td>Amputation</td><td>Homewood</td><td>Dr. Lila Park</td><td class="wire-table__num">28</td></tr>
                 </tbody>
               </table>
             </div>
@@ -121,22 +121,22 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Compact</span>
-            <div class="p-table-wrap">
-              <table class="p-table p-table--compact p-table--striped">
+            <div class="wire-table-wrap">
+              <table class="wire-table wire-table--compact wire-table--striped">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Study</th>
                     <th scope="col">Phase</th>
                     <th scope="col">Status</th>
-                    <th scope="col" class="p-table__num">Enrolled</th>
+                    <th scope="col" class="wire-table__num">Enrolled</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>RX-0421</td><td>Robotic gait training in chronic stroke</td><td>III</td><td>Active</td><td class="p-table__num">142 / 180</td></tr>
-                  <tr><td>RX-0418</td><td>Adaptive exoskeleton for SCI</td><td>II</td><td>Recruiting</td><td class="p-table__num">38 / 60</td></tr>
-                  <tr><td>RX-0412</td><td>Pediatric mobility — CP cohort</td><td>II</td><td>Recruiting</td><td class="p-table__num">24 / 90</td></tr>
-                  <tr><td>RX-0405</td><td>Neurostimulation for upper-limb recovery</td><td>I</td><td>Closed</td><td class="p-table__num">22 / 22</td></tr>
+                  <tr><td>RX-0421</td><td>Robotic gait training in chronic stroke</td><td>III</td><td>Active</td><td class="wire-table__num">142 / 180</td></tr>
+                  <tr><td>RX-0418</td><td>Adaptive exoskeleton for SCI</td><td>II</td><td>Recruiting</td><td class="wire-table__num">38 / 60</td></tr>
+                  <tr><td>RX-0412</td><td>Pediatric mobility — CP cohort</td><td>II</td><td>Recruiting</td><td class="wire-table__num">24 / 90</td></tr>
+                  <tr><td>RX-0405</td><td>Neurostimulation for upper-limb recovery</td><td>I</td><td>Closed</td><td class="wire-table__num">22 / 22</td></tr>
                 </tbody>
               </table>
             </div>
@@ -144,8 +144,8 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Comparison</span>
-            <div class="p-table-wrap">
-              <table class="p-table p-table--comparison">
+            <div class="wire-table-wrap">
+              <table class="wire-table wire-table--comparison">
                 <thead>
                   <tr>
                     <th scope="col"></th>
@@ -155,10 +155,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><th scope="row">Live on unit</th><td><span class="p-table__check"></span></td><td><span class="p-table__cross"></span></td><td><span class="p-table__cross"></span></td></tr>
+                  <tr><th scope="row">Live on unit</th><td><span class="wire-table__check"></span></td><td><span class="wire-table__cross"></span></td><td><span class="wire-table__cross"></span></td></tr>
                   <tr><th scope="row">Hours per day</th><td>6+</td><td>4–5</td><td>1–2</td></tr>
-                  <tr><th scope="row">PT, OT, Speech</th><td><span class="p-table__check"></span></td><td><span class="p-table__check"></span></td><td>Selected</td></tr>
-                  <tr><th scope="row">24/7 nursing</th><td><span class="p-table__check"></span></td><td><span class="p-table__cross"></span></td><td><span class="p-table__cross"></span></td></tr>
+                  <tr><th scope="row">PT, OT, Speech</th><td><span class="wire-table__check"></span></td><td><span class="wire-table__check"></span></td><td>Selected</td></tr>
+                  <tr><th scope="row">24/7 nursing</th><td><span class="wire-table__check"></span></td><td><span class="wire-table__cross"></span></td><td><span class="wire-table__cross"></span></td></tr>
                   <tr><th scope="row">Typical duration</th><td>2–3 weeks</td><td>4–8 weeks</td><td>Variable</td></tr>
                 </tbody>
               </table>
@@ -167,32 +167,32 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
             <li>Always set <code>scope="col"</code> on header cells and <code>scope="row"</code> on row headers — screen readers use these to announce context.</li>
             <li>Provide a <code>&lt;caption&gt;</code> for every data table; use <code>.u-visually-hidden</code> if a visible caption would be redundant.</li>
-            <li>Use <code>.p-table__num</code> for numeric columns so digits align and use tabular-nums for stable column widths.</li>
-            <li>The comparison <code>.p-table__check</code> and <code>.p-table__cross</code> include text marks in CSS (<code>✓</code> / <code>—</code>); add visually-hidden text inside the span if assistive tech needs literal "yes"/"no".</li>
-            <li>Horizontal scrolling via <code>.p-table-wrap</code> keeps small screens usable; never collapse a real data table into cards on mobile.</li>
+            <li>Use <code>.wire-table__num</code> for numeric columns so digits align and use tabular-nums for stable column widths.</li>
+            <li>The comparison <code>.wire-table__check</code> and <code>.wire-table__cross</code> include text marks in CSS (<code>✓</code> / <code>—</code>); add visually-hidden text inside the span if assistive tech needs literal "yes"/"no".</li>
+            <li>Horizontal scrolling via <code>.wire-table-wrap</code> keeps small screens usable; never collapse a real data table into cards on mobile.</li>
           </ul>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;div class="p-table-wrap"&gt;
-  &lt;table class="p-table p-table--striped"&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;div class="wire-table-wrap"&gt;
+  &lt;table class="wire-table wire-table--striped"&gt;
     &lt;caption class="u-visually-hidden"&gt;Annual ranking history&lt;/caption&gt;
     &lt;thead&gt;
       &lt;tr&gt;
         &lt;th scope="col"&gt;Year&lt;/th&gt;
         &lt;th scope="col"&gt;Rank&lt;/th&gt;
-        &lt;th scope="col" class="p-table__num"&gt;Patients&lt;/th&gt;
+        &lt;th scope="col" class="wire-table__num"&gt;Patients&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;2026&lt;/td&gt;&lt;td&gt;#1&lt;/td&gt;&lt;td class="p-table__num"&gt;52,140&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;2026&lt;/td&gt;&lt;td&gt;#1&lt;/td&gt;&lt;td class="wire-table__num"&gt;52,140&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
 &lt;/div&gt;</code></pre>
@@ -204,13 +204,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

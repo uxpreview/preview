@@ -4,20 +4,20 @@
    recommends user-controllable text sizing on healthcare sites
    that serve older audiences.
 
-   Behavior: data-p-text-size widget; JS persists choice in
-   localStorage and sets --p-text-scale on :root.
+   Behavior: data-wire-text-size widget; JS persists choice in
+   localStorage and sets --wire-text-scale on :root.
    ============================================================ */
 
 :root {
   /* Default scale; widget multiplies. */
-  --p-text-scale: 1;
+  --wire-text-scale: 1;
 }
 
 html {
-  font-size: calc(100% * var(--p-text-scale));
+  font-size: calc(100% * var(--wire-text-scale));
 }
 
-.p-text-size {
+.wire-text-size {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -26,7 +26,7 @@ html {
   border-radius: var(--radius-pill);
 }
 
-.p-text-size__label {
+.wire-text-size__label {
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
@@ -35,7 +35,7 @@ html {
   padding-inline: var(--space-xs);
 }
 
-.p-text-size__btn {
+.wire-text-size__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -51,15 +51,15 @@ html {
   cursor: pointer;
 }
 
-.p-text-size__btn:hover {
+.wire-text-size__btn:hover {
   background-color: var(--color-bg);
 }
 
-.p-text-size__btn[aria-pressed="true"] {
+.wire-text-size__btn[aria-pressed="true"] {
   background-color: var(--color-bg);
   box-shadow: var(--shadow-xs);
 }
 
-.p-text-size__btn--sm { font-size: var(--text-xs); }
-.p-text-size__btn--md { font-size: var(--text-md); }
-.p-text-size__btn--lg { font-size: var(--text-lg); }
+.wire-text-size__btn--sm { font-size: var(--text-xs); }
+.wire-text-size__btn--md { font-size: var(--text-md); }
+.wire-text-size__btn--lg { font-size: var(--text-lg); }

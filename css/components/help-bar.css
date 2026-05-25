@@ -2,12 +2,12 @@
    Help bar — persistent, healthcare-specific affordance.
    "Find care now" / "Talk to someone" patterns. Renders fixed
    at the bottom on mobile, inline within page flow on desktop
-   (when paired with .p-help-bar--sticky). Reference: NIA
+   (when paired with .wire-help-bar--sticky). Reference: NIA
    "Making Your Website Senior Friendly" recommends persistent,
    high-contrast contact affordances for older-adult users.
    ============================================================ */
 
-.p-help-bar {
+.wire-help-bar {
   --help-bar-bg: var(--color-bg-inverse);
   --help-bar-fg: var(--color-text-inverse);
 
@@ -22,7 +22,7 @@
   --color-focus: var(--color-text-inverse);
 }
 
-.p-help-bar__icon {
+.wire-help-bar__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -34,26 +34,26 @@
   font-weight: var(--weight-bold);
 }
 
-.p-help-bar__text {
+.wire-help-bar__text {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-3xs);
 }
 
-.p-help-bar__title {
+.wire-help-bar__title {
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
 }
 
-.p-help-bar__desc {
+.wire-help-bar__desc {
   font-size: var(--text-sm);
   color: var(--gray-30);
   line-height: var(--leading-snug);
 }
 
-.p-help-bar__actions {
+.wire-help-bar__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
@@ -62,7 +62,7 @@
 
 /* Fixed-to-viewport variant — appears on every page, sticks to bottom on
    small screens. Use sparingly; one per page. */
-.p-help-bar--fixed {
+.wire-help-bar--fixed {
   position: fixed;
   inset-block-end: var(--space-md);
   inset-inline-end: var(--space-md);
@@ -72,14 +72,14 @@
 }
 
 @media (min-width: 48em) {
-  .p-help-bar--fixed {
+  .wire-help-bar--fixed {
     inset-inline-start: auto;
     max-inline-size: 28rem;
   }
 }
 
 /* Compact phone link, common in topnav */
-.p-phone-link {
+.wire-phone-link {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -93,11 +93,11 @@
   border-radius: var(--radius-pill);
 }
 
-.p-phone-link:hover {
+.wire-phone-link:hover {
   background-color: var(--color-bg-muted);
   text-decoration: none;
 }
 
-.p-phone-link__icon {
+.wire-phone-link__icon {
   font-size: var(--text-lg);
 }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Heroes — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Heroes — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Heroes</h1>
-        <p class="p-hero__lead">The first block on a page. Five purpose-built variants: editorial for big-type moments, split for image + text, centered for landing pages, stat-led when numbers carry the message, and inverse for any of the above flipped to dark.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Heroes</h1>
+        <p class="wire-hero__lead">The first block on a page. Five purpose-built variants: editorial for big-type moments, split for image + text, centered for landing pages, stat-led when numbers carry the message, and inverse for any of the above flipped to dark.</p>
       </div>
     </div>
   </section>
@@ -51,18 +51,18 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Anatomy</h2>
+          <h2 class="wire-h3">Anatomy</h2>
           <p class="u-text-muted u-mt-sm">A hero stacks an eyebrow, a title, an optional lead, and an actions row. Variants change the layout of those parts; the parts themselves stay constant.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default (editorial)</span>
-            <div class="p-hero p-hero--editorial" style="padding-block: var(--space-xl)">
-              <div class="p-hero__inner">
-                <span class="p-hero__eyebrow">Patient story</span>
-                <h1 class="p-hero__title">After her stroke, Maya walked again. Now she's <em>running marathons.</em></h1>
-                <p class="p-hero__lead">Twelve months of intensive therapy at the AbilityLab — and a team that wouldn't quit.</p>
-                <div class="p-hero__actions">
-                  <a class="p-button" href="#">Read Maya's story</a>
-                  <a class="p-button p-button--secondary" href="#">Watch the film</a>
+            <div class="wire-hero wire-hero--editorial" style="padding-block: var(--space-xl)">
+              <div class="wire-hero__inner">
+                <span class="wire-hero__eyebrow">Patient story</span>
+                <h1 class="wire-hero__title">After her stroke, Maya walked again. Now she's <em>running marathons.</em></h1>
+                <p class="wire-hero__lead">Twelve months of intensive therapy at the Riverside — and a team that wouldn't quit.</p>
+                <div class="wire-hero__actions">
+                  <a class="wire-button" href="#">Read Maya's story</a>
+                  <a class="wire-button wire-button--secondary" href="#">Watch the film</a>
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to use</h2>
+          <h2 class="wire-h3">When to use</h2>
           <ul>
             <li>Use <strong>editorial</strong> for a single emphatic landing statement; italics inside the title turn serif for an editorial moment.</li>
             <li>Use <strong>split</strong> when an image is part of the message — patient photo, lab shot, product image.</li>
@@ -78,27 +78,27 @@
             <li>Use <strong>stat-led</strong> when three numbers carry more weight than a paragraph (annual report, research overview).</li>
             <li>Use <strong>inverse</strong> sparingly — once per page at most — for high-emphasis CTAs or section anchors.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
           <ul>
             <li>Do not stack heroes; the hero is the first block, not a recurring section header.</li>
-            <li>Do not use a hero on detail pages where a tighter <code>.p-h1</code> would do.</li>
+            <li>Do not use a hero on detail pages where a tighter <code>.wire-h1</code> would do.</li>
             <li>Do not crop split-variant images to portrait — the layout assumes 16:9 / 4:3 / square.</li>
           </ul>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Variants</h2>
+          <h2 class="wire-h3">Variants</h2>
 
           <div class="doc-example">
             <span class="doc-example__label">Editorial</span>
-            <div class="p-hero p-hero--editorial" style="padding-block: var(--space-xl)">
-              <div class="p-hero__inner">
-                <span class="p-hero__eyebrow">Spinal cord injury</span>
-                <h1 class="p-hero__title">Built around what you <em>can</em> do.</h1>
-                <p class="p-hero__lead">Specialized care, applied research, and a recovery plan tailored to your goals.</p>
-                <div class="p-hero__actions">
-                  <a class="p-button" href="#">Make an appointment</a>
-                  <a class="p-button p-button--secondary" href="#">Meet the team</a>
+            <div class="wire-hero wire-hero--editorial" style="padding-block: var(--space-xl)">
+              <div class="wire-hero__inner">
+                <span class="wire-hero__eyebrow">Spinal cord injury</span>
+                <h1 class="wire-hero__title">Built around what you <em>can</em> do.</h1>
+                <p class="wire-hero__lead">Specialized care, applied research, and a recovery plan tailored to your goals.</p>
+                <div class="wire-hero__actions">
+                  <a class="wire-button" href="#">Make an appointment</a>
+                  <a class="wire-button wire-button--secondary" href="#">Meet the team</a>
                 </div>
               </div>
             </div>
@@ -106,18 +106,18 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Split</span>
-            <div class="p-hero p-hero--split" style="padding-block: var(--space-xl)">
-              <div class="p-hero__inner">
+            <div class="wire-hero wire-hero--split" style="padding-block: var(--space-xl)">
+              <div class="wire-hero__inner">
                 <div>
-                  <span class="p-hero__eyebrow">Day rehab</span>
-                  <h1 class="p-hero__title">Therapy on a schedule that works around your week.</h1>
-                  <p class="p-hero__lead">Half-day intensive therapy, 3–5 days a week, with home life resumed in between.</p>
-                  <div class="p-hero__actions">
-                    <a class="p-button" href="#">See eligibility</a>
+                  <span class="wire-hero__eyebrow">Day rehab</span>
+                  <h1 class="wire-hero__title">Therapy on a schedule that works around your week.</h1>
+                  <p class="wire-hero__lead">Half-day intensive therapy, 3–5 days a week, with home life resumed in between.</p>
+                  <div class="wire-hero__actions">
+                    <a class="wire-button" href="#">See eligibility</a>
                   </div>
                 </div>
-                <div class="p-hero__media">
-                  <div class="p-media p-media--4-3" data-ratio="4:3"></div>
+                <div class="wire-hero__media">
+                  <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
                 </div>
               </div>
             </div>
@@ -125,13 +125,13 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Centered</span>
-            <div class="p-hero p-hero--centered" style="padding-block: var(--space-xl)">
-              <div class="p-hero__inner">
-                <span class="p-hero__eyebrow">Research</span>
-                <h1 class="p-hero__title">Where rehabilitation science <em>becomes therapy.</em></h1>
-                <p class="p-hero__lead">Our labs sit one floor away from the patients whose lives our findings will change.</p>
-                <div class="p-hero__actions">
-                  <a class="p-button" href="#">Explore our labs</a>
+            <div class="wire-hero wire-hero--centered" style="padding-block: var(--space-xl)">
+              <div class="wire-hero__inner">
+                <span class="wire-hero__eyebrow">Research</span>
+                <h1 class="wire-hero__title">Where rehabilitation science <em>becomes therapy.</em></h1>
+                <p class="wire-hero__lead">Our labs sit one floor away from the patients whose lives our findings will change.</p>
+                <div class="wire-hero__actions">
+                  <a class="wire-button" href="#">Explore our labs</a>
                 </div>
               </div>
             </div>
@@ -139,23 +139,23 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Stat-led</span>
-            <div class="p-hero p-hero--stat" style="padding-block: var(--space-xl)">
-              <div class="p-hero__inner">
-                <span class="p-hero__eyebrow">Innovation Center</span>
-                <h1 class="p-hero__title">A hospital built like a research lab.</h1>
-                <p class="p-hero__lead">Bench science and bedside care, one floor apart.</p>
-                <div class="p-hero__stats">
+            <div class="wire-hero wire-hero--stat" style="padding-block: var(--space-xl)">
+              <div class="wire-hero__inner">
+                <span class="wire-hero__eyebrow">Innovation Center</span>
+                <h1 class="wire-hero__title">A hospital built like a research lab.</h1>
+                <p class="wire-hero__lead">Bench science and bedside care, one floor apart.</p>
+                <div class="wire-hero__stats">
                   <div>
-                    <div class="p-hero__stat-value">242</div>
-                    <div class="p-hero__stat-label">Active studies in 2026</div>
+                    <div class="wire-hero__stat-value">242</div>
+                    <div class="wire-hero__stat-label">Active studies in 2026</div>
                   </div>
                   <div>
-                    <div class="p-hero__stat-value">5</div>
-                    <div class="p-hero__stat-label">Translational labs on-site</div>
+                    <div class="wire-hero__stat-value">5</div>
+                    <div class="wire-hero__stat-label">Translational labs on-site</div>
                   </div>
                   <div>
-                    <div class="p-hero__stat-value">$94M</div>
-                    <div class="p-hero__stat-label">In annual research funding</div>
+                    <div class="wire-hero__stat-value">$94M</div>
+                    <div class="wire-hero__stat-label">In annual research funding</div>
                   </div>
                 </div>
               </div>
@@ -164,23 +164,23 @@
 
           <div class="doc-example">
             <span class="doc-example__label">Inverse — pairs with any variant</span>
-            <div class="p-hero p-hero--stat p-hero--inverse" style="padding-block: var(--space-xl); padding-inline: var(--space-xl); border-radius: var(--radius-xl)">
-              <div class="p-hero__inner">
-                <span class="p-hero__eyebrow">2026 annual report</span>
-                <h1 class="p-hero__title">Another year of measurable progress.</h1>
-                <p class="p-hero__lead">Three numbers from the year — and the work behind them.</p>
-                <div class="p-hero__stats">
+            <div class="wire-hero wire-hero--stat wire-hero--inverse" style="padding-block: var(--space-xl); padding-inline: var(--space-xl); border-radius: var(--radius-xl)">
+              <div class="wire-hero__inner">
+                <span class="wire-hero__eyebrow">2026 annual report</span>
+                <h1 class="wire-hero__title">Another year of measurable progress.</h1>
+                <p class="wire-hero__lead">Three numbers from the year — and the work behind them.</p>
+                <div class="wire-hero__stats">
                   <div>
-                    <div class="p-hero__stat-value">36</div>
-                    <div class="p-hero__stat-label">Consecutive #1 rankings</div>
+                    <div class="wire-hero__stat-value">36</div>
+                    <div class="wire-hero__stat-label">Consecutive #1 rankings</div>
                   </div>
                   <div>
-                    <div class="p-hero__stat-value">52,140</div>
-                    <div class="p-hero__stat-label">Patients treated</div>
+                    <div class="wire-hero__stat-value">52,140</div>
+                    <div class="wire-hero__stat-label">Patients treated</div>
                   </div>
                   <div>
-                    <div class="p-hero__stat-value">$94M</div>
-                    <div class="p-hero__stat-label">Research funding</div>
+                    <div class="wire-hero__stat-value">$94M</div>
+                    <div class="wire-hero__stat-label">Research funding</div>
                   </div>
                 </div>
               </div>
@@ -189,7 +189,7 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
             <li>The hero title must be the page <code>h1</code>; do not use the hero as a section header below another <code>h1</code>.</li>
             <li>Decorative italic in the editorial variant is purely typographic — do not put meaning in the italic alone.</li>
@@ -199,17 +199,17 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;section class="p-hero p-hero--editorial"&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;section class="wire-hero wire-hero--editorial"&gt;
   &lt;div class="u-container"&gt;
-    &lt;div class="p-hero__inner"&gt;
-      &lt;span class="p-hero__eyebrow"&gt;Patient story&lt;/span&gt;
-      &lt;h1 class="p-hero__title"&gt;After her stroke, Maya &lt;em&gt;ran a marathon.&lt;/em&gt;&lt;/h1&gt;
-      &lt;p class="p-hero__lead"&gt;Twelve months of intensive therapy.&lt;/p&gt;
-      &lt;div class="p-hero__actions"&gt;
-        &lt;a class="p-button" href="/story"&gt;Read the story&lt;/a&gt;
+    &lt;div class="wire-hero__inner"&gt;
+      &lt;span class="wire-hero__eyebrow"&gt;Patient story&lt;/span&gt;
+      &lt;h1 class="wire-hero__title"&gt;After her stroke, Maya &lt;em&gt;ran a marathon.&lt;/em&gt;&lt;/h1&gt;
+      &lt;p class="wire-hero__lead"&gt;Twelve months of intensive therapy.&lt;/p&gt;
+      &lt;div class="wire-hero__actions"&gt;
+        &lt;a class="wire-button" href="/story"&gt;Read the story&lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -222,13 +222,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

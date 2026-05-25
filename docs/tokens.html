@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tokens — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Tokens — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--space-md); }
     .tk-card { padding: var(--space-md); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-xs); font-family: var(--font-mono); font-size: var(--text-xs); }
@@ -21,20 +21,20 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link is-current" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link is-current" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
@@ -42,12 +42,12 @@
 
 <main id="main">
 
-<section class="p-hero p-hero--editorial">
+<section class="wire-hero wire-hero--editorial">
   <div class="u-container">
-    <div class="p-hero__inner">
-      <span class="p-hero__eyebrow">Foundation</span>
-      <h1 class="p-hero__title">Tokens.</h1>
-      <p class="p-hero__lead">The only file in the system with raw values is <code>css/tokens.css</code>. To rebrand, edit that file. Components reference these variables; nothing else hardcodes.</p>
+    <div class="wire-hero__inner">
+      <span class="wire-hero__eyebrow">Foundation</span>
+      <h1 class="wire-hero__title">Tokens.</h1>
+      <p class="wire-hero__lead">The only file in the system with raw values is <code>css/tokens.css</code>. To rebrand, edit that file. Components reference these variables; nothing else hardcodes.</p>
     </div>
   </div>
 </section>
@@ -56,18 +56,18 @@
   <div class="u-container">
     <div class="u-sidebar">
       <aside aria-label="In-page navigation">
-        <nav class="p-inpagenav" data-p-inpagenav>
-          <div class="p-inpagenav__title">On this page</div>
-          <ul class="p-inpagenav__list" role="list">
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#color">Color</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#semantic">Semantic colors</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#type">Type</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#space">Spacing</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#radii">Radii</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#border">Border weights</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#shadow">Shadows</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#layout">Layout</a></li>
-            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#motion">Motion</a></li>
+        <nav class="wire-inpagenav" data-wire-inpagenav>
+          <div class="wire-inpagenav__title">On this page</div>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#color">Color</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantic">Semantic colors</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#type">Type</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#space">Spacing</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#radii">Radii</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#border">Border weights</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#shadow">Shadows</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#layout">Layout</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#motion">Motion</a></li>
           </ul>
         </nav>
       </aside>
@@ -75,7 +75,7 @@
       <div class="u-stack u-stack--3xl">
 
         <section id="color" class="u-stack u-stack--md">
-          <h2 class="p-h3">Grayscale ramp</h2>
+          <h2 class="wire-h3">Grayscale ramp</h2>
           <p class="u-text-muted">Twelve steps, designed so any 50+ value clears 4.5:1 against white, and 40 clears 3:1 (border/large-text only).</p>
           <div class="tk-grid">
             <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-00)"></div><span class="tk-card__name">gray-00</span><span class="tk-card__hex">#ffffff</span><span class="tk-card__ratio">— bg</span></div>
@@ -94,10 +94,10 @@
         </section>
 
         <section id="semantic" class="u-stack u-stack--md">
-          <h2 class="p-h3">Semantic colors</h2>
+          <h2 class="wire-h3">Semantic colors</h2>
           <p class="u-text-muted">Always reach for these before the raw ramp. A semantic token explains <em>intent</em>; a ramp value is just a number.</p>
-          <div class="p-table-wrap">
-            <table class="p-table">
+          <div class="wire-table-wrap">
+            <table class="wire-table">
               <thead><tr><th scope="col">Token</th><th scope="col">Maps to</th><th scope="col">Use for</th></tr></thead>
               <tbody>
                 <tr><td><code>--color-bg</code></td><td><code>--gray-00</code></td><td>Default page and surface background</td></tr>
@@ -117,7 +117,7 @@
         </section>
 
         <section id="type" class="u-stack u-stack--md">
-          <h2 class="p-h3">Type scale</h2>
+          <h2 class="wire-h3">Type scale</h2>
           <p class="u-text-muted">Eleven steps. Headings use semibold or bold; body text uses regular at 16px with 1.5 line-height.</p>
           <div>
             <div class="tk-row"><span class="tk-row__tag">--text-6xl / 88</span><span style="font-size:var(--text-6xl); line-height:var(--leading-tight); letter-spacing:var(--tracking-tight); font-weight:var(--weight-bold)">Aa</span></div>
@@ -135,7 +135,7 @@
         </section>
 
         <section id="space" class="u-stack u-stack--md">
-          <h2 class="p-h3">Spacing scale</h2>
+          <h2 class="wire-h3">Spacing scale</h2>
           <p class="u-text-muted">Eleven steps on a 4px base. Use semantic spacing — <code>--space-md</code>, not <code>16px</code> — so adjustments cascade.</p>
           <div>
             <div class="tk-row"><span class="tk-row__tag">--space-3xs / 2</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-3xs)"></span></div>
@@ -153,7 +153,7 @@
         </section>
 
         <section id="radii" class="u-stack u-stack--md">
-          <h2 class="p-h3">Radii</h2>
+          <h2 class="wire-h3">Radii</h2>
           <p class="u-text-muted">Generous on purpose. Soft geometry is part of the system's personality.</p>
           <div class="tk-radius-row">
             <div class="tk-radius" style="border-radius:var(--radius-xs)">xs · 4</div>
@@ -167,14 +167,14 @@
         </section>
 
         <section id="border" class="u-stack u-stack--md">
-          <h2 class="p-h3">Border weights</h2>
+          <h2 class="wire-h3">Border weights</h2>
           <div class="tk-row"><span class="tk-row__tag">--border-thin</span><span style="block-size: 1px; background:var(--color-text); inline-size: 8rem"></span></div>
           <div class="tk-row"><span class="tk-row__tag">--border-md</span><span style="block-size: 2px; background:var(--color-text); inline-size: 8rem"></span></div>
           <div class="tk-row"><span class="tk-row__tag">--border-thick</span><span style="block-size: 3px; background:var(--color-text); inline-size: 8rem"></span></div>
         </section>
 
         <section id="shadow" class="u-stack u-stack--md">
-          <h2 class="p-h3">Shadows</h2>
+          <h2 class="wire-h3">Shadows</h2>
           <p class="u-text-muted">Used sparingly — wireframes shouldn't feel app-y. Mostly reserved for popovers and elevated cards.</p>
           <div class="tk-radius-row">
             <div class="tk-shadow" style="box-shadow:var(--shadow-xs)">xs</div>
@@ -185,10 +185,10 @@
         </section>
 
         <section id="layout" class="u-stack u-stack--md">
-          <h2 class="p-h3">Layout</h2>
-          <h3 class="p-h5">Containers</h3>
-          <div class="p-table-wrap">
-            <table class="p-table">
+          <h2 class="wire-h3">Layout</h2>
+          <h3 class="wire-h5">Containers</h3>
+          <div class="wire-table-wrap">
+            <table class="wire-table">
               <thead><tr><th scope="col">Token</th><th scope="col">Max width</th><th scope="col">Class</th></tr></thead>
               <tbody>
                 <tr><td><code>--container-narrow</code></td><td>40rem / 640px</td><td><code>.u-container--narrow</code></td></tr>
@@ -198,9 +198,9 @@
               </tbody>
             </table>
           </div>
-          <h3 class="p-h5">Breakpoints</h3>
-          <div class="p-table-wrap">
-            <table class="p-table">
+          <h3 class="wire-h5">Breakpoints</h3>
+          <div class="wire-table-wrap">
+            <table class="wire-table">
               <thead><tr><th scope="col">Name</th><th scope="col">Min width</th><th scope="col">In media query</th></tr></thead>
               <tbody>
                 <tr><td>sm</td><td>480px</td><td><code>(min-width: 30em)</code></td></tr>
@@ -213,10 +213,10 @@
         </section>
 
         <section id="motion" class="u-stack u-stack--md">
-          <h2 class="p-h3">Motion</h2>
+          <h2 class="wire-h3">Motion</h2>
           <p class="u-text-muted">All durations collapse to 0 when <code>prefers-reduced-motion: reduce</code> is set.</p>
-          <div class="p-table-wrap">
-            <table class="p-table">
+          <div class="wire-table-wrap">
+            <table class="wire-table">
               <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
               <tbody>
                 <tr><td><code>--duration-fast</code></td><td>150ms</td><td>Hover changes, color shifts</td></tr>
@@ -236,13 +236,13 @@
 
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

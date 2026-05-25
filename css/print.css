@@ -20,25 +20,25 @@
   }
 
   /* Hide chrome that doesn't belong on paper. */
-  .p-topnav,
-  .p-footer,
-  .p-skip-link,
-  .p-drawer,
-  .p-drawer-backdrop,
-  .p-help-bar,
-  .p-text-size,
-  .p-megamenu__panel,
-  .p-tabs__list,
-  [data-p-drawer-open],
-  .p-button {
+  .wire-topnav,
+  .wire-footer,
+  .wire-skip-link,
+  .wire-drawer,
+  .wire-drawer-backdrop,
+  .wire-help-bar,
+  .wire-text-size,
+  .wire-megamenu__panel,
+  .wire-tabs__list,
+  [data-wire-drawer-open],
+  .wire-button {
     display: none !important;
   }
 
   /* Reveal all collapsed content for the printed page. */
-  .p-accordion__item .p-accordion__body { display: block !important; }
-  .p-accordion__icon { display: none; }
-  .p-tabs__panel { display: block !important; }
-  .p-tabs__panel + .p-tabs__panel { margin-block-start: var(--space-lg); }
+  .wire-accordion__item .wire-accordion__body { display: block !important; }
+  .wire-accordion__icon { display: none; }
+  .wire-tabs__panel { display: block !important; }
+  .wire-tabs__panel + .wire-tabs__panel { margin-block-start: var(--space-lg); }
 
   /* Expose link URLs after the link text. */
   main a[href^="http"]::after,
@@ -50,9 +50,9 @@
   }
 
   /* Avoid page breaks within key blocks. */
-  .p-card,
-  .p-callout,
-  .p-quote,
+  .wire-card,
+  .wire-callout,
+  .wire-quote,
   figure,
   pre,
   table {
@@ -66,18 +66,18 @@
   }
 
   /* Keep structure visible in ink. */
-  .p-card,
-  .p-callout {
+  .wire-card,
+  .wire-callout {
     border: var(--border-thin) solid var(--gray-50);
   }
 
-  .p-table th,
-  .p-table td {
+  .wire-table th,
+  .wire-table td {
     border: var(--border-thin) solid var(--gray-50);
   }
 
   /* Media placeholders shouldn't waste ink. */
-  .p-media {
+  .wire-media {
     background: var(--gray-10);
     background-image: none;
     border: var(--border-thin) dashed var(--gray-40);

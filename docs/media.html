@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Media — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Media — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Media</h1>
-        <p class="p-hero__lead">Greybox placeholders for image and video, plus a small gallery system. Used everywhere a real asset will later live — and intentionally honest about its absence.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Media</h1>
+        <p class="wire-hero__lead">Greybox placeholders for image and video, plus a small gallery system. Used everywhere a real asset will later live — and intentionally honest about its absence.</p>
       </div>
     </div>
   </section>
@@ -51,23 +51,23 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Anatomy</h2>
-          <p class="u-text-muted u-mt-sm">A single <code>.p-media</code> element with a ratio modifier (or default 16:9). Add a <code>data-ratio</code> attribute to print a small ratio label in the top corner. Add a <code>.p-media__label</code> child for a centered caption.</p>
+          <h2 class="wire-h3">Anatomy</h2>
+          <p class="u-text-muted u-mt-sm">A single <code>.wire-media</code> element with a ratio modifier (or default 16:9). Add a <code>data-ratio</code> attribute to print a small ratio label in the top corner. Add a <code>.wire-media__label</code> child for a centered caption.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default (16:9)</span>
-            <div class="p-media" data-ratio="16:9"></div>
+            <div class="wire-media" data-ratio="16:9"></div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to use</h2>
+          <h2 class="wire-h3">When to use</h2>
           <ul>
             <li>Use a placeholder for every asset slot at wireframe stage — including thumbnails, hero images, and headshots.</li>
             <li>Use the ratio that matches the eventual asset (16:9 for video stills, 1:1 for headshots, 4:3 for editorial photos).</li>
             <li>Use <code>--video</code> for any moving-image slot; the play triangle is recognisable as "this will be a video."</li>
-            <li>Use a gallery when three or more placeholders sit together; otherwise place a single <code>.p-media</code>.</li>
+            <li>Use a gallery when three or more placeholders sit together; otherwise place a single <code>.wire-media</code>.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
           <ul>
             <li>Do not use a media placeholder when the page is content-only — leave the area blank rather than implying an asset will arrive.</li>
             <li>Do not stretch a ratio modifier with inline styles; pick the closest preset.</li>
@@ -76,84 +76,84 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Variants</h2>
+          <h2 class="wire-h3">Variants</h2>
 
           <div class="doc-example">
             <span class="doc-example__label">Ratios</span>
             <div class="u-grid u-grid--3">
-              <div class="p-media p-media--16-9" data-ratio="16:9"></div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--portrait" data-ratio="3:4"></div>
-              <div class="p-media p-media--portrait-tall" data-ratio="2:3"></div>
-              <div class="p-media p-media--wide" data-ratio="21:9"></div>
+              <div class="wire-media wire-media--16-9" data-ratio="16:9"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--portrait" data-ratio="3:4"></div>
+              <div class="wire-media wire-media--portrait-tall" data-ratio="2:3"></div>
+              <div class="wire-media wire-media--wide" data-ratio="21:9"></div>
             </div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">With centered label</span>
             <div class="u-grid u-grid--2">
-              <div class="p-media p-media--16-9" data-ratio="16:9"><span class="p-media__label">Hero image — patient on therapy treadmill</span></div>
-              <div class="p-media p-media--square" data-ratio="1:1"><span class="p-media__label">Doctor headshot</span></div>
+              <div class="wire-media wire-media--16-9" data-ratio="16:9"><span class="wire-media__label">Hero image — patient on therapy treadmill</span></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"><span class="wire-media__label">Doctor headshot</span></div>
             </div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Rounded (larger radius)</span>
-            <div class="p-media p-media--rounded p-media--16-9" data-ratio="16:9"></div>
+            <div class="wire-media wire-media--rounded wire-media--16-9" data-ratio="16:9"></div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Video</span>
-            <div class="p-media p-media--video p-media--16-9" data-ratio="16:9"></div>
+            <div class="wire-media wire-media--video wire-media--16-9" data-ratio="16:9"></div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Gallery — 2 column</span>
-            <div class="p-gallery p-gallery--2">
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
+            <div class="wire-gallery wire-gallery--2">
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
             </div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Gallery — 3 column</span>
-            <div class="p-gallery p-gallery--3">
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
+            <div class="wire-gallery wire-gallery--3">
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
             </div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Gallery — 4 column</span>
-            <div class="p-gallery p-gallery--4">
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
-              <div class="p-media p-media--square" data-ratio="1:1"></div>
+            <div class="wire-gallery wire-gallery--4">
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
+              <div class="wire-media wire-media--square" data-ratio="1:1"></div>
             </div>
           </div>
 
           <div class="doc-example">
             <span class="doc-example__label">Gallery — mosaic</span>
-            <div class="p-gallery p-gallery--mosaic">
-              <div class="p-media" data-ratio="A"></div>
-              <div class="p-media" data-ratio="B"></div>
-              <div class="p-media" data-ratio="C"></div>
-              <div class="p-media" data-ratio="D"></div>
-              <div class="p-media" data-ratio="E"></div>
+            <div class="wire-gallery wire-gallery--mosaic">
+              <div class="wire-media" data-ratio="A"></div>
+              <div class="wire-media" data-ratio="B"></div>
+              <div class="wire-media" data-ratio="C"></div>
+              <div class="wire-media" data-ratio="D"></div>
+              <div class="wire-media" data-ratio="E"></div>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
             <li>Wireframe placeholders are decorative; real assets must replace them with <code>&lt;img&gt;</code> + meaningful <code>alt</code>, or empty <code>alt</code> for purely decorative images.</li>
             <li>Video placeholders must become <code>&lt;video&gt;</code> with captions, transcripts, and audio descriptions where applicable.</li>
@@ -163,17 +163,17 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;div class="p-media p-media--16-9" data-ratio="16:9"&gt;
-  &lt;span class="p-media__label"&gt;Hero image — patient on therapy treadmill&lt;/span&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;div class="wire-media wire-media--16-9" data-ratio="16:9"&gt;
+  &lt;span class="wire-media__label"&gt;Hero image — patient on therapy treadmill&lt;/span&gt;
 &lt;/div&gt;
 
-&lt;div class="p-gallery p-gallery--3"&gt;
-  &lt;div class="p-media p-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
-  &lt;div class="p-media p-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
-  &lt;div class="p-media p-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
+&lt;div class="wire-gallery wire-gallery--3"&gt;
+  &lt;div class="wire-media wire-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
+  &lt;div class="wire-media wire-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
+  &lt;div class="wire-media wire-media--square" data-ratio="1:1"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </details>
         </section>
@@ -183,13 +183,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

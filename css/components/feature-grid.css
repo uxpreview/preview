@@ -2,30 +2,30 @@
    Feature grid — N up grid of features/services/cards.
    ============================================================ */
 
-.p-feature-grid {
+.wire-feature-grid {
   display: grid;
   gap: var(--space-xl);
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 48em) {
-  .p-feature-grid--2 { grid-template-columns: repeat(2, 1fr); }
-  .p-feature-grid--3 { grid-template-columns: repeat(2, 1fr); }
-  .p-feature-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .wire-feature-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .wire-feature-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .wire-feature-grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 64em) {
-  .p-feature-grid--3 { grid-template-columns: repeat(3, 1fr); }
-  .p-feature-grid--4 { grid-template-columns: repeat(4, 1fr); }
+  .wire-feature-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .wire-feature-grid--4 { grid-template-columns: repeat(4, 1fr); }
 }
 
-.p-feature {
+.wire-feature {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
-.p-feature__icon {
+.wire-feature__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@
   font-weight: var(--weight-semibold);
 }
 
-.p-feature__title {
+.wire-feature__title {
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
@@ -46,13 +46,13 @@
   margin: 0;
 }
 
-.p-feature__desc {
+.wire-feature__desc {
   font-size: var(--text-md);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
 }
 
-.p-feature__link {
+.wire-feature__link {
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   color: var(--color-text);
@@ -63,19 +63,19 @@
   margin-block-start: auto;
   padding-block-start: var(--space-xs);
 }
-.p-feature__link::after {
+.wire-feature__link::after {
   content: "→";
   transition: transform var(--duration-fast) var(--ease-out);
 }
-.p-feature__link:hover {
+.wire-feature__link:hover {
   text-decoration: underline;
 }
-.p-feature__link:hover::after {
+.wire-feature__link:hover::after {
   transform: translateX(2px);
 }
 
 /* Bordered variant — cards-y feel */
-.p-feature-grid--bordered .p-feature {
+.wire-feature-grid--bordered .wire-feature {
   padding: var(--space-xl);
   border: var(--border-thin) solid var(--color-border);
   border-radius: var(--radius-lg);

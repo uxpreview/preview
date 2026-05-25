@@ -1,6 +1,6 @@
-# Primacy Wireframe System
+# Wireframe Design System
 
-A grayscale wireframe and mid-fidelity component system for Primacy client projects.
+A grayscale wireframe and mid-fidelity component system for client wireframing.
 
 Built for healthcare and higher-ed engagements where the goal is to get clients reacting to **structure and content**, not color. No build step. No framework. Open `index.html` in a browser, it works.
 
@@ -12,14 +12,14 @@ Built for healthcare and higher-ed engagements where the goal is to get clients 
 preview/
 ├── index.html              ← Component showcase. Start here.
 ├── docs/                   ← Per-component documentation + principles + tokens
-├── pages/                  ← SRALab pressure-test mocks (homepage, specialty, research, find-a-doctor)
+├── pages/                  ← Riverside pressure-test mocks (homepage, specialty, research, find-a-doctor)
 ├── css/
-│   ├── primacy.css         ← One stylesheet to link from any page
+│   ├── wire.css         ← One stylesheet to link from any page
 │   ├── tokens.css          ← The ONLY file with raw values
 │   ├── reset.css | base.css | layout.css | utilities.css
 │   └── components/         ← One file per component
 └── js/
-    └── primacy.js          ← Vanilla JS auto-init for tabs, drawer, mega menu, etc.
+    └── wire.js          ← Vanilla JS auto-init for tabs, drawer, mega menu, etc.
 ```
 
 ## Build a page in 5 minutes
@@ -27,12 +27,12 @@ preview/
 1. Copy any HTML file in `pages/` as your starting point.
 1. Link the stylesheet (one tag, no build):
    ```html
-   <link rel="stylesheet" href="css/primacy.css">
+   <link rel="stylesheet" href="css/wire.css">
    ```
 1. Drop in components from the showcase (`index.html`) — they're already wired up.
 1. If you need interactivity (tabs, accordion, drawer), add the script:
    ```html
-   <script src="js/primacy.js" defer></script>
+   <script src="js/wire.js" defer></script>
    ```
 1. Open the file in a browser.
 
@@ -44,14 +44,14 @@ That's it. No `npm install`, no dev server.
 - **Components** — buttons, badges, tags, dividers, breadcrumb, pagination, full form set, top nav + mega menu + sidebar + in-page nav + mobile drawer (with focus trap), cards (content/person/resource/stat), heroes (editorial/split/centered/stat), feature grid, two-column, accordion, tabs, callout, quote, timeline, media placeholders, gallery, lists (linked/definition/article), tables (data/comparison), footers (compact/standard/expanded).
 - **Healthcare/higher-ed patterns** — persistent help bar, phone link, text-size control, print stylesheet.
 - **Page shells** — documented HTML scaffolds for landing, article, listing, and detail pages.
-- **SRALab demo** — four representative page templates as the pressure test.
+- **Riverside demo** — four representative page templates as the pressure test.
 - **Research foundation** — `docs/research.html` documents the evidence basis for every meaningful decision (WCAG criteria, NN/g articles, Baymard findings) and is honest about what's convention vs. evidence.
 
 ## Naming
 
-- `.p-*` — component class (BEM-ish): `.p-card`, `.p-card__body`, `.p-card--person`, `.p-card.is-linked`.
+- `.wire-*` — component class (BEM-ish): `.wire-card`, `.wire-card__body`, `.wire-card--person`, `.wire-card.is-linked`.
 - `.u-*` — utility or layout primitive: `.u-stack`, `.u-text-muted`.
-- `data-p-*` — JS behavior hook: `data-p-tabs`, `data-p-drawer-open`.
+- `data-wire-*` — JS behavior hook: `data-wire-tabs`, `data-wire-drawer-open`.
 - `.is-*` — state (open, current, loading, etc).
 
 Files and class names: lowercase, kebab-case. Always.
@@ -86,7 +86,7 @@ Same artifact, all of these:
 To flatten the CSS into a single file (optional, e.g. for an artifact):
 
 ```bash
-cat css/tokens.css css/reset.css css/base.css css/layout.css css/utilities.css css/components/*.css > primacy.bundle.css
+cat css/tokens.css css/reset.css css/base.css css/layout.css css/utilities.css css/components/*.css > wire.bundle.css
 ```
 
 ## Extending for a client
@@ -109,4 +109,4 @@ v1 ships no client-overlay system on purpose — the lane is sketched in [`docs/
 
 ## License & ownership
 
-Internal Primacy tooling. Built for the experience team.
+An unbranded wireframe and mid-fidelity component system.
