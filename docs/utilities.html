@@ -41,8 +41,8 @@
     <div class="u-container">
       <div class="p-hero__inner">
         <span class="p-hero__eyebrow">Foundation</span>
-        <h1 class="p-hero__title">Utilities &amp; layout</h1>
-        <p class="p-hero__lead">Single-purpose helpers and layout primitives that compose every page. Each one does one thing — stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
+        <h1 class="p-hero__title">Utilities, primitives &amp; layout</h1>
+        <p class="p-hero__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
       </div>
     </div>
   </section>
@@ -50,6 +50,105 @@
   <section class="u-section">
     <div class="u-container">
       <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section" id="visual-primitives">
+          <h2 class="p-h3">Visual primitives</h2>
+          <p class="u-text-muted u-mt-sm">Small, semantic UI atoms. They sit one level above tokens — close to components, but with no internal structure of their own.</p>
+
+          <h3 class="p-h5 u-mt-xl">Badge</h3>
+          <p class="u-text-muted u-mt-sm">An inline status label. Four variants: default, subtle, outline, inverse. An optional <code>.p-badge__dot</code> precedes the label for "live" indicators.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Variants</span>
+            <div class="u-cluster">
+              <span class="p-badge">Default</span>
+              <span class="p-badge p-badge--subtle">Subtle</span>
+              <span class="p-badge p-badge--outline">Outline</span>
+              <span class="p-badge p-badge--inverse">Inverse</span>
+              <span class="p-badge"><span class="p-badge__dot" aria-hidden="true"></span>Live</span>
+            </div>
+          </div>
+
+          <h3 class="p-h5 u-mt-xl">Tag</h3>
+          <p class="u-text-muted u-mt-sm">A filterable or removable chip. Use inside a <code>.p-tag-list</code> for grouped filter sets. Add <code>.is-selected</code> (or <code>.p-tag--selected</code>) for the active state and a <code>.p-tag__remove</code> child for removability.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Filter set</span>
+            <ul class="p-tag-list" role="list">
+              <li><button class="p-tag p-tag--selected">All conditions</button></li>
+              <li><button class="p-tag">Spinal cord injury</button></li>
+              <li><button class="p-tag">Stroke</button></li>
+              <li><button class="p-tag">Brain injury</button></li>
+            </ul>
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Removable (active filters)</span>
+            <ul class="p-tag-list" role="list">
+              <li><button class="p-tag">Streeterville <span class="p-tag__remove" aria-label="Remove">×</span></button></li>
+              <li><button class="p-tag">Accepting new patients <span class="p-tag__remove" aria-label="Remove">×</span></button></li>
+            </ul>
+          </div>
+
+          <h3 class="p-h5 u-mt-xl">Divider</h3>
+          <p class="u-text-muted u-mt-sm">Horizontal rules with weight and style modifiers. Use a labeled divider when separating two unlike sections.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default</span>
+            <hr class="p-divider">
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Strong</span>
+            <hr class="p-divider p-divider--strong">
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Thick</span>
+            <hr class="p-divider p-divider--thick">
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Dashed</span>
+            <hr class="p-divider p-divider--dashed">
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Labeled</span>
+            <div class="p-divider-labeled">or continue with</div>
+          </div>
+
+          <h3 class="p-h5 u-mt-xl">Breadcrumb</h3>
+          <p class="u-text-muted u-mt-sm">A horizontal trail of links ending with the current page. Always wrap in a <code>&lt;nav aria-label="Breadcrumb"&gt;</code> with the list as <code>&lt;ol&gt;</code>; mark the current item with <code>aria-current="page"</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default</span>
+            <nav class="p-breadcrumb" aria-label="Breadcrumb">
+              <ol class="p-breadcrumb__list" role="list">
+                <li class="p-breadcrumb__item"><a class="p-breadcrumb__link" href="#">Home</a></li>
+                <li class="p-breadcrumb__item"><a class="p-breadcrumb__link" href="#">Conditions we treat</a></li>
+                <li class="p-breadcrumb__item"><span class="p-breadcrumb__current" aria-current="page">Spinal cord injury</span></li>
+              </ol>
+            </nav>
+          </div>
+
+          <h3 class="p-h5 u-mt-xl">Pagination</h3>
+          <p class="u-text-muted u-mt-sm">Page navigation for listings. Disable the previous/next nav with <code>aria-disabled="true"</code> at boundaries; mark the current page with <code>aria-current="page"</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default</span>
+            <nav class="p-pagination" aria-label="Pagination">
+              <a class="p-pagination__nav" href="#" aria-disabled="true">← Previous</a>
+              <ul class="p-pagination__list" role="list">
+                <li><a class="p-pagination__link" href="#">1</a></li>
+                <li><span class="p-pagination__current" aria-current="page">2</span></li>
+                <li><a class="p-pagination__link" href="#">3</a></li>
+                <li><span class="p-pagination__ellipsis">…</span></li>
+                <li><a class="p-pagination__link" href="#">12</a></li>
+              </ul>
+              <a class="p-pagination__nav" href="#">Next →</a>
+            </nav>
+          </div>
+
+          <h4 class="p-h6 u-mt-xl">When to use these primitives</h4>
+          <ul>
+            <li><strong>Badge</strong> — short, persistent status (live, new, draft, accepting patients). Not for actions.</li>
+            <li><strong>Tag</strong> — interactive: filter chips, active-filter pills, removable selections.</li>
+            <li><strong>Divider</strong> — separate two unrelated sections within the same container. Skip it if a section heading already does the work.</li>
+            <li><strong>Breadcrumb</strong> — deep pages (3+ levels). Skip on top-level pages and listings.</li>
+            <li><strong>Pagination</strong> — paged listings of more than ~12 items. For infinite-scroll listings, use a "Load more" button instead.</li>
+          </ul>
+        </section>
 
         <section class="doc-section">
           <h2 class="p-h3">Container</h2>
