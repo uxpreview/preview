@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tokens — Primacy Wireframe System</title>
+  <link rel="stylesheet" href="../css/primacy.css">
+  <style>
+    .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--space-md); }
+    .tk-card { padding: var(--space-md); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: var(--space-xs); font-family: var(--font-mono); font-size: var(--text-xs); }
+    .tk-card__chip { block-size: 3rem; border-radius: var(--radius-sm); border: var(--border-thin) solid var(--color-border); }
+    .tk-card__name { font-weight: var(--weight-semibold); color: var(--color-text); }
+    .tk-card__hex { color: var(--color-text-muted); }
+    .tk-card__ratio { color: var(--color-text-subtle); }
+    .tk-row { display: flex; align-items: baseline; gap: var(--space-lg); padding-block: var(--space-md); border-block-end: var(--border-thin) solid var(--color-border); }
+    .tk-row__tag { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle); inline-size: 9rem; flex-shrink: 0; }
+    .tk-radius-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: var(--space-md); }
+    .tk-radius { padding: var(--space-md); aspect-ratio: 1; background-color: var(--color-bg-muted); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
+    .tk-shadow { padding: var(--space-md); aspect-ratio: 2/1; background-color: var(--color-bg); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="p-skip-link">Skip to content</a>
+
+<header class="p-topnav">
+  <div class="u-container p-topnav__inner">
+    <a href="../index.html" class="p-topnav__brand">
+      <span class="p-topnav__brand-mark">P</span>
+      <span>Primacy Wireframe System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="p-topnav__menu" role="list">
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link is-current" href="./tokens.html">Tokens</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="p-hero p-hero--editorial">
+  <div class="u-container">
+    <div class="p-hero__inner">
+      <span class="p-hero__eyebrow">Foundation</span>
+      <h1 class="p-hero__title">Tokens.</h1>
+      <p class="p-hero__lead">The only file in the system with raw values is <code>css/tokens.css</code>. To rebrand, edit that file. Components reference these variables; nothing else hardcodes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+      <aside aria-label="In-page navigation">
+        <nav class="p-inpagenav" data-p-inpagenav>
+          <div class="p-inpagenav__title">On this page</div>
+          <ul class="p-inpagenav__list" role="list">
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#color">Color</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#semantic">Semantic colors</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#type">Type</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#space">Spacing</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#radii">Radii</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#border">Border weights</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#shadow">Shadows</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#layout">Layout</a></li>
+            <li class="p-inpagenav__item"><a class="p-inpagenav__link" href="#motion">Motion</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="u-stack u-stack--3xl">
+
+        <section id="color" class="u-stack u-stack--md">
+          <h2 class="p-h3">Grayscale ramp</h2>
+          <p class="u-text-muted">Twelve steps, designed so any 50+ value clears 4.5:1 against white, and 40 clears 3:1 (border/large-text only).</p>
+          <div class="tk-grid">
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-00)"></div><span class="tk-card__name">gray-00</span><span class="tk-card__hex">#ffffff</span><span class="tk-card__ratio">— bg</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-05)"></div><span class="tk-card__name">gray-05</span><span class="tk-card__hex">#fafafa</span><span class="tk-card__ratio">— surface</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-10)"></div><span class="tk-card__name">gray-10</span><span class="tk-card__hex">#f4f4f4</span><span class="tk-card__ratio">— muted bg</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-20)"></div><span class="tk-card__name">gray-20</span><span class="tk-card__hex">#e6e6e6</span><span class="tk-card__ratio">— border</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-30)"></div><span class="tk-card__name">gray-30</span><span class="tk-card__hex">#d4d4d4</span><span class="tk-card__ratio">— inverse text</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-40)"></div><span class="tk-card__name">gray-40</span><span class="tk-card__hex">#a8a8a8</span><span class="tk-card__ratio">3.0:1 / large only</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-50)"></div><span class="tk-card__name">gray-50</span><span class="tk-card__hex">#767676</span><span class="tk-card__ratio">4.6:1 / body min</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-60)"></div><span class="tk-card__name">gray-60</span><span class="tk-card__hex">#595959</span><span class="tk-card__ratio">7.1:1 / muted text</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-70)"></div><span class="tk-card__name">gray-70</span><span class="tk-card__hex">#404040</span><span class="tk-card__ratio">10.4:1</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-80)"></div><span class="tk-card__name">gray-80</span><span class="tk-card__hex">#2b2b2b</span><span class="tk-card__ratio">14.2:1</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-90)"></div><span class="tk-card__name">gray-90</span><span class="tk-card__hex">#1a1a1a</span><span class="tk-card__ratio">17.1:1</span></div>
+            <div class="tk-card"><div class="tk-card__chip" style="background:var(--gray-95)"></div><span class="tk-card__name">gray-95</span><span class="tk-card__hex">#0f0f0f</span><span class="tk-card__ratio">19.0:1 / text</span></div>
+          </div>
+        </section>
+
+        <section id="semantic" class="u-stack u-stack--md">
+          <h2 class="p-h3">Semantic colors</h2>
+          <p class="u-text-muted">Always reach for these before the raw ramp. A semantic token explains <em>intent</em>; a ramp value is just a number.</p>
+          <div class="p-table-wrap">
+            <table class="p-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Maps to</th><th scope="col">Use for</th></tr></thead>
+              <tbody>
+                <tr><td><code>--color-bg</code></td><td><code>--gray-00</code></td><td>Default page and surface background</td></tr>
+                <tr><td><code>--color-bg-subtle</code></td><td><code>--gray-05</code></td><td>Quiet section backgrounds</td></tr>
+                <tr><td><code>--color-bg-muted</code></td><td><code>--gray-10</code></td><td>Field backgrounds, hover surfaces</td></tr>
+                <tr><td><code>--color-bg-inverse</code></td><td><code>--gray-95</code></td><td>Dark sections</td></tr>
+                <tr><td><code>--color-text</code></td><td><code>--gray-95</code></td><td>Default body and heading text</td></tr>
+                <tr><td><code>--color-text-muted</code></td><td><code>--gray-60</code></td><td>Lead paragraphs, captions, secondary text</td></tr>
+                <tr><td><code>--color-text-subtle</code></td><td><code>--gray-50</code></td><td>Placeholders, tertiary meta</td></tr>
+                <tr><td><code>--color-border</code></td><td><code>--gray-20</code></td><td>Dividers, default borders</td></tr>
+                <tr><td><code>--color-border-strong</code></td><td><code>--gray-40</code></td><td>Form fields, emphasized borders</td></tr>
+                <tr><td><code>--color-accent</code></td><td><code>--gray-95</code></td><td>Primary buttons, current-state indicators</td></tr>
+                <tr><td><code>--color-focus</code></td><td><code>--gray-95</code></td><td>Focus ring</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="type" class="u-stack u-stack--md">
+          <h2 class="p-h3">Type scale</h2>
+          <p class="u-text-muted">Eleven steps. Headings use semibold or bold; body text uses regular at 16px with 1.5 line-height.</p>
+          <div>
+            <div class="tk-row"><span class="tk-row__tag">--text-6xl / 88</span><span style="font-size:var(--text-6xl); line-height:var(--leading-tight); letter-spacing:var(--tracking-tight); font-weight:var(--weight-bold)">Aa</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-5xl / 64</span><span style="font-size:var(--text-5xl); line-height:var(--leading-tight); letter-spacing:var(--tracking-tight); font-weight:var(--weight-bold)">Display</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-4xl / 48</span><span style="font-size:var(--text-4xl); font-weight:var(--weight-semibold)">Heading 1</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-3xl / 36</span><span style="font-size:var(--text-3xl); font-weight:var(--weight-semibold)">Heading 2</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-2xl / 28</span><span style="font-size:var(--text-2xl); font-weight:var(--weight-semibold)">Heading 3</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-xl / 22</span><span style="font-size:var(--text-xl); font-weight:var(--weight-semibold)">Heading 4</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-lg / 18</span><span style="font-size:var(--text-lg)">Lead paragraph</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-md / 16</span><span style="font-size:var(--text-md)">Body text</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-sm / 14</span><span style="font-size:var(--text-sm)">Meta and helpers</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-xs / 13</span><span style="font-size:var(--text-xs)">Captions, hints</span></div>
+            <div class="tk-row"><span class="tk-row__tag">--text-2xs / 12</span><span style="font-size:var(--text-2xs); text-transform:uppercase; letter-spacing:var(--tracking-wider); font-weight:var(--weight-semibold)">Eyebrow / tag</span></div>
+          </div>
+        </section>
+
+        <section id="space" class="u-stack u-stack--md">
+          <h2 class="p-h3">Spacing scale</h2>
+          <p class="u-text-muted">Eleven steps on a 4px base. Use semantic spacing — <code>--space-md</code>, not <code>16px</code> — so adjustments cascade.</p>
+          <div>
+            <div class="tk-row"><span class="tk-row__tag">--space-3xs / 2</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-3xs)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-2xs / 4</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-2xs)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-xs / 8</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-xs)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-sm / 12</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-sm)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-md / 16</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-md)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-lg / 24</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-lg)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-xl / 32</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-xl)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-2xl / 48</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-2xl)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-3xl / 64</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-3xl)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-4xl / 96</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-4xl)"></span></div>
+            <div class="tk-row"><span class="tk-row__tag">--space-5xl / 128</span><span style="block-size: 0.75rem; background:var(--color-bg-inverse); border-radius:var(--radius-xs); inline-size: var(--space-5xl)"></span></div>
+          </div>
+        </section>
+
+        <section id="radii" class="u-stack u-stack--md">
+          <h2 class="p-h3">Radii</h2>
+          <p class="u-text-muted">Generous on purpose. Soft geometry is part of the system's personality.</p>
+          <div class="tk-radius-row">
+            <div class="tk-radius" style="border-radius:var(--radius-xs)">xs · 4</div>
+            <div class="tk-radius" style="border-radius:var(--radius-sm)">sm · 8</div>
+            <div class="tk-radius" style="border-radius:var(--radius-md)">md · 12</div>
+            <div class="tk-radius" style="border-radius:var(--radius-lg)">lg · 16</div>
+            <div class="tk-radius" style="border-radius:var(--radius-xl)">xl · 24</div>
+            <div class="tk-radius" style="border-radius:var(--radius-2xl)">2xl · 32</div>
+            <div class="tk-radius" style="border-radius:var(--radius-pill)">pill</div>
+          </div>
+        </section>
+
+        <section id="border" class="u-stack u-stack--md">
+          <h2 class="p-h3">Border weights</h2>
+          <div class="tk-row"><span class="tk-row__tag">--border-thin</span><span style="block-size: 1px; background:var(--color-text); inline-size: 8rem"></span></div>
+          <div class="tk-row"><span class="tk-row__tag">--border-md</span><span style="block-size: 2px; background:var(--color-text); inline-size: 8rem"></span></div>
+          <div class="tk-row"><span class="tk-row__tag">--border-thick</span><span style="block-size: 3px; background:var(--color-text); inline-size: 8rem"></span></div>
+        </section>
+
+        <section id="shadow" class="u-stack u-stack--md">
+          <h2 class="p-h3">Shadows</h2>
+          <p class="u-text-muted">Used sparingly — wireframes shouldn't feel app-y. Mostly reserved for popovers and elevated cards.</p>
+          <div class="tk-radius-row">
+            <div class="tk-shadow" style="box-shadow:var(--shadow-xs)">xs</div>
+            <div class="tk-shadow" style="box-shadow:var(--shadow-sm)">sm</div>
+            <div class="tk-shadow" style="box-shadow:var(--shadow-md)">md</div>
+            <div class="tk-shadow" style="box-shadow:var(--shadow-lg)">lg</div>
+          </div>
+        </section>
+
+        <section id="layout" class="u-stack u-stack--md">
+          <h2 class="p-h3">Layout</h2>
+          <h3 class="p-h5">Containers</h3>
+          <div class="p-table-wrap">
+            <table class="p-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Max width</th><th scope="col">Class</th></tr></thead>
+              <tbody>
+                <tr><td><code>--container-narrow</code></td><td>40rem / 640px</td><td><code>.u-container--narrow</code></td></tr>
+                <tr><td><code>--container-md</code></td><td>54rem / 864px</td><td><code>.u-container--md</code></td></tr>
+                <tr><td><code>--container-wide</code></td><td>75rem / 1200px</td><td><code>.u-container--wide</code> (default)</td></tr>
+                <tr><td><code>--container-full</code></td><td>90rem / 1440px</td><td><code>.u-container--full</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 class="p-h5">Breakpoints</h3>
+          <div class="p-table-wrap">
+            <table class="p-table">
+              <thead><tr><th scope="col">Name</th><th scope="col">Min width</th><th scope="col">In media query</th></tr></thead>
+              <tbody>
+                <tr><td>sm</td><td>480px</td><td><code>(min-width: 30em)</code></td></tr>
+                <tr><td>md</td><td>768px</td><td><code>(min-width: 48em)</code></td></tr>
+                <tr><td>lg</td><td>1024px</td><td><code>(min-width: 64em)</code></td></tr>
+                <tr><td>xl</td><td>1280px</td><td><code>(min-width: 80em)</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="motion" class="u-stack u-stack--md">
+          <h2 class="p-h3">Motion</h2>
+          <p class="u-text-muted">All durations collapse to 0 when <code>prefers-reduced-motion: reduce</code> is set.</p>
+          <div class="p-table-wrap">
+            <table class="p-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Use for</th></tr></thead>
+              <tbody>
+                <tr><td><code>--duration-fast</code></td><td>150ms</td><td>Hover changes, color shifts</td></tr>
+                <tr><td><code>--duration-base</code></td><td>250ms</td><td>Drawer open, expand/collapse</td></tr>
+                <tr><td><code>--duration-slow</code></td><td>400ms</td><td>Page-level transitions</td></tr>
+                <tr><td><code>--ease-out</code></td><td>cubic-bezier(.16,1,.3,1)</td><td>Default — "soft landing"</td></tr>
+                <tr><td><code>--ease-in-out</code></td><td>cubic-bezier(.4,0,.2,1)</td><td>Reversible state changes</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="p-footer p-footer--compact">
+  <div class="u-container p-footer__inner">
+    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
+    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+  </div>
+</footer>
+
+<script src="../js/primacy.js" defer></script>
+</body>
+</html>

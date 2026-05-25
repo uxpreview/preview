@@ -1,0 +1,155 @@
+/* ============================================================
+   Layout primitives — container, stack, cluster, grid, sidebar.
+   Every page leans on these instead of bespoke flex/grid.
+   ============================================================ */
+
+/* ---------- Container ----------
+   Set max width with --container-max if needed:
+     <div class="u-container" style="--container-max: var(--container-narrow)">
+*/
+.u-container {
+  --container-max: var(--container-wide);
+  inline-size: 100%;
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.u-container--narrow { --container-max: var(--container-narrow); }
+.u-container--md     { --container-max: var(--container-md); }
+.u-container--wide   { --container-max: var(--container-wide); }
+.u-container--full   { --container-max: var(--container-full); }
+
+/* ---------- Stack ----------
+   Vertical rhythm. Override gap with --stack-gap.
+*/
+.u-stack {
+  --stack-gap: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap);
+}
+
+.u-stack--3xs { --stack-gap: var(--space-3xs); }
+.u-stack--2xs { --stack-gap: var(--space-2xs); }
+.u-stack--xs  { --stack-gap: var(--space-xs); }
+.u-stack--sm  { --stack-gap: var(--space-sm); }
+.u-stack--md  { --stack-gap: var(--space-md); }
+.u-stack--lg  { --stack-gap: var(--space-lg); }
+.u-stack--xl  { --stack-gap: var(--space-xl); }
+.u-stack--2xl { --stack-gap: var(--space-2xl); }
+.u-stack--3xl { --stack-gap: var(--space-3xl); }
+
+/* ---------- Cluster ----------
+   Horizontal wrap with gap.
+*/
+.u-cluster {
+  --cluster-gap: var(--space-sm);
+  --cluster-align: center;
+  --cluster-justify: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: var(--cluster-align);
+  justify-content: var(--cluster-justify);
+  gap: var(--cluster-gap);
+}
+
+.u-cluster--xs { --cluster-gap: var(--space-xs); }
+.u-cluster--md { --cluster-gap: var(--space-md); }
+.u-cluster--lg { --cluster-gap: var(--space-lg); }
+.u-cluster--between { --cluster-justify: space-between; }
+.u-cluster--end { --cluster-justify: flex-end; }
+.u-cluster--center { --cluster-justify: center; }
+.u-cluster--start-align { --cluster-align: flex-start; }
+.u-cluster--baseline { --cluster-align: baseline; }
+
+/* ---------- Grid ----------
+   Auto-fit responsive grid. Override --grid-min and --grid-gap.
+*/
+.u-grid {
+  --grid-min: 16rem;
+  --grid-gap: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min), 100%), 1fr));
+  gap: var(--grid-gap);
+}
+
+.u-grid--2 {
+  grid-template-columns: 1fr;
+}
+.u-grid--3 {
+  grid-template-columns: 1fr;
+}
+.u-grid--4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 48em) {
+  .u-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .u-grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .u-grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 64em) {
+  .u-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .u-grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---------- Sidebar ----------
+   Two-track layout: a fixed-width sidebar and a fluid main.
+*/
+.u-sidebar {
+  --sidebar-width: 16rem;
+  --sidebar-gap: var(--space-2xl);
+  --sidebar-min-main: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sidebar-gap);
+}
+
+.u-sidebar > :first-child {
+  flex-basis: var(--sidebar-width);
+  flex-grow: 1;
+}
+
+.u-sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-min-main);
+}
+
+.u-sidebar--right > :first-child { order: 2; }
+
+/* ---------- Section ----------
+   Vertical section padding.
+*/
+.u-section {
+  --section-pad: var(--space-3xl);
+  padding-block: var(--section-pad);
+}
+
+.u-section--sm  { --section-pad: var(--space-2xl); }
+.u-section--md  { --section-pad: var(--space-3xl); }
+.u-section--lg  { --section-pad: var(--space-4xl); }
+.u-section--xl  { --section-pad: var(--space-5xl); }
+
+@media (min-width: 48em) {
+  .u-section--lg { --section-pad: var(--space-5xl); }
+}
+
+/* ---------- Center ----------
+   Center child horizontally with optional max width.
+*/
+.u-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------- Flow ----------
+   Owl-selector spacing for prose-like containers without grid/flex gap.
+*/
+.u-flow > * + * {
+  margin-block-start: var(--flow-gap, var(--space-md));
+}

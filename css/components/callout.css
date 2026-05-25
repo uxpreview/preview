@@ -1,0 +1,86 @@
+/* ============================================================
+   Callout — boxed editorial aside.
+   Variants: default, subtle, inverse, bordered
+   ============================================================ */
+
+.p-callout {
+  --callout-bg: var(--color-bg-muted);
+  --callout-fg: var(--color-text);
+  --callout-border: transparent;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  background-color: var(--callout-bg);
+  color: var(--callout-fg);
+  border: var(--border-thin) solid var(--callout-border);
+  border-radius: var(--radius-lg);
+}
+
+.p-callout--subtle {
+  --callout-bg: var(--color-bg-subtle);
+}
+
+.p-callout--bordered {
+  --callout-bg: transparent;
+  --callout-border: var(--color-border-strong);
+}
+
+.p-callout--inverse {
+  --callout-bg: var(--color-bg-inverse);
+  --callout-fg: var(--color-text-inverse);
+}
+
+.p-callout__eyebrow {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-muted);
+}
+
+.p-callout--inverse .p-callout__eyebrow {
+  color: var(--gray-40);
+}
+
+.p-callout__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.p-callout__body {
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: inherit;
+}
+
+.p-callout--subtle .p-callout__body,
+.p-callout--bordered .p-callout__body {
+  color: var(--color-text-muted);
+}
+
+.p-callout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-xs);
+}
+
+/* Inline (in-content) callout — smaller, denser */
+.p-callout--inline {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border-inline-start: var(--border-thick) solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--color-bg-subtle);
+}
+
+.p-callout--inline .p-callout__body {
+  font-size: var(--text-sm);
+}

@@ -1,0 +1,64 @@
+/* ============================================================
+   Accordion — built on native <details>/<summary>.
+   No JS required; data-p-accordion enables one-open behavior.
+   ============================================================ */
+
+.p-accordion {
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+
+.p-accordion__item {
+  border-block-end: var(--border-thin) solid var(--color-border);
+}
+
+.p-accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.p-accordion__summary::-webkit-details-marker { display: none; }
+
+.p-accordion__summary:hover {
+  color: var(--color-text);
+}
+
+.p-accordion__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  flex-shrink: 0;
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: 50%;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.p-accordion__icon::before {
+  content: "+";
+}
+
+.p-accordion__item[open] .p-accordion__icon::before {
+  content: "−";
+}
+
+.p-accordion__body {
+  padding-block-end: var(--space-lg);
+  padding-inline-end: var(--space-2xl);
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  max-inline-size: 70ch;
+}

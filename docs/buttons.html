@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buttons — Primacy Wireframe System</title>
+  <link rel="stylesheet" href="../css/primacy.css">
+  <style>
+    /* Doc-page-only scaffold. Keep tiny. */
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .doc-snippet { padding: var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto; white-space: pre; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="p-skip-link">Skip to content</a>
+
+<header class="p-topnav">
+  <div class="u-container p-topnav__inner">
+    <a href="../index.html" class="p-topnav__brand">
+      <span class="p-topnav__brand-mark">P</span>
+      <span>Primacy Wireframe System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="p-topnav__menu" role="list">
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero p-hero--editorial">
+    <div class="u-container">
+      <div class="p-hero__inner">
+        <span class="p-hero__eyebrow">Component</span>
+        <h1 class="p-hero__title">Buttons</h1>
+        <p class="p-hero__lead">A pill-shaped action with three emphasis levels and three sizes. Use exactly one primary per view and reach for ghost in dense interfaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-section">
+    <div class="u-container">
+      <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section">
+          <h2 class="p-h3">Anatomy</h2>
+          <p class="u-text-muted u-mt-sm">A button is a single rounded element with an optional leading or trailing icon, a label, and a minimum 44px touch target on every size.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default</span>
+            <button class="p-button" type="button">Make an appointment</button>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">When to use</h2>
+          <ul>
+            <li>Use <strong>primary</strong> for the single most important action in a view (one per region).</li>
+            <li>Use <strong>secondary</strong> for the supporting action paired with a primary.</li>
+            <li>Use <strong>ghost</strong> in toolbars, card footers, and dense surfaces where a bordered button would feel heavy.</li>
+            <li>Use <strong>icon-only</strong> for utility actions where the icon's meaning is unambiguous and an <code>aria-label</code> is provided.</li>
+          </ul>
+          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <ul>
+            <li>Do not use a button when navigating; use an <code>&lt;a&gt;</code> styled as a button instead.</li>
+            <li>Do not stack three or more primary buttons; rework the page hierarchy.</li>
+            <li>Do not use icon-only buttons for destructive actions without confirmation.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Variants</h2>
+          <p class="u-text-muted u-mt-sm">Three emphasis levels, three sizes, plus modifiers for icons, full width, and loading state.</p>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Emphasis — primary, secondary, ghost</span>
+            <div class="u-cluster">
+              <button class="p-button" type="button">Primary</button>
+              <button class="p-button p-button--secondary" type="button">Secondary</button>
+              <button class="p-button p-button--ghost" type="button">Ghost</button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Sizes — sm, md (default), lg</span>
+            <div class="u-cluster u-cluster--baseline">
+              <button class="p-button p-button--sm" type="button">Small</button>
+              <button class="p-button" type="button">Default</button>
+              <button class="p-button p-button--lg" type="button">Large</button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">With icon — leading and trailing</span>
+            <div class="u-cluster">
+              <button class="p-button" type="button"><span class="p-button__icon" aria-hidden="true">→</span><span>Continue</span></button>
+              <button class="p-button p-button--secondary" type="button"><span>Open in new tab</span><span class="p-button__icon" aria-hidden="true">↗</span></button>
+              <button class="p-button p-button--ghost" type="button"><span class="p-button__icon" aria-hidden="true">↓</span><span>Download</span></button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Icon-only — sm, md, lg</span>
+            <div class="u-cluster u-cluster--baseline">
+              <button class="p-button p-button--icon-only p-button--sm" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+              <button class="p-button p-button--icon-only" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+              <button class="p-button p-button--icon-only p-button--lg" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+              <button class="p-button p-button--icon-only p-button--secondary" type="button" aria-label="More options"><span aria-hidden="true">⋯</span></button>
+              <button class="p-button p-button--icon-only p-button--ghost" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Full width</span>
+            <button class="p-button p-button--full" type="button">Submit referral</button>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Loading</span>
+            <div class="u-cluster">
+              <button class="p-button is-loading" type="button">Submitting</button>
+              <button class="p-button p-button--secondary is-loading" type="button">Loading</button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Disabled</span>
+            <div class="u-cluster">
+              <button class="p-button" type="button" disabled>Unavailable</button>
+              <button class="p-button p-button--secondary" type="button" disabled>Unavailable</button>
+              <button class="p-button p-button--ghost" type="button" disabled>Unavailable</button>
+            </div>
+          </div>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Button group</span>
+            <div class="p-button-group">
+              <button class="p-button p-button--secondary p-button--sm" type="button">Day</button>
+              <button class="p-button p-button--secondary p-button--sm" type="button">Week</button>
+              <button class="p-button p-button--secondary p-button--sm" type="button">Month</button>
+              <button class="p-button p-button--secondary p-button--sm" type="button">Year</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Accessibility</h2>
+          <ul>
+            <li>Always use <code>&lt;button type="button"&gt;</code> outside forms and <code>type="submit"</code> for primary form actions.</li>
+            <li>Icon-only buttons require an <code>aria-label</code>; the icon element should be <code>aria-hidden="true"</code>.</li>
+            <li>Every size meets a 44×44 touch target except <code>--sm</code>, which is intended for dense toolbars and meets 36×36 with adequate spacing.</li>
+            <li>Focus is rendered as a 2px outline with offset; never remove it.</li>
+            <li>Loading state sets <code>pointer-events: none</code> and hides label text; pair with <code>aria-busy="true"</code> when wiring up.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Code</h2>
+          <details>
+            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;button class="p-button" type="button"&gt;Make an appointment&lt;/button&gt;
+&lt;button class="p-button p-button--secondary" type="button"&gt;Learn more&lt;/button&gt;
+&lt;button class="p-button p-button--ghost p-button--sm" type="button"&gt;Cancel&lt;/button&gt;
+&lt;button class="p-button p-button--icon-only" type="button" aria-label="Search"&gt;
+  &lt;span aria-hidden="true"&gt;⌕&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+          </details>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="p-footer p-footer--compact">
+  <div class="u-container p-footer__inner">
+    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
+    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+  </div>
+</footer>
+
+<script src="../js/primacy.js" defer></script>
+</body>
+</html>

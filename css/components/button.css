@@ -1,0 +1,167 @@
+/* ============================================================
+   Button
+   Variants: primary (default), secondary, ghost
+   Sizes:    sm, md (default), lg
+   Modifiers: --icon, --icon-only, --full
+   States:    :hover, :focus-visible, :disabled, .is-loading
+   ============================================================ */
+
+.p-button {
+  --btn-bg: var(--color-accent);
+  --btn-fg: var(--color-text-inverse);
+  --btn-border: var(--color-accent);
+  --btn-pad-x: var(--space-lg);
+  --btn-pad-y: var(--space-sm);
+  --btn-font-size: var(--text-md);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+
+  min-block-size: 2.75rem; /* 44px touch target */
+  padding-block: var(--btn-pad-y);
+  padding-inline: var(--btn-pad-x);
+
+  font-family: inherit;
+  font-size: var(--btn-font-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+
+  background-color: var(--btn-bg);
+  color: var(--btn-fg);
+  border: var(--border-thin) solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.p-button:hover {
+  --btn-bg: var(--color-accent-hover);
+  --btn-border: var(--color-accent-hover);
+  text-decoration: none;
+}
+
+.p-button:active {
+  transform: translateY(1px);
+}
+
+.p-button:disabled,
+.p-button.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------- Variants ---------- */
+.p-button--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-text);
+  --btn-border: var(--color-border-strong);
+}
+.p-button--secondary:hover {
+  --btn-bg: var(--color-bg-muted);
+  --btn-border: var(--color-text);
+}
+
+.p-button--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--color-text);
+  --btn-border: transparent;
+}
+.p-button--ghost:hover {
+  --btn-bg: var(--color-bg-muted);
+  --btn-border: transparent;
+}
+
+/* ---------- Sizes ---------- */
+.p-button--sm {
+  --btn-pad-x: var(--space-md);
+  --btn-pad-y: var(--space-xs);
+  --btn-font-size: var(--text-sm);
+  min-block-size: 2.25rem;
+}
+
+.p-button--lg {
+  --btn-pad-x: var(--space-xl);
+  --btn-pad-y: var(--space-md);
+  --btn-font-size: var(--text-lg);
+  min-block-size: 3.25rem;
+}
+
+/* ---------- Icon-only ---------- */
+.p-button--icon-only {
+  --btn-pad-x: var(--space-sm);
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  padding: 0;
+  border-radius: var(--radius-pill);
+}
+
+.p-button--icon-only.p-button--sm {
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+}
+
+.p-button--icon-only.p-button--lg {
+  inline-size: 3.25rem;
+  block-size: 3.25rem;
+}
+
+/* ---------- Full width ---------- */
+.p-button--full {
+  display: flex;
+  inline-size: 100%;
+}
+
+/* ---------- Icon child ---------- */
+.p-button__icon {
+  display: inline-flex;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  flex-shrink: 0;
+}
+.p-button__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* ---------- Loading state ---------- */
+.p-button.is-loading {
+  pointer-events: none;
+  color: transparent;
+  position: relative;
+}
+.p-button.is-loading::after {
+  content: "";
+  position: absolute;
+  inline-size: 1em;
+  block-size: 1em;
+  border-radius: 50%;
+  border: var(--border-md) solid currentColor;
+  border-block-end-color: transparent;
+  color: var(--btn-fg);
+  animation: p-spin 0.7s linear infinite;
+}
+
+@keyframes p-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-button.is-loading::after { animation: none; }
+}
+
+/* ---------- Button group ---------- */
+.p-button-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}

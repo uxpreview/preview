@@ -1,0 +1,50 @@
+/* ============================================================
+   Badge — small inline status label.
+   Variants: default, subtle, outline, inverse
+   ============================================================ */
+
+.p-badge {
+  --badge-bg: var(--color-bg-muted);
+  --badge-fg: var(--color-text);
+  --badge-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding-block: var(--space-3xs);
+  padding-inline: var(--space-xs);
+
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+
+  background-color: var(--badge-bg);
+  color: var(--badge-fg);
+  border: var(--border-thin) solid var(--badge-border);
+  border-radius: var(--radius-pill);
+}
+
+.p-badge--subtle {
+  --badge-bg: var(--color-bg-subtle);
+  --badge-fg: var(--color-text-muted);
+}
+
+.p-badge--outline {
+  --badge-bg: transparent;
+  --badge-fg: var(--color-text);
+  --badge-border: var(--color-border);
+}
+
+.p-badge--inverse {
+  --badge-bg: var(--color-bg-inverse);
+  --badge-fg: var(--color-text-inverse);
+}
+
+.p-badge__dot {
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}

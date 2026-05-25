@@ -1,0 +1,53 @@
+/* ============================================================
+   Utilities — tiny single-purpose helpers. Keep this file small;
+   most styling should live in components.
+   ============================================================ */
+
+/* ---------- Text alignment ---------- */
+.u-text-left    { text-align: start; }
+.u-text-center  { text-align: center; }
+.u-text-right   { text-align: end; }
+.u-text-balance { text-wrap: balance; }
+.u-text-pretty  { text-wrap: pretty; }
+
+/* ---------- Text color ---------- */
+.u-text-default  { color: var(--color-text); }
+.u-text-muted    { color: var(--color-text-muted); }
+.u-text-subtle   { color: var(--color-text-subtle); }
+.u-text-inverse  { color: var(--color-text-inverse); }
+
+/* ---------- Background ---------- */
+.u-bg-default { background-color: var(--color-bg); }
+.u-bg-subtle  { background-color: var(--color-bg-subtle); }
+.u-bg-muted   { background-color: var(--color-bg-muted); }
+.u-bg-inverse {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.u-bg-inverse a {
+  color: var(--color-text-inverse);
+}
+
+/* ---------- Visibility ---------- */
+.u-hidden { display: none !important; }
+
+@media (max-width: 47.99em) {
+  .u-hidden-mobile { display: none !important; }
+}
+
+@media (min-width: 48em) {
+  .u-hidden-desktop { display: none !important; }
+}
+
+/* ---------- Width helpers ---------- */
+.u-full-width { inline-size: 100%; }
+.u-max-prose  { max-inline-size: 65ch; }
+
+/* ---------- Spacing margins (use sparingly — prefer stack/cluster) ---------- */
+.u-mt-0  { margin-block-start: 0; }
+.u-mt-xs { margin-block-start: var(--space-xs); }
+.u-mt-sm { margin-block-start: var(--space-sm); }
+.u-mt-md { margin-block-start: var(--space-md); }
+.u-mt-lg { margin-block-start: var(--space-lg); }
+.u-mt-xl { margin-block-start: var(--space-xl); }

@@ -1,0 +1,100 @@
+/* ============================================================
+   Table — data and comparison.
+   ============================================================ */
+
+.p-table-wrap {
+  inline-size: 100%;
+  overflow-x: auto;
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.p-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  text-align: start;
+}
+
+.p-table th,
+.p-table td {
+  padding-block: var(--space-md);
+  padding-inline: var(--space-md);
+  text-align: start;
+  vertical-align: top;
+}
+
+.p-table thead {
+  background-color: var(--color-bg-subtle);
+  border-block-end: var(--border-thin) solid var(--color-border);
+}
+
+.p-table th {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+.p-table tbody tr + tr {
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+
+.p-table tbody tr:hover {
+  background-color: var(--color-bg-subtle);
+}
+
+.p-table--striped tbody tr:nth-child(even) {
+  background-color: var(--color-bg-subtle);
+}
+
+/* Numeric / tabular alignment */
+.p-table__num {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Compact variant */
+.p-table--compact th,
+.p-table--compact td {
+  padding-block: var(--space-sm);
+}
+
+/* ---------- Comparison table ---------- */
+.p-table--comparison {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.p-table--comparison th {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--color-text);
+}
+
+.p-table--comparison th[scope="col"]:not(:first-child),
+.p-table--comparison td:not(:first-child) {
+  text-align: center;
+}
+
+.p-table--comparison th[scope="col"].is-featured {
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.p-table--comparison .p-table__check::before {
+  content: "✓";
+  font-weight: var(--weight-bold);
+}
+
+.p-table--comparison .p-table__cross {
+  color: var(--color-text-subtle);
+}
+.p-table--comparison .p-table__cross::before {
+  content: "—";
+}

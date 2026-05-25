@@ -1,0 +1,157 @@
+/* ============================================================
+   Primacy Wireframe System — Tokens
+   The ONLY file in the system with raw values. Everything else
+   references these custom properties. To rebrand: edit here.
+   ============================================================ */
+
+:root {
+  /* ---------- Grayscale ramp ----------
+     Designed against WCAG 2.2 AA on white (#fff):
+       gray-50 → 4.6:1 (body min)
+       gray-40 → 3.0:1 (large text / borders only)
+       gray-60+ → all 7:1+
+  */
+  --gray-00: #ffffff;
+  --gray-05: #fafafa;
+  --gray-10: #f4f4f4;
+  --gray-20: #e6e6e6;
+  --gray-30: #d4d4d4;
+  --gray-40: #a8a8a8;
+  --gray-50: #767676;
+  --gray-60: #595959;
+  --gray-70: #404040;
+  --gray-80: #2b2b2b;
+  --gray-90: #1a1a1a;
+  --gray-95: #0f0f0f;
+  --gray-100: #000000;
+
+  /* ---------- Semantic colors (alias the ramp) ---------- */
+  --color-bg: var(--gray-00);
+  --color-bg-subtle: var(--gray-05);
+  --color-bg-muted: var(--gray-10);
+  --color-bg-inverse: var(--gray-95);
+
+  --color-text: var(--gray-95);
+  --color-text-muted: var(--gray-60);
+  --color-text-subtle: var(--gray-50);
+  --color-text-inverse: var(--gray-00);
+
+  --color-border: var(--gray-20);
+  --color-border-strong: var(--gray-40);
+  --color-border-inverse: var(--gray-80);
+
+  --color-accent: var(--gray-95);
+  --color-accent-hover: var(--gray-70);
+  --color-focus: var(--gray-95);
+  --color-overlay: rgba(15, 15, 15, 0.6);
+
+  /* ---------- Spacing scale (4px base) ---------- */
+  --space-3xs: 0.125rem;  /* 2 */
+  --space-2xs: 0.25rem;   /* 4 */
+  --space-xs:  0.5rem;    /* 8 */
+  --space-sm:  0.75rem;   /* 12 */
+  --space-md:  1rem;      /* 16 */
+  --space-lg:  1.5rem;    /* 24 */
+  --space-xl:  2rem;      /* 32 */
+  --space-2xl: 3rem;      /* 48 */
+  --space-3xl: 4rem;      /* 64 */
+  --space-4xl: 6rem;      /* 96 */
+  --space-5xl: 8rem;      /* 128 */
+
+  /* ---------- Type scale ---------- */
+  --text-2xs: 0.75rem;     /* 12 */
+  --text-xs:  0.8125rem;   /* 13 */
+  --text-sm:  0.875rem;    /* 14 */
+  --text-md:  1rem;        /* 16 */
+  --text-lg:  1.125rem;    /* 18 */
+  --text-xl:  1.375rem;    /* 22 */
+  --text-2xl: 1.75rem;     /* 28 */
+  --text-3xl: 2.25rem;     /* 36 */
+  --text-4xl: 3rem;        /* 48 */
+  --text-5xl: 4rem;        /* 64 */
+  --text-6xl: 5.5rem;      /* 88 */
+
+  /* ---------- Font families ---------- */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Source Serif Pro", Georgia, Charter, ui-serif, serif;
+  --font-mono: ui-monospace, "SF Mono", Monaco, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ---------- Font weights ---------- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---------- Line heights ---------- */
+  --leading-tight: 1.1;
+  --leading-snug: 1.25;
+  --leading-normal: 1.5;
+  --leading-loose: 1.7;
+
+  /* ---------- Letter spacing ---------- */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
+
+  /* ---------- Radii (generous on purpose — MotherDuck-y) ---------- */
+  --radius-xs: 0.25rem;    /* 4 */
+  --radius-sm: 0.5rem;     /* 8 */
+  --radius-md: 0.75rem;    /* 12 */
+  --radius-lg: 1rem;       /* 16 */
+  --radius-xl: 1.5rem;     /* 24 */
+  --radius-2xl: 2rem;      /* 32 */
+  --radius-pill: 999px;
+
+  /* ---------- Border weights ---------- */
+  --border-thin: 1px;
+  --border-md: 2px;
+  --border-thick: 3px;
+
+  /* ---------- Shadows (single-layer, neutral, low opacity) ---------- */
+  --shadow-xs: 0 1px 2px rgba(15, 15, 15, 0.04);
+  --shadow-sm: 0 2px 6px rgba(15, 15, 15, 0.06);
+  --shadow-md: 0 6px 16px rgba(15, 15, 15, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 15, 15, 0.10);
+
+  /* ---------- Containers ---------- */
+  --container-narrow: 40rem;   /* 640 */
+  --container-md: 54rem;       /* 864 */
+  --container-wide: 75rem;     /* 1200 */
+  --container-full: 90rem;     /* 1440 */
+  --container-padding-x: var(--space-lg);
+
+  /* ---------- Z-index scale ---------- */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- Focus ring ---------- */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+}
+
+/* Breakpoint constants (for documentation — used in media queries):
+   sm: 30em   / 480px
+   md: 48em   / 768px
+   lg: 64em   / 1024px
+   xl: 80em   / 1280px
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
