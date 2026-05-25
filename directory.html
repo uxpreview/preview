@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Directory — Wireframe Design System</title>
+  <meta name="description" content="A flat index of every page in the Wireframe Design System, plus the external research and standards it draws on.">
+  <link rel="stylesheet" href="css/wire.css">
+  <style>
+    /* Page-local layout for directory rows — stacked title + description,
+       grouped by section. Kept tiny on purpose; everything else is the system. */
+    .dir-list { padding: 0; margin: 0; list-style: none; }
+    .dir-list__item {
+      padding-block: var(--space-md);
+      border-block-end: var(--border-thin) solid var(--color-border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-xs) var(--space-lg);
+      align-items: baseline;
+    }
+    .dir-list__item:last-child { border-block-end: 0; }
+    .dir-list__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); margin: 0; }
+    .dir-list__title a { color: var(--color-text); text-decoration: none; }
+    .dir-list__title a:hover { text-decoration: underline; text-underline-offset: 0.18em; }
+    .dir-list__path { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle); font-weight: var(--weight-regular); }
+    .dir-list__desc {
+      grid-column: 1 / -1;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin: 0;
+      max-inline-size: 60ch;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- =================== TOP NAV =================== -->
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./docs/principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./docs/tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./docs/research.html">Research</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link is-current" href="./directory.html" aria-current="page">Directory</a></li>
+      </ul>
+    </nav>
+    <div class="wire-topnav__utility">
+      <a class="wire-button wire-button--secondary wire-button--sm u-hidden-mobile" href="./pages/hospital-homepage.html">Riverside demo</a>
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="mobile-nav" aria-label="Open menu">
+        <span aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<aside id="mobile-nav" class="wire-drawer" aria-label="Mobile navigation">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-drawer__close" data-wire-drawer-close>← Close</button>
+  <nav>
+    <ul class="wire-sidenav__list" role="list">
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./index.html">Components</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./docs/principles.html">Principles</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./docs/tokens.html">Tokens</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./docs/research.html">Research</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="./directory.html" aria-current="page">Directory</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./pages/hospital-homepage.html">Riverside demo</a></li>
+    </ul>
+  </nav>
+</aside>
+<div class="wire-drawer-backdrop"></div>
+
+<main id="main">
+
+<!-- =================== HERO =================== -->
+<section class="wire-hero wire-hero--editorial">
+  <div class="u-container">
+    <div class="wire-hero__inner">
+      <span class="wire-hero__eyebrow">Site index</span>
+      <h1 class="wire-hero__title">Everything in this system, in one list.</h1>
+      <p class="wire-hero__lead">Twenty-seven pages and a dozen external references. The system landing under <code>index.html</code> is the visual showcase; this directory is the flat index for anyone who needs to find a specific page fast or audit what the system draws on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== DIRECTORY BODY =================== -->
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+
+      <aside aria-label="On this page">
+        <nav class="wire-inpagenav" data-wire-inpagenav>
+          <div class="wire-inpagenav__title">Sections</div>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#core">System core</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#foundations">Foundations</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#components">Component docs</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#hospital">Hospital demo</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#university">Higher-ed demo</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">External references</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#repo">Repo structure</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="wire-prose u-stack u-stack--3xl">
+
+        <!-- ===== Core ===== -->
+        <section id="core" class="u-stack u-stack--md">
+          <h2 class="wire-h3">System core</h2>
+          <p>Start here. These four pages cover the philosophy, the token vocabulary, and the evidence basis behind every meaningful decision.</p>
+          <ul class="dir-list">
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./index.html">Wireframe Design System</a></h3>
+              <span class="dir-list__path">index.html</span>
+              <p class="dir-list__desc">Landing page and full component showcase. Live examples of every component, the token tour, and the hospital pressure-test row.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/principles.html">Principles</a></h3>
+              <span class="dir-list__path">docs/principles.html</span>
+              <p class="dir-list__desc">The six things that hold every page together: grayscale, tokens, plain HTML, accessibility, content-driven variants, and prefix discipline.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/research.html">Research foundation</a></h3>
+              <span class="dir-list__path">docs/research.html</span>
+              <p class="dir-list__desc">Evidence basis with one citation per claim. WCAG 2.2 AA compliance map, audit history (v1.1 + v1.2), and the list of out-of-scope items.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./directory.html">Directory</a></h3>
+              <span class="dir-list__path">directory.html</span>
+              <p class="dir-list__desc">This page. Flat index of every HTML file in the system and every external reference it cites.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== Foundations ===== -->
+        <section id="foundations" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Foundations</h2>
+          <p>The token layer and the layout utilities. Components reference these — nothing hardcodes.</p>
+          <ul class="dir-list">
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/tokens.html">Tokens</a></h3>
+              <span class="dir-list__path">docs/tokens.html</span>
+              <p class="dir-list__desc">Every token visualized — grayscale ramp with contrast ratios, type scale ladder, spacing strip, radius row, shadow stack.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/typography.html">Typography</a></h3>
+              <span class="dir-list__path">docs/typography.html</span>
+              <p class="dir-list__desc">Display, h1–h6, lead, body, small. Sans and serif. The drop-cap utility and the editorial moments.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/utilities.html">Utilities</a></h3>
+              <span class="dir-list__path">docs/utilities.html</span>
+              <p class="dir-list__desc">Layout primitives (<code>u-container</code>, <code>u-stack</code>, <code>u-cluster</code>, <code>u-grid</code>, <code>u-sidebar</code>) and text helpers.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/page-shells.html">Page shells</a></h3>
+              <span class="dir-list__path">docs/page-shells.html</span>
+              <p class="dir-list__desc">Documented HTML scaffolds — landing, article, listing, detail. Each shell is markup, not a component class.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== Component docs ===== -->
+        <section id="components" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Component documentation</h2>
+          <p>One page per component family. Each shows anatomy, variants, accessibility notes, and a code snippet.</p>
+          <ul class="dir-list">
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/buttons.html">Buttons</a></h3>
+              <span class="dir-list__path">docs/buttons.html</span>
+              <p class="dir-list__desc">Primary, secondary, ghost. Three sizes, icon-only, full-width, loading state. Tap targets clear 44px.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/forms.html">Forms</a></h3>
+              <span class="dir-list__path">docs/forms.html</span>
+              <p class="dir-list__desc">Input, textarea, select, checkbox, radio, toggle, search, fieldset. Help text and error states tied with <code>aria-describedby</code>.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/navigation.html">Navigation</a></h3>
+              <span class="dir-list__path">docs/navigation.html</span>
+              <p class="dir-list__desc">Top nav, mega menu, sidebar nav, in-page nav with scroll-spy, mobile drawer with focus trap, breadcrumb, pagination.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/cards.html">Cards</a></h3>
+              <span class="dir-list__path">docs/cards.html</span>
+              <p class="dir-list__desc">Content, person, resource, stat. Bordered and elevated variants.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/heroes.html">Heroes</a></h3>
+              <span class="dir-list__path">docs/heroes.html</span>
+              <p class="dir-list__desc">Four variants: editorial (oversized type), split (text + media), centered, stat-led. Inverse modifier for dark surfaces.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/content-blocks.html">Content blocks</a></h3>
+              <span class="dir-list__path">docs/content-blocks.html</span>
+              <p class="dir-list__desc">Feature grid, two-column, accordion (native <code>&lt;details&gt;</code>), tabs with arrow-key support, callout, pull quote, timeline.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/media.html">Media</a></h3>
+              <span class="dir-list__path">docs/media.html</span>
+              <p class="dir-list__desc">Grayboxed image / video placeholders with ratio labels, plus the gallery (grid, mosaic) component.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/lists.html">Lists</a></h3>
+              <span class="dir-list__path">docs/lists.html</span>
+              <p class="dir-list__desc">Linked list, definition list, article/news list. Citation list lives with the research-measure page.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/tables.html">Tables</a></h3>
+              <span class="dir-list__path">docs/tables.html</span>
+              <p class="dir-list__desc">Data tables and comparison tables. Striped variant, semantic caption, scope on header cells.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./docs/footers.html">Footers</a></h3>
+              <span class="dir-list__path">docs/footers.html</span>
+              <p class="dir-list__desc">Compact, standard, expanded (with CTA row). Inverse modifier for dark surfaces.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== Hospital demo ===== -->
+        <section id="hospital" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Hospital demo — Riverside Medical Center</h2>
+          <p>Nine representative templates built only from system classes and tokens. Zero inline styles, zero hardcoded values. If the system held here, it holds anywhere in healthcare.</p>
+          <ul class="dir-list">
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-homepage.html">Homepage</a></h3>
+              <span class="dir-list__path">pages/hospital-homepage.html</span>
+              <p class="dir-list__desc">Editorial hero, mega-menu IA, conditions grid, featured research, stats, news, expanded footer.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-specialty.html">Specialty / condition landing</a></h3>
+              <span class="dir-list__path">pages/hospital-specialty.html</span>
+              <p class="dir-list__desc">Spinal cord injury page — split hero, what-we-treat list, care team person cards, related research resource cards, in-page nav.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-research.html">Research &amp; Innovation</a></h3>
+              <span class="dir-list__path">pages/hospital-research.html</span>
+              <p class="dir-list__desc">Stat-led hero, labs and teams two-column, publications list, timeline of milestones.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-find-a-doctor.html">Find a doctor</a></h3>
+              <span class="dir-list__path">pages/hospital-find-a-doctor.html</span>
+              <p class="dir-list__desc">Listing page with sidebar filters (full form set), provider cards (person variant), pagination.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-provider.html">Provider profile</a></h3>
+              <span class="dir-list__path">pages/hospital-provider.html</span>
+              <p class="dir-list__desc">Dr. Maya Okonkwo — split hero, credentials deflist, tabs (About / Conditions / Research / Locations), stats, publication timeline.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-patient-visitor.html">Planning your visit</a></h3>
+              <span class="dir-list__path">pages/hospital-patient-visitor.html</span>
+              <p class="dir-list__desc">Long-form with in-page nav, FAQ accordion, text-size widget, help bar, print-friendly.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-location.html">Location detail</a></h3>
+              <span class="dir-list__path">pages/hospital-location.html</span>
+              <p class="dir-list__desc">Riverside Streeterville — map placeholder, hours, accordion getting-here, services list.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-patient-story.html">Patient story</a></h3>
+              <span class="dir-list__path">pages/hospital-patient-story.html</span>
+              <p class="dir-list__desc">After his stroke, Marcus walked his daughter down the aisle — editorial typography, drop cap, pull quotes.</p>
+            </li>
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/hospital-measure.html">Research measure detail</a></h3>
+              <span class="dir-list__path">pages/hospital-measure.html</span>
+              <p class="dir-list__desc">Berg Balance Scale (BBS) — dense, structured-data archetype with deflist quick facts, two tables (population / psychometric), filterable citation list.</p>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== Higher-ed demo ===== -->
+        <section id="university" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Higher-ed demo — Northgate University</h2>
+          <p>The first page in a planned three-template set proving the system carries to higher-ed without modification.</p>
+          <ul class="dir-list">
+            <li class="dir-list__item">
+              <h3 class="dir-list__title"><a href="./pages/university-homepage.html">University homepage</a></h3>
+              <span class="dir-list__path">pages/university-homepage.html</span>
+              <p class="dir-list__desc">Multi-audience tag bar (prospective / current / faculty / alumni / parents), schools feature grid, faculty spotlight, news article-list.</p>
+            </li>
+          </ul>
+          <p class="u-text-muted" style="font-size: var(--text-sm)">Planned but not yet built: <code>university-program.html</code> (degree program detail with in-page nav) and <code>university-faculty.html</code> (filterable faculty directory).</p>
+        </section>
+
+        <!-- ===== External references ===== -->
+        <section id="references" class="u-stack u-stack--md">
+          <h2 class="wire-h3">External references</h2>
+          <p>Standards, research bodies, and books cited in <a href="./docs/research.html">docs/research.html</a>. Every meaningful design decision points to one of these.</p>
+
+          <ol class="wire-citation-list" role="list">
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">1</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">W3C Web Content Accessibility Guidelines (WCAG) 2.2</p>
+                <p class="wire-citation-list__authors">World Wide Web Consortium.</p>
+                <p class="wire-citation-list__meta">Recommendation, October 2023. <a href="https://www.w3.org/TR/WCAG22/">w3.org/TR/WCAG22</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Contrast</span>
+                  <span class="wire-tag wire-tag--sm">Focus visible</span>
+                  <span class="wire-tag wire-tag--sm">Target size</span>
+                  <span class="wire-tag wire-tag--sm">Reflow</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">2</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">WAI-ARIA Authoring Practices Guide</p>
+                <p class="wire-citation-list__authors">W3C Web Accessibility Initiative.</p>
+                <p class="wire-citation-list__meta">Maintained patterns library for accessible component behavior. <a href="https://www.w3.org/WAI/ARIA/apg/">w3.org/WAI/ARIA/apg</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Tabs</span>
+                  <span class="wire-tag wire-tag--sm">Accordion</span>
+                  <span class="wire-tag wire-tag--sm">Dialog</span>
+                  <span class="wire-tag wire-tag--sm">Menubar</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">3</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Nielsen Norman Group — UX research and articles</p>
+                <p class="wire-citation-list__authors">Nielsen Norman Group.</p>
+                <p class="wire-citation-list__meta">Cited articles linked inline in <code>docs/research.html</code>. <a href="https://www.nngroup.com/">nngroup.com</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Mega menus</span>
+                  <span class="wire-tag wire-tag--sm">Category pages</span>
+                  <span class="wire-tag wire-tag--sm">Flat UI</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">4</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Baymard Institute — large-scale UX research</p>
+                <p class="wire-citation-list__authors">Baymard Institute.</p>
+                <p class="wire-citation-list__meta">E-commerce and form research; cited articles linked inline. <a href="https://baymard.com/">baymard.com</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Forms</span>
+                  <span class="wire-tag wire-tag--sm">Inline validation</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">5</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Making Your Website Senior Friendly</p>
+                <p class="wire-citation-list__authors">National Institute on Aging, U.S. National Institutes of Health.</p>
+                <p class="wire-citation-list__meta">Current edition. <a href="https://www.nia.nih.gov/health/making-your-website-senior-friendly">nia.nih.gov</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Text-size widget</span>
+                  <span class="wire-tag wire-tag--sm">Persistent help bar</span>
+                  <span class="wire-tag wire-tag--sm">Healthcare</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">6</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Federal Plain Language Guidelines</p>
+                <p class="wire-citation-list__authors">U.S. Federal Plain Language Action and Information Network.</p>
+                <p class="wire-citation-list__meta"><a href="https://www.plainlanguage.gov/guidelines/">plainlanguage.gov</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Writing</span>
+                  <span class="wire-tag wire-tag--sm">Healthcare</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">7</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Healthy People 2030 — Health Literacy</p>
+                <p class="wire-citation-list__authors">U.S. Department of Health and Human Services.</p>
+                <p class="wire-citation-list__meta"><a href="https://health.gov/healthypeople/priority-areas/health-literacy-healthy-people-2030">health.gov</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Health literacy</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">8</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">CDC Clear Communication Index</p>
+                <p class="wire-citation-list__authors">Centers for Disease Control and Prevention.</p>
+                <p class="wire-citation-list__meta"><a href="https://www.cdc.gov/ccindex/">cdc.gov/ccindex</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Clear communication</span>
+                  <span class="wire-tag wire-tag--sm">Healthcare</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">9</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">The Elements of Typographic Style</p>
+                <p class="wire-citation-list__authors">Robert Bringhurst.</p>
+                <p class="wire-citation-list__meta">4th edition, Hartley &amp; Marks, 2013. Reference for line length, leading, and typographic hierarchy.</p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Typography</span>
+                  <span class="wire-tag wire-tag--sm">Reading</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">10</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Web Almanac 2024</p>
+                <p class="wire-citation-list__authors">HTTP Archive.</p>
+                <p class="wire-citation-list__meta">Annual state-of-the-web data report. <a href="https://almanac.httparchive.org/en/2024/">almanac.httparchive.org/2024</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Performance</span>
+                  <span class="wire-tag wire-tag--sm">Industry baselines</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">11</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Health Online 2013</p>
+                <p class="wire-citation-list__authors">Susannah Fox, Maeve Duggan — Pew Research Center.</p>
+                <p class="wire-citation-list__meta">Pew Internet &amp; American Life Project. <a href="https://www.pewresearch.org/internet/2013/01/15/health-online-2013/">pewresearch.org</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Healthcare usage</span>
+                </div>
+              </div>
+            </li>
+            <li class="wire-citation-list__item">
+              <div class="wire-citation-list__num">12</div>
+              <div class="wire-citation-list__body">
+                <p class="wire-citation-list__title">Human Interface Guidelines — Layout (Hit targets)</p>
+                <p class="wire-citation-list__authors">Apple Inc.</p>
+                <p class="wire-citation-list__meta">44 × 44 pt minimum tap target. <a href="https://developer.apple.com/design/human-interface-guidelines/layout">developer.apple.com</a></p>
+                <div class="u-cluster" style="gap: var(--space-2xs)">
+                  <span class="wire-tag wire-tag--sm">Target size</span>
+                  <span class="wire-tag wire-tag--sm">Mobile</span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <!-- ===== Repo structure ===== -->
+        <section id="repo" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Repo structure</h2>
+          <p>The folder layout, for orientation. No build step — every file under <code>css/</code> is plain CSS, every file under <code>js/</code> is plain ES2017+ JavaScript.</p>
+
+          <pre style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-snug); background: var(--color-bg-subtle); padding: var(--space-lg); border-radius: var(--radius-md); overflow-x: auto; margin: 0">
+/
+├── index.html                  System landing &amp; component showcase
+├── directory.html              This page
+├── README.md                   5-minute productive starter
+├── .nojekyll                   Tell GitHub Pages to serve verbatim
+│
+├── css/
+│   ├── wire.css                Entry — @imports the rest
+│   ├── tokens.css              The only file with raw values
+│   ├── reset.css
+│   ├── base.css                Typography, links, focus rings
+│   ├── layout.css              container, stack, cluster, grid, sidebar
+│   ├── utilities.css
+│   ├── print.css
+│   └── components/             ~25 component partials, one file each
+│
+├── js/
+│   └── wire.js                 Auto-init for tabs, accordion, drawer, etc.
+│
+├── docs/                       15 documentation pages
+└── pages/                      9 hospital demos + 1 university demo</pre>
+
+          <p>The token layer (<code>css/tokens.css</code>) is the one and only place raw values live. Components reference; nothing else hardcodes. Rebrand by editing tokens; the rest follows.</p>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer">
+  <div class="u-container wire-footer__inner">
+    <div class="wire-footer__brand">
+      <a class="wire-footer__brand-mark" href="./index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+      <p class="wire-footer__tagline">v1.2 · Open-source wireframe system</p>
+    </div>
+    <div class="wire-footer__bottom">
+      <span>27 pages · 12 external references</span>
+      <ul class="wire-footer__legal" role="list">
+        <li><a class="wire-footer__link" href="./index.html">Components</a></li>
+        <li><a class="wire-footer__link" href="./docs/principles.html">Principles</a></li>
+        <li><a class="wire-footer__link" href="./docs/research.html">Research</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/wire.js" defer></script>
+</body>
+</html>
