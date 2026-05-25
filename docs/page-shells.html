@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page shells — Primacy Wireframe System</title>
+  <link rel="stylesheet" href="../css/primacy.css">
+  <style>
+    /* Doc-page-only scaffold. Keep tiny. */
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .doc-snippet { padding: var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto; white-space: pre; }
+    .shell-diagram { display: flex; flex-direction: column; gap: var(--space-xs); padding: var(--space-md); background-color: var(--color-bg-subtle); border-radius: var(--radius-md); }
+    .shell-row { padding: var(--space-sm) var(--space-md); background-color: var(--color-bg); border: var(--border-thin) dashed var(--color-border-strong); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
+    .shell-row--strong { background-color: var(--color-bg-muted); border-style: solid; color: var(--color-text); }
+    .shell-row--tall { padding-block: var(--space-xl); }
+    .shell-row--inverse { background-color: var(--color-bg-inverse); color: var(--color-text-inverse); border-color: var(--color-bg-inverse); }
+    .shell-split { display: grid; grid-template-columns: 1fr 3fr; gap: var(--space-xs); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="p-skip-link">Skip to content</a>
+
+<header class="p-topnav">
+  <div class="u-container p-topnav__inner">
+    <a href="../index.html" class="p-topnav__brand">
+      <span class="p-topnav__brand-mark">P</span>
+      <span>Primacy Wireframe System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="p-topnav__menu" role="list">
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="p-hero p-hero--editorial">
+    <div class="u-container">
+      <div class="p-hero__inner">
+        <span class="p-hero__eyebrow">Pattern</span>
+        <h1 class="p-hero__title">Page shells</h1>
+        <p class="p-hero__lead">Four scaffolds that hold the system's components in the right order. Not classes — page recipes, with the same skip link, top nav, and footer at every entry point, and a predictable middle that varies by purpose.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="u-section">
+    <div class="u-container">
+      <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section">
+          <h2 class="p-h3">What every shell shares</h2>
+          <p class="u-text-muted u-mt-sm">Every page in the system, regardless of shell, starts with a skip link, a top nav, and a <code>&lt;main id="main"&gt;</code>; ends with a footer; and links the system stylesheet and behavior script.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Common scaffold</span>
+            <div class="shell-diagram">
+              <div class="shell-row">.p-skip-link (visually hidden until focus)</div>
+              <div class="shell-row shell-row--strong">.p-topnav (sticky brand · primary nav · utility)</div>
+              <div class="shell-row shell-row--tall">&lt;main id="main"&gt; — shell-specific content</div>
+              <div class="shell-row shell-row--strong">.p-footer (compact, standard, expanded, or inverse)</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">1. Landing shell</h2>
+          <p class="u-text-muted u-mt-sm">The marketing front door. Hero leads, then a sequence of content blocks (feature grid, two-column, callout, quote, timeline), then a closing CTA in the expanded footer.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Region order</span>
+            <div class="shell-diagram">
+              <div class="shell-row shell-row--strong">.p-topnav</div>
+              <div class="shell-row shell-row--tall">.p-hero · editorial / split / centered / stat-led</div>
+              <div class="shell-row">u-section · stat strip (.p-card--stat in u-grid)</div>
+              <div class="shell-row">u-section · feature grid (.p-feature-grid--3)</div>
+              <div class="shell-row">u-section · two-column highlight (.p-twocol)</div>
+              <div class="shell-row">u-section · article teasers (.p-card grid)</div>
+              <div class="shell-row">u-section · callout or quote moment</div>
+              <div class="shell-row shell-row--strong">.p-footer.p-footer--expanded · closing CTA</div>
+            </div>
+          </div>
+          <h3 class="p-h4 u-mt-xl">When to use</h3>
+          <ul>
+            <li>Homepage, program landing pages, campaign pages.</li>
+            <li>Any page where the goal is awareness and one clear next step.</li>
+          </ul>
+          <h3 class="p-h4 u-mt-md">When not to use</h3>
+          <ul>
+            <li>For long-form reading — use the article shell.</li>
+            <li>For a directory or index — use the listing shell.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">2. Article shell</h2>
+          <p class="u-text-muted u-mt-sm">Long-form editorial. Breadcrumb above the article header, a hero with eyebrow and lead, a sidebar with in-page nav for sections, and a prose container holding the body.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Region order</span>
+            <div class="shell-diagram">
+              <div class="shell-row shell-row--strong">.p-topnav</div>
+              <div class="shell-row">u-section · .p-breadcrumb</div>
+              <div class="shell-row shell-row--tall">.p-hero · editorial (eyebrow · title · lead · meta)</div>
+              <div class="shell-row shell-row--tall">
+                <div class="shell-split">
+                  <span>.p-inpagenav (sticky)</span>
+                  <span>.p-prose · article body, .p-quote, .p-callout, .p-media, .p-timeline</span>
+                </div>
+              </div>
+              <div class="shell-row">u-section · related articles (.p-article-list)</div>
+              <div class="shell-row shell-row--strong">.p-footer</div>
+            </div>
+          </div>
+          <h3 class="p-h4 u-mt-xl">When to use</h3>
+          <ul>
+            <li>News, research write-ups, patient stories, principle and policy pages.</li>
+            <li>Anything where a table of contents helps the reader orient.</li>
+          </ul>
+          <h3 class="p-h4 u-mt-md">When not to use</h3>
+          <ul>
+            <li>Short pages without sections — drop the in-page nav and use the landing shell.</li>
+            <li>FAQ-style pages — reach for the accordion instead.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">3. Listing shell</h2>
+          <p class="u-text-muted u-mt-sm">A filterable index. Hero introduces the index, a filter row (tags or selects) lives above the results, and a grid of cards or article list fills the body. Pagination at the bottom.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Region order</span>
+            <div class="shell-diagram">
+              <div class="shell-row shell-row--strong">.p-topnav</div>
+              <div class="shell-row">u-section · .p-breadcrumb</div>
+              <div class="shell-row shell-row--tall">.p-hero · centered (title · short lead)</div>
+              <div class="shell-row">u-section · search (.p-search) + filter tags (.p-tag-list)</div>
+              <div class="shell-row shell-row--tall">
+                <div class="shell-split">
+                  <span>.p-sidenav · faceted filters</span>
+                  <span>.u-grid--3 · .p-card · or .p-article-list</span>
+                </div>
+              </div>
+              <div class="shell-row">u-section · .p-pagination</div>
+              <div class="shell-row shell-row--strong">.p-footer</div>
+            </div>
+          </div>
+          <h3 class="p-h4 u-mt-xl">When to use</h3>
+          <ul>
+            <li>Directories — conditions, providers, research labs, publications, news.</li>
+            <li>Resource libraries and case study indexes.</li>
+          </ul>
+          <h3 class="p-h4 u-mt-md">When not to use</h3>
+          <ul>
+            <li>When fewer than six items exist — a single feature grid is enough.</li>
+            <li>When items have rich detail that demands a full card per row — use the article list.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">4. Detail shell</h2>
+          <p class="u-text-muted u-mt-sm">A single entity: a provider, condition, lab, or program. Split hero pairs identity with a media moment; the body uses two-column and feature grids to expose facets; a closing CTA pushes to appointment or contact.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Region order</span>
+            <div class="shell-diagram">
+              <div class="shell-row shell-row--strong">.p-topnav</div>
+              <div class="shell-row">u-section · .p-breadcrumb</div>
+              <div class="shell-row shell-row--tall">.p-hero · split (text + media · primary CTA)</div>
+              <div class="shell-row">u-section · stat strip (.p-card--stat · key metrics)</div>
+              <div class="shell-row shell-row--tall">
+                <div class="shell-split">
+                  <span>.p-inpagenav</span>
+                  <span>.p-tabs or stacked u-section blocks · two-column, accordion, .p-deflist</span>
+                </div>
+              </div>
+              <div class="shell-row">u-section · related people (.p-card--person grid) or articles</div>
+              <div class="shell-row shell-row--inverse">u-section · .p-callout--inverse · closing CTA</div>
+              <div class="shell-row shell-row--strong">.p-footer</div>
+            </div>
+          </div>
+          <h3 class="p-h4 u-mt-xl">When to use</h3>
+          <ul>
+            <li>Provider profiles, condition pages, lab pages, program pages, research study pages.</li>
+            <li>Anywhere the page represents one nameable thing.</li>
+          </ul>
+          <h3 class="p-h4 u-mt-md">When not to use</h3>
+          <ul>
+            <li>When the entity has only a few facts — a single article shell is leaner.</li>
+            <li>When the page is mostly editorial narrative — use the article shell.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Accessibility for every shell</h2>
+          <ul>
+            <li>Every shell starts with a <code>.p-skip-link</code> so keyboard users can jump past the top nav.</li>
+            <li>The page <code>h1</code> lives once, inside the hero. Subsequent sections use <code>h2</code> and below.</li>
+            <li>Each <code>&lt;nav&gt;</code> has a unique <code>aria-label</code> — Primary, Breadcrumb, On this page, Pagination.</li>
+            <li><code>&lt;main id="main"&gt;</code> is the skip target and the primary landmark; only one per page.</li>
+            <li>The footer is always inside <code>&lt;footer&gt;</code> and outside <code>&lt;main&gt;</code>.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section">
+          <h2 class="p-h3">Canonical scaffold</h2>
+          <details>
+            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Page title&lt;/title&gt;
+  &lt;link rel="stylesheet" href="/css/primacy.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="#main" class="p-skip-link"&gt;Skip to content&lt;/a&gt;
+
+  &lt;header class="p-topnav"&gt;
+    &lt;div class="u-container p-topnav__inner"&gt;…&lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main id="main"&gt;
+    &lt;section class="p-hero p-hero--editorial"&gt;…&lt;/section&gt;
+    &lt;section class="u-section"&gt;…&lt;/section&gt;
+    &lt;!-- shell-specific blocks --&gt;
+  &lt;/main&gt;
+
+  &lt;footer class="p-footer"&gt;
+    &lt;div class="u-container p-footer__inner"&gt;…&lt;/div&gt;
+  &lt;/footer&gt;
+
+  &lt;script src="/js/primacy.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </details>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="p-footer p-footer--compact">
+  <div class="u-container p-footer__inner">
+    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
+    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+  </div>
+</footer>
+
+<script src="../js/primacy.js" defer></script>
+</body>
+</html>
