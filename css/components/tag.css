@@ -3,7 +3,7 @@
    Variants: default, selected, removable
    ============================================================ */
 
-.p-tag {
+.wire-tag {
   --tag-bg: transparent;
   --tag-fg: var(--color-text);
   --tag-border: var(--color-border-strong);
@@ -31,19 +31,19 @@
     border-color var(--duration-fast) var(--ease-out);
 }
 
-.p-tag:hover {
+.wire-tag:hover {
   --tag-bg: var(--color-bg-muted);
   text-decoration: none;
 }
 
-.p-tag.is-selected,
-.p-tag--selected {
+.wire-tag.is-selected,
+.wire-tag--selected {
   --tag-bg: var(--color-accent);
   --tag-fg: var(--color-text-inverse);
   --tag-border: var(--color-accent);
 }
 
-.p-tag__remove {
+.wire-tag__remove {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -55,11 +55,11 @@
   color: inherit;
   cursor: pointer;
 }
-.p-tag__remove:hover {
+.wire-tag__remove:hover {
   background-color: rgba(15, 15, 15, 0.1);
 }
 
-.p-tag-list {
+.wire-tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);

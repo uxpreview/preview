@@ -1,14 +1,14 @@
 /* ============================================================
-   Tabs — ARIA tabs pattern. Behavior wired by data-p-tabs in JS.
+   Tabs — ARIA tabs pattern. Behavior wired by data-wire-tabs in JS.
    ============================================================ */
 
-.p-tabs {
+.wire-tabs {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
 }
 
-.p-tabs__list {
+.wire-tabs__list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2xs);
@@ -18,7 +18,7 @@
   border-block-end: var(--border-thin) solid var(--color-border);
 }
 
-.p-tabs__tab {
+.wire-tabs__tab {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -38,26 +38,26 @@
   min-block-size: 2.75rem;
 }
 
-.p-tabs__tab:hover {
+.wire-tabs__tab:hover {
   color: var(--color-text);
 }
 
-.p-tabs__tab[aria-selected="true"] {
+.wire-tabs__tab[aria-selected="true"] {
   color: var(--color-text);
   border-block-end-color: var(--color-accent);
   font-weight: var(--weight-semibold);
 }
 
-.p-tabs__panel {
+.wire-tabs__panel {
   display: none;
 }
 
-.p-tabs__panel.is-active {
+.wire-tabs__panel.is-active {
   display: block;
 }
 
 /* Pill variant */
-.p-tabs--pill .p-tabs__list {
+.wire-tabs--pill .wire-tabs__list {
   border: 0;
   gap: var(--space-2xs);
   padding: var(--space-3xs);
@@ -66,7 +66,7 @@
   align-self: flex-start;
 }
 
-.p-tabs--pill .p-tabs__tab {
+.wire-tabs--pill .wire-tabs__tab {
   border-radius: var(--radius-pill);
   border: 0;
   margin: 0;
@@ -75,7 +75,7 @@
   min-block-size: 2.25rem;
 }
 
-.p-tabs--pill .p-tabs__tab[aria-selected="true"] {
+.wire-tabs--pill .wire-tabs__tab[aria-selected="true"] {
   background-color: var(--color-bg);
   color: var(--color-text);
   border: 0;

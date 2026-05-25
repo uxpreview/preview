@@ -3,7 +3,7 @@
    Greybox style with ratio label baked in.
    ============================================================ */
 
-.p-media {
+.wire-media {
   --media-bg: var(--color-bg-muted);
   --media-fg: var(--color-text-muted);
   --media-ratio: 16 / 9;
@@ -21,16 +21,16 @@
   overflow: hidden;
 }
 
-.p-media--rounded { border-radius: var(--radius-xl); }
-.p-media--square  { --media-ratio: 1 / 1; }
-.p-media--wide    { --media-ratio: 21 / 9; }
-.p-media--portrait { --media-ratio: 3 / 4; }
-.p-media--portrait-tall { --media-ratio: 2 / 3; }
-.p-media--16-9    { --media-ratio: 16 / 9; }
-.p-media--4-3     { --media-ratio: 4 / 3; }
+.wire-media--rounded { border-radius: var(--radius-xl); }
+.wire-media--square  { --media-ratio: 1 / 1; }
+.wire-media--wide    { --media-ratio: 21 / 9; }
+.wire-media--portrait { --media-ratio: 3 / 4; }
+.wire-media--portrait-tall { --media-ratio: 2 / 3; }
+.wire-media--16-9    { --media-ratio: 16 / 9; }
+.wire-media--4-3     { --media-ratio: 4 / 3; }
 
 /* Ratio label, top-right */
-.p-media[data-ratio]::after {
+.wire-media[data-ratio]::after {
   content: attr(data-ratio);
   position: absolute;
   inset-block-start: var(--space-xs);
@@ -46,7 +46,7 @@
 }
 
 /* Optional label text (e.g., "Hero image", "Doctor headshot") */
-.p-media__label {
+.wire-media__label {
   position: absolute;
   inset: 0;
   display: flex;
@@ -60,13 +60,13 @@
 }
 
 /* ---------- Video placeholder ---------- */
-.p-media--video {
+.wire-media--video {
   background-image: none;
   background-color: var(--gray-90);
   color: var(--gray-30);
 }
 
-.p-media--video::before {
+.wire-media--video::before {
   content: "";
   position: absolute;
   inset: 50%;
@@ -78,37 +78,37 @@
   border-inline-start: 1.5rem solid var(--gray-30);
 }
 
-.p-media--video[data-ratio]::after {
+.wire-media--video[data-ratio]::after {
   color: var(--gray-30);
   background-color: var(--gray-80);
 }
 
 /* ---------- Gallery ---------- */
-.p-gallery {
+.wire-gallery {
   display: grid;
   gap: var(--space-md);
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 48em) {
-  .p-gallery--2 { grid-template-columns: repeat(2, 1fr); }
-  .p-gallery--3 { grid-template-columns: repeat(2, 1fr); }
-  .p-gallery--4 { grid-template-columns: repeat(2, 1fr); }
+  .wire-gallery--2 { grid-template-columns: repeat(2, 1fr); }
+  .wire-gallery--3 { grid-template-columns: repeat(2, 1fr); }
+  .wire-gallery--4 { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 64em) {
-  .p-gallery--3 { grid-template-columns: repeat(3, 1fr); }
-  .p-gallery--4 { grid-template-columns: repeat(4, 1fr); }
+  .wire-gallery--3 { grid-template-columns: repeat(3, 1fr); }
+  .wire-gallery--4 { grid-template-columns: repeat(4, 1fr); }
 }
 
-.p-gallery--mosaic {
+.wire-gallery--mosaic {
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: 8rem;
 }
 
-.p-gallery--mosaic .p-media { aspect-ratio: auto; block-size: 100%; }
-.p-gallery--mosaic > :nth-child(1) { grid-column: span 4; grid-row: span 2; }
-.p-gallery--mosaic > :nth-child(2) { grid-column: span 2; grid-row: span 1; }
-.p-gallery--mosaic > :nth-child(3) { grid-column: span 2; grid-row: span 1; }
-.p-gallery--mosaic > :nth-child(4) { grid-column: span 3; grid-row: span 1; }
-.p-gallery--mosaic > :nth-child(5) { grid-column: span 3; grid-row: span 1; }
+.wire-gallery--mosaic .wire-media { aspect-ratio: auto; block-size: 100%; }
+.wire-gallery--mosaic > :nth-child(1) { grid-column: span 4; grid-row: span 2; }
+.wire-gallery--mosaic > :nth-child(2) { grid-column: span 2; grid-row: span 1; }
+.wire-gallery--mosaic > :nth-child(3) { grid-column: span 2; grid-row: span 1; }
+.wire-gallery--mosaic > :nth-child(4) { grid-column: span 3; grid-row: span 1; }
+.wire-gallery--mosaic > :nth-child(5) { grid-column: span 3; grid-row: span 1; }

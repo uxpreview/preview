@@ -3,30 +3,30 @@
    search, fieldset, help text, error state.
    ============================================================ */
 
-.p-field {
+.wire-field {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
 }
 
-.p-field__label {
+.wire-field__label {
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   color: var(--color-text);
 }
 
-.p-field__label-required::after {
+.wire-field__label-required::after {
   content: " *";
   color: var(--color-text);
   font-weight: var(--weight-bold);
 }
 
-.p-field__hint {
+.wire-field__hint {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
 }
 
-.p-field__error {
+.wire-field__error {
   font-size: var(--text-xs);
   color: var(--color-text);
   font-weight: var(--weight-medium);
@@ -35,7 +35,7 @@
   gap: var(--space-2xs);
 }
 
-.p-field__error::before {
+.wire-field__error::before {
   content: "!";
   display: inline-flex;
   align-items: center;
@@ -50,9 +50,9 @@
 }
 
 /* ---------- Input / textarea / select ---------- */
-.p-input,
-.p-textarea,
-.p-select {
+.wire-input,
+.wire-textarea,
+.wire-select {
   inline-size: 100%;
   min-block-size: 2.75rem;
   padding-block: var(--space-xs);
@@ -71,45 +71,45 @@
     background-color var(--duration-fast) var(--ease-out);
 }
 
-.p-input::placeholder,
-.p-textarea::placeholder {
+.wire-input::placeholder,
+.wire-textarea::placeholder {
   color: var(--color-text-subtle);
 }
 
-.p-input:hover,
-.p-textarea:hover,
-.p-select:hover {
+.wire-input:hover,
+.wire-textarea:hover,
+.wire-select:hover {
   border-color: var(--color-text);
 }
 
-.p-input:focus-visible,
-.p-textarea:focus-visible,
-.p-select:focus-visible {
+.wire-input:focus-visible,
+.wire-textarea:focus-visible,
+.wire-select:focus-visible {
   border-color: var(--color-text);
 }
 
-.p-input:disabled,
-.p-textarea:disabled,
-.p-select:disabled {
+.wire-input:disabled,
+.wire-textarea:disabled,
+.wire-select:disabled {
   background-color: var(--color-bg-subtle);
   color: var(--color-text-subtle);
   cursor: not-allowed;
 }
 
-.p-input.is-invalid,
-.p-textarea.is-invalid,
-.p-select.is-invalid {
+.wire-input.is-invalid,
+.wire-textarea.is-invalid,
+.wire-select.is-invalid {
   border-color: var(--color-text);
   border-width: var(--border-md);
 }
 
-.p-textarea {
+.wire-textarea {
   min-block-size: 7rem;
   padding-block: var(--space-sm);
   resize: vertical;
 }
 
-.p-select {
+.wire-select {
   appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, var(--color-text) 50%),
                     linear-gradient(135deg, var(--color-text) 50%, transparent 50%);
@@ -120,12 +120,12 @@
 }
 
 /* ---------- Search ---------- */
-.p-search {
+.wire-search {
   position: relative;
   inline-size: 100%;
 }
 
-.p-search__icon {
+.wire-search__icon {
   position: absolute;
   inset-block-start: 50%;
   inset-inline-start: var(--space-md);
@@ -136,14 +136,14 @@
   block-size: 1.125rem;
 }
 
-.p-search__input {
+.wire-search__input {
   inline-size: 100%;
   padding-inline-start: calc(var(--space-md) * 2 + 1.125rem);
 }
 
 /* ---------- Checkbox & Radio ---------- */
-.p-checkbox,
-.p-radio {
+.wire-checkbox,
+.wire-radio {
   display: inline-flex;
   align-items: flex-start;
   gap: var(--space-sm);
@@ -154,8 +154,8 @@
   padding-block: var(--space-xs);
 }
 
-.p-checkbox__input,
-.p-radio__input {
+.wire-checkbox__input,
+.wire-radio__input {
   appearance: none;
   flex-shrink: 0;
   inline-size: 1.25rem;
@@ -170,26 +170,26 @@
     border-color var(--duration-fast) var(--ease-out);
 }
 
-.p-checkbox__input {
+.wire-checkbox__input {
   border-radius: var(--radius-xs);
 }
 
-.p-radio__input {
+.wire-radio__input {
   border-radius: 50%;
 }
 
-.p-checkbox__input:hover,
-.p-radio__input:hover {
+.wire-checkbox__input:hover,
+.wire-radio__input:hover {
   border-color: var(--color-text);
 }
 
-.p-checkbox__input:checked,
-.p-radio__input:checked {
+.wire-checkbox__input:checked,
+.wire-radio__input:checked {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-.p-checkbox__input:checked::after {
+.wire-checkbox__input:checked::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -200,7 +200,7 @@
   background-size: 50% 4px, 80% 4px;
 }
 
-.p-radio__input:checked::after {
+.wire-radio__input:checked::after {
   content: "";
   position: absolute;
   inset: 25%;
@@ -208,14 +208,14 @@
   border-radius: 50%;
 }
 
-.p-checkbox__input:disabled,
-.p-radio__input:disabled {
+.wire-checkbox__input:disabled,
+.wire-radio__input:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
 /* ---------- Toggle (switch) ---------- */
-.p-toggle {
+.wire-toggle {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
@@ -224,7 +224,7 @@
   padding-block: var(--space-xs);
 }
 
-.p-toggle__input {
+.wire-toggle__input {
   appearance: none;
   position: relative;
   inline-size: 2.5rem;
@@ -235,7 +235,7 @@
   transition: background-color var(--duration-base) var(--ease-out);
 }
 
-.p-toggle__input::after {
+.wire-toggle__input::after {
   content: "";
   position: absolute;
   inset-block-start: 0.125rem;
@@ -247,16 +247,16 @@
   transition: transform var(--duration-base) var(--ease-out);
 }
 
-.p-toggle__input:checked {
+.wire-toggle__input:checked {
   background-color: var(--color-accent);
 }
 
-.p-toggle__input:checked::after {
+.wire-toggle__input:checked::after {
   transform: translateX(1rem);
 }
 
 /* ---------- Fieldset ---------- */
-.p-fieldset {
+.wire-fieldset {
   border: 0;
   padding: 0;
   margin: 0;
@@ -265,7 +265,7 @@
   gap: var(--space-sm);
 }
 
-.p-fieldset__legend {
+.wire-fieldset__legend {
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   color: var(--color-text);
@@ -274,19 +274,19 @@
 }
 
 /* ---------- Form layout helper ---------- */
-.p-form {
+.wire-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-.p-form__row {
+.wire-form__row {
   display: grid;
   gap: var(--space-md);
 }
 
 @media (min-width: 48em) {
-  .p-form__row--2 {
+  .wire-form__row--2 {
     grid-template-columns: 1fr 1fr;
   }
 }

@@ -1,0 +1,85 @@
+/* ============================================================
+   Print stylesheet — strips chrome, optimizes for paper.
+   Healthcare users print medication lists, pre-op instructions,
+   directions, and provider info. Uses system tokens throughout
+   so a client rebrand carries to paper.
+   ============================================================ */
+
+@media print {
+  :root {
+    /* Tighter spacing on paper. */
+    --space-3xl: 2rem;
+    --space-4xl: 2.5rem;
+    --space-5xl: 3rem;
+  }
+
+  /* Pure black/white for ink economy. */
+  body {
+    color: var(--gray-100);
+    background: var(--gray-00);
+  }
+
+  /* Hide chrome that doesn't belong on paper. */
+  .wire-topnav,
+  .wire-footer,
+  .wire-skip-link,
+  .wire-drawer,
+  .wire-drawer-backdrop,
+  .wire-help-bar,
+  .wire-text-size,
+  .wire-megamenu__panel,
+  .wire-tabs__list,
+  [data-wire-drawer-open],
+  .wire-button {
+    display: none !important;
+  }
+
+  /* Reveal all collapsed content for the printed page. */
+  .wire-accordion__item .wire-accordion__body { display: block !important; }
+  .wire-accordion__icon { display: none; }
+  .wire-tabs__panel { display: block !important; }
+  .wire-tabs__panel + .wire-tabs__panel { margin-block-start: var(--space-lg); }
+
+  /* Expose link URLs after the link text. */
+  main a[href^="http"]::after,
+  main a[href^="mailto:"]::after,
+  main a[href^="tel:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: var(--gray-60);
+  }
+
+  /* Avoid page breaks within key blocks. */
+  .wire-card,
+  .wire-callout,
+  .wire-quote,
+  figure,
+  pre,
+  table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Keep structure visible in ink. */
+  .wire-card,
+  .wire-callout {
+    border: var(--border-thin) solid var(--gray-50);
+  }
+
+  .wire-table th,
+  .wire-table td {
+    border: var(--border-thin) solid var(--gray-50);
+  }
+
+  /* Media placeholders shouldn't waste ink. */
+  .wire-media {
+    background: var(--gray-10);
+    background-image: none;
+    border: var(--border-thin) dashed var(--gray-40);
+  }
+}

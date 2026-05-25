@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find a Doctor — Riverside Medical Center</title>
+  <link rel="stylesheet" href="../css/wire.css">
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./hospital-homepage.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">R</span>
+      <span>Riverside Medical Center</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link is-current" href="./hospital-specialty.html">Care</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./hospital-research.html">Research</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">For patients</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">About</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Give</a></li>
+      </ul>
+    </nav>
+    <div class="wire-topnav__utility">
+      <a class="wire-button wire-button--sm u-hidden-mobile" href="#">Make an appointment</a>
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="hospital-mobile-nav" aria-label="Open menu">
+        <span aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<aside id="hospital-mobile-nav" class="wire-drawer" aria-label="Mobile navigation">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-drawer__close" data-wire-drawer-close>← Close</button>
+  <nav class="wire-sidenav">
+    <ul class="wire-sidenav__list" role="list">
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./hospital-specialty.html">Care</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./hospital-research.html">Research</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">For patients</a></li>
+      <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">About</a></li>
+    </ul>
+  </nav>
+</aside>
+<div class="wire-drawer-backdrop"></div>
+
+<!-- =================== BREADCRUMB =================== -->
+<div class="u-container u-section u-section--sm" style="padding-block-end: 0">
+  <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+    <ol class="wire-breadcrumb__list" role="list">
+      <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="./hospital-homepage.html">Home</a></li>
+      <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">For patients</a></li>
+      <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Find a doctor</span></li>
+    </ol>
+  </nav>
+</div>
+
+<main id="main">
+
+<!-- =================== PAGE HEADER =================== -->
+<section class="u-section u-section--sm">
+  <div class="u-container">
+    <div class="u-stack u-stack--sm" style="max-inline-size: 48rem">
+      <span class="wire-eyebrow">For patients</span>
+      <h1 class="wire-display" style="font-size: var(--text-4xl); font-weight: var(--weight-semibold)">Find a doctor.</h1>
+      <p class="wire-lead">Search 480+ physicians, therapists, and clinical specialists across all Riverside programs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SEARCH BAR =================== -->
+<section class="u-section u-section--sm" style="padding-block-start: 0">
+  <div class="u-container">
+    <div class="wire-callout wire-callout--subtle">
+      <form onsubmit="event.preventDefault()" class="wire-form">
+        <div class="wire-form__row wire-form__row--2">
+          <div class="wire-field">
+            <label class="wire-field__label" for="name-search">Search by name</label>
+            <div class="wire-search">
+              <span class="wire-search__icon" aria-hidden="true">⌕</span>
+              <input id="name-search" class="wire-input wire-search__input" type="search" placeholder="Last name, first name, or specialty">
+            </div>
+          </div>
+          <div class="wire-field">
+            <label class="wire-field__label" for="condition-search">Or search by condition</label>
+            <select id="condition-search" class="wire-select">
+              <option>All conditions</option>
+              <option>Spinal cord injury</option>
+              <option>Stroke recovery</option>
+              <option>Brain injury</option>
+              <option>Amputation &amp; limb loss</option>
+              <option>Pediatric rehabilitation</option>
+              <option>Cancer rehabilitation</option>
+              <option>Pain management</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- =================== LISTING WITH FILTERS =================== -->
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar" style="--sidebar-width: 17rem">
+
+      <!-- Filter sidebar -->
+      <aside aria-label="Filters">
+        <div class="u-stack u-stack--lg">
+          <div class="u-cluster u-cluster--between">
+            <h2 class="wire-h5">Filters</h2>
+            <button class="wire-button wire-button--ghost wire-button--sm">Clear all</button>
+          </div>
+
+          <fieldset class="wire-fieldset">
+            <legend class="wire-fieldset__legend">Specialty</legend>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Physical medicine &amp; rehab</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Neurology</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Orthopedic surgery</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Pain medicine</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Psychiatry</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Pediatrics</span></label>
+          </fieldset>
+
+          <fieldset class="wire-fieldset">
+            <legend class="wire-fieldset__legend">Location</legend>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Streeterville · Chicago</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Homewood</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>DuPage</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Telehealth available</span></label>
+          </fieldset>
+
+          <fieldset class="wire-fieldset">
+            <legend class="wire-fieldset__legend">Care setting</legend>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Inpatient</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Day rehab</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Outpatient</span></label>
+          </fieldset>
+
+          <fieldset class="wire-fieldset">
+            <legend class="wire-fieldset__legend">Language</legend>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>English</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Spanish</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Mandarin</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Polish</span></label>
+            <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Arabic</span></label>
+          </fieldset>
+
+          <fieldset class="wire-fieldset">
+            <legend class="wire-fieldset__legend">Availability</legend>
+            <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span>Accepting new patients</span></label>
+            <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span>Same-week availability</span></label>
+          </fieldset>
+        </div>
+      </aside>
+
+      <!-- Results -->
+      <div class="u-stack u-stack--xl">
+        <div class="u-cluster u-cluster--between">
+          <p class="u-text-muted">Showing <strong>1–12</strong> of <strong>87</strong> providers matching your filters</p>
+          <label class="u-cluster" style="--cluster-gap: var(--space-xs)">
+            <span class="u-text-muted" style="font-size: var(--text-sm)">Sort by</span>
+            <select class="wire-select" style="inline-size: auto; min-block-size: 2.25rem; font-size: var(--text-sm)">
+              <option>Best match</option>
+              <option>A–Z</option>
+              <option>Next availability</option>
+            </select>
+          </label>
+        </div>
+
+        <!-- Active filter chips -->
+        <ul class="wire-tag-list" role="list" aria-label="Active filters">
+          <li><button class="wire-tag">Physical medicine &amp; rehab <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+          <li><button class="wire-tag">Streeterville <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+          <li><button class="wire-tag">Day rehab <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+          <li><button class="wire-tag">Outpatient <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+          <li><button class="wire-tag">Accepting new patients <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
+        </ul>
+
+        <!-- Provider grid -->
+        <div class="u-grid u-grid--3">
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Ana Mitchell</a></h3>
+              <span class="wire-card__role">Director, Spinal Cord Injury Program</span>
+              <span class="wire-card__credentials">MD, PhD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Spanish</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. James Okafor</a></h3>
+              <span class="wire-card__role">Attending Physician, Stroke Recovery</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Priya Raman</a></h3>
+              <span class="wire-card__role">Pediatric Rehabilitation</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Tamil</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Lucas Romero</a></h3>
+              <span class="wire-card__role">Physical Medicine &amp; Rehab</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Spanish</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Eli Tanaka</a></h3>
+              <span class="wire-card__role">Speech-Language Pathology</span>
+              <span class="wire-card__credentials">PhD, CCC-SLP</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Japanese</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--subtle">Waitlist</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Join →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Lila Park, PT, DPT</a></h3>
+              <span class="wire-card__role">Senior Physical Therapist</span>
+              <span class="wire-card__credentials">DPT, NCS</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Korean</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Sasha Greene, OTR/L</a></h3>
+              <span class="wire-card__role">Lead Occupational Therapist</span>
+              <span class="wire-card__credentials">OTR/L</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Burr Ridge</span>
+                <span class="wire-card__meta-item">English</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Marcus Bell</a></h3>
+              <span class="wire-card__role">Clinical Research Lead</span>
+              <span class="wire-card__credentials">MS, CCRP</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Hana Yusuf</a></h3>
+              <span class="wire-card__role">Pain Medicine</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville, Telehealth</span>
+                <span class="wire-card__meta-item">English, Arabic</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Mateo Silva</a></h3>
+              <span class="wire-card__role">Orthopedic Surgery</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">DuPage</span>
+                <span class="wire-card__meta-item">English, Portuguese</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--subtle">Waitlist</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Join →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Olivia Chen</a></h3>
+              <span class="wire-card__role">Neurology</span>
+              <span class="wire-card__credentials">MD, PhD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville</span>
+                <span class="wire-card__meta-item">English, Mandarin</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="wire-card wire-card--person">
+            <div class="wire-card__media"><div class="wire-media wire-media--square" data-ratio="1:1"></div></div>
+            <div class="wire-card__body">
+              <h3 class="wire-card__title"><a href="#">Dr. Aaron Brooks</a></h3>
+              <span class="wire-card__role">Psychiatry</span>
+              <span class="wire-card__credentials">MD</span>
+              <div class="wire-card__meta">
+                <span class="wire-card__meta-item">Streeterville, Telehealth</span>
+                <span class="wire-card__meta-item">English</span>
+              </div>
+              <div class="wire-card__footer">
+                <span class="wire-badge wire-badge--outline">Accepting</span>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Book →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Pagination -->
+        <nav class="wire-pagination" aria-label="Pagination">
+          <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
+          <ul class="wire-pagination__list" role="list">
+            <li><span class="wire-pagination__current" aria-current="page">1</span></li>
+            <li><a class="wire-pagination__link" href="#">2</a></li>
+            <li><a class="wire-pagination__link" href="#">3</a></li>
+            <li><a class="wire-pagination__link" href="#">4</a></li>
+            <li><span class="wire-pagination__ellipsis">…</span></li>
+            <li><a class="wire-pagination__link" href="#">8</a></li>
+          </ul>
+          <a class="wire-pagination__nav" href="#">Next →</a>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CALLOUT =================== -->
+<section class="u-section u-bg-subtle">
+  <div class="u-container">
+    <div class="wire-callout">
+      <span class="wire-callout__eyebrow">Not sure who to see?</span>
+      <h2 class="wire-callout__title">A care navigator can help.</h2>
+      <p class="wire-callout__body">Navigators are non-clinical specialists who help patients understand their options, verify insurance, and connect with the right care team. There's no cost to talk with one.</p>
+      <div class="wire-callout__actions">
+        <a class="wire-button" href="#">Call 312.238.8000</a>
+        <a class="wire-button wire-button--secondary" href="#">Request a call back</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--inverse">
+  <div class="u-container wire-footer__inner">
+    <div class="wire-footer__brand">
+      <a class="wire-footer__brand-mark" href="./hospital-homepage.html"><span class="wire-topnav__brand-mark">R</span> Riverside Medical Center</a>
+      <p class="wire-footer__tagline">Where the most challenging conditions are met with the most innovative care.</p>
+    </div>
+    <div class="wire-footer__columns">
+      <div>
+        <div class="wire-footer__col-title">Care</div>
+        <ul class="wire-footer__list" role="list">
+          <li class="wire-footer__list-item"><a class="wire-footer__link" href="./hospital-specialty.html">Conditions we treat</a></li>
+          <li class="wire-footer__list-item"><a class="wire-footer__link" href="./hospital-find-a-doctor.html">Find a doctor</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="wire-footer__col-title">Research</div>
+        <ul class="wire-footer__list" role="list">
+          <li class="wire-footer__list-item"><a class="wire-footer__link" href="./hospital-research.html">Labs &amp; teams</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="wire-footer__col-title">About</div>
+        <ul class="wire-footer__list" role="list">
+          <li class="wire-footer__list-item"><a class="wire-footer__link" href="#">Our story</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="wire-footer__col-title">Connect</div>
+        <ul class="wire-footer__list" role="list">
+          <li class="wire-footer__list-item"><a class="wire-footer__link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wire-footer__bottom">
+      <span>© 2026 Riverside Medical Center</span>
+      <ul class="wire-footer__legal" role="list">
+        <li><a class="wire-footer__link" href="#">Privacy</a></li>
+        <li><a class="wire-footer__link" href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

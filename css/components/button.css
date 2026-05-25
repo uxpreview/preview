@@ -6,7 +6,7 @@
    States:    :hover, :focus-visible, :disabled, .is-loading
    ============================================================ */
 
-.p-button {
+.wire-button {
   --btn-bg: var(--color-accent);
   --btn-fg: var(--color-text-inverse);
   --btn-border: var(--color-accent);
@@ -43,53 +43,53 @@
     transform var(--duration-fast) var(--ease-out);
 }
 
-.p-button:hover {
+.wire-button:hover {
   --btn-bg: var(--color-accent-hover);
   --btn-border: var(--color-accent-hover);
   text-decoration: none;
 }
 
-.p-button:active {
+.wire-button:active {
   transform: translateY(1px);
 }
 
-.p-button:disabled,
-.p-button.is-disabled {
+.wire-button:disabled,
+.wire-button.is-disabled {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
 
 /* ---------- Variants ---------- */
-.p-button--secondary {
+.wire-button--secondary {
   --btn-bg: transparent;
   --btn-fg: var(--color-text);
   --btn-border: var(--color-border-strong);
 }
-.p-button--secondary:hover {
+.wire-button--secondary:hover {
   --btn-bg: var(--color-bg-muted);
   --btn-border: var(--color-text);
 }
 
-.p-button--ghost {
+.wire-button--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--color-text);
   --btn-border: transparent;
 }
-.p-button--ghost:hover {
+.wire-button--ghost:hover {
   --btn-bg: var(--color-bg-muted);
   --btn-border: transparent;
 }
 
 /* ---------- Sizes ---------- */
-.p-button--sm {
+.wire-button--sm {
   --btn-pad-x: var(--space-md);
   --btn-pad-y: var(--space-xs);
   --btn-font-size: var(--text-sm);
   min-block-size: 2.25rem;
 }
 
-.p-button--lg {
+.wire-button--lg {
   --btn-pad-x: var(--space-xl);
   --btn-pad-y: var(--space-md);
   --btn-font-size: var(--text-lg);
@@ -97,7 +97,7 @@
 }
 
 /* ---------- Icon-only ---------- */
-.p-button--icon-only {
+.wire-button--icon-only {
   --btn-pad-x: var(--space-sm);
   inline-size: 2.75rem;
   block-size: 2.75rem;
@@ -105,41 +105,45 @@
   border-radius: var(--radius-pill);
 }
 
-.p-button--icon-only.p-button--sm {
+.wire-button--icon-only.wire-button--sm {
   inline-size: 2.25rem;
   block-size: 2.25rem;
 }
 
-.p-button--icon-only.p-button--lg {
+.wire-button--icon-only.wire-button--lg {
   inline-size: 3.25rem;
   block-size: 3.25rem;
 }
 
 /* ---------- Full width ---------- */
-.p-button--full {
+.wire-button--full {
   display: flex;
   inline-size: 100%;
 }
 
 /* ---------- Icon child ---------- */
-.p-button__icon {
+.wire-button__icon {
   display: inline-flex;
   inline-size: 1.25em;
   block-size: 1.25em;
   flex-shrink: 0;
 }
-.p-button__icon svg {
+.wire-button__icon svg {
   inline-size: 100%;
   block-size: 100%;
 }
 
-/* ---------- Loading state ---------- */
-.p-button.is-loading {
+/* ---------- Loading state ----------
+   Pair with aria-busy="true" on the button and an optional sr-only "Loading"
+   text node so screen readers announce the change (WCAG 4.1.3). */
+.wire-button.is-loading,
+.wire-button[aria-busy="true"] {
   pointer-events: none;
   color: transparent;
   position: relative;
 }
-.p-button.is-loading::after {
+.wire-button.is-loading::after,
+.wire-button[aria-busy="true"]::after {
   content: "";
   position: absolute;
   inline-size: 1em;
@@ -148,19 +152,19 @@
   border: var(--border-md) solid currentColor;
   border-block-end-color: transparent;
   color: var(--btn-fg);
-  animation: p-spin 0.7s linear infinite;
+  animation: wire-spin 0.7s linear infinite;
 }
 
-@keyframes p-spin {
+@keyframes wire-spin {
   to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .p-button.is-loading::after { animation: none; }
+  .wire-button.is-loading::after { animation: none; }
 }
 
 /* ---------- Button group ---------- */
-.p-button-group {
+.wire-button-group {
   display: inline-flex;
   flex-wrap: wrap;
   gap: var(--space-xs);

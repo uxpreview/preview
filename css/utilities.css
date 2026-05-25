@@ -23,6 +23,9 @@
 .u-bg-inverse {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
+  /* Focus ring must remain visible on dark backgrounds (WCAG 2.4.7). */
+  --color-focus: var(--color-text-inverse);
+  --color-border: var(--color-border-inverse);
 }
 
 .u-bg-inverse a {
@@ -51,3 +54,15 @@
 .u-mt-md { margin-block-start: var(--space-md); }
 .u-mt-lg { margin-block-start: var(--space-lg); }
 .u-mt-xl { margin-block-start: var(--space-xl); }
+
+/* ---------- Drop cap (editorial body type) ---------- */
+.u-drop-cap::first-letter {
+  float: inline-start;
+  font-family: var(--font-display);
+  font-size: 4.5em;
+  line-height: 0.85;
+  font-weight: var(--weight-bold);
+  padding-inline-end: var(--space-xs);
+  padding-block-start: var(--space-3xs);
+  color: var(--color-text);
+}

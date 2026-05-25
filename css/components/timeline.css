@@ -2,7 +2,7 @@
    Timeline — vertical sequence of milestones.
    ============================================================ */
 
-.p-timeline {
+.wire-timeline {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -10,7 +10,7 @@
   list-style: none;
 }
 
-.p-timeline__item {
+.wire-timeline__item {
   position: relative;
   padding-block: var(--space-lg);
   padding-inline-start: var(--space-2xl);
@@ -18,7 +18,7 @@
   margin: 0;
 }
 
-.p-timeline__item::before {
+.wire-timeline__item::before {
   content: "";
   position: absolute;
   inset-block-start: calc(var(--space-lg) + 0.4rem);
@@ -30,19 +30,19 @@
   border-radius: 50%;
 }
 
-.p-timeline__item:first-child {
+.wire-timeline__item:first-child {
   padding-block-start: 0;
 }
-.p-timeline__item:first-child::before {
+.wire-timeline__item:first-child::before {
   inset-block-start: 0.4rem;
 }
 
-.p-timeline__item:last-child {
+.wire-timeline__item:last-child {
   padding-block-end: 0;
   border-inline-start-color: transparent;
 }
 
-.p-timeline__date {
+.wire-timeline__date {
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
@@ -51,14 +51,14 @@
   margin-block-end: var(--space-2xs);
 }
 
-.p-timeline__title {
+.wire-timeline__title {
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
   margin-block-end: var(--space-xs);
 }
 
-.p-timeline__body {
+.wire-timeline__body {
   font-size: var(--text-md);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);

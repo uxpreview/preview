@@ -2,7 +2,7 @@
    Divider — horizontal or vertical rule. Optional inline label.
    ============================================================ */
 
-.p-divider {
+.wire-divider {
   --divider-color: var(--color-border);
   --divider-weight: var(--border-thin);
   border: 0;
@@ -13,22 +13,22 @@
   margin-block: var(--space-xl);
 }
 
-.p-divider--strong {
+.wire-divider--strong {
   --divider-color: var(--color-border-strong);
 }
 
-.p-divider--thick {
+.wire-divider--thick {
   --divider-weight: var(--border-md);
 }
 
-.p-divider--dashed {
+.wire-divider--dashed {
   block-size: 0;
   background: none;
   border-block-start: var(--divider-weight) dashed var(--divider-color);
 }
 
 /* Labeled divider — wrap in an element with this modifier */
-.p-divider-labeled {
+.wire-divider-labeled {
   display: flex;
   align-items: center;
   gap: var(--space-md);
@@ -39,8 +39,8 @@
   text-transform: uppercase;
 }
 
-.p-divider-labeled::before,
-.p-divider-labeled::after {
+.wire-divider-labeled::before,
+.wire-divider-labeled::after {
   content: "";
   flex: 1;
   block-size: var(--border-thin);

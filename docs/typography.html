@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Typography — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Typography — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Typography</h1>
-        <p class="p-hero__lead">A single scale that carries everything from a 12px eyebrow to an 88px display headline. Hierarchy comes from size, weight, and space — never color.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Typography</h1>
+        <p class="wire-hero__lead">A single scale that carries everything from a 12px eyebrow to an 88px display headline. Hierarchy comes from size, weight, and space — never color.</p>
       </div>
     </div>
   </section>
@@ -51,98 +51,98 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Anatomy</h2>
+          <h2 class="wire-h3">Anatomy</h2>
           <p class="u-text-muted u-mt-sm">A typographic block typically stacks an eyebrow, a heading, a lead paragraph, and body copy. The eyebrow names the context, the heading carries the idea, the lead carries the second sentence, body fills in.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default stack</span>
-            <p class="p-eyebrow">Patient programs</p>
-            <h1 class="p-h1 u-mt-sm">Therapy that starts the day you arrive.</h1>
-            <p class="p-lead u-mt-md">Most rehabilitation hospitals wait until you are stable. We start the moment it is safe — because the brain rewires fastest in the first weeks after injury.</p>
-            <p class="u-mt-md u-max-prose">Body text is the workhorse: set at 16px, comfortable line height, capped at roughly seventy characters per line. Long-form prose belongs inside <code>.p-prose</code> to get the right rhythm between paragraphs and headings.</p>
-            <p class="p-caption u-mt-md">Caption · supporting context, image credits, helper text.</p>
+            <p class="wire-eyebrow">Patient programs</p>
+            <h1 class="wire-h1 u-mt-sm">Therapy that starts the day you arrive.</h1>
+            <p class="wire-lead u-mt-md">Most rehabilitation hospitals wait until you are stable. We start the moment it is safe — because the brain rewires fastest in the first weeks after injury.</p>
+            <p class="u-mt-md u-max-prose">Body text is the workhorse: set at 16px, comfortable line height, capped at roughly seventy characters per line. Long-form prose belongs inside <code>.wire-prose</code> to get the right rhythm between paragraphs and headings.</p>
+            <p class="wire-caption u-mt-md">Caption · supporting context, image credits, helper text.</p>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">When to use</h2>
+          <h2 class="wire-h3">When to use</h2>
           <ul>
-            <li>Use <code>.p-display</code> for one moment per page — a hero or landing statement.</li>
-            <li>Use <code>.p-h1</code>–<code>.p-h6</code> in document order; do not skip levels for visual size.</li>
-            <li>Use <code>.p-lead</code> directly after a heading to introduce a section.</li>
-            <li>Use <code>.p-eyebrow</code> to label a section's category in two or three words.</li>
+            <li>Use <code>.wire-display</code> for one moment per page — a hero or landing statement.</li>
+            <li>Use <code>.wire-h1</code>–<code>.wire-h6</code> in document order; do not skip levels for visual size.</li>
+            <li>Use <code>.wire-lead</code> directly after a heading to introduce a section.</li>
+            <li>Use <code>.wire-eyebrow</code> to label a section's category in two or three words.</li>
           </ul>
-          <h2 class="p-h3 u-mt-xl">When not to use</h2>
+          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
           <ul>
-            <li>Do not use <code>.p-display</code> inside cards or compact blocks — it will fight the surrounding scale.</li>
+            <li>Do not use <code>.wire-display</code> inside cards or compact blocks — it will fight the surrounding scale.</li>
             <li>Do not restyle a heading to look like another; pick the right class instead.</li>
-            <li>Do not use <code>.p-caption</code> as body copy — it is intentionally muted and small.</li>
+            <li>Do not use <code>.wire-caption</code> as body copy — it is intentionally muted and small.</li>
           </ul>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Variants</h2>
+          <h2 class="wire-h3">Variants</h2>
           <p class="u-text-muted u-mt-sm">Every heading class has matching <code>h1</code>–<code>h6</code> element styling. The display class adds an optional serif italic for editorial moments.</p>
 
           <div class="doc-example">
             <span class="doc-example__label">Display — sans (default)</span>
-            <h1 class="p-display">A grayscale system for thinking out loud.</h1>
+            <h1 class="wire-display">A grayscale system for thinking out loud.</h1>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Display — serif italic</span>
-            <h1 class="p-display p-display--serif">A grayscale system for thinking out loud.</h1>
+            <h1 class="wire-display wire-display--serif">A grayscale system for thinking out loud.</h1>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 1 / .p-h1</span>
-            <h1 class="p-h1">Conditions we treat</h1>
+            <span class="doc-example__label">Heading 1 / .wire-h1</span>
+            <h1 class="wire-h1">Conditions we treat</h1>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 2 / .p-h2</span>
-            <h2 class="p-h2">A team built around your goals</h2>
+            <span class="doc-example__label">Heading 2 / .wire-h2</span>
+            <h2 class="wire-h2">A team built around your goals</h2>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 3 / .p-h3</span>
-            <h3 class="p-h3">Outpatient rehabilitation</h3>
+            <span class="doc-example__label">Heading 3 / .wire-h3</span>
+            <h3 class="wire-h3">Outpatient rehabilitation</h3>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 4 / .p-h4</span>
-            <h4 class="p-h4">Eligibility and intake</h4>
+            <span class="doc-example__label">Heading 4 / .wire-h4</span>
+            <h4 class="wire-h4">Eligibility and intake</h4>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 5 / .p-h5</span>
-            <h5 class="p-h5">Insurance accepted</h5>
+            <span class="doc-example__label">Heading 5 / .wire-h5</span>
+            <h5 class="wire-h5">Insurance accepted</h5>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Heading 6 / .p-h6</span>
-            <h6 class="p-h6">Before your visit</h6>
+            <span class="doc-example__label">Heading 6 / .wire-h6</span>
+            <h6 class="wire-h6">Before your visit</h6>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Lead paragraph / .p-lead</span>
-            <p class="p-lead">A lead paragraph carries the second sentence of a section — short, important, slightly muted so it does not compete with the heading above it.</p>
+            <span class="doc-example__label">Lead paragraph / .wire-lead</span>
+            <p class="wire-lead">A lead paragraph carries the second sentence of a section — short, important, slightly muted so it does not compete with the heading above it.</p>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Eyebrow / .p-eyebrow</span>
-            <span class="p-eyebrow">Research · 2026</span>
+            <span class="doc-example__label">Eyebrow / .wire-eyebrow</span>
+            <span class="wire-eyebrow">Research · 2026</span>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Caption / .p-caption</span>
-            <p class="p-caption">Dr. Ana Mitchell, photographed in the Innovation Center, March 2026.</p>
+            <span class="doc-example__label">Caption / .wire-caption</span>
+            <p class="wire-caption">Dr. Ana Mitchell, photographed in the Innovation Center, March 2026.</p>
           </div>
           <div class="doc-example">
-            <span class="doc-example__label">Prose container / .p-prose</span>
-            <article class="p-prose">
-              <h2 class="p-h2">A confident outline of the section</h2>
-              <p>Inside a <code>.p-prose</code> wrapper, paragraphs and headings get the right rhythm automatically. Use this for long-form editorial, articles, and policy pages.</p>
+            <span class="doc-example__label">Prose container / .wire-prose</span>
+            <article class="wire-prose">
+              <h2 class="wire-h2">A confident outline of the section</h2>
+              <p>Inside a <code>.wire-prose</code> wrapper, paragraphs and headings get the right rhythm automatically. Use this for long-form editorial, articles, and policy pages.</p>
               <p>Subsequent paragraphs gain a comfortable top margin, and headings that follow paragraphs get a larger break above them so sections breathe.</p>
-              <h3 class="p-h3">A subhead inside prose</h3>
+              <h3 class="wire-h3">A subhead inside prose</h3>
               <p>Headings inside prose pull their following content closer, so the relationship between heading and body reads as a unit.</p>
             </article>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
-            <li>Headings ship as both element styles (<code>h1</code>–<code>h6</code>) and utility classes (<code>.p-h1</code>–<code>.p-h6</code>) so semantics never have to lose to visuals.</li>
+            <li>Headings ship as both element styles (<code>h1</code>–<code>h6</code>) and utility classes (<code>.wire-h1</code>–<code>.wire-h6</code>) so semantics never have to lose to visuals.</li>
             <li>Use document order: one <code>h1</code> per page, then nested levels in sequence. Skipping levels breaks assistive-tech outlines.</li>
             <li>Body text exceeds 4.5:1 contrast against the page background; muted text exceeds 4.5:1 against white.</li>
             <li>Paragraphs cap at roughly seventy characters per line by default, which keeps comfortable reading without manual width constraints.</li>
@@ -150,12 +150,12 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;span class="p-eyebrow"&gt;Patient programs&lt;/span&gt;
-&lt;h1 class="p-h1"&gt;Therapy that starts the day you arrive.&lt;/h1&gt;
-&lt;p class="p-lead"&gt;Most rehabilitation hospitals wait until you are stable. We start the moment it is safe.&lt;/p&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;span class="wire-eyebrow"&gt;Patient programs&lt;/span&gt;
+&lt;h1 class="wire-h1"&gt;Therapy that starts the day you arrive.&lt;/h1&gt;
+&lt;p class="wire-lead"&gt;Most rehabilitation hospitals wait until you are stable. We start the moment it is safe.&lt;/p&gt;
 &lt;p&gt;Body text fills in the rest, capped at roughly seventy characters per line.&lt;/p&gt;</code></pre>
           </details>
         </section>
@@ -165,13 +165,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* ============================================================
-   Primacy Wireframe System — Tokens
+   Wireframe Design System — Tokens
    The ONLY file in the system with raw values. Everything else
    references these custom properties. To rebrand: edit here.
    ============================================================ */
@@ -36,12 +36,19 @@
   --color-text-subtle: var(--gray-50);
   --color-text-inverse: var(--gray-00);
 
+  /* WCAG 2.2 §1.4.11 Non-text contrast: --color-border-strong must clear 3:1
+     against the page background where it identifies a UI component (form
+     fields, secondary buttons, etc.). gray-50 against white = 4.5:1. */
   --color-border: var(--gray-20);
-  --color-border-strong: var(--gray-40);
+  --color-border-strong: var(--gray-50);
   --color-border-inverse: var(--gray-80);
 
   --color-accent: var(--gray-95);
   --color-accent-hover: var(--gray-70);
+
+  /* WCAG 2.2 §2.4.7 Focus Visible. Default focus is dark; inverse contexts
+     (dark backgrounds) override to white via .u-bg-inverse and component-
+     scoped rules. */
   --color-focus: var(--gray-95);
   --color-overlay: rgba(15, 15, 15, 0.6);
 

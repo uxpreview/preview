@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Content blocks — Primacy Wireframe System</title>
-  <link rel="stylesheet" href="../css/primacy.css">
+  <title>Content blocks — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -16,32 +16,32 @@
 </head>
 <body>
 
-<a href="#main" class="p-skip-link">Skip to content</a>
+<a href="#main" class="wire-skip-link">Skip to content</a>
 
-<header class="p-topnav">
-  <div class="u-container p-topnav__inner">
-    <a href="../index.html" class="p-topnav__brand">
-      <span class="p-topnav__brand-mark">P</span>
-      <span>Primacy Wireframe System</span>
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
     </a>
     <nav aria-label="Primary">
-      <ul class="p-topnav__menu" role="list">
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../index.html">Components</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="p-topnav__item"><a class="p-topnav__link" href="../pages/sralab-homepage.html">SRALab demo</a></li>
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="p-hero p-hero--editorial">
+  <section class="wire-hero wire-hero--editorial">
     <div class="u-container">
-      <div class="p-hero__inner">
-        <span class="p-hero__eyebrow">Component</span>
-        <h1 class="p-hero__title">Content blocks</h1>
-        <p class="p-hero__lead">The middle of a page is built from a small set of reliable blocks: feature grids, two-column splits, accordions, tabs, callouts, quotes, and timelines. Compose them; do not invent new ones.</p>
+      <div class="wire-hero__inner">
+        <span class="wire-hero__eyebrow">Component</span>
+        <h1 class="wire-hero__title">Content blocks</h1>
+        <p class="wire-hero__lead">The middle of a page is built from a small set of reliable blocks: feature grids, two-column splits, accordions, tabs, callouts, quotes, and timelines. Compose them; do not invent new ones.</p>
       </div>
     </div>
   </section>
@@ -51,147 +51,147 @@
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section">
-          <h2 class="p-h3">Feature grid</h2>
+          <h2 class="wire-h3">Feature grid</h2>
           <p class="u-text-muted u-mt-sm">A 2-, 3-, or 4-up grid of features, services, or value propositions. Optional <code>--bordered</code> turns each feature into a card-like tile.</p>
           <div class="doc-example">
             <span class="doc-example__label">3-up (bordered)</span>
-            <div class="p-feature-grid p-feature-grid--3 p-feature-grid--bordered">
-              <div class="p-feature">
-                <span class="p-feature__icon">01</span>
-                <h3 class="p-feature__title">Inpatient rehab</h3>
-                <p class="p-feature__desc">Intensive, multidisciplinary care delivered while you live on the unit.</p>
-                <a class="p-feature__link" href="#">Learn more</a>
+            <div class="wire-feature-grid wire-feature-grid--3 wire-feature-grid--bordered">
+              <div class="wire-feature">
+                <span class="wire-feature__icon">01</span>
+                <h3 class="wire-feature__title">Inpatient rehab</h3>
+                <p class="wire-feature__desc">Intensive, multidisciplinary care delivered while you live on the unit.</p>
+                <a class="wire-feature__link" href="#">Learn more</a>
               </div>
-              <div class="p-feature">
-                <span class="p-feature__icon">02</span>
-                <h3 class="p-feature__title">Day rehab</h3>
-                <p class="p-feature__desc">Half-day intensive therapy 3–5 days a week, home life resumed in between.</p>
-                <a class="p-feature__link" href="#">Learn more</a>
+              <div class="wire-feature">
+                <span class="wire-feature__icon">02</span>
+                <h3 class="wire-feature__title">Day rehab</h3>
+                <p class="wire-feature__desc">Half-day intensive therapy 3–5 days a week, home life resumed in between.</p>
+                <a class="wire-feature__link" href="#">Learn more</a>
               </div>
-              <div class="p-feature">
-                <span class="p-feature__icon">03</span>
-                <h3 class="p-feature__title">Outpatient therapy</h3>
-                <p class="p-feature__desc">Targeted PT, OT, and speech therapy scheduled around your week.</p>
-                <a class="p-feature__link" href="#">Learn more</a>
+              <div class="wire-feature">
+                <span class="wire-feature__icon">03</span>
+                <h3 class="wire-feature__title">Outpatient therapy</h3>
+                <p class="wire-feature__desc">Targeted PT, OT, and speech therapy scheduled around your week.</p>
+                <a class="wire-feature__link" href="#">Learn more</a>
               </div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">4-up (unbordered)</span>
-            <div class="p-feature-grid p-feature-grid--4">
-              <div class="p-feature">
-                <span class="p-feature__icon">PT</span>
-                <h3 class="p-feature__title">Physical therapy</h3>
-                <p class="p-feature__desc">Movement, strength, and mobility.</p>
+            <div class="wire-feature-grid wire-feature-grid--4">
+              <div class="wire-feature">
+                <span class="wire-feature__icon">PT</span>
+                <h3 class="wire-feature__title">Physical therapy</h3>
+                <p class="wire-feature__desc">Movement, strength, and mobility.</p>
               </div>
-              <div class="p-feature">
-                <span class="p-feature__icon">OT</span>
-                <h3 class="p-feature__title">Occupational therapy</h3>
-                <p class="p-feature__desc">Daily living and meaningful activity.</p>
+              <div class="wire-feature">
+                <span class="wire-feature__icon">OT</span>
+                <h3 class="wire-feature__title">Occupational therapy</h3>
+                <p class="wire-feature__desc">Daily living and meaningful activity.</p>
               </div>
-              <div class="p-feature">
-                <span class="p-feature__icon">SLP</span>
-                <h3 class="p-feature__title">Speech therapy</h3>
-                <p class="p-feature__desc">Communication, voice, and swallowing.</p>
+              <div class="wire-feature">
+                <span class="wire-feature__icon">SLP</span>
+                <h3 class="wire-feature__title">Speech therapy</h3>
+                <p class="wire-feature__desc">Communication, voice, and swallowing.</p>
               </div>
-              <div class="p-feature">
-                <span class="p-feature__icon">PSY</span>
-                <h3 class="p-feature__title">Neuropsychology</h3>
-                <p class="p-feature__desc">Cognition and adjustment.</p>
+              <div class="wire-feature">
+                <span class="wire-feature__icon">PSY</span>
+                <h3 class="wire-feature__title">Neuropsychology</h3>
+                <p class="wire-feature__desc">Cognition and adjustment.</p>
               </div>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Two-column</h2>
+          <h2 class="wire-h3">Two-column</h2>
           <p class="u-text-muted u-mt-sm">Text + media (or text + text) in a 50/50 split by default. Optional ratios <code>--40-60</code>, <code>--60-40</code>, <code>--33-66</code> and <code>--reverse</code> to flip column order.</p>
           <div class="doc-example">
             <span class="doc-example__label">Text + media (default)</span>
-            <div class="p-twocol">
-              <div class="p-twocol__text">
-                <span class="p-twocol__eyebrow">Our approach</span>
-                <h3 class="p-twocol__title">Therapy that starts the day you arrive.</h3>
-                <p class="p-twocol__body">Most rehab hospitals wait until you are stable. We start the moment it is safe — because the brain rewires fastest in the first weeks after injury.</p>
-                <div class="p-twocol__actions">
-                  <a class="p-button p-button--secondary" href="#">Read the research</a>
+            <div class="wire-twocol">
+              <div class="wire-twocol__text">
+                <span class="wire-twocol__eyebrow">Our approach</span>
+                <h3 class="wire-twocol__title">Therapy that starts the day you arrive.</h3>
+                <p class="wire-twocol__body">Most rehab hospitals wait until you are stable. We start the moment it is safe — because the brain rewires fastest in the first weeks after injury.</p>
+                <div class="wire-twocol__actions">
+                  <a class="wire-button wire-button--secondary" href="#">Read the research</a>
                 </div>
               </div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Reversed (media leads on desktop)</span>
-            <div class="p-twocol p-twocol--reverse">
-              <div class="p-twocol__text">
-                <span class="p-twocol__eyebrow">Innovation Center</span>
-                <h3 class="p-twocol__title">Labs one floor from the bedside.</h3>
-                <p class="p-twocol__body">Translational research means findings reach patients in months, not years.</p>
+            <div class="wire-twocol wire-twocol--reverse">
+              <div class="wire-twocol__text">
+                <span class="wire-twocol__eyebrow">Innovation Center</span>
+                <h3 class="wire-twocol__title">Labs one floor from the bedside.</h3>
+                <p class="wire-twocol__body">Translational research means findings reach patients in months, not years.</p>
               </div>
-              <div class="p-media p-media--4-3" data-ratio="4:3"></div>
+              <div class="wire-media wire-media--4-3" data-ratio="4:3"></div>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accordion</h2>
-          <p class="u-text-muted u-mt-sm">Built on native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>. Add <code>data-p-accordion="single"</code> to enforce one-open behavior.</p>
+          <h2 class="wire-h3">Accordion</h2>
+          <p class="u-text-muted u-mt-sm">Built on native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>. Add <code>data-wire-accordion="single"</code> to enforce one-open behavior.</p>
           <div class="doc-example">
             <span class="doc-example__label">FAQ — single-open</span>
-            <div class="p-accordion" data-p-accordion="single">
-              <details class="p-accordion__item" open>
-                <summary class="p-accordion__summary">What should I bring to my first appointment?<span class="p-accordion__icon" aria-hidden="true"></span></summary>
-                <div class="p-accordion__body">A photo ID, your insurance card, a list of current medications, recent imaging or test results if you have them, and any referral notes from your physician.</div>
+            <div class="wire-accordion" data-wire-accordion="single">
+              <details class="wire-accordion__item" open>
+                <summary class="wire-accordion__summary">What should I bring to my first appointment?<span class="wire-accordion__icon" aria-hidden="true"></span></summary>
+                <div class="wire-accordion__body">A photo ID, your insurance card, a list of current medications, recent imaging or test results if you have them, and any referral notes from your physician.</div>
               </details>
-              <details class="p-accordion__item">
-                <summary class="p-accordion__summary">Do I need a referral?<span class="p-accordion__icon" aria-hidden="true"></span></summary>
-                <div class="p-accordion__body">For most outpatient services, yes. Inpatient admissions are coordinated directly with your treating hospital.</div>
+              <details class="wire-accordion__item">
+                <summary class="wire-accordion__summary">Do I need a referral?<span class="wire-accordion__icon" aria-hidden="true"></span></summary>
+                <div class="wire-accordion__body">For most outpatient services, yes. Inpatient admissions are coordinated directly with your treating hospital.</div>
               </details>
-              <details class="p-accordion__item">
-                <summary class="p-accordion__summary">Is parking available?<span class="p-accordion__icon" aria-hidden="true"></span></summary>
-                <div class="p-accordion__body">Valet and self-parking are available at all locations. Patients receive a daily discount validated at check-in.</div>
+              <details class="wire-accordion__item">
+                <summary class="wire-accordion__summary">Is parking available?<span class="wire-accordion__icon" aria-hidden="true"></span></summary>
+                <div class="wire-accordion__body">Valet and self-parking are available at all locations. Patients receive a daily discount validated at check-in.</div>
               </details>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Tabs</h2>
-          <p class="u-text-muted u-mt-sm">ARIA tabs pattern. Add <code>data-p-tabs</code> to wire keyboard navigation. <code>--pill</code> for a softer pill-rail variant.</p>
+          <h2 class="wire-h3">Tabs</h2>
+          <p class="u-text-muted u-mt-sm">ARIA tabs pattern. Add <code>data-wire-tabs</code> to wire keyboard navigation. <code>--pill</code> for a softer pill-rail variant.</p>
           <div class="doc-example">
             <span class="doc-example__label">Underline tabs (default)</span>
-            <div class="p-tabs" data-p-tabs>
-              <div role="tablist" class="p-tabs__list" aria-label="Care settings">
-                <button class="p-tabs__tab" role="tab" aria-selected="true" aria-controls="tp-1" id="tt-1">Inpatient</button>
-                <button class="p-tabs__tab" role="tab" aria-controls="tp-2" id="tt-2">Day rehab</button>
-                <button class="p-tabs__tab" role="tab" aria-controls="tp-3" id="tt-3">Outpatient</button>
+            <div class="wire-tabs" data-wire-tabs>
+              <div role="tablist" class="wire-tabs__list" aria-label="Care settings">
+                <button class="wire-tabs__tab" role="tab" aria-selected="true" aria-controls="tp-1" id="tt-1">Inpatient</button>
+                <button class="wire-tabs__tab" role="tab" aria-controls="tp-2" id="tt-2">Day rehab</button>
+                <button class="wire-tabs__tab" role="tab" aria-controls="tp-3" id="tt-3">Outpatient</button>
               </div>
-              <div id="tp-1" class="p-tabs__panel is-active" role="tabpanel" aria-labelledby="tt-1">
+              <div id="tp-1" class="wire-tabs__panel is-active" role="tabpanel" aria-labelledby="tt-1">
                 <p>Inpatient rehab is for patients who need round-the-clock care while undergoing intensive therapy. Most stays last two to three weeks.</p>
               </div>
-              <div id="tp-2" class="p-tabs__panel" role="tabpanel" aria-labelledby="tt-2" hidden>
+              <div id="tp-2" class="wire-tabs__panel" role="tabpanel" aria-labelledby="tt-2" hidden>
                 <p>Day rehab is a half-day intensive therapy program for patients who are medically stable enough to live at home.</p>
               </div>
-              <div id="tp-3" class="p-tabs__panel" role="tabpanel" aria-labelledby="tt-3" hidden>
+              <div id="tp-3" class="wire-tabs__panel" role="tabpanel" aria-labelledby="tt-3" hidden>
                 <p>Outpatient therapy provides targeted PT, OT, and speech treatments scheduled flexibly around your week.</p>
               </div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Pill tabs</span>
-            <div class="p-tabs p-tabs--pill" data-p-tabs>
-              <div role="tablist" class="p-tabs__list" aria-label="Audience">
-                <button class="p-tabs__tab" role="tab" aria-selected="true" aria-controls="ap-1" id="at-1">Patients</button>
-                <button class="p-tabs__tab" role="tab" aria-controls="ap-2" id="at-2">Clinicians</button>
-                <button class="p-tabs__tab" role="tab" aria-controls="ap-3" id="at-3">Researchers</button>
+            <div class="wire-tabs wire-tabs--pill" data-wire-tabs>
+              <div role="tablist" class="wire-tabs__list" aria-label="Audience">
+                <button class="wire-tabs__tab" role="tab" aria-selected="true" aria-controls="ap-1" id="at-1">Patients</button>
+                <button class="wire-tabs__tab" role="tab" aria-controls="ap-2" id="at-2">Clinicians</button>
+                <button class="wire-tabs__tab" role="tab" aria-controls="ap-3" id="at-3">Researchers</button>
               </div>
-              <div id="ap-1" class="p-tabs__panel is-active" role="tabpanel" aria-labelledby="at-1">
+              <div id="ap-1" class="wire-tabs__panel is-active" role="tabpanel" aria-labelledby="at-1">
                 <p>Information about care, appointments, insurance, and what to expect at your visit.</p>
               </div>
-              <div id="ap-2" class="p-tabs__panel" role="tabpanel" aria-labelledby="at-2" hidden>
+              <div id="ap-2" class="wire-tabs__panel" role="tabpanel" aria-labelledby="at-2" hidden>
                 <p>Refer a patient, view clinical pathways, and connect with our care teams.</p>
               </div>
-              <div id="ap-3" class="p-tabs__panel" role="tabpanel" aria-labelledby="at-3" hidden>
+              <div id="ap-3" class="wire-tabs__panel" role="tabpanel" aria-labelledby="at-3" hidden>
                 <p>Browse open studies, recruit participants, and collaborate with our labs.</p>
               </div>
             </div>
@@ -199,129 +199,129 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Callout</h2>
+          <h2 class="wire-h3">Callout</h2>
           <p class="u-text-muted u-mt-sm">A boxed editorial aside. Use sparingly — one per long page at most.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <div class="p-callout">
-              <span class="p-callout__eyebrow">Now enrolling</span>
-              <h4 class="p-callout__title">Study on robotic-assisted gait training</h4>
-              <p class="p-callout__body">We are recruiting adults 18–65 who have experienced a stroke in the last 12 months.</p>
-              <div class="p-callout__actions">
-                <a class="p-button p-button--sm" href="#">See eligibility</a>
-                <a class="p-button p-button--secondary p-button--sm" href="#">Contact the team</a>
+            <div class="wire-callout">
+              <span class="wire-callout__eyebrow">Now enrolling</span>
+              <h4 class="wire-callout__title">Study on robotic-assisted gait training</h4>
+              <p class="wire-callout__body">We are recruiting adults 18–65 who have experienced a stroke in the last 12 months.</p>
+              <div class="wire-callout__actions">
+                <a class="wire-button wire-button--sm" href="#">See eligibility</a>
+                <a class="wire-button wire-button--secondary wire-button--sm" href="#">Contact the team</a>
               </div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Subtle</span>
-            <div class="p-callout p-callout--subtle">
-              <span class="p-callout__eyebrow">Note</span>
-              <h4 class="p-callout__title">Memorial Day hours</h4>
-              <p class="p-callout__body">Our Streeterville location will be closed Monday, May 25. Outpatient visits resume Tuesday.</p>
+            <div class="wire-callout wire-callout--subtle">
+              <span class="wire-callout__eyebrow">Note</span>
+              <h4 class="wire-callout__title">Memorial Day hours</h4>
+              <p class="wire-callout__body">Our Streeterville location will be closed Monday, May 25. Outpatient visits resume Tuesday.</p>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Bordered</span>
-            <div class="p-callout p-callout--bordered">
-              <span class="p-callout__eyebrow">For clinicians</span>
-              <h4 class="p-callout__title">Referral pathways</h4>
-              <p class="p-callout__body">Step-by-step referral templates for inpatient, day rehab, and outpatient services.</p>
-              <div class="p-callout__actions">
-                <a class="p-button p-button--secondary p-button--sm" href="#">View pathways</a>
+            <div class="wire-callout wire-callout--bordered">
+              <span class="wire-callout__eyebrow">For clinicians</span>
+              <h4 class="wire-callout__title">Referral pathways</h4>
+              <p class="wire-callout__body">Step-by-step referral templates for inpatient, day rehab, and outpatient services.</p>
+              <div class="wire-callout__actions">
+                <a class="wire-button wire-button--secondary wire-button--sm" href="#">View pathways</a>
               </div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Inverse</span>
-            <div class="p-callout p-callout--inverse">
-              <span class="p-callout__eyebrow">Speak with a navigator</span>
-              <h4 class="p-callout__title">Not sure where to start?</h4>
-              <p class="p-callout__body">A care navigator can help you understand your options and the next step.</p>
-              <div class="p-callout__actions">
-                <a class="p-button p-button--secondary p-button--sm" href="#">Get in touch</a>
+            <div class="wire-callout wire-callout--inverse">
+              <span class="wire-callout__eyebrow">Speak with a navigator</span>
+              <h4 class="wire-callout__title">Not sure where to start?</h4>
+              <p class="wire-callout__body">A care navigator can help you understand your options and the next step.</p>
+              <div class="wire-callout__actions">
+                <a class="wire-button wire-button--secondary wire-button--sm" href="#">Get in touch</a>
               </div>
             </div>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Inline (in-content)</span>
-            <div class="p-callout p-callout--inline">
-              <p class="p-callout__body"><strong>Heads up:</strong> This program is currently accepting new patients on a four-week wait.</p>
+            <div class="wire-callout wire-callout--inline">
+              <p class="wire-callout__body"><strong>Heads up:</strong> This program is currently accepting new patients on a four-week wait.</p>
             </div>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Quote</h2>
+          <h2 class="wire-h3">Quote</h2>
           <p class="u-text-muted u-mt-sm">A pull quote with attribution. Three variants: default, large display, inline left-bar.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <figure class="p-quote">
-              <div class="p-quote__mark" aria-hidden="true">"</div>
-              <blockquote class="p-quote__text">They didn't just teach me how to walk again. They taught me how to expect more.</blockquote>
-              <figcaption class="p-quote__attribution">
-                <span class="p-quote__name">Maya Sundaresan</span>
-                <span class="p-quote__role">Patient, Stroke Recovery Program</span>
+            <figure class="wire-quote">
+              <div class="wire-quote__mark" aria-hidden="true">"</div>
+              <blockquote class="wire-quote__text">They didn't just teach me how to walk again. They taught me how to expect more.</blockquote>
+              <figcaption class="wire-quote__attribution">
+                <span class="wire-quote__name">Maya Sundaresan</span>
+                <span class="wire-quote__role">Patient, Stroke Recovery Program</span>
               </figcaption>
             </figure>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Large (display)</span>
-            <figure class="p-quote p-quote--large">
-              <blockquote class="p-quote__text">Research lives next to the patients whose lives it will change.</blockquote>
-              <figcaption class="p-quote__attribution">
-                <span class="p-quote__name">Dr. Ana Mitchell</span>
-                <span class="p-quote__role">Director, Spinal Cord Injury Program</span>
+            <figure class="wire-quote wire-quote--large">
+              <blockquote class="wire-quote__text">Research lives next to the patients whose lives it will change.</blockquote>
+              <figcaption class="wire-quote__attribution">
+                <span class="wire-quote__name">Dr. Ana Mitchell</span>
+                <span class="wire-quote__role">Director, Spinal Cord Injury Program</span>
               </figcaption>
             </figure>
           </div>
           <div class="doc-example">
             <span class="doc-example__label">Inline (left-bar)</span>
-            <figure class="p-quote p-quote--inline">
-              <blockquote class="p-quote__text">The first appointment felt like a real plan, not a list of tests.</blockquote>
-              <figcaption class="p-quote__attribution">
-                <span class="p-quote__name">Daniel R.</span>
-                <span class="p-quote__role">Outpatient, 2026</span>
+            <figure class="wire-quote wire-quote--inline">
+              <blockquote class="wire-quote__text">The first appointment felt like a real plan, not a list of tests.</blockquote>
+              <figcaption class="wire-quote__attribution">
+                <span class="wire-quote__name">Daniel R.</span>
+                <span class="wire-quote__role">Outpatient, 2026</span>
               </figcaption>
             </figure>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Timeline</h2>
+          <h2 class="wire-h3">Timeline</h2>
           <p class="u-text-muted u-mt-sm">A vertical sequence of milestones — history pages, treatment journeys, project plans.</p>
           <div class="doc-example">
             <span class="doc-example__label">Default</span>
-            <ol class="p-timeline" role="list">
-              <li class="p-timeline__item">
-                <div class="p-timeline__date">1953</div>
-                <h4 class="p-timeline__title">Founded as the Rehabilitation Institute of Chicago</h4>
-                <p class="p-timeline__body">A small inpatient unit opens with a singular focus: rehabilitation as its own medical specialty.</p>
+            <ol class="wire-timeline" role="list">
+              <li class="wire-timeline__item">
+                <div class="wire-timeline__date">1953</div>
+                <h4 class="wire-timeline__title">Founded as the Rehabilitation Institute of Chicago</h4>
+                <p class="wire-timeline__body">A small inpatient unit opens with a singular focus: rehabilitation as its own medical specialty.</p>
               </li>
-              <li class="p-timeline__item">
-                <div class="p-timeline__date">1991</div>
-                <h4 class="p-timeline__title">First ranked #1 in rehabilitation</h4>
-                <p class="p-timeline__body">U.S. News &amp; World Report begins ranking; the Institute takes the top spot and holds it.</p>
+              <li class="wire-timeline__item">
+                <div class="wire-timeline__date">1991</div>
+                <h4 class="wire-timeline__title">First ranked #1 in rehabilitation</h4>
+                <p class="wire-timeline__body">U.S. News &amp; World Report begins ranking; the Institute takes the top spot and holds it.</p>
               </li>
-              <li class="p-timeline__item">
-                <div class="p-timeline__date">2017</div>
-                <h4 class="p-timeline__title">Becomes Shirley Ryan AbilityLab</h4>
-                <p class="p-timeline__body">A new building, a new name, and a translational model — research and care under one roof.</p>
+              <li class="wire-timeline__item">
+                <div class="wire-timeline__date">2017</div>
+                <h4 class="wire-timeline__title">Becomes Riverside Medical Center</h4>
+                <p class="wire-timeline__body">A new building, a new name, and a translational model — research and care under one roof.</p>
               </li>
-              <li class="p-timeline__item">
-                <div class="p-timeline__date">2026</div>
-                <h4 class="p-timeline__title">36th consecutive #1 ranking</h4>
-                <p class="p-timeline__body">More than three decades of unbroken leadership in rehabilitation medicine.</p>
+              <li class="wire-timeline__item">
+                <div class="wire-timeline__date">2026</div>
+                <h4 class="wire-timeline__title">36th consecutive #1 ranking</h4>
+                <p class="wire-timeline__body">More than three decades of unbroken leadership in rehabilitation medicine.</p>
               </li>
             </ol>
           </div>
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Accessibility</h2>
+          <h2 class="wire-h3">Accessibility</h2>
           <ul>
             <li>Accordion uses native <code>&lt;details&gt;</code>, which screen readers announce as expand/collapse without extra ARIA.</li>
-            <li>Tabs require <code>role="tablist"</code>, <code>role="tab"</code>, <code>aria-selected</code>, <code>aria-controls</code>, and arrow-key navigation (wired by <code>data-p-tabs</code>).</li>
+            <li>Tabs require <code>role="tablist"</code>, <code>role="tab"</code>, <code>aria-selected</code>, <code>aria-controls</code>, and arrow-key navigation (wired by <code>data-wire-tabs</code>).</li>
             <li>Quote uses <code>&lt;figure&gt;</code> with <code>&lt;blockquote&gt;</code> and <code>&lt;figcaption&gt;</code> so attribution stays semantically attached.</li>
             <li>Timeline marks the visual bullets <code>aria-hidden</code> via CSS; the ordered list itself carries semantics.</li>
             <li>Callouts are not landmarks — do not wrap them in <code>&lt;aside&gt;</code> unless the content is genuinely tangential.</li>
@@ -329,15 +329,15 @@
         </section>
 
         <section class="doc-section">
-          <h2 class="p-h3">Code</h2>
+          <h2 class="wire-h3">Code</h2>
           <details>
-            <summary class="p-button p-button--secondary p-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;div class="p-feature-grid p-feature-grid--3 p-feature-grid--bordered"&gt;
-  &lt;div class="p-feature"&gt;
-    &lt;span class="p-feature__icon"&gt;01&lt;/span&gt;
-    &lt;h3 class="p-feature__title"&gt;Inpatient rehab&lt;/h3&gt;
-    &lt;p class="p-feature__desc"&gt;Intensive multidisciplinary care.&lt;/p&gt;
-    &lt;a class="p-feature__link" href="/inpatient"&gt;Learn more&lt;/a&gt;
+            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
+            <pre class="doc-snippet u-mt-md"><code>&lt;div class="wire-feature-grid wire-feature-grid--3 wire-feature-grid--bordered"&gt;
+  &lt;div class="wire-feature"&gt;
+    &lt;span class="wire-feature__icon"&gt;01&lt;/span&gt;
+    &lt;h3 class="wire-feature__title"&gt;Inpatient rehab&lt;/h3&gt;
+    &lt;p class="wire-feature__desc"&gt;Intensive multidisciplinary care.&lt;/p&gt;
+    &lt;a class="wire-feature__link" href="/inpatient"&gt;Learn more&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
           </details>
@@ -348,13 +348,13 @@
   </section>
 </main>
 
-<footer class="p-footer p-footer--compact">
-  <div class="u-container p-footer__inner">
-    <a class="p-footer__brand-mark" href="../index.html"><span class="p-topnav__brand-mark">P</span> Primacy Wireframe System</a>
-    <p class="p-footer__tagline">v1 · Internal tool · Built for Primacy by the experience team</p>
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.1 · Open-source wireframe system</p>
   </div>
 </footer>
 
-<script src="../js/primacy.js" defer></script>
+<script src="../js/wire.js" defer></script>
 </body>
 </html>

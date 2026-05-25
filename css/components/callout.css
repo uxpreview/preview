@@ -3,7 +3,7 @@
    Variants: default, subtle, inverse, bordered
    ============================================================ */
 
-.p-callout {
+.wire-callout {
   --callout-bg: var(--color-bg-muted);
   --callout-fg: var(--color-text);
   --callout-border: transparent;
@@ -18,21 +18,23 @@
   border-radius: var(--radius-lg);
 }
 
-.p-callout--subtle {
+.wire-callout--subtle {
   --callout-bg: var(--color-bg-subtle);
 }
 
-.p-callout--bordered {
+.wire-callout--bordered {
   --callout-bg: transparent;
   --callout-border: var(--color-border-strong);
 }
 
-.p-callout--inverse {
+.wire-callout--inverse {
   --callout-bg: var(--color-bg-inverse);
   --callout-fg: var(--color-text-inverse);
+  /* WCAG 2.4.7 — focus must remain visible on the dark surface. */
+  --color-focus: var(--color-text-inverse);
 }
 
-.p-callout__eyebrow {
+.wire-callout__eyebrow {
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
@@ -40,11 +42,11 @@
   color: var(--color-text-muted);
 }
 
-.p-callout--inverse .p-callout__eyebrow {
+.wire-callout--inverse .wire-callout__eyebrow {
   color: var(--gray-40);
 }
 
-.p-callout__title {
+.wire-callout__title {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
@@ -52,18 +54,18 @@
   margin: 0;
 }
 
-.p-callout__body {
+.wire-callout__body {
   font-size: var(--text-md);
   line-height: var(--leading-normal);
   color: inherit;
 }
 
-.p-callout--subtle .p-callout__body,
-.p-callout--bordered .p-callout__body {
+.wire-callout--subtle .wire-callout__body,
+.wire-callout--bordered .wire-callout__body {
   color: var(--color-text-muted);
 }
 
-.p-callout__actions {
+.wire-callout__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
@@ -71,7 +73,7 @@
 }
 
 /* Inline (in-content) callout — smaller, denser */
-.p-callout--inline {
+.wire-callout--inline {
   padding: var(--space-md) var(--space-lg);
   border-radius: var(--radius-md);
   border-inline-start: var(--border-thick) solid var(--color-accent);
@@ -81,6 +83,6 @@
   background-color: var(--color-bg-subtle);
 }
 
-.p-callout--inline .p-callout__body {
+.wire-callout--inline .wire-callout__body {
   font-size: var(--text-sm);
 }

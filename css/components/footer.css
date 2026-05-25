@@ -2,40 +2,42 @@
    Footer — compact, standard, expanded.
    ============================================================ */
 
-.p-footer {
+.wire-footer {
   background-color: var(--color-bg-subtle);
   color: var(--color-text);
   padding-block: var(--space-3xl);
   border-block-start: var(--border-thin) solid var(--color-border);
 }
 
-.p-footer--inverse {
+.wire-footer--inverse {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   border-block-start: 0;
+  /* WCAG 2.4.7 — focus must remain visible on the dark surface. */
+  --color-focus: var(--color-text-inverse);
 }
 
-.p-footer--inverse a {
+.wire-footer--inverse a {
   color: var(--gray-30);
 }
-.p-footer--inverse a:hover {
+.wire-footer--inverse a:hover {
   color: var(--color-text-inverse);
 }
 
-.p-footer__inner {
+.wire-footer__inner {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
 }
 
-.p-footer__brand {
+.wire-footer__brand {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
   max-inline-size: 24rem;
 }
 
-.p-footer__brand-mark {
+.wire-footer__brand-mark {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
@@ -46,29 +48,29 @@
   text-decoration: none;
 }
 
-.p-footer__tagline {
+.wire-footer__tagline {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: var(--leading-normal);
 }
 
-.p-footer--inverse .p-footer__tagline {
+.wire-footer--inverse .wire-footer__tagline {
   color: var(--gray-40);
 }
 
-.p-footer__columns {
+.wire-footer__columns {
   display: grid;
   gap: var(--space-xl);
   grid-template-columns: 1fr 1fr;
 }
 
 @media (min-width: 48em) {
-  .p-footer__columns {
+  .wire-footer__columns {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-.p-footer__col-title {
+.wire-footer__col-title {
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
@@ -77,7 +79,7 @@
   margin-block-end: var(--space-md);
 }
 
-.p-footer__list {
+.wire-footer__list {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
@@ -86,22 +88,26 @@
   list-style: none;
 }
 
-.p-footer__list-item { margin: 0; }
+.wire-footer__list-item { margin: 0; }
 
-.p-footer__link {
+.wire-footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 1.75rem; /* WCAG 2.5.8 — meets AA target size in vertical link list */
+  padding-block: var(--space-2xs);
   font-size: var(--text-sm);
   color: var(--color-text);
   text-decoration: none;
 }
-.p-footer__link:hover {
+.wire-footer__link:hover {
   text-decoration: underline;
 }
 
-.p-footer--inverse .p-footer__link {
+.wire-footer--inverse .wire-footer__link {
   color: var(--gray-20);
 }
 
-.p-footer__bottom {
+.wire-footer__bottom {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -113,23 +119,23 @@
   color: var(--color-text-muted);
 }
 
-.p-footer--inverse .p-footer__bottom {
+.wire-footer--inverse .wire-footer__bottom {
   border-block-start-color: var(--color-border-inverse);
   color: var(--gray-40);
 }
 
-.p-footer__legal {
+.wire-footer__legal {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md);
 }
 
 /* ---------- Compact variant ---------- */
-.p-footer--compact {
+.wire-footer--compact {
   padding-block: var(--space-xl);
 }
 
-.p-footer--compact .p-footer__inner {
+.wire-footer--compact .wire-footer__inner {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -138,7 +144,7 @@
 }
 
 /* ---------- Expanded variant (CTA row) ---------- */
-.p-footer--expanded .p-footer__cta {
+.wire-footer--expanded .wire-footer__cta {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
@@ -149,18 +155,18 @@
 }
 
 @media (min-width: 48em) {
-  .p-footer--expanded .p-footer__cta {
+  .wire-footer--expanded .wire-footer__cta {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
 }
 
-.p-footer--inverse .p-footer__cta {
+.wire-footer--inverse .wire-footer__cta {
   background-color: var(--gray-80);
 }
 
-.p-footer__cta-title {
+.wire-footer__cta-title {
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
@@ -170,5 +176,5 @@
 }
 
 @media (min-width: 48em) {
-  .p-footer__cta-title { font-size: var(--text-3xl); }
+  .wire-footer__cta-title { font-size: var(--text-3xl); }
 }

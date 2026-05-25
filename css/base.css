@@ -20,7 +20,7 @@ body {
 
 /* ---------- Headings ---------- */
 h1,
-.p-h1 {
+.wire-h1 {
   font-size: var(--text-4xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
@@ -28,7 +28,7 @@ h1,
 }
 
 h2,
-.p-h2 {
+.wire-h2 {
   font-size: var(--text-3xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
@@ -36,28 +36,28 @@ h2,
 }
 
 h3,
-.p-h3 {
+.wire-h3 {
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
 }
 
 h4,
-.p-h4 {
+.wire-h4 {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
 }
 
 h5,
-.p-h5 {
+.wire-h5 {
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
 }
 
 h6,
-.p-h6 {
+.wire-h6 {
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   line-height: var(--leading-snug);
@@ -66,13 +66,13 @@ h6,
 }
 
 @media (min-width: 48em) {
-  h1, .p-h1 { font-size: var(--text-5xl); }
-  h2, .p-h2 { font-size: var(--text-4xl); }
-  h3, .p-h3 { font-size: var(--text-3xl); }
+  h1, .wire-h1 { font-size: var(--text-5xl); }
+  h2, .wire-h2 { font-size: var(--text-4xl); }
+  h3, .wire-h3 { font-size: var(--text-3xl); }
 }
 
 /* ---------- Display heading (oversized editorial moment) ---------- */
-.p-display {
+.wire-display {
   font-size: var(--text-5xl);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
@@ -80,28 +80,28 @@ h6,
 }
 
 @media (min-width: 48em) {
-  .p-display { font-size: var(--text-6xl); }
+  .wire-display { font-size: var(--text-6xl); }
 }
 
-.p-display--serif {
+.wire-display--serif {
   font-family: var(--font-serif);
   font-weight: var(--weight-regular);
   font-style: italic;
 }
 
 /* ---------- Lead paragraph ---------- */
-.p-lead {
+.wire-lead {
   font-size: var(--text-lg);
   line-height: var(--leading-normal);
   color: var(--color-text-muted);
 }
 
 @media (min-width: 48em) {
-  .p-lead { font-size: var(--text-xl); }
+  .wire-lead { font-size: var(--text-xl); }
 }
 
 /* ---------- Eyebrow ---------- */
-.p-eyebrow {
+.wire-eyebrow {
   display: inline-block;
   font-size: var(--text-2xs);
   font-weight: var(--weight-semibold);
@@ -112,7 +112,7 @@ h6,
 }
 
 /* ---------- Caption ---------- */
-.p-caption {
+.wire-caption {
   font-size: var(--text-sm);
   line-height: var(--leading-snug);
   color: var(--color-text-muted);
@@ -123,17 +123,17 @@ p {
   max-inline-size: 70ch;
 }
 
-.p-prose p + p {
+.wire-prose p + p {
   margin-block-start: var(--space-md);
 }
 
-.p-prose > * + h2,
-.p-prose > * + h3 {
+.wire-prose > * + h2,
+.wire-prose > * + h3 {
   margin-block-start: var(--space-2xl);
 }
 
-.p-prose > h2 + *,
-.p-prose > h3 + * {
+.wire-prose > h2 + *,
+.wire-prose > h3 + * {
   margin-block-start: var(--space-md);
 }
 
@@ -205,7 +205,7 @@ hr {
   margin-block: var(--space-2xl);
 }
 
-/* ---------- Blockquote (basic; .p-quote component for styled) ---------- */
+/* ---------- Blockquote (basic; .wire-quote component for styled) ---------- */
 blockquote {
   border-inline-start: var(--border-thick) solid var(--color-border-strong);
   padding-inline-start: var(--space-md);
@@ -222,7 +222,7 @@ li + li {
 }
 
 /* ---------- Skip link ---------- */
-.p-skip-link {
+.wire-skip-link {
   position: absolute;
   inset-block-start: var(--space-xs);
   inset-inline-start: var(--space-xs);
@@ -235,7 +235,7 @@ li + li {
   transition: transform var(--duration-base) var(--ease-out);
 }
 
-.p-skip-link:focus {
+.wire-skip-link:focus {
   transform: translateY(0);
 }
 

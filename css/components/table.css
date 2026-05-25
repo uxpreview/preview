@@ -2,34 +2,34 @@
    Table — data and comparison.
    ============================================================ */
 
-.p-table-wrap {
+.wire-table-wrap {
   inline-size: 100%;
   overflow-x: auto;
   border: var(--border-thin) solid var(--color-border);
   border-radius: var(--radius-md);
 }
 
-.p-table {
+.wire-table {
   inline-size: 100%;
   border-collapse: collapse;
   font-size: var(--text-sm);
   text-align: start;
 }
 
-.p-table th,
-.p-table td {
+.wire-table th,
+.wire-table td {
   padding-block: var(--space-md);
   padding-inline: var(--space-md);
   text-align: start;
   vertical-align: top;
 }
 
-.p-table thead {
+.wire-table thead {
   background-color: var(--color-bg-subtle);
   border-block-end: var(--border-thin) solid var(--color-border);
 }
 
-.p-table th {
+.wire-table th {
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
   text-transform: uppercase;
@@ -38,37 +38,37 @@
   line-height: var(--leading-snug);
 }
 
-.p-table tbody tr + tr {
+.wire-table tbody tr + tr {
   border-block-start: var(--border-thin) solid var(--color-border);
 }
 
-.p-table tbody tr:hover {
+.wire-table tbody tr:hover {
   background-color: var(--color-bg-subtle);
 }
 
-.p-table--striped tbody tr:nth-child(even) {
+.wire-table--striped tbody tr:nth-child(even) {
   background-color: var(--color-bg-subtle);
 }
 
 /* Numeric / tabular alignment */
-.p-table__num {
+.wire-table__num {
   text-align: end;
   font-variant-numeric: tabular-nums;
 }
 
 /* Compact variant */
-.p-table--compact th,
-.p-table--compact td {
+.wire-table--compact th,
+.wire-table--compact td {
   padding-block: var(--space-sm);
 }
 
 /* ---------- Comparison table ---------- */
-.p-table--comparison {
+.wire-table--comparison {
   border-collapse: separate;
   border-spacing: 0;
 }
 
-.p-table--comparison th {
+.wire-table--comparison th {
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   text-transform: none;
@@ -76,25 +76,25 @@
   color: var(--color-text);
 }
 
-.p-table--comparison th[scope="col"]:not(:first-child),
-.p-table--comparison td:not(:first-child) {
+.wire-table--comparison th[scope="col"]:not(:first-child),
+.wire-table--comparison td:not(:first-child) {
   text-align: center;
 }
 
-.p-table--comparison th[scope="col"].is-featured {
+.wire-table--comparison th[scope="col"].is-featured {
   background-color: var(--color-bg-inverse);
   color: var(--color-text-inverse);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
-.p-table--comparison .p-table__check::before {
+.wire-table--comparison .wire-table__check::before {
   content: "✓";
   font-weight: var(--weight-bold);
 }
 
-.p-table--comparison .p-table__cross {
+.wire-table--comparison .wire-table__cross {
   color: var(--color-text-subtle);
 }
-.p-table--comparison .p-table__cross::before {
+.wire-table--comparison .wire-table__cross::before {
   content: "—";
 }

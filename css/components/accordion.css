@@ -1,17 +1,17 @@
 /* ============================================================
    Accordion — built on native <details>/<summary>.
-   No JS required; data-p-accordion enables one-open behavior.
+   No JS required; data-wire-accordion enables one-open behavior.
    ============================================================ */
 
-.p-accordion {
+.wire-accordion {
   border-block-start: var(--border-thin) solid var(--color-border);
 }
 
-.p-accordion__item {
+.wire-accordion__item {
   border-block-end: var(--border-thin) solid var(--color-border);
 }
 
-.p-accordion__summary {
+.wire-accordion__summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,13 +25,13 @@
   color: var(--color-text);
 }
 
-.p-accordion__summary::-webkit-details-marker { display: none; }
+.wire-accordion__summary::-webkit-details-marker { display: none; }
 
-.p-accordion__summary:hover {
+.wire-accordion__summary:hover {
   color: var(--color-text);
 }
 
-.p-accordion__icon {
+.wire-accordion__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,15 +46,15 @@
   transition: transform var(--duration-base) var(--ease-out);
 }
 
-.p-accordion__icon::before {
+.wire-accordion__icon::before {
   content: "+";
 }
 
-.p-accordion__item[open] .p-accordion__icon::before {
+.wire-accordion__item[open] .wire-accordion__icon::before {
   content: "−";
 }
 
-.p-accordion__body {
+.wire-accordion__body {
   padding-block-end: var(--space-lg);
   padding-inline-end: var(--space-2xl);
   font-size: var(--text-md);
