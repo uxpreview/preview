@@ -131,6 +131,21 @@
           <p>If a client variant feels like it's straining the system, the answer is usually to talk to design — not to override the system.</p>
         </section>
 
+        <section id="semver" class="u-stack u-stack--md u-mt-2xl">
+          <h2 class="wire-h2">7. Versioning is a contract, not a label.</h2>
+          <p>The system follows <a href="https://semver.org/">semver</a> as a real contract with clients who build on it. When the version changes, you can tell exactly what work that implies on the consuming side.</p>
+          <dl class="wire-deflist">
+            <dt class="wire-deflist__term">Patch (1.x.y → 1.x.z)</dt>
+            <dd class="wire-deflist__desc">Token-value tweaks (contrast bump, spacing nudge), bug fixes (the v1.2 dataset regression), additive variants on existing components, doc and audit-log updates. Clients can upgrade without reading the diff.</dd>
+            <dt class="wire-deflist__term">Minor (1.x → 1.y)</dt>
+            <dd class="wire-deflist__desc">New components (modal, toast, banner in v1.4), new pages (the v1.5 archetype set), new docs pages, new third-party references in the Sources list, additive non-breaking API extensions. Clients can upgrade safely; new capabilities become available.</dd>
+            <dt class="wire-deflist__term">Major (1.x → 2.0)</dt>
+            <dd class="wire-deflist__desc">Class-name renames (the way <code>p-</code> became <code>wire-</code> would be major if it happened again), removed components, BEM convention shifts, token renames, JS API removals — anything that would force a client to edit their own markup or CSS.</dd>
+          </dl>
+          <p class="u-mt-md">The litmus test: <em>"Would a client who upgrades have to edit any of their own markup or CSS?"</em> If yes, it's major. If no but they get something new, it's minor. If no and nothing visibly changes, it's patch.</p>
+          <p>v1.0 through v1.8 have all been minor or patch releases. There is no v2.0 on the roadmap; when one becomes necessary, it ships with a migration script and a side-by-side parity demo.</p>
+        </section>
+
       </article>
     </div>
   </div>

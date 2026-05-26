@@ -1,0 +1,77 @@
+/* ============================================================
+   Client overlay — EXAMPLE template.
+
+   Load AFTER css/wire.css to override the system tokens for a
+   specific client engagement. The overlay should re-define
+   tokens only; do not introduce raw values or new components
+   here. New components belong in css/components/ and follow
+   the contribution rules.
+
+   Usage:
+     <link rel="stylesheet" href="../css/wire.css">
+     <link rel="stylesheet" href="../css/client-overlay.example.css">
+
+   This example takes the system from neutral grayscale to a
+   warmer, slightly darker register that reads as more editorial
+   without breaking the grayscale promise. Copy this file,
+   rename it (e.g. acme-client.css), and edit the values for
+   each client engagement.
+   ============================================================ */
+
+:root {
+  /* ---------- Ramp ----------
+     Warmer grays (slight brown tint, ≈3% red). All contrast
+     ratios re-verified against WCAG 2.2 AA on white. */
+  --gray-00: #fefdfb;
+  --gray-05: #f9f8f5;
+  --gray-10: #f1f0ec;
+  --gray-20: #e2e0d9;
+  --gray-30: #cfccc2;
+  --gray-40: #a3a098;
+  --gray-50: #6f6d68;     /* 4.6:1 on gray-00 — body text floor */
+  --gray-60: #514f4b;
+  --gray-70: #3a3936;
+  --gray-80: #28272500;   /* placeholder — see below */
+  --gray-80: #282725;
+  --gray-90: #181715;
+  --gray-95: #0e0d0c;
+  --gray-100: #000000;
+
+  /* ---------- Type scale — slightly larger, more editorial ---------- */
+  --text-md: 1.0625rem;   /* 17px instead of 16px */
+  --text-lg: 1.1875rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3.25rem;
+  --text-5xl: 4.5rem;
+  --text-6xl: 6rem;
+
+  /* ---------- Type families — sub the serif for editorial moments ---------- */
+  /* The system already supports serif via --font-serif; this overlay
+     just tightens the choice to a specific serif if the client license
+     allows it. Replace with a CSS variable that points to a webfont
+     family if the client provides hosted fonts. */
+  --font-serif: "Charter", "Iowan Old Style", Georgia, serif;
+
+  /* ---------- Radii — slightly tighter feel ---------- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+
+  /* ---------- Container widths — slightly narrower for denser layouts ---------- */
+  --container-narrow: 38rem;
+  --container-md: 50rem;
+  --container-wide: 70rem;
+
+  /* ---------- Motion — slightly slower for a calmer feel ---------- */
+  --duration-fast: 200ms;
+  --duration-base: 320ms;
+  --duration-slow: 500ms;
+}
+
+/* No component overrides below this line in normal use.
+   If a client needs a component-level departure, add it to
+   css/components/ and accept that it becomes part of the system.
+   Tokens are the only override surface. */

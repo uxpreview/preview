@@ -1,0 +1,147 @@
+# Changelog
+
+All notable changes to the Wireframe Design System are recorded here, newest first. Each version is a commit on the `claude/primacy-design-system-YDvsP` branch. The system follows semver as documented in [`docs/principles.html`](docs/principles.html#semver). Versions below 1.0 are not used — this repo started at v1.0.
+
+---
+
+## v1.8 — Governance and scale
+
+**Added**
+- `CHANGELOG.md` — this file. The historical record from v1.0 forward.
+- `CONTRIBUTING.md` — the ten governance rules every new component, page, or pattern follows.
+- `docs/component-status.html` — every component tagged `stable`, `beta`, `alpha`, or `deprecated`. The first stable-status declaration for the system.
+- `css/client-overlay.example.css` — a runnable template for a client-branded overlay. Re-defines tokens only; loads after `css/wire.css` to override.
+- `docs/principles.html` — adds a "Semver policy" section defining what counts as a breaking change vs. an additive change vs. a fix.
+- `package.json` — adds a `bundle` script that concatenates the CSS partials into a single `dist/wire.bundle.css` file for production handoff. Opt-in; the no-build promise for development stays.
+
+---
+
+## v1.7 — Validation framework
+
+**Added**
+- `docs/validation.html` — protocol page covering Pa11y, Lighthouse, screen-reader audits, visual regression, browser/device/print matrices, and per-page-type performance budgets.
+- `.pa11yci.json` — Pa11y CI config against 40 URLs.
+- `lighthouserc.json` — Lighthouse CI config asserting a11y ≥ 95 and best-practices ≥ 90 as errors, perf and seo ≥ 90 as warnings.
+- `package.json` — dev-only deps and `serve` / `a11y` / `lh` / `visual` / `validate` scripts.
+
+**Honest gaps logged in `validation.html`**: live screen-reader audit, visual regression baselines, first Pa11y + Lighthouse runs.
+
+---
+
+## v1.6 — Healthcare-depth pass
+
+**Added**
+- `pages/hospital-portal.html` — logged-in patient dashboard.
+- `pages/hospital-booking.html` — multi-step booking, time-picker step (calendar grid + slot grid).
+- `pages/hospital-medication.html` — drug-detail archetype with safety banner, severity-tiered side-effect table, when-to-call callouts, similar-medication list.
+- `pages/hospital-trial.html` — Phase 2 trial detail with interactive eligibility checker.
+
+Page count: 35 → 39.
+
+---
+
+## v1.5 — Page-archetype completion
+
+**Added**
+- `pages/hospital-404.html` — empty-state-heavy error page.
+- `pages/hospital-login.html` — patient-portal sign-in form.
+- `pages/hospital-search.html` — search results with filter sidebar, active-filter chips, mark-highlighted results, pagination.
+- `pages/hospital-settings.html` — portal preferences using the v1.3 secondary-nav pattern with v1.4 modal + toast.
+- `pages/university-program.html` — degree-program detail (BA in Cognitive Science).
+- `pages/university-faculty.html` — filterable faculty directory.
+
+**Fixed**
+- Aligned several pages' form markup to the documented API: `wire-field__label`, nested `wire-checkbox` / `wire-radio` / `wire-toggle` label patterns. Removed invented classes (`wire-label`, `wire-field--inline`, `wire-input--lg`).
+
+Page count: 29 → 35.
+
+---
+
+## v1.4 — Feedback and communication patterns
+
+**Added**
+- `css/components/modal.css` + JS — centered dialog with focus trap, Esc close, backdrop click, focus return. Companion to wire-drawer.
+- `css/components/toast.css` + JS — slide-in status messages with polite live region. `window.wireToast({title, body, duration})` API.
+- `css/components/banner.css` — full-width announcement strip. Subtle / inverse / alert variants. Dismissable.
+- `css/components/empty-state.css` — centered or inline layout (visual / title / body / actions).
+- `css/components/skeleton.css` — placeholder shapes with shimmer that respects `prefers-reduced-motion`.
+- `css/components/stepper.css` — multi-step progress indicator. Horizontal at 48em+, vertical on phones.
+- `css/components/tooltip.css` — pure-CSS hover/focus tooltip via `data-wire-tooltip`. WCAG 1.4.13.
+- `docs/feedback.html` — single docs page covering all seven patterns with a "pick the lightest pattern" decision matrix.
+- `pages/hospital-appointment.html` — appointment-confirmation flow exercising banner / stepper / tooltip / modal / toast / skeleton / empty state.
+
+`docs/research.html` Component basis table: 7 new rows.
+
+---
+
+## v1.3 — Section navigation + research backfill
+
+**Added**
+- `wire-sidenav__sublist` and `wire-sidenav__link--parent` — purely additive extensions to the existing sidenav component.
+- `docs/navigation.html` — new "Section navigation patterns" section documenting **local nav** (peer pages), **secondary nav** (children of current), and **section tree** (parent + siblings + nested current children).
+- `docs/research.html` Component basis table — 16 rows covering every component that previously lacked an Evidence or Convention tag. Added Material Design 3 and IBM Carbon to the Sources list.
+
+**Demoed in real pages**
+- `pages/hospital-specialty.html` — local nav stacked above the existing anchor TOC.
+- `pages/hospital-research.html` — section tree with labs nested under the current "Active programs" sibling.
+
+---
+
+## v1.2 — Audit pass: mobile + a11y + regression fixes
+
+**Fixed — critical**
+- `js/wire.js` was reading `dataset.pAccordion` / `dataset.pTextSizeValue` after the v1.0→v1.1 rebrand renamed HTML attributes to `data-wire-*`. Accordion single-mode and the text-size widget were silently broken. Renamed all three reads to `dataset.wireAccordion` / `dataset.wireTextSizeValue`.
+
+**Fixed — WCAG**
+- 1.1.1 — added `aria-hidden="true"` to 103 decorative `.wire-media` placeholders.
+- 2.4.6 — collapsed multi-`h1` pages (`docs/heroes.html`, `docs/typography.html`, `index.html`) to one page-level `<h1>` each.
+- 2.5.8 — bumped `.wire-tag--sm` 20px → 24px (AA floor). Bumped `.wire-text-size__btn` 32px → 44px (AAA / Apple HIG).
+- 4.1.3 — text-size widget now announces scale changes via a polite live region.
+
+**Fixed — mobile reflow**
+- `.wire-inpagenav` becomes `position: static` below 48em.
+- `.wire-gallery--mosaic` collapses to single column below 48em.
+- `.wire-help-bar` switches to `flex-direction: column` on phones.
+
+**Fixed — print**
+- `print.css` force-expands every `<details>` child so collapsed accordion content isn't lost on paper.
+
+**Added**
+- `--color-overlay-light` token. Replaced the only hardcoded `rgba()` in component CSS (`tag.css:68`).
+
+---
+
+## v1.1 — Initial WCAG 2.2 AA audit pass
+
+**Added**
+- `docs/research.html` — single page documenting evidence basis with one citation per claim. WCAG 2.2 AA compliance map.
+- `css/print.css` — print stylesheet stripping chrome, expanding tabs/accordions, appending link URLs.
+- `css/components/help-bar.css` — persistent contact affordance (NIA recommendation).
+- `css/components/text-size-control.css` — A− / A / A+ / A++ widget with localStorage persistence.
+- `pages/hospital-measure.html` — research-measure detail archetype.
+- `css/components/citation-list.css` + `wire-tag--sm` modifier.
+- `directory.html` — flat index of every page plus external references.
+
+**Fixed — WCAG**
+- 1.4.11 — `--color-border-strong` from gray-40 (2.4:1) to gray-50 (4.5:1).
+- 2.4.7 — `--color-focus` overridden to white on every dark-surface component (`.u-bg-inverse`, `.wire-hero--inverse`, `.wire-footer--inverse`, `.wire-callout--inverse`).
+- 2.1.2 — drawer focus trap implemented (modal dialog pattern).
+- 2.4.11 — `scroll-margin-block-start` on headings for anchor-jump clearance.
+- 2.5.8 — breadcrumb / footer / in-page-nav / mega-menu link targets bumped to ≥ 28px.
+- 4.1.3 — button loading state triggers on `[aria-busy="true"]` with sr-only "Loading…" text.
+
+**Removed**
+- `Primacy` and `SRALab` references purged from class prefixes, file names, and copy. The system now ships as a generic, unbranded wireframe kit. `p-` → `wire-`. `data-p-*` → `data-wire-*`. SRALab demo pages → "Riverside Medical Center" placeholder.
+
+---
+
+## v1.0 — Foundations
+
+**Added**
+- Token layer: grayscale ramp, type scale, spacing, radii, borders, shadows, motion, breakpoints, z-index.
+- 25 components under the `wire-` prefix: button, badge, tag, divider, breadcrumb, pagination, form, nav (topnav / megamenu / sidenav / inpagenav / drawer), card, hero, feature-grid, two-column, accordion, tabs, callout, quote, timeline, media, list, table, footer.
+- Layout utilities: `u-container`, `u-stack`, `u-cluster`, `u-grid`, `u-sidebar`, `u-section`, `u-bg-*`, `u-text-*`.
+- `js/wire.js` — single vanilla-JS file auto-initializing tabs, accordion, megamenu, drawer, in-page scroll-spy.
+- Docs pages for principles, tokens, typography, and each component family.
+- 9 hospital demo pages (Riverside) + 1 higher-ed demo (Northgate homepage).
+- No build step. Open `index.html` in a browser, it works.

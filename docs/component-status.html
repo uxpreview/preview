@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Component status — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
+  <style>
+    .status { display: inline-flex; align-items: center; gap: var(--space-2xs); padding-block: var(--space-3xs); padding-inline: var(--space-xs); border-radius: var(--radius-pill); font-size: var(--text-2xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); border: var(--border-thin) solid currentColor; }
+    .status--stable { background: var(--color-bg-muted); color: var(--color-text); border-color: transparent; }
+    .status--beta { background: transparent; color: var(--color-text-muted); }
+    .status--alpha { background: var(--color-bg-inverse); color: var(--color-text-inverse); border-color: var(--color-bg-inverse); }
+    .status--deprecated { background: transparent; color: var(--color-text-subtle); text-decoration: line-through; border-color: var(--color-border); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./research.html">Research</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./validation.html">Validation</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../directory.html">Directory</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wire-hero wire-hero--editorial">
+  <div class="u-container">
+    <div class="wire-hero__inner">
+      <span class="wire-hero__eyebrow">v1.8 · Component status</span>
+      <h1 class="wire-hero__title">What's safe to build on, what's still settling.</h1>
+      <p class="wire-hero__lead">Every component carries a status. Stable means the API is frozen until the next major version. Beta means it works and is used in real demos, but the class names or markup shape may refine. Alpha means experimental — don't use in client work. Deprecated means scheduled for removal at v2.0.</p>
+    </div>
+  </div>
+</section>
+
+<section class="u-section">
+  <div class="u-container" style="max-inline-size: 56rem">
+
+    <div class="u-stack u-stack--lg">
+
+      <!-- Legend -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Status legend</h2>
+        <div class="u-cluster" style="gap: var(--space-md)">
+          <span class="u-cluster" style="gap: var(--space-xs)"><span class="status status--stable">Stable</span> <span class="u-text-muted">API frozen until v2.0</span></span>
+          <span class="u-cluster" style="gap: var(--space-xs)"><span class="status status--beta">Beta</span> <span class="u-text-muted">Working, in demos, API may refine</span></span>
+          <span class="u-cluster" style="gap: var(--space-xs)"><span class="status status--alpha">Alpha</span> <span class="u-text-muted">Experimental</span></span>
+          <span class="u-cluster" style="gap: var(--space-xs)"><span class="status status--deprecated">Deprecated</span> <span class="u-text-muted">Scheduled for v2.0 removal</span></span>
+        </div>
+        <p class="u-text-muted u-mt-md" style="font-size: var(--text-sm)">Promotion rules in <a href="../CONTRIBUTING.md"><code>CONTRIBUTING.md</code></a>: alpha → beta after two demo-page uses without API change; beta → stable after a documented WCAG audit pass.</p>
+      </section>
+
+      <!-- Foundations -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Foundations</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Tokens (<code>css/tokens.css</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Two new tokens added in v1.2 (<code>--color-overlay-light</code>) — additive.</td></tr>
+              <tr><th scope="row">Reset (<code>css/reset.css</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row">Base (<code>css/base.css</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Focus ring + skip link contract.</td></tr>
+              <tr><th scope="row">Layout primitives (<code>u-container</code>, <code>u-stack</code>, <code>u-cluster</code>, <code>u-grid</code>, <code>u-sidebar</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row">Utilities (<code>u-text-*</code>, <code>u-bg-*</code>, <code>u-hidden-*</code>, <code>u-mt-*</code>, <code>u-visually-hidden</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row">Print stylesheet (<code>css/print.css</code>)</th><td><span class="status status--stable">Stable</span></td><td>v1.1</td><td><code>&lt;details&gt;</code> expansion added in v1.2.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Primitives -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Primitives</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-button</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Primary / secondary / ghost · sm / md / lg · icon-only · full · loading.</td></tr>
+              <tr><th scope="row"><code>wire-badge</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Default / subtle / outline / inverse.</td></tr>
+              <tr><th scope="row"><code>wire-tag</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td><code>--sm</code> variant added v1.1, AA-floor adjusted v1.2.</td></tr>
+              <tr><th scope="row"><code>wire-divider</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-breadcrumb</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Tap target bumped v1.1.</td></tr>
+              <tr><th scope="row"><code>wire-pagination</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Forms -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Forms</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-field</code>, <code>wire-input</code>, <code>wire-textarea</code>, <code>wire-select</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td><code>wire-field__label</code> / <code>__hint</code> / <code>__error</code> children.</td></tr>
+              <tr><th scope="row"><code>wire-checkbox</code>, <code>wire-radio</code>, <code>wire-toggle</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Label-wrapped pattern. See <code>docs/forms.html</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Navigation</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-topnav</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-megamenu</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Trigger remains <code>&lt;a href&gt;</code> for no-JS fallback (documented in research.html).</td></tr>
+              <tr><th scope="row"><code>wire-sidenav</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-sidenav__sublist</code>, <code>wire-sidenav__link--parent</code></th><td><span class="status status--beta">Beta</span></td><td>v1.3</td><td>Three documented compositions (local / secondary / section tree). Beta until used in another vertical beyond hospital.</td></tr>
+              <tr><th scope="row"><code>wire-inpagenav</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Non-sticky below 48em (v1.2 fix).</td></tr>
+              <tr><th scope="row"><code>wire-drawer</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Focus trap added v1.1.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Cards & layout -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Cards, layout, content blocks</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-card</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Content / person / resource / stat · bordered / subtle / inverse.</td></tr>
+              <tr><th scope="row"><code>wire-hero</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Editorial / split / centered / stat · inverse.</td></tr>
+              <tr><th scope="row"><code>wire-feature-grid</code>, <code>wire-feature</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-twocol</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-accordion</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Native <code>&lt;details&gt;</code>. Single-open mode fixed in v1.2.</td></tr>
+              <tr><th scope="row"><code>wire-tabs</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>ARIA APG tabpanel pattern with arrow-key nav.</td></tr>
+              <tr><th scope="row"><code>wire-callout</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Default / subtle / inverse / bordered / inline.</td></tr>
+              <tr><th scope="row"><code>wire-quote</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-timeline</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Media & lists -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Media, lists, tables</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-media</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Aspect-ratio placeholders. <code>aria-hidden</code> blanket applied in v1.2.</td></tr>
+              <tr><th scope="row"><code>wire-gallery</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Mosaic variant mobile-collapses in v1.2.</td></tr>
+              <tr><th scope="row"><code>wire-linked-list</code>, <code>wire-deflist</code>, <code>wire-article-list</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>—</td></tr>
+              <tr><th scope="row"><code>wire-citation-list</code></th><td><span class="status status--beta">Beta</span></td><td>v1.1</td><td>Used on <code>hospital-measure.html</code> and <code>directory.html</code>. Beta until used in a third page.</td></tr>
+              <tr><th scope="row"><code>wire-table</code></th><td><span class="status status--stable">Stable</span></td><td>v1.0</td><td>Striped variant.</td></tr>
+              <tr><th scope="row"><code>wire-stepper</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Used in 3 demos. Beta until WCAG SR pass.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Feedback patterns (v1.4) -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Feedback &amp; communication (v1.4)</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-modal</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Used in 2 demos. Beta until SR pass + a third use.</td></tr>
+              <tr><th scope="row"><code>wire-toast</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td><code>window.wireToast()</code> API may refine.</td></tr>
+              <tr><th scope="row"><code>wire-banner</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Default / subtle / inverse / alert.</td></tr>
+              <tr><th scope="row"><code>wire-empty</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Inline + bordered variants. Used in 5 demos.</td></tr>
+              <tr><th scope="row"><code>wire-skeleton</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Pairs with <code>aria-busy</code>.</td></tr>
+              <tr><th scope="row"><code>data-wire-tooltip</code></th><td><span class="status status--beta">Beta</span></td><td>v1.4</td><td>Pure-CSS. Long content needs popover (post-v1.4).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Healthcare-specific -->
+      <section class="u-stack u-stack--sm">
+        <h2 class="wire-h4">Healthcare-specific</h2>
+        <div class="wire-table-wrap">
+          <table class="wire-table">
+            <thead><tr><th scope="col">Component</th><th scope="col">Status</th><th scope="col">Since</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>wire-help-bar</code>, <code>wire-phone-link</code></th><td><span class="status status--stable">Stable</span></td><td>v1.1</td><td>NIA "Senior Friendly" affordance. Mobile-first column added v1.2.</td></tr>
+              <tr><th scope="row"><code>wire-text-size</code> (A− / A / A+ / A++)</th><td><span class="status status--stable">Stable</span></td><td>v1.1</td><td>localStorage persistence. Dataset bug fixed v1.2; live region announcement added v1.2.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Footer note -->
+      <div class="wire-callout wire-callout--inline u-mt-xl">
+        <p class="wire-callout__body"><strong>No alpha or deprecated components today.</strong> The system has been audited twice (v1.1 + v1.2) and has not yet broken a public API. When that happens, this page is the first thing that changes.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.8 · 30 components · 11 beta · 0 alpha · 0 deprecated</p>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>
