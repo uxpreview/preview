@@ -1,5 +1,5 @@
 /* ============================================================
-   Wireframe Design System — behavior.
+   Preview Design System — behavior.
    One script. Auto-initializes anything with a data-wire-* attribute.
    No dependencies. Drop in <body> with `defer`.
    ============================================================ */

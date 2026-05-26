@@ -1,6 +1,35 @@
 # Changelog
 
-All notable changes to the Wireframe Design System are recorded here, newest first. Each version is a commit on the `claude/primacy-design-system-YDvsP` branch. The system follows semver as documented in [`docs/principles.html`](docs/principles.html#semver). Versions below 1.0 are not used — this repo started at v1.0.
+All notable changes to the Preview Design System are recorded here, newest first. Each version is a commit on the `claude/primacy-design-system-YDvsP` branch. The system follows semver as documented in [`docs/principles.html`](docs/principles.html#semver). Versions below 1.0 are not used — this repo started at v1.0.
+
+---
+
+## v1.10 — Brand rename: "Preview Design System"
+
+A brand-only rename. The `wire-` class prefix stays because it accurately
+names the visual register (wireframe aesthetic); the brand name above it
+is what clients see. Minor version, not major — no consumer of the
+existing class API has to edit a single line.
+
+**Changed**
+- "Wireframe Design System" → "Preview Design System" across every
+  HTML title, header, footer, body copy, code sample, doc, and README
+  reference (72 occurrences).
+- Topnav brand-mark letter: `W` → `P` in all 21 pages that carried it.
+- `README.md` rewritten end-to-end to reflect the v1.10 state: 30
+  components, 18 docs pages, 22 demo pages, validation tooling, and
+  the governance surface (CHANGELOG / CONTRIBUTING / component-status
+  / client-overlay). Replaces the v1.1-era inventory that had been
+  drifting since the v1.3-v1.9 additions.
+- `package.json` version bumped 1.9.0 → 1.10.0.
+
+**Not changed (deliberate)**
+- The `wire-` class prefix stays. A prefix rename would be a v2.0
+  breaking change for every consumer; the brand-vs-prefix decoupling
+  is now noted in `README.md` § Naming.
+- File names stay (`css/wire.css`, `js/wire.js`, `data-wire-*`,
+  `dataset.wire*`). Same rationale.
+- No component CSS or JS behavior changed in this release.
 
 ---
 
