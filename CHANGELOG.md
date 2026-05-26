@@ -4,13 +4,36 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ---
 
+## v1.10.3 — Logo: stacked-layers redesign
+
+The v1.10.2 viewport-with-content-lines mark was too refined at 28px —
+the 2-px strokes blended into the surrounding shape at small render
+sizes. Redesigned as a stronger, more iconic glyph that reads
+unambiguously as "a logo" at any size.
+
+**Changed**
+- Mark is now **two offset rounded rectangles**: a solid filled
+  front card with an outlined back card peeking up and to the right.
+  Reads as "stacked previews / layered drafts / iterations" — on
+  brand for a system whose job is rendering successive previews
+  of the same page.
+- SVG now carries explicit `width="28" height="28"` attributes so
+  the rendered size is correct even if the CSS modifier hasn't loaded
+  yet (defensive against host caching).
+- `currentColor` throughout — picks up inverse-context color flips
+  from the existing modifier.
+
+Version 1.10.2 → 1.10.3.
+
+---
+
 ## v1.10.2 — Preview logo mark
 
 Replaces the "P" letter brand-mark with an actual designed glyph. The
-new logo is a tiny wireframe-of-a-wireframe: a rounded rectangle
-viewport with two horizontal content lines inside. Reads as "a page
-mockup" at the brand-mark's 28px square — on-message for a system
-whose job is previewing pages.
+v1.10.2 logo was a tiny wireframe-of-a-wireframe: a rounded rectangle
+viewport with two horizontal content lines inside. Read as "a page
+mockup" at the brand-mark's 28px square. (Refined to the stacked-
+layers design in v1.10.3 for better legibility at small sizes.)
 
 **Changed**
 - All 21 Preview-branded pages (index, directory, 19 docs) swap

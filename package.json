@@ -1,6 +1,6 @@
 {
   "name": "preview-design-system",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "description": "A grayscale wireframe and mid-fidelity component system. No build step required for the runtime; tooling here is opt-in for validation.",
   "private": true,
   "scripts": {
