@@ -67,6 +67,29 @@
   color: var(--color-text-inverse);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+
+/* Logo modifier — when the mark is an inline SVG instead of a letter.
+   Drops the accent background and inherits text color so the SVG can
+   use currentColor. Used by the Preview Design System brand; demo
+   brands (Riverside R, Northgate N) keep the letter-square form. */
+.wire-topnav__brand-mark--logo {
+  background-color: transparent;
+  color: var(--color-text);
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+}
+.wire-topnav__brand-mark--logo svg {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+}
+/* Inverse contexts (dark footers) — flip currentColor to white. */
+.wire-footer--inverse .wire-topnav__brand-mark--logo,
+.u-bg-inverse .wire-topnav__brand-mark--logo {
+  color: var(--color-text-inverse);
 }
 
 .wire-topnav__menu {

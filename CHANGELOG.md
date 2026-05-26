@@ -4,6 +4,45 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ---
 
+## v1.10.2 — Preview logo mark
+
+Replaces the "P" letter brand-mark with an actual designed glyph. The
+new logo is a tiny wireframe-of-a-wireframe: a rounded rectangle
+viewport with two horizontal content lines inside. Reads as "a page
+mockup" at the brand-mark's 28px square — on-message for a system
+whose job is previewing pages.
+
+**Changed**
+- All 21 Preview-branded pages (index, directory, 19 docs) swap
+  `<span class="wire-topnav__brand-mark">P</span>` for the inline
+  SVG mark. Demo brand marks (hospital "R", university "N") stay as
+  letter squares — they represent placeholder organizations, not
+  the Preview brand.
+- Added a `--logo` modifier on `.wire-topnav__brand-mark` that
+  strips the accent background so the SVG inherits text color via
+  `currentColor`. Inverse contexts (dark footers / hero bands)
+  flip the color automatically.
+
+**Mark spec**
+- 28×28 viewBox, 2px strokes, `stroke-linecap: round`.
+- Two-line content layout inside a rounded rectangle. Decoded
+  visually as "a tiny wireframe page" without being literal.
+- `currentColor` throughout — picks up any inverse-context override
+  with no extra code.
+
+**Not changed**
+- The "Preview Design System" wordmark stays as plain text next to
+  the mark — accessible, scalable, searchable. The brand-mark span
+  carries `aria-hidden="true"` because the wordmark provides the
+  link's accessible name.
+- Demo pages' letter marks (R for Riverside, N for Northgate)
+  remain — they read as placeholder brand logos for those
+  organizations.
+
+Version 1.10.1 → 1.10.2.
+
+---
+
 ## v1.10.1 — Brand consistency polish
 
 Patch-level cleanup after the v1.10 rename. No component, page, or
