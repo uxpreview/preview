@@ -96,18 +96,46 @@
   </div>
 </section>
 
-<!-- =================== LABS (FEATURE GRID) =================== -->
+<!-- =================== LABS (FEATURE GRID) + section-tree nav =================== -->
 <section id="labs" class="u-section u-bg-subtle">
   <div class="u-container">
-    <div class="u-stack u-stack--xl">
-      <div class="u-cluster u-cluster--between" style="--cluster-gap: var(--space-md)">
-        <div class="u-stack u-stack--sm">
-          <span class="wire-eyebrow">Five translational labs</span>
-          <h2 class="wire-h2">Where rehabilitation science becomes therapy.</h2>
+    <div class="u-sidebar">
+
+      <!-- Section tree: parent (Research) → siblings (areas) → children of current item (labs) -->
+      <aside aria-label="Research sections">
+        <nav class="wire-sidenav">
+          <div class="wire-sidenav__group">
+            <a class="wire-sidenav__link wire-sidenav__link--parent" href="./hospital-research.html">Research &amp; Innovation</a>
+            <ul class="wire-sidenav__list" role="list">
+              <li class="wire-sidenav__item">
+                <a class="wire-sidenav__link is-current" href="./hospital-research.html" aria-current="page">Active programs</a>
+                <ul class="wire-sidenav__sublist" role="list">
+                  <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Think + Speak Lab</a></li>
+                  <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Legs + Walking Lab</a></li>
+                  <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Arms + Hands Lab</a></li>
+                  <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Pediatric Lab</a></li>
+                  <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Outcomes &amp; Measurement</a></li>
+                </ul>
+              </li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Clinical trials</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="./hospital-measure.html">Rehab measures database</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Publications</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Researcher directory</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Funding &amp; grants</a></li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="u-stack u-stack--xl">
+        <div class="u-cluster u-cluster--between" style="--cluster-gap: var(--space-md)">
+          <div class="u-stack u-stack--sm">
+            <span class="wire-eyebrow">Five translational labs</span>
+            <h2 class="wire-h2">Where rehabilitation science becomes therapy.</h2>
+          </div>
+          <a class="wire-button wire-button--secondary" href="#">All research teams →</a>
         </div>
-        <a class="wire-button wire-button--secondary" href="#">All research teams →</a>
-      </div>
-      <div class="wire-feature-grid wire-feature-grid--3 wire-feature-grid--bordered">
+        <div class="wire-feature-grid wire-feature-grid--3 wire-feature-grid--bordered">
         <div class="wire-feature">
           <span class="wire-feature__icon">01</span>
           <h3 class="wire-feature__title">Think + Speak Lab</h3>
@@ -146,6 +174,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 

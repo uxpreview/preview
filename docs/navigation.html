@@ -247,6 +247,141 @@
           </details>
         </section>
 
+        <!-- =================== SECTION NAVIGATION PATTERNS =================== -->
+        <section class="doc-section">
+          <h2 class="wire-h3">Section navigation patterns</h2>
+          <p class="wire-lead">Three compositions of <code>wire-sidenav</code> for the three nav questions every healthcare and higher-ed site has to answer: <em>where else can I go</em>, <em>what's inside this page</em>, and <em>where am I in the whole tree</em>.</p>
+
+          <p class="u-text-muted u-mt-md">Pick the lightest pattern that answers the user's question. Local nav for peer pages, secondary nav for child pages, section tree only when the site IA is wide enough that the user can lose their place.</p>
+
+          <!-- ----- Pattern 1: Local nav ----- -->
+          <h3 class="wire-h5 u-mt-xl">Local nav — peer pages</h3>
+          <p>Flat list of sibling pages within the current section. The eyebrow at the top names the parent ("Conditions we treat") so the user knows what the peers are peers of.</p>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Local nav (siblings)</span>
+            <div style="max-inline-size: 18rem">
+              <nav class="wire-sidenav" aria-label="Conditions we treat">
+                <div class="wire-sidenav__group">
+                  <div class="wire-sidenav__title">Conditions we treat</div>
+                  <ul class="wire-sidenav__list" role="list">
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="#" aria-current="page">Spinal cord injury</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Stroke</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Traumatic brain injury</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Amputation</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Multiple sclerosis</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Parkinson disease</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          <h4 class="wire-h6 u-mt-md">When to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>The current page sits inside a section of 4–12 peer pages and the user is likely to compare or move between them.</li>
+            <li>Condition / department / program / faculty-member listings where breadcrumb alone doesn't reveal the alternatives.</li>
+          </ul>
+
+          <h4 class="wire-h6 u-mt-md">When not to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>Sections with more than ~15 peers — the rail becomes a scroll-jail. Use a search-driven listing page instead.</li>
+            <li>Single-page sections (one peer == no peers). Use a breadcrumb only.</li>
+          </ul>
+
+          <!-- ----- Pattern 2: Secondary nav (children) ----- -->
+          <h3 class="wire-h5 u-mt-xl">Secondary nav — children of the current page</h3>
+          <p>When a long-form topic is split into child pages (instead of in-page anchors), the parent link sits at the top of a <code>wire-sidenav__sublist</code> and each child is one nested entry below.</p>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Secondary nav (children)</span>
+            <div style="max-inline-size: 18rem">
+              <nav class="wire-sidenav" aria-label="Planning your visit">
+                <div class="wire-sidenav__group">
+                  <a class="wire-sidenav__link wire-sidenav__link--parent" href="#">Planning your visit</a>
+                  <ul class="wire-sidenav__list" role="list">
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Before your visit</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="#" aria-current="page">Day of your visit</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Parking &amp; transit</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">What to bring</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Visitor policies</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">After your visit</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          <h4 class="wire-h6 u-mt-md">When to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>A topic large enough that splitting into 4–8 separate pages reads better than one long scroll.</li>
+            <li>Content where each child has independent value (deep linking, sharing, search ranking).</li>
+          </ul>
+
+          <h4 class="wire-h6 u-mt-md">When not to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>Short topics. Prefer an <code>wire-inpagenav</code> anchor TOC on a single long page — less navigation overhead, same orientation.</li>
+            <li>Heavily-tabular comparisons where users want to scan multiple children side-by-side. Use <code>wire-tabs</code>.</li>
+          </ul>
+
+          <!-- ----- Pattern 3: Section tree ----- -->
+          <h3 class="wire-h5 u-mt-xl">Section tree — parent + siblings + children of current</h3>
+          <p>Two levels of structure in one rail: the section parent at top, sibling items below, with the current item expanded to reveal its children. The richest pattern; reserve for sites where the IA is wide enough that users can lose their place.</p>
+
+          <div class="doc-example">
+            <span class="doc-example__label">Section tree (parent + siblings + nested children)</span>
+            <div style="max-inline-size: 18rem">
+              <nav class="wire-sidenav" aria-label="Research sections">
+                <div class="wire-sidenav__group">
+                  <a class="wire-sidenav__link wire-sidenav__link--parent" href="#">Research &amp; Innovation</a>
+                  <ul class="wire-sidenav__list" role="list">
+                    <li class="wire-sidenav__item">
+                      <a class="wire-sidenav__link is-current" href="#" aria-current="page">Active programs</a>
+                      <ul class="wire-sidenav__sublist" role="list">
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Think + Speak Lab</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Legs + Walking Lab</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Arms + Hands Lab</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Pediatric Lab</a></li>
+                      </ul>
+                    </li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Clinical trials</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Rehab measures database</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Publications</a></li>
+                    <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Researcher directory</a></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+
+          <h4 class="wire-h6 u-mt-md">When to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>Large sections where the user needs to see both their peers AND what's beneath them — Research with many programs, Academics with many schools, etc.</li>
+            <li>When the path the user took to get here is non-obvious (deep linking from search, social share).</li>
+          </ul>
+
+          <h4 class="wire-h6 u-mt-md">When not to use</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>Small sections — adds noise without orientation value.</li>
+            <li>More than two levels of nesting. The system caps at parent → siblings → children of current. Deeper trees collapse to multi-page IA instead of trying to render them all.</li>
+          </ul>
+
+          <h4 class="wire-h6 u-mt-md">Accessibility — all three patterns</h4>
+          <ul class="u-stack u-stack--xs">
+            <li>Wrap each rail in a <code>&lt;nav aria-label="…"&gt;</code> with a label that describes the section ("Conditions we treat", "Research sections"). Pages that have more than one nav landmark must label each distinctly.</li>
+            <li>Set <code>aria-current="page"</code> on the current item's link. The <code>is-current</code> class provides the visual marker; the ARIA attribute is independent and required for assistive tech.</li>
+            <li>Touch targets meet WCAG 2.5.8 — <code>wire-sidenav__link</code> has <code>min-block-size</code> baked in. Sub-list links are smaller; verify ≥24px on any new addition.</li>
+            <li>Sticky behavior: rails inside <code>wire-inpagenav</code> are non-sticky below 48em per the v1.2 reflow fix. Plain <code>wire-sidenav</code> is not sticky by default; if you wrap it in a sticky container, repeat the breakpoint guard.</li>
+          </ul>
+
+          <h4 class="wire-h6 u-mt-md">See it in real pages</h4>
+          <ul class="u-stack u-stack--xs">
+            <li><a href="../pages/hospital-specialty.html"><code>hospital-specialty.html</code></a> — local nav (peer conditions) stacked above an anchor TOC.</li>
+            <li><a href="../pages/hospital-research.html"><code>hospital-research.html</code></a> — section tree showing Research → siblings → children of current.</li>
+            <li><a href="../pages/hospital-patient-visitor.html"><code>hospital-patient-visitor.html</code></a> — anchor TOC alone (single-page content).</li>
+          </ul>
+        </section>
+
       </div>
     </div>
   </section>

@@ -60,6 +60,7 @@
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 AA compliance map</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#interaction">Interaction patterns</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#typography">Typography &amp; reading</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#component-basis">Component basis</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#forms">Forms</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#healthcare">Healthcare-specific</a></li>
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#highered">Higher-ed-specific</a></li>
@@ -285,6 +286,106 @@
                   <td><code>text-wrap: balance</code> on headings</td>
                   <td><span class="wire-badge tag-evidence">Evidence</span></td>
                   <td>W3C CSS Text Module Level 4. Adam Argyle (Chrome team): <a href="https://developer.chrome.com/docs/css-ui/css-text-wrap-balance">"CSS text-wrap: balance"</a> — measurably reduces orphan-line awkwardness in headlines</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =================== COMPONENT BASIS =================== -->
+        <section id="component-basis" class="u-stack u-stack--md">
+          <h2 class="wire-h3">Component basis</h2>
+          <p>Every visual component in the system carries either an <span class="wire-badge tag-evidence">Evidence</span> tag (a published standard or peer-reviewed source backs the decision) or a <span class="wire-badge tag-convention">Convention</span> tag (the choice follows widely-accepted industry practice but isn't independently validated). Components covered elsewhere on this page (forms, typography, tabs, accordion, drawer, mega menu, breadcrumb, pagination, in-page nav, hero, help bar, text-size, print) are listed once here for completeness.</p>
+
+          <div class="wire-table-wrap">
+            <table class="wire-table ref-table">
+              <thead>
+                <tr>
+                  <th scope="col">Component</th>
+                  <th scope="col">Tag</th>
+                  <th scope="col">Basis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><code>wire-badge</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Industry consensus on inline status pills. References: <a href="https://m3.material.io/components/badges">Material Design 3 Badge</a>, <a href="https://carbondesignsystem.com/components/tag/usage/">IBM Carbon Tag</a>.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-callout</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/visual-hierarchy-ux-definition/">"Visual Hierarchy in UX"</a> on aside emphasis; WCAG 1.3.1 requires semantic asides be programmatically distinguishable.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-card</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Card pattern is industry-standard for grouping related content. References: <a href="https://m3.material.io/components/cards/overview">Material Design 3 Cards</a>, <a href="https://carbondesignsystem.com/components/tile/usage/">IBM Carbon Tile</a>.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-citation-list</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Numbered citation entries with stacked author / title / source metadata follow APA 7th edition and Chicago Manual of Style visual conventions for reference lists.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-divider</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Bringhurst's <em>Elements of Typographic Style</em> on visual rhythm — dividers as silent punctuation between sections.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-feature-grid</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/cards-component/">"Cards: UI-Component Definition"</a> on icon + title + description grids for landing pages.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-gallery</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Wireframe industry standard for image-grid layouts; mosaic ratios chosen for visual interest, single-column collapse on mobile per WCAG 1.4.10.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-help-bar</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NIA <a href="https://www.nia.nih.gov/health/making-your-website-senior-friendly">"Making Your Website Senior Friendly"</a> on persistent, high-contrast help affordances for older-adult users; Pew "Health Online 2013" on phone as a primary care-contact channel.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-linked-list</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/category-pages/">"Category Pages Are Powerful"</a> — large clickable rows with descriptive secondary text outperform compact lists on category landings.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-media</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Grayboxed placeholders with ratio labels are the wireframe-industry convention for asset-deferred mockups. Marked <code>aria-hidden="true"</code> per WCAG 1.1.1.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-quote</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>Bringhurst on pull quotes as visual rhythm; NN/g <a href="https://www.nngroup.com/articles/pull-quotes/">"Pull Quotes"</a> on scannability and emphasis.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-sidenav</code> (incl. local / secondary / section-tree compositions)</th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/left-side-vertical-navigation/">"Left-Side Vertical Navigation"</a> on left-rail orientation in deep IAs; <a href="https://carbondesignsystem.com/components/UI-shell-side-nav/usage/">IBM Carbon UI Shell Side Nav</a> spec for hierarchy patterns. <code>aria-current="page"</code> per WCAG 4.1.2.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-table</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 1.3.1 (header <code>scope</code>); <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3C ARIA APG Table pattern</a>; Bringhurst on tabular alignment and tnum figures.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-tag</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Chip / removable-tag pattern from <a href="https://m3.material.io/components/chips/overview">Material Design 3 Chips</a> and <a href="https://carbondesignsystem.com/components/tag/usage/">IBM Carbon Tag</a>. <code>wire-tag--sm</code> meets WCAG 2.5.8 AA floor (24px).</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-timeline</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Vertical chronology with anchored date markers is consensus design practice. NN/g <a href="https://www.nngroup.com/articles/timeline-ux/">"Timelines in UX"</a> on event-list scannability.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-twocol</code> (and <code>u-sidebar</code>)</th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Two-column text + media and sidebar + main layouts trace to the Swiss-grid tradition; Bringhurst on column hierarchies and reading-line length (~66 characters).</td>
                 </tr>
               </tbody>
             </table>
@@ -553,6 +654,12 @@
 
             <dt>Pew Research — Health Online 2013</dt>
             <dd>Internet &amp; American Life Project. <a href="https://www.pewresearch.org/internet/2013/01/15/health-online-2013/">pewresearch.org</a></dd>
+
+            <dt>Material Design 3</dt>
+            <dd>Google's open-source design system. Referenced for industry-standard chip, badge, and card conventions. <a href="https://m3.material.io/">m3.material.io</a></dd>
+
+            <dt>IBM Carbon Design System</dt>
+            <dd>IBM's open-source enterprise design system. Referenced for side-nav hierarchy, tile, and tag patterns. <a href="https://carbondesignsystem.com/">carbondesignsystem.com</a></dd>
           </dl>
           <p class="u-text-muted u-mt-lg">URLs are provided for reference. We do not link out from production wireframes to third-party sites without client review.</p>
         </section>

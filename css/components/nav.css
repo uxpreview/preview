@@ -234,6 +234,50 @@
   border-inline-start-color: var(--color-accent);
 }
 
+/* Parent-level link — used at the top of a section tree where the
+   link represents the current section as a whole. Slightly bolder
+   weight and a separator below set it apart from siblings. */
+.wire-sidenav__link--parent {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-md);
+  padding-block-end: var(--space-sm);
+  margin-block-end: var(--space-xs);
+  border-block-end: var(--border-thin) solid var(--color-border);
+  border-radius: 0;
+}
+
+/* Nested children list — sits under a sibling link to show the
+   subsections of the current page. Indented one step, smaller text. */
+.wire-sidenav__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding: 0;
+  margin-block-start: var(--space-2xs);
+  margin-inline-start: var(--space-md);
+  list-style: none;
+  border-inline-start: var(--border-thin) solid var(--color-border);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  border-inline-start: 0;
+  color: var(--color-text-muted);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link:hover {
+  color: var(--color-text);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link.is-current {
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
 /* ---------- In-page nav (table of contents / anchors) ---------- */
 .wire-inpagenav {
   font-size: var(--text-sm);

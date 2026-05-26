@@ -106,9 +106,27 @@
   <div class="u-container">
     <div class="u-sidebar">
 
-      <!-- In-page nav sidebar -->
-      <aside aria-label="On this page">
-        <nav class="wire-inpagenav" data-wire-inpagenav>
+      <!-- Local nav (peer conditions in this section) + in-page anchor TOC -->
+      <aside class="u-stack u-stack--xl" aria-label="Section and page navigation">
+
+        <nav class="wire-sidenav" aria-label="Conditions we treat">
+          <div class="wire-sidenav__group">
+            <div class="wire-sidenav__title">Conditions we treat</div>
+            <ul class="wire-sidenav__list" role="list">
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="./hospital-specialty.html" aria-current="page">Spinal cord injury</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Stroke</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Traumatic brain injury</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Amputation</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Multiple sclerosis</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Parkinson disease</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Cerebral palsy</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Pulmonary &amp; cardiac</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Orthopedic</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <nav class="wire-inpagenav" aria-label="On this page" data-wire-inpagenav>
           <div class="wire-inpagenav__title">On this page</div>
           <ul class="wire-inpagenav__list" role="list">
             <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
