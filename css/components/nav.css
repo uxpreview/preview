@@ -5,16 +5,43 @@
 
 /* ---------- Top nav ---------- */
 .wire-topnav {
+  /* Sticky everywhere — top-quality mobile UX keeps the primary nav and
+     the drawer trigger reachable while scrolling. Background stays opaque
+     so content scrolling beneath remains legible. The border-block-end
+     serves as the visual separator. */
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
   border-block-end: var(--border-thin) solid var(--color-border);
   background-color: var(--color-bg);
+  /* iPhone notch / status bar — respect the safe area when sticky. */
+  padding-block-start: env(safe-area-inset-top, 0);
 }
 
 .wire-topnav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
-  min-block-size: 4.5rem;
+  gap: var(--space-md);
+  /* Tighter chrome on mobile so a sticky bar doesn't eat the viewport;
+     scales up at tablet+. */
+  min-block-size: 3.5rem;
+}
+
+@media (min-width: 48em) {
+  .wire-topnav__inner {
+    gap: var(--space-lg);
+    min-block-size: 4.5rem;
+  }
+}
+
+/* Allow brand text to shrink/truncate gracefully on narrow widths so a
+   long brand ("Riverside Medical Center · Portal") never forces overflow. */
+.wire-topnav__brand { min-inline-size: 0; }
+.wire-topnav__brand > span:not(.wire-topnav__brand-mark) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wire-topnav__brand {
@@ -345,11 +372,18 @@
   background-color: var(--color-bg);
   border-inline-start: var(--border-thin) solid var(--color-border);
   box-shadow: var(--shadow-lg);
-  padding: var(--space-xl);
+  /* Respect iPhone notch + home indicator so the close button isn't
+     hidden under the status bar and the last items aren't under the
+     gesture strip. */
+  padding-block-start: calc(var(--space-xl) + env(safe-area-inset-top, 0px));
+  padding-block-end: calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
+  padding-inline: var(--space-xl);
   z-index: var(--z-modal);
   transform: translateX(100%);
   transition: transform var(--duration-base) var(--ease-out);
   overflow-y: auto;
+  /* Don't let scrolling inside the drawer chain to the page underneath. */
+  overscroll-behavior: contain;
 }
 
 .wire-drawer.is-open {

@@ -71,12 +71,13 @@
 }
 
 /* Fixed-to-viewport variant — appears on every page, sticks to bottom on
-   small screens. Use sparingly; one per page. */
+   small screens. Use sparingly; one per page. Respects iPhone home-
+   indicator safe area so the bar never sits on the gesture strip. */
 .wire-help-bar--fixed {
   position: fixed;
-  inset-block-end: var(--space-md);
-  inset-inline-end: var(--space-md);
-  inset-inline-start: var(--space-md);
+  inset-block-end: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+  inset-inline-end: calc(var(--space-md) + env(safe-area-inset-right, 0px));
+  inset-inline-start: calc(var(--space-md) + env(safe-area-inset-left, 0px));
   z-index: var(--z-sticky);
   box-shadow: var(--shadow-lg);
 }

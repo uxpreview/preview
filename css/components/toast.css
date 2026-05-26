@@ -19,9 +19,11 @@
 
 .wire-toast-region {
   position: fixed;
-  inset-block-end: var(--space-md);
-  inset-inline-end: var(--space-md);
-  inset-inline-start: var(--space-md);
+  /* Respect iPhone home-indicator safe area so toasts don't sit on the
+     bottom gesture strip. */
+  inset-block-end: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+  inset-inline-end: calc(var(--space-md) + env(safe-area-inset-right, 0px));
+  inset-inline-start: calc(var(--space-md) + env(safe-area-inset-left, 0px));
   z-index: var(--z-toast);
   display: flex;
   flex-direction: column;

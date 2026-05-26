@@ -4,6 +4,48 @@ All notable changes to the Wireframe Design System are recorded here, newest fir
 
 ---
 
+## v1.9 — Mobile UX polish: sticky topnav + safe-area + scroll padding
+
+The user-asked addition plus a small mobile-quality sweep. The primary
+nav and its drawer trigger now stay reachable while scrolling. iPhone
+notch and home-indicator zones are respected. Anchor jumps and
+scrollIntoView no longer land targets under the sticky chrome.
+
+**Changed**
+- `.wire-topnav` is now `position: sticky; inset-block-start: 0;
+  z-index: var(--z-sticky)` at all viewports. Background is opaque
+  (already `var(--color-bg)`) so content beneath remains legible.
+- `.wire-topnav__inner` minimum height: 3.5rem (56px) on mobile, scales
+  to 4.5rem at 48em+. Reclaims ~16px of vertical space on phones.
+- `.wire-topnav__brand` long text wraps gracefully (`min-inline-size: 0`
+  on the brand, `overflow: hidden` + `text-overflow: ellipsis` on the
+  text span). Long brands like "Riverside Medical Center · Portal"
+  truncate instead of forcing horizontal overflow on 320px viewports.
+- `html` gains `scroll-padding-block-start: 5rem` (6rem at tablet+) so
+  every anchor jump and `scrollIntoView()` clears the sticky chrome.
+  Heading `scroll-margin-block-start` bumped to match.
+- `.wire-help-bar--fixed` respects `env(safe-area-inset-*)` so the bar
+  never sits on the iPhone home-indicator gesture strip.
+- `.wire-toast-region` respects safe-area insets for the same reason.
+- `.wire-drawer` respects safe-area insets at top (notch) and bottom
+  (home indicator), and adds `overscroll-behavior: contain` so drawer
+  scrolling doesn't chain to the page underneath.
+
+**Verified**
+- Form inputs already at 16px (`--text-md`) — no iOS auto-zoom on focus.
+- Megamenu (`--z-dropdown` = 100) renders inside the sticky topnav's
+  stacking context (z-200) without clipping.
+- Drawer (`--z-modal` = 400) and its backdrop (`--z-overlay` = 300) sit
+  above the sticky topnav — drawer covers the chrome correctly.
+
+**Out of scope for v1.9** (noted for future)
+- `@media (hover: hover)` gating on every `:hover` rule to suppress
+  sticky-hover on touch devices. Larger refactor; deferred.
+- Hide-on-scroll-down behavior. Requires JS and is debatable UX —
+  plain sticky is the right default.
+
+---
+
 ## v1.8 — Governance and scale
 
 **Added**
