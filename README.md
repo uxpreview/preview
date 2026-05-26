@@ -13,6 +13,7 @@ preview/
 ├── index.html                    Component showcase. Start here.
 ├── directory.html                Flat index of every page + external reference.
 ├── README.md                     This file.
+├── HANDOFF.md                    Briefing for the next agent / contributor.
 ├── CHANGELOG.md                  Version history v1.0 → current, newest first.
 ├── CONTRIBUTING.md               The ten governance rules every change follows.
 ├── .pa11yci.json                 Pa11y CI config (opt-in).
