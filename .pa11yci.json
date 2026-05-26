@@ -1,0 +1,58 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "wait": 250,
+    "concurrency": 2,
+    "ignore": [],
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    }
+  },
+  "urls": [
+    "http://localhost:8080/index.html",
+    "http://localhost:8080/directory.html",
+
+    "http://localhost:8080/docs/principles.html",
+    "http://localhost:8080/docs/tokens.html",
+    "http://localhost:8080/docs/typography.html",
+    "http://localhost:8080/docs/buttons.html",
+    "http://localhost:8080/docs/forms.html",
+    "http://localhost:8080/docs/navigation.html",
+    "http://localhost:8080/docs/cards.html",
+    "http://localhost:8080/docs/heroes.html",
+    "http://localhost:8080/docs/content-blocks.html",
+    "http://localhost:8080/docs/media.html",
+    "http://localhost:8080/docs/lists.html",
+    "http://localhost:8080/docs/tables.html",
+    "http://localhost:8080/docs/footers.html",
+    "http://localhost:8080/docs/utilities.html",
+    "http://localhost:8080/docs/page-shells.html",
+    "http://localhost:8080/docs/feedback.html",
+    "http://localhost:8080/docs/research.html",
+    "http://localhost:8080/docs/validation.html",
+
+    "http://localhost:8080/pages/hospital-homepage.html",
+    "http://localhost:8080/pages/hospital-specialty.html",
+    "http://localhost:8080/pages/hospital-research.html",
+    "http://localhost:8080/pages/hospital-find-a-doctor.html",
+    "http://localhost:8080/pages/hospital-provider.html",
+    "http://localhost:8080/pages/hospital-patient-visitor.html",
+    "http://localhost:8080/pages/hospital-location.html",
+    "http://localhost:8080/pages/hospital-patient-story.html",
+    "http://localhost:8080/pages/hospital-measure.html",
+    "http://localhost:8080/pages/hospital-appointment.html",
+    "http://localhost:8080/pages/hospital-search.html",
+    "http://localhost:8080/pages/hospital-login.html",
+    "http://localhost:8080/pages/hospital-settings.html",
+    "http://localhost:8080/pages/hospital-404.html",
+    "http://localhost:8080/pages/hospital-portal.html",
+    "http://localhost:8080/pages/hospital-booking.html",
+    "http://localhost:8080/pages/hospital-medication.html",
+    "http://localhost:8080/pages/hospital-trial.html",
+
+    "http://localhost:8080/pages/university-homepage.html",
+    "http://localhost:8080/pages/university-program.html",
+    "http://localhost:8080/pages/university-faculty.html"
+  ]
+}
