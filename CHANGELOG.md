@@ -4,6 +4,30 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ---
 
+## v1.10.4 — Logo simplification + mobile wordmark hide
+
+Per user feedback: the v1.10.3 stacked-layers mark still felt busier
+than it needed to be, and the full "Preview Design System" wordmark
+was eating mobile viewport width without earning its place there.
+
+**Changed**
+- Logo simplified to a single-path **folded-document silhouette**:
+  a rectangular page shape with the top-right corner clipped at a
+  diagonal. One closed `<path>`, one fill (currentColor), zero
+  strokes, zero masks. Reads as "document / page / preview" at any
+  size without internal noise.
+- Topnav wordmark "Preview Design System" gains `u-hidden-mobile`
+  so the text disappears below 48em — the logo stands alone on
+  phones. Tablet+ keeps the full wordmark next to the mark.
+- Brand `<a>` gains `aria-label="Preview Design System"` so screen
+  readers still announce the link's destination when the visible
+  wordmark is hidden. Footer wordmarks remain visible at all
+  widths (no `u-hidden-mobile` there).
+
+Version 1.10.3 → 1.10.4.
+
+---
+
 ## v1.10.3 — Logo: stacked-layers redesign
 
 The v1.10.2 viewport-with-content-lines mark was too refined at 28px —
