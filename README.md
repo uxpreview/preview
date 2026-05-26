@@ -32,7 +32,7 @@ preview/
 ├── docs/                         18 documentation pages: principles, tokens,
 │                                 per-component, feedback patterns, research,
 │                                 validation, component status.
-└── pages/                        22 demo pages: 19 Riverside (hospital) + 3
+└── pages/                        21 demo pages: 18 Riverside (hospital) + 3
                                   Northgate (higher-ed) demos.
 ```
 
@@ -69,8 +69,8 @@ That's it. No `npm install`, no dev server.
 
 **18 documentation pages** under `docs/` — principles, tokens, typography, one page per component family, page shells, plus three meta pages: research, validation, component status.
 
-**22 demo pages** under `pages/`:
-- 19 hospital archetypes for **Riverside Medical Center**: homepage, conditions/specialty, research, find-a-doctor, provider profile, planning-your-visit, location detail, patient story, research-measure (Berg Balance Scale), appointment confirmation, appointment booking, search results, sign-in, settings, 404, patient portal dashboard, medication detail, clinical trial.
+**21 demo pages** under `pages/`:
+- 18 hospital archetypes for **Riverside Medical Center**: homepage, conditions/specialty, research, find-a-doctor, provider profile, planning-your-visit, location detail, patient story, research-measure (Berg Balance Scale), appointment confirmation, appointment booking, search results, sign-in, settings, 404, patient portal dashboard, medication detail, clinical trial.
 - 3 higher-ed archetypes for **Northgate University**: homepage, BA-in-Cognitive-Science program detail, faculty directory.
 
 **Validation tooling (opt-in)** — Pa11y CI and Lighthouse CI configs cover every page; `npm run validate` runs both. Visual regression scaffolding via Playwright is documented but not yet wired. See `docs/validation.html` for the matrix.

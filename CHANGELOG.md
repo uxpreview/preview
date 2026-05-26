@@ -4,6 +4,32 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ---
 
+## v1.10.1 — Brand consistency polish
+
+Patch-level cleanup after the v1.10 rename. No component, page, or
+behavior changed.
+
+**Fixed**
+- Footer taglines across 13 `docs/*.html` pages still read
+  "v1.X · Open-source wireframe system" — drifted out of sync since
+  the version they were stamped at. Normalized to a stable
+  "Preview Design System · Open-source" that won't bit-rot.
+  (The three meaningful taglines — research, validation,
+  component-status — keep their content-specific lines.)
+- `index.html` footer carried a leftover `v1.1` tagline missed in
+  the v1.10 sweep. Same normalization applied.
+- `directory.html` page count was off by one (claimed 41; actual is
+  42). Lead paragraph and footer both corrected.
+- `README.md` claimed "22 demo pages: 19 Riverside + 3 Northgate" —
+  actual is "21 demo pages: 18 Riverside + 3 Northgate". Corrected.
+- `package.json` `name` was still `wire-design-system`. Renamed to
+  `preview-design-system` for brand consistency. Internal-only
+  identifier; no consumer impact.
+
+Version 1.10.0 → 1.10.1.
+
+---
+
 ## v1.10 — Brand rename: "Preview Design System"
 
 A brand-only rename. The `wire-` class prefix stays because it accurately
