@@ -218,6 +218,135 @@
     initialized = true;
   }
 
+  /* ---------- Modal — centered dialog overlay ---------- */
+  function initModal() {
+    const toggles = document.querySelectorAll("[data-wire-modal-open]");
+    toggles.forEach((toggle) => {
+      const targetId = toggle.getAttribute("data-wire-modal-open");
+      const modal = document.getElementById(targetId);
+      if (!modal) return;
+
+      const backdrop = modal.querySelector(".wire-modal__backdrop");
+      const panel = modal.querySelector(".wire-modal__panel");
+      if (panel) {
+        modal.setAttribute("role", modal.getAttribute("role") || "dialog");
+        modal.setAttribute("aria-modal", "true");
+      }
+
+      let previouslyFocused = null;
+
+      function open() {
+        previouslyFocused = document.activeElement;
+        modal.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+        const first = modal.querySelector(FOCUSABLE);
+        if (first) first.focus();
+      }
+
+      function close() {
+        modal.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+      }
+
+      function trap(e) {
+        if (e.key !== "Tab" || !modal.classList.contains("is-open")) return;
+        const items = Array.from(modal.querySelectorAll(FOCUSABLE)).filter((el) => !el.disabled && el.offsetParent !== null);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      toggle.setAttribute("aria-controls", targetId);
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.addEventListener("click", open);
+
+      modal.querySelectorAll("[data-wire-modal-close]").forEach((btn) => btn.addEventListener("click", close));
+      if (backdrop) backdrop.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+        trap(e);
+      });
+    });
+  }
+
+  /* ---------- Toast — transient status messages, WCAG 4.1.3 ---------- */
+  function initToast() {
+    // Lazily-created region so pages without toasts don't pay for the DOM.
+    let region = null;
+
+    function ensureRegion() {
+      if (region) return region;
+      region = document.createElement("div");
+      region.className = "wire-toast-region";
+      region.setAttribute("role", "status");
+      region.setAttribute("aria-live", "polite");
+      region.setAttribute("aria-atomic", "false");
+      document.body.appendChild(region);
+      return region;
+    }
+
+    function show({ title = "", body = "", duration = 5000 } = {}) {
+      const r = ensureRegion();
+      const toast = document.createElement("div");
+      toast.className = "wire-toast";
+      toast.innerHTML =
+        '<div class="wire-toast__content">' +
+        (title ? '<div class="wire-toast__title"></div>' : "") +
+        (body ? '<div class="wire-toast__body"></div>' : "") +
+        "</div>" +
+        '<button type="button" class="wire-toast__close" aria-label="Dismiss notification">×</button>';
+      if (title) toast.querySelector(".wire-toast__title").textContent = title;
+      if (body) toast.querySelector(".wire-toast__body").textContent = body;
+
+      r.appendChild(toast);
+      // Force reflow so the transition runs.
+      requestAnimationFrame(() => toast.classList.add("is-open"));
+
+      const dismiss = () => {
+        toast.classList.remove("is-open");
+        setTimeout(() => toast.remove(), 300);
+      };
+
+      toast.querySelector(".wire-toast__close").addEventListener("click", dismiss);
+      if (duration > 0) setTimeout(dismiss, duration);
+    }
+
+    // Public API.
+    window.wireToast = show;
+
+    // Declarative triggers: any [data-wire-toast-trigger] with data-title / data-body.
+    document.querySelectorAll("[data-wire-toast-trigger]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        show({
+          title: btn.getAttribute("data-toast-title") || "",
+          body: btn.getAttribute("data-toast-body") || "",
+          duration: Number(btn.getAttribute("data-toast-duration")) || 5000,
+        });
+      });
+    });
+  }
+
+  /* ---------- Banner dismiss — simple close button on [data-wire-banner] ---------- */
+  function initBanner() {
+    document.querySelectorAll(".wire-banner__close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const banner = btn.closest(".wire-banner");
+        if (banner) banner.remove();
+      });
+    });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
@@ -226,6 +355,9 @@
     initDrawer();
     initInPageNav();
     initTextSize();
+    initModal();
+    initToast();
+    initBanner();
   }
 
   if (document.readyState === "loading") {

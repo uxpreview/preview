@@ -1,0 +1,138 @@
+/* ============================================================
+   Stepper — progress indicator for a multi-step flow. Used at
+   the top of forms, booking flows, onboarding. Mark each step
+   with one of: is-complete, is-current, or default (upcoming).
+
+   Anatomy:
+     <ol class="wire-stepper">
+       <li class="wire-stepper__item is-complete">
+         <span class="wire-stepper__marker">✓</span>
+         <span class="wire-stepper__label">Account</span>
+       </li>
+       ...
+     </ol>
+
+   Horizontal by default; switches to vertical at narrow widths.
+   ARIA: <ol> conveys order; aria-current="step" on the current
+   step is set in markup. Connectors are decorative.
+   ============================================================ */
+
+.wire-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: stepper;
+}
+
+@media (min-width: 48em) {
+  .wire-stepper {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+}
+
+.wire-stepper__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex: 1;
+  position: relative;
+  counter-increment: stepper;
+}
+
+/* ---------- Connector line between steps ---------- */
+@media (min-width: 48em) {
+  .wire-stepper__item + .wire-stepper__item::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 1rem;
+    inline-size: 100%;
+    block-size: var(--border-thin);
+    background-color: var(--color-border);
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  .wire-stepper__item.is-complete + .wire-stepper__item::before,
+  .wire-stepper__item.is-current::before {
+    background-color: var(--color-accent);
+  }
+}
+
+/* Vertical connector for stacked mobile layout */
+@media (max-width: 47.99em) {
+  .wire-stepper__item + .wire-stepper__item::before {
+    content: "";
+    position: absolute;
+    inset-block-start: -1rem;
+    inset-inline-start: 1rem;
+    inline-size: var(--border-thin);
+    block-size: 1rem;
+    background-color: var(--color-border);
+  }
+  .wire-stepper__item.is-complete + .wire-stepper__item::before {
+    background-color: var(--color-accent);
+  }
+}
+
+.wire-stepper__marker {
+  inline-size: 2rem;
+  block-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border: var(--border-md) solid var(--color-border-strong);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  flex-shrink: 0;
+}
+
+.wire-stepper__marker::before {
+  content: counter(stepper);
+}
+
+.wire-stepper__item.is-current .wire-stepper__marker {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.wire-stepper__item.is-complete .wire-stepper__marker {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+.wire-stepper__item.is-complete .wire-stepper__marker::before {
+  content: "✓";
+}
+
+.wire-stepper__label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+}
+
+.wire-stepper__item.is-current .wire-stepper__label,
+.wire-stepper__item.is-complete .wire-stepper__label {
+  color: var(--color-text);
+}
+
+.wire-stepper__item.is-current .wire-stepper__label {
+  font-weight: var(--weight-semibold);
+}
+
+.wire-stepper__label-meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  font-weight: var(--weight-regular);
+}

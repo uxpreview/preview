@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback &amp; communication — Wireframe Design System</title>
+  <link rel="stylesheet" href="../css/wire.css">
+  <style>
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
+    .doc-example--flush { padding: 0; overflow: hidden; }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .doc-snippet { background: var(--color-bg-subtle); padding: var(--space-lg); border-radius: var(--radius-md); overflow-x: auto; font-family: var(--font-mono); font-size: var(--text-xs); line-height: var(--leading-snug); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">W</span>
+      <span>Wireframe Design System</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./research.html">Research</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../directory.html">Directory</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="wire-hero wire-hero--editorial">
+  <div class="u-container">
+    <div class="wire-hero__inner">
+      <span class="wire-hero__eyebrow">v1.4 · Feedback &amp; communication</span>
+      <h1 class="wire-hero__title">Tell the user what's happening, then stay out of the way.</h1>
+      <p class="wire-hero__lead">Seven patterns for the moments when the system needs to say something — confirm a destructive action, acknowledge a save, warn about an outage, show a loading state, or explain an empty list. Each pattern is the lightest tool that does the job.</p>
+    </div>
+  </div>
+</section>
+
+<section class="u-section">
+  <div class="u-container u-stack u-stack--xl" style="max-inline-size: 56rem">
+
+    <!-- ===== Decision matrix ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3">Pick the lightest pattern</h2>
+      <p>From least to most intrusive. The user's tolerance for interruption shrinks fast — reach for a heavier pattern only when the message earns it.</p>
+      <div class="wire-table-wrap">
+        <table class="wire-table">
+          <thead>
+            <tr>
+              <th scope="col">Pattern</th>
+              <th scope="col">Use when</th>
+              <th scope="col">Avoid when</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Banner</th><td>System-level context the user should know about while still using the page (downtime, policy, outage).</td><td>The message is transient or about one action they just took.</td></tr>
+            <tr><th scope="row">Toast</th><td>You just acted on the user's behalf and want to confirm it (saved, sent, deleted).</td><td>The user needs to acknowledge the message before continuing — use a modal.</td></tr>
+            <tr><th scope="row">Tooltip</th><td>A control's label is brief and a sentence of context would help. Hover and focus reveal.</td><td>The content is interactive, long, or critical — interactive content fails WCAG 1.4.13.</td></tr>
+            <tr><th scope="row">Skeleton</th><td>You know what's loading and the layout, but the data isn't here yet.</td><td>The wait is unbounded or unknown — show a spinner or a progress bar.</td></tr>
+            <tr><th scope="row">Empty state</th><td>A list is empty by design or because of a filter — explain and offer a path forward.</td><td>The state is loading (use skeleton) or errored (use a callout).</td></tr>
+            <tr><th scope="row">Stepper</th><td>The flow has 3–7 discrete steps and the user benefits from seeing progress.</td><td>The flow is one step (no progress to show) or branchy (the linear visual lies).</td></tr>
+            <tr><th scope="row">Modal</th><td>You need the user to confirm or commit before continuing. Blocking.</td><td>The information is just informative — a banner or a callout works without trapping focus.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Banner ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-banner</code></h2>
+      <p>Full-width announcement strip. Sits at the top of the page or above a section. Reserved for context that affects the whole experience, not transient feedback.</p>
+
+      <div class="doc-example doc-example--flush">
+        <div class="wire-banner">
+          <span class="wire-banner__icon" aria-hidden="true">i</span>
+          <div class="wire-banner__content">
+            <div class="wire-banner__title">Updated visitor policy</div>
+            <div class="wire-banner__body">As of May 26, masks are no longer required in waiting areas. Inpatient unit policies have not changed.</div>
+          </div>
+          <div class="wire-banner__actions">
+            <a class="wire-button wire-button--sm wire-button--secondary" href="#">Read the changes</a>
+          </div>
+          <button type="button" class="wire-banner__close" aria-label="Dismiss banner">×</button>
+        </div>
+      </div>
+
+      <div class="doc-example doc-example--flush">
+        <div class="wire-banner wire-banner--alert">
+          <span class="wire-banner__icon" aria-hidden="true">!</span>
+          <div class="wire-banner__content">
+            <div class="wire-banner__title">Patient portal scheduled maintenance — Sunday 2–4 AM CT</div>
+            <div class="wire-banner__body">Appointment booking will be temporarily unavailable. Call 312.555.1000 if you need urgent assistance.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>For high-urgency content (outages), wrap the banner in <code>&lt;div role="alert"&gt;</code> so AT users hear it immediately. Otherwise the banner is just text.</li>
+        <li>The icon is decorative — keep <code>aria-hidden="true"</code>.</li>
+        <li>The dismiss button is removed by <code>js/wire.js</code>; once dismissed the user can't recover it. Don't put critical info in a dismissable banner.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Toast ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-toast</code></h2>
+      <p>Slide-in confirmation for an action the user just took. Auto-dismisses in 5 seconds by default. Rendered into a single polite live region per page so screen readers hear the message without re-announcing on every visual update.</p>
+
+      <div class="doc-example">
+        <span class="doc-example__label">Click the buttons to fire a toast</span>
+        <div class="u-cluster">
+          <button type="button" class="wire-button" data-wire-toast-trigger data-toast-title="Appointment saved" data-toast-body="A confirmation has been sent to your email.">Save (success)</button>
+          <button type="button" class="wire-button wire-button--secondary" data-wire-toast-trigger data-toast-title="Couldn't save changes" data-toast-body="Check your connection and try again.">Save (error)</button>
+          <button type="button" class="wire-button wire-button--ghost" data-wire-toast-trigger data-toast-body="Link copied to clipboard." data-toast-duration="3000">Quick toast (3s)</button>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">JS API</h3>
+      <p>The script exposes <code>window.wireToast({ title, body, duration })</code>. Calling it from any inline handler creates a toast. Duration of <code>0</code> disables auto-dismiss (the user must close it).</p>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>The region uses <code>role="status"</code> + <code>aria-live="polite"</code> per WCAG 4.1.3.</li>
+        <li>Don't use toasts for errors the user must address — errors belong inline next to the field, or in a banner / modal.</li>
+        <li>Don't queue more than 3 toasts. If you're firing many in a row, batch them or use a banner.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Tooltip ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>data-wire-tooltip</code></h2>
+      <p>Pure-CSS hover/focus tooltip. Attach <code>data-wire-tooltip="text"</code> to any element. The text appears on hover and on keyboard focus.</p>
+
+      <div class="doc-example">
+        <span class="doc-example__label">Hover or tab to each control</span>
+        <div class="u-cluster" style="gap: var(--space-lg)">
+          <button class="wire-button wire-button--secondary" data-wire-tooltip="Permanently delete this record.">Delete</button>
+          <button class="wire-button wire-button--ghost wire-button--icon-only" data-wire-tooltip="Copy share link" aria-label="Share"><span aria-hidden="true">↗</span></button>
+          <span data-wire-tooltip="Time the form was last saved" data-wire-tooltip-placement="below" style="text-decoration: underline; text-decoration-style: dotted; cursor: help">Last saved 2 minutes ago</span>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility (WCAG 1.4.13)</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>Tooltips appear on focus, not just hover — keyboard users see them too.</li>
+        <li>Content is plain text only. For interactive content (links, buttons inside), use a popover or render the help inline.</li>
+        <li>For icon-only buttons, the tooltip is supplementary — always pair with <code>aria-label</code> as the accessible name.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Skeleton ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-skeleton</code></h2>
+      <p>Animated placeholder for content that is still loading. Reserves the layout so when real content arrives there's no jump.</p>
+
+      <div class="doc-example">
+        <span class="doc-example__label">Card skeleton</span>
+        <div style="max-inline-size: 24rem">
+          <div class="wire-skeleton wire-skeleton--image"></div>
+          <div class="wire-skeleton-group" style="margin-block-start: var(--space-md)">
+            <div class="wire-skeleton wire-skeleton--title"></div>
+            <div class="wire-skeleton wire-skeleton--text"></div>
+            <div class="wire-skeleton wire-skeleton--text" style="inline-size: 80%"></div>
+            <div class="wire-skeleton wire-skeleton--text" style="inline-size: 60%"></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>Wrap a skeleton block in a container with <code>aria-busy="true"</code> and <code>aria-live="polite"</code>; AT users hear the change once real content swaps in.</li>
+        <li>The shimmer respects <code>prefers-reduced-motion: reduce</code> — animation stops, the gray block stays visible.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Empty state ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-empty</code></h2>
+      <p>Three jobs: explain why the list is empty, reduce confusion, offer a path forward.</p>
+
+      <div class="doc-example">
+        <div class="wire-empty wire-empty--bordered">
+          <div class="wire-empty__visual" aria-hidden="true">∅</div>
+          <h3 class="wire-empty__title">No upcoming visits</h3>
+          <p class="wire-empty__body">You don't have any appointments scheduled. Find a doctor to book one, or call us at 312.555.1000.</p>
+          <div class="wire-empty__actions">
+            <a class="wire-button" href="#">Find a doctor</a>
+            <a class="wire-button wire-button--secondary" href="#">Browse conditions</a>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">When not to use</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>When the list is loading — use <code>wire-skeleton</code>.</li>
+        <li>When there's an error — use <code>wire-callout</code> or <code>wire-banner</code> with a specific recovery action.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Stepper ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-stepper</code></h2>
+      <p>Progress indicator for a multi-step flow. Horizontal at tablet+, vertical on phones.</p>
+
+      <div class="doc-example">
+        <ol class="wire-stepper" aria-label="Booking progress">
+          <li class="wire-stepper__item is-complete"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Choose provider <span class="wire-stepper__label-meta">Dr. Okonkwo</span></span></li>
+          <li class="wire-stepper__item is-complete"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Pick a time <span class="wire-stepper__label-meta">Tue, June 9, 10:30 AM</span></span></li>
+          <li class="wire-stepper__item is-current" aria-current="step"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Confirm <span class="wire-stepper__label-meta">Review &amp; submit</span></span></li>
+          <li class="wire-stepper__item"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Done</span></li>
+        </ol>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility</h3>
+      <ul class="u-stack u-stack--xs">
+        <li>The list uses <code>&lt;ol&gt;</code> — order conveys progression.</li>
+        <li>Set <code>aria-current="step"</code> on the current item.</li>
+        <li>Visual marker (✓ on complete, number on incomplete) is generated by CSS counter — don't rely on it to convey state, the <code>is-complete</code>/<code>is-current</code> class is the source of truth.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Modal ===== -->
+    <section class="doc-section">
+      <h2 class="wire-h3"><code>wire-modal</code></h2>
+      <p>Blocking dialog. Use when the user must confirm or commit before continuing. Implements the ARIA dialog pattern: focus trap, Esc closes, backdrop click closes, focus returns to the trigger.</p>
+
+      <div class="doc-example">
+        <button class="wire-button wire-button--secondary" data-wire-modal-open="demo-modal">Open modal</button>
+
+        <div class="wire-modal" id="demo-modal" aria-labelledby="demo-modal-title">
+          <div class="wire-modal__backdrop"></div>
+          <div class="wire-modal__panel">
+            <header class="wire-modal__header">
+              <h2 class="wire-modal__title" id="demo-modal-title">Cancel this appointment?</h2>
+              <button type="button" class="wire-modal__close" data-wire-modal-close aria-label="Close">×</button>
+            </header>
+            <div class="wire-modal__body">
+              <p>Cancelling will release Tuesday's 10:30 AM slot. You'll need to start over to rebook.</p>
+            </div>
+            <footer class="wire-modal__footer">
+              <button type="button" class="wire-button wire-button--ghost" data-wire-modal-close>Keep appointment</button>
+              <button type="button" class="wire-button" data-wire-modal-close data-wire-toast-trigger data-toast-title="Appointment cancelled" data-toast-body="You can rebook anytime from Find a Doctor.">Yes, cancel it</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="wire-h6 u-mt-md">Accessibility (ARIA APG dialog pattern)</h3>
+      <ul class="u-stack u-stack--xs">
+        <li><code>role="dialog"</code> + <code>aria-modal="true"</code> set by JS.</li>
+        <li>The trigger gains <code>aria-expanded</code> + <code>aria-controls</code>.</li>
+        <li>Focus moves to the first focusable element on open, traps until close, returns to the trigger on close.</li>
+        <li>Esc closes. Backdrop click closes (don't use a modal as a confirmation if backdrop dismissal would be confusing — for now, all our modals allow it).</li>
+      </ul>
+    </section>
+
+    <section class="doc-section">
+      <h3 class="wire-h6">See it in real pages</h3>
+      <ul class="u-stack u-stack--xs">
+        <li><a href="../pages/hospital-appointment.html"><code>hospital-appointment.html</code></a> — a confirmation flow that exercises banner, stepper, tooltip, modal, toast, skeleton, and empty state in one realistic layout.</li>
+      </ul>
+    </section>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../index.html"><span class="wire-topnav__brand-mark">W</span> Wireframe Design System</a>
+    <p class="wire-footer__tagline">v1.4 · Open-source wireframe system</p>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

@@ -33,5 +33,12 @@
 @import url("components/footer.css");
 @import url("components/help-bar.css");
 @import url("components/text-size-control.css");
+@import url("components/modal.css");
+@import url("components/toast.css");
+@import url("components/banner.css");
+@import url("components/empty-state.css");
+@import url("components/skeleton.css");
+@import url("components/stepper.css");
+@import url("components/tooltip.css");
 
 @import url("print.css");

@@ -1,0 +1,100 @@
+/* ============================================================
+   Toast — transient status message. Status changes that don't
+   require user action (saved, sent, error message). Should be
+   short, polite, and dismissible. WCAG 4.1.3 Status Messages.
+
+   Anatomy:
+     .wire-toast-region      — fixed-positioned container, stacks
+     .wire-toast             — one notification
+     .wire-toast__title      — optional short heading
+     .wire-toast__body       — message
+     .wire-toast__close      — dismiss button
+
+   Behavior in js/wire.js:
+     window.wireToast({ title, body, duration }) creates one.
+     The region carries role="status" + aria-live="polite" so SR
+     users hear it. For errors, set aria-live="assertive" via the
+     --variant="error" option (creates a dedicated region).
+   ============================================================ */
+
+.wire-toast-region {
+  position: fixed;
+  inset-block-end: var(--space-md);
+  inset-inline-end: var(--space-md);
+  inset-inline-start: var(--space-md);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  pointer-events: none;
+}
+
+@media (min-width: 48em) {
+  .wire-toast-region {
+    inset-inline-start: auto;
+    max-inline-size: 24rem;
+  }
+}
+
+.wire-toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+
+  /* Slide-in from the inline-end. */
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+
+  /* Focus visible against the dark surface. */
+  --color-focus: var(--color-text-inverse);
+}
+
+.wire-toast.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wire-toast__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.wire-toast__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.wire-toast__body {
+  font-size: var(--text-sm);
+  color: var(--gray-30);
+  line-height: var(--leading-snug);
+}
+
+.wire-toast__close {
+  align-self: start;
+  margin-block-start: calc(-1 * var(--space-2xs));
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  background: transparent;
+  border: 0;
+  color: var(--gray-30);
+  cursor: pointer;
+  line-height: 1;
+  font-size: var(--text-lg);
+}
+.wire-toast__close:hover { color: var(--color-text-inverse); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wire-toast { transition: none; transform: none; }
+}

@@ -387,6 +387,43 @@
                   <td><span class="wire-badge tag-convention">Convention</span></td>
                   <td>Two-column text + media and sidebar + main layouts trace to the Swiss-grid tradition; Bringhurst on column hierarchies and reading-line length (~66 characters).</td>
                 </tr>
+
+                <!-- v1.4 — feedback &amp; communication patterns -->
+                <tr>
+                  <th scope="row"><code>wire-modal</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>W3C ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Dialog (Modal) pattern</a> for role / aria-modal / focus trap / Esc; NN/g <a href="https://www.nngroup.com/articles/modal-nonmodal-dialog/">"Modal vs. Nonmodal Dialogs"</a> on when blocking is justified.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-toast</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 4.1.3 Status Messages — polite live region announces state changes without interrupting. NN/g <a href="https://www.nngroup.com/articles/indicators-validations-notifications/">"Indicators, Validations, and Notifications"</a> on when to use transient vs. persistent feedback.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-banner</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/notifications-ux/">"User Notifications: UX Guidelines"</a> on site-level vs. transient messages; WCAG 1.3.1 requires the alert's region be programmatically distinguishable. The dismissable variant follows WCAG 2.2.2 (Pause, Stop, Hide).</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-empty</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/empty-state-interface-design/">"Empty State Interface Design"</a> — three jobs: explain, reduce confusion, offer recovery. Bordered variant from <a href="https://carbondesignsystem.com/patterns/empty-pattern/">IBM Carbon Empty pattern</a>.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-skeleton</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>NN/g <a href="https://www.nngroup.com/articles/progress-indicators/">"Progress Indicators"</a> on reducing perceived wait time. Shimmer respects <code>prefers-reduced-motion</code> per WCAG 2.3.3. Pairs with <code>aria-busy</code> / <code>aria-live</code>.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-stepper</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Step indicators are an established multi-step-flow pattern. Reference: <a href="https://m3.material.io/components/steppers/overview">Material Design 3 Steppers</a>, <a href="https://carbondesignsystem.com/components/progress-indicator/usage/">IBM Carbon Progress Indicator</a>. ARIA: <code>&lt;ol&gt;</code> + <code>aria-current="step"</code>.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>data-wire-tooltip</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>WCAG 1.4.13 Content on Hover or Focus — dismissable, hoverable, persistent. ARIA APG <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">Tooltip pattern</a> guidance; for icon-only buttons, paired with <code>aria-label</code> as the accessible name (the tooltip is supplementary).</td>
+                </tr>
               </tbody>
             </table>
           </div>

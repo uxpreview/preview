@@ -1,0 +1,104 @@
+/* ============================================================
+   Banner — full-width announcement strip. Use for system status
+   (planned downtime), site-level notices (we've moved), and
+   important context (campus closure, COVID restrictions).
+   Distinct from callout (inline editorial) and toast (transient).
+
+   Variants: default, subtle, inverse, alert (high-emphasis but
+   still grayscale — uses heavier border to read as serious).
+   ============================================================ */
+
+.wire-banner {
+  --banner-bg: var(--color-bg-muted);
+  --banner-fg: var(--color-text);
+  --banner-border: transparent;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--banner-bg);
+  color: var(--banner-fg);
+  border-block: var(--border-thin) solid var(--banner-border);
+}
+
+@media (min-width: 48em) {
+  .wire-banner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+}
+
+.wire-banner__icon {
+  flex-shrink: 0;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--weight-bold);
+  border: var(--border-thin) solid currentColor;
+  border-radius: 50%;
+  font-size: var(--text-xs);
+}
+
+.wire-banner__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.wire-banner__title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+}
+
+.wire-banner__body {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+}
+
+.wire-banner__actions {
+  display: flex;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.wire-banner__close {
+  flex-shrink: 0;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+.wire-banner__close:hover { background-color: var(--color-overlay-light); }
+
+/* ---------- Variants ---------- */
+.wire-banner--subtle {
+  --banner-bg: var(--color-bg-subtle);
+  --banner-border: var(--color-border);
+}
+
+.wire-banner--inverse {
+  --banner-bg: var(--color-bg-inverse);
+  --banner-fg: var(--color-text-inverse);
+  --color-focus: var(--color-text-inverse);
+}
+.wire-banner--inverse .wire-banner__body { color: var(--gray-30); }
+
+.wire-banner--alert {
+  --banner-bg: var(--color-bg);
+  --banner-border: var(--color-border-strong);
+  border-block-width: var(--border-md);
+}
+.wire-banner--alert .wire-banner__title { font-weight: var(--weight-bold); }
