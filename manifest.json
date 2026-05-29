@@ -1,0 +1,370 @@
+{
+  "system": "Preview Design System",
+  "version": "1.1",
+  "objective": "A grayscale, tokens-first wireframe and mid-fidelity system for client work in healthcare and higher-ed. Used as the constant starting point: paired with a per-project brief, an agent composes project-specific functional prototypes from these parts only.",
+  "_note": "Class names below are INFERRED from the documented `wire-`/`u-` convention because this manifest was drafted from the rendered v1 site, not the source CSS. Reconcile every `class` value against the real stylesheet before relying on it for generation. Consider adding a `file` field per entry pointing at a real partial/snippet so the agent pulls verified markup instead of reconstructing it.",
+  "constraints": [
+    "Grayscale only. Hierarchy comes from weight, scale, and space — never hue.",
+    "Tokens only. Every value references tokens.css. Nothing is hardcoded.",
+    "No new tokens, no new components, no inline styles. Compose from what exists.",
+    "Content variations, not style overrides. Swap copy and structure; never restyle.",
+    "Plain HTML + CSS. No build step. A file must work when opened directly in a browser.",
+    "Every component class starts with `wire-`; every utility with `u-`.",
+    "WCAG 2.2 AA: contrast tested, visible focus on everything, targets >=44px, reduced-motion respected.",
+    "Healthcare audiences skew older — prefer larger text defaults and keep the text-size control and help affordances available."
+  ],
+  "levels": ["atom", "molecule", "organism", "template", "experience"],
+  "tokens": {
+    "source": "docs/tokens.css",
+    "reference": "docs/tokens.html",
+    "scales": {
+      "gray": ["00", "05", "10", "20", "30", "40", "50", "60", "70", "80", "90", "95"],
+      "type": ["2xs/12", "xs/13", "sm/14", "md/16", "lg/18", "xl/22", "2xl/28", "3xl/36", "4xl/48", "5xl/64", "6xl/88"],
+      "space": ["3xs/2", "2xs/4", "xs/8", "sm/12", "md/16", "lg/24", "xl/32", "2xl/48", "3xl/64", "4xl/96", "5xl/128"],
+      "radii": ["xs", "sm", "md", "lg", "xl", "2xl", "pill"]
+    }
+  },
+  "components": [
+    {
+      "id": "typography",
+      "level": "atom",
+      "category": "foundation",
+      "ref": "docs/typography.html",
+      "slots": ["eyebrow", "heading", "lead", "body"],
+      "notes": "Body capped at ~70ch via default max-inline-size on p. Lead is muted so it doesn't compete with the heading."
+    },
+    {
+      "id": "button",
+      "level": "atom",
+      "category": "actions",
+      "class": "wire-btn",
+      "ref": "docs/buttons.html",
+      "variants": ["primary", "secondary", "ghost", "disabled", "loading"],
+      "sizes": ["sm", "md", "lg"],
+      "options": ["icon-leading", "icon-trailing", "icon-only"],
+      "slots": ["label", "icon"],
+      "a11y": "Min 44px target, visible focus ring, loading state announces busy."
+    },
+    {
+      "id": "badge",
+      "level": "atom",
+      "category": "indicators",
+      "class": "wire-badge",
+      "ref": "docs/utilities.html",
+      "variants": ["default", "subtle", "outline", "inverse", "live"],
+      "slots": ["label"]
+    },
+    {
+      "id": "tag",
+      "level": "atom",
+      "category": "indicators",
+      "class": "wire-tag",
+      "ref": "docs/utilities.html",
+      "options": ["filterable", "selected"],
+      "slots": ["label"],
+      "notes": "Used as a filter set (e.g. condition filters). Selected state is structural, not colored."
+    },
+    {
+      "id": "divider",
+      "level": "atom",
+      "category": "layout",
+      "class": "wire-divider",
+      "ref": "docs/utilities.html",
+      "variants": ["plain", "labeled"],
+      "slots": ["label"]
+    },
+    {
+      "id": "input",
+      "level": "atom",
+      "category": "forms",
+      "class": "wire-input",
+      "ref": "docs/forms.html",
+      "states": ["default", "error", "disabled"],
+      "slots": ["label", "field", "helper", "error"],
+      "a11y": "Label always present; error text tied via aria-describedby."
+    },
+    {
+      "id": "select",
+      "level": "atom",
+      "category": "forms",
+      "class": "wire-select",
+      "ref": "docs/forms.html",
+      "slots": ["label", "field", "helper"]
+    },
+    {
+      "id": "textarea",
+      "level": "atom",
+      "category": "forms",
+      "class": "wire-textarea",
+      "ref": "docs/forms.html",
+      "slots": ["label", "field", "helper"]
+    },
+    {
+      "id": "search",
+      "level": "molecule",
+      "category": "forms",
+      "class": "wire-search",
+      "ref": "docs/forms.html",
+      "slots": ["field", "submit"]
+    },
+    {
+      "id": "choice",
+      "level": "atom",
+      "category": "forms",
+      "class": "wire-choice",
+      "ref": "docs/forms.html",
+      "variants": ["checkbox", "radio", "toggle"],
+      "slots": ["label", "group-legend"]
+    },
+    {
+      "id": "breadcrumb",
+      "level": "molecule",
+      "category": "navigation",
+      "class": "wire-breadcrumb",
+      "ref": "docs/navigation.html",
+      "slots": ["items"]
+    },
+    {
+      "id": "pagination",
+      "level": "molecule",
+      "category": "navigation",
+      "class": "wire-pagination",
+      "ref": "docs/navigation.html",
+      "slots": ["prev", "pages", "next"]
+    },
+    {
+      "id": "card-content",
+      "level": "molecule",
+      "category": "cards",
+      "class": "wire-card wire-card--content",
+      "ref": "docs/cards.html",
+      "slots": ["eyebrow", "title", "summary", "meta-date", "meta-readtime"],
+      "notes": "Category eyebrow (Research / News / Story), date, optional read time."
+    },
+    {
+      "id": "card-person",
+      "level": "molecule",
+      "category": "cards",
+      "class": "wire-card wire-card--person",
+      "ref": "docs/cards.html",
+      "slots": ["name", "role", "credentials", "photo"]
+    },
+    {
+      "id": "card-stat",
+      "level": "molecule",
+      "category": "cards",
+      "class": "wire-card wire-card--stat",
+      "ref": "docs/cards.html",
+      "slots": ["value", "label"]
+    },
+    {
+      "id": "card-resource",
+      "level": "molecule",
+      "category": "cards",
+      "class": "wire-card wire-card--resource",
+      "ref": "docs/cards.html",
+      "variants": ["guide-pdf", "video", "article"],
+      "slots": ["kind-eyebrow", "title", "summary", "meta", "action"]
+    },
+    {
+      "id": "hero",
+      "level": "organism",
+      "category": "heroes",
+      "class": "wire-hero",
+      "ref": "docs/heroes.html",
+      "variants": ["editorial", "split", "centered", "stat-led-inverse"],
+      "slots": ["eyebrow", "heading", "lead", "actions", "media", "stats"],
+      "notes": "Pick by intent: editorial = story/emotion; split = service/CTA pair; centered = single focus; stat-led = credibility/proof."
+    },
+    {
+      "id": "feature-grid",
+      "level": "organism",
+      "category": "content-blocks",
+      "class": "wire-feature-grid",
+      "ref": "docs/content-blocks.html",
+      "variants": ["bordered"],
+      "slots": ["items[title, body, action]"]
+    },
+    {
+      "id": "two-column",
+      "level": "organism",
+      "category": "content-blocks",
+      "class": "wire-two-col",
+      "ref": "docs/content-blocks.html",
+      "slots": ["eyebrow", "heading", "body", "action"]
+    },
+    {
+      "id": "accordion",
+      "level": "organism",
+      "category": "content-blocks",
+      "class": "wire-accordion",
+      "ref": "docs/content-blocks.html",
+      "slots": ["items[question, answer]"],
+      "a11y": "Disclosure pattern; aria-expanded; keyboard operable."
+    },
+    {
+      "id": "tabs",
+      "level": "organism",
+      "category": "content-blocks",
+      "class": "wire-tabs",
+      "ref": "docs/content-blocks.html",
+      "slots": ["tabs[label, panel]"],
+      "a11y": "Roving tabindex, arrow-key navigation, aria-selected."
+    },
+    {
+      "id": "callout",
+      "level": "molecule",
+      "category": "content-blocks",
+      "class": "wire-callout",
+      "ref": "docs/content-blocks.html",
+      "variants": ["enrolling", "navigator", "alert-inline"],
+      "slots": ["eyebrow", "title", "body", "actions"]
+    },
+    {
+      "id": "pull-quote",
+      "level": "molecule",
+      "category": "content-blocks",
+      "class": "wire-pullquote",
+      "ref": "docs/content-blocks.html",
+      "slots": ["quote", "attribution-name", "attribution-role"]
+    },
+    {
+      "id": "timeline",
+      "level": "organism",
+      "category": "content-blocks",
+      "class": "wire-timeline",
+      "ref": "docs/content-blocks.html",
+      "slots": ["items[year, title, body]"]
+    },
+    {
+      "id": "media",
+      "level": "atom",
+      "category": "media",
+      "class": "wire-media",
+      "ref": "docs/media.html",
+      "variants": ["ratio-placeholder", "video-placeholder", "gallery-mosaic"],
+      "slots": ["caption"]
+    },
+    {
+      "id": "list-linked",
+      "level": "molecule",
+      "category": "lists",
+      "class": "wire-list wire-list--linked",
+      "ref": "docs/lists.html",
+      "slots": ["items[label, count]"]
+    },
+    {
+      "id": "list-definition",
+      "level": "molecule",
+      "category": "lists",
+      "class": "wire-list wire-list--def",
+      "ref": "docs/lists.html",
+      "slots": ["items[term, definition]"]
+    },
+    {
+      "id": "list-article",
+      "level": "organism",
+      "category": "lists",
+      "class": "wire-list wire-list--article",
+      "ref": "docs/lists.html",
+      "slots": ["items[category, date, title, summary]"]
+    },
+    {
+      "id": "table-data",
+      "level": "organism",
+      "category": "tables",
+      "class": "wire-table",
+      "ref": "docs/tables.html",
+      "slots": ["caption", "head", "rows"],
+      "notes": "Tabular numerals."
+    },
+    {
+      "id": "table-comparison",
+      "level": "organism",
+      "category": "tables",
+      "class": "wire-table wire-table--compare",
+      "ref": "docs/tables.html",
+      "slots": ["columns", "rows"]
+    },
+    {
+      "id": "footer",
+      "level": "organism",
+      "category": "navigation",
+      "class": "wire-footer",
+      "ref": "docs/footers.html",
+      "slots": ["brand", "blurb", "column-groups[heading, links]", "legal", "legal-links"]
+    },
+    {
+      "id": "help-bar",
+      "level": "molecule",
+      "category": "global",
+      "class": "wire-helpbar",
+      "ref": "docs/research.html",
+      "slots": ["title", "actions"],
+      "notes": "Persistent 'talk to someone' affordance. Healthcare pattern."
+    },
+    {
+      "id": "phone-link",
+      "level": "atom",
+      "category": "global",
+      "class": "wire-phone",
+      "ref": "docs/research.html",
+      "slots": ["number"],
+      "notes": "Topnav-ready, tabular numerals, tel: href."
+    },
+    {
+      "id": "text-size-control",
+      "level": "molecule",
+      "category": "global",
+      "class": "wire-textsize",
+      "ref": "docs/research.html",
+      "options": ["A", "A", "A+"],
+      "notes": "Scales the page; choice persists across pages via localStorage. NIA 'Making Your Website Senior Friendly' §3.1."
+    }
+  ],
+  "templates": [
+    { "id": "homepage", "ref": "pages/hospital-homepage.html", "composed_of": ["hero", "feature-grid", "card-content", "card-stat", "callout", "footer", "help-bar"] },
+    { "id": "specialty", "ref": "pages/hospital-specialty.html", "composed_of": ["hero", "two-column", "accordion", "tabs", "list-linked", "callout"] },
+    { "id": "research", "ref": "pages/hospital-research.html", "composed_of": ["hero", "card-stat", "list-article", "callout"] },
+    { "id": "find-a-doctor", "ref": "pages/hospital-find-a-doctor.html", "composed_of": ["search", "tag", "choice", "card-person", "pagination"] },
+    { "id": "provider-profile", "ref": "pages/hospital-provider.html", "composed_of": ["breadcrumb", "card-person", "two-column", "list-definition", "callout"] },
+    { "id": "patient-visitor", "ref": "pages/hospital-patient-visitor.html", "composed_of": ["hero", "accordion", "list-definition", "callout", "help-bar"] },
+    { "id": "location", "ref": "pages/hospital-location.html", "composed_of": ["breadcrumb", "two-column", "media", "list-definition", "callout"] },
+    { "id": "patient-story", "ref": "pages/hospital-patient-story.html", "composed_of": ["hero", "pull-quote", "media", "two-column"] },
+    { "id": "measure", "ref": "pages/hospital-measure.html", "composed_of": ["breadcrumb", "table-data", "table-comparison", "two-column"] }
+  ],
+  "experiences": [
+    {
+      "id": "find-a-doctor-directory",
+      "intent": "Help a visitor locate the right clinician and act.",
+      "composed_of": ["search", "tag", "choice", "card-person", "pagination", "help-bar"],
+      "variants": [
+        { "id": "filter-left", "when": "Large directory, many facets (specialty, location, accepting-new-patients). Power-browse." },
+        { "id": "search-first", "when": "Visitor usually arrives with a name or specialty in mind." },
+        { "id": "browse-by-specialty", "when": "Visitor doesn't know who they need; lead with conditions/programs." }
+      ],
+      "content_model": ["provider", "specialty", "location", "condition"]
+    },
+    {
+      "id": "plan-your-visit",
+      "intent": "Reduce anxiety and answer logistics before a first appointment.",
+      "composed_of": ["hero", "accordion", "list-definition", "callout", "help-bar"],
+      "variants": [
+        { "id": "faq-led", "when": "Questions dominate." },
+        { "id": "step-by-step", "when": "A clear sequence (referral -> schedule -> arrive -> after)." }
+      ],
+      "content_model": ["faq", "location", "visit-type"]
+    }
+  ],
+  "content_model_hint": {
+    "purpose": "Pull realistic placeholder content from the project brief, not lorem ipsum. Generated pages land with clients only when the content is plausible.",
+    "common_entities": {
+      "condition": ["name", "program", "count"],
+      "provider": ["name", "role", "credentials", "specialty", "location", "accepting_new"],
+      "location": ["name", "neighborhood", "services", "hours"],
+      "story": ["patient_name", "program", "headline", "summary"],
+      "study": ["title", "lead", "status", "eligibility"],
+      "stat": ["value", "label"]
+    }
+  }
+}
