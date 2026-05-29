@@ -4,6 +4,51 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ---
 
+## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
+
+Restructures the docs IA toward Material Design 3's component-page
+shape (tabbed Overview / Specs / Guidelines / Accessibility, sticky
+left nav, status pills, prev/next pager) without changing the
+grayscale brand register. This first release lands the template
+components and migrates Button as the canonical proof; the remaining
+29 components migrate in follow-up commits.
+
+**Added**
+- `wire-status-pill` — small inline pill for component lifecycle
+  status (Stable / Beta / Alpha / Deprecated, plus Pending for
+  migration). Differentiates by fill density in grayscale.
+- `wire-doc-header` — eyebrow + title + status + lead + meta block
+  used at the top of every new component or foundation page.
+- `wire-doc-nav` — categorized left navigation with current-item
+  highlight and `--pending` state for not-yet-migrated entries.
+- `wire-doc-shell` — two-column sticky-nav-plus-main layout that
+  every new docs page composes through.
+- `wire-doc-pager` — prev/next links at the foot of each page.
+- New folder structure: `components/index.html` (categorized
+  landing) and `components/buttons/index.html` (full template with
+  all four tabs, hash deep-linking).
+- `data-wire-tabs-hash` opt-in attribute on `wire-tabs` syncs the
+  active tab with `window.location.hash` via History API.
+  `#overview`, `#specs`, `#guidelines`, `#accessibility` work as
+  deep links and survive browser back/forward.
+
+**Changed**
+- `initTabs` in `js/wire.js` extended for hash-based deep-linking.
+  Default behavior unchanged when `data-wire-tabs-hash` is absent.
+- New top-nav IA on `/components/*` pages: Get started · Foundations
+  · Components · Patterns · Resources. Existing `docs/*.html` pages
+  keep the old top nav until migrated.
+
+**Deferred**
+- Dark mode → v1.12 (focused release once IA settles).
+- Cmd-K search → Phase 2 (needs search-index strategy).
+- 29 remaining component migrations follow the Button template.
+
+Version 1.10.4 → 1.11.0 (minor: additive, no breaking changes to
+existing `wire-*` components or tokens).
+
+---
+
 ## v1.10.4 — Logo simplification + mobile wordmark hide
 
 Per user feedback: the v1.10.3 stacked-layers mark still felt busier

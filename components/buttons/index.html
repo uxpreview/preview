@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Button — Preview Design System</title>
+  <meta name="description" content="A pill-shaped action with three emphasis levels and three sizes. Overview, specs, guidelines, and accessibility for the Button component.">
+  <link rel="stylesheet" href="../../css/wire.css">
+  <style>
+    /* Page-local: example surfaces. Kept tiny — every doc page uses this idiom. */
+    .doc-example {
+      padding: var(--space-xl);
+      border: var(--border-thin) solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background-color: var(--color-bg);
+      margin-block-start: var(--space-md);
+    }
+    .doc-example__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-text-subtle);
+      margin-block-end: var(--space-md);
+      display: block;
+    }
+    .doc-snippet {
+      padding: var(--space-md);
+      background-color: var(--color-bg-muted);
+      border-radius: var(--radius-md);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      overflow-x: auto;
+      white-space: pre;
+      margin-block-start: var(--space-md);
+    }
+    .doc-do-dont {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-block-start: var(--space-md);
+    }
+    @media (min-width: 48em) {
+      .doc-do-dont { grid-template-columns: 1fr 1fr; }
+    }
+    .doc-do-dont__cell {
+      padding: var(--space-lg);
+      border: var(--border-thin) solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background-color: var(--color-bg);
+    }
+    .doc-do-dont__label {
+      font-family: var(--font-sans);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      color: var(--color-text-subtle);
+      margin: 0 0 var(--space-md) 0;
+    }
+    .doc-do-dont__cell--do .doc-do-dont__label::before {
+      content: "✓ ";
+      color: var(--color-text);
+      font-weight: var(--weight-bold);
+    }
+    .doc-do-dont__cell--dont .doc-do-dont__label::before {
+      content: "✗ ";
+      color: var(--color-text);
+      font-weight: var(--weight-bold);
+    }
+    .doc-spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-block-start: var(--space-md);
+      font-size: var(--text-sm);
+    }
+    .doc-spec-table th,
+    .doc-spec-table td {
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      border-block-end: var(--border-thin) solid var(--color-border);
+      vertical-align: top;
+    }
+    .doc-spec-table th {
+      font-weight: var(--weight-semibold);
+      color: var(--color-text);
+      background-color: var(--color-bg-subtle);
+    }
+    .doc-spec-table code {
+      font-family: var(--font-mono);
+      font-size: 0.92em;
+      background-color: var(--color-bg-muted);
+      padding: 0.1em 0.3em;
+      border-radius: var(--radius-xs);
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- =================== TOP BAR (Carbon-style: identity only) =================== -->
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../../index.html" class="wire-topnav__brand" aria-label="Preview Design System">
+      <span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span>
+      <span class="u-hidden-mobile">Preview Design System</span>
+    </a>
+    <div class="wire-topnav__utility">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="mobile-nav" aria-label="Open navigation">
+        <span aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer: mirrors the desktop sidebar exactly. -->
+<aside id="mobile-nav" class="wire-drawer" aria-label="Navigation">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-drawer__close" data-wire-drawer-close>← Close</button>
+  <nav class="wire-doc-nav" aria-label="Documentation">
+
+    <a class="wire-doc-nav__top-link" href="../../index.html">Get started</a>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/utilities.html">Layout &amp; utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/page-shells.html">Page shells</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary">Components</summary>
+      <div class="wire-doc-nav__section-body">
+        <a class="wire-doc-nav__top-link" href="../">All components</a>
+        <section class="wire-doc-nav__group">
+          <h3 class="wire-doc-nav__group-title">Actions</h3>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="./">Button</a></li>
+            <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tag</span></li>
+            <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Badge</span></li>
+            <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Pagination</span></li>
+            <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Breadcrumb</span></li>
+          </ul>
+        </section>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Patterns</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Resources</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/principles.html">Principles</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Research</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../CHANGELOG.md">Changelog</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../CONTRIBUTING.md">Contributing</a></li>
+        </ul>
+      </div>
+    </details>
+
+  </nav>
+</aside>
+<div class="wire-drawer-backdrop"></div>
+
+<main id="main">
+
+  <div class="wire-doc-shell">
+
+    <!-- ======= LEFT SIDEBAR (full IA) ======= -->
+    <aside class="wire-doc-shell__nav" aria-label="Documentation">
+      <nav class="wire-doc-nav">
+
+        <a class="wire-doc-nav__top-link" href="../../index.html">Get started</a>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Foundations</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tokens.html">Tokens</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/utilities.html">Layout &amp; utilities</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/page-shells.html">Page shells</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section" open>
+          <summary class="wire-doc-nav__section-summary">Components</summary>
+          <div class="wire-doc-nav__section-body">
+            <a class="wire-doc-nav__top-link" href="../">All components</a>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Actions</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="./">Button</a></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tag</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Badge</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Pagination</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Breadcrumb</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Forms</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Field</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Input</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Textarea</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Select</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Checkbox</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Radio</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Toggle</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Navigation</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Topnav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Megamenu</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Sidenav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">In-page nav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Drawer</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Containment</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Card</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Hero</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Feature grid</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Two-column</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Accordion</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tabs</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Callout</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Quote</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Timeline</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Media</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Media</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Gallery</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Lists</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Linked list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Definition list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Article list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Citation list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Table</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Feedback</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Modal</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Toast</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Banner</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Empty state</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Skeleton</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Stepper</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tooltip</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Healthcare</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Help bar</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Phone link</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Text size</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Footer</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Footer</span></li>
+              </ul>
+            </section>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Patterns</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Resources</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/principles.html">Principles</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Research</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/validation.html">Validation</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/component-status.html">Component status</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../CHANGELOG.md">Changelog</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../CONTRIBUTING.md">Contributing</a></li>
+            </ul>
+          </div>
+        </details>
+
+      </nav>
+    </aside>
+
+    <!-- ======= MAIN ======= -->
+    <article class="wire-doc-shell__main">
+
+      <!-- Doc header -->
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">Component · Actions</span>
+        <div class="wire-doc-header__row">
+          <h1 class="wire-doc-header__title">Button</h1>
+          <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
+        </div>
+        <p class="wire-doc-header__lead">A pill-shaped action with three emphasis levels and three sizes. Use exactly one primary per view; reach for ghost in dense interfaces.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/button.css</li>
+          <li class="wire-doc-header__meta-item">Since v1.0</li>
+        </ul>
+      </header>
+
+      <!-- Tabs -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Button documentation sections">
+          <button role="tab" id="tab-overview" class="wire-tabs__tab" aria-controls="overview" aria-selected="true" tabindex="0">Overview</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-guidelines" class="wire-tabs__tab" aria-controls="guidelines" aria-selected="false" tabindex="-1">Guidelines</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============ OVERVIEW ============ -->
+        <section role="tabpanel" id="overview" aria-labelledby="tab-overview" class="wire-tabs__panel">
+          <div class="u-stack u-stack--2xl">
+
+            <section aria-labelledby="ov-anatomy">
+              <h2 class="wire-h3" id="ov-anatomy">Anatomy</h2>
+              <p class="u-text-muted u-mt-sm">A button is a single rounded element with an optional leading or trailing icon, a label, and a minimum 44px touch target on every size.</p>
+              <div class="doc-example">
+                <span class="doc-example__label">Default</span>
+                <button class="wire-button" type="button">Make an appointment</button>
+              </div>
+            </section>
+
+            <section aria-labelledby="ov-key-variants">
+              <h2 class="wire-h3" id="ov-key-variants">Key variants</h2>
+              <p class="u-text-muted u-mt-sm">Three emphasis levels carry the system. Sizes and modifiers compose on top.</p>
+              <div class="doc-example">
+                <span class="doc-example__label">Emphasis — primary, secondary, ghost</span>
+                <div class="u-cluster">
+                  <button class="wire-button" type="button">Primary</button>
+                  <button class="wire-button wire-button--secondary" type="button">Secondary</button>
+                  <button class="wire-button wire-button--ghost" type="button">Ghost</button>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="ov-in-context">
+              <h2 class="wire-h3" id="ov-in-context">In context</h2>
+              <p class="u-text-muted u-mt-sm">A typical confirmation flow. One primary, one secondary, one ghost.</p>
+              <div class="doc-example">
+                <span class="doc-example__label">Form footer</span>
+                <div class="u-cluster u-cluster--md">
+                  <button class="wire-button" type="button">Confirm appointment</button>
+                  <button class="wire-button wire-button--secondary" type="button">Save for later</button>
+                  <button class="wire-button wire-button--ghost" type="button">Cancel</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ SPECS ============ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="u-stack u-stack--2xl">
+
+            <section aria-labelledby="sp-variants">
+              <h2 class="wire-h3" id="sp-variants">Variants</h2>
+              <table class="doc-spec-table">
+                <thead>
+                  <tr><th>Modifier</th><th>Selector</th><th>Result</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Primary (default)</td><td><code>.wire-button</code></td><td>Filled dark, white label. One per region.</td></tr>
+                  <tr><td>Secondary</td><td><code>.wire-button--secondary</code></td><td>Outlined, dark label. Supporting action.</td></tr>
+                  <tr><td>Ghost</td><td><code>.wire-button--ghost</code></td><td>No border, dark label. Dense surfaces.</td></tr>
+                  <tr><td>Small</td><td><code>.wire-button--sm</code></td><td>Smaller padding + text; still ≥ 44px target.</td></tr>
+                  <tr><td>Large</td><td><code>.wire-button--lg</code></td><td>Larger padding + text. Hero CTAs.</td></tr>
+                  <tr><td>Icon-only</td><td><code>.wire-button--icon-only</code></td><td>Square, label via <code>aria-label</code>.</td></tr>
+                  <tr><td>Full width</td><td><code>.wire-button--full</code></td><td>Stretches to container; mobile forms.</td></tr>
+                  <tr><td>Loading</td><td><code>aria-busy="true"</code></td><td>Dimmed; SR announces busy state.</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section aria-labelledby="sp-sizes">
+              <h2 class="wire-h3" id="sp-sizes">Sizes</h2>
+              <div class="doc-example">
+                <span class="doc-example__label">sm · md (default) · lg</span>
+                <div class="u-cluster u-cluster--baseline">
+                  <button class="wire-button wire-button--sm" type="button">Small</button>
+                  <button class="wire-button" type="button">Default</button>
+                  <button class="wire-button wire-button--lg" type="button">Large</button>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="sp-with-icon">
+              <h2 class="wire-h3" id="sp-with-icon">With icon</h2>
+              <div class="doc-example">
+                <span class="doc-example__label">Leading and trailing</span>
+                <div class="u-cluster">
+                  <button class="wire-button" type="button"><span class="wire-button__icon" aria-hidden="true">→</span><span>Continue</span></button>
+                  <button class="wire-button wire-button--secondary" type="button"><span>Open in new tab</span><span class="wire-button__icon" aria-hidden="true">↗</span></button>
+                  <button class="wire-button wire-button--ghost" type="button"><span class="wire-button__icon" aria-hidden="true">↓</span><span>Download</span></button>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="sp-icon-only">
+              <h2 class="wire-h3" id="sp-icon-only">Icon-only</h2>
+              <div class="doc-example">
+                <span class="doc-example__label">sm · md · lg, all three emphasis levels</span>
+                <div class="u-cluster u-cluster--baseline">
+                  <button class="wire-button wire-button--icon-only wire-button--sm" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                  <button class="wire-button wire-button--icon-only" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                  <button class="wire-button wire-button--icon-only wire-button--lg" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                  <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="More options"><span aria-hidden="true">⋯</span></button>
+                  <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="sp-tokens">
+              <h2 class="wire-h3" id="sp-tokens">Tokens used</h2>
+              <table class="doc-spec-table">
+                <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                <tbody>
+                  <tr><td><code>--color-text</code></td><td>Primary background; secondary/ghost label color.</td></tr>
+                  <tr><td><code>--color-text-inverse</code></td><td>Primary button label color.</td></tr>
+                  <tr><td><code>--color-border-strong</code></td><td>Secondary button outline.</td></tr>
+                  <tr><td><code>--color-bg-muted</code></td><td>Ghost hover background.</td></tr>
+                  <tr><td><code>--space-sm</code> → <code>--space-lg</code></td><td>Internal padding across the three sizes.</td></tr>
+                  <tr><td><code>--text-sm</code> → <code>--text-lg</code></td><td>Label type scale across sizes.</td></tr>
+                  <tr><td><code>--radius-pill</code></td><td>Border radius — the pill shape.</td></tr>
+                  <tr><td><code>--duration-fast</code></td><td>Hover and focus transition.</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section aria-labelledby="sp-code">
+              <h2 class="wire-h3" id="sp-code">Code</h2>
+              <pre class="doc-snippet"><code>&lt;!-- Primary --&gt;
+&lt;button class="wire-button" type="button"&gt;Confirm&lt;/button&gt;
+
+&lt;!-- Secondary, small --&gt;
+&lt;button class="wire-button wire-button--secondary wire-button--sm" type="button"&gt;
+  Save for later
+&lt;/button&gt;
+
+&lt;!-- Ghost with leading icon --&gt;
+&lt;button class="wire-button wire-button--ghost" type="button"&gt;
+  &lt;span class="wire-button__icon" aria-hidden="true"&gt;↓&lt;/span&gt;
+  &lt;span&gt;Download&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Icon-only --&gt;
+&lt;button class="wire-button wire-button--icon-only" type="button" aria-label="Search"&gt;
+  &lt;span aria-hidden="true"&gt;⌕&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ GUIDELINES ============ -->
+        <section role="tabpanel" id="guidelines" aria-labelledby="tab-guidelines" class="wire-tabs__panel" hidden>
+          <div class="u-stack u-stack--2xl">
+
+            <section aria-labelledby="gd-when">
+              <h2 class="wire-h3" id="gd-when">When to use</h2>
+              <ul>
+                <li>Use <strong>primary</strong> for the single most important action in a view (one per region).</li>
+                <li>Use <strong>secondary</strong> for the supporting action paired with a primary.</li>
+                <li>Use <strong>ghost</strong> in toolbars, card footers, and dense surfaces where a bordered button would feel heavy.</li>
+                <li>Use <strong>icon-only</strong> for utility actions where the icon's meaning is unambiguous and an <code>aria-label</code> is provided.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="gd-not">
+              <h2 class="wire-h3" id="gd-not">When not to use</h2>
+              <ul>
+                <li>Do not use a button when navigating; use an <code>&lt;a&gt;</code> styled as a button instead.</li>
+                <li>Do not stack three or more primary buttons; rework the page hierarchy.</li>
+                <li>Do not use icon-only buttons for destructive actions without confirmation.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="gd-emphasis">
+              <h2 class="wire-h3" id="gd-emphasis">Emphasis pairing</h2>
+              <p class="u-text-muted u-mt-sm">A typical form footer has one primary, optionally one secondary, and a ghost cancel.</p>
+              <div class="doc-do-dont">
+                <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                  <p class="doc-do-dont__label">Do</p>
+                  <div class="u-cluster u-cluster--md">
+                    <button class="wire-button" type="button">Save changes</button>
+                    <button class="wire-button wire-button--ghost" type="button">Cancel</button>
+                  </div>
+                  <p class="u-text-muted u-mt-md" style="font-size: var(--text-sm)">One primary + one ghost. Cancel doesn't compete.</p>
+                </div>
+                <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                  <p class="doc-do-dont__label">Don't</p>
+                  <div class="u-cluster u-cluster--md">
+                    <button class="wire-button" type="button">Save changes</button>
+                    <button class="wire-button" type="button">Save and continue</button>
+                    <button class="wire-button" type="button">Cancel</button>
+                  </div>
+                  <p class="u-text-muted u-mt-md" style="font-size: var(--text-sm)">Three primaries means none of them is. Rework the hierarchy.</p>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="gd-content">
+              <h2 class="wire-h3" id="gd-content">Content guidelines</h2>
+              <ul>
+                <li>Lead with a verb. "Save changes" beats "Changes".</li>
+                <li>Be specific. "Book appointment" beats "Submit".</li>
+                <li>Title case for short labels (1–3 words); sentence case for longer.</li>
+                <li>Avoid "Click here" — the action name is the affordance.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="gd-composition">
+              <h2 class="wire-h3" id="gd-composition">Composition patterns</h2>
+              <p class="u-text-muted u-mt-sm">Where buttons commonly appear and how to size them.</p>
+              <ul>
+                <li><strong>Hero CTAs</strong> — large primary + large ghost, side by side.</li>
+                <li><strong>Card footers</strong> — small ghost, right-aligned.</li>
+                <li><strong>Toolbars</strong> — small ghost icon-only, in a cluster.</li>
+                <li><strong>Mobile form footers</strong> — full-width primary stacked above ghost cancel.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <!-- ============ ACCESSIBILITY ============ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="u-stack u-stack--2xl">
+
+            <section aria-labelledby="a11y-keyboard">
+              <h2 class="wire-h3" id="a11y-keyboard">Keyboard</h2>
+              <table class="doc-spec-table">
+                <thead><tr><th>Key</th><th>Action</th></tr></thead>
+                <tbody>
+                  <tr><td><kbd>Tab</kbd></td><td>Moves focus to the button.</td></tr>
+                  <tr><td><kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>Moves focus to the previous focusable.</td></tr>
+                  <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Activates the button (native behavior).</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section aria-labelledby="a11y-aria">
+              <h2 class="wire-h3" id="a11y-aria">ARIA &amp; semantics</h2>
+              <ul>
+                <li>Use a native <code>&lt;button type="button"&gt;</code>. Never a <code>&lt;div&gt;</code> with a click handler.</li>
+                <li>Icon-only buttons MUST carry an <code>aria-label</code> describing the action.</li>
+                <li>Decorative icons inside labeled buttons use <code>aria-hidden="true"</code>.</li>
+                <li>Loading state: set <code>aria-busy="true"</code>; assistive tech announces busy.</li>
+                <li>For form submission, use <code>type="submit"</code> explicitly.</li>
+              </ul>
+            </section>
+
+            <section aria-labelledby="a11y-wcag">
+              <h2 class="wire-h3" id="a11y-wcag">WCAG 2.2 criteria mapped</h2>
+              <table class="doc-spec-table">
+                <thead><tr><th>SC</th><th>How Button satisfies it</th></tr></thead>
+                <tbody>
+                  <tr><td>1.4.3 Contrast (Minimum)</td><td>Primary: 19:1. Secondary: ≥4.5:1. Ghost on muted hover: ≥4.5:1.</td></tr>
+                  <tr><td>1.4.11 Non-text Contrast</td><td>Secondary border (<code>--color-border-strong</code>): 4.5:1 on white.</td></tr>
+                  <tr><td>2.1.1 Keyboard</td><td>Native <code>&lt;button&gt;</code>; Enter/Space activate without script.</td></tr>
+                  <tr><td>2.4.7 Focus Visible</td><td>2px solid focus ring at 2px offset, dark on light surfaces.</td></tr>
+                  <tr><td>2.5.5 Target Size</td><td>All sizes ≥ 44 × 44 CSS pixels including small via min-block-size.</td></tr>
+                  <tr><td>4.1.2 Name, Role, Value</td><td>Native semantics. Icon-only uses <code>aria-label</code>.</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section aria-labelledby="a11y-sr">
+              <h2 class="wire-h3" id="a11y-sr">Screen reader notes</h2>
+              <ul>
+                <li>NVDA + Firefox: announces "&lt;label&gt;, button". Icon-only announces the <code>aria-label</code>.</li>
+                <li>VoiceOver + Safari: same, plus "press Control-Option-Space to activate" hint.</li>
+                <li>Loading state (<code>aria-busy="true"</code>) is announced as "busy" after the label.</li>
+                <li>Avoid changing the button label mid-activation; if state changes, use Toast or a live region rather than mutating the label.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
+          <span class="wire-doc-pager__direction">All components</span>
+          <span class="wire-doc-pager__title">Back to index</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../#cat-actions">
+          <span class="wire-doc-pager__direction">Next in Actions</span>
+          <span class="wire-doc-pager__title">Tag (migrating)</span>
+        </a>
+      </nav>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container">
+    <div class="wire-footer__inner">
+      <p class="wire-footer__brand">Preview Design System</p>
+      <p class="wire-footer__meta">Button · Stable · Preview Design System</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/wire.js" defer></script>
+</body>
+</html>

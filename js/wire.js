@@ -7,14 +7,21 @@
 (function () {
   "use strict";
 
-  /* ---------- Tabs (ARIA pattern) ---------- */
+  /* ---------- Tabs (ARIA pattern) ----------
+     Reads: data-wire-tabs (presence) — required to init
+            data-wire-tabs-hash (presence) — sync active tab with URL hash
+     If hash sync is on, the active tab is reflected in window.location.hash
+     via history.replaceState (no scroll jump, no history pollution), and
+     browser back/forward (hashchange) re-activates the matching tab.
+  */
   function initTabs(root) {
     const tablist = root.querySelector('[role="tablist"]');
     if (!tablist) return;
     const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
     const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
+    const useHash = root.hasAttribute("data-wire-tabs-hash");
 
-    function activate(idx, focus) {
+    function activate(idx, focus, updateHash) {
       tabs.forEach((tab, i) => {
         const selected = i === idx;
         tab.setAttribute("aria-selected", selected);
@@ -25,22 +32,44 @@
         }
       });
       if (focus && tabs[idx]) tabs[idx].focus();
+      if (useHash && updateHash && tabs[idx]) {
+        const panelId = tabs[idx].getAttribute("aria-controls");
+        if (panelId) {
+          history.replaceState(null, "", "#" + panelId);
+        }
+      }
     }
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activate(i));
+      tab.addEventListener("click", () => activate(i, false, true));
       tab.addEventListener("keydown", (e) => {
         let next = -1;
         if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
         if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
         if (e.key === "Home") next = 0;
         if (e.key === "End") next = tabs.length - 1;
-        if (next >= 0) { e.preventDefault(); activate(next, true); }
+        if (next >= 0) { e.preventDefault(); activate(next, true, true); }
       });
     });
 
-    const initialIdx = Math.max(0, tabs.findIndex(t => t.getAttribute("aria-selected") === "true"));
-    activate(initialIdx);
+    // Initial activation: hash > aria-selected > first tab
+    let initialIdx = -1;
+    if (useHash && window.location.hash) {
+      const hashId = window.location.hash.slice(1);
+      initialIdx = tabs.findIndex(t => t.getAttribute("aria-controls") === hashId);
+    }
+    if (initialIdx < 0) {
+      initialIdx = Math.max(0, tabs.findIndex(t => t.getAttribute("aria-selected") === "true"));
+    }
+    activate(initialIdx, false, false);
+
+    if (useHash) {
+      window.addEventListener("hashchange", () => {
+        const hashId = window.location.hash.slice(1);
+        const idx = tabs.findIndex(t => t.getAttribute("aria-controls") === hashId);
+        if (idx >= 0) activate(idx, false, false);
+      });
+    }
   }
 
   /* ---------- Accordion (single-open option) ---------- */

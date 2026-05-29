@@ -1,0 +1,85 @@
+/* ============================================================
+   Doc header — the header block at the top of a component or
+   foundation page. Title + lead + status pill on one row,
+   optional utility actions on the right.
+
+   Anatomy:
+     .wire-doc-header
+       .wire-doc-header__eyebrow       (e.g., "Component" or "Foundation")
+       .wire-doc-header__row
+         .wire-doc-header__title       (<h1>)
+         .wire-doc-header__status      (status pill goes here)
+       .wire-doc-header__lead          (one-paragraph summary)
+       .wire-doc-header__meta          (optional: source path, category)
+   ============================================================ */
+
+.wire-doc-header {
+  padding-block: var(--space-2xl) var(--space-xl);
+  border-block-end: var(--border-thin) solid var(--color-border);
+}
+
+.wire-doc-header__eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin-block-end: var(--space-md);
+}
+
+.wire-doc-header__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-block-end: var(--space-md);
+}
+
+.wire-doc-header__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin: 0;
+}
+
+@media (min-width: 48em) {
+  .wire-doc-header__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.wire-doc-header__status {
+  display: inline-flex;
+  align-items: center;
+}
+
+.wire-doc-header__lead {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+  margin: 0;
+  max-inline-size: 60ch;
+}
+
+.wire-doc-header__meta {
+  margin-block-start: var(--space-md);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.wire-doc-header__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}

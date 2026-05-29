@@ -41,4 +41,10 @@
 @import url("components/stepper.css");
 @import url("components/tooltip.css");
 
+@import url("components/status-pill.css");
+@import url("components/doc-header.css");
+@import url("components/doc-nav.css");
+@import url("components/doc-shell.css");
+@import url("components/doc-pager.css");
+
 @import url("print.css");

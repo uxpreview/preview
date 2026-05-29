@@ -333,6 +333,26 @@
                   <td>Bringhurst's <em>Elements of Typographic Style</em> on visual rhythm — dividers as silent punctuation between sections.</td>
                 </tr>
                 <tr>
+                  <th scope="row"><code>wire-doc-header</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Title + eyebrow + lead + meta header pattern follows <a href="https://m3.material.io/components">Material Design 3</a> and <a href="https://primer.style/components">GitHub Primer</a> component-page conventions. Eyebrow uses small-caps tracking for category orientation.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-doc-nav</code></th>
+                  <td><span class="wire-badge tag-evidence">Evidence</span></td>
+                  <td>Categorized persistent left nav follows NN/g <a href="https://www.nngroup.com/articles/left-side-vertical-navigation/">"Left-Side Vertical Navigation"</a> on deep IAs. <code>aria-current="page"</code> for current item per WCAG 4.1.2. Pending state surfaces migration progress honestly rather than hiding the inventory.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-doc-pager</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Previous/next foot navigation follows <a href="https://m3.material.io/components">Material Design 3</a>, <a href="https://www.gatsbyjs.com/docs/">Gatsby Docs</a>, and <a href="https://docusaurus.io/docs">Docusaurus</a>. Reduces friction between sibling docs pages.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-doc-shell</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Two-column docs layout (sticky nav + main) is the modern convention across <a href="https://m3.material.io/">Material Design</a>, <a href="https://primer.style/">Primer</a>, <a href="https://www.radix-ui.com/primitives/docs/overview/introduction">Radix</a>, <a href="https://ui.shadcn.com/docs">Shadcn</a>, <a href="https://carbondesignsystem.com/">Carbon</a>. Single-column collapse below 64em per WCAG 1.4.10.</td>
+                </tr>
+                <tr>
                   <th scope="row"><code>wire-feature-grid</code></th>
                   <td><span class="wire-badge tag-evidence">Evidence</span></td>
                   <td>NN/g <a href="https://www.nngroup.com/articles/cards-component/">"Cards: UI-Component Definition"</a> on icon + title + description grids for landing pages.</td>
@@ -366,6 +386,11 @@
                   <th scope="row"><code>wire-sidenav</code> (incl. local / secondary / section-tree compositions)</th>
                   <td><span class="wire-badge tag-evidence">Evidence</span></td>
                   <td>NN/g <a href="https://www.nngroup.com/articles/left-side-vertical-navigation/">"Left-Side Vertical Navigation"</a> on left-rail orientation in deep IAs; <a href="https://carbondesignsystem.com/components/UI-shell-side-nav/usage/">IBM Carbon UI Shell Side Nav</a> spec for hierarchy patterns. <code>aria-current="page"</code> per WCAG 4.1.2.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>wire-status-pill</code></th>
+                  <td><span class="wire-badge tag-convention">Convention</span></td>
+                  <td>Component-status pill mirrors design-system convention across <a href="https://m3.material.io/components">Material 3</a>, <a href="https://primer.style/components">GitHub Primer</a>, and <a href="https://carbondesignsystem.com/components/tag/usage/">IBM Carbon Tag</a>. In grayscale, fill density carries differentiation; the text label is load-bearing.</td>
                 </tr>
                 <tr>
                   <th scope="row"><code>wire-table</code></th>

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Components — Preview Design System</title>
+  <meta name="description" content="Every component in the Preview Design System, grouped by function. Pick one to see anatomy, specs, guidelines, and accessibility.">
+  <link rel="stylesheet" href="../css/wire.css">
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- =================== TOP BAR (Carbon-style: identity only) =================== -->
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="../index.html" class="wire-topnav__brand" aria-label="Preview Design System">
+      <span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span>
+      <span class="u-hidden-mobile">Preview Design System</span>
+    </a>
+    <div class="wire-topnav__utility">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="mobile-nav" aria-label="Open navigation">
+        <span aria-hidden="true">≡</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer mirrors the desktop sidebar exactly. -->
+<aside id="mobile-nav" class="wire-drawer" aria-label="Navigation">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-drawer__close" data-wire-drawer-close>← Close</button>
+  <nav class="wire-doc-nav" aria-label="Documentation">
+    <a class="wire-doc-nav__top-link" href="../index.html">Get started</a>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/page-shells.html">Page shells</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary">Components</summary>
+      <div class="wire-doc-nav__section-body">
+        <a class="wire-doc-nav__top-link is-current" aria-current="page" href="./">All components</a>
+        <section class="wire-doc-nav__group">
+          <h3 class="wire-doc-nav__group-title">Actions</h3>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="./buttons/">Button</a></li>
+          </ul>
+        </section>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Patterns</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Resources</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Research</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../CHANGELOG.md">Changelog</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../CONTRIBUTING.md">Contributing</a></li>
+        </ul>
+      </div>
+    </details>
+  </nav>
+</aside>
+<div class="wire-drawer-backdrop"></div>
+
+<main id="main">
+
+  <div class="wire-doc-shell">
+
+    <!-- ======= LEFT SIDEBAR ======= -->
+    <aside class="wire-doc-shell__nav" aria-label="Documentation">
+      <nav class="wire-doc-nav">
+
+        <a class="wire-doc-nav__top-link" href="../index.html">Get started</a>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Foundations</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/page-shells.html">Page shells</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section" open>
+          <summary class="wire-doc-nav__section-summary">Components</summary>
+          <div class="wire-doc-nav__section-body">
+            <a class="wire-doc-nav__top-link is-current" aria-current="page" href="./">All components</a>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Actions</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="./buttons/">Button</a></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tag</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Badge</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Pagination</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Breadcrumb</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Forms</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Field</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Input</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Textarea</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Select</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Checkbox</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Radio</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Toggle</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Navigation</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Topnav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Megamenu</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Sidenav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">In-page nav</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Drawer</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Containment</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Card</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Hero</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Feature grid</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Two-column</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Accordion</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tabs</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Callout</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Quote</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Timeline</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Media</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Media</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Gallery</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Lists</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Linked list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Definition list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Article list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Citation list</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Table</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Feedback</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Modal</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Toast</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Banner</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Empty state</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Skeleton</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Stepper</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Tooltip</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Healthcare</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Help bar</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Phone link</span></li>
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Text size</span></li>
+              </ul>
+            </section>
+
+            <section class="wire-doc-nav__group">
+              <h3 class="wire-doc-nav__group-title">Footer</h3>
+              <ul class="wire-doc-nav__list" role="list">
+                <li class="wire-doc-nav__item wire-doc-nav__item--pending"><span class="wire-doc-nav__pending">Footer</span></li>
+              </ul>
+            </section>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Patterns</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="wire-doc-nav__section">
+          <summary class="wire-doc-nav__section-summary">Resources</summary>
+          <div class="wire-doc-nav__section-body">
+            <ul class="wire-doc-nav__list" role="list">
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Research</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../CHANGELOG.md">Changelog</a></li>
+              <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../CONTRIBUTING.md">Contributing</a></li>
+            </ul>
+          </div>
+        </details>
+
+      </nav>
+    </aside>
+
+    <!-- ======= MAIN ======= -->
+    <article class="wire-doc-shell__main">
+
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">Components</span>
+        <h1 class="wire-doc-header__title">Thirty components, nine categories.</h1>
+        <p class="wire-doc-header__lead">Every component in the system, grouped by what it does. Each one carries an anatomy diagram, a spec sheet, written guidelines, and an accessibility profile. Click a card to start.</p>
+      </header>
+
+      <div class="u-stack u-stack--3xl" style="padding-block-start: var(--space-2xl);">
+
+        <!-- Actions -->
+        <section aria-labelledby="cat-actions">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-actions">Actions</h2>
+            <p class="u-text-muted">Things the user can click, tap, or trigger.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <a class="wire-card wire-card--linked" href="./buttons/">
+              <div class="wire-card__body">
+                <span class="wire-status-pill">Stable</span>
+                <h3 class="wire-card__title">Button</h3>
+                <p class="u-text-muted">A pill-shaped action with three emphasis levels and three sizes.</p>
+              </div>
+            </a>
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Tag</h3>
+                <p class="u-text-muted">A small label for categorization or metadata, in two sizes.</p>
+              </div>
+            </div>
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Badge</h3>
+                <p class="u-text-muted">A compact status indicator, typically attached to another element.</p>
+              </div>
+            </div>
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Pagination</h3>
+                <p class="u-text-muted">Numbered page navigation for long lists and result sets.</p>
+              </div>
+            </div>
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Breadcrumb</h3>
+                <p class="u-text-muted">A trail showing the user's position in a hierarchical structure.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Forms -->
+        <section aria-labelledby="cat-forms">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-forms">Forms</h2>
+            <p class="u-text-muted">Inputs and field constructs for collecting user data.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Field</h3><p class="u-text-muted">The label + input + hint + error wrapper. Every form control composes through this.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Input</h3><p class="u-text-muted">Single-line text input. Pairs with Field for label, hint, and error.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Textarea</h3><p class="u-text-muted">Multi-line text input for longer freeform responses.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Select</h3><p class="u-text-muted">A native dropdown for choosing one option from a known list.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Checkbox</h3><p class="u-text-muted">A single binary choice or one option in a multi-select group.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Radio</h3><p class="u-text-muted">A mutually-exclusive choice within a small set of options.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Toggle</h3><p class="u-text-muted">An instant on/off switch for boolean settings.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Navigation -->
+        <section aria-labelledby="cat-navigation">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-navigation">Navigation</h2>
+            <p class="u-text-muted">Wayfinding chrome across the page, the section, and the long doc.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Topnav</h3><p class="u-text-muted">The sticky primary navigation at the top of every page.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Megamenu</h3><p class="u-text-muted">A wide dropdown panel for sites with deep section hierarchies.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Sidenav</h3><p class="u-text-muted">A vertical navigation for local sections, with sublist support.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">In-page nav</h3><p class="u-text-muted">A scroll-spy nav that highlights the current section on long pages.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Drawer</h3><p class="u-text-muted">An off-canvas panel with focus trap, used on mobile and as a side sheet.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Containment -->
+        <section aria-labelledby="cat-containment">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-containment">Containment</h2>
+            <p class="u-text-muted">Surfaces that group, frame, and structure related content.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Card</h3><p class="u-text-muted">A self-contained surface for an article, person, resource, or stat.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Hero</h3><p class="u-text-muted">The opening block at the top of a page, in five variants.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Feature grid</h3><p class="u-text-muted">A row of equally-weighted features or capabilities.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Two-column</h3><p class="u-text-muted">A balanced two-column layout for headline + supporting content.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Accordion</h3><p class="u-text-muted">Disclosure groups using native &lt;details&gt; for FAQs and progressive content.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Tabs</h3><p class="u-text-muted">The ARIA APG tab pattern with hash deep-linking and pill variant.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Callout</h3><p class="u-text-muted">A boxed aside for asides, notes, and inline emphasis.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Quote</h3><p class="u-text-muted">A pull quote with optional attribution and emphasis treatment.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Timeline</h3><p class="u-text-muted">A vertical sequence of dated milestones or steps.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Media -->
+        <section aria-labelledby="cat-media">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-media">Media</h2>
+            <p class="u-text-muted">Visual placeholders for imagery and image collections.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Media</h3><p class="u-text-muted">A placeholder for imagery with explicit aspect ratio labels.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Gallery</h3><p class="u-text-muted">Grid and mosaic layouts for collections of media.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Lists -->
+        <section aria-labelledby="cat-lists">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-lists">Lists</h2>
+            <p class="u-text-muted">Vertical sequences of items, from simple to richly-structured.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Linked list</h3><p class="u-text-muted">A list of links with hover affordance, for nav-adjacent lists.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Definition list</h3><p class="u-text-muted">Term + definition pairs, semantic and screen-reader friendly.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Article list</h3><p class="u-text-muted">A list of articles or posts with title, summary, and metadata.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Citation list</h3><p class="u-text-muted">Numbered citations for research-backed long-form pages.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Table</h3><p class="u-text-muted">A striped data table with proper heading semantics.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Feedback -->
+        <section aria-labelledby="cat-feedback">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-feedback">Feedback</h2>
+            <p class="u-text-muted">Communicating system state, progress, and async outcomes.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Modal</h3><p class="u-text-muted">A centered dialog with focus trap and ARIA dialog semantics.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Toast</h3><p class="u-text-muted">Transient status messages via a polite live region.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Banner</h3><p class="u-text-muted">A persistent inline message for warnings, info, or success.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Empty state</h3><p class="u-text-muted">A blank-slate prompt when a list or page has no content yet.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Skeleton</h3><p class="u-text-muted">Loading-state placeholders that match the layout that's coming.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Stepper</h3><p class="u-text-muted">A numbered progress indicator for multi-step flows.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Tooltip</h3><p class="u-text-muted">A small contextual hint attached to a control.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Healthcare -->
+        <section aria-labelledby="cat-healthcare">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-healthcare">Healthcare</h2>
+            <p class="u-text-muted">Components born from healthcare engagements that generalize.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Help bar</h3><p class="u-text-muted">A persistent contact bar for time-sensitive support paths.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Phone link</h3><p class="u-text-muted">A tap-to-call number formatted for clarity and accessibility.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Text size</h3><p class="u-text-muted">A user-controlled text scale with persistence and SR announcement.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <section aria-labelledby="cat-footer">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-footer">Footer</h2>
+            <p class="u-text-muted">Page-foot components for sitemap, contact, and legal.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Footer</h3><p class="u-text-muted">Four variants: compact, standard, expanded, inverse.</p></div></div>
+          </div>
+        </section>
+
+      </div>
+    </article>
+
+  </div>
+
+</main>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>
