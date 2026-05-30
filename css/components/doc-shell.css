@@ -43,9 +43,8 @@
   .wire-doc-shell__nav {
     display: block;
     position: sticky;
-    /* Topnav height is 3.5rem mobile / 4rem desktop per v1.9 — use 4rem
-       plus a generous breathing gutter. */
-    inset-block-start: calc(4rem + var(--space-lg));
+    /* Clear the slim fixed shell header, plus a breathing gutter. */
+    inset-block-start: calc(var(--shell-header-h) + var(--space-lg));
     align-self: start;
     max-block-size: calc(100vh - 6rem);
     overflow-y: auto;
@@ -69,12 +68,12 @@
   }
 }
 
-/* Sticky tab bar variant — sits flush below the topnav inside doc-shell.
+/* Sticky tab bar variant — sits flush below the slim fixed shell header.
    On narrow viewports the tabs scroll horizontally instead of wrapping;
    keeps the bar one row tall and the tab targets full-height. */
 .wire-tabs--sticky .wire-tabs__list {
   position: sticky;
-  inset-block-start: 4rem;
+  inset-block-start: var(--shell-header-h);
   z-index: var(--z-sticky);
   background-color: var(--color-bg);
   margin-inline: calc(-1 * var(--container-padding-x));

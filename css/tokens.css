@@ -129,6 +129,17 @@
   --container-full: 90rem;     /* 1440 */
   --container-padding-x: var(--space-lg);
 
+  /* ---------- App shell (Carbon-style doc site chrome) ----------
+     Layout primitives for the doc-site shell: a slim fixed header, a
+     persistent left rail, and an in-page TOC column. Used only by the
+     design-system chrome (body.wire-shell); client demo pages never
+     reference these. Every shell offset (header clearance, sticky tab
+     and TOC tops, rail/main geometry) resolves from these three so the
+     chrome stays internally consistent. */
+  --shell-header-h: 3.5rem;    /* 56 — slim, consistent across widths */
+  --shell-sidenav-w: 16rem;    /* 256 — persistent left rail */
+  --shell-toc-w: 13rem;        /* 208 — "on this page" column */
+
   /* ---------- Z-index scale ---------- */
   --z-base: 1;
   --z-dropdown: 100;

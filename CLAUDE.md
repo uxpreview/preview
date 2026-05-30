@@ -68,9 +68,10 @@ flow, `hospital-patient-visitor.html` for a plan-your-visit page). Do not fabric
   reduced-motion respected, labels on all inputs.
 - **Older audiences:** keep larger text defaults and the help-bar / text-size /
   phone affordances available where appropriate (healthcare).
-- **Don't use doc-chrome on client pages.** `wire-doc-*` and `wire-status-pill` are the
-  system's own documentation-site furniture (`manifest.json` → `doc_chrome`), not
-  wireframe parts.
+- **Don't use doc-chrome on client pages.** `wire-doc-*`, the app-shell
+  (`body.wire-shell`, `wire-railnav`, `wire-topnav--shell`), and `wire-status-pill` are
+  the system's own documentation-site furniture (`manifest.json` → `doc_chrome`), not
+  wireframe parts. Client pages use the plain `wire-topnav` + their own nav.
 - **Never invent a citation.** Any evidence shown to a client must exist, verified, in
   `citations.json`. You may *draft* a candidate citation only as
   `UNVERIFIED — pending human review`, and never present an unverified source, finding,

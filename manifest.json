@@ -16,7 +16,7 @@
       "README.md, CHANGELOG.md (counts and version)"
     ],
     "every_class_verified_against": "css/components/*.css and css/{base,layout,utilities}.css. No inferred class names remain.",
-    "component_count_reconciliation": "README and component-status.html advertise '30 components' — a curated logical count. This manifest lists 43 authoring entries because it splits multi-component files into their real parts (nav.css -> topnav/megamenu/sidenav/inpagenav/drawer; form.css -> field/search/choice/form-layout; list.css -> linked-list/deflist/article-list; media.css -> media/gallery; help-bar.css -> help-bar/phone-link). Plus 5 doc_chrome entries (status-pill + doc-header/nav/shell/pager) that are the docs-site's own furniture, not client-composition parts. There are 36 partial files in css/components/ (31 wireframe + 5 doc-chrome).",
+    "component_count_reconciliation": "README and component-status.html advertise '30 components' — a curated logical count. This manifest lists 43 authoring entries because it splits multi-component files into their real parts (nav.css -> topnav/megamenu/sidenav/inpagenav/drawer; form.css -> field/search/choice/form-layout; list.css -> linked-list/deflist/article-list; media.css -> media/gallery; help-bar.css -> help-bar/phone-link). Plus 6 doc_chrome entries (status-pill + doc-header/nav/shell/pager + app-shell) that are the docs-site's own furniture, not client-composition parts. There are 38 partial files in css/components/ (31 wireframe + 7 doc-chrome: the 6 entried sheets plus doc-helpers).",
     "corrections_vs_prior_manifest": "Headline fixes: wire-btn->wire-button, wire-two-col->wire-twocol, wire-pullquote->wire-quote, wire-helpbar->wire-help-bar, wire-phone->wire-phone-link, wire-textsize->wire-text-size; tokens.source docs/tokens.css->css/tokens.css; added gray-100 and the borders/shadows/motion token groups; added the entire nav family + modal/toast/banner/empty/skeleton/stepper/tooltip/citation-list/status-pill; removed the two fabricated 'experiences' (the Experiences tier does not exist yet); fixed callout, badge, tag, list, form, card, hero, table variant/class sets; corrected text-size options."
   },
   "constraints": [
@@ -865,7 +865,7 @@
         "file": "css/components/doc-shell.css",
         "status": "beta",
         "elements": ["wire-doc-shell__nav", "wire-doc-shell__main"],
-        "notes": "Two-column sticky-nav + main layout for migrated docs pages. Also defines wire-tabs--sticky."
+        "notes": "Two-column sticky-nav + main layout. Superseded as page chrome by the global app-shell (v1.12); retained because it still defines wire-tabs--sticky used by component detail pages."
       },
       {
         "id": "doc-pager",
@@ -873,6 +873,17 @@
         "file": "css/components/doc-pager.css",
         "status": "beta",
         "elements": ["wire-doc-pager__link", "wire-doc-pager__link--prev", "wire-doc-pager__link--next", "wire-doc-pager__link--placeholder", "wire-doc-pager__direction", "wire-doc-pager__title"]
+      },
+      {
+        "id": "app-shell",
+        "class": "wire-shell",
+        "file": "css/components/shell.css",
+        "status": "beta",
+        "elements": ["wire-topnav--shell", "wire-topnav__source", "wire-railnav", "wire-railnav__close", "wire-shell__doc"],
+        "companions": ["wire-doc-nav", "wire-inpagenav", "wire-drawer-backdrop"],
+        "tokens": ["--shell-header-h", "--shell-sidenav-w", "--shell-toc-w"],
+        "behaviors": ["body.wire-shell scopes the chrome so client demo pages (which share wire-topnav) are unaffected", "wire-railnav is the persistent left nav at >=64em and the off-canvas slide-over below it — one element, reusing initDrawer via data-wire-drawer-open=\"site-nav\"; modal semantics applied only while open", "current page stamped at sync time: aria-current + is-current on the link and open on its section (no JS needed for the highlight)"],
+        "notes": "Carbon-style doc-site shell (v1.12): slim fixed header (wire-topnav--shell) + persistent left rail (wire-railnav holding the wire-doc-nav tree) + optional in-page TOC (wire-inpagenav). The horizontal wire-topnav__menu and wire-megamenu are no longer doc-site chrome — megamenu remains a documented nav-family pattern/component. Maintained by scripts/sync-nav.mjs from partials/nav.html."
       }
     ]
   },

@@ -116,7 +116,13 @@
     });
   }
 
-  /* ---------- Mobile drawer (with focus trap — WCAG 2.1.2) ---------- */
+  /* ---------- Mobile drawer / off-canvas rail (focus trap — WCAG 2.1.2) ----------
+     The same element can be a persistent <nav> at desktop and an off-canvas
+     slide-over at mobile (the shell rail). So modal semantics — role=dialog,
+     aria-modal, focus trap, scroll lock — are applied ONLY while open, and
+     stripped on close, leaving a plain navigation landmark the rest of the
+     time. The trigger that opens it is hidden by CSS above the breakpoint,
+     so a persistent rail never enters dialog mode. */
   const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
   function initDrawer() {
@@ -129,14 +135,15 @@
         ? drawer.nextElementSibling
         : null;
 
-      drawer.setAttribute("role", drawer.getAttribute("role") || "dialog");
-      drawer.setAttribute("aria-modal", "true");
+      const hadRole = drawer.hasAttribute("role");
 
       function open() {
         drawer.classList.add("is-open");
         if (backdrop) backdrop.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
+        drawer.setAttribute("role", "dialog");
+        drawer.setAttribute("aria-modal", "true");
         const first = drawer.querySelector(FOCUSABLE);
         if (first) first.focus();
       }
@@ -146,6 +153,8 @@
         if (backdrop) backdrop.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
+        drawer.removeAttribute("aria-modal");
+        if (!hadRole) drawer.removeAttribute("role");
         toggle.focus();
       }
 
