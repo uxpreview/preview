@@ -180,11 +180,13 @@
   font-size: var(--text-lg);
   line-height: 1;
   color: var(--color-text-subtle);
+  /* Points DOWN when collapsed to signal it expands; flips UP when open. */
+  transform: rotate(90deg);
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .wire-doc-nav__section[open] > .wire-doc-nav__section-summary::after {
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
 }
 
 .wire-doc-nav__section-body {
