@@ -46,5 +46,6 @@
 @import url("components/doc-nav.css");
 @import url("components/doc-shell.css");
 @import url("components/doc-pager.css");
+@import url("components/doc-helpers.css");
 
 @import url("print.css");

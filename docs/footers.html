@@ -20,22 +20,161 @@
 
 <a href="#main" class="wire-skip-link">Skip to content</a>
 
+<!-- NAV:START -->
 <header class="wire-topnav">
   <div class="u-container wire-topnav__inner">
     <a href="../index.html" class="wire-topnav__brand" aria-label="Preview Design System">
       <span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span>
       <span class="u-hidden-mobile">Preview Design System</span>
     </a>
-    <nav aria-label="Primary">
+
+    <nav aria-label="Primary" class="u-hidden-mobile">
       <ul class="wire-topnav__menu" role="list">
-        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../index.html">Components</a></li>
-        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./principles.html">Principles</a></li>
-        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./tokens.html">Tokens</a></li>
-        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Riverside demo</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../foundations/">Foundations</a></li>
+
+        <li class="wire-topnav__item wire-megamenu" data-wire-megamenu>
+          <a class="wire-topnav__link" href="../components/" data-wire-megamenu-trigger aria-haspopup="true">Components<span aria-hidden="true">▾</span></a>
+          <div class="wire-megamenu__panel">
+            <div class="wire-megamenu__grid">
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Build</div>
+                <a class="wire-megamenu__link" href="../components/#cat-actions">Actions <span class="wire-megamenu__link-desc">Button, Tag, Badge</span></a>
+                <a class="wire-megamenu__link" href="../components/#cat-forms">Forms <span class="wire-megamenu__link-desc">Field, Input, Choice</span></a>
+                <a class="wire-megamenu__link" href="../components/#cat-navigation">Navigation <span class="wire-megamenu__link-desc">Breadcrumb, Pagination</span></a>
+              </div>
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Compose</div>
+                <a class="wire-megamenu__link" href="../components/#cat-containment">Containment <span class="wire-megamenu__link-desc">Card, Tabs, Accordion</span></a>
+                <a class="wire-megamenu__link" href="../components/#cat-media">Media <span class="wire-megamenu__link-desc">Media, Gallery</span></a>
+                <a class="wire-megamenu__link" href="../components/#cat-lists">Lists <span class="wire-megamenu__link-desc">Lists, Table</span></a>
+              </div>
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Communicate</div>
+                <a class="wire-megamenu__link" href="../components/#cat-feedback">Feedback <span class="wire-megamenu__link-desc">Modal, Toast, Banner</span></a>
+                <a class="wire-megamenu__link" href="../components/#cat-healthcare">Healthcare <span class="wire-megamenu__link-desc">Help bar, Text size</span></a>
+                <a class="wire-megamenu__link" href="../components/">All 30 components →</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="wire-topnav__item wire-megamenu" data-wire-megamenu>
+          <a class="wire-topnav__link" href="../patterns/" data-wire-megamenu-trigger aria-haspopup="true">Patterns<span aria-hidden="true">▾</span></a>
+          <div class="wire-megamenu__panel">
+            <div class="wire-megamenu__grid">
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Navigation family</div>
+                <a class="wire-megamenu__link" href="../docs/navigation.html">Top nav, mega menu, sidebar</a>
+                <a class="wire-megamenu__link" href="../docs/navigation.html">In-page nav, drawer</a>
+              </div>
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Layout &amp; content</div>
+                <a class="wire-megamenu__link" href="../docs/heroes.html">Heroes</a>
+                <a class="wire-megamenu__link" href="../docs/content-blocks.html">Content blocks</a>
+                <a class="wire-megamenu__link" href="../docs/footers.html">Footers</a>
+              </div>
+              <div class="wire-megamenu__col">
+                <div class="wire-megamenu__title">Healthcare patterns</div>
+                <a class="wire-megamenu__link" href="../docs/research.html">Help bar, phone, text size</a>
+                <a class="wire-megamenu__link" href="../patterns/">All patterns →</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../templates/">Templates</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../experiences/">Experiences</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="../pages/hospital-homepage.html">Demo</a></li>
       </ul>
     </nav>
+
+    <div class="wire-topnav__utility">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="site-nav" aria-label="Open navigation">
+        <span aria-hidden="true">≡</span>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- Mobile drawer: the full six-tier nav. -->
+<aside id="site-nav" class="wire-drawer" aria-label="Site navigation">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-drawer__close" data-wire-drawer-close>← Close</button>
+  <nav class="wire-doc-nav" aria-label="Site">
+    <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../foundations/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Accessibility &amp; evidence</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Components</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../components/">All components</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../components/buttons/">Button</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/forms.html">Forms</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/cards.html">Cards</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/lists.html">Lists</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tables.html">Tables</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/media.html">Media</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Patterns</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../patterns/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/navigation.html">Navigation family</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/heroes.html">Heroes</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/content-blocks.html">Content blocks</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/footers.html">Footers</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Healthcare patterns</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Templates</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../templates/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/page-shells.html">Page shells</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../directory.html">All demo pages</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Experiences</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../experiences/">Overview</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Demo</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+        </ul>
+      </div>
+    </details>
+  </nav>
+</aside>
+<div class="wire-drawer-backdrop"></div>
+<!-- NAV:END -->
 
 <main id="main">
   <section class="wire-hero wire-hero--editorial">

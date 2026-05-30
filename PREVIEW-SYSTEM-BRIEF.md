@@ -89,10 +89,13 @@ behaviors — tabs, accordion, mega menu, the mobile drawer — via `data-wire-*
 CSS is linked through a single `css/wire.css`; `css/tokens.css` is the only file with
 raw values.
 
-Proof: **four Riverside pressure-test mocks** built from the system only — homepage,
-specialty, research, find-a-doctor — with no inline styles and no hardcoded values.
-"Riverside" is the anonymized rehabilitation-hospital demo. Separately, the system ships
-documented **page shells** (landing, article, listing, detail) as reusable scaffolds.
+Proof: the system began with **four Riverside pressure-test mocks** — homepage, specialty,
+research, find-a-doctor — built from the system only, no inline styles, no hardcoded
+values. That set has since grown to **18 Riverside (healthcare) demo pages plus 3 Northgate
+(higher-ed)**; nine Riverside archetypes are featured on the home page, and all 21 are
+listed in the directory. "Riverside" is the anonymized rehabilitation-hospital demo.
+Separately, the system ships documented **page shells** (landing, article, listing, detail)
+as reusable scaffolds.
 
 Naming is BEM-ish and consistent: `.wire-block__element`, `.wire-block--modifier`,
 `.is-state`, `data-wire-*` for JS hooks, `.u-*` for utilities — lowercase, kebab-case.
