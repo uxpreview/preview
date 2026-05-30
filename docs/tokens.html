@@ -26,16 +26,18 @@
 <!-- NAV:START -->
 <header class="wire-topnav wire-topnav--shell">
   <div class="wire-topnav__inner">
-    <a href="../index.html" class="wire-topnav__brand" aria-label="Preview Design System">
-      <span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span>
-      <span class="u-hidden-mobile">Preview Design System</span>
-    </a>
+    <div class="wire-topnav__lead">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="site-nav" aria-label="Open navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="../index.html" class="wire-topnav__brand" aria-label="Preview Design System">
+        <span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span>
+        <span>Preview Design System</span>
+      </a>
+    </div>
 
     <div class="wire-topnav__utility">
       <a class="wire-topnav__source" href="https://github.com/uxpreview/preview">View source</a>
-      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="site-nav" aria-label="Open navigation">
-        <span aria-hidden="true">≡</span>
-      </button>
     </div>
   </div>
 </header>

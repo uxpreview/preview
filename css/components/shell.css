@@ -43,6 +43,30 @@ body.wire-shell .wire-topnav--shell .wire-topnav__inner {
   min-block-size: var(--shell-header-h);
 }
 
+/* Lead cluster: the hamburger sits to the LEFT of the brand (Carbon-style).
+   On desktop the burger is display:none, so this collapses to the brand. */
+body.wire-shell .wire-topnav__lead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-inline-size: 0;
+}
+
+/* A larger, crisper burger than the default thin glyph. The icon-only base
+   is a 44px target; the shell bumps it to 48px with a 24px line icon. Nudged
+   toward the edge so the icon optically aligns with the content gutter. */
+body.wire-shell .wire-topnav--shell .wire-topnav__burger {
+  inline-size: 3rem;
+  block-size: 3rem;
+  color: var(--color-text);
+  margin-inline-start: calc(-1 * var(--space-xs));
+}
+body.wire-shell .wire-topnav--shell .wire-topnav__burger svg {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  display: block;
+}
+
 @media (min-width: 48em) {
   /* Override the base topnav's taller desktop bar — the shell stays slim. */
   body.wire-shell .wire-topnav--shell .wire-topnav__inner {
