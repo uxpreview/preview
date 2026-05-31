@@ -108,6 +108,16 @@ body.wire-shell .wire-railnav {
   padding-block: var(--space-md);
   padding-inline: var(--space-sm);
   z-index: var(--z-base);
+
+  /* Column so the nav can grow and the theme toggle pins to the bottom. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav fills the rail height so the theme control's margin-auto reaches the
+   foot even when the link list is short. */
+body.wire-shell .wire-railnav > .wire-doc-nav {
+  flex: 1 0 auto;
 }
 
 /* Close control lives in the rail but only matters in the mobile

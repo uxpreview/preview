@@ -385,6 +385,152 @@
     });
   }
 
+  /* ---------- Rail disclosures: smooth expand/collapse (progressive enhancement) ----------
+     Native <details> in the left rail snap open/closed. This animates the
+     height of the content after each <summary> so sections and category groups
+     glide (Nextra-style). With JS off the rail still works — it just snaps, as
+     before. Honors prefers-reduced-motion by letting the native toggle run. */
+  function initNavDisclosure() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const DUR = 200;
+    const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+    document.querySelectorAll(".wire-doc-nav details").forEach((d) => {
+      const summary = d.querySelector(":scope > summary");
+      const body = summary && summary.nextElementSibling;
+      if (!summary || !body) return;
+      let anim = null;
+
+      summary.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (anim) { anim.cancel(); anim = null; }
+        const opening = !d.open;
+        if (opening) d.open = true;        // reveal before measuring
+        const full = body.offsetHeight;
+        const frames = [{ height: "0px", opacity: 0 }, { height: full + "px", opacity: 1 }];
+        body.style.overflow = "hidden";
+        anim = body.animate(opening ? frames : frames.slice().reverse(), { duration: DUR, easing: EASE });
+        anim.onfinish = () => {
+          body.style.overflow = "";
+          body.style.height = "";
+          if (!opening) d.open = false;    // hide only after the collapse finishes
+          anim = null;
+        };
+      });
+    });
+  }
+
+  /* ---------- Rail search: client-side filter over the nav links ----------
+     Filters the left rail by component/section name as you type. Auto-expands
+     groups that contain a match, hides the rest, and restores the prior
+     open/closed state when cleared. Esc clears. This filters the NAV only — it
+     is not a full-text page search. JS-only: the box is revealed by adding
+     `.is-js` so it never shows as a dead control without scripting. */
+  function initNavSearch() {
+    const wrap = document.querySelector("[data-wire-nav-search]");
+    if (!wrap) return;
+    const input = wrap.querySelector("input");
+    const nav = wrap.closest(".wire-doc-nav");
+    if (!input || !nav) return;
+
+    nav.classList.add("is-js");
+
+    const links = Array.from(nav.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link"));
+    const details = Array.from(nav.querySelectorAll("details"));
+
+    const empty = document.createElement("p");
+    empty.className = "wire-doc-nav__noresults";
+    empty.setAttribute("role", "status");
+    empty.hidden = true;
+    empty.textContent = "No matches.";
+    nav.appendChild(empty);
+
+    const rowFor = (a) => a.closest("li.wire-doc-nav__item") || a;
+    const isVisible = (a) => !rowFor(a).hidden;
+    let savedOpen = null;
+
+    function restore() {
+      links.forEach((a) => { rowFor(a).hidden = false; });
+      details.forEach((d, i) => { d.hidden = false; if (savedOpen) d.open = savedOpen[i]; });
+      savedOpen = null;
+      empty.hidden = true;
+    }
+
+    function filter(raw) {
+      const q = raw.trim().toLowerCase();
+      if (!q) { restore(); return; }
+      if (!savedOpen) savedOpen = details.map((d) => d.open);
+
+      let any = false;
+      links.forEach((a) => {
+        const match = a.textContent.toLowerCase().includes(q);
+        rowFor(a).hidden = !match;
+        if (match) any = true;
+      });
+      // Deepest-first so a group's visibility is settled before its section.
+      for (let i = details.length - 1; i >= 0; i--) {
+        const d = details[i];
+        const hit = Array.from(d.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link")).some(isVisible);
+        d.hidden = !hit;
+        if (hit) d.open = true;
+      }
+      empty.hidden = any;
+    }
+
+    input.addEventListener("input", () => filter(input.value));
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { input.value = ""; filter(""); }
+    });
+  }
+
+  /* ---------- Theme toggle: light / dark / system ----------
+     Stores the PREFERENCE (light|dark|system) and applies the RESOLVED theme
+     (light|dark) to <html data-theme>. A pre-paint head script (injected by
+     sync-nav into chrome pages) sets the same attribute before first paint, so
+     there's no flash; this re-applies it and wires the control. Scoped to the
+     doc-site shell so client demo pages are never themed. */
+  function initTheme() {
+    if (!document.body.classList.contains("wire-shell")) return;
+    const root = document.documentElement;
+    const nav = document.querySelector(".wire-doc-nav");
+    if (nav) nav.classList.add("is-js");   // reveal the toggle (and search) once JS is live
+    const group = document.querySelector("[data-wire-theme]");
+    const KEY = "wire-theme";
+    const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+    const resolve = (pref) =>
+      pref === "dark" ? "dark" : pref === "light" ? "light" : (mq && mq.matches ? "dark" : "light");
+
+    function readPref() {
+      try { return localStorage.getItem(KEY) || "system"; } catch (_) { return "system"; }
+    }
+
+    function apply(pref) {
+      root.setAttribute("data-theme", resolve(pref));
+      if (group) {
+        group.querySelectorAll("[data-wire-theme-value]").forEach((b) => {
+          b.setAttribute("aria-pressed", b.dataset.wireThemeValue === pref ? "true" : "false");
+        });
+      }
+      try { localStorage.setItem(KEY, pref); } catch (_) {}
+    }
+
+    apply(readPref());
+
+    if (group) {
+      group.querySelectorAll("[data-wire-theme-value]").forEach((b) => {
+        b.addEventListener("click", () => apply(b.dataset.wireThemeValue));
+      });
+    }
+
+    if (mq) {
+      const onChange = () => { if (readPref() === "system") root.setAttribute("data-theme", resolve("system")); };
+      if (mq.addEventListener) mq.addEventListener("change", onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
@@ -396,6 +542,9 @@
     initModal();
     initToast();
     initBanner();
+    initNavDisclosure();
+    initNavSearch();
+    initTheme();
   }
 
   if (document.readyState === "loading") {

@@ -56,12 +56,12 @@ const CURRENT = {
   'index.html':                   { top: true, href: '{{base}}index.html' },
   'directory.html':               { section: 'Templates',    href: '{{base}}directory.html' },
   'components/index.html':        { section: 'Components',    href: '{{base}}components/' },
-  'components/buttons/index.html':{ section: 'Components',    href: '{{base}}components/buttons/' },
-  'components/accordion/index.html':{ section: 'Components',  href: '{{base}}components/accordion/' },
-  'components/badge/index.html':{ section: 'Components',      href: '{{base}}components/badge/' },
-  'components/tag/index.html':{ section: 'Components',        href: '{{base}}components/tag/' },
-  'components/divider/index.html':{ section: 'Components',    href: '{{base}}components/divider/' },
-  'components/tabs/index.html':{ section: 'Components',       href: '{{base}}components/tabs/' },
+  'components/buttons/index.html':{ section: 'Components', group: 'Actions', href: '{{base}}components/buttons/' },
+  'components/accordion/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/accordion/' },
+  'components/badge/index.html':{ section: 'Components', group: 'Selection &amp; status', href: '{{base}}components/badge/' },
+  'components/tag/index.html':{ section: 'Components', group: 'Selection &amp; status', href: '{{base}}components/tag/' },
+  'components/divider/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/divider/' },
+  'components/tabs/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/tabs/' },
   'foundations/index.html':       { section: 'Foundations',   href: '{{base}}foundations/' },
   'patterns/index.html':          { section: 'Patterns',      href: '{{base}}patterns/' },
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },
@@ -73,16 +73,16 @@ const CURRENT = {
   'docs/validation.html':         { section: 'Foundations',   href: '{{base}}docs/validation.html' },
   'docs/component-status.html':   { section: 'Foundations',   href: '{{base}}docs/component-status.html' },
   'docs/typography.html':         { section: 'Foundations',    href: '{{base}}docs/typography.html' },
-  'docs/forms.html':              { section: 'Components',     href: '{{base}}docs/forms.html' },
-  'docs/cards.html':              { section: 'Components',     href: '{{base}}docs/cards.html' },
-  'docs/lists.html':              { section: 'Components',     href: '{{base}}docs/lists.html' },
-  'docs/tables.html':             { section: 'Components',     href: '{{base}}docs/tables.html' },
-  'docs/media.html':              { section: 'Components',     href: '{{base}}docs/media.html' },
-  'docs/feedback.html':           { section: 'Components',     href: '{{base}}docs/feedback.html' },
-  'docs/navigation.html':         { section: 'Components',      href: '{{base}}docs/navigation.html' },
-  'docs/heroes.html':             { section: 'Components',      href: '{{base}}docs/heroes.html' },
+  'docs/forms.html':              { section: 'Components', group: 'Forms &amp; inputs', href: '{{base}}docs/forms.html' },
+  'docs/cards.html':              { section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}docs/cards.html' },
+  'docs/lists.html':              { section: 'Components', group: 'Content &amp; display', href: '{{base}}docs/lists.html' },
+  'docs/tables.html':             { section: 'Components', group: 'Content &amp; display', href: '{{base}}docs/tables.html' },
+  'docs/media.html':              { section: 'Components', group: 'Content &amp; display', href: '{{base}}docs/media.html' },
+  'docs/feedback.html':           { section: 'Components', group: 'Messaging &amp; feedback', href: '{{base}}docs/feedback.html' },
+  'docs/navigation.html':         { section: 'Components', group: 'Navigation', href: '{{base}}docs/navigation.html' },
+  'docs/heroes.html':             { section: 'Components', group: 'Layout', href: '{{base}}docs/heroes.html' },
   'docs/content-blocks.html':     { section: 'Components',      href: '{{base}}docs/content-blocks.html' },
-  'docs/footers.html':            { section: 'Components',      href: '{{base}}docs/footers.html' },
+  'docs/footers.html':            { section: 'Components', group: 'Layout', href: '{{base}}docs/footers.html' },
   'docs/page-shells.html':        { section: 'Templates',      href: '{{base}}docs/page-shells.html' },
 };
 
@@ -94,6 +94,14 @@ function stampCurrent(navStr, rel) {
     out = out.replace(
       new RegExp('<details class="wire-doc-nav__section">(\\s*<summary class="wire-doc-nav__section-summary">' + c.section + '</summary>)'),
       '<details class="wire-doc-nav__section" open>$1'
+    );
+  }
+  // Category groups are collapsed by default; open the one holding this page so
+  // "you are here" is never hidden inside a collapsed group.
+  if (c.group) {
+    out = out.replace(
+      new RegExp('<details class="wire-doc-nav__group">(\\s*<summary class="wire-doc-nav__group-title">' + esc(c.group) + '</summary>)'),
+      '<details class="wire-doc-nav__group" open>$1'
     );
   }
   const cls = c.top ? 'wire-doc-nav__top-link' : 'wire-doc-nav__link';
@@ -115,6 +123,17 @@ function ensureShellBody(html) {
     }
     return '<body' + attrs + ' class="wire-shell">';
   });
+}
+
+// Pre-paint theme init: sets <html data-theme> from the saved preference (or
+// the OS, for "system") BEFORE first paint, so dark-mode users get no flash.
+// Inline + guarded; the only head-JS, injected on chrome pages only. Idempotent.
+const THEME_INIT = `<script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>`;
+
+function ensureThemeInit(html) {
+  if (html.includes("localStorage.getItem('wire-theme')")) return html;
+  if (!/<\/head>/i.test(html)) return html;
+  return html.replace(/<\/head>/i, '  ' + THEME_INIT + '\n</head>');
 }
 
 // Match a page's existing top-chrome: the topnav header, plus an
@@ -153,6 +172,9 @@ for (const rel of targetList()) {
 
   // 3. Ensure the shell body class so the chrome layout applies.
   next = ensureShellBody(next);
+
+  // 4. Ensure the pre-paint theme-init script is in <head> (no-flash dark mode).
+  next = ensureThemeInit(next);
 
   if (next !== html) { writeFileSync(abs, next); updated++; console.log('  synced   ', rel, `(base="${base}")`); }
   else { skipped++; }

@@ -30,28 +30,78 @@
   font-size: var(--text-sm);
 }
 
+/* A category group is now a nested disclosure (collapsed by default; the
+   sync opens the group holding the current page). Compact, with a chevron
+   and a second-level tree line down its items — Nextra-style. */
 .wire-doc-nav__group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xs);
 }
 
-/* A little more breathing room above a group title to separate it
-   from the prior group or top-link, without exaggerating it. */
-.wire-doc-nav__group + .wire-doc-nav__group,
+.wire-doc-nav__group + .wire-doc-nav__group {
+  margin-block-start: var(--space-3xs);
+}
 .wire-doc-nav__top-link + .wire-doc-nav__group {
-  margin-block-start: var(--space-md);
+  margin-block-start: var(--space-xs);
 }
 
 .wire-doc-nav__group-title {
-  font-family: var(--font-sans);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-text-subtle);
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
   margin: 0;
-  padding-inline-start: var(--space-sm);
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  border-radius: var(--radius-sm);
+  min-block-size: 2rem;
+
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  line-height: var(--leading-snug);
+
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group-title::-webkit-details-marker { display: none; }
+
+.wire-doc-nav__group-title:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.wire-doc-nav__group-title:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__group-title::after {
+  content: "›";
+  flex: none;
+  font-size: var(--text-md);
+  line-height: 1;
+  color: var(--color-text-subtle);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group[open] > .wire-doc-nav__group-title::after {
+  transform: rotate(90deg);
+}
+
+/* Second-level tree line: guides the category's items, indented under the
+   group summary. Only group lists get it — section-level lists already sit
+   inside the section-body's tree line. */
+.wire-doc-nav__group > .wire-doc-nav__list {
+  margin-inline-start: var(--space-sm);
+  padding-inline-start: var(--space-2xs);
+  padding-block-start: var(--space-3xs);
+  border-inline-start: var(--border-thin) solid var(--color-border);
 }
 
 .wire-doc-nav__list {
@@ -95,9 +145,23 @@
 
 .wire-doc-nav__link.is-current,
 .wire-doc-nav__link[aria-current="page"] {
-  background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  position: relative;
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
   font-weight: var(--weight-semibold);
+}
+
+/* Left accent bar marks the current item — grayscale can't use a hue tint
+   the way Nextra does, so weight + fill + this bar carry the active state. */
+.wire-doc-nav__link.is-current::before,
+.wire-doc-nav__link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: var(--space-3xs);
+  inset-block: var(--space-2xs);
+  inline-size: var(--border-md);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text);
 }
 
 .wire-doc-nav__pending {
@@ -180,13 +244,13 @@
   font-size: var(--text-lg);
   line-height: 1;
   color: var(--color-text-subtle);
-  /* Points DOWN when collapsed to signal it expands; flips UP when open. */
-  transform: rotate(90deg);
+  /* Points RIGHT when collapsed, rotates DOWN when open (Nextra-style tree). */
+  transform: rotate(0);
   transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .wire-doc-nav__section[open] > .wire-doc-nav__section-summary::after {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
 }
 
 .wire-doc-nav__section-body {
@@ -228,6 +292,122 @@
 
 .wire-doc-nav__top-link.is-current,
 .wire-doc-nav__top-link[aria-current="page"] {
-  background-color: var(--color-bg-inverse);
-  color: var(--color-text-inverse);
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   Rail search — a client-side filter over the nav links. It's a
+   pure JS enhancement (it filters the rail, it does not full-text
+   search page content), so the box stays hidden until the script
+   attaches `.is-js`, never appearing as a dead control without JS.
+   ============================================================ */
+.wire-doc-nav__search { display: none; }
+
+.wire-doc-nav.is-js .wire-doc-nav__search {
+  display: block;
+  position: relative;
+  margin-block-end: var(--space-sm);
+}
+
+.wire-doc-nav__search-icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--space-sm);
+  transform: translateY(-50%);
+  color: var(--color-text-subtle);
+  pointer-events: none;
+}
+
+.wire-doc-nav__search-input {
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding-block: var(--space-xs);
+  padding-inline-start: calc(var(--space-sm) + var(--space-md));
+  padding-inline-end: var(--space-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+
+  background-color: var(--color-bg-muted);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.wire-doc-nav__search-input::placeholder { color: var(--color-text-subtle); }
+
+.wire-doc-nav__search-input:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+  background-color: var(--color-bg);
+  border-color: var(--color-border-strong);
+}
+
+.wire-doc-nav__noresults {
+  margin-block: var(--space-sm) 0;
+  padding-inline: var(--space-sm);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+/* The base display rules (block/flex) outrank the UA [hidden] rule, so the
+   filter's hidden attribute would be ignored. Re-assert it for the elements
+   the search toggles (attribute selectors raise specificity past the base). */
+.wire-doc-nav__item[hidden],
+.wire-doc-nav__top-link[hidden],
+.wire-doc-nav__group[hidden],
+.wire-doc-nav__section[hidden] {
+  display: none;
+}
+
+/* ============================================================
+   Theme toggle — light / dark / system, pinned to the foot of the
+   rail (Nextra-style). Icon-only segmented control; the pressed
+   segment carries a soft fill. Sits below everything via the rail's
+   flex column + margin auto (see shell.css).
+   ============================================================ */
+.wire-doc-nav__theme {
+  margin-block-start: auto;
+  padding-block-start: var(--space-md);
+  margin-block-end: var(--space-2xs);
+  display: none;            /* the buttons need JS; revealed once it attaches */
+  gap: var(--space-3xs);
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+
+.wire-doc-nav.is-js .wire-doc-nav__theme {
+  display: flex;
+}
+
+.wire-doc-nav__theme-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2rem;
+  padding-block: var(--space-2xs);
+  background: transparent;
+  color: var(--color-text-subtle);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__theme-btn:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.wire-doc-nav__theme-btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__theme-btn[aria-pressed="true"] {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+  border-color: var(--color-border);
 }

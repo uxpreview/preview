@@ -158,6 +158,42 @@
   /* ---------- Focus ring ---------- */
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
+
+  /* Hints native UI (form controls, scrollbars) to the light palette. */
+  color-scheme: light;
+}
+
+/* ---------- Dark theme (grayscale, inverted ramp) ----------
+   Re-aliases the SEMANTIC tokens only — the ramp is untouched. Applied via
+   [data-theme="dark"] on <html> by the rail's theme toggle (and a pre-paint
+   head script, so there's no flash). Still grayscale: dark grays, never hue.
+   Contrast on the gray-95 page holds AA — text ~18:1, muted ~13:1, subtle
+   ~8:1, border-strong ~4.2:1 (clears the 3:1 non-text floor). The two secondary
+   text tiers sit one ramp step lighter than their light-mode mirror so both
+   clear the 4.5:1 normal-text floor against the dark page. */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: var(--gray-95);
+  --color-bg-subtle: var(--gray-90);
+  --color-bg-muted: var(--gray-80);
+  --color-bg-inverse: var(--gray-05);
+
+  --color-text: var(--gray-05);
+  --color-text-muted: var(--gray-30);
+  --color-text-subtle: var(--gray-40);
+  --color-text-inverse: var(--gray-95);
+
+  --color-border: var(--gray-80);
+  --color-border-strong: var(--gray-50);
+  --color-border-inverse: var(--gray-20);
+
+  --color-accent: var(--gray-05);
+  --color-accent-hover: var(--gray-30);
+
+  --color-focus: var(--gray-05);
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --color-overlay-light: rgba(0, 0, 0, 0.4);
 }
 
 /* Breakpoint constants (for documentation — used in media queries):
