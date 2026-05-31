@@ -208,7 +208,7 @@
 
       <header class="wire-doc-header">
         <span class="wire-doc-header__eyebrow">Components</span>
-        <h1 class="wire-doc-header__title">Thirty components, nine categories.</h1>
+        <h1 class="wire-doc-header__title">Forty-five components, nine categories.</h1>
         <p class="wire-doc-header__lead">Every component in the system, grouped by what it does. Each one carries an anatomy diagram, a spec sheet, written guidelines, and an accessibility profile. Click a card to start.</p>
       </header>
 
@@ -228,28 +228,31 @@
                 <p class="u-text-muted">A pill-shaped action with three emphasis levels and three sizes.</p>
               </div>
             </a>
-            <div class="wire-card">
-              <div class="wire-card__body">
-                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
-                <h3 class="wire-card__title">Pagination</h3>
-                <p class="u-text-muted">Numbered page navigation for long lists and result sets.</p>
-              </div>
-            </div>
-            <div class="wire-card">
-              <div class="wire-card__body">
-                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
-                <h3 class="wire-card__title">Breadcrumb</h3>
-                <p class="u-text-muted">A trail showing the user's position in a hierarchical structure.</p>
-              </div>
-            </div>
           </div>
         </section>
 
-        <!-- Indicators -->
+        <!-- Forms & inputs -->
+        <section aria-labelledby="cat-forms">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-forms">Forms &amp; inputs</h2>
+            <p class="u-text-muted">Controls for collecting and editing user input.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Field</h3><p class="u-text-muted">The label + input + hint + error wrapper. Every form control composes through this.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Input</h3><p class="u-text-muted">Single-line text input. Pairs with Field for label, hint, and error.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Textarea</h3><p class="u-text-muted">Multi-line text input for longer freeform responses.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Select</h3><p class="u-text-muted">A native dropdown for choosing one option from a known list.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Checkbox</h3><p class="u-text-muted">A single binary choice or one option in a multi-select group.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Radio</h3><p class="u-text-muted">A mutually-exclusive choice within a small set of options.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Toggle</h3><p class="u-text-muted">An instant on/off switch for boolean settings.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Selection & status -->
         <section aria-labelledby="cat-indicators">
           <header class="u-stack u-stack--xs">
             <h2 class="wire-h3" id="cat-indicators">Selection &amp; status</h2>
-            <p class="u-text-muted">Non-interactive labels that annotate other elements with status or category.</p>
+            <p class="u-text-muted">Status labels and interactive selection chips.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
             <a class="wire-card wire-card--linked" href="./badge/">
@@ -269,20 +272,19 @@
           </div>
         </section>
 
-        <!-- Forms -->
-        <section aria-labelledby="cat-forms">
+        <!-- Containment & overlays -->
+        <section aria-labelledby="cat-containment">
           <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-forms">Forms</h2>
-            <p class="u-text-muted">Inputs and field constructs for collecting user data.</p>
+            <h2 class="wire-h3" id="cat-containment">Containment &amp; overlays</h2>
+            <p class="u-text-muted">Surfaces that group, disclose, or layer content.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Field</h3><p class="u-text-muted">The label + input + hint + error wrapper. Every form control composes through this.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Input</h3><p class="u-text-muted">Single-line text input. Pairs with Field for label, hint, and error.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Textarea</h3><p class="u-text-muted">Multi-line text input for longer freeform responses.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Select</h3><p class="u-text-muted">A native dropdown for choosing one option from a known list.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Checkbox</h3><p class="u-text-muted">A single binary choice or one option in a multi-select group.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Radio</h3><p class="u-text-muted">A mutually-exclusive choice within a small set of options.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Toggle</h3><p class="u-text-muted">An instant on/off switch for boolean settings.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Card</h3><p class="u-text-muted">A self-contained surface for an article, person, resource, or stat.</p></div></div>
+            <a class="wire-card wire-card--linked" href="./accordion/"><div class="wire-card__body"><span class="wire-status-pill">Stable</span><h3 class="wire-card__title">Accordion</h3><p class="u-text-muted">Disclosure groups using native &lt;details&gt; for FAQs and progressive content.</p></div></a>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Tabs</h3><p class="u-text-muted">The ARIA APG tab pattern with hash deep-linking and pill variant.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Modal</h3><p class="u-text-muted">A centered dialog with focus trap and ARIA dialog semantics.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Drawer</h3><p class="u-text-muted">An off-canvas panel with focus trap, used on mobile and as a side sheet.</p></div></div>
+            <a class="wire-card wire-card--linked" href="./divider/"><div class="wire-card__body"><span class="wire-status-pill">Stable</span><h3 class="wire-card__title">Divider</h3><p class="u-text-muted">A horizontal or vertical rule for separating content, with weight and style variants.</p></div></a>
           </div>
         </section>
 
@@ -290,56 +292,56 @@
         <section aria-labelledby="cat-navigation">
           <header class="u-stack u-stack--xs">
             <h2 class="wire-h3" id="cat-navigation">Navigation</h2>
-            <p class="u-text-muted">Wayfinding chrome across the page, the section, and the long doc.</p>
+            <p class="u-text-muted">Wayfinding between and within pages.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Breadcrumb</h3>
+                <p class="u-text-muted">A trail showing the user's position in a hierarchical structure.</p>
+              </div>
+            </div>
+            <div class="wire-card">
+              <div class="wire-card__body">
+                <span class="wire-status-pill wire-status-pill--pending">Migrating</span>
+                <h3 class="wire-card__title">Pagination</h3>
+                <p class="u-text-muted">Numbered page navigation for long lists and result sets.</p>
+              </div>
+            </div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Topnav</h3><p class="u-text-muted">The sticky primary navigation at the top of every page.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Megamenu</h3><p class="u-text-muted">A wide dropdown panel for sites with deep section hierarchies.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Sidenav</h3><p class="u-text-muted">A vertical navigation for local sections, with sublist support.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">In-page nav</h3><p class="u-text-muted">A scroll-spy nav that highlights the current section on long pages.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Drawer</h3><p class="u-text-muted">An off-canvas panel with focus trap, used on mobile and as a side sheet.</p></div></div>
           </div>
         </section>
 
-        <!-- Containment -->
-        <section aria-labelledby="cat-containment">
+        <!-- Layout -->
+        <section aria-labelledby="cat-layout">
           <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-containment">Containment &amp; overlays</h2>
-            <p class="u-text-muted">Surfaces that group, frame, and structure related content.</p>
+            <h2 class="wire-h3" id="cat-layout">Layout</h2>
+            <p class="u-text-muted">Page-level structure and section scaffolding.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Card</h3><p class="u-text-muted">A self-contained surface for an article, person, resource, or stat.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Hero</h3><p class="u-text-muted">The opening block at the top of a page, in five variants.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Feature grid</h3><p class="u-text-muted">A row of equally-weighted features or capabilities.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Two-column</h3><p class="u-text-muted">A balanced two-column layout for headline + supporting content.</p></div></div>
-            <a class="wire-card wire-card--linked" href="./accordion/"><div class="wire-card__body"><span class="wire-status-pill">Stable</span><h3 class="wire-card__title">Accordion</h3><p class="u-text-muted">Disclosure groups using native &lt;details&gt; for FAQs and progressive content.</p></div></a>
-            <a class="wire-card wire-card--linked" href="./divider/"><div class="wire-card__body"><span class="wire-status-pill">Stable</span><h3 class="wire-card__title">Divider</h3><p class="u-text-muted">A horizontal or vertical rule for separating content, with weight and style variants.</p></div></a>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Tabs</h3><p class="u-text-muted">The ARIA APG tab pattern with hash deep-linking and pill variant.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Feature grid</h3><p class="u-text-muted">A row of equally-weighted features or capabilities.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Hero</h3><p class="u-text-muted">The opening block at the top of a page, in five variants.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Footer</h3><p class="u-text-muted">Four variants: compact, standard, expanded, inverse.</p></div></div>
+          </div>
+        </section>
+
+        <!-- Content & display -->
+        <section aria-labelledby="cat-content">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-content">Content &amp; display</h2>
+            <p class="u-text-muted">Presenting text, media, lists, and tables.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Callout</h3><p class="u-text-muted">A boxed aside for asides, notes, and inline emphasis.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Quote</h3><p class="u-text-muted">A pull quote with optional attribution and emphasis treatment.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Timeline</h3><p class="u-text-muted">A vertical sequence of dated milestones or steps.</p></div></div>
-          </div>
-        </section>
-
-        <!-- Media -->
-        <section aria-labelledby="cat-media">
-          <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-media">Media</h2>
-            <p class="u-text-muted">Visual placeholders for imagery and image collections.</p>
-          </header>
-          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Media</h3><p class="u-text-muted">A placeholder for imagery with explicit aspect ratio labels.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Gallery</h3><p class="u-text-muted">Grid and mosaic layouts for collections of media.</p></div></div>
-          </div>
-        </section>
-
-        <!-- Lists -->
-        <section aria-labelledby="cat-lists">
-          <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-lists">Lists</h2>
-            <p class="u-text-muted">Vertical sequences of items, from simple to richly-structured.</p>
-          </header>
-          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Linked list</h3><p class="u-text-muted">A list of links with hover affordance, for nav-adjacent lists.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Definition list</h3><p class="u-text-muted">Term + definition pairs, semantic and screen-reader friendly.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Article list</h3><p class="u-text-muted">A list of articles or posts with title, summary, and metadata.</p></div></div>
@@ -348,44 +350,32 @@
           </div>
         </section>
 
-        <!-- Feedback -->
+        <!-- Messaging & feedback -->
         <section aria-labelledby="cat-feedback">
           <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-feedback">Feedback</h2>
-            <p class="u-text-muted">Communicating system state, progress, and async outcomes.</p>
+            <h2 class="wire-h3" id="cat-feedback">Messaging &amp; feedback</h2>
+            <p class="u-text-muted">Communicating status, progress, and system messages.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Modal</h3><p class="u-text-muted">A centered dialog with focus trap and ARIA dialog semantics.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Toast</h3><p class="u-text-muted">Transient status messages via a polite live region.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Banner</h3><p class="u-text-muted">A persistent inline message for warnings, info, or success.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Empty state</h3><p class="u-text-muted">A blank-slate prompt when a list or page has no content yet.</p></div></div>
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Skeleton</h3><p class="u-text-muted">Loading-state placeholders that match the layout that's coming.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Stepper</h3><p class="u-text-muted">A numbered progress indicator for multi-step flows.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Tooltip</h3><p class="u-text-muted">A small contextual hint attached to a control.</p></div></div>
+            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Skeleton</h3><p class="u-text-muted">Loading-state placeholders that match the layout that's coming.</p></div></div>
           </div>
         </section>
 
-        <!-- Healthcare -->
-        <section aria-labelledby="cat-healthcare">
+        <!-- Patient affordances -->
+        <section aria-labelledby="cat-affordances">
           <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-healthcare">Healthcare</h2>
-            <p class="u-text-muted">Components born from healthcare engagements that generalize.</p>
+            <h2 class="wire-h3" id="cat-affordances">Patient affordances</h2>
+            <p class="u-text-muted">Healthcare aids for older and access-sensitive audiences.</p>
           </header>
           <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Help bar</h3><p class="u-text-muted">A persistent contact bar for time-sensitive support paths.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Phone link</h3><p class="u-text-muted">A tap-to-call number formatted for clarity and accessibility.</p></div></div>
             <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Text size</h3><p class="u-text-muted">A user-controlled text scale with persistence and SR announcement.</p></div></div>
-          </div>
-        </section>
-
-        <!-- Footer -->
-        <section aria-labelledby="cat-footer">
-          <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="cat-footer">Footer</h2>
-            <p class="u-text-muted">Page-foot components for sitemap, contact, and legal.</p>
-          </header>
-          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
-            <div class="wire-card"><div class="wire-card__body"><span class="wire-status-pill wire-status-pill--pending">Migrating</span><h3 class="wire-card__title">Footer</h3><p class="u-text-muted">Four variants: compact, standard, expanded, inverse.</p></div></div>
           </div>
         </section>
 
