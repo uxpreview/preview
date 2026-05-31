@@ -31,8 +31,8 @@
   ],
   "levels": ["atom", "molecule", "organism", "template", "experience"],
   "category_taxonomy": {
-    "note": "Categories below reconcile the live groupings in components/index.html (Actions/Forms/Navigation/Containment/Media/Lists/Feedback/Healthcare/Footer) with docs/component-status.html. Used for the `category` field on each component.",
-    "values": ["foundation", "actions", "indicators", "forms", "navigation", "containment", "media", "lists", "tables", "feedback", "healthcare", "footer", "doc-chrome"]
+    "note": "The nine component categories shown in the rail and components/index.html (Actions, Forms & inputs, Selection & status, Containment & overlays, Navigation, Layout, Content & display, Messaging & feedback, Patient affordances), plus foundation for type and doc-chrome for docs-site furniture. Used for the `category` field on each component.",
+    "values": ["foundation", "actions", "forms", "selection", "containment", "navigation", "layout", "content", "feedback", "affordances", "doc-chrome"]
   },
   "evidence": {
     "store": "citations.json",
@@ -394,7 +394,7 @@
       "rationale": [
         { "decision": "Modal-dialog pattern with focus trap, Esc, focus restore", "citation_ids": ["apg-dialog-modal", "wcag-2.1.2-no-keyboard-trap", "wcag-4.1.2-name-role-value"] }
       ],
-      "category": "navigation",
+      "category": "containment",
       "class": "wire-drawer",
       "file": "css/components/nav.css",
       "ref": "docs/navigation.html",
@@ -431,7 +431,7 @@
         { "decision": "Mobile-first hero scaling (step up at md/lg)", "citation_ids": ["httparchive-web-almanac-2024-mobile"] },
         { "decision": "The single page h1 lives in the hero", "citation_ids": ["wcag-2.4.6-headings-and-labels"] }
       ],
-      "category": "containment",
+      "category": "layout",
       "class": "wire-hero",
       "file": "css/components/hero.css",
       "ref": "docs/heroes.html",
@@ -449,7 +449,7 @@
       "rationale": [
         { "decision": "Icon + title + description grid for landing pages", "citation_ids": ["nng-cards-definition", "gestalt-proximity"] }
       ],
-      "category": "containment",
+      "category": "layout",
       "class": "wire-feature-grid",
       "file": "css/components/feature-grid.css",
       "ref": "docs/content-blocks.html",
@@ -463,7 +463,7 @@
     {
       "id": "two-column",
       "level": "organism",
-      "category": "containment",
+      "category": "layout",
       "class": "wire-twocol",
       "file": "css/components/two-column.css",
       "ref": "docs/content-blocks.html",
@@ -514,7 +514,7 @@
       "rationale": [
         { "decision": "Aside emphasis as a distinct, programmatically-identifiable region", "citation_ids": ["nng-visual-hierarchy", "wcag-1.3.1-info-relationships"] }
       ],
-      "category": "containment",
+      "category": "content",
       "class": "wire-callout",
       "file": "css/components/callout.css",
       "ref": "docs/content-blocks.html",
@@ -531,7 +531,7 @@
       "rationale": [
         { "decision": "Pull quote for scannability and rhythm", "citation_ids": ["nng-pull-quotes", "bringhurst-elements-typographic-style"] }
       ],
-      "category": "containment",
+      "category": "content",
       "class": "wire-quote",
       "file": "css/components/quote.css",
       "ref": "docs/content-blocks.html",
@@ -548,7 +548,7 @@
       "rationale": [
         { "decision": "Vertical chronology with anchored date markers", "citation_ids": ["nng-timelines"] }
       ],
-      "category": "containment",
+      "category": "content",
       "class": "wire-timeline",
       "file": "css/components/timeline.css",
       "ref": "docs/content-blocks.html",
@@ -563,7 +563,7 @@
       "rationale": [
         { "decision": "Decorative placeholders marked aria-hidden", "citation_ids": ["wcag-1.1.1-non-text-content"] }
       ],
-      "category": "media",
+      "category": "content",
       "class": "wire-media",
       "file": "css/components/media.css",
       "ref": "docs/media.html",
@@ -578,7 +578,7 @@
     {
       "id": "gallery",
       "level": "molecule",
-      "category": "media",
+      "category": "content",
       "class": "wire-gallery",
       "file": "css/components/media.css",
       "ref": "docs/media.html",
@@ -593,7 +593,7 @@
       "rationale": [
         { "decision": "Large clickable rows + descriptive meta for category landings", "citation_ids": ["nng-category-pages", "wcag-2.4.4-link-purpose"] }
       ],
-      "category": "lists",
+      "category": "content",
       "class": "wire-linked-list",
       "file": "css/components/list.css",
       "ref": "docs/lists.html",
@@ -606,7 +606,7 @@
     {
       "id": "deflist",
       "level": "molecule",
-      "category": "lists",
+      "category": "content",
       "class": "wire-deflist",
       "file": "css/components/list.css",
       "ref": "docs/lists.html",
@@ -618,7 +618,7 @@
     {
       "id": "article-list",
       "level": "organism",
-      "category": "lists",
+      "category": "content",
       "class": "wire-article-list",
       "file": "css/components/list.css",
       "ref": "docs/lists.html",
@@ -633,7 +633,7 @@
       "rationale": [
         { "decision": "APA / Chicago reference-list visual conventions", "citation_ids": ["apa-chicago-reference-style"] }
       ],
-      "category": "lists",
+      "category": "content",
       "class": "wire-citation-list",
       "file": "css/components/citation-list.css",
       "ref": "docs/research.html",
@@ -649,7 +649,7 @@
       "rationale": [
         { "decision": "Header scope + programmatic association; tabular figures", "citation_ids": ["wcag-1.3.1-info-relationships", "apg-table", "bringhurst-elements-typographic-style"] }
       ],
-      "category": "tables",
+      "category": "content",
       "class": "wire-table",
       "file": "css/components/table.css",
       "ref": "docs/tables.html",
@@ -685,7 +685,7 @@
       "rationale": [
         { "decision": "Modal-dialog pattern; blocking reserved for justified cases", "citation_ids": ["apg-dialog-modal", "nng-modal-nonmodal", "wcag-2.1.2-no-keyboard-trap"] }
       ],
-      "category": "feedback",
+      "category": "containment",
       "class": "wire-modal",
       "file": "css/components/modal.css",
       "ref": "docs/feedback.html",
@@ -782,7 +782,7 @@
     {
       "id": "footer",
       "level": "organism",
-      "category": "footer",
+      "category": "layout",
       "class": "wire-footer",
       "file": "css/components/footer.css",
       "ref": "docs/footers.html",
@@ -799,7 +799,7 @@
       "rationale": [
         { "decision": "Persistent high-contrast help/contact affordance for older adults", "citation_ids": ["nia-senior-friendly", "pew-health-online-2013"] }
       ],
-      "category": "healthcare",
+      "category": "affordances",
       "class": "wire-help-bar",
       "file": "css/components/help-bar.css",
       "ref": "docs/research.html",
@@ -816,7 +816,7 @@
       "rationale": [
         { "decision": "Prominent phone channel for care contact", "citation_ids": ["pew-health-online-2013", "nia-senior-friendly"] }
       ],
-      "category": "healthcare",
+      "category": "affordances",
       "class": "wire-phone-link",
       "file": "css/components/help-bar.css",
       "ref": "docs/research.html",
@@ -834,7 +834,7 @@
         { "decision": "44px controls (AAA) on the accessibility widget itself", "citation_ids": ["wcag-2.5.5-target-size-enhanced"] },
         { "decision": "Announces the new scale via a polite live region", "citation_ids": ["wcag-4.1.3-status-messages"] }
       ],
-      "category": "healthcare",
+      "category": "affordances",
       "class": "wire-text-size",
       "file": "css/components/text-size-control.css",
       "ref": "docs/research.html",
