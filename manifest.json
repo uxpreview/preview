@@ -196,12 +196,13 @@
       "level": "atom",
       "rationale": [
         { "decision": "Chip / removable-tag pattern", "citation_ids": ["material-design-3-chips", "ibm-carbon-tag"] },
-        { "decision": "tag--sm holds the 24px AA target floor", "citation_ids": ["wcag-2.5.8-target-size-minimum"] }
+        { "decision": "tag--sm holds the 24px AA target floor", "citation_ids": ["wcag-2.5.8-target-size-minimum"] },
+        { "decision": "Interactive tag is a real button/a; selection exposed via aria-pressed (not fill alone); remove target meets 24px", "citation_ids": ["wcag-1.4.1-use-of-color", "wcag-2.5.8-target-size-minimum"] }
       ],
       "category": "indicators",
       "class": "wire-tag",
       "file": "css/components/tag.css",
-      "ref": "docs/utilities.html",
+      "ref": "components/tag/index.html",
       "status": "stable",
       "variants": ["(default)", "sm", "selected"],
       "states": ["is-selected"],
@@ -209,7 +210,8 @@
       "companions": ["wire-tag-list"],
       "behaviors": [],
       "slots": ["label"],
-      "notes": "Used as a filter set. Selected state is structural (border/weight), not colored. Use wire-tag-list to group."
+      "related": ["badge", "choice", "button"],
+      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list."
     },
     {
       "id": "divider",

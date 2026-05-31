@@ -33,6 +33,7 @@ function targetList() {
     'components/index.html', 'components/buttons/index.html',
     'components/accordion/index.html',
     'components/badge/index.html',
+    'components/tag/index.html',
     'foundations/index.html', 'patterns/index.html',
     'templates/index.html', 'experiences/index.html',
   ];
@@ -56,6 +57,7 @@ const CURRENT = {
   'components/buttons/index.html':{ section: 'Components',    href: '{{base}}components/buttons/' },
   'components/accordion/index.html':{ section: 'Components',  href: '{{base}}components/accordion/' },
   'components/badge/index.html':{ section: 'Components',      href: '{{base}}components/badge/' },
+  'components/tag/index.html':{ section: 'Components',        href: '{{base}}components/tag/' },
   'foundations/index.html':       { section: 'Foundations',   href: '{{base}}foundations/' },
   'patterns/index.html':          { section: 'Patterns',      href: '{{base}}patterns/' },
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },

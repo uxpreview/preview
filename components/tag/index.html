@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Badge — Preview Design System</title>
-  <meta name="description" content="A small, non-interactive status or category label, with an optional leading dot and a count overlay. Usage, specs, and accessibility for the Badge component.">
+  <title>Tag — Preview Design System</title>
+  <meta name="description" content="An interactive chip for filtering, selection, and removal, plus a read-only metadata label. Usage, specs, and accessibility for the Tag component.">
   <link rel="stylesheet" href="../../css/wire.css">
 </head>
 <body class="wire-shell">
@@ -56,8 +56,8 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/buttons/">Button</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/badge/">Badge</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tag/">Tag</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/badge/">Badge</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/tag/">Tag</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Forms</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Cards</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Lists</a></li>
@@ -122,7 +122,7 @@
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-indicators">Indicators</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Badge</span></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Tag</span></li>
         </ol>
       </nav>
 
@@ -130,19 +130,19 @@
       <header class="wire-doc-header">
         <span class="wire-doc-header__eyebrow">Component · Indicators</span>
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Badge</h1>
+          <h1 class="wire-doc-header__title">Tag</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A small, non-interactive label that annotates another element with status or category. Four emphasis variants by fill density, an optional leading dot, and a count overlay for notifications.</p>
+        <p class="wire-doc-header__lead">A small chip with two jobs: an interactive control for filtering, selecting, and removing, and a read-only label for metadata. The element you render decides which.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/badge.css</li>
-          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
+          <li class="wire-doc-header__meta-item">css/components/tag.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript ships</li>
         </ul>
       </header>
 
       <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Badge documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Tag documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -158,21 +158,18 @@
               <!-- ---------- Live demo ---------- -->
               <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
                 <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Four emphasis levels by fill density, a leading status dot, and a count overlay pinned to an icon button.</p>
+                <p class="u-text-muted u-mt-sm">A filter set (interactive buttons, one selected), a removable applied filter, and a row of read-only metadata. Tab through to see which are focusable.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">default · subtle · outline · inverse · dot · count</span>
-                  <div class="u-cluster u-cluster--md">
-                    <span class="wire-badge">Confirmed</span>
-                    <span class="wire-badge wire-badge--subtle">Flagged</span>
-                    <span class="wire-badge wire-badge--outline">Draft</span>
-                    <span class="wire-badge wire-badge--inverse">Urgent</span>
-                    <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Accepting new patients</span>
-                    <span class="wire-badge-anchor">
-                      <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Notifications, 3 unread">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                      </button>
-                      <span class="wire-badge wire-badge--count" aria-hidden="true">3</span>
-                    </span>
+                  <span class="doc-example__label">Filter set · removable · metadata</span>
+                  <div class="u-stack u-stack--lg">
+                    <ul class="wire-tag-list" aria-label="Filter by specialty">
+                      <li><button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Cardiology</button></li>
+                      <li><button class="wire-tag" type="button" aria-pressed="false">Dermatology</button></li>
+                      <li><button class="wire-tag" type="button" aria-pressed="false">Neurology</button></li>
+                      <li><button class="wire-tag" type="button" aria-pressed="false">Pediatrics</button></li>
+                    </ul>
+                    <span class="wire-tag">Accepting new patients<button class="wire-tag__remove" type="button" aria-label="Remove filter: Accepting new patients"><span aria-hidden="true">×</span></button></span>
+                    <p class="u-text-muted">Telehealth &nbsp; <span class="wire-tag wire-tag--sm">In-network</span> <span class="wire-tag wire-tag--sm">Board-certified</span> <span class="wire-tag wire-tag--sm">English, Spanish</span></p>
                   </div>
                 </div>
               </section>
@@ -180,11 +177,12 @@
               <!-- ---------- Testing status ---------- -->
               <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
                 <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
-                <p class="u-text-muted u-mt-sm">A glanceable snapshot of what has been checked. Badge is non-interactive, so there is no keyboard contract. Methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
+                <p class="u-text-muted u-mt-sm">A glanceable snapshot for the interactive form of the tag. Methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
                 <div class="u-cluster u-cluster--xs u-mt-md">
-                  <span class="wire-badge">Contrast verified</span>
+                  <span class="wire-badge">Keyboard tested</span>
                   <span class="wire-badge">Screen reader tested</span>
-                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Contrast verified</span>
+                  <span class="wire-badge">Target size: AA</span>
                 </div>
                 <p class="u-text-muted u-mt-md"><a href="../../docs/validation.html">See the validation log →</a></p>
               </section>
@@ -192,38 +190,43 @@
               <!-- ---------- Overview ---------- -->
               <section id="overview" class="doc-section" aria-labelledby="h-overview">
                 <h2 class="wire-h3" id="h-overview">Overview</h2>
-                <p class="u-text-muted u-mt-sm">A badge labels something else: a status on a card, a category in a list, a count on an icon. It is read, not operated. Keep it to a word or two, and use it sparingly so each one still signals.</p>
+                <p class="u-text-muted u-mt-sm">A tag is a compact chip. It plays two roles, and which one you get is decided by the element you render it as:</p>
+                <ul>
+                  <li><strong>Interactive</strong> — a <code>&lt;button&gt;</code> (toggle a filter, remove an item) or an <code>&lt;a&gt;</code> (navigate to a category). Focusable and operable.</li>
+                  <li><strong>Metadata</strong> — a <code>&lt;span&gt;</code>. A read-only label that shows an attribute. Not focusable, not clickable.</li>
+                </ul>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
                 <ul>
-                  <li>Status on an entity: "Accepting new patients", "In range", "Confirmed".</li>
-                  <li>A short category or type label attached to a card or row.</li>
-                  <li>An unread count on an icon or nav item (the count overlay).</li>
+                  <li>Filter sets where the user toggles facets on and off.</li>
+                  <li>Applied filters or recipients the user can remove.</li>
+                  <li>Read-only metadata on a card or row: specialties, languages, attributes.</li>
                 </ul>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
                 <ul>
-                  <li>Do not make it clickable or removable. If the user acts on it, use a <a href="../tag/">Tag</a> instead.</li>
-                  <li>Do not use it for the maturity of a documented component; that is the doc-only Status-pill.</li>
-                  <li>Do not lean on the dot alone to carry meaning; always pair it with a text label.</li>
+                  <li>For a status the user only reads, use a <a href="../badge/">Badge</a> rather than a chip that looks clickable.</li>
+                  <li>For the primary action on a view, use a <a href="../buttons/">Button</a>.</li>
+                  <li>Never render an interactive tag as a <code>&lt;span&gt;</code> with a click handler; it will not be reachable by keyboard.</li>
                 </ul>
               </section>
 
               <!-- ---------- Anatomy ---------- -->
               <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A pill-shaped span holding a short label, with an optional leading dot. The count overlay is the same span pinned to the corner of a host wrapped in an anchor.</p>
+                <p class="u-text-muted u-mt-sm">A pill with a label, optionally a remove control, grouped in a wrapping list.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">block · dot · label</span>
-                  <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Label</span>
+                  <span class="doc-example__label">tag · label · remove · list</span>
+                  <ul class="wire-tag-list" aria-label="Example">
+                    <li><span class="wire-tag">Label<button class="wire-tag__remove" type="button" aria-label="Remove Label"><span aria-hidden="true">×</span></button></span></li>
+                  </ul>
                 </div>
                 <table class="doc-spec-table">
                   <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
                   <tbody>
-                    <tr><td>Block</td><td><code>.wire-badge</code></td><td>The <code>&lt;span&gt;</code> itself; holds the label and carries the emphasis variant.</td></tr>
-                    <tr><td>Dot</td><td><code>.wire-badge__dot</code></td><td>Optional 0.5rem leading dot in <code>currentColor</code>. Decorative; the label carries the meaning.</td></tr>
-                    <tr><td>Count</td><td><code>.wire-badge--count</code></td><td>Overlay form: a filled circle pinned to a host's corner for a notification count.</td></tr>
-                    <tr><td>Anchor</td><td><code>.wire-badge-anchor</code></td><td>Wraps the host so the count overlay can position to its corner.</td></tr>
+                    <tr><td>Tag</td><td><code>.wire-tag</code></td><td>The chip. Render as <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code> (interactive) or <code>&lt;span&gt;</code> (metadata).</td></tr>
+                    <tr><td>Remove</td><td><code>.wire-tag__remove</code></td><td>A 24px <code>&lt;button&gt;</code> that removes the tag; needs an <code>aria-label</code>.</td></tr>
+                    <tr><td>List</td><td><code>.wire-tag-list</code></td><td>A wrapping flex group (use a <code>&lt;ul&gt;</code>) with a gap between tags.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -231,32 +234,22 @@
               <!-- ---------- Types & variants ---------- -->
               <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
-                <p class="u-text-muted u-mt-sm">One structural type. In grayscale, fill density does the differentiating; the text label is always load-bearing.</p>
+                <p class="u-text-muted u-mt-sm">One structural type, differentiated in grayscale by fill density.</p>
                 <table class="doc-spec-table">
                   <thead><tr><th>Variant</th><th>Selector</th><th>Use</th></tr></thead>
                   <tbody>
-                    <tr><td>Default</td><td><code>.wire-badge</code></td><td>Muted fill, dark label. The everyday status label.</td></tr>
-                    <tr><td>Subtle</td><td><code>.wire-badge--subtle</code></td><td>Lighter fill, muted label. Lower-emphasis or secondary status.</td></tr>
-                    <tr><td>Outline</td><td><code>.wire-badge--outline</code></td><td>No fill, hairline border. Quietest, for busy surfaces.</td></tr>
-                    <tr><td>Inverse</td><td><code>.wire-badge--inverse</code></td><td>Dark fill, light label. For light-on-dark contexts or to draw the eye.</td></tr>
-                    <tr><td>Count</td><td><code>.wire-badge--count</code></td><td>Filled overlay pinned to a host corner; a notification count.</td></tr>
+                    <tr><td>Default</td><td><code>.wire-tag</code></td><td>Outlined, 28px tall. The resting chip.</td></tr>
+                    <tr><td>Selected</td><td><code>.wire-tag--selected</code> / <code>.is-selected</code></td><td>Filled dark, inverse label. A toggled-on filter; pair with <code>aria-pressed</code>.</td></tr>
+                    <tr><td>Small</td><td><code>.wire-tag--sm</code></td><td>24px tall, smaller type. Dense metadata rows; holds the AA target floor.</td></tr>
+                    <tr><td>Removable</td><td>+ <code>.wire-tag__remove</code></td><td>Adds a labeled 24px remove button.</td></tr>
                   </tbody>
                 </table>
                 <div class="doc-example u-mt-xl">
-                  <span class="doc-example__label">Count overlay — single digit and overflow</span>
+                  <span class="doc-example__label">default · selected · small</span>
                   <div class="u-cluster u-cluster--md">
-                    <span class="wire-badge-anchor">
-                      <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="Messages, 5 unread">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h16v12H5.17L4 17.17z"></path></svg>
-                      </button>
-                      <span class="wire-badge wire-badge--count" aria-hidden="true">5</span>
-                    </span>
-                    <span class="wire-badge-anchor">
-                      <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="Alerts, 12 unread">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                      </button>
-                      <span class="wire-badge wire-badge--count" aria-hidden="true">9+</span>
-                    </span>
+                    <button class="wire-tag" type="button" aria-pressed="false">Default</button>
+                    <button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Selected</button>
+                    <span class="wire-tag wire-tag--sm">Small metadata</span>
                   </div>
                 </div>
               </section>
@@ -264,29 +257,40 @@
               <!-- ---------- Behaviors ---------- -->
               <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
                 <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
-                <p class="u-text-muted u-mt-sm">Badge is static and non-interactive by design: no states, no hover or focus, no JavaScript. Its visual variants (see <a href="#specs">Specs</a>) carry the differentiation that states carry on interactive components. When a badge's value changes at runtime, for example a count, wrap it in an <code>aria-live</code> region so the change is announced (see <a href="#accessibility">Accessibility</a>).</p>
+
+                <h3 class="wire-h4" id="h-states">States</h3>
+                <p class="u-text-muted u-mt-sm">An interactive tag has <strong>default</strong>, <strong>hover</strong> (a muted fill, CSS-only), and <strong>selected</strong> (a dark fill, toggled by a state class). A metadata tag is static. The visual treatment and tokens are in the <a href="#specs">Specs tab</a>; the selected state must also be exposed with <code>aria-pressed</code> (see <a href="#accessibility">Accessibility</a>), not by fill alone.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-interactions">Interactions</h3>
+                <h4 class="wire-h5" id="h-mouse">Mouse</h4>
+                <p class="u-text-muted u-mt-sm">Clicking a filter tag toggles it on or off; clicking the × removes an applied tag. The component ships <strong>no JavaScript</strong>: it provides the look and the state class, and the application wires the toggle and the removal.</p>
+                <h4 class="wire-h5 u-mt-lg" id="h-kbd-usage">Keyboard</h4>
+                <p class="u-text-muted u-mt-sm">An interactive tag is a real <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>, so Tab reaches it and <kbd>Enter</kbd> or <kbd>Space</kbd> activates it. The remove × is a separate tab stop. Metadata tags are not in the tab order. Full contract in the <a href="#accessibility">Accessibility tab</a>.</p>
               </section>
 
               <!-- ---------- Composability ---------- -->
               <section id="composability" class="doc-section" aria-labelledby="h-composability">
                 <h2 class="wire-h3" id="h-composability">Composability</h2>
-                <p class="u-text-muted u-mt-sm">Badge is a leaf. It composes <em>into</em> other components rather than holding content of its own.</p>
                 <ul>
-                  <li><strong>Label</strong> — the only slot: one to two words of text, optionally preceded by a <code>.wire-badge__dot</code>.</li>
-                  <li><strong>On cards and rows</strong> — drop a badge into a card body or a table cell to mark status.</li>
-                  <li><strong>As a count</strong> — wrap a host (icon button, avatar) in <code>.wire-badge-anchor</code> and add a <code>.wire-badge--count</code>.</li>
+                  <li><strong>Label</strong> — the slot: a short word or two.</li>
+                  <li><strong>Remove</strong> — append a <code>.wire-tag__remove</code> for applied filters or removable input.</li>
+                  <li><strong>Group</strong> — wrap a set in <code>.wire-tag-list</code> (a <code>&lt;ul&gt;</code>) so they wrap and space evenly; label the list for context.</li>
                 </ul>
               </section>
 
               <!-- ---------- In context ---------- -->
               <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
                 <h2 class="wire-h3" id="h-in-context">In context</h2>
-                <p class="u-text-muted u-mt-sm">Status on a provider line, and an unread count in a toolbar.</p>
+                <p class="u-text-muted u-mt-sm">A find-a-doctor filter bar above results, with metadata on each card.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Provider status · toolbar count</span>
-                  <div class="u-stack u-stack--md">
-                    <p class="u-text-default">Dr. Elena Ruiz, Cardiology &nbsp; <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Accepting new patients</span></p>
-                    <p class="u-text-default">Lab panel: Vitamin D &nbsp; <span class="wire-badge wire-badge--subtle">Flagged</span></p>
+                  <span class="doc-example__label">Specialty filters · provider metadata</span>
+                  <div class="u-stack u-stack--lg">
+                    <ul class="wire-tag-list" aria-label="Filter results">
+                      <li><button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Primary care</button></li>
+                      <li><button class="wire-tag" type="button" aria-pressed="false">Telehealth</button></li>
+                      <li><button class="wire-tag" type="button" aria-pressed="false">Weekend hours</button></li>
+                    </ul>
+                    <p class="u-text-default">Dr. Elena Ruiz &nbsp; <span class="wire-tag wire-tag--sm">Cardiology</span> <span class="wire-tag wire-tag--sm">In-network</span> <span class="wire-tag wire-tag--sm">English, Spanish</span></p>
                   </div>
                 </div>
               </section>
@@ -297,13 +301,13 @@
                 <div class="doc-do-dont">
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
-                    <p class="u-text-default"><span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>In range</span></p>
-                    <p class="u-text-muted u-mt-md">One short status, with the meaning in the words. The dot is a quiet accent.</p>
+                    <p class="u-text-default"><button class="wire-tag" type="button" aria-pressed="false">Telehealth</button> <span class="wire-tag wire-tag--sm">In-network</span></p>
+                    <p class="u-text-muted u-mt-md">A button for the interactive filter, a span for the read-only label. The element matches the job.</p>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
-                    <p class="u-text-default"><span class="wire-badge">New</span> <span class="wire-badge wire-badge--subtle">Updated</span> <span class="wire-badge wire-badge--outline">Popular</span> <span class="wire-badge wire-badge--inverse">Hot</span></p>
-                    <p class="u-text-muted u-mt-md">Stacking badges dilutes every one of them. Pick the single status that matters.</p>
+                    <p class="u-text-default"><span class="wire-tag">Telehealth</span></p>
+                    <p class="u-text-muted u-mt-md">Don't make a plain span interactive with a click handler. It is invisible to the keyboard and to screen readers.</p>
                   </div>
                 </div>
               </section>
@@ -312,10 +316,10 @@
               <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
                 <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
                 <ul>
-                  <li>One to two words. The badge is small; a sentence does not belong in it.</li>
-                  <li>Name the state plainly: "In range", "Flagged", "Confirmed".</li>
-                  <li>Front-load the meaningful word; the label is read on a quick scan.</li>
-                  <li>For counts, show the number; cap overflow as "9+" rather than a long figure.</li>
+                  <li>Keep labels to a word or two; a tag is not a sentence.</li>
+                  <li>Use consistent casing across a set; title case for filters reads well.</li>
+                  <li>Name filters as the facet, not an instruction: "Telehealth", not "Filter by telehealth".</li>
+                  <li>For a removable tag, the remove button's label names what is removed: "Remove Telehealth".</li>
                 </ul>
               </section>
 
@@ -323,10 +327,10 @@
               <section id="composition-patterns" class="doc-section" aria-labelledby="h-composition-patterns">
                 <h2 class="wire-h3" id="h-composition-patterns">Composition patterns</h2>
                 <ul>
-                  <li><strong>Provider / entity cards</strong> — a status badge in the card body.</li>
-                  <li><strong>Result tables</strong> — "In range" / "Flagged" in a status column.</li>
-                  <li><strong>Toolbars and nav</strong> — a count overlay on a notifications or messages icon.</li>
-                  <li><strong>Filters</strong> — do not use Badge here; an interactive filter chip is a <a href="../tag/">Tag</a>.</li>
+                  <li><strong>Filter bars</strong> — a <code>.wire-tag-list</code> of toggle buttons above a result set.</li>
+                  <li><strong>Applied filters</strong> — removable tags showing the active query, each with an ×.</li>
+                  <li><strong>Card and row metadata</strong> — <code>--sm</code> spans for specialties, languages, attributes.</li>
+                  <li><strong>Category links</strong> — anchor tags that navigate to a filtered listing.</li>
                 </ul>
               </section>
 
@@ -334,8 +338,9 @@
               <section id="related" class="doc-section" aria-labelledby="h-related">
                 <h2 class="wire-h3" id="h-related">Related</h2>
                 <ul>
-                  <li><a href="../tag/">Tag</a> — the interactive, removable cousin, for filters and user-applied labels.</li>
-                  <li><a href="../../docs/cards.html">Cards</a> and <a href="../../docs/tables.html">Tables</a> — common hosts for status badges.</li>
+                  <li><a href="../badge/">Badge</a> — the non-interactive cousin, for status you only read.</li>
+                  <li><a href="../../docs/forms.html">Forms</a> — checkboxes are the alternative when a filter set needs explicit form semantics.</li>
+                  <li><a href="../buttons/">Button</a> — for primary actions rather than facets.</li>
                   <li><a href="../">All components</a> — the full library.</li>
                 </ul>
               </section>
@@ -345,9 +350,12 @@
                 <h2 class="wire-h3" id="h-references">References</h2>
                 <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
                 <ul>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: color is never the sole means of conveying meaning. Grayscale guarantees this; the text label carries the status. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
-                  <li><strong>Convention</strong> — IBM, Carbon Design System: Tag: in grayscale, fill density carries differentiation and the text label is load-bearing. <em>Unverified — pending review.</em> <a href="https://carbondesignsystem.com/components/tag/usage/">carbondesignsystem.com</a></li>
-                  <li><strong>Convention</strong> — Google, Material Design 3: Badges: the inline status / notification-count badge convention. <em>Unverified — pending review.</em> <a href="https://m3.material.io/components/badges">m3.material.io</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): 24 × 24 CSS px. The default (28px), small (24px), and remove (24px) targets all meet the floor. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.11 Non-text Contrast: the outlined chip's border (<code>--color-border-strong</code>) measures 4.5:1, clearing the 3:1 boundary requirement. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#non-text-contrast">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.4.7 Focus Visible: an interactive tag shows the shared 2px focus ring. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#focus-visible">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: selection is exposed with <code>aria-pressed</code>, not fill alone; grayscale keeps meaning in text and state. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Convention</strong> — Google, Material Design 3: Chips: the filter / input-chip pattern. <em>Unverified — pending review.</em> <a href="https://m3.material.io/components/chips">m3.material.io</a></li>
+                  <li><strong>Convention</strong> — IBM, Carbon Design System: Tag: in grayscale, fill density carries differentiation and the label is load-bearing. <em>Unverified — pending review.</em> <a href="https://carbondesignsystem.com/components/tag/usage/">carbondesignsystem.com</a></li>
                 </ul>
               </section>
 
@@ -389,15 +397,15 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
                   <tbody>
-                    <tr><td><code>--color-bg-muted</code></td><td>Default fill.</td></tr>
-                    <tr><td><code>--color-bg-subtle</code></td><td>Subtle-variant fill.</td></tr>
-                    <tr><td><code>--color-bg-inverse</code></td><td>Inverse and count fill.</td></tr>
-                    <tr><td><code>--color-text</code> / <code>--color-text-muted</code> / <code>--color-text-inverse</code></td><td>Label colors across the variants.</td></tr>
-                    <tr><td><code>--color-border</code></td><td>Outline-variant hairline.</td></tr>
-                    <tr><td><code>--color-bg</code></td><td>The count overlay's cutout ring against the host.</td></tr>
-                    <tr><td><code>--space-3xs</code> / <code>--space-xs</code> / <code>--space-2xs</code></td><td>Padding and the dot/label gap.</td></tr>
-                    <tr><td><code>--text-2xs</code></td><td>Label type scale.</td></tr>
+                    <tr><td><code>--color-border-strong</code></td><td>Default outline (<code>--tag-border</code>).</td></tr>
+                    <tr><td><code>--color-text</code></td><td>Default label.</td></tr>
+                    <tr><td><code>--color-bg-muted</code></td><td>Hover fill on interactive tags.</td></tr>
+                    <tr><td><code>--color-accent</code> · <code>--color-text-inverse</code></td><td>Selected fill and label.</td></tr>
+                    <tr><td><code>--color-overlay-light</code></td><td>Remove-button hover.</td></tr>
+                    <tr><td><code>--space-2xs</code> / <code>--space-xs</code> / <code>--space-sm</code></td><td>Padding, gaps, and list spacing.</td></tr>
+                    <tr><td><code>--text-sm</code> / <code>--text-2xs</code></td><td>Default / small label type.</td></tr>
                     <tr><td><code>--radius-pill</code></td><td>The pill shape.</td></tr>
+                    <tr><td><code>--duration-fast</code></td><td>Hover and selection transition.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -408,12 +416,13 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Property</th><th>Value</th></tr></thead>
                   <tbody>
-                    <tr><td>Padding</td><td><code>--space-3xs</code> block · <code>--space-xs</code> inline.</td></tr>
-                    <tr><td>Type</td><td><code>--text-2xs</code>, <code>--weight-medium</code>, uppercase, <code>--tracking-wide</code>.</td></tr>
-                    <tr><td>Radius</td><td><code>--radius-pill</code>.</td></tr>
-                    <tr><td>Dot</td><td>0.5rem circle, <code>currentColor</code>, gap <code>--space-2xs</code>.</td></tr>
-                    <tr><td>Count overlay</td><td>1.25rem min circle, pinned to the host corner, <code>--border-md</code> ring in <code>--color-bg</code>; grows for "9+".</td></tr>
-                    <tr><td>Theming</td><td>Each variant re-aliases <code>--badge-bg</code> / <code>--badge-fg</code> / <code>--badge-border</code> only.</td></tr>
+                    <tr><td>Min height (default)</td><td>1.75rem (28px).</td></tr>
+                    <tr><td>Min height (small)</td><td>1.5rem (24px) — the WCAG 2.5.8 AA floor.</td></tr>
+                    <tr><td>Padding (default)</td><td><code>--space-2xs</code> block · <code>--space-sm</code> inline.</td></tr>
+                    <tr><td>Remove target</td><td>1.5rem (24px) circle; glyph optically smaller.</td></tr>
+                    <tr><td>Border</td><td><code>--border-thin</code> solid; outlined default, filled when selected.</td></tr>
+                    <tr><td>List</td><td><code>.wire-tag-list</code> wraps with a <code>--space-xs</code> gap.</td></tr>
+                    <tr><td>Theming</td><td>Each variant re-aliases <code>--tag-bg</code> / <code>--tag-fg</code> / <code>--tag-border</code> only.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -421,37 +430,47 @@
               <!-- ---------- States (visual spec) ---------- -->
               <section id="states" class="doc-section" aria-labelledby="h-spec-states">
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
-                <p class="u-text-muted u-mt-sm">Badge has no interactive states (no hover, focus, active, or disabled). Its visual set is the variants in <a href="#usage">Usage &rsaquo; Types &amp; variants</a>, whose fills map to the tokens above.</p>
+                <p class="u-text-muted u-mt-sm">Visual states for the interactive tag. What each means lives in <a href="#usage">Usage &rsaquo; Behaviors</a>; a metadata tag has none of these.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <tbody>
+                    <tr><td>Default</td><td>—</td><td>Transparent fill, <code>--color-border-strong</code> outline, dark label.</td></tr>
+                    <tr><td>Hover</td><td><code>:hover</code> (a / button only)</td><td>Fill shifts to <code>--color-bg-muted</code>. Static span tags do not react.</td></tr>
+                    <tr><td>Selected</td><td><code>.is-selected</code> / <code>--selected</code></td><td>Filled <code>--color-accent</code>, inverse label and border. Pair with <code>aria-pressed</code>.</td></tr>
+                    <tr><td>Focus</td><td><code>:focus-visible</code></td><td>The shared 2px focus ring at 2px offset.</td></tr>
+                  </tbody>
+                </table>
               </section>
 
               <!-- ---------- JavaScript ---------- -->
               <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
                 <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
-                <p class="u-text-muted u-mt-sm">None. Badge is a static <code>&lt;span&gt;</code> with no <code>data-wire-*</code> hooks. The count overlay needs no script either; its accessible name is authored on the host. If a count updates at runtime, the application wraps the host in an <code>aria-live="polite"</code> region.</p>
+                <p class="u-text-muted u-mt-sm">None ships. <code>tag.css</code> provides the look, the hover (CSS), and the selected visual (a state class). The application owns the behavior:</p>
+                <ul>
+                  <li><strong>Selection</strong> — on click, toggle <code>.is-selected</code> (or <code>--selected</code>) <em>and</em> the matching <code>aria-pressed</code> value on the button.</li>
+                  <li><strong>Removal</strong> — on the × button, remove the tag element and move focus somewhere sensible (the next tag or the list).</li>
+                  <li>There are no <code>data-wire-*</code> hooks for Tag.</li>
+                </ul>
               </section>
 
               <!-- ---------- Code ---------- -->
               <section id="code" class="doc-section" aria-labelledby="h-code">
                 <h2 class="wire-h3" id="h-code">Code</h2>
-                <pre class="doc-snippet"><code>&lt;!-- Variants --&gt;
-&lt;span class="wire-badge"&gt;Confirmed&lt;/span&gt;
-&lt;span class="wire-badge wire-badge--subtle"&gt;Flagged&lt;/span&gt;
-&lt;span class="wire-badge wire-badge--outline"&gt;Draft&lt;/span&gt;
-&lt;span class="wire-badge wire-badge--inverse"&gt;Urgent&lt;/span&gt;
+                <pre class="doc-snippet"><code>&lt;!-- Filter set: interactive buttons, selection via aria-pressed --&gt;
+&lt;ul class="wire-tag-list" aria-label="Filter by specialty"&gt;
+  &lt;li&gt;&lt;button class="wire-tag wire-tag--selected" type="button" aria-pressed="true"&gt;Cardiology&lt;/button&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;button class="wire-tag" type="button" aria-pressed="false"&gt;Neurology&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;!-- With a leading dot --&gt;
-&lt;span class="wire-badge"&gt;
-  &lt;span class="wire-badge__dot" aria-hidden="true"&gt;&lt;/span&gt;Accepting new patients
+&lt;!-- Removable applied filter --&gt;
+&lt;span class="wire-tag"&gt;Telehealth
+  &lt;button class="wire-tag__remove" type="button" aria-label="Remove Telehealth"&gt;
+    &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
+  &lt;/button&gt;
 &lt;/span&gt;
 
-&lt;!-- Count overlay: host carries the accessible name, count is aria-hidden --&gt;
-&lt;span class="wire-badge-anchor"&gt;
-  &lt;button class="wire-button wire-button--icon-only wire-button--ghost"
-          type="button" aria-label="Notifications, 3 unread"&gt;
-    &lt;svg aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
-  &lt;/button&gt;
-  &lt;span class="wire-badge wire-badge--count" aria-hidden="true"&gt;3&lt;/span&gt;
-&lt;/span&gt;</code></pre>
+&lt;!-- Read-only metadata (small) --&gt;
+&lt;span class="wire-tag wire-tag--sm"&gt;In-network&lt;/span&gt;</code></pre>
               </section>
 
             </div>
@@ -482,29 +501,38 @@
               <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
                 <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
                 <ul>
-                  <li>Badge is a non-interactive <code>&lt;span&gt;</code>. It needs no role and is not focusable.</li>
-                  <li>Meaning lives in the text label, never in fill or the dot alone. The <code>__dot</code> is decorative (<code>aria-hidden</code>).</li>
-                  <li>Count overlay: put the count in the host control's accessible name (e.g. <code>aria-label="Notifications, 3 unread"</code>) and mark the visual count <code>aria-hidden="true"</code> so it is announced once, unambiguously.</li>
-                  <li>If a count changes at runtime, wrap the host in an <code>aria-live="polite"</code> region.</li>
+                  <li>Render an interactive tag as a real <code>&lt;button&gt;</code> (toggle or remove) or <code>&lt;a&gt;</code> (navigate). Never a <code>&lt;span&gt;</code> with a click handler.</li>
+                  <li>Selection: set <code>aria-pressed="true|false"</code> on the toggle button. The fill is visual only; <code>aria-pressed</code> is what a screen reader reports.</li>
+                  <li>Remove control: a <code>&lt;button&gt;</code> with <code>aria-label="Remove &lt;name&gt;"</code>; the × glyph is <code>aria-hidden</code>.</li>
+                  <li>Metadata tag: a plain <code>&lt;span&gt;</code>, no role, not focusable.</li>
+                  <li>Group a set in a <code>&lt;ul class="wire-tag-list"&gt;</code> with an <code>aria-label</code> describing the set.</li>
                 </ul>
               </section>
 
               <!-- ---------- Keyboard interactions ---------- -->
               <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
                 <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
-                <p class="u-text-muted u-mt-sm">None. Badge is not interactive and is not in the tab order. The host of a count overlay (a button) is what receives focus and keyboard, per its own component. For an interactive, removable chip, use Tag instead.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Key</th><th>Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the next interactive tag, then to its remove button. Metadata tags are skipped.</td></tr>
+                    <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Toggles a filter, follows a link, or activates the remove button.</td></tr>
+                  </tbody>
+                </table>
               </section>
 
               <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Badge satisfies it</th></tr></thead>
+                  <thead><tr><th>SC</th><th>How Tag satisfies it</th></tr></thead>
                   <tbody>
-                    <tr><td>1.4.1 Use of Color</td><td>Meaning is in the text label, not hue. Grayscale guarantees no color-only information.</td></tr>
-                    <tr><td>1.4.3 Contrast (Minimum)</td><td>Measured: default 17.4:1, subtle 6.7:1, outline 19.2:1, inverse 19.2:1. All clear 4.5:1.</td></tr>
-                    <tr><td>1.4.11 Non-text Contrast</td><td>The outline border and the count's ring are decorative; the label, not the border, conveys the status, so no 3:1 boundary is relied upon.</td></tr>
-                    <tr><td>4.1.2 Name, Role, Value</td><td>A labeled span needs no role. For counts, the host's accessible name carries the value and the visual is <code>aria-hidden</code>.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Selection is exposed via <code>aria-pressed</code>; meaning is in the label. Grayscale, no color-only state.</td></tr>
+                    <tr><td>1.4.11 Non-text Contrast</td><td>Measured: the outlined border is 4.5:1, clearing the 3:1 boundary requirement.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Interactive tags are native <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code>; Tab and Enter/Space, no script.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>The shared 2px focus ring at 2px offset.</td></tr>
+                    <tr><td>2.5.8 Target Size (Minimum) · AA</td><td>Measured: default 28px, small 25px, remove 24px — all clear 24 × 24.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Button or link role is native; the selected value is carried by <code>aria-pressed</code>.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -513,10 +541,10 @@
               <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
                 <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
                 <ul>
-                  <li>An inline badge is read as plain text in the flow, e.g. "Accepting new patients".</li>
-                  <li>A count overlay reads through the host: "Notifications, 3 unread, button". The visual "3" is not double-announced because it is <code>aria-hidden</code>.</li>
-                  <li>Do not rely on the dot; a screen reader skips it, so the label must stand alone.</li>
-                  <li>Runtime count changes are announced only inside an <code>aria-live</code> region; the badge itself does not announce.</li>
+                  <li>A filter button announces as "Cardiology, toggle button, pressed" or "not pressed" as <code>aria-pressed</code> changes.</li>
+                  <li>A remove button announces "Remove Telehealth, button"; the × is not read because it is <code>aria-hidden</code>.</li>
+                  <li>A metadata span reads as plain text inline; it is not announced as interactive.</li>
+                  <li>The <code>.wire-tag-list</code> is read as a labeled list, so the set has context ("Filter by specialty, list, 4 items").</li>
                 </ul>
               </section>
 
@@ -540,13 +568,13 @@
 
       <!-- Pager -->
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../badge/">
+          <span class="wire-doc-pager__direction">Previous in Indicators</span>
+          <span class="wire-doc-pager__title">Badge</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../">
           <span class="wire-doc-pager__direction">All components</span>
           <span class="wire-doc-pager__title">Back to index</span>
-        </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../#cat-indicators">
-          <span class="wire-doc-pager__direction">In Indicators</span>
-          <span class="wire-doc-pager__title">Badge</span>
         </a>
       </nav>
 
@@ -559,7 +587,7 @@
   <div class="u-container">
     <div class="wire-footer__inner">
       <p class="wire-footer__brand">Preview Design System</p>
-      <p class="wire-footer__tagline">Badge · Stable · Preview Design System</p>
+      <p class="wire-footer__tagline">Tag · Stable · Preview Design System</p>
     </div>
   </div>
 </footer>
