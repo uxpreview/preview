@@ -16,6 +16,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+  /* Hug the label even when it lands in a flex/grid column (e.g. a card body),
+     where a flex item would otherwise stretch to full width. */
+  align-self: start;
+  inline-size: fit-content;
 
   padding-block: var(--space-3xs);
   padding-inline: var(--space-sm);
