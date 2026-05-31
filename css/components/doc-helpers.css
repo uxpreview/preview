@@ -92,6 +92,9 @@
   padding: var(--space-sm) var(--space-md);
   border-block-end: var(--border-thin) solid var(--color-border);
   vertical-align: top;
+  /* Let long selectors/tokens wrap so a 3-column spec table never forces
+     horizontal page overflow on narrow screens. */
+  overflow-wrap: anywhere;
 }
 .doc-spec-table th {
   font-weight: var(--weight-semibold);

@@ -56,6 +56,7 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/">All components</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/buttons/">Button</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Forms</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Cards</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Lists</a></li>
@@ -288,22 +289,13 @@
                 </table>
               </section>
 
-              <!-- ---------- States ---------- -->
-              <section id="states" class="doc-section" aria-labelledby="h-states">
-                <h2 class="wire-h3" id="h-states">States</h2>
-                <p class="u-text-muted u-mt-sm">Every state is CSS-only and driven by the native element or a state class. The matrix below is the full set.</p>
-                <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
-                  <tbody>
-                    <tr><td>Default</td><td>—</td><td>Resting fill, label, and border for the emphasis level.</td></tr>
-                    <tr><td>Hover</td><td><code>:hover</code></td><td>Primary shifts to <code>--color-accent-hover</code>; secondary and ghost gain a <code>--color-bg-muted</code> fill (and secondary shifts its border). Runs at <code>--duration-fast</code>.</td></tr>
-                    <tr><td>Focus</td><td><code>:focus-visible</code></td><td>A 2px focus ring at 2px offset, always visible for keyboard users. <em>Supplied by a shared global focus style, not button.css.</em></td></tr>
-                    <tr><td>Active</td><td><code>:active</code></td><td>A 1px <code>translateY</code> press depression.</td></tr>
-                    <tr><td>Disabled</td><td><code>:disabled</code> / <code>.is-disabled</code></td><td>Opacity 0.4, <code>cursor: not-allowed</code>, <code>pointer-events: none</code>.</td></tr>
-                    <tr><td>Loading</td><td><code>.is-loading</code> / <code>[aria-busy="true"]</code></td><td>Label color goes transparent, <code>pointer-events: none</code>, and a spinning <code>::after</code> ring is drawn (disabled under <code>prefers-reduced-motion</code>). SR announces busy.</td></tr>
-                  </tbody>
-                </table>
-                <div class="doc-example u-mt-xl">
+              <!-- ---------- Behaviors ---------- -->
+              <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
+                <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
+
+                <h3 class="wire-h4" id="h-states">States</h3>
+                <p class="u-text-muted u-mt-sm">Button has three states you set: <strong>default</strong> (ready), <strong>disabled</strong> (unavailable and non-interactive), and <strong>loading</strong> (the action is in progress, announced via <code>aria-busy</code>). Hover, focus, and active are interaction feedback, not states you author. For the visual treatment and tokens behind each, see the <a href="#specs">Specs tab</a>.</p>
+                <div class="doc-example">
                   <span class="doc-example__label">default · disabled · loading</span>
                   <div class="u-cluster u-cluster--md">
                     <button class="wire-button" type="button">Save changes</button>
@@ -311,6 +303,12 @@
                     <button class="wire-button is-loading" type="button" aria-busy="true">Saving…</button>
                   </div>
                 </div>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-interactions">Interactions</h3>
+                <h4 class="wire-h5" id="h-mouse">Mouse</h4>
+                <p class="u-text-muted u-mt-sm">Clicking anywhere on the button activates it. The whole pill is the target; there is no separate hit area. On press it shifts down 1px for tactile feedback.</p>
+                <h4 class="wire-h5 u-mt-lg" id="h-kbd-usage">Keyboard</h4>
+                <p class="u-text-muted u-mt-sm">Tab moves focus to the button; <kbd>Enter</kbd> or <kbd>Space</kbd> activates it. For the full keyboard contract, see the <a href="#accessibility">Accessibility tab</a>.</p>
               </section>
 
               <!-- ---------- Composability / slots ---------- -->
@@ -431,7 +429,7 @@
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#behaviors">Behaviors</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
@@ -492,9 +490,26 @@
                 </table>
               </section>
 
-              <!-- ---------- Behaviors ---------- -->
-              <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
-                <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">The full visual set, CSS-only and driven by the native element or a state class. What each state <em>means</em> lives in <a href="#usage">Usage &rsaquo; Behaviors</a>.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <tbody>
+                    <tr><td>Default</td><td>—</td><td>Resting fill, label, and border for the emphasis level.</td></tr>
+                    <tr><td>Hover</td><td><code>:hover</code></td><td>Primary shifts to <code>--color-accent-hover</code>; secondary and ghost gain a <code>--color-bg-muted</code> fill (and secondary shifts its border). Runs at <code>--duration-fast</code>.</td></tr>
+                    <tr><td>Focus</td><td><code>:focus-visible</code></td><td>A 2px focus ring at 2px offset, always visible for keyboard users. <em>Supplied by a shared global focus style, not button.css.</em></td></tr>
+                    <tr><td>Active</td><td><code>:active</code></td><td>A 1px <code>translateY</code> press depression.</td></tr>
+                    <tr><td>Disabled</td><td><code>:disabled</code> / <code>.is-disabled</code></td><td>Opacity 0.4, <code>cursor: not-allowed</code>, <code>pointer-events: none</code>.</td></tr>
+                    <tr><td>Loading</td><td><code>.is-loading</code> / <code>[aria-busy="true"]</code></td><td>Label color goes transparent, <code>pointer-events: none</code>, and a spinning <code>::after</code> ring is drawn (disabled under <code>prefers-reduced-motion</code>). SR announces busy.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
                 <p class="u-text-muted u-mt-sm">Button ships <strong>zero JavaScript of its own</strong>. <code>button.css</code> is pure CSS, and activation relies entirely on the native <code>&lt;button&gt;</code> element (Enter / Space, no script). There are no <code>data-wire-*</code> hooks for Button.</p>
                 <ul>
                   <li>All states — <code>:hover</code>, <code>:active</code>, <code>:disabled</code> / <code>.is-disabled</code>, <code>.is-loading</code> / <code>[aria-busy="true"]</code>, and the <code>wire-spin</code> keyframe spinner — are CSS-only.</li>
@@ -534,7 +549,8 @@
               <ul class="wire-inpagenav__list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#behaviors">Behaviors</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
               </ul>
             </nav>
