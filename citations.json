@@ -156,6 +156,18 @@
       "source": { "org": "W3C WAI", "title": "ARIA Authoring Practices Guide — Tabs Pattern", "year": null, "url": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/" },
       "verified_date": null, "verification": "from research.html — pending fidelity check", "supports": ["tabs"] },
 
+    { "id": "nng-tabs", "tier": "empirical",
+      "finding": "Tabs work best for parallel, peer content the user views one panel at a time; the selected tab must be clearly distinguished and tabs must look clickable. Keep the set small and avoid using tabs for sequential steps or for content users need to compare side by side.",
+      "source": { "org": "Nielsen Norman Group", "title": "Tabs, Used Right", "year": null, "url": "https://www.nngroup.com/articles/tabs-used-right/" },
+      "verified_date": null, "verification": "UNVERIFIED — drafted; pending human review", "supports": ["tabs"],
+      "notes": "Drafted for the Tabs migration. Confirm the exact article title/URL before use." },
+
+    { "id": "laws-of-ux-jakob", "tier": "convention",
+      "finding": "Jakob's Law: users spend most of their time on other sites and expect a component to work the way the same component works elsewhere. Tabs should follow the conventional tab interaction so they are understood without learning.",
+      "source": { "org": "Laws of UX (Jon Yablonski)", "title": "Jakob's Law", "year": null, "url": "https://lawsofux.com/jakobs-law/" },
+      "verified_date": null, "verification": "UNVERIFIED — drafted; pending human review", "supports": ["tabs", "breadcrumb", "pagination"],
+      "notes": "Drafted for the Tabs migration. URL is the canonical Laws of UX page — confirm before use." },
+
     { "id": "apg-accordion", "tier": "standard",
       "finding": "Accordion disclosure pattern; single-open mode and +/- affordance. Built on native <details> for built-in semantics.",
       "source": { "org": "W3C WAI", "title": "ARIA Authoring Practices Guide — Accordion Pattern", "year": null, "url": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" },

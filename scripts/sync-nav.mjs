@@ -35,6 +35,7 @@ function targetList() {
     'components/badge/index.html',
     'components/tag/index.html',
     'components/divider/index.html',
+    'components/tabs/index.html',
     'foundations/index.html', 'patterns/index.html',
     'templates/index.html', 'experiences/index.html',
   ];
@@ -60,6 +61,7 @@ const CURRENT = {
   'components/badge/index.html':{ section: 'Components',      href: '{{base}}components/badge/' },
   'components/tag/index.html':{ section: 'Components',        href: '{{base}}components/tag/' },
   'components/divider/index.html':{ section: 'Components',    href: '{{base}}components/divider/' },
+  'components/tabs/index.html':{ section: 'Components',       href: '{{base}}components/tabs/' },
   'foundations/index.html':       { section: 'Foundations',   href: '{{base}}foundations/' },
   'patterns/index.html':          { section: 'Patterns',      href: '{{base}}patterns/' },
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },

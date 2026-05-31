@@ -483,7 +483,7 @@
       "category": "containment",
       "class": "wire-accordion",
       "file": "css/components/accordion.css",
-      "ref": "docs/content-blocks.html",
+      "ref": "components/accordion/index.html",
       "status": "stable",
       "elements": ["wire-accordion__item", "wire-accordion__summary", "wire-accordion__body", "wire-accordion__icon"],
       "behaviors": ["data-wire-accordion=\"single\" enables single-open mode (closes siblings on open). Built on native <details>/<summary> (initAccordion)"],
@@ -494,12 +494,13 @@
       "id": "tabs",
       "level": "organism",
       "rationale": [
-        { "decision": "APG tabs keyboard model (arrows / Home / End)", "citation_ids": ["apg-tabs", "wcag-2.1.1-keyboard", "wcag-4.1.2-name-role-value"] }
+        { "decision": "APG tabs keyboard model (arrows / Home / End)", "citation_ids": ["apg-tabs", "wcag-2.1.1-keyboard", "wcag-4.1.2-name-role-value"] },
+        { "decision": "Parallel peer content shown one panel at a time; follow the conventional tab interaction so it is understood without learning", "citation_ids": ["nng-tabs", "laws-of-ux-jakob"] }
       ],
       "category": "containment",
       "class": "wire-tabs",
       "file": "css/components/tabs.css",
-      "ref": "docs/content-blocks.html",
+      "ref": "components/tabs/index.html",
       "status": "stable",
       "variants": ["(default)", "pill", "sticky"],
       "elements": ["wire-tabs__list", "wire-tabs__tab", "wire-tabs__panel"],
