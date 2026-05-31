@@ -53,8 +53,10 @@ push only on the user's explicit go, and confirm the Pages build.
 
 ## Order of work
 
-- **Wave 1 — atoms** (light, inline cycle): Badge, Tag, Divider. (Typography reads
-  as a Foundation, not an atom; handle it in the Foundations tier or last.)
+- **Wave 1 — atoms** (light, inline cycle): Badge (done), Tag (done), Divider (done).
+  Remaining standalone atoms: Media, Skeleton (beta), Tooltip (beta; interactive, may
+  move to Wave 2), Phone-link. Choice (checkbox / radio / toggle) folds into the grouped
+  Forms page rather than a standalone. Typography reads as a Foundation, handled there.
 - **Wave 2 — interactive organisms** (full APG + a11y, workflow-assisted): Tabs,
   Modal, Drawer, Mega menu, Toast, Stepper, Tooltip.
 - **Wave 3 — molecules / grouped families**: Forms (one grouped page), Cards, Lists,
@@ -68,6 +70,11 @@ push only on the user's explicit go, and confirm the Pages build.
 - `citations.json` is the evidence library. Map to citations that exist; draft new
   ones only for genuinely new decisions, always marked unverified for a human pass.
   Cite recurring facts (focus ring, target size) once and reuse.
+- **References span tiers and sources, not just standards and design systems.** Each
+  component's References should reach for the genuinely-applicable empirical research
+  (NN/g, Baymard) and usability laws (Laws of UX, Gestalt) alongside WCAG and
+  Carbon/Material. Prefer existing entries; draft real ones (marked unverified) where a
+  clean fit is missing. Never pad with citations that do not bear on the decision.
 - Heavy components: fan out research + adversarial QA as a parallel workflow.
   Atoms: inline.
 

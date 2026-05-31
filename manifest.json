@@ -158,7 +158,7 @@
       "category": "actions",
       "class": "wire-button",
       "file": "css/components/button.css",
-      "ref": "docs/buttons.html",
+      "ref": "components/buttons/index.html",
       "ref_template": "components/buttons/index.html",
       "status": "stable",
       "variants": ["(default = primary)", "secondary", "ghost"],
@@ -181,7 +181,8 @@
       "ref": "components/badge/index.html",
       "status": "stable",
       "rationale": [
-        { "decision": "Grayscale fill-density variants with a load-bearing text label; status is never carried by color alone", "citation_ids": ["wcag-1.4.1-use-of-color", "ibm-carbon-tag", "material-design-3-badge"] }
+        { "decision": "Grayscale fill-density variants with a load-bearing text label; status is never carried by color alone", "citation_ids": ["wcag-1.4.1-use-of-color", "ibm-carbon-tag", "material-design-3-badge"] },
+        { "decision": "A badge draws attention through contrast of form and proximity to its host, not color", "citation_ids": ["laws-of-ux-von-restorff", "gestalt-proximity"] }
       ],
       "variants": ["(default)", "subtle", "outline", "inverse", "count"],
       "elements": ["wire-badge__dot", "wire-badge-anchor"],
@@ -197,7 +198,8 @@
       "rationale": [
         { "decision": "Chip / removable-tag pattern", "citation_ids": ["material-design-3-chips", "ibm-carbon-tag"] },
         { "decision": "tag--sm holds the 24px AA target floor", "citation_ids": ["wcag-2.5.8-target-size-minimum"] },
-        { "decision": "Interactive tag is a real button/a; selection exposed via aria-pressed (not fill alone); remove target meets 24px", "citation_ids": ["wcag-1.4.1-use-of-color", "wcag-2.5.8-target-size-minimum"] }
+        { "decision": "Interactive tag is a real button/a; selection exposed via aria-pressed (not fill alone); remove target meets 24px", "citation_ids": ["wcag-1.4.1-use-of-color", "wcag-2.5.8-target-size-minimum"] },
+        { "decision": "Filter chips let users narrow and undo a query; controls sized per Fitts's law", "citation_ids": ["nng-filtering-faceted", "laws-of-ux-fitts"] }
       ],
       "category": "indicators",
       "class": "wire-tag",
@@ -219,13 +221,17 @@
       "category": "containment",
       "class": "wire-divider",
       "file": "css/components/divider.css",
-      "ref": "docs/utilities.html",
+      "ref": "components/divider/index.html",
       "status": "stable",
-      "variants": ["(default)", "dashed", "strong", "thick"],
+      "rationale": [
+        { "decision": "Rules and vertical rhythm separate content; use sparingly and let spacing carry most grouping", "citation_ids": ["bringhurst-elements-typographic-style", "gestalt-proximity", "gestalt-common-region"] }
+      ],
+      "variants": ["(default)", "dashed", "strong", "thick", "vertical"],
       "companions": ["wire-divider-labeled"],
       "behaviors": [],
       "slots": ["label (via wire-divider-labeled)"],
-      "notes": "Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier."
+      "related": ["accordion", "two-column"],
+      "notes": "Horizontal (an <hr>, semantic separator) and vertical (decorative inline rule). Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier."
     },
     {
       "id": "field",

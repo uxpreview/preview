@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tag — Preview Design System</title>
-  <meta name="description" content="An interactive chip for filtering, selection, and removal, plus a read-only metadata label. Usage, specs, and accessibility for the Tag component.">
+  <title>Divider — Preview Design System</title>
+  <meta name="description" content="A horizontal or vertical rule for separating content, with weight and style variants and an optional inline label. Usage, specs, and accessibility for the Divider component.">
   <link rel="stylesheet" href="../../css/wire.css">
 </head>
 <body class="wire-shell">
@@ -57,8 +57,8 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/buttons/">Button</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/badge/">Badge</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/tag/">Tag</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/divider/">Divider</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tag/">Tag</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/divider/">Divider</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Forms</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Cards</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Lists</a></li>
@@ -122,28 +122,28 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-indicators">Indicators</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Tag</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-containment">Containment</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Divider</span></li>
         </ol>
       </nav>
 
       <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
-        <span class="wire-doc-header__eyebrow">Component · Indicators</span>
+        <span class="wire-doc-header__eyebrow">Component · Containment</span>
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Tag</h1>
+          <h1 class="wire-doc-header__title">Divider</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A small chip with two jobs: an interactive control for filtering, selecting, and removing, and a read-only label for metadata. The element you render decides which.</p>
+        <p class="wire-doc-header__lead">A thin rule that separates content. Horizontal for a thematic break between blocks, vertical for inline items, with weight and style variants and an optional centered label.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/tag.css</li>
-          <li class="wire-doc-header__meta-item">Atom · no JavaScript ships</li>
+          <li class="wire-doc-header__meta-item">css/components/divider.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
         </ul>
       </header>
 
       <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Tag documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Divider documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -159,31 +159,29 @@
               <!-- ---------- Live demo ---------- -->
               <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
                 <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">A filter set (interactive buttons, one selected), a removable applied filter, and a row of read-only metadata. Tab through to see which are focusable.</p>
+                <p class="u-text-muted u-mt-sm">A default horizontal rule, a labeled divider, and a vertical rule separating inline actions.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Filter set · removable · metadata</span>
-                  <div class="u-stack u-stack--lg">
-                    <ul class="wire-tag-list" aria-label="Filter by specialty">
-                      <li><button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Cardiology</button></li>
-                      <li><button class="wire-tag" type="button" aria-pressed="false">Dermatology</button></li>
-                      <li><button class="wire-tag" type="button" aria-pressed="false">Neurology</button></li>
-                      <li><button class="wire-tag" type="button" aria-pressed="false">Pediatrics</button></li>
-                    </ul>
-                    <span class="wire-tag">Accepting new patients<button class="wire-tag__remove" type="button" aria-label="Remove filter: Accepting new patients"><span aria-hidden="true">×</span></button></span>
-                    <p class="u-text-muted">Telehealth &nbsp; <span class="wire-tag wire-tag--sm">In-network</span> <span class="wire-tag wire-tag--sm">Board-certified</span> <span class="wire-tag wire-tag--sm">English, Spanish</span></p>
-                  </div>
+                  <span class="doc-example__label">horizontal · labeled · vertical</span>
+                  <p class="u-text-default">Section one.</p>
+                  <hr class="wire-divider">
+                  <div class="wire-divider-labeled">or</div>
+                  <p class="u-cluster u-cluster--xs">
+                    <a href="#live-demo">Edit</a>
+                    <span class="wire-divider wire-divider--vertical" aria-hidden="true"></span>
+                    <a href="#live-demo">Duplicate</a>
+                    <span class="wire-divider wire-divider--vertical" aria-hidden="true"></span>
+                    <a href="#live-demo">Delete</a>
+                  </p>
                 </div>
               </section>
 
               <!-- ---------- Testing status ---------- -->
               <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
                 <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
-                <p class="u-text-muted u-mt-sm">A glanceable snapshot for the interactive form of the tag. Methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
+                <p class="u-text-muted u-mt-sm">Divider is non-interactive. Methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
                 <div class="u-cluster u-cluster--xs u-mt-md">
-                  <span class="wire-badge">Keyboard tested</span>
                   <span class="wire-badge">Screen reader tested</span>
-                  <span class="wire-badge">Contrast verified</span>
-                  <span class="wire-badge">Target size: AA</span>
+                  <span class="wire-badge">Color-independent</span>
                 </div>
                 <p class="u-text-muted u-mt-md"><a href="../../docs/validation.html">See the validation log →</a></p>
               </section>
@@ -191,43 +189,32 @@
               <!-- ---------- Overview ---------- -->
               <section id="overview" class="doc-section" aria-labelledby="h-overview">
                 <h2 class="wire-h3" id="h-overview">Overview</h2>
-                <p class="u-text-muted u-mt-sm">A tag is a compact chip. It plays two roles, and which one you get is decided by the element you render it as:</p>
-                <ul>
-                  <li><strong>Interactive</strong> — a <code>&lt;button&gt;</code> (toggle a filter, remove an item) or an <code>&lt;a&gt;</code> (navigate to a category). Focusable and operable.</li>
-                  <li><strong>Metadata</strong> — a <code>&lt;span&gt;</code>. A read-only label that shows an attribute. Not focusable, not clickable.</li>
-                </ul>
+                <p class="u-text-muted u-mt-sm">A divider draws a line between things. Most separation should come from spacing; reach for a rule only when a visible break genuinely helps the reader tell two groups apart.</p>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
                 <ul>
-                  <li>Filter sets where the user toggles facets on and off.</li>
-                  <li>Applied filters or recipients the user can remove.</li>
-                  <li>Read-only metadata on a card or row: specialties, languages, attributes.</li>
+                  <li>A thematic break between sections of a long page.</li>
+                  <li>An "or" between two alternatives (the labeled divider).</li>
+                  <li>A vertical rule between inline actions or metadata in a row.</li>
                 </ul>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
                 <ul>
-                  <li>For a status the user only reads, use a <a href="../badge/">Badge</a> rather than a chip that looks clickable.</li>
-                  <li>For the primary action on a view, use a <a href="../buttons/">Button</a>.</li>
-                  <li>Never render an interactive tag as a <code>&lt;span&gt;</code> with a click handler; it will not be reachable by keyboard.</li>
+                  <li>Where whitespace already groups the content. A rule then adds noise.</li>
+                  <li>To box every item in a list; let the list's own rhythm carry it.</li>
+                  <li>As decoration with no structural meaning; if it is purely visual, mark it <code>aria-hidden</code>.</li>
                 </ul>
               </section>
 
               <!-- ---------- Anatomy ---------- -->
               <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A pill with a label, optionally a remove control, grouped in a wrapping list.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">tag · label · remove · list</span>
-                  <ul class="wire-tag-list" aria-label="Example">
-                    <li><span class="wire-tag">Label<button class="wire-tag__remove" type="button" aria-label="Remove Label"><span aria-hidden="true">×</span></button></span></li>
-                  </ul>
-                </div>
+                <p class="u-text-muted u-mt-sm">A single rule, drawn as an <code>&lt;hr&gt;</code> for a semantic break. The labeled form is a separate wrapper that draws a line on each side of a label.</p>
                 <table class="doc-spec-table">
                   <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
                   <tbody>
-                    <tr><td>Tag</td><td><code>.wire-tag</code></td><td>The chip. Render as <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code> (interactive) or <code>&lt;span&gt;</code> (metadata).</td></tr>
-                    <tr><td>Remove</td><td><code>.wire-tag__remove</code></td><td>A 24px <code>&lt;button&gt;</code> that removes the tag; needs an <code>aria-label</code>.</td></tr>
-                    <tr><td>List</td><td><code>.wire-tag-list</code></td><td>A wrapping flex group (use a <code>&lt;ul&gt;</code>) with a gap between tags.</td></tr>
+                    <tr><td>Rule</td><td><code>.wire-divider</code></td><td>The line. An <code>&lt;hr&gt;</code> for a real break; a decorative element if purely visual.</td></tr>
+                    <tr><td>Labeled</td><td><code>.wire-divider-labeled</code></td><td>A flex wrapper that puts a line on either side of a centered label.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -235,64 +222,51 @@
               <!-- ---------- Types & variants ---------- -->
               <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
-                <p class="u-text-muted u-mt-sm">One structural type, differentiated in grayscale by fill density.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Variant</th><th>Selector</th><th>Use</th></tr></thead>
+                  <thead><tr><th>Variant</th><th>Selector</th><th>Result</th></tr></thead>
                   <tbody>
-                    <tr><td>Default</td><td><code>.wire-tag</code></td><td>Outlined, 28px tall. The resting chip.</td></tr>
-                    <tr><td>Selected</td><td><code>.wire-tag--selected</code> / <code>.is-selected</code></td><td>Filled dark, inverse label. A toggled-on filter; pair with <code>aria-pressed</code>.</td></tr>
-                    <tr><td>Small</td><td><code>.wire-tag--sm</code></td><td>24px tall, smaller type. Dense metadata rows; holds the AA target floor.</td></tr>
-                    <tr><td>Removable</td><td>+ <code>.wire-tag__remove</code></td><td>Adds a labeled 24px remove button.</td></tr>
+                    <tr><td>Default</td><td><code>.wire-divider</code></td><td>A thin, full-width hairline in <code>--color-border</code>.</td></tr>
+                    <tr><td>Strong</td><td><code>.wire-divider--strong</code></td><td>Darker line (<code>--color-border-strong</code>) for a firmer break.</td></tr>
+                    <tr><td>Thick</td><td><code>.wire-divider--thick</code></td><td>Heavier weight (<code>--border-md</code>).</td></tr>
+                    <tr><td>Dashed</td><td><code>.wire-divider--dashed</code></td><td>A dashed line, for a lighter or provisional feel.</td></tr>
+                    <tr><td>Vertical</td><td><code>.wire-divider--vertical</code></td><td>A thin rule for separating inline items; stretches to row height in a flex row.</td></tr>
+                    <tr><td>Labeled</td><td><code>.wire-divider-labeled</code></td><td>Lines flanking a centered label.</td></tr>
                   </tbody>
                 </table>
                 <div class="doc-example u-mt-xl">
-                  <span class="doc-example__label">default · selected · small</span>
-                  <div class="u-cluster u-cluster--md">
-                    <button class="wire-tag" type="button" aria-pressed="false">Default</button>
-                    <button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Selected</button>
-                    <span class="wire-tag wire-tag--sm">Small metadata</span>
-                  </div>
+                  <span class="doc-example__label">default · strong · thick · dashed</span>
+                  <hr class="wire-divider">
+                  <hr class="wire-divider wire-divider--strong">
+                  <hr class="wire-divider wire-divider--thick">
+                  <hr class="wire-divider wire-divider--dashed">
                 </div>
               </section>
 
               <!-- ---------- Behaviors ---------- -->
               <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
                 <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
-
-                <h3 class="wire-h4" id="h-states">States</h3>
-                <p class="u-text-muted u-mt-sm">An interactive tag has <strong>default</strong>, <strong>hover</strong> (a muted fill, CSS-only), and <strong>selected</strong> (a dark fill, toggled by a state class). A metadata tag is static. The visual treatment and tokens are in the <a href="#specs">Specs tab</a>; the selected state must also be exposed with <code>aria-pressed</code> (see <a href="#accessibility">Accessibility</a>), not by fill alone.</p>
-
-                <h3 class="wire-h4 u-mt-xl" id="h-interactions">Interactions</h3>
-                <h4 class="wire-h5" id="h-mouse">Mouse</h4>
-                <p class="u-text-muted u-mt-sm">Clicking a filter tag toggles it on or off; clicking the × removes an applied tag. The component ships <strong>no JavaScript</strong>: it provides the look and the state class, and the application wires the toggle and the removal.</p>
-                <h4 class="wire-h5 u-mt-lg" id="h-kbd-usage">Keyboard</h4>
-                <p class="u-text-muted u-mt-sm">An interactive tag is a real <code>&lt;button&gt;</code> or <code>&lt;a&gt;</code>, so Tab reaches it and <kbd>Enter</kbd> or <kbd>Space</kbd> activates it. The remove × is a separate tab stop. Metadata tags are not in the tab order. Full contract in the <a href="#accessibility">Accessibility tab</a>.</p>
+                <p class="u-text-muted u-mt-sm">Divider is static and non-interactive: no states, no hover or focus, no JavaScript. The variants (see <a href="#specs">Specs</a>) are its only variation.</p>
               </section>
 
               <!-- ---------- Composability ---------- -->
               <section id="composability" class="doc-section" aria-labelledby="h-composability">
                 <h2 class="wire-h3" id="h-composability">Composability</h2>
                 <ul>
-                  <li><strong>Label</strong> — the slot: a short word or two.</li>
-                  <li><strong>Remove</strong> — append a <code>.wire-tag__remove</code> for applied filters or removable input.</li>
-                  <li><strong>Group</strong> — wrap a set in <code>.wire-tag-list</code> (a <code>&lt;ul&gt;</code>) so they wrap and space evenly; label the list for context.</li>
+                  <li><strong>Standalone</strong> — the plain rule takes no content; place it between blocks.</li>
+                  <li><strong>Labeled</strong> — <code>.wire-divider-labeled</code> wraps a short label; the lines are drawn for you.</li>
+                  <li><strong>Inline</strong> — a vertical rule sits between inline items inside a flex row.</li>
                 </ul>
               </section>
 
               <!-- ---------- In context ---------- -->
               <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
                 <h2 class="wire-h3" id="h-in-context">In context</h2>
-                <p class="u-text-muted u-mt-sm">A find-a-doctor filter bar above results, with metadata on each card.</p>
+                <p class="u-text-muted u-mt-sm">An "or" divider between a primary path and an alternative.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Specialty filters · provider metadata</span>
-                  <div class="u-stack u-stack--lg">
-                    <ul class="wire-tag-list" aria-label="Filter results">
-                      <li><button class="wire-tag wire-tag--selected" type="button" aria-pressed="true">Primary care</button></li>
-                      <li><button class="wire-tag" type="button" aria-pressed="false">Telehealth</button></li>
-                      <li><button class="wire-tag" type="button" aria-pressed="false">Weekend hours</button></li>
-                    </ul>
-                    <p class="u-text-default">Dr. Elena Ruiz &nbsp; <span class="wire-tag wire-tag--sm">Cardiology</span> <span class="wire-tag wire-tag--sm">In-network</span> <span class="wire-tag wire-tag--sm">English, Spanish</span></p>
-                  </div>
+                  <span class="doc-example__label">Sign-in alternative</span>
+                  <button class="wire-button wire-button--full" type="button">Continue with single sign-on</button>
+                  <div class="wire-divider-labeled">or</div>
+                  <button class="wire-button wire-button--secondary wire-button--full" type="button">Continue with email</button>
                 </div>
               </section>
 
@@ -302,13 +276,19 @@
                 <div class="doc-do-dont">
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
-                    <p class="u-text-default"><button class="wire-tag" type="button" aria-pressed="false">Telehealth</button> <span class="wire-tag wire-tag--sm">In-network</span></p>
-                    <p class="u-text-muted u-mt-md">A button for the interactive filter, a span for the read-only label. The element matches the job.</p>
+                    <p class="u-text-default">Overview</p>
+                    <hr class="wire-divider">
+                    <p class="u-text-default">Details</p>
+                    <p class="u-text-muted u-mt-md">One rule to mark a genuine break between two sections.</p>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
-                    <p class="u-text-default"><span class="wire-tag">Telehealth</span></p>
-                    <p class="u-text-muted u-mt-md">Don't make a plain span interactive with a click handler. It is invisible to the keyboard and to screen readers.</p>
+                    <p class="u-text-default">Item</p>
+                    <hr class="wire-divider">
+                    <p class="u-text-default">Item</p>
+                    <hr class="wire-divider">
+                    <p class="u-text-default">Item</p>
+                    <p class="u-text-muted u-mt-md">A rule between every item is noise; spacing alone would group them.</p>
                   </div>
                 </div>
               </section>
@@ -317,10 +297,8 @@
               <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
                 <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
                 <ul>
-                  <li>Keep labels to a word or two; a tag is not a sentence.</li>
-                  <li>Use consistent casing across a set; title case for filters reads well.</li>
-                  <li>Name filters as the facet, not an instruction: "Telehealth", not "Filter by telehealth".</li>
-                  <li>For a removable tag, the remove button's label names what is removed: "Remove Telehealth".</li>
+                  <li>A labeled divider holds one short word, usually "or"; keep it lowercase or small caps.</li>
+                  <li>Do not write a sentence into a divider label; it is a connector, not a heading.</li>
                 </ul>
               </section>
 
@@ -328,10 +306,10 @@
               <section id="composition-patterns" class="doc-section" aria-labelledby="h-composition-patterns">
                 <h2 class="wire-h3" id="h-composition-patterns">Composition patterns</h2>
                 <ul>
-                  <li><strong>Filter bars</strong> — a <code>.wire-tag-list</code> of toggle buttons above a result set.</li>
-                  <li><strong>Applied filters</strong> — removable tags showing the active query, each with an ×.</li>
-                  <li><strong>Card and row metadata</strong> — <code>--sm</code> spans for specialties, languages, attributes.</li>
-                  <li><strong>Category links</strong> — anchor tags that navigate to a filtered listing.</li>
+                  <li><strong>Section breaks</strong> — a single rule between long-form sections.</li>
+                  <li><strong>Auth alternatives</strong> — an "or" divider between sign-in methods.</li>
+                  <li><strong>Inline toolbars</strong> — vertical rules between grouped actions.</li>
+                  <li><strong>Card footers</strong> — a strong rule above a footer action row.</li>
                 </ul>
               </section>
 
@@ -339,9 +317,8 @@
               <section id="related" class="doc-section" aria-labelledby="h-related">
                 <h2 class="wire-h3" id="h-related">Related</h2>
                 <ul>
-                  <li><a href="../badge/">Badge</a> — the non-interactive cousin, for status you only read.</li>
-                  <li><a href="../../docs/forms.html">Forms</a> — checkboxes are the alternative when a filter set needs explicit form semantics.</li>
-                  <li><a href="../buttons/">Button</a> — for primary actions rather than facets.</li>
+                  <li><a href="../../docs/utilities.html">Layout &amp; utilities</a> — spacing usually separates content without a rule.</li>
+                  <li><a href="../accordion/">Accordion</a> — uses hairlines to bound each disclosure item.</li>
                   <li><a href="../">All components</a> — the full library.</li>
                 </ul>
               </section>
@@ -351,14 +328,10 @@
                 <h2 class="wire-h3" id="h-references">References</h2>
                 <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
                 <ul>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): 24 × 24 CSS px. The default (28px), small (24px), and remove (24px) targets all meet the floor. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.11 Non-text Contrast: the outlined chip's border (<code>--color-border-strong</code>) measures 4.5:1, clearing the 3:1 boundary requirement. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#non-text-contrast">w3.org</a></li>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.4.7 Focus Visible: an interactive tag shows the shared 2px focus ring. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#focus-visible">w3.org</a></li>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: selection is exposed with <code>aria-pressed</code>, not fill alone; grayscale keeps meaning in text and state. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
-                  <li><strong>Convention</strong> — Google, Material Design 3: Chips: the filter / input-chip pattern. <em>Unverified — pending review.</em> <a href="https://m3.material.io/components/chips">m3.material.io</a></li>
-                  <li><strong>Convention</strong> — IBM, Carbon Design System: Tag: in grayscale, fill density carries differentiation and the label is load-bearing. <em>Unverified — pending review.</em> <a href="https://carbondesignsystem.com/components/tag/usage/">carbondesignsystem.com</a></li>
-                  <li><strong>Convention</strong> — Laws of UX (Jon Yablonski), Fitts's Law: target acquisition gets faster as targets grow larger and closer; the chip and its 24px remove control are sized for easy, low-error tapping. <em>Unverified — pending review.</em> <a href="https://lawsofux.com/fittss-law/">lawsofux.com</a></li>
-                  <li><strong>Empirical</strong> — Nielsen Norman Group, Filtering and Faceted Navigation: active filters should appear as removable chips so users can see and undo what is applied. <em>Unverified — drafted, pending review.</em></li>
+                  <li><strong>Convention</strong> — Robert Bringhurst, The Elements of Typographic Style: rules and vertical rhythm separate content; use them sparingly and let space do most of the work. <em>Unverified — pending review.</em></li>
+                  <li><strong>Convention</strong> — Gestalt principle of proximity: items placed close together read as a group; a divider overrides that proximity to force a perceived break. <em>Unverified — pending review.</em></li>
+                  <li><strong>Convention</strong> — Gestalt principle of common region: a rule helps bound and separate regions of content. <em>Unverified — pending review.</em></li>
+                  <li><strong>Standard</strong> — HTML <code>&lt;hr&gt;</code> carries an implicit <code>separator</code> role, so a thematic break is conveyed to assistive tech, not just drawn. (Native semantics; see the Accessibility tab.)</li>
                 </ul>
               </section>
 
@@ -400,15 +373,12 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
                   <tbody>
-                    <tr><td><code>--color-border-strong</code></td><td>Default outline (<code>--tag-border</code>).</td></tr>
-                    <tr><td><code>--color-text</code></td><td>Default label.</td></tr>
-                    <tr><td><code>--color-bg-muted</code></td><td>Hover fill on interactive tags.</td></tr>
-                    <tr><td><code>--color-accent</code> · <code>--color-text-inverse</code></td><td>Selected fill and label.</td></tr>
-                    <tr><td><code>--color-overlay-light</code></td><td>Remove-button hover.</td></tr>
-                    <tr><td><code>--space-2xs</code> / <code>--space-xs</code> / <code>--space-sm</code></td><td>Padding, gaps, and list spacing.</td></tr>
-                    <tr><td><code>--text-sm</code> / <code>--text-2xs</code></td><td>Default / small label type.</td></tr>
-                    <tr><td><code>--radius-pill</code></td><td>The pill shape.</td></tr>
-                    <tr><td><code>--duration-fast</code></td><td>Hover and selection transition.</td></tr>
+                    <tr><td><code>--color-border</code></td><td>Default rule color (<code>--divider-color</code>).</td></tr>
+                    <tr><td><code>--color-border-strong</code></td><td>Strong-variant color.</td></tr>
+                    <tr><td><code>--border-thin</code> / <code>--border-md</code></td><td>Default and thick weights (<code>--divider-weight</code>).</td></tr>
+                    <tr><td><code>--space-xl</code></td><td>Vertical margin around a horizontal rule.</td></tr>
+                    <tr><td><code>--space-sm</code> / <code>--space-md</code></td><td>Vertical-rule inline margin; labeled-divider gap.</td></tr>
+                    <tr><td><code>--text-sm</code> · <code>--color-text-muted</code></td><td>Labeled-divider label.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -419,13 +389,12 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Property</th><th>Value</th></tr></thead>
                   <tbody>
-                    <tr><td>Min height (default)</td><td>1.75rem (28px).</td></tr>
-                    <tr><td>Min height (small)</td><td>1.5rem (24px) — the WCAG 2.5.8 AA floor.</td></tr>
-                    <tr><td>Padding (default)</td><td><code>--space-2xs</code> block · <code>--space-sm</code> inline.</td></tr>
-                    <tr><td>Remove target</td><td>1.5rem (24px) circle; glyph optically smaller.</td></tr>
-                    <tr><td>Border</td><td><code>--border-thin</code> solid; outlined default, filled when selected.</td></tr>
-                    <tr><td>List</td><td><code>.wire-tag-list</code> wraps with a <code>--space-xs</code> gap.</td></tr>
-                    <tr><td>Theming</td><td>Each variant re-aliases <code>--tag-bg</code> / <code>--tag-fg</code> / <code>--tag-border</code> only.</td></tr>
+                    <tr><td>Weight</td><td><code>--border-thin</code> default; <code>--border-md</code> with <code>--thick</code>.</td></tr>
+                    <tr><td>Horizontal</td><td><code>inline-size: 100%</code>, <code>margin-block: --space-xl</code>.</td></tr>
+                    <tr><td>Vertical</td><td>Thin inline-block; stretches in a flex row, else 1.5em; <code>margin-inline: --space-sm</code>.</td></tr>
+                    <tr><td>Dashed</td><td>Drawn with <code>border-block-start</code> dashed instead of a fill.</td></tr>
+                    <tr><td>Labeled</td><td>Flex row; <code>::before</code> / <code>::after</code> lines flank the label, gap <code>--space-md</code>.</td></tr>
+                    <tr><td>Theming</td><td>Re-alias <code>--divider-color</code> / <code>--divider-weight</code> only.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -433,47 +402,28 @@
               <!-- ---------- States (visual spec) ---------- -->
               <section id="states" class="doc-section" aria-labelledby="h-spec-states">
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
-                <p class="u-text-muted u-mt-sm">Visual states for the interactive tag. What each means lives in <a href="#usage">Usage &rsaquo; Behaviors</a>; a metadata tag has none of these.</p>
-                <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
-                  <tbody>
-                    <tr><td>Default</td><td>—</td><td>Transparent fill, <code>--color-border-strong</code> outline, dark label.</td></tr>
-                    <tr><td>Hover</td><td><code>:hover</code> (a / button only)</td><td>Fill shifts to <code>--color-bg-muted</code>. Static span tags do not react.</td></tr>
-                    <tr><td>Selected</td><td><code>.is-selected</code> / <code>--selected</code></td><td>Filled <code>--color-accent</code>, inverse label and border. Pair with <code>aria-pressed</code>.</td></tr>
-                    <tr><td>Focus</td><td><code>:focus-visible</code></td><td>The shared 2px focus ring at 2px offset.</td></tr>
-                  </tbody>
-                </table>
+                <p class="u-text-muted u-mt-sm">None. Divider has no interactive states; its visual set is the variants in <a href="#usage">Usage &rsaquo; Types &amp; variants</a>.</p>
               </section>
 
               <!-- ---------- JavaScript ---------- -->
               <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
                 <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
-                <p class="u-text-muted u-mt-sm">None ships. <code>tag.css</code> provides the look, the hover (CSS), and the selected visual (a state class). The application owns the behavior:</p>
-                <ul>
-                  <li><strong>Selection</strong> — on click, toggle <code>.is-selected</code> (or <code>--selected</code>) <em>and</em> the matching <code>aria-pressed</code> value on the button.</li>
-                  <li><strong>Removal</strong> — on the × button, remove the tag element and move focus somewhere sensible (the next tag or the list).</li>
-                  <li>There are no <code>data-wire-*</code> hooks for Tag.</li>
-                </ul>
+                <p class="u-text-muted u-mt-sm">None. Divider is pure CSS with no <code>data-wire-*</code> hooks.</p>
               </section>
 
               <!-- ---------- Code ---------- -->
               <section id="code" class="doc-section" aria-labelledby="h-code">
                 <h2 class="wire-h3" id="h-code">Code</h2>
-                <pre class="doc-snippet"><code>&lt;!-- Filter set: interactive buttons, selection via aria-pressed --&gt;
-&lt;ul class="wire-tag-list" aria-label="Filter by specialty"&gt;
-  &lt;li&gt;&lt;button class="wire-tag wire-tag--selected" type="button" aria-pressed="true"&gt;Cardiology&lt;/button&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;button class="wire-tag" type="button" aria-pressed="false"&gt;Neurology&lt;/button&gt;&lt;/li&gt;
-&lt;/ul&gt;
+                <pre class="doc-snippet"><code>&lt;!-- Horizontal (semantic break) --&gt;
+&lt;hr class="wire-divider"&gt;
+&lt;hr class="wire-divider wire-divider--strong"&gt;
+&lt;hr class="wire-divider wire-divider--dashed"&gt;
 
-&lt;!-- Removable applied filter --&gt;
-&lt;span class="wire-tag"&gt;Telehealth
-  &lt;button class="wire-tag__remove" type="button" aria-label="Remove Telehealth"&gt;
-    &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
-  &lt;/button&gt;
-&lt;/span&gt;
+&lt;!-- Labeled --&gt;
+&lt;div class="wire-divider-labeled"&gt;or&lt;/div&gt;
 
-&lt;!-- Read-only metadata (small) --&gt;
-&lt;span class="wire-tag wire-tag--sm"&gt;In-network&lt;/span&gt;</code></pre>
+&lt;!-- Vertical (decorative, between inline actions) --&gt;
+&lt;span class="wire-divider wire-divider--vertical" aria-hidden="true"&gt;&lt;/span&gt;</code></pre>
               </section>
 
             </div>
@@ -504,38 +454,28 @@
               <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
                 <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
                 <ul>
-                  <li>Render an interactive tag as a real <code>&lt;button&gt;</code> (toggle or remove) or <code>&lt;a&gt;</code> (navigate). Never a <code>&lt;span&gt;</code> with a click handler.</li>
-                  <li>Selection: set <code>aria-pressed="true|false"</code> on the toggle button. The fill is visual only; <code>aria-pressed</code> is what a screen reader reports.</li>
-                  <li>Remove control: a <code>&lt;button&gt;</code> with <code>aria-label="Remove &lt;name&gt;"</code>; the × glyph is <code>aria-hidden</code>.</li>
-                  <li>Metadata tag: a plain <code>&lt;span&gt;</code>, no role, not focusable.</li>
-                  <li>Group a set in a <code>&lt;ul class="wire-tag-list"&gt;</code> with an <code>aria-label</code> describing the set.</li>
+                  <li>For a real thematic break, use <code>&lt;hr class="wire-divider"&gt;</code>. It carries an implicit <code>separator</code> role, so the break is conveyed, not just drawn.</li>
+                  <li>For a purely decorative rule that adds no structure, use a non-semantic element and mark it <code>aria-hidden="true"</code> (the vertical rule between inline actions is usually this case).</li>
+                  <li>If a vertical rule does separate two meaningful groups, use <code>role="separator" aria-orientation="vertical"</code> instead of hiding it.</li>
+                  <li>The labeled divider's text is real content; keep it in the element so it is read.</li>
                 </ul>
               </section>
 
               <!-- ---------- Keyboard interactions ---------- -->
               <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
                 <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
-                <table class="doc-spec-table">
-                  <thead><tr><th>Key</th><th>Action</th></tr></thead>
-                  <tbody>
-                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the next interactive tag, then to its remove button. Metadata tags are skipped.</td></tr>
-                    <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Toggles a filter, follows a link, or activates the remove button.</td></tr>
-                  </tbody>
-                </table>
+                <p class="u-text-muted u-mt-sm">None. A divider is not interactive and is not in the tab order.</p>
               </section>
 
               <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Tag satisfies it</th></tr></thead>
+                  <thead><tr><th>SC</th><th>How Divider satisfies it</th></tr></thead>
                   <tbody>
-                    <tr><td>1.4.1 Use of Color</td><td>Selection is exposed via <code>aria-pressed</code>; meaning is in the label. Grayscale, no color-only state.</td></tr>
-                    <tr><td>1.4.11 Non-text Contrast</td><td>Measured: the outlined border is 4.5:1, clearing the 3:1 boundary requirement.</td></tr>
-                    <tr><td>2.1.1 Keyboard</td><td>Interactive tags are native <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code>; Tab and Enter/Space, no script.</td></tr>
-                    <tr><td>2.4.7 Focus Visible</td><td>The shared 2px focus ring at 2px offset.</td></tr>
-                    <tr><td>2.5.8 Target Size (Minimum) · AA</td><td>Measured: default 28px, small 25px, remove 24px — all clear 24 × 24.</td></tr>
-                    <tr><td>4.1.2 Name, Role, Value</td><td>Button or link role is native; the selected value is carried by <code>aria-pressed</code>.</td></tr>
+                    <tr><td>1.3.1 Info &amp; Relationships</td><td>A semantic <code>&lt;hr&gt;</code> conveys the break programmatically; decorative rules are hidden so they add no false structure.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>No meaning rests on the line's color; grayscale, and any real grouping is also structural.</td></tr>
+                    <tr><td>1.4.11 Non-text Contrast</td><td>The default rule is decorative, so the 3:1 boundary requirement does not apply; use <code>--strong</code> when a visible separation must carry weight.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -544,10 +484,9 @@
               <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
                 <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
                 <ul>
-                  <li>A filter button announces as "Cardiology, toggle button, pressed" or "not pressed" as <code>aria-pressed</code> changes.</li>
-                  <li>A remove button announces "Remove Telehealth, button"; the × is not read because it is <code>aria-hidden</code>.</li>
-                  <li>A metadata span reads as plain text inline; it is not announced as interactive.</li>
-                  <li>The <code>.wire-tag-list</code> is read as a labeled list, so the set has context ("Filter by specialty, list, 4 items").</li>
+                  <li>An <code>&lt;hr&gt;</code> is announced as a separator, giving a sense of the section break.</li>
+                  <li>A decorative rule marked <code>aria-hidden</code> is skipped entirely, which is correct when it carries no meaning.</li>
+                  <li>The labeled divider reads its label inline (for example, "or").</li>
                 </ul>
               </section>
 
@@ -571,9 +510,9 @@
 
       <!-- Pager -->
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../badge/">
-          <span class="wire-doc-pager__direction">Previous in Indicators</span>
-          <span class="wire-doc-pager__title">Badge</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../accordion/">
+          <span class="wire-doc-pager__direction">In Containment</span>
+          <span class="wire-doc-pager__title">Accordion</span>
         </a>
         <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../">
           <span class="wire-doc-pager__direction">All components</span>
@@ -590,7 +529,7 @@
   <div class="u-container">
     <div class="wire-footer__inner">
       <p class="wire-footer__brand">Preview Design System</p>
-      <p class="wire-footer__tagline">Tag · Stable · Preview Design System</p>
+      <p class="wire-footer__tagline">Divider · Stable · Preview Design System</p>
     </div>
   </div>
 </footer>

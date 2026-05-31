@@ -27,6 +27,20 @@
   border-block-start: var(--divider-weight) dashed var(--divider-color);
 }
 
+/* ---------- Vertical — a thin rule for separating inline items (toolbar
+   actions, inline metadata). In a flex row it stretches to the row height;
+   otherwise it falls back to a 1.5em line. Decorative by default. ---------- */
+.wire-divider--vertical {
+  display: inline-block;
+  inline-size: var(--divider-weight);
+  block-size: auto;
+  min-block-size: 1.5em;
+  align-self: stretch;
+  margin-block: 0;
+  margin-inline: var(--space-sm);
+  vertical-align: middle;
+}
+
 /* Labeled divider — wrap in an element with this modifier */
 .wire-divider-labeled {
   display: flex;
