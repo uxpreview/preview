@@ -170,10 +170,17 @@ html:has(.wire-tabs--sticky) {
   scroll-padding-block-start: calc(var(--shell-header-h) + 4rem);
 }
 
-/* The TOC column is meaningful only when the grid splits; below xl the
-   page reads top-to-bottom and the inline TOC would just be noise. */
+/* Below xl the right rail is gone, so surface the in-page TOC at the TOP of the
+   content (Carbon-style on mobile), static rather than sticky, with a rule under
+   it to set it off from the body copy. */
 @media (max-width: 79.99em) {
-  body.wire-shell .wire-shell__doc > .wire-inpagenav { display: none; }
+  body.wire-shell .wire-shell__doc > .wire-inpagenav {
+    order: -1;
+    position: static;
+    margin-block-end: var(--space-xl);
+    padding-block-end: var(--space-md);
+    border-block-end: var(--border-thin) solid var(--color-border);
+  }
 }
 
 /* ---------- Mobile: rail becomes an off-canvas slide-over ---------- */

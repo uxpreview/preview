@@ -35,6 +35,7 @@
   <button class="wire-button wire-button--ghost wire-button--sm wire-railnav__close" data-wire-drawer-close>← Close</button>
   <div class="wire-doc-nav">
     <a class="wire-doc-nav__top-link" href="../../index.html">Overview</a>
+
     <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Foundations</summary>
       <div class="wire-doc-nav__section-body">
@@ -42,6 +43,7 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../foundations/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/utilities.html">Layout &amp; utilities</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Accessibility &amp; evidence</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/validation.html">Validation</a></li>
@@ -49,39 +51,122 @@
         </ul>
       </div>
     </details>
+
     <details class="wire-doc-nav__section" open>
       <summary class="wire-doc-nav__section-summary">Components</summary>
       <div class="wire-doc-nav__section-body">
-        <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/">All components</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/buttons/">Button</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/badge/">Badge</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tag/">Tag</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/divider/">Divider</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Forms</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Cards</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Lists</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tables.html">Tables</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Media</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Feedback</a></li>
-        </ul>
+        <a class="wire-doc-nav__top-link" href="../../components/">All components</a>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Actions</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/buttons/">Button</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Forms &amp; inputs</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Field</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Search</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Choice</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Form layout</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Selection &amp; status</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/badge/">Badge</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tag/">Tag</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Containment &amp; overlays</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Card</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Tabs</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Modal</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Drawer</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/divider/">Divider</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Navigation</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Breadcrumb</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Top nav</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Mega menu</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Side nav</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">In-page nav</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Layout</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Two-column</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Feature grid</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/heroes.html">Hero</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/footers.html">Footer</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Content &amp; display</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Callout</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Quote</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Timeline</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Media</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Gallery</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Linked list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Definition list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Article list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Citation list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tables.html">Table</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Messaging &amp; feedback</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Toast</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Banner</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Empty state</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Stepper</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Tooltip</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Skeleton</a></li>
+          </ul>
+        </section>
+
+        <section class="wire-doc-nav__group">
+          <p class="wire-doc-nav__group-title">Patient affordances</p>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Help bar</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Phone link</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Text size</a></li>
+          </ul>
+        </section>
       </div>
     </details>
+
     <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Patterns</summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../patterns/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Navigation family</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/heroes.html">Heroes</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Content blocks</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/footers.html">Footers</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Healthcare patterns</a></li>
         </ul>
       </div>
     </details>
+
     <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Templates</summary>
       <div class="wire-doc-nav__section-body">
@@ -92,6 +177,7 @@
         </ul>
       </div>
     </details>
+
     <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Experiences</summary>
       <div class="wire-doc-nav__section-body">
@@ -100,6 +186,7 @@
         </ul>
       </div>
     </details>
+
     <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Demo</summary>
       <div class="wire-doc-nav__section-body">
