@@ -113,9 +113,9 @@
 <main id="main">
 
   <section class="u-section">
-    <div class="u-container u-container--md">
+    <div class="u-container u-container--wide">
 
-      <!-- Doc header -->
+      <!-- Doc header (component masthead — spans full width, like Carbon) -->
       <header class="wire-doc-header">
         <span class="wire-doc-header__eyebrow">Component · Actions</span>
         <div class="wire-doc-header__row">
@@ -129,137 +129,200 @@
         </ul>
       </header>
 
-      <!-- Tabs -->
-      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Button documentation sections">
-          <button role="tab" id="tab-overview" class="wire-tabs__tab" aria-controls="overview" aria-selected="true" tabindex="0">Overview</button>
-          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
-          <button role="tab" id="tab-guidelines" class="wire-tabs__tab" aria-controls="guidelines" aria-selected="false" tabindex="-1">Guidelines</button>
-          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
-        </div>
+      <!-- Single-scroll usage page: content column + sticky "on this page" TOC -->
+      <div class="wire-shell__doc">
 
-        <!-- ============ OVERVIEW ============ -->
-        <section role="tabpanel" id="overview" aria-labelledby="tab-overview" class="wire-tabs__panel">
-          <div class="u-stack u-stack--2xl">
+        <!-- ===================== CONTENT COLUMN ===================== -->
+        <div>
 
-            <section aria-labelledby="ov-anatomy">
-              <h2 class="wire-h3" id="ov-anatomy">Anatomy</h2>
-              <p class="u-text-muted u-mt-sm">A button is a single rounded element with an optional leading or trailing icon, a label, and a minimum 44px touch target on every size.</p>
-              <div class="doc-example">
-                <span class="doc-example__label">Default</span>
+          <!-- ---------- Live demo ---------- -->
+          <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+            <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+            <p class="u-text-muted u-mt-sm">Three emphasis levels carry the system; sizes and modifiers compose on top. Tab to each and press Enter or Space to activate.</p>
+            <div class="doc-example">
+              <span class="doc-example__label">Emphasis — primary, secondary, ghost</span>
+              <div class="u-cluster u-cluster--md">
                 <button class="wire-button" type="button">Make an appointment</button>
+                <button class="wire-button wire-button--secondary" type="button">Save for later</button>
+                <button class="wire-button wire-button--ghost" type="button">Cancel</button>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <section aria-labelledby="ov-key-variants">
-              <h2 class="wire-h3" id="ov-key-variants">Key variants</h2>
-              <p class="u-text-muted u-mt-sm">Three emphasis levels carry the system. Sizes and modifiers compose on top.</p>
-              <div class="doc-example">
-                <span class="doc-example__label">Emphasis — primary, secondary, ghost</span>
-                <div class="u-cluster">
-                  <button class="wire-button" type="button">Primary</button>
-                  <button class="wire-button wire-button--secondary" type="button">Secondary</button>
-                  <button class="wire-button wire-button--ghost" type="button">Ghost</button>
-                </div>
+          <!-- ---------- Overview ---------- -->
+          <section id="overview" class="doc-section" aria-labelledby="h-overview">
+            <h2 class="wire-h3" id="h-overview">Overview</h2>
+            <p class="u-text-muted u-mt-sm">Buttons trigger an action — submitting a form, confirming a choice, advancing a flow. Emphasis communicates priority: there is one primary action per region, supported by secondary and ghost actions that recede.</p>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+            <ul>
+              <li>Use <strong>primary</strong> for the single most important action in a view (one per region).</li>
+              <li>Use <strong>secondary</strong> for the supporting action paired with a primary.</li>
+              <li>Use <strong>ghost</strong> in toolbars, card footers, and dense surfaces where a bordered button would feel heavy.</li>
+              <li>Use <strong>icon-only</strong> for utility actions where the icon's meaning is unambiguous and an <code>aria-label</code> is provided.</li>
+            </ul>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+            <ul>
+              <li>Do not use a button when navigating; use an <code>&lt;a&gt;</code> styled as a button instead.</li>
+              <li>Do not stack three or more primary buttons; rework the page hierarchy.</li>
+              <li>Do not use icon-only buttons for destructive actions without confirmation.</li>
+            </ul>
+          </section>
+
+          <!-- ---------- Formatting ---------- -->
+          <section id="formatting" class="doc-section" aria-labelledby="h-formatting">
+            <h2 class="wire-h3" id="h-formatting">Formatting</h2>
+
+            <h3 class="wire-h4" id="h-anatomy">Anatomy</h3>
+            <p class="u-text-muted u-mt-sm">A button is a single rounded element with an optional leading or trailing icon, a label, and a minimum 44px touch target on every size.</p>
+            <div class="doc-example">
+              <span class="doc-example__label">Default</span>
+              <button class="wire-button" type="button">Make an appointment</button>
+            </div>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-sizes">Sizes</h3>
+            <p class="u-text-muted u-mt-sm">Small, default, and large. Every size keeps a ≥44px target via <code>min-block-size</code>.</p>
+            <div class="doc-example">
+              <span class="doc-example__label">sm · md (default) · lg</span>
+              <div class="u-cluster u-cluster--baseline">
+                <button class="wire-button wire-button--sm" type="button">Small</button>
+                <button class="wire-button" type="button">Default</button>
+                <button class="wire-button wire-button--lg" type="button">Large</button>
               </div>
-            </section>
+            </div>
+          </section>
 
-            <section aria-labelledby="ov-in-context">
-              <h2 class="wire-h3" id="ov-in-context">In context</h2>
-              <p class="u-text-muted u-mt-sm">A typical confirmation flow. One primary, one secondary, one ghost.</p>
-              <div class="doc-example">
-                <span class="doc-example__label">Form footer</span>
+          <!-- ---------- Variants ---------- -->
+          <section id="variants" class="doc-section" aria-labelledby="h-variants">
+            <h2 class="wire-h3" id="h-variants">Variants</h2>
+            <table class="doc-spec-table">
+              <thead>
+                <tr><th>Modifier</th><th>Selector</th><th>Result</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Primary (default)</td><td><code>.wire-button</code></td><td>Filled dark, white label. One per region.</td></tr>
+                <tr><td>Secondary</td><td><code>.wire-button--secondary</code></td><td>Outlined, dark label. Supporting action.</td></tr>
+                <tr><td>Ghost</td><td><code>.wire-button--ghost</code></td><td>No border, dark label. Dense surfaces.</td></tr>
+                <tr><td>Small</td><td><code>.wire-button--sm</code></td><td>Smaller padding + text; still ≥ 44px target.</td></tr>
+                <tr><td>Large</td><td><code>.wire-button--lg</code></td><td>Larger padding + text. Hero CTAs.</td></tr>
+                <tr><td>Icon-only</td><td><code>.wire-button--icon-only</code></td><td>Square, label via <code>aria-label</code>.</td></tr>
+                <tr><td>Full width</td><td><code>.wire-button--full</code></td><td>Stretches to container; mobile forms.</td></tr>
+                <tr><td>Loading</td><td><code>aria-busy="true"</code></td><td>Dimmed; SR announces busy state.</td></tr>
+              </tbody>
+            </table>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-with-icon">With icon</h3>
+            <div class="doc-example">
+              <span class="doc-example__label">Leading and trailing</span>
+              <div class="u-cluster">
+                <button class="wire-button" type="button"><span class="wire-button__icon" aria-hidden="true">→</span><span>Continue</span></button>
+                <button class="wire-button wire-button--secondary" type="button"><span>Open in new tab</span><span class="wire-button__icon" aria-hidden="true">↗</span></button>
+                <button class="wire-button wire-button--ghost" type="button"><span class="wire-button__icon" aria-hidden="true">↓</span><span>Download</span></button>
+              </div>
+            </div>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-icon-only">Icon-only</h3>
+            <div class="doc-example">
+              <span class="doc-example__label">sm · md · lg, all three emphasis levels</span>
+              <div class="u-cluster u-cluster--baseline">
+                <button class="wire-button wire-button--icon-only wire-button--sm" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                <button class="wire-button wire-button--icon-only" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                <button class="wire-button wire-button--icon-only wire-button--lg" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
+                <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="More options"><span aria-hidden="true">⋯</span></button>
+                <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+            </div>
+          </section>
+
+          <!-- ---------- Content ---------- -->
+          <section id="content" class="doc-section" aria-labelledby="h-content">
+            <h2 class="wire-h3" id="h-content">Content</h2>
+
+            <h3 class="wire-h4" id="h-labels">Labels</h3>
+            <ul>
+              <li>Lead with a verb. "Save changes" beats "Changes".</li>
+              <li>Be specific. "Book appointment" beats "Submit".</li>
+              <li>Title case for short labels (1–3 words); sentence case for longer.</li>
+              <li>Avoid "Click here" — the action name is the affordance.</li>
+            </ul>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-pairing">Emphasis pairing</h3>
+            <p class="u-text-muted u-mt-sm">A typical form footer has one primary, optionally one secondary, and a ghost cancel.</p>
+            <div class="doc-do-dont">
+              <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                <p class="doc-do-dont__label">Do</p>
                 <div class="u-cluster u-cluster--md">
-                  <button class="wire-button" type="button">Confirm appointment</button>
-                  <button class="wire-button wire-button--secondary" type="button">Save for later</button>
+                  <button class="wire-button" type="button">Save changes</button>
                   <button class="wire-button wire-button--ghost" type="button">Cancel</button>
                 </div>
+                <p class="u-text-muted u-mt-md">One primary + one ghost. Cancel doesn't compete.</p>
               </div>
-            </section>
-          </div>
-        </section>
-
-        <!-- ============ SPECS ============ -->
-        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
-          <div class="u-stack u-stack--2xl">
-
-            <section aria-labelledby="sp-variants">
-              <h2 class="wire-h3" id="sp-variants">Variants</h2>
-              <table class="doc-spec-table">
-                <thead>
-                  <tr><th>Modifier</th><th>Selector</th><th>Result</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Primary (default)</td><td><code>.wire-button</code></td><td>Filled dark, white label. One per region.</td></tr>
-                  <tr><td>Secondary</td><td><code>.wire-button--secondary</code></td><td>Outlined, dark label. Supporting action.</td></tr>
-                  <tr><td>Ghost</td><td><code>.wire-button--ghost</code></td><td>No border, dark label. Dense surfaces.</td></tr>
-                  <tr><td>Small</td><td><code>.wire-button--sm</code></td><td>Smaller padding + text; still ≥ 44px target.</td></tr>
-                  <tr><td>Large</td><td><code>.wire-button--lg</code></td><td>Larger padding + text. Hero CTAs.</td></tr>
-                  <tr><td>Icon-only</td><td><code>.wire-button--icon-only</code></td><td>Square, label via <code>aria-label</code>.</td></tr>
-                  <tr><td>Full width</td><td><code>.wire-button--full</code></td><td>Stretches to container; mobile forms.</td></tr>
-                  <tr><td>Loading</td><td><code>aria-busy="true"</code></td><td>Dimmed; SR announces busy state.</td></tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section aria-labelledby="sp-sizes">
-              <h2 class="wire-h3" id="sp-sizes">Sizes</h2>
-              <div class="doc-example">
-                <span class="doc-example__label">sm · md (default) · lg</span>
-                <div class="u-cluster u-cluster--baseline">
-                  <button class="wire-button wire-button--sm" type="button">Small</button>
-                  <button class="wire-button" type="button">Default</button>
-                  <button class="wire-button wire-button--lg" type="button">Large</button>
+              <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                <p class="doc-do-dont__label">Don't</p>
+                <div class="u-cluster u-cluster--md">
+                  <button class="wire-button" type="button">Save changes</button>
+                  <button class="wire-button" type="button">Save and continue</button>
+                  <button class="wire-button" type="button">Cancel</button>
                 </div>
+                <p class="u-text-muted u-mt-md">Three primaries means none of them is. Rework the hierarchy.</p>
               </div>
-            </section>
+            </div>
 
-            <section aria-labelledby="sp-with-icon">
-              <h2 class="wire-h3" id="sp-with-icon">With icon</h2>
-              <div class="doc-example">
-                <span class="doc-example__label">Leading and trailing</span>
-                <div class="u-cluster">
-                  <button class="wire-button" type="button"><span class="wire-button__icon" aria-hidden="true">→</span><span>Continue</span></button>
-                  <button class="wire-button wire-button--secondary" type="button"><span>Open in new tab</span><span class="wire-button__icon" aria-hidden="true">↗</span></button>
-                  <button class="wire-button wire-button--ghost" type="button"><span class="wire-button__icon" aria-hidden="true">↓</span><span>Download</span></button>
-                </div>
-              </div>
-            </section>
+            <h3 class="wire-h4 u-mt-xl" id="h-composition">Composition patterns</h3>
+            <ul>
+              <li><strong>Hero CTAs</strong> — large primary + large ghost, side by side.</li>
+              <li><strong>Card footers</strong> — small ghost, right-aligned.</li>
+              <li><strong>Toolbars</strong> — small ghost icon-only, in a cluster.</li>
+              <li><strong>Mobile form footers</strong> — full-width primary stacked above ghost cancel.</li>
+            </ul>
+          </section>
 
-            <section aria-labelledby="sp-icon-only">
-              <h2 class="wire-h3" id="sp-icon-only">Icon-only</h2>
-              <div class="doc-example">
-                <span class="doc-example__label">sm · md · lg, all three emphasis levels</span>
-                <div class="u-cluster u-cluster--baseline">
-                  <button class="wire-button wire-button--icon-only wire-button--sm" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-                  <button class="wire-button wire-button--icon-only" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-                  <button class="wire-button wire-button--icon-only wire-button--lg" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-                  <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="More options"><span aria-hidden="true">⋯</span></button>
-                  <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-              </div>
-            </section>
+          <!-- ---------- Behaviors ---------- -->
+          <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
+            <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
 
-            <section aria-labelledby="sp-tokens">
-              <h2 class="wire-h3" id="sp-tokens">Tokens used</h2>
-              <table class="doc-spec-table">
-                <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
-                <tbody>
-                  <tr><td><code>--color-text</code></td><td>Primary background; secondary/ghost label color.</td></tr>
-                  <tr><td><code>--color-text-inverse</code></td><td>Primary button label color.</td></tr>
-                  <tr><td><code>--color-border-strong</code></td><td>Secondary button outline.</td></tr>
-                  <tr><td><code>--color-bg-muted</code></td><td>Ghost hover background.</td></tr>
-                  <tr><td><code>--space-sm</code> → <code>--space-lg</code></td><td>Internal padding across the three sizes.</td></tr>
-                  <tr><td><code>--text-sm</code> → <code>--text-lg</code></td><td>Label type scale across sizes.</td></tr>
-                  <tr><td><code>--radius-pill</code></td><td>Border radius — the pill shape.</td></tr>
-                  <tr><td><code>--duration-fast</code></td><td>Hover and focus transition.</td></tr>
-                </tbody>
-              </table>
-            </section>
+            <h3 class="wire-h4" id="h-states">States</h3>
+            <ul>
+              <li><strong>Hover</strong> — subtle surface shift (ghost gains a muted background); transition runs at <code>--duration-fast</code>.</li>
+              <li><strong>Focus</strong> — a 2px focus ring at 2px offset, always visible for keyboard users.</li>
+              <li><strong>Active</strong> — the press state; native button depression.</li>
+              <li><strong>Disabled</strong> — dimmed and non-interactive; omit only when the action is genuinely unavailable.</li>
+              <li><strong>Loading</strong> — set <code>aria-busy="true"</code>; the control dims and assistive tech announces "busy".</li>
+            </ul>
 
-            <section aria-labelledby="sp-code">
-              <h2 class="wire-h3" id="sp-code">Code</h2>
-              <pre class="doc-snippet"><code>&lt;!-- Primary --&gt;
+            <h3 class="wire-h4 u-mt-xl" id="h-keyboard">Keyboard</h3>
+            <table class="doc-spec-table">
+              <thead><tr><th>Key</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td><kbd>Tab</kbd></td><td>Moves focus to the button.</td></tr>
+                <tr><td><kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>Moves focus to the previous focusable.</td></tr>
+                <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Activates the button (native behavior).</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- ---------- Style & code ---------- -->
+          <section id="style-code" class="doc-section" aria-labelledby="h-style-code">
+            <h2 class="wire-h3" id="h-style-code">Style &amp; code</h2>
+
+            <h3 class="wire-h4" id="h-tokens">Tokens used</h3>
+            <table class="doc-spec-table">
+              <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><code>--color-text</code></td><td>Primary background; secondary/ghost label color.</td></tr>
+                <tr><td><code>--color-text-inverse</code></td><td>Primary button label color.</td></tr>
+                <tr><td><code>--color-border-strong</code></td><td>Secondary button outline.</td></tr>
+                <tr><td><code>--color-bg-muted</code></td><td>Ghost hover background.</td></tr>
+                <tr><td><code>--space-sm</code> → <code>--space-lg</code></td><td>Internal padding across the three sizes.</td></tr>
+                <tr><td><code>--text-sm</code> → <code>--text-lg</code></td><td>Label type scale across sizes.</td></tr>
+                <tr><td><code>--radius-pill</code></td><td>Border radius — the pill shape.</td></tr>
+                <tr><td><code>--duration-fast</code></td><td>Hover and focus transition.</td></tr>
+              </tbody>
+            </table>
+
+            <h3 class="wire-h4 u-mt-xl" id="h-code">Code</h3>
+            <pre class="doc-snippet"><code>&lt;!-- Primary --&gt;
 &lt;button class="wire-button" type="button"&gt;Confirm&lt;/button&gt;
 
 &lt;!-- Secondary, small --&gt;
@@ -277,133 +340,72 @@
 &lt;button class="wire-button wire-button--icon-only" type="button" aria-label="Search"&gt;
   &lt;span aria-hidden="true"&gt;⌕&lt;/span&gt;
 &lt;/button&gt;</code></pre>
-            </section>
-          </div>
-        </section>
+          </section>
 
-        <!-- ============ GUIDELINES ============ -->
-        <section role="tabpanel" id="guidelines" aria-labelledby="tab-guidelines" class="wire-tabs__panel" hidden>
-          <div class="u-stack u-stack--2xl">
+          <!-- ---------- Accessibility ---------- -->
+          <section id="accessibility" class="doc-section" aria-labelledby="h-accessibility">
+            <h2 class="wire-h3" id="h-accessibility">Accessibility</h2>
 
-            <section aria-labelledby="gd-when">
-              <h2 class="wire-h3" id="gd-when">When to use</h2>
-              <ul>
-                <li>Use <strong>primary</strong> for the single most important action in a view (one per region).</li>
-                <li>Use <strong>secondary</strong> for the supporting action paired with a primary.</li>
-                <li>Use <strong>ghost</strong> in toolbars, card footers, and dense surfaces where a bordered button would feel heavy.</li>
-                <li>Use <strong>icon-only</strong> for utility actions where the icon's meaning is unambiguous and an <code>aria-label</code> is provided.</li>
-              </ul>
-            </section>
+            <h3 class="wire-h4" id="h-aria">ARIA &amp; semantics</h3>
+            <ul>
+              <li>Use a native <code>&lt;button type="button"&gt;</code>. Never a <code>&lt;div&gt;</code> with a click handler.</li>
+              <li>Icon-only buttons MUST carry an <code>aria-label</code> describing the action.</li>
+              <li>Decorative icons inside labeled buttons use <code>aria-hidden="true"</code>.</li>
+              <li>Loading state: set <code>aria-busy="true"</code>; assistive tech announces busy.</li>
+              <li>For form submission, use <code>type="submit"</code> explicitly.</li>
+            </ul>
 
-            <section aria-labelledby="gd-not">
-              <h2 class="wire-h3" id="gd-not">When not to use</h2>
-              <ul>
-                <li>Do not use a button when navigating; use an <code>&lt;a&gt;</code> styled as a button instead.</li>
-                <li>Do not stack three or more primary buttons; rework the page hierarchy.</li>
-                <li>Do not use icon-only buttons for destructive actions without confirmation.</li>
-              </ul>
-            </section>
+            <h3 class="wire-h4 u-mt-xl" id="h-wcag">WCAG 2.2 criteria mapped</h3>
+            <table class="doc-spec-table">
+              <thead><tr><th>SC</th><th>How Button satisfies it</th></tr></thead>
+              <tbody>
+                <tr><td>1.4.3 Contrast (Minimum)</td><td>Primary: 19:1. Secondary: ≥4.5:1. Ghost on muted hover: ≥4.5:1.</td></tr>
+                <tr><td>1.4.11 Non-text Contrast</td><td>Secondary border (<code>--color-border-strong</code>): 4.5:1 on white.</td></tr>
+                <tr><td>2.1.1 Keyboard</td><td>Native <code>&lt;button&gt;</code>; Enter/Space activate without script.</td></tr>
+                <tr><td>2.4.7 Focus Visible</td><td>2px solid focus ring at 2px offset, dark on light surfaces.</td></tr>
+                <tr><td>2.5.5 Target Size</td><td>All sizes ≥ 44 × 44 CSS pixels including small via min-block-size.</td></tr>
+                <tr><td>4.1.2 Name, Role, Value</td><td>Native semantics. Icon-only uses <code>aria-label</code>.</td></tr>
+              </tbody>
+            </table>
 
-            <section aria-labelledby="gd-emphasis">
-              <h2 class="wire-h3" id="gd-emphasis">Emphasis pairing</h2>
-              <p class="u-text-muted u-mt-sm">A typical form footer has one primary, optionally one secondary, and a ghost cancel.</p>
-              <div class="doc-do-dont">
-                <div class="doc-do-dont__cell doc-do-dont__cell--do">
-                  <p class="doc-do-dont__label">Do</p>
-                  <div class="u-cluster u-cluster--md">
-                    <button class="wire-button" type="button">Save changes</button>
-                    <button class="wire-button wire-button--ghost" type="button">Cancel</button>
-                  </div>
-                  <p class="u-text-muted u-mt-md" style="font-size: var(--text-sm)">One primary + one ghost. Cancel doesn't compete.</p>
-                </div>
-                <div class="doc-do-dont__cell doc-do-dont__cell--dont">
-                  <p class="doc-do-dont__label">Don't</p>
-                  <div class="u-cluster u-cluster--md">
-                    <button class="wire-button" type="button">Save changes</button>
-                    <button class="wire-button" type="button">Save and continue</button>
-                    <button class="wire-button" type="button">Cancel</button>
-                  </div>
-                  <p class="u-text-muted u-mt-md" style="font-size: var(--text-sm)">Three primaries means none of them is. Rework the hierarchy.</p>
-                </div>
-              </div>
-            </section>
+            <h3 class="wire-h4 u-mt-xl" id="h-sr">Screen reader notes</h3>
+            <ul>
+              <li>NVDA + Firefox: announces "&lt;label&gt;, button". Icon-only announces the <code>aria-label</code>.</li>
+              <li>VoiceOver + Safari: same, plus "press Control-Option-Space to activate" hint.</li>
+              <li>Loading state (<code>aria-busy="true"</code>) is announced as "busy" after the label.</li>
+              <li>Avoid changing the button label mid-activation; if state changes, use Toast or a live region rather than mutating the label.</li>
+            </ul>
+          </section>
 
-            <section aria-labelledby="gd-content">
-              <h2 class="wire-h3" id="gd-content">Content guidelines</h2>
-              <ul>
-                <li>Lead with a verb. "Save changes" beats "Changes".</li>
-                <li>Be specific. "Book appointment" beats "Submit".</li>
-                <li>Title case for short labels (1–3 words); sentence case for longer.</li>
-                <li>Avoid "Click here" — the action name is the affordance.</li>
-              </ul>
-            </section>
+          <!-- ---------- Related ---------- -->
+          <section id="related" class="doc-section" aria-labelledby="h-related">
+            <h2 class="wire-h3" id="h-related">Related</h2>
+            <ul>
+              <li><a href="../../docs/forms.html">Forms</a> — buttons terminate most form flows.</li>
+              <li><a href="../../docs/typography.html">Typography</a> — label type scale and casing.</li>
+              <li><a href="../../docs/navigation.html">Navigation family</a> — link-vs-button guidance.</li>
+              <li><a href="../">All components</a> — the full library.</li>
+            </ul>
+          </section>
 
-            <section aria-labelledby="gd-composition">
-              <h2 class="wire-h3" id="gd-composition">Composition patterns</h2>
-              <p class="u-text-muted u-mt-sm">Where buttons commonly appear and how to size them.</p>
-              <ul>
-                <li><strong>Hero CTAs</strong> — large primary + large ghost, side by side.</li>
-                <li><strong>Card footers</strong> — small ghost, right-aligned.</li>
-                <li><strong>Toolbars</strong> — small ghost icon-only, in a cluster.</li>
-                <li><strong>Mobile form footers</strong> — full-width primary stacked above ghost cancel.</li>
-              </ul>
-            </section>
-          </div>
-        </section>
+        </div>
 
-        <!-- ============ ACCESSIBILITY ============ -->
-        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
-          <div class="u-stack u-stack--2xl">
+        <!-- ===================== "ON THIS PAGE" TOC ===================== -->
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#formatting">Formatting</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#variants">Variants</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content">Content</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#behaviors">Behaviors</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#style-code">Style &amp; code</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#accessibility">Accessibility</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+          </ul>
+        </nav>
 
-            <section aria-labelledby="a11y-keyboard">
-              <h2 class="wire-h3" id="a11y-keyboard">Keyboard</h2>
-              <table class="doc-spec-table">
-                <thead><tr><th>Key</th><th>Action</th></tr></thead>
-                <tbody>
-                  <tr><td><kbd>Tab</kbd></td><td>Moves focus to the button.</td></tr>
-                  <tr><td><kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>Moves focus to the previous focusable.</td></tr>
-                  <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Activates the button (native behavior).</td></tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section aria-labelledby="a11y-aria">
-              <h2 class="wire-h3" id="a11y-aria">ARIA &amp; semantics</h2>
-              <ul>
-                <li>Use a native <code>&lt;button type="button"&gt;</code>. Never a <code>&lt;div&gt;</code> with a click handler.</li>
-                <li>Icon-only buttons MUST carry an <code>aria-label</code> describing the action.</li>
-                <li>Decorative icons inside labeled buttons use <code>aria-hidden="true"</code>.</li>
-                <li>Loading state: set <code>aria-busy="true"</code>; assistive tech announces busy.</li>
-                <li>For form submission, use <code>type="submit"</code> explicitly.</li>
-              </ul>
-            </section>
-
-            <section aria-labelledby="a11y-wcag">
-              <h2 class="wire-h3" id="a11y-wcag">WCAG 2.2 criteria mapped</h2>
-              <table class="doc-spec-table">
-                <thead><tr><th>SC</th><th>How Button satisfies it</th></tr></thead>
-                <tbody>
-                  <tr><td>1.4.3 Contrast (Minimum)</td><td>Primary: 19:1. Secondary: ≥4.5:1. Ghost on muted hover: ≥4.5:1.</td></tr>
-                  <tr><td>1.4.11 Non-text Contrast</td><td>Secondary border (<code>--color-border-strong</code>): 4.5:1 on white.</td></tr>
-                  <tr><td>2.1.1 Keyboard</td><td>Native <code>&lt;button&gt;</code>; Enter/Space activate without script.</td></tr>
-                  <tr><td>2.4.7 Focus Visible</td><td>2px solid focus ring at 2px offset, dark on light surfaces.</td></tr>
-                  <tr><td>2.5.5 Target Size</td><td>All sizes ≥ 44 × 44 CSS pixels including small via min-block-size.</td></tr>
-                  <tr><td>4.1.2 Name, Role, Value</td><td>Native semantics. Icon-only uses <code>aria-label</code>.</td></tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section aria-labelledby="a11y-sr">
-              <h2 class="wire-h3" id="a11y-sr">Screen reader notes</h2>
-              <ul>
-                <li>NVDA + Firefox: announces "&lt;label&gt;, button". Icon-only announces the <code>aria-label</code>.</li>
-                <li>VoiceOver + Safari: same, plus "press Control-Option-Space to activate" hint.</li>
-                <li>Loading state (<code>aria-busy="true"</code>) is announced as "busy" after the label.</li>
-                <li>Avoid changing the button label mid-activation; if state changes, use Toast or a live region rather than mutating the label.</li>
-              </ul>
-            </section>
-          </div>
-        </section>
       </div>
 
       <!-- Pager -->
