@@ -154,6 +154,22 @@ body.wire-shell .wire-shell__doc {
   }
 }
 
+/* On a tabbed component page the per-tab TOC sits below BOTH the fixed header
+   and the sticky tab strip (~3.5rem tall). Clear both so the TOC title isn't
+   tucked under the tabs. Higher specificity than the rule above, so it wins. */
+@media (min-width: 48em) {
+  body.wire-shell .wire-tabs--sticky .wire-inpagenav {
+    inset-block-start: calc(var(--shell-header-h) + 3.75rem);
+  }
+}
+
+/* Anchor jumps on a tabbed shell page must clear the header + sticky tab strip,
+   so a TOC click lands the heading below the tabs rather than behind them.
+   Degrades gracefully (to the global scroll-padding) where :has() is unsupported. */
+html:has(.wire-tabs--sticky) {
+  scroll-padding-block-start: calc(var(--shell-header-h) + 4rem);
+}
+
 /* The TOC column is meaningful only when the grid splits; below xl the
    page reads top-to-bottom and the inline TOC would just be noise. */
 @media (max-width: 79.99em) {
