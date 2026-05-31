@@ -39,6 +39,11 @@
       "verified_date": null, "verification": "from research.html — pending fidelity check", "supports": ["tokens", "base-typography"],
       "notes": "Contains specific contrast ratios (4.6:1, 19:1) tied to exact ramp values — confirm against tokens.css during fidelity check." },
 
+    { "id": "wcag-1.4.1-use-of-color", "tier": "standard",
+      "finding": "Color is never the sole means of conveying information or distinguishing an element. The grayscale system guarantees this by construction: status is carried by the text label, not hue, so badges, tags, and status-pills stay meaningful without color perception.",
+      "source": { "org": "W3C WAI", "title": "WCAG 2.2 SC 1.4.1 Use of Color", "year": 2023, "url": "https://www.w3.org/TR/WCAG22/#use-of-color" },
+      "verified_date": null, "verification": "UNVERIFIED — drafted; pending human review", "supports": ["badge", "tag", "status-pill"] },
+
     { "id": "wcag-1.4.10-reflow", "tier": "standard",
       "finding": "Content reflows to 320 CSS px wide with no horizontal scrolling. Mobile-first layouts, no fixed-pixel min-widths above 320px; in-page nav, mosaic gallery, and help-bar all collapse on narrow viewports.",
       "source": { "org": "W3C WAI", "title": "WCAG 2.2 SC 1.4.10 Reflow", "year": 2023, "url": "https://www.w3.org/TR/WCAG22/#reflow" },

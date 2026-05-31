@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Badge — Preview Design System</title>
+  <meta name="description" content="A small, non-interactive status or category label, with an optional leading dot and a count overlay. Usage, specs, and accessibility for the Badge component.">
+  <link rel="stylesheet" href="../../css/wire.css">
+</head>
+<body class="wire-shell">
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- NAV:START -->
+<header class="wire-topnav wire-topnav--shell">
+  <div class="wire-topnav__inner">
+    <div class="wire-topnav__lead">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="site-nav" aria-label="Open navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="../../index.html" class="wire-topnav__brand" aria-label="Preview">
+        <span>Preview</span>
+      </a>
+    </div>
+
+    <div class="wire-topnav__utility">
+      <a class="wire-topnav__source" href="https://github.com/uxpreview/preview">View source</a>
+    </div>
+  </div>
+</header>
+
+<!-- One rail: persistent left nav (desktop) + slide-over (mobile). -->
+<nav id="site-nav" class="wire-railnav" aria-label="Sections">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-railnav__close" data-wire-drawer-close>← Close</button>
+  <div class="wire-doc-nav">
+    <a class="wire-doc-nav__top-link" href="../../index.html">Overview</a>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../foundations/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/principles.html">Principles</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/utilities.html">Layout &amp; utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Accessibility &amp; evidence</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary">Components</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/">All components</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/buttons/">Button</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/badge/">Badge</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Forms</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Cards</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Lists</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tables.html">Tables</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Media</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Feedback</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Patterns</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../patterns/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Navigation family</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/heroes.html">Heroes</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Content blocks</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/footers.html">Footers</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Healthcare patterns</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Templates</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../templates/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/page-shells.html">Page shells</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../directory.html">All demo pages</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Experiences</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../experiences/">Overview</a></li>
+        </ul>
+      </div>
+    </details>
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Demo</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</nav>
+<div class="wire-drawer-backdrop"></div>
+<!-- NAV:END -->
+
+<main id="main">
+
+  <section class="u-section">
+    <div class="u-container u-container--wide">
+
+      <!-- ===================== BREADCRUMB ===================== -->
+      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+        <ol class="wire-breadcrumb__list">
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-indicators">Indicators</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Badge</span></li>
+        </ol>
+      </nav>
+
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">Component · Indicators</span>
+        <div class="wire-doc-header__row">
+          <h1 class="wire-doc-header__title">Badge</h1>
+          <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
+        </div>
+        <p class="wire-doc-header__lead">A small, non-interactive label that annotates another element with status or category. Four emphasis variants by fill density, an optional leading dot, and a count overlay for notifications.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/badge.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
+        </ul>
+      </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Badge documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Four emphasis levels by fill density, a leading status dot, and a count overlay pinned to an icon button.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">default · subtle · outline · inverse · dot · count</span>
+                  <div class="u-cluster u-cluster--md">
+                    <span class="wire-badge">Confirmed</span>
+                    <span class="wire-badge wire-badge--subtle">Flagged</span>
+                    <span class="wire-badge wire-badge--outline">Draft</span>
+                    <span class="wire-badge wire-badge--inverse">Urgent</span>
+                    <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Accepting new patients</span>
+                    <span class="wire-badge-anchor">
+                      <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Notifications, 3 unread">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                      </button>
+                      <span class="wire-badge wire-badge--count" aria-hidden="true">3</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">A glanceable snapshot of what has been checked. Badge is non-interactive, so there is no keyboard contract. Methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Contrast verified</span>
+                  <span class="wire-badge">Screen reader tested</span>
+                  <span class="wire-badge">Color-independent</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">A badge labels something else: a status on a card, a category in a list, a count on an icon. It is read, not operated. Keep it to a word or two, and use it sparingly so each one still signals.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Status on an entity: "Accepting new patients", "In range", "Confirmed".</li>
+                  <li>A short category or type label attached to a card or row.</li>
+                  <li>An unread count on an icon or nav item (the count overlay).</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>Do not make it clickable or removable. If the user acts on it, use a <a href="../../docs/utilities.html">Tag</a> instead.</li>
+                  <li>Do not use it for the maturity of a documented component; that is the doc-only Status-pill.</li>
+                  <li>Do not lean on the dot alone to carry meaning; always pair it with a text label.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A pill-shaped span holding a short label, with an optional leading dot. The count overlay is the same span pinned to the corner of a host wrapped in an anchor.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">block · dot · label</span>
+                  <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Label</span>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-badge</code></td><td>The <code>&lt;span&gt;</code> itself; holds the label and carries the emphasis variant.</td></tr>
+                    <tr><td>Dot</td><td><code>.wire-badge__dot</code></td><td>Optional 0.5rem leading dot in <code>currentColor</code>. Decorative; the label carries the meaning.</td></tr>
+                    <tr><td>Count</td><td><code>.wire-badge--count</code></td><td>Overlay form: a filled circle pinned to a host's corner for a notification count.</td></tr>
+                    <tr><td>Anchor</td><td><code>.wire-badge-anchor</code></td><td>Wraps the host so the count overlay can position to its corner.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <p class="u-text-muted u-mt-sm">One structural type. In grayscale, fill density does the differentiating; the text label is always load-bearing.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Variant</th><th>Selector</th><th>Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Default</td><td><code>.wire-badge</code></td><td>Muted fill, dark label. The everyday status label.</td></tr>
+                    <tr><td>Subtle</td><td><code>.wire-badge--subtle</code></td><td>Lighter fill, muted label. Lower-emphasis or secondary status.</td></tr>
+                    <tr><td>Outline</td><td><code>.wire-badge--outline</code></td><td>No fill, hairline border. Quietest, for busy surfaces.</td></tr>
+                    <tr><td>Inverse</td><td><code>.wire-badge--inverse</code></td><td>Dark fill, light label. For light-on-dark contexts or to draw the eye.</td></tr>
+                    <tr><td>Count</td><td><code>.wire-badge--count</code></td><td>Filled overlay pinned to a host corner; a notification count.</td></tr>
+                  </tbody>
+                </table>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">Count overlay — single digit and overflow</span>
+                  <div class="u-cluster u-cluster--md">
+                    <span class="wire-badge-anchor">
+                      <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="Messages, 5 unread">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h16v12H5.17L4 17.17z"></path></svg>
+                      </button>
+                      <span class="wire-badge wire-badge--count" aria-hidden="true">5</span>
+                    </span>
+                    <span class="wire-badge-anchor">
+                      <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="Alerts, 12 unread">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                      </button>
+                      <span class="wire-badge wire-badge--count" aria-hidden="true">9+</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Behaviors ---------- -->
+              <section id="behaviors" class="doc-section" aria-labelledby="h-behaviors">
+                <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
+                <p class="u-text-muted u-mt-sm">Badge is static and non-interactive by design: no states, no hover or focus, no JavaScript. Its visual variants (see <a href="#specs">Specs</a>) carry the differentiation that states carry on interactive components. When a badge's value changes at runtime, for example a count, wrap it in an <code>aria-live</code> region so the change is announced (see <a href="#accessibility">Accessibility</a>).</p>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">Badge is a leaf. It composes <em>into</em> other components rather than holding content of its own.</p>
+                <ul>
+                  <li><strong>Label</strong> — the only slot: one to two words of text, optionally preceded by a <code>.wire-badge__dot</code>.</li>
+                  <li><strong>On cards and rows</strong> — drop a badge into a card body or a table cell to mark status.</li>
+                  <li><strong>As a count</strong> — wrap a host (icon button, avatar) in <code>.wire-badge-anchor</code> and add a <code>.wire-badge--count</code>.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">Status on a provider line, and an unread count in a toolbar.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Provider status · toolbar count</span>
+                  <div class="u-stack u-stack--md">
+                    <p class="u-text-default">Dr. Elena Ruiz, Cardiology &nbsp; <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Accepting new patients</span></p>
+                    <p class="u-text-default">Lab panel: Vitamin D &nbsp; <span class="wire-badge wire-badge--subtle">Flagged</span></p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default"><span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>In range</span></p>
+                    <p class="u-text-muted u-mt-md">One short status, with the meaning in the words. The dot is a quiet accent.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default"><span class="wire-badge">New</span> <span class="wire-badge wire-badge--subtle">Updated</span> <span class="wire-badge wire-badge--outline">Popular</span> <span class="wire-badge wire-badge--inverse">Hot</span></p>
+                    <p class="u-text-muted u-mt-md">Stacking badges dilutes every one of them. Pick the single status that matters.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>One to two words. The badge is small; a sentence does not belong in it.</li>
+                  <li>Name the state plainly: "In range", "Flagged", "Confirmed".</li>
+                  <li>Front-load the meaningful word; the label is read on a quick scan.</li>
+                  <li>For counts, show the number; cap overflow as "9+" rather than a long figure.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Composition patterns ---------- -->
+              <section id="composition-patterns" class="doc-section" aria-labelledby="h-composition-patterns">
+                <h2 class="wire-h3" id="h-composition-patterns">Composition patterns</h2>
+                <ul>
+                  <li><strong>Provider / entity cards</strong> — a status badge in the card body.</li>
+                  <li><strong>Result tables</strong> — "In range" / "Flagged" in a status column.</li>
+                  <li><strong>Toolbars and nav</strong> — a count overlay on a notifications or messages icon.</li>
+                  <li><strong>Filters</strong> — do not use Badge here; an interactive filter chip is a <a href="../../docs/utilities.html">Tag</a>.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../docs/utilities.html">Tag</a> — the interactive, removable cousin, for filters and user-applied labels.</li>
+                  <li><a href="../../docs/cards.html">Cards</a> and <a href="../../docs/tables.html">Tables</a> — common hosts for status badges.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: color is never the sole means of conveying meaning. Grayscale guarantees this; the text label carries the status. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Convention</strong> — IBM, Carbon Design System: Tag: in grayscale, fill density carries differentiation and the text label is load-bearing. <em>Unverified — pending review.</em> <a href="https://carbondesignsystem.com/components/tag/usage/">carbondesignsystem.com</a></li>
+                  <li><strong>Convention</strong> — Google, Material Design 3: Badges: the inline status / notification-count badge convention. <em>Unverified — pending review.</em> <a href="https://m3.material.io/components/badges">m3.material.io</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#behaviors">Behaviors</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composition-patterns">Composition patterns</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-bg-muted</code></td><td>Default fill.</td></tr>
+                    <tr><td><code>--color-bg-subtle</code></td><td>Subtle-variant fill.</td></tr>
+                    <tr><td><code>--color-bg-inverse</code></td><td>Inverse and count fill.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-muted</code> / <code>--color-text-inverse</code></td><td>Label colors across the variants.</td></tr>
+                    <tr><td><code>--color-border</code></td><td>Outline-variant hairline.</td></tr>
+                    <tr><td><code>--color-bg</code></td><td>The count overlay's cutout ring against the host.</td></tr>
+                    <tr><td><code>--space-3xs</code> / <code>--space-xs</code> / <code>--space-2xs</code></td><td>Padding and the dot/label gap.</td></tr>
+                    <tr><td><code>--text-2xs</code></td><td>Label type scale.</td></tr>
+                    <tr><td><code>--radius-pill</code></td><td>The pill shape.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Padding</td><td><code>--space-3xs</code> block · <code>--space-xs</code> inline.</td></tr>
+                    <tr><td>Type</td><td><code>--text-2xs</code>, <code>--weight-medium</code>, uppercase, <code>--tracking-wide</code>.</td></tr>
+                    <tr><td>Radius</td><td><code>--radius-pill</code>.</td></tr>
+                    <tr><td>Dot</td><td>0.5rem circle, <code>currentColor</code>, gap <code>--space-2xs</code>.</td></tr>
+                    <tr><td>Count overlay</td><td>1.25rem min circle, pinned to the host corner, <code>--border-md</code> ring in <code>--color-bg</code>; grows for "9+".</td></tr>
+                    <tr><td>Theming</td><td>Each variant re-aliases <code>--badge-bg</code> / <code>--badge-fg</code> / <code>--badge-border</code> only.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">Badge has no interactive states (no hover, focus, active, or disabled). Its visual set is the variants in <a href="#usage">Usage &rsaquo; Types &amp; variants</a>, whose fills map to the tokens above.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. Badge is a static <code>&lt;span&gt;</code> with no <code>data-wire-*</code> hooks. The count overlay needs no script either; its accessible name is authored on the host. If a count updates at runtime, the application wraps the host in an <code>aria-live="polite"</code> region.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Variants --&gt;
+&lt;span class="wire-badge"&gt;Confirmed&lt;/span&gt;
+&lt;span class="wire-badge wire-badge--subtle"&gt;Flagged&lt;/span&gt;
+&lt;span class="wire-badge wire-badge--outline"&gt;Draft&lt;/span&gt;
+&lt;span class="wire-badge wire-badge--inverse"&gt;Urgent&lt;/span&gt;
+
+&lt;!-- With a leading dot --&gt;
+&lt;span class="wire-badge"&gt;
+  &lt;span class="wire-badge__dot" aria-hidden="true"&gt;&lt;/span&gt;Accepting new patients
+&lt;/span&gt;
+
+&lt;!-- Count overlay: host carries the accessible name, count is aria-hidden --&gt;
+&lt;span class="wire-badge-anchor"&gt;
+  &lt;button class="wire-button wire-button--icon-only wire-button--ghost"
+          type="button" aria-label="Notifications, 3 unread"&gt;
+    &lt;svg aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;span class="wire-badge wire-badge--count" aria-hidden="true"&gt;3&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Badge is a non-interactive <code>&lt;span&gt;</code>. It needs no role and is not focusable.</li>
+                  <li>Meaning lives in the text label, never in fill or the dot alone. The <code>__dot</code> is decorative (<code>aria-hidden</code>).</li>
+                  <li>Count overlay: put the count in the host control's accessible name (e.g. <code>aria-label="Notifications, 3 unread"</code>) and mark the visual count <code>aria-hidden="true"</code> so it is announced once, unambiguously.</li>
+                  <li>If a count changes at runtime, wrap the host in an <code>aria-live="polite"</code> region.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None. Badge is not interactive and is not in the tab order. The host of a count overlay (a button) is what receives focus and keyboard, per its own component. For an interactive, removable chip, use Tag instead.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th>SC</th><th>How Badge satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.4.1 Use of Color</td><td>Meaning is in the text label, not hue. Grayscale guarantees no color-only information.</td></tr>
+                    <tr><td>1.4.3 Contrast (Minimum)</td><td>Measured: default 17.4:1, subtle 6.7:1, outline 19.2:1, inverse 19.2:1. All clear 4.5:1.</td></tr>
+                    <tr><td>1.4.11 Non-text Contrast</td><td>The outline border and the count's ring are decorative; the label, not the border, conveys the status, so no 3:1 boundary is relied upon.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>A labeled span needs no role. For counts, the host's accessible name carries the value and the visual is <code>aria-hidden</code>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>An inline badge is read as plain text in the flow, e.g. "Accepting new patients".</li>
+                  <li>A count overlay reads through the host: "Notifications, 3 unread, button". The visual "3" is not double-announced because it is <code>aria-hidden</code>.</li>
+                  <li>Do not rely on the dot; a screen reader skips it, so the label must stand alone.</li>
+                  <li>Runtime count changes are announced only inside an <code>aria-live</code> region; the badge itself does not announce.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
+          <span class="wire-doc-pager__direction">All components</span>
+          <span class="wire-doc-pager__title">Back to index</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../#cat-indicators">
+          <span class="wire-doc-pager__direction">In Indicators</span>
+          <span class="wire-doc-pager__title">Badge</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container">
+    <div class="wire-footer__inner">
+      <p class="wire-footer__brand">Preview Design System</p>
+      <p class="wire-footer__tagline">Badge · Stable · Preview Design System</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../js/wire.js" defer></script>
+</body>
+</html>

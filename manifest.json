@@ -178,13 +178,18 @@
       "category": "indicators",
       "class": "wire-badge",
       "file": "css/components/badge.css",
-      "ref": "docs/utilities.html",
+      "ref": "components/badge/index.html",
       "status": "stable",
-      "variants": ["(default)", "subtle", "outline", "inverse"],
-      "elements": ["wire-badge__dot"],
+      "rationale": [
+        { "decision": "Grayscale fill-density variants with a load-bearing text label; status is never carried by color alone", "citation_ids": ["wcag-1.4.1-use-of-color", "ibm-carbon-tag", "material-design-3-badge"] }
+      ],
+      "variants": ["(default)", "subtle", "outline", "inverse", "count"],
+      "elements": ["wire-badge__dot", "wire-badge-anchor"],
       "behaviors": [],
       "slots": ["label"],
-      "notes": "Prior manifest's 'live' variant does not exist."
+      "related": ["tag", "status-pill"],
+      "composable": "Leaf; composes into cards, tables, and list items, and (as --count via wire-badge-anchor) onto a focusable host such as an icon button.",
+      "notes": "Non-interactive. Count overlay (wire-badge--count + wire-badge-anchor): the host carries the accessible name and the visual count is aria-hidden. Prior manifest's 'live' variant does not exist."
     },
     {
       "id": "tag",
