@@ -271,6 +271,19 @@
         modal.setAttribute("aria-modal", "true");
       }
 
+      // Give the dialog an accessible description by pointing aria-describedby
+      // at the body (APG). Authors can override by setting it themselves.
+      const bodyEl = modal.querySelector(".wire-modal__body");
+      if (bodyEl && !modal.getAttribute("aria-describedby")) {
+        if (!bodyEl.id) bodyEl.id = targetId + "-body";
+        modal.setAttribute("aria-describedby", bodyEl.id);
+      }
+
+      // Static: a backdrop click does NOT dismiss (decisions that need an
+      // explicit choice). Esc and the close/cancel controls still close it, so
+      // the dialog is never a keyboard trap (WCAG 2.1.2).
+      const isStatic = modal.hasAttribute("data-wire-modal-static");
+
       let previouslyFocused = null;
 
       function open() {
@@ -278,8 +291,10 @@
         modal.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
-        const first = modal.querySelector(FOCUSABLE);
-        if (first) first.focus();
+        // Initial focus: an explicit [data-wire-modal-autofocus] target (e.g.
+        // the safe action on a destructive confirm), else the first focusable.
+        const target = modal.querySelector("[data-wire-modal-autofocus]") || modal.querySelector(FOCUSABLE);
+        if (target) target.focus();
       }
 
       function close() {
@@ -309,7 +324,7 @@
       toggle.addEventListener("click", open);
 
       modal.querySelectorAll("[data-wire-modal-close]").forEach((btn) => btn.addEventListener("click", close));
-      if (backdrop) backdrop.addEventListener("click", close);
+      if (backdrop && !isStatic) backdrop.addEventListener("click", close);
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && modal.classList.contains("is-open")) close();

@@ -144,7 +144,7 @@
     { "id": "wcag-4.1.2-name-role-value", "tier": "standard",
       "finding": "UI components expose name, role, value programmatically. ARIA on tabs, mega menu, breadcrumb (aria-current=page), pagination, drawer (role=dialog, aria-modal), sidenav.",
       "source": { "org": "W3C WAI", "title": "WCAG 2.2 SC 4.1.2 Name, Role, Value", "year": 2023, "url": "https://www.w3.org/TR/WCAG22/#name-role-value" },
-      "verified_date": null, "verification": "from research.html — pending fidelity check", "supports": ["tabs", "megamenu", "breadcrumb", "pagination", "drawer", "sidenav", "doc-nav"] },
+      "verified_date": null, "verification": "from research.html — pending fidelity check", "supports": ["tabs", "megamenu", "breadcrumb", "pagination", "drawer", "modal", "sidenav", "doc-nav"] },
 
     { "id": "wcag-4.1.3-status-messages", "tier": "standard",
       "finding": "Status changes can be programmatically determined without moving focus. Loading buttons accept aria-busy; toast uses a polite live region; the text-size widget announces the new scale.",
@@ -438,6 +438,12 @@
       "finding": "Common region: elements within a shared boundary are perceived as grouped. Underlies card grouping via a shared bordered/subtle region.",
       "source": { "org": "Gestalt psychology", "title": "Gestalt principle of common region", "year": null, "url": null },
       "verified_date": null, "verification": "UNVERIFIED — pending human review", "supports": ["card", "divider"],
+      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently in research.html. Needs a checkable source before use." },
+
+    { "id": "gestalt-figure-ground", "tier": "convention",
+      "finding": "Figure–ground: a dimmed backdrop pushes the page back and brings the dialog panel forward, focusing attention on the decision. Underlies the modal and drawer scrim.",
+      "source": { "org": "Gestalt psychology", "title": "Gestalt principle of figure–ground", "year": null, "url": null },
+      "verified_date": null, "verification": "UNVERIFIED — pending human review", "supports": ["modal", "drawer"],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently in research.html. Needs a checkable source before use." },
 
     { "id": "laws-of-ux-fitts", "tier": "convention",

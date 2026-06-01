@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tabs — Preview Design System</title>
-  <meta name="description" content="The ARIA tabs pattern: parallel content panels switched one at a time, with full keyboard support and optional URL-hash deep-linking. Usage, specs, and accessibility for the Tabs component.">
+  <title>Modal — Preview Design System</title>
+  <meta name="description" content="A centered dialog that interrupts the page for a decision or a short, focused task. The ARIA dialog pattern: focus trap, Escape, restore-focus, optional static backdrop. Usage, specs, and accessibility for the Modal component.">
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -92,8 +92,8 @@
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/cards.html">Card</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/tabs/">Tabs</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/modal/">Modal</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tabs/">Tabs</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/modal/">Modal</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Drawer</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/divider/">Divider</a></li>
           </ul>
@@ -228,7 +228,7 @@
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-containment">Containment &amp; overlays</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Tabs</span></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Modal</span></li>
         </ol>
       </nav>
 
@@ -236,19 +236,19 @@
       <header class="wire-doc-header">
         <span class="wire-doc-header__eyebrow">Component · Containment &amp; overlays</span>
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Tabs</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
+          <h1 class="wire-doc-header__title">Modal</h1>
+          <span class="wire-doc-header__status"><span class="wire-status-pill">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">Parallel content split into panels the user switches between, one at a time. Built to the ARIA tabs pattern with full keyboard support and optional URL-hash deep-linking. This very page runs on it.</p>
+        <p class="wire-doc-header__lead">A centered dialog that interrupts the page for a single decision or a short, focused task. Built to the ARIA dialog pattern: a scrim dims everything behind it, focus is trapped inside, Escape and the buttons close it, and focus returns to wherever it came from. Reserve it for moments worth blocking on.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/tabs.css</li>
+          <li class="wire-doc-header__meta-item">css/components/modal.css</li>
           <li class="wire-doc-header__meta-item">Organism · requires js/wire.js</li>
         </ul>
       </header>
 
       <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Tabs documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Modal documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -264,29 +264,57 @@
               <!-- ---------- Live demo ---------- -->
               <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
                 <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Click a tab, or focus one and use the arrow keys, Home, and End. The default underline style and the pill variant.</p>
+                <p class="u-text-muted u-mt-sm">Open each dialog and try the keyboard: Tab cycles inside it, Escape closes it, and focus returns to the button you opened it with. The first is a destructive confirm with a static backdrop; the second is a short form in the wider variant.</p>
+
                 <div class="doc-example">
-                  <span class="doc-example__label">Default — underline</span>
-                  <div class="wire-tabs" data-wire-tabs>
-                    <div role="tablist" class="wire-tabs__list" aria-label="Appointment details">
-                      <button role="tab" id="d-tab-1" class="wire-tabs__tab" aria-controls="d-panel-1" aria-selected="true" tabindex="0">Overview</button>
-                      <button role="tab" id="d-tab-2" class="wire-tabs__tab" aria-controls="d-panel-2" aria-selected="false" tabindex="-1">Preparation</button>
-                      <button role="tab" id="d-tab-3" class="wire-tabs__tab" aria-controls="d-panel-3" aria-selected="false" tabindex="-1">After care</button>
+                  <span class="doc-example__label">Destructive confirm — static backdrop</span>
+                  <button class="wire-button wire-button--secondary" data-wire-modal-open="demo-confirm">Cancel appointment</button>
+
+                  <div class="wire-modal" id="demo-confirm" data-wire-modal-static aria-labelledby="demo-confirm-title">
+                    <div class="wire-modal__backdrop"></div>
+                    <div class="wire-modal__panel">
+                      <header class="wire-modal__header">
+                        <h2 class="wire-modal__title" id="demo-confirm-title">Cancel this appointment?</h2>
+                        <button type="button" class="wire-modal__close" data-wire-modal-close aria-label="Close">×</button>
+                      </header>
+                      <div class="wire-modal__body">
+                        <p>Your visit with Dr. Elena Ruiz on Tuesday, June 9 at 10:30 AM will be released. You can rebook anytime, but this slot may be taken by another patient.</p>
+                      </div>
+                      <footer class="wire-modal__footer">
+                        <button type="button" class="wire-button wire-button--ghost" data-wire-modal-close data-wire-modal-autofocus>Keep appointment</button>
+                        <button type="button" class="wire-button" data-wire-modal-close data-wire-toast-trigger data-toast-title="Appointment cancelled" data-toast-body="You can rebook anytime from Find a Doctor.">Yes, cancel it</button>
+                      </footer>
                     </div>
-                    <section role="tabpanel" id="d-panel-1" aria-labelledby="d-tab-1" class="wire-tabs__panel"><p class="u-text-muted">A 30-minute consultation to review your symptoms and history.</p></section>
-                    <section role="tabpanel" id="d-panel-2" aria-labelledby="d-tab-2" class="wire-tabs__panel" hidden><p class="u-text-muted">Bring a photo ID, your insurance card, and a list of current medications.</p></section>
-                    <section role="tabpanel" id="d-panel-3" aria-labelledby="d-tab-3" class="wire-tabs__panel" hidden><p class="u-text-muted">Rest, hydrate, and follow the discharge instructions provided by your care team.</p></section>
                   </div>
                 </div>
+
                 <div class="doc-example u-mt-xl">
-                  <span class="doc-example__label">Pill variant</span>
-                  <div class="wire-tabs wire-tabs--pill" data-wire-tabs>
-                    <div role="tablist" class="wire-tabs__list" aria-label="Results view">
-                      <button role="tab" id="p-tab-1" class="wire-tabs__tab" aria-controls="p-panel-1" aria-selected="true" tabindex="0">List</button>
-                      <button role="tab" id="p-tab-2" class="wire-tabs__tab" aria-controls="p-panel-2" aria-selected="false" tabindex="-1">Calendar</button>
+                  <span class="doc-example__label">Short form — wider variant (<code>--lg</code>)</span>
+                  <button class="wire-button wire-button--secondary" data-wire-modal-open="demo-form">Edit contact details</button>
+
+                  <div class="wire-modal wire-modal--lg" id="demo-form" aria-labelledby="demo-form-title">
+                    <div class="wire-modal__backdrop"></div>
+                    <div class="wire-modal__panel">
+                      <header class="wire-modal__header">
+                        <h2 class="wire-modal__title" id="demo-form-title">Edit contact details</h2>
+                        <button type="button" class="wire-modal__close" data-wire-modal-close aria-label="Close">×</button>
+                      </header>
+                      <div class="wire-modal__body">
+                        <div class="wire-field">
+                          <label class="wire-field__label" for="demo-name">Full name</label>
+                          <input class="wire-input" id="demo-name" type="text" value="Jordan Ellis" data-wire-modal-autofocus>
+                        </div>
+                        <div class="wire-field u-mt-md">
+                          <label class="wire-field__label" for="demo-phone">Mobile phone</label>
+                          <input class="wire-input" id="demo-phone" type="tel" value="(415) 555-0148">
+                          <p class="wire-field__hint">We text appointment reminders 24 hours ahead.</p>
+                        </div>
+                      </div>
+                      <footer class="wire-modal__footer">
+                        <button type="button" class="wire-button wire-button--ghost" data-wire-modal-close>Discard</button>
+                        <button type="button" class="wire-button" data-wire-modal-close data-wire-toast-trigger data-toast-title="Contact details saved">Save changes</button>
+                      </footer>
                     </div>
-                    <section role="tabpanel" id="p-panel-1" aria-labelledby="p-tab-1" class="wire-tabs__panel"><p class="u-text-muted">Results as a scannable list.</p></section>
-                    <section role="tabpanel" id="p-panel-2" aria-labelledby="p-tab-2" class="wire-tabs__panel" hidden><p class="u-text-muted">Results laid out on a calendar.</p></section>
                   </div>
                 </div>
               </section>
@@ -297,45 +325,48 @@
                 <p class="u-text-muted u-mt-sm">A glanceable snapshot. The full contract lives in the Accessibility tab; methodology lives in <a href="../../docs/validation.html">Validation</a>.</p>
                 <div class="u-cluster u-cluster--xs u-mt-md">
                   <span class="wire-badge">Keyboard tested</span>
-                  <span class="wire-badge">Screen reader tested</span>
                   <span class="wire-badge">Contrast verified</span>
                   <span class="wire-badge">APG pattern</span>
                 </div>
-                <p class="u-text-muted u-mt-md"><a href="../../docs/validation.html">See the validation log →</a></p>
+                <p class="u-text-muted u-mt-md">A live screen-reader audit is still pending — that is what keeps Modal at <strong>beta</strong>. It will move to stable after the audit and a third production use. <a href="../../docs/validation.html">See the validation log →</a></p>
               </section>
 
               <!-- ---------- Overview ---------- -->
               <section id="overview" class="doc-section" aria-labelledby="h-overview">
                 <h2 class="wire-h3" id="h-overview">Overview</h2>
-                <p class="u-text-muted u-mt-sm">Tabs divide one subject's content into peer sections and show a single panel at a time. They keep a long page short while keeping every section one click away. Reach for tabs when the sections are of similar importance and the user reads one, not all, at once.</p>
+                <p class="u-text-muted u-mt-sm">A modal stops the page and asks for one thing: a confirmation, a decision, or a small piece of input. Because it traps focus and dims the rest of the screen, it is an interruption — powerful, and worth using sparingly. If the user can keep working around the message, it is not a modal; it is a <a href="../../docs/feedback.html">banner</a> or a <a href="../../docs/feedback.html">toast</a>.</p>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
                 <ul>
-                  <li>Faceting one entity: a provider's Overview / Insurance / Reviews, or this page's Usage / Specs / Accessibility.</li>
-                  <li>Switching a view of the same data, e.g. list versus calendar.</li>
-                  <li>Keeping a small set (a handful) of peer sections compact.</li>
+                  <li>A decision the user must resolve before continuing — confirm a deletion, accept terms, choose between two paths.</li>
+                  <li>A short, self-contained task that benefits from focus — a quick edit, a single-purpose form.</li>
+                  <li>A consequential action that deserves a deliberate, blocking confirmation (pair it with a static backdrop).</li>
                 </ul>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
                 <ul>
-                  <li>For an ordered process, use a <a href="../../docs/feedback.html">Stepper</a>; tabs imply free movement, not sequence.</li>
-                  <li>For moving between pages, use a navigation component, not tabs.</li>
-                  <li>When users must compare content across sections, show it together instead of hiding it behind tabs.</li>
-                  <li>When the count grows large; too many tabs is a sign the content wants a different structure.</li>
+                  <li>For information the user can read and move past — use a banner or callout that doesn't trap them.</li>
+                  <li>For a long form or a multi-step flow — give it its own page or a <a href="../../docs/feedback.html">stepper</a>; a modal that scrolls a lot defeats the focus it promises.</li>
+                  <li>For content paning in from the side or a navigation surface — that is the <a href="../../docs/navigation.html">drawer</a>.</li>
+                  <li>To nag. Every modal spends the user's attention; if it isn't worth blocking on, don't block.</li>
                 </ul>
               </section>
 
               <!-- ---------- Anatomy ---------- -->
               <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A container holds a tablist (the row of tabs) and one panel per tab. Each tab points at its panel; each panel back at its tab.</p>
+                <p class="u-text-muted u-mt-sm">A fixed overlay holds a dimmed backdrop and a centered panel. The panel stacks a header (title + close), a scrollable body, and a footer of actions.</p>
                 <table class="doc-spec-table">
                   <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
                   <tbody>
-                    <tr><td>Container</td><td><code>.wire-tabs</code></td><td>Wraps the tablist and panels; carries <code>data-wire-tabs</code> (and optionally <code>data-wire-tabs-hash</code>).</td></tr>
-                    <tr><td>Tablist</td><td><code>.wire-tabs__list</code></td><td><code>role="tablist"</code>; the row of tabs with the underline rail.</td></tr>
-                    <tr><td>Tab</td><td><code>.wire-tabs__tab</code></td><td>A <code>&lt;button role="tab"&gt;</code> with <code>aria-controls</code> pointing at its panel.</td></tr>
-                    <tr><td>Panel</td><td><code>.wire-tabs__panel</code></td><td>A <code>role="tabpanel"</code> shown only when its tab is selected (<code>.is-active</code>).</td></tr>
+                    <tr><td>Root</td><td><code>.wire-modal</code></td><td>Fixed, full-viewport overlay; <code>role="dialog"</code> + <code>aria-modal</code> set by JS. Carries <code>id</code> and <code>aria-labelledby</code>.</td></tr>
+                    <tr><td>Backdrop</td><td><code>.wire-modal__backdrop</code></td><td>The scrim that dims the page. Clicking it closes the dialog unless it is static.</td></tr>
+                    <tr><td>Panel</td><td><code>.wire-modal__panel</code></td><td>The dialog surface — the visible card that holds the content.</td></tr>
+                    <tr><td>Header</td><td><code>.wire-modal__header</code></td><td>Title and the close button, on a divider.</td></tr>
+                    <tr><td>Title</td><td><code>.wire-modal__title</code></td><td>Names the dialog; referenced by <code>aria-labelledby</code>.</td></tr>
+                    <tr><td>Body</td><td><code>.wire-modal__body</code></td><td>The message or form. Scrolls if tall; referenced by <code>aria-describedby</code> (auto-wired).</td></tr>
+                    <tr><td>Footer</td><td><code>.wire-modal__footer</code></td><td>Right-aligned action buttons on a subtle surface.</td></tr>
+                    <tr><td>Close</td><td><code>.wire-modal__close</code></td><td>The × control; a 44px target carrying <code>data-wire-modal-close</code>.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -343,13 +374,13 @@
               <!-- ---------- Types & variants ---------- -->
               <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
-                <p class="u-text-muted u-mt-sm">One structural type (horizontal tabs), with two visual treatments. There is no vertical variant; all current uses are horizontal.</p>
+                <p class="u-text-muted u-mt-sm">One structural type — a centered dialog — at two widths, with one behavior modifier. Width is a structural choice, not decoration.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Variant</th><th>Selector</th><th>Result</th></tr></thead>
+                  <thead><tr><th>Variant</th><th>Selector / hook</th><th>Result</th></tr></thead>
                   <tbody>
-                    <tr><td>Default</td><td><code>.wire-tabs</code></td><td>Underlined tabs; the selected tab shows an accent underline and bolder label.</td></tr>
-                    <tr><td>Pill</td><td><code>.wire-tabs--pill</code></td><td>Tabs sit in a muted track; the selected tab is a filled pill with a soft shadow.</td></tr>
-                    <tr><td>Sticky</td><td><code>.wire-tabs--sticky</code></td><td>Pins the tablist below the header on scroll. Documentation chrome, defined in <code>doc-shell.css</code>.</td></tr>
+                    <tr><td>Default</td><td><code>.wire-modal</code></td><td>Panel up to 32rem — confirmations and short messages.</td></tr>
+                    <tr><td>Wide</td><td><code>.wire-modal--lg</code></td><td>Panel up to 48rem — short forms with a couple of fields.</td></tr>
+                    <tr><td>Static backdrop</td><td><code>data-wire-modal-static</code></td><td>A backdrop click no longer dismisses, so a consequential decision needs an explicit choice. Escape and the buttons still close it.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -359,45 +390,38 @@
                 <h2 class="wire-h3" id="h-behaviors">Behaviors</h2>
 
                 <h3 class="wire-h4" id="h-states">States</h3>
-                <p class="u-text-muted u-mt-sm">A tab is <strong>default</strong>, <strong>hover</strong> (label darkens), or <strong>selected</strong> (accent underline, bolder label, its panel shown). Selection is conveyed by the underline and weight, not color alone. For the visual treatment and tokens, see the <a href="#specs">Specs tab</a>.</p>
+                <p class="u-text-muted u-mt-sm">A modal is <strong>closed</strong> (hidden, inert) or <strong>open</strong> (<code>.is-open</code> — the scrim fades in and the panel rises). There is no in-between; it is shown or it is not. For the visual treatment and tokens, see the <a href="#specs">Specs tab</a>.</p>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-interactions">Interactions</h3>
                 <h4 class="wire-h5" id="h-mouse">Mouse</h4>
-                <p class="u-text-muted u-mt-sm">Clicking a tab selects it and reveals its panel. The previously open panel is hidden.</p>
+                <p class="u-text-muted u-mt-sm">A control carrying <code>data-wire-modal-open="id"</code> opens the dialog. Clicking the backdrop closes it — unless the dialog is static — and so do the ×, and any footer button carrying <code>data-wire-modal-close</code>.</p>
                 <h4 class="wire-h5 u-mt-lg" id="h-kbd-usage">Keyboard</h4>
-                <p class="u-text-muted u-mt-sm">Tab moves focus to the selected tab, then the arrow keys move between tabs and activate them (automatic activation, wrapping at the ends); Home and End jump to the first and last; Tab again moves into the panel. Full contract in the <a href="#accessibility">Accessibility tab</a>.</p>
+                <p class="u-text-muted u-mt-sm">While open, Tab and Shift + Tab cycle through the dialog's controls and never leave it; Escape closes it; and on close, focus returns to the control that opened it. The full contract is in the <a href="#accessibility">Accessibility tab</a>.</p>
 
-                <h3 class="wire-h4 u-mt-xl" id="h-deeplink">Deep-linking</h3>
-                <p class="u-text-muted u-mt-sm">Add <code>data-wire-tabs-hash</code> and the active tab syncs to the URL hash via the History API, so a tab is linkable and survives the browser's back and forward buttons. This page uses it (note how the URL changes as you switch tabs above).</p>
+                <h3 class="wire-h4 u-mt-xl" id="h-focus-summary">Focus &amp; the page behind</h3>
+                <p class="u-text-muted u-mt-sm">Opening locks the body's scroll so the page behind can't move, and initial focus lands on the dialog's <code>data-wire-modal-autofocus</code> target — on a destructive confirm, the <em>safe</em> action — or the first control otherwise.</p>
               </section>
 
               <!-- ---------- Composability / slots ---------- -->
               <section id="composability" class="doc-section" aria-labelledby="h-composability">
                 <h2 class="wire-h3" id="h-composability">Composability</h2>
                 <ul>
-                  <li><strong>Tab + panel pairs</strong> — each tab carries a short label and is wired to exactly one panel by <code>aria-controls</code> / <code>aria-labelledby</code> and matching ids.</li>
-                  <li><strong>Panel content</strong> — any content: prose, tables, even another component. (This page's panels hold whole documentation layouts.)</li>
-                  <li><strong>Wiring</strong> — put <code>data-wire-tabs</code> on the container; add <code>data-wire-tabs-hash</code> for deep-linking. Include <code>js/wire.js</code>.</li>
+                  <li><strong>Trigger</strong> — any button with <code>data-wire-modal-open="&lt;modalId&gt;"</code>. The modal markup can live anywhere on the page.</li>
+                  <li><strong>Title slot</strong> — <code>.wire-modal__title</code> with an <code>id</code> the root points at via <code>aria-labelledby</code>.</li>
+                  <li><strong>Body slot</strong> — any content: a sentence, a form, a short list. It scrolls independently if tall.</li>
+                  <li><strong>Footer slot</strong> — the action buttons. End with the primary action; put the safe / cancel action first and give it <code>data-wire-modal-autofocus</code> on destructive dialogs.</li>
+                  <li><strong>Chaining</strong> — a footer button can both close the modal and fire a <a href="../../docs/feedback.html">toast</a> (<code>data-wire-toast-trigger</code>) to confirm what happened, as the demos do.</li>
                 </ul>
               </section>
 
               <!-- ---------- In context ---------- -->
               <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
                 <h2 class="wire-h3" id="h-in-context">In context</h2>
-                <p class="u-text-muted u-mt-sm">Facets of a single provider profile.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Provider profile</span>
-                  <div class="wire-tabs" data-wire-tabs>
-                    <div role="tablist" class="wire-tabs__list" aria-label="Dr. Elena Ruiz">
-                      <button role="tab" id="ic-tab-1" class="wire-tabs__tab" aria-controls="ic-panel-1" aria-selected="true" tabindex="0">About</button>
-                      <button role="tab" id="ic-tab-2" class="wire-tabs__tab" aria-controls="ic-panel-2" aria-selected="false" tabindex="-1">Insurance</button>
-                      <button role="tab" id="ic-tab-3" class="wire-tabs__tab" aria-controls="ic-panel-3" aria-selected="false" tabindex="-1">Reviews</button>
-                    </div>
-                    <section role="tabpanel" id="ic-panel-1" aria-labelledby="ic-tab-1" class="wire-tabs__panel"><p class="u-text-muted">Board-certified cardiologist with 14 years of practice. Accepting new patients.</p></section>
-                    <section role="tabpanel" id="ic-panel-2" aria-labelledby="ic-tab-2" class="wire-tabs__panel" hidden><p class="u-text-muted">In-network for most major plans, including Medicare and Medicaid.</p></section>
-                    <section role="tabpanel" id="ic-panel-3" aria-labelledby="ic-tab-3" class="wire-tabs__panel" hidden><p class="u-text-muted">4.8 out of 5 across 212 verified patient reviews.</p></section>
-                  </div>
-                </div>
+                <p class="u-text-muted u-mt-sm">A confirmation step inside a real appointment flow, alongside a stepper, banner, toast, and skeleton.</p>
+                <ul>
+                  <li><a href="../../pages/hospital-appointment.html"><code>hospital-appointment.html</code></a> — the modal confirms a booking before it commits.</li>
+                  <li><a href="../../pages/hospital-settings.html"><code>hospital-settings.html</code></a> — a settings edit opens in a form modal.</li>
+                </ul>
               </section>
 
               <!-- ---------- Do / Don't ---------- -->
@@ -406,13 +430,13 @@
                 <div class="doc-do-dont">
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
-                    <p class="u-text-default">Peer sections of one subject: <strong>About · Insurance · Reviews</strong>.</p>
-                    <p class="u-text-muted u-mt-md">The user dips into whichever section they need, in any order.</p>
+                    <p class="u-text-default">Block on a real decision: <strong>"Cancel this appointment?"</strong></p>
+                    <p class="u-text-muted u-mt-md">A consequence the user should weigh before continuing — worth trapping focus for.</p>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
-                    <p class="u-text-default">A sequence: <strong>Your info → Payment → Confirm</strong>.</p>
-                    <p class="u-text-muted u-mt-md">Ordered steps belong in a stepper; tabs imply you can jump around freely.</p>
+                    <p class="u-text-default">Interrupt to announce: <strong>"Your changes were saved."</strong></p>
+                    <p class="u-text-muted u-mt-md">Nothing to decide — a toast confirms it without stealing focus.</p>
                   </div>
                 </div>
               </section>
@@ -421,10 +445,10 @@
               <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
                 <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
                 <ul>
-                  <li>Keep labels to a word or two; they sit in a row and must stay scannable.</li>
-                  <li>Make labels parallel in form ("About", "Insurance", "Reviews"), not a mix of nouns and verbs.</li>
-                  <li>Front-load the distinguishing word; avoid a shared prefix on every tab.</li>
-                  <li>Order tabs by expected use, with the most common first (it is selected by default).</li>
+                  <li>Title the dialog with the decision, ideally as a question: "Cancel this appointment?" beats "Confirm".</li>
+                  <li>State the consequence in the body plainly — what happens, and whether it can be undone.</li>
+                  <li>Label buttons with the action, not "OK / Cancel": "Yes, cancel it" / "Keep appointment". The user should be able to act on the buttons alone.</li>
+                  <li>Keep it short. If the body needs to scroll much, the content wants a page, not a modal.</li>
                 </ul>
               </section>
 
@@ -432,10 +456,10 @@
               <section id="composition-patterns" class="doc-section" aria-labelledby="h-composition-patterns">
                 <h2 class="wire-h3" id="h-composition-patterns">Composition patterns</h2>
                 <ul>
-                  <li><strong>Entity detail</strong> — facets of a provider, program, or location page.</li>
-                  <li><strong>Component docs</strong> — Usage / Specs / Accessibility, deep-linked with <code>data-wire-tabs-hash</code>.</li>
-                  <li><strong>View switch</strong> — list versus calendar versus map of the same results.</li>
-                  <li><strong>Settings</strong> — grouping a small set of preference panels.</li>
+                  <li><strong>Confirm</strong> — a destructive or consequential action, static backdrop, safe action focused.</li>
+                  <li><strong>Quick edit</strong> — a short form in the wide variant, saved or discarded.</li>
+                  <li><strong>Acknowledge</strong> — terms or a notice the user must accept before proceeding.</li>
+                  <li><strong>Choose</strong> — a fork in a flow presented as two clear actions.</li>
                 </ul>
               </section>
 
@@ -443,9 +467,10 @@
               <section id="related" class="doc-section" aria-labelledby="h-related">
                 <h2 class="wire-h3" id="h-related">Related</h2>
                 <ul>
-                  <li><a href="../accordion/">Accordion</a> — disclosure when sections can be open at once, or on very narrow screens.</li>
-                  <li><a href="../../docs/feedback.html">Stepper</a> — for an ordered, sequential flow.</li>
-                  <li><a href="../../docs/navigation.html">Navigation family</a> — for moving between pages rather than within one.</li>
+                  <li><a href="../../docs/navigation.html">Drawer</a> — the side-anchored companion; same dialog mechanics, different geometry.</li>
+                  <li><a href="../../docs/feedback.html">Toast</a> — to confirm something without blocking.</li>
+                  <li><a href="../../docs/feedback.html">Banner</a> — for a persistent message the user can read past.</li>
+                  <li><a href="../../docs/feedback.html">Stepper</a> — when the task is a sequence, not a single decision.</li>
                   <li><a href="../">All components</a> — the full library.</li>
                 </ul>
               </section>
@@ -455,11 +480,11 @@
                 <h2 class="wire-h3" id="h-references">References</h2>
                 <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
                 <ul>
-                  <li><strong>Standard</strong> — W3C WAI, ARIA Authoring Practices Guide: Tabs Pattern: roving tabindex, arrow / Home / End keys, <code>aria-selected</code>, <code>aria-controls</code>. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">w3.org</a></li>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.1.1 Keyboard &amp; SC 4.1.2 Name, Role, Value: the tab/panel relationship and selected state are exposed and operable. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#keyboard">w3.org</a></li>
-                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.4.7 Focus Visible: the focused tab shows the shared 2px ring. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#focus-visible">w3.org</a></li>
-                  <li><strong>Empirical</strong> — Nielsen Norman Group, Tabs, Used Right: tabs suit parallel, peer content viewed one panel at a time; the selected tab must be clearly distinguished. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/tabs-used-right/">nngroup.com</a></li>
-                  <li><strong>Convention</strong> — Laws of UX (Jon Yablonski), Jakob's Law: users expect tabs to work the way tabs work elsewhere, so follow the conventional interaction. <em>Unverified — drafted, pending review.</em> <a href="https://lawsofux.com/jakobs-law/">lawsofux.com</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, ARIA Authoring Practices Guide: Dialog (Modal) Pattern — <code>role="dialog"</code>, <code>aria-modal</code>, labelled by its title, focus trapped and restored. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.1.2 No Keyboard Trap: the focus trap is the intentional dialog pattern — Escape and the close controls always release focus to the trigger. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#no-keyboard-trap">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the dialog exposes its name (title), role, and modal state to assistive technology. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group, Modal &amp; Nonmodal Dialogs: When (&amp; When Not) to Use Them: reserve modals for tasks that genuinely require focus; overuse interrupts and frustrates. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/modal-nonmodal-dialog/">nngroup.com</a></li>
+                  <li><strong>Convention</strong> — Gestalt figure–ground: the dimmed backdrop pushes the page back and brings the panel forward, focusing attention on the decision. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/gestalt-figure-ground/">nngroup.com</a></li>
                 </ul>
               </section>
 
@@ -501,14 +526,15 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
                   <tbody>
-                    <tr><td><code>--color-border</code></td><td>The tablist's underline rail.</td></tr>
-                    <tr><td><code>--color-text-muted</code></td><td>Resting tab label.</td></tr>
-                    <tr><td><code>--color-text</code></td><td>Hover and selected label.</td></tr>
-                    <tr><td><code>--color-accent</code></td><td>Selected tab's underline.</td></tr>
-                    <tr><td><code>--border-md</code> / <code>--border-thin</code></td><td>Selected underline weight / rail.</td></tr>
-                    <tr><td><code>--space-sm</code> · <code>--space-md</code> · <code>--space-2xs</code></td><td>Tab padding, gap.</td></tr>
-                    <tr><td><code>--text-md</code></td><td>Tab label type.</td></tr>
-                    <tr><td><code>--color-bg-muted</code> · <code>--color-bg</code> · <code>--shadow-xs</code> · <code>--radius-pill</code></td><td>Pill variant track, selected fill, shadow, shape.</td></tr>
+                    <tr><td><code>--color-overlay</code></td><td>The backdrop scrim.</td></tr>
+                    <tr><td><code>--color-bg</code> · <code>--color-bg-subtle</code></td><td>Panel surface; footer surface.</td></tr>
+                    <tr><td><code>--color-border</code></td><td>Header and footer dividers.</td></tr>
+                    <tr><td><code>--radius-lg</code></td><td>Panel corner radius.</td></tr>
+                    <tr><td><code>--shadow-lg</code></td><td>Panel lift off the scrim.</td></tr>
+                    <tr><td><code>--z-modal</code></td><td>Stacking above page chrome and toasts' opener.</td></tr>
+                    <tr><td><code>--space-lg</code> · <code>--space-xl</code> · <code>--space-md</code></td><td>Header / body / footer padding; overlay inset.</td></tr>
+                    <tr><td><code>--text-xl</code> · <code>--text-md</code></td><td>Title type; body type.</td></tr>
+                    <tr><td><code>--duration-base</code> · <code>--ease-out</code></td><td>Scrim fade and panel rise timing.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -519,12 +545,13 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Property</th><th>Value</th></tr></thead>
                   <tbody>
-                    <tr><td>Tab min height (default)</td><td>2.75rem (44px) — meets the enhanced target floor.</td></tr>
-                    <tr><td>Tab min height (pill)</td><td>2.25rem (36px) — clears the 24px AA floor.</td></tr>
-                    <tr><td>Tab padding</td><td><code>--space-sm</code> block · <code>--space-md</code> inline.</td></tr>
-                    <tr><td>Rail</td><td><code>--border-thin</code> bottom rule on the tablist; the selected tab's <code>--border-md</code> underline overlaps it.</td></tr>
-                    <tr><td>Container</td><td><code>display: flex; flex-direction: column;</code> gap <code>--space-xl</code> between the tablist and the panel.</td></tr>
-                    <tr><td>Panel</td><td><code>display: none</code> until <code>.is-active</code>, then <code>block</code>.</td></tr>
+                    <tr><td>Panel width (default)</td><td><code>100%</code> up to <code>max-inline-size: 32rem</code>.</td></tr>
+                    <tr><td>Panel width (<code>--lg</code>)</td><td><code>max-inline-size: 48rem</code>.</td></tr>
+                    <tr><td>Panel max height</td><td><code>calc(100vh - --space-2xl)</code>; the body scrolls within.</td></tr>
+                    <tr><td>Overlay</td><td><code>position: fixed; inset: 0;</code> flex-centered, <code>--space-md</code> inset, <code>z-index: --z-modal</code>.</td></tr>
+                    <tr><td>Header / body / footer padding</td><td><code>--space-lg</code> block · <code>--space-xl</code> inline.</td></tr>
+                    <tr><td>Close target</td><td><code>2.75rem × 2.75rem</code> (44px) — clears the enhanced target floor.</td></tr>
+                    <tr><td>Panel composition</td><td><code>display: flex; flex-direction: column;</code> with the body as the scroll region.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -536,10 +563,10 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
                   <tbody>
-                    <tr><td>Default</td><td>—</td><td>Muted label, transparent underline.</td></tr>
-                    <tr><td>Hover</td><td><code>:hover</code></td><td>Label darkens to <code>--color-text</code>.</td></tr>
-                    <tr><td>Selected</td><td><code>aria-selected="true"</code></td><td>Accent underline, <code>--color-text</code> label, semibold; its panel becomes <code>.is-active</code>. Pill: filled <code>--color-bg</code> with <code>--shadow-xs</code> instead of an underline.</td></tr>
-                    <tr><td>Focus</td><td><code>:focus-visible</code></td><td>The shared 2px focus ring at 2px offset.</td></tr>
+                    <tr><td>Closed</td><td>—</td><td><code>visibility: hidden; opacity: 0;</code> — out of the accessibility tree and not interactive.</td></tr>
+                    <tr><td>Open</td><td><code>.is-open</code></td><td><code>visibility: visible; opacity: 1;</code> the scrim fades in and the panel rises <code>0.5rem</code> into place.</td></tr>
+                    <tr><td>Reduced motion</td><td><code>prefers-reduced-motion</code></td><td>The rise is dropped; the dialog simply appears.</td></tr>
+                    <tr><td>Focus (controls)</td><td><code>:focus-visible</code></td><td>The shared 2px focus ring on the close, fields, and footer buttons.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -547,26 +574,34 @@
               <!-- ---------- JavaScript ---------- -->
               <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
                 <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
-                <p class="u-text-muted u-mt-sm">Tabs <strong>require</strong> <code>js/wire.js</code>; without it no panel shows and the keyboard model is absent. This is the system's one JS-dependent disclosure (Accordion, by contrast, is native).</p>
+                <p class="u-text-muted u-mt-sm">Modal <strong>requires</strong> <code>js/wire.js</code>. Without it the dialog stays <code>visibility: hidden</code> and the trigger does nothing — there is no CSS-only fallback, so don't place essential content only inside a modal.</p>
                 <ul>
-                  <li><strong><code>data-wire-tabs</code></strong> — <code>initTabs</code> manages the roving tabindex, <code>aria-selected</code>, and the active panel, and binds the arrow / Home / End keys with automatic activation.</li>
-                  <li><strong><code>data-wire-tabs-hash</code></strong> — syncs the active tab to the URL hash via <code>history.replaceState</code>, makes a tab deep-linkable, and listens for <code>hashchange</code> so back / forward work.</li>
-                  <li>The author supplies the ARIA roles and ids; the script supplies the dynamic state.</li>
+                  <li><strong><code>data-wire-modal-open="&lt;modalId&gt;"</code></strong> — on the trigger; <code>initModal</code> opens that dialog, locks body scroll, sets <code>role="dialog"</code> + <code>aria-modal</code>, and moves focus inside.</li>
+                  <li><strong><code>data-wire-modal-close</code></strong> — on the ×, the cancel button, or any control that should dismiss.</li>
+                  <li><strong><code>data-wire-modal-static</code></strong> — on the root; suppresses backdrop-click dismissal. Escape and close controls still work.</li>
+                  <li><strong><code>data-wire-modal-autofocus</code></strong> — on the control that should receive initial focus; falls back to the first focusable element.</li>
+                  <li><code>aria-describedby</code> is wired to the body automatically if the author hasn't set it.</li>
                 </ul>
               </section>
 
               <!-- ---------- Code ---------- -->
               <section id="code" class="doc-section" aria-labelledby="h-code">
                 <h2 class="wire-h3" id="h-code">Code</h2>
-                <pre class="doc-snippet"><code>&lt;div class="wire-tabs" data-wire-tabs&gt;            &lt;!-- + data-wire-tabs-hash to deep-link --&gt;
-  &lt;div role="tablist" class="wire-tabs__list" aria-label="Appointment details"&gt;
-    &lt;button role="tab" id="t1" class="wire-tabs__tab"
-            aria-controls="p1" aria-selected="true" tabindex="0"&gt;Overview&lt;/button&gt;
-    &lt;button role="tab" id="t2" class="wire-tabs__tab"
-            aria-controls="p2" aria-selected="false" tabindex="-1"&gt;Preparation&lt;/button&gt;
+                <pre class="doc-snippet"><code>&lt;button class="wire-button" data-wire-modal-open="confirm"&gt;Cancel appointment&lt;/button&gt;
+
+&lt;div class="wire-modal" id="confirm" data-wire-modal-static aria-labelledby="confirm-title"&gt;
+  &lt;div class="wire-modal__backdrop"&gt;&lt;/div&gt;
+  &lt;div class="wire-modal__panel"&gt;
+    &lt;header class="wire-modal__header"&gt;
+      &lt;h2 class="wire-modal__title" id="confirm-title"&gt;Cancel this appointment?&lt;/h2&gt;
+      &lt;button class="wire-modal__close" data-wire-modal-close aria-label="Close"&gt;×&lt;/button&gt;
+    &lt;/header&gt;
+    &lt;div class="wire-modal__body"&gt;&lt;p&gt;This releases your 10:30 AM slot.&lt;/p&gt;&lt;/div&gt;
+    &lt;footer class="wire-modal__footer"&gt;
+      &lt;button class="wire-button wire-button--ghost" data-wire-modal-close data-wire-modal-autofocus&gt;Keep appointment&lt;/button&gt;
+      &lt;button class="wire-button" data-wire-modal-close&gt;Yes, cancel it&lt;/button&gt;
+    &lt;/footer&gt;
   &lt;/div&gt;
-  &lt;section role="tabpanel" id="p1" aria-labelledby="t1" class="wire-tabs__panel"&gt;…&lt;/section&gt;
-  &lt;section role="tabpanel" id="p2" aria-labelledby="t2" class="wire-tabs__panel" hidden&gt;…&lt;/section&gt;
 &lt;/div&gt;
 &lt;script src="js/wire.js" defer&gt;&lt;/script&gt;</code></pre>
               </section>
@@ -598,12 +633,23 @@
               <!-- ---------- ARIA & semantics ---------- -->
               <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
                 <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
-                <p class="u-text-muted u-mt-sm">The author provides the roles and the wiring; <code>initTabs</code> manages the dynamic attributes.</p>
+                <p class="u-text-muted u-mt-sm">The author names the dialog; <code>initModal</code> sets the dynamic dialog attributes on open.</p>
                 <ul>
-                  <li><code>role="tablist"</code> on <code>.wire-tabs__list</code>, with an <code>aria-label</code> naming the set.</li>
-                  <li><code>role="tab"</code> on each tab (a native <code>&lt;button&gt;</code>), with an <code>id</code>, <code>aria-controls</code> pointing at its panel, and <code>aria-selected</code>.</li>
-                  <li><code>role="tabpanel"</code> on each panel, with an <code>id</code>, <code>aria-labelledby</code> pointing back at its tab, and <code>hidden</code> while inactive.</li>
-                  <li>Roving tabindex: the selected tab is <code>tabindex="0"</code>, the rest <code>tabindex="-1"</code>, so Tab lands on one tab and arrows move within. <code>initTabs</code> maintains this.</li>
+                  <li><code>role="dialog"</code> and <code>aria-modal="true"</code> are set on the root, so assistive tech treats the panel as a modal and the page behind as inert.</li>
+                  <li><code>aria-labelledby</code> points at <code>.wire-modal__title</code>, giving the dialog its accessible name.</li>
+                  <li><code>aria-describedby</code> points at <code>.wire-modal__body</code> (wired automatically), giving the dialog its description.</li>
+                  <li>The trigger gets <code>aria-expanded</code> reflecting the open state.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Focus management ---------- -->
+              <section id="focus" class="doc-section" aria-labelledby="h-focus">
+                <h2 class="wire-h3" id="h-focus">Focus management</h2>
+                <ul>
+                  <li><strong>Initial focus</strong> — moves into the dialog on open: to the <code>data-wire-modal-autofocus</code> control if present (the safe action on a destructive confirm), else the first focusable element.</li>
+                  <li><strong>Trap</strong> — Tab and Shift + Tab cycle within the dialog and never reach the page behind it, for as long as it is open.</li>
+                  <li><strong>Return</strong> — on close, focus returns to the control that opened the dialog, so keyboard users don't lose their place.</li>
+                  <li><strong>Scroll lock</strong> — the body's scroll is frozen while the dialog is open.</li>
                 </ul>
               </section>
 
@@ -613,25 +659,26 @@
                 <table class="doc-spec-table">
                   <thead><tr><th>Key</th><th>Action</th></tr></thead>
                   <tbody>
-                    <tr><td><kbd>Tab</kbd></td><td>Into the tablist (lands on the selected tab); again, out to the active panel.</td></tr>
-                    <tr><td><kbd>&larr;</kbd> / <kbd>&rarr;</kbd></td><td>Move to the previous / next tab and activate it, wrapping at the ends (automatic activation).</td></tr>
-                    <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Move to and activate the first / last tab.</td></tr>
+                    <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>Move to the next / previous control, wrapping within the dialog (focus trap).</td></tr>
+                    <tr><td><kbd>Esc</kbd></td><td>Closes the dialog and returns focus to the trigger — even when the backdrop is static.</td></tr>
+                    <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates the focused button (native).</td></tr>
                   </tbody>
                 </table>
-                <p class="u-text-muted u-mt-md">Automatic activation is appropriate here because the panels are static and cheap to show. If a panel were expensive to load, the APG recommends manual activation (arrows move focus; Enter or Space activates).</p>
+                <p class="u-text-muted u-mt-md">A static backdrop suppresses only the <em>click-outside-to-close</em> shortcut. Escape and the explicit close / cancel controls always work, so the dialog is never a keyboard trap (SC 2.1.2).</p>
               </section>
 
               <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Tabs satisfies it</th></tr></thead>
+                  <thead><tr><th>SC</th><th>How Modal satisfies it</th></tr></thead>
                   <tbody>
-                    <tr><td>1.4.1 Use of Color</td><td>The selected tab is marked by an underline and bolder weight, not color alone. Grayscale throughout.</td></tr>
-                    <tr><td>2.1.1 Keyboard</td><td>The full APG keyboard model via <code>initTabs</code>. Note: this requires <code>js/wire.js</code>.</td></tr>
-                    <tr><td>2.4.7 Focus Visible</td><td>The focused tab shows the shared 2px ring at 2px offset.</td></tr>
-                    <tr><td>2.5.8 Target Size (Minimum) · AA</td><td>Default tab 44px, pill tab 36px — both clear 24 × 24.</td></tr>
-                    <tr><td>4.1.2 Name, Role, Value</td><td>Native button + <code>role="tab"</code>; the selected value is exposed via <code>aria-selected</code> and the tab/panel relationship via <code>aria-controls</code> / <code>aria-labelledby</code>.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>State and emphasis come from weight, the scrim, and layout, not color. Grayscale throughout.</td></tr>
+                    <tr><td>2.1.2 No Keyboard Trap</td><td>The trap is the intentional dialog pattern; Escape and the close controls always release focus. Requires <code>js/wire.js</code>.</td></tr>
+                    <tr><td>2.4.3 Focus Order</td><td>Initial focus moves into the dialog; on close it returns to the opener. Order follows source order.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>Every control inside shows the shared 2px ring at 2px offset.</td></tr>
+                    <tr><td>2.5.8 Target Size (Minimum) · AA</td><td>The × close target is 44 × 44 — well past the 24px floor.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td><code>role="dialog"</code> + <code>aria-modal</code>; named by its title, described by its body.</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -640,10 +687,10 @@
               <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
                 <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
                 <ul>
-                  <li>A tab announces as "Overview, tab, selected, 1 of 3" (label, role, state, position).</li>
-                  <li>The tablist is announced as a labeled group, so the set has context.</li>
-                  <li>Activating a tab announces the new selection; the panel is reached via Tab and is associated by <code>aria-labelledby</code>.</li>
-                  <li>Because the component is JS-dependent, confirm <code>js/wire.js</code> is present; without it a screen reader finds buttons with no panels.</li>
+                  <li>On open, the dialog announces with its name (the title) and description (the body); <code>aria-modal</code> keeps the reader within it.</li>
+                  <li>Because focus moves in, the user lands inside the dialog rather than being left behind it.</li>
+                  <li>Because the component is JS-dependent, confirm <code>js/wire.js</code> is present; without it the dialog never opens.</li>
+                  <li><strong>Pending:</strong> a live NVDA + VoiceOver pass is not yet logged. Until it is, treat the screen-reader behavior as expected-but-unverified — this is why Modal is <strong>beta</strong>.</li>
                 </ul>
               </section>
 
@@ -654,6 +701,7 @@
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#focus">Focus management</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
@@ -667,9 +715,9 @@
 
       <!-- Pager -->
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../accordion/">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../tabs/">
           <span class="wire-doc-pager__direction">In Containment &amp; overlays</span>
-          <span class="wire-doc-pager__title">Accordion</span>
+          <span class="wire-doc-pager__title">Tabs</span>
         </a>
         <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../">
           <span class="wire-doc-pager__direction">All components</span>
@@ -686,7 +734,7 @@
   <div class="u-container">
     <div class="wire-footer__inner">
       <p class="wire-footer__brand">Preview Design System</p>
-      <p class="wire-footer__tagline">Tabs · Stable · Preview Design System</p>
+      <p class="wire-footer__tagline">Modal · Beta · Preview Design System</p>
     </div>
   </div>
 </footer>
