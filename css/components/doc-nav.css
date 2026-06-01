@@ -327,7 +327,8 @@
   padding-inline-end: var(--space-sm);
 
   font-family: var(--font-sans);
-  font-size: var(--text-sm);
+  /* 16px (not --text-sm/14px): iOS Safari auto-zooms on focus below 16px. */
+  font-size: var(--text-md);
   color: var(--color-text);
 
   background-color: var(--color-bg-muted);
