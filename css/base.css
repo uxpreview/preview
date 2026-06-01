@@ -137,6 +137,13 @@ p {
   margin-block-start: var(--space-md);
 }
 
+/* When prose is grouped into <section>s (e.g. Principles), the direct-child
+   flow rules above don't reach inside. Restore even spacing between a section's
+   heading and its body, and between its blocks. */
+.wire-prose section > * + * {
+  margin-block-start: var(--space-md);
+}
+
 /* ---------- Links ---------- */
 a {
   color: var(--color-text);
