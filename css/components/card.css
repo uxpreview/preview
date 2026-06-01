@@ -51,6 +51,40 @@
 .wire-card--linked:hover {
   --card-border: var(--color-text);
 }
+/* The whole-card link (or a focusable linked card) needs a visible focus ring;
+   the card's own overflow doesn't clip its outline. */
+.wire-card--linked:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* ---------- Horizontal layout (media beside body) ----------
+   For list rows / search results. The media becomes a fixed-proportion column
+   that fills the card height; below the small breakpoint it stacks like a
+   normal card. */
+.wire-card--horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+.wire-card--horizontal > .wire-card__media {
+  flex: 0 0 35%;
+}
+.wire-card--horizontal > .wire-card__media > .wire-media {
+  block-size: 100%;
+  aspect-ratio: auto;
+}
+@media (max-width: 30em) {
+  .wire-card--horizontal {
+    flex-direction: column;
+  }
+  .wire-card--horizontal > .wire-card__media {
+    flex-basis: auto;
+  }
+  .wire-card--horizontal > .wire-card__media > .wire-media {
+    block-size: auto;
+    aspect-ratio: var(--media-ratio);
+  }
+}
 
 .wire-card__media {
   margin: 0;

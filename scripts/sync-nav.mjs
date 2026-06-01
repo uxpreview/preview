@@ -38,6 +38,7 @@ function targetList() {
     'components/tabs/index.html',
     'components/modal/index.html',
     'components/drawer/index.html',
+    'components/cards/index.html',
     'foundations/index.html', 'patterns/index.html',
     'templates/index.html', 'experiences/index.html',
   ];
@@ -66,6 +67,7 @@ const CURRENT = {
   'components/tabs/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/tabs/' },
   'components/modal/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/modal/' },
   'components/drawer/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/drawer/' },
+  'components/cards/index.html':{ section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}components/cards/' },
   'foundations/index.html':       { section: 'Foundations',   href: '{{base}}foundations/' },
   'patterns/index.html':          { section: 'Patterns',      href: '{{base}}patterns/' },
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },
