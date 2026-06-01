@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Layout &amp; utilities — Preview Design System</title>
+  <title>Utilities — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
@@ -49,17 +49,15 @@
     </div>
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
-    <details class="wire-doc-nav__section" open>
+    <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/utilities.html">Layout &amp; utilities</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Accessibility &amp; evidence</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/layout.html">Layout</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/accessibility.html">Accessibility</a></li>
         </ul>
       </div>
     </details>
@@ -208,6 +206,18 @@
       </div>
     </details>
 
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../resources/">Resources</a></summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/utilities.html">Utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Evidence model</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+
     <div class="wire-doc-nav__theme" data-wire-theme role="group" aria-label="Color theme">
       <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="light" aria-pressed="false" aria-label="Light theme" title="Light">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
@@ -230,266 +240,20 @@
 
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Layout &amp; utilities</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../resources/">Resources</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Utilities</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Layout &amp; utilities</h1>
+          <h1 class="wire-doc-header__title">Utilities</h1>
         </div>
-        <p class="wire-doc-header__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
+        <p class="wire-doc-header__lead">Single-purpose helper classes for the cases a layout primitive doesn't cover — text alignment and color, backgrounds, visibility, and one-off width and spacing. Reach for these last, after the layout primitives.</p>
       </header>
 
       <div class="wire-shell__doc">
       <div class="u-stack u-stack--3xl">
-
-        <section class="doc-section" id="visual-primitives">
-          <h2 class="wire-h3">Visual primitives</h2>
-          <p class="u-text-muted u-mt-sm">Small, semantic UI atoms. They sit one level above tokens — close to components, but with no internal structure of their own.</p>
-
-          <h3 class="wire-h5 u-mt-xl">Badge</h3>
-          <p class="u-text-muted u-mt-sm">An inline status label. Four variants: default, subtle, outline, inverse. An optional <code>.wire-badge__dot</code> precedes the label for "live" indicators.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Variants</span>
-            <div class="u-cluster">
-              <span class="wire-badge">Default</span>
-              <span class="wire-badge wire-badge--subtle">Subtle</span>
-              <span class="wire-badge wire-badge--outline">Outline</span>
-              <span class="wire-badge wire-badge--inverse">Inverse</span>
-              <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Live</span>
-            </div>
-          </div>
-
-          <h3 class="wire-h5 u-mt-xl">Tag</h3>
-          <p class="u-text-muted u-mt-sm">A filterable or removable chip. Use inside a <code>.wire-tag-list</code> for grouped filter sets. Add <code>.is-selected</code> (or <code>.wire-tag--selected</code>) for the active state and a <code>.wire-tag__remove</code> child for removability.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Filter set</span>
-            <ul class="wire-tag-list" role="list">
-              <li><button class="wire-tag wire-tag--selected">All conditions</button></li>
-              <li><button class="wire-tag">Spinal cord injury</button></li>
-              <li><button class="wire-tag">Stroke</button></li>
-              <li><button class="wire-tag">Brain injury</button></li>
-            </ul>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Removable (active filters)</span>
-            <ul class="wire-tag-list" role="list">
-              <li><button class="wire-tag">Streeterville <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
-              <li><button class="wire-tag">Accepting new patients <span class="wire-tag__remove" aria-label="Remove">×</span></button></li>
-            </ul>
-          </div>
-
-          <h3 class="wire-h5 u-mt-xl">Divider</h3>
-          <p class="u-text-muted u-mt-sm">Horizontal rules with weight and style modifiers. Use a labeled divider when separating two unlike sections.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default</span>
-            <hr class="wire-divider">
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Strong</span>
-            <hr class="wire-divider wire-divider--strong">
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Thick</span>
-            <hr class="wire-divider wire-divider--thick">
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Dashed</span>
-            <hr class="wire-divider wire-divider--dashed">
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Labeled</span>
-            <div class="wire-divider-labeled">or continue with</div>
-          </div>
-
-          <h3 class="wire-h5 u-mt-xl">Breadcrumb</h3>
-          <p class="u-text-muted u-mt-sm">A horizontal trail of links ending with the current page. Always wrap in a <code>&lt;nav aria-label="Breadcrumb"&gt;</code> with the list as <code>&lt;ol&gt;</code>; mark the current item with <code>aria-current="page"</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default</span>
-            <nav class="wire-breadcrumb" aria-label="Breadcrumb">
-              <ol class="wire-breadcrumb__list" role="list">
-                <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Home</a></li>
-                <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Conditions we treat</a></li>
-                <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Spinal cord injury</span></li>
-              </ol>
-            </nav>
-          </div>
-
-          <h3 class="wire-h5 u-mt-xl">Pagination</h3>
-          <p class="u-text-muted u-mt-sm">Page navigation for listings. Disable the previous/next nav with <code>aria-disabled="true"</code> at boundaries; mark the current page with <code>aria-current="page"</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default</span>
-            <nav class="wire-pagination" aria-label="Pagination">
-              <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
-              <ul class="wire-pagination__list" role="list">
-                <li><a class="wire-pagination__link" href="#">1</a></li>
-                <li><span class="wire-pagination__current" aria-current="page">2</span></li>
-                <li><a class="wire-pagination__link" href="#">3</a></li>
-                <li><span class="wire-pagination__ellipsis">…</span></li>
-                <li><a class="wire-pagination__link" href="#">12</a></li>
-              </ul>
-              <a class="wire-pagination__nav" href="#">Next →</a>
-            </nav>
-          </div>
-
-          <h4 class="wire-h6 u-mt-xl">When to use these primitives</h4>
-          <ul>
-            <li><strong>Badge</strong> — short, persistent status (live, new, draft, accepting patients). Not for actions.</li>
-            <li><strong>Tag</strong> — interactive: filter chips, active-filter pills, removable selections.</li>
-            <li><strong>Divider</strong> — separate two unrelated sections within the same container. Skip it if a section heading already does the work.</li>
-            <li><strong>Breadcrumb</strong> — deep pages (3+ levels). Skip on top-level pages and listings.</li>
-            <li><strong>Pagination</strong> — paged listings of more than ~12 items. For infinite-scroll listings, use a "Load more" button instead.</li>
-          </ul>
-        </section>
-
-        <section class="doc-section" id="container">
-          <h2 class="wire-h3">Container</h2>
-          <p class="u-text-muted u-mt-sm">Centers content with a responsive max width. Override per-instance with the <code>--container-max</code> custom property or the size modifiers.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-container — default (wide)</span>
-            <div class="u-container">
-              <div class="demo-box">Wide container — 75rem max-width</div>
-            </div>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Size modifiers</span>
-            <div class="u-stack">
-              <div class="u-container u-container--narrow"><div class="demo-box">.u-container--narrow · 40rem · article body widths</div></div>
-              <div class="u-container u-container--md"><div class="demo-box">.u-container--md · 54rem · long-form pages</div></div>
-              <div class="u-container u-container--wide"><div class="demo-box">.u-container--wide · 75rem · default marketing pages</div></div>
-              <div class="u-container u-container--full"><div class="demo-box">.u-container--full · 90rem · dashboards</div></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="stack">
-          <h2 class="wire-h3">Stack</h2>
-          <p class="u-text-muted u-mt-sm">Vertical rhythm with a configurable gap. Use size modifiers <code>--3xs</code> through <code>--3xl</code> or set <code>--stack-gap</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default (md gap)</span>
-            <div class="u-stack">
-              <div class="demo-box">Stacked item</div>
-              <div class="demo-box">Stacked item</div>
-              <div class="demo-box">Stacked item</div>
-            </div>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-stack--xl (32px gap)</span>
-            <div class="u-stack u-stack--xl">
-              <div class="demo-box">Wider rhythm</div>
-              <div class="demo-box">Wider rhythm</div>
-              <div class="demo-box">Wider rhythm</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="cluster">
-          <h2 class="wire-h3">Cluster</h2>
-          <p class="u-text-muted u-mt-sm">Horizontal wrapping with gap. Modifiers control gap, alignment, and justification.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default — items aligned center, packed start</span>
-            <div class="u-cluster">
-              <button class="wire-button wire-button--sm">One</button>
-              <button class="wire-button wire-button--sm">Two</button>
-              <button class="wire-button wire-button--sm">Three</button>
-              <button class="wire-button wire-button--sm">Four</button>
-            </div>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-cluster--between</span>
-            <div class="u-cluster u-cluster--between">
-              <span class="wire-eyebrow">Section title</span>
-              <a class="wire-button wire-button--ghost wire-button--sm" href="#">View all →</a>
-            </div>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-cluster--end</span>
-            <div class="u-cluster u-cluster--end">
-              <button class="wire-button wire-button--secondary">Cancel</button>
-              <button class="wire-button">Save</button>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="grid">
-          <h2 class="wire-h3">Grid</h2>
-          <p class="u-text-muted u-mt-sm">Auto-fit responsive grid. Choose <code>--2</code>, <code>--3</code>, <code>--4</code>, or rely on default auto-fit with <code>--grid-min</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-grid--3</span>
-            <div class="u-grid u-grid--3">
-              <div class="demo-box">Cell</div>
-              <div class="demo-box">Cell</div>
-              <div class="demo-box">Cell</div>
-              <div class="demo-box">Cell</div>
-              <div class="demo-box">Cell</div>
-              <div class="demo-box">Cell</div>
-            </div>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-grid--4</span>
-            <div class="u-grid u-grid--4">
-              <div class="demo-box">A</div>
-              <div class="demo-box">B</div>
-              <div class="demo-box">C</div>
-              <div class="demo-box">D</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="sidebar">
-          <h2 class="wire-h3">Sidebar</h2>
-          <p class="u-text-muted u-mt-sm">Two-track layout: fixed-width sidebar, fluid main. Wraps gracefully on narrow screens.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-sidebar</span>
-            <div class="u-sidebar">
-              <div class="demo-box">Sidebar (16rem)</div>
-              <div class="demo-box">Main content takes remaining space and stays at least 60% wide before wrapping.</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="section">
-          <h2 class="wire-h3">Section</h2>
-          <p class="u-text-muted u-mt-sm">Vertical padding for page sections. Use size modifiers <code>--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-section</span>
-            <section class="u-section u-bg-subtle">
-              <div class="u-container">
-                <div class="demo-box">Section content — default vertical padding (64px on each side).</div>
-              </div>
-            </section>
-          </div>
-        </section>
-
-        <section class="doc-section" id="flow">
-          <h2 class="wire-h3">Flow</h2>
-          <p class="u-text-muted u-mt-sm">Owl-selector spacing for prose-like blocks where children come from different sources. Override the gap with <code>--flow-gap</code>.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-flow</span>
-            <div class="u-flow">
-              <h3 class="wire-h4">Heading</h3>
-              <p>First paragraph. The flow utility puts a comfortable margin between each child without requiring a flex/grid wrapper.</p>
-              <p>Second paragraph. Override the gap with <code>style="--flow-gap: var(--space-lg)"</code>.</p>
-              <h4 class="wire-h5">Subhead</h4>
-              <p>Third paragraph still gets even spacing.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="doc-section" id="center">
-          <h2 class="wire-h3">Center</h2>
-          <p class="u-text-muted u-mt-sm">Horizontally centers its children, with centered text alignment. Useful for empty states and landing CTAs.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">.u-center</span>
-            <div class="u-center u-stack u-stack--md">
-              <h3 class="wire-h4">Centered moment</h3>
-              <p class="u-max-prose">A simple block of centered text and a button below it.</p>
-              <a class="wire-button" href="#">Take action</a>
-            </div>
-          </div>
-        </section>
 
         <section class="doc-section" id="text-utilities">
           <h2 class="wire-h3">Text utilities</h2>
@@ -586,15 +350,6 @@
       <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
         <p class="wire-inpagenav__title">On this page</p>
         <ul class="wire-inpagenav__list" role="list">
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visual-primitives">Visual primitives</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#container">Container</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#stack">Stack</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#cluster">Cluster</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#grid">Grid</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#sidebar">Sidebar</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#section">Section</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#flow">Flow</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#center">Center</a></li>
           <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#text-utilities">Text utilities</a></li>
           <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#background-utilities">Background utilities</a></li>
           <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visibility">Visibility</a></li>
@@ -604,14 +359,14 @@
       </nav>
       </div>
 
-      <nav class="wire-doc-pager" aria-label="Foundations pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="typography.html">
+      <nav class="wire-doc-pager" aria-label="Resources pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../resources/">
           <span class="wire-doc-pager__direction">Previous</span>
-          <span class="wire-doc-pager__title">Typography</span>
+          <span class="wire-doc-pager__title">Resources overview</span>
         </a>
         <a class="wire-doc-pager__link wire-doc-pager__link--next" href="research.html">
           <span class="wire-doc-pager__direction">Next</span>
-          <span class="wire-doc-pager__title">Accessibility &amp; evidence</span>
+          <span class="wire-doc-pager__title">Evidence model</span>
         </a>
       </nav>
 

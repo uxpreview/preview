@@ -148,8 +148,30 @@ body.wire-shell .wire-shell__doc {
 @media (min-width: 80em) {
   body.wire-shell .wire-shell__doc {
     grid-template-columns: minmax(0, 1fr) var(--shell-toc-w);
-    gap: var(--space-3xl);
+    gap: var(--space-2xl);
   }
+}
+
+/* Comfortable reading measure for doc body text. The content column grows with
+   the viewport, so without this long-form prose runs the full width (~70ch+,
+   right up to the TOC gutter) and reads as a dense block. Cap text to the
+   system's prose utility (65ch); figures — examples, tables, grids — and the
+   TOC keep the full column. */
+body.wire-shell .wire-shell__doc > :is(div, article) :is(p, li) {
+  max-inline-size: 65ch;
+}
+
+/* Breathing room below the doc-header divider, ONLY where the grid follows the
+   masthead directly (the no-tabs doc pages). Pushes both the content and the
+   "On this page" TOC clear of the divider, aligned. Component pages put the
+   grid inside tab panels, so the `+` adjacency leaves them untouched. The
+   doc-section first-of-type top padding is zeroed here so it doesn't double up
+   on top of this. */
+body.wire-shell .wire-doc-header + .wire-shell__doc {
+  padding-block-start: var(--space-2xl);
+}
+body.wire-shell .wire-doc-header + .wire-shell__doc .doc-section:first-of-type {
+  padding-block-start: 0;
 }
 
 /* In-page TOC sticks below the fixed header on shell pages (the base

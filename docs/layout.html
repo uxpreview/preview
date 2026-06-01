@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Buttons — Preview Design System</title>
+  <title>Layout — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
@@ -12,6 +12,7 @@
     .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
     .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
     .doc-snippet { padding: var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto; white-space: pre; }
+    .demo-box { padding: var(--space-sm) var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); }
   </style>
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -48,14 +49,14 @@
     </div>
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
-    <details class="wire-doc-nav__section">
+    <details class="wire-doc-nav__section" open>
       <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/layout.html">Layout</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/layout.html">Layout</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/accessibility.html">Accessibility</a></li>
         </ul>
       </div>
@@ -234,145 +235,242 @@
 <!-- NAV:END -->
 
 <main id="main">
-  <section class="wire-hero wire-hero--editorial">
-    <div class="u-container">
-      <div class="wire-hero__inner">
-        <span class="wire-hero__eyebrow">Component</span>
-        <h1 class="wire-hero__title">Buttons</h1>
-        <p class="wire-hero__lead">A pill-shaped action with three emphasis levels and three sizes. Use exactly one primary per view and reach for ghost in dense interfaces.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="u-section">
-    <div class="u-container">
+    <div class="u-container u-container--wide">
+
+      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+        <ol class="wire-breadcrumb__list">
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Layout</span></li>
+        </ol>
+      </nav>
+
+      <header class="wire-doc-header">
+        <div class="wire-doc-header__row">
+          <h1 class="wire-doc-header__title">Layout</h1>
+        </div>
+        <p class="wire-doc-header__lead">The structural primitives that compose every page — container, stack, cluster, grid, sidebar, and friends. Each does one job, leans on gap-based spacing, and stays responsive without bespoke CSS, so components can stay focused on identity.</p>
+      </header>
+
+      <div class="wire-shell__doc">
       <div class="u-stack u-stack--3xl">
 
-        <section class="doc-section">
-          <h2 class="wire-h3">Anatomy</h2>
-          <p class="u-text-muted u-mt-sm">A button is a single rounded element with an optional leading or trailing icon, a label, and a minimum 44px touch target on every size.</p>
+        <section class="doc-section" id="container">
+          <h2 class="wire-h3">Container</h2>
+          <p class="u-text-muted u-mt-sm">Centers content with a responsive max width. Override per-instance with the <code>--container-max</code> custom property or the size modifiers.</p>
           <div class="doc-example">
-            <span class="doc-example__label">Default</span>
-            <button class="wire-button" type="button">Make an appointment</button>
+            <span class="doc-example__label">.u-container — default (wide)</span>
+            <div class="u-container">
+              <div class="demo-box">Wide container — 75rem max-width</div>
+            </div>
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Size modifiers</span>
+            <div class="u-stack">
+              <div class="u-container u-container--narrow"><div class="demo-box">.u-container--narrow · 40rem · article body widths</div></div>
+              <div class="u-container u-container--md"><div class="demo-box">.u-container--md · 54rem · long-form pages</div></div>
+              <div class="u-container u-container--wide"><div class="demo-box">.u-container--wide · 75rem · default marketing pages</div></div>
+              <div class="u-container u-container--full"><div class="demo-box">.u-container--full · 90rem · dashboards</div></div>
+            </div>
           </div>
         </section>
 
-        <section class="doc-section">
-          <h2 class="wire-h3">When to use</h2>
-          <ul>
-            <li>Use <strong>primary</strong> for the single most important action in a view (one per region).</li>
-            <li>Use <strong>secondary</strong> for the supporting action paired with a primary.</li>
-            <li>Use <strong>ghost</strong> in toolbars, card footers, and dense surfaces where a bordered button would feel heavy.</li>
-            <li>Use <strong>icon-only</strong> for utility actions where the icon's meaning is unambiguous and an <code>aria-label</code> is provided.</li>
-          </ul>
-          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
-          <ul>
-            <li>Do not use a button when navigating; use an <code>&lt;a&gt;</code> styled as a button instead.</li>
-            <li>Do not stack three or more primary buttons; rework the page hierarchy.</li>
-            <li>Do not use icon-only buttons for destructive actions without confirmation.</li>
-          </ul>
+        <section class="doc-section" id="stack">
+          <h2 class="wire-h3">Stack</h2>
+          <p class="u-text-muted u-mt-sm">Vertical rhythm with a configurable gap. Use size modifiers <code>--3xs</code> through <code>--3xl</code> or set <code>--stack-gap</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Default (md gap)</span>
+            <div class="u-stack">
+              <div class="demo-box">Stacked item</div>
+              <div class="demo-box">Stacked item</div>
+              <div class="demo-box">Stacked item</div>
+            </div>
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-stack--xl (32px gap)</span>
+            <div class="u-stack u-stack--xl">
+              <div class="demo-box">Wider rhythm</div>
+              <div class="demo-box">Wider rhythm</div>
+              <div class="demo-box">Wider rhythm</div>
+            </div>
+          </div>
         </section>
 
-        <section class="doc-section">
-          <h2 class="wire-h3">Variants</h2>
-          <p class="u-text-muted u-mt-sm">Three emphasis levels, three sizes, plus modifiers for icons, full width, and loading state.</p>
-
+        <section class="doc-section" id="cluster">
+          <h2 class="wire-h3">Cluster</h2>
+          <p class="u-text-muted u-mt-sm">Horizontal wrapping with gap. Modifiers control gap, alignment, and justification.</p>
           <div class="doc-example">
-            <span class="doc-example__label">Emphasis — primary, secondary, ghost</span>
+            <span class="doc-example__label">Default — items aligned center, packed start</span>
             <div class="u-cluster">
-              <button class="wire-button" type="button">Primary</button>
-              <button class="wire-button wire-button--secondary" type="button">Secondary</button>
-              <button class="wire-button wire-button--ghost" type="button">Ghost</button>
+              <button class="wire-button wire-button--sm">One</button>
+              <button class="wire-button wire-button--sm">Two</button>
+              <button class="wire-button wire-button--sm">Three</button>
+              <button class="wire-button wire-button--sm">Four</button>
             </div>
           </div>
-
           <div class="doc-example">
-            <span class="doc-example__label">Sizes — sm, md (default), lg</span>
-            <div class="u-cluster u-cluster--baseline">
-              <button class="wire-button wire-button--sm" type="button">Small</button>
-              <button class="wire-button" type="button">Default</button>
-              <button class="wire-button wire-button--lg" type="button">Large</button>
+            <span class="doc-example__label">.u-cluster--between</span>
+            <div class="u-cluster u-cluster--between">
+              <span class="wire-eyebrow">Section title</span>
+              <a class="wire-button wire-button--ghost wire-button--sm" href="#">View all →</a>
             </div>
           </div>
-
           <div class="doc-example">
-            <span class="doc-example__label">With icon — leading and trailing</span>
-            <div class="u-cluster">
-              <button class="wire-button" type="button"><span class="wire-button__icon" aria-hidden="true">→</span><span>Continue</span></button>
-              <button class="wire-button wire-button--secondary" type="button"><span>Open in new tab</span><span class="wire-button__icon" aria-hidden="true">↗</span></button>
-              <button class="wire-button wire-button--ghost" type="button"><span class="wire-button__icon" aria-hidden="true">↓</span><span>Download</span></button>
-            </div>
-          </div>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Icon-only — sm, md, lg</span>
-            <div class="u-cluster u-cluster--baseline">
-              <button class="wire-button wire-button--icon-only wire-button--sm" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-              <button class="wire-button wire-button--icon-only" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-              <button class="wire-button wire-button--icon-only wire-button--lg" type="button" aria-label="Search"><span aria-hidden="true">⌕</span></button>
-              <button class="wire-button wire-button--icon-only wire-button--secondary" type="button" aria-label="More options"><span aria-hidden="true">⋯</span></button>
-              <button class="wire-button wire-button--icon-only wire-button--ghost" type="button" aria-label="Close"><span aria-hidden="true">×</span></button>
-            </div>
-          </div>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Full width</span>
-            <button class="wire-button wire-button--full" type="button">Submit referral</button>
-          </div>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Loading</span>
-            <div class="u-cluster">
-              <button class="wire-button is-loading" type="button">Submitting</button>
-              <button class="wire-button wire-button--secondary is-loading" type="button">Loading</button>
-            </div>
-          </div>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Disabled</span>
-            <div class="u-cluster">
-              <button class="wire-button" type="button" disabled>Unavailable</button>
-              <button class="wire-button wire-button--secondary" type="button" disabled>Unavailable</button>
-              <button class="wire-button wire-button--ghost" type="button" disabled>Unavailable</button>
-            </div>
-          </div>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Button group</span>
-            <div class="wire-button-group">
-              <button class="wire-button wire-button--secondary wire-button--sm" type="button">Day</button>
-              <button class="wire-button wire-button--secondary wire-button--sm" type="button">Week</button>
-              <button class="wire-button wire-button--secondary wire-button--sm" type="button">Month</button>
-              <button class="wire-button wire-button--secondary wire-button--sm" type="button">Year</button>
+            <span class="doc-example__label">.u-cluster--end</span>
+            <div class="u-cluster u-cluster--end">
+              <button class="wire-button wire-button--secondary">Cancel</button>
+              <button class="wire-button">Save</button>
             </div>
           </div>
         </section>
 
-        <section class="doc-section">
-          <h2 class="wire-h3">Accessibility</h2>
-          <ul>
-            <li>Always use <code>&lt;button type="button"&gt;</code> outside forms and <code>type="submit"</code> for primary form actions.</li>
-            <li>Icon-only buttons require an <code>aria-label</code>; the icon element should be <code>aria-hidden="true"</code>.</li>
-            <li>Every size meets a 44×44 touch target except <code>--sm</code>, which is intended for dense toolbars and meets 36×36 with adequate spacing.</li>
-            <li>Focus is rendered as a 2px outline with offset; never remove it.</li>
-            <li>Loading state sets <code>pointer-events: none</code> and hides label text; pair with <code>aria-busy="true"</code> when wiring up.</li>
-          </ul>
+        <section class="doc-section" id="grid">
+          <h2 class="wire-h3">Grid</h2>
+          <p class="u-text-muted u-mt-sm">Auto-fit responsive grid. Choose <code>--2</code>, <code>--3</code>, <code>--4</code>, or rely on default auto-fit with <code>--grid-min</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-grid--3</span>
+            <div class="u-grid u-grid--3">
+              <div class="demo-box">Cell</div>
+              <div class="demo-box">Cell</div>
+              <div class="demo-box">Cell</div>
+              <div class="demo-box">Cell</div>
+              <div class="demo-box">Cell</div>
+              <div class="demo-box">Cell</div>
+            </div>
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-grid--4</span>
+            <div class="u-grid u-grid--4">
+              <div class="demo-box">A</div>
+              <div class="demo-box">B</div>
+              <div class="demo-box">C</div>
+              <div class="demo-box">D</div>
+            </div>
+          </div>
         </section>
 
-        <section class="doc-section">
-          <h2 class="wire-h3">Code</h2>
-          <details>
-            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;button class="wire-button" type="button"&gt;Make an appointment&lt;/button&gt;
-&lt;button class="wire-button wire-button--secondary" type="button"&gt;Learn more&lt;/button&gt;
-&lt;button class="wire-button wire-button--ghost wire-button--sm" type="button"&gt;Cancel&lt;/button&gt;
-&lt;button class="wire-button wire-button--icon-only" type="button" aria-label="Search"&gt;
-  &lt;span aria-hidden="true"&gt;⌕&lt;/span&gt;
-&lt;/button&gt;</code></pre>
-          </details>
+        <section class="doc-section" id="sidebar">
+          <h2 class="wire-h3">Sidebar</h2>
+          <p class="u-text-muted u-mt-sm">Two-track layout: fixed-width sidebar, fluid main. Wraps gracefully on narrow screens.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-sidebar</span>
+            <div class="u-sidebar">
+              <div class="demo-box">Sidebar (16rem)</div>
+              <div class="demo-box">Main content takes remaining space and stays at least 60% wide before wrapping.</div>
+            </div>
+          </div>
         </section>
+
+        <section class="doc-section" id="section">
+          <h2 class="wire-h3">Section</h2>
+          <p class="u-text-muted u-mt-sm">Vertical padding for page sections. Use size modifiers <code>--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-section</span>
+            <section class="u-section u-bg-subtle">
+              <div class="u-container">
+                <div class="demo-box">Section content — default vertical padding (64px on each side).</div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="doc-section" id="flow">
+          <h2 class="wire-h3">Flow</h2>
+          <p class="u-text-muted u-mt-sm">Owl-selector spacing for prose-like blocks where children come from different sources. Override the gap with <code>--flow-gap</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-flow</span>
+            <div class="u-flow">
+              <h3 class="wire-h4">Heading</h3>
+              <p>First paragraph. The flow utility puts a comfortable margin between each child without requiring a flex/grid wrapper.</p>
+              <p>Second paragraph. Override the gap with <code>style="--flow-gap: var(--space-lg)"</code>.</p>
+              <h4 class="wire-h5">Subhead</h4>
+              <p>Third paragraph still gets even spacing.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="center">
+          <h2 class="wire-h3">Center</h2>
+          <p class="u-text-muted u-mt-sm">Horizontally centers its children, with centered text alignment. Useful for empty states and landing CTAs.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">.u-center</span>
+            <div class="u-center u-stack u-stack--md">
+              <h3 class="wire-h4">Centered moment</h3>
+              <p class="u-max-prose">A simple block of centered text and a button below it.</p>
+              <a class="wire-button" href="#">Take action</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="spacing">
+          <h2 class="wire-h3">Spacing</h2>
+          <p class="u-text-muted u-mt-sm">Every gap and inset comes from one 4px-based scale, applied through the primitives above — a stack's or cluster's <code>gap</code> — rather than ad-hoc margins. The full visual scale lives in <a href="tokens.html#space">Tokens</a>; the steps and their typical use:</p>
+          <div class="wire-table-wrap">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Typical use</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--space-3xs</code></th><td>2px</td><td>Hairline gaps, icon nudges</td></tr>
+                <tr><th scope="row"><code>--space-2xs</code></th><td>4px</td><td>Tight chip / label gaps</td></tr>
+                <tr><th scope="row"><code>--space-xs</code></th><td>8px</td><td>Inline clusters, button groups</td></tr>
+                <tr><th scope="row"><code>--space-sm</code></th><td>12px</td><td>Compact stacks, list rows</td></tr>
+                <tr><th scope="row"><code>--space-md</code></th><td>16px</td><td>Default element spacing</td></tr>
+                <tr><th scope="row"><code>--space-lg</code></th><td>24px</td><td>Group separation</td></tr>
+                <tr><th scope="row"><code>--space-xl</code></th><td>32px</td><td>Sub-section breaks</td></tr>
+                <tr><th scope="row"><code>--space-2xl</code></th><td>48px</td><td>Section padding</td></tr>
+                <tr><th scope="row"><code>--space-3xl</code></th><td>64px</td><td>Major section breaks</td></tr>
+                <tr><th scope="row"><code>--space-4xl</code></th><td>96px</td><td>Hero / landing rhythm</td></tr>
+                <tr><th scope="row"><code>--space-5xl</code></th><td>128px</td><td>Full-bleed spacing</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="breakpoints">
+          <h2 class="wire-h3">Breakpoints</h2>
+          <p class="u-text-muted u-mt-sm">Four min-width breakpoints, set in <code>em</code> so they respect the reader's text size. The primitives respond at these points; most components stay fluid below them.</p>
+          <div class="wire-table-wrap">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Name</th><th scope="col">Min width</th><th scope="col">Typical shift</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">sm</th><td>30em · 480px</td><td>Stacks loosen; small grids go multi-column</td></tr>
+                <tr><th scope="row">md</th><td>48em · 768px</td><td>Sidebars appear; two-column layouts</td></tr>
+                <tr><th scope="row">lg</th><td>64em · 1024px</td><td>Persistent rail; full grids</td></tr>
+                <tr><th scope="row">xl</th><td>80em · 1280px</td><td>Doc TOC column; widest containers</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
 
       </div>
+      <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+        <p class="wire-inpagenav__title">On this page</p>
+        <ul class="wire-inpagenav__list" role="list">
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#container">Container</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#stack">Stack</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#cluster">Cluster</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#grid">Grid</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#sidebar">Sidebar</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#section">Section</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#flow">Flow</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#center">Center</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#spacing">Spacing</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#breakpoints">Breakpoints</a></li>
+        </ul>
+      </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="typography.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Typography</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="accessibility.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Accessibility</span>
+        </a>
+      </nav>
+
     </div>
   </section>
 </main>

@@ -48,17 +48,15 @@
     </div>
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
-    <details class="wire-doc-nav__section" open>
+    <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Accessibility &amp; evidence</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/validation.html">Validation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/layout.html">Layout</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/accessibility.html">Accessibility</a></li>
         </ul>
       </div>
     </details>
@@ -207,6 +205,18 @@
       </div>
     </details>
 
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../resources/">Resources</a></summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Evidence model</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+
     <div class="wire-doc-nav__theme" data-wire-theme role="group" aria-label="Color theme">
       <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="light" aria-pressed="false" aria-label="Light theme" title="Light">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
@@ -230,7 +240,7 @@
 
     <nav class="wire-breadcrumb" aria-label="Breadcrumb">
       <ol class="wire-breadcrumb__list">
-        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../resources/">Resources</a></li>
         <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Validation</span></li>
       </ol>
     </nav>
@@ -261,8 +271,8 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><th scope="row">WCAG 2.2 AA compliance map</th><td>Manual audit (v1.1 + v1.2)</td><td><span class="status-pill status-pill--passing">Passing</span></td><td><a href="./research.html#wcag">research.html</a></td></tr>
-                <tr><th scope="row">Component basis citation</th><td>Manual</td><td><span class="status-pill status-pill--passing">Passing</span></td><td><a href="./research.html#component-basis">research.html</a></td></tr>
+                <tr><th scope="row">WCAG 2.2 AA compliance map</th><td>Manual audit (v1.1 + v1.2)</td><td><span class="status-pill status-pill--passing">Passing</span></td><td><a href="./accessibility.html#wcag">Accessibility</a></td></tr>
+                <tr><th scope="row">Component basis citation</th><td>Manual</td><td><span class="status-pill status-pill--passing">Passing</span></td><td><a href="./research.html#component-basis">Evidence model</a></td></tr>
                 <tr><th scope="row">Automated a11y scan</th><td>Pa11y CI</td><td><span class="status-pill status-pill--pending">Pending run</span></td><td><code>.pa11yci.json</code></td></tr>
                 <tr><th scope="row">Performance, best-practice, SEO</th><td>Lighthouse CI</td><td><span class="status-pill status-pill--pending">Pending run</span></td><td><code>lighthouserc.json</code></td></tr>
                 <tr><th scope="row">Live screen-reader audit</th><td>NVDA + VoiceOver, manual</td><td><span class="status-pill status-pill--gap">Gap</span></td><td>Below — log lives in this page</td></tr>
@@ -498,10 +508,10 @@ npm run validate         # Runs all three in sequence</pre>
       </nav>
     </div>
 
-    <nav class="wire-doc-pager" aria-label="Foundations pagination">
+    <nav class="wire-doc-pager" aria-label="Resources pagination">
       <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="research.html">
         <span class="wire-doc-pager__direction">Previous</span>
-        <span class="wire-doc-pager__title">Accessibility &amp; evidence</span>
+        <span class="wire-doc-pager__title">Evidence model</span>
       </a>
       <a class="wire-doc-pager__link wire-doc-pager__link--next" href="component-status.html">
         <span class="wire-doc-pager__direction">Next</span>

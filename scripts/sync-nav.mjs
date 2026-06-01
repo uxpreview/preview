@@ -51,6 +51,7 @@ function targetList() {
     'components/cards/index.html',
     'foundations/index.html', 'patterns/index.html',
     'templates/index.html', 'templates/landing/index.html', 'experiences/index.html',
+    'resources/index.html',
   ];
   for (const f of readdirSync(join(ROOT, 'docs')).sort()) {
     if (f.endsWith('.html')) list.push('docs/' + f);
@@ -83,13 +84,16 @@ const CURRENT = {
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },
   'templates/landing/index.html': { section: 'Templates',     href: '{{base}}templates/landing/' },
   'experiences/index.html':       { section: 'Experiences',   href: '{{base}}experiences/' },
+  'resources/index.html':         { section: 'Resources',     href: '{{base}}resources/' },
   'docs/principles.html':         { section: 'Foundations',   href: '{{base}}docs/principles.html' },
   'docs/tokens.html':             { section: 'Foundations',   href: '{{base}}docs/tokens.html' },
-  'docs/utilities.html':          { section: 'Foundations',   href: '{{base}}docs/utilities.html' },
-  'docs/research.html':           { section: 'Foundations',   href: '{{base}}docs/research.html' },
-  'docs/validation.html':         { section: 'Foundations',   href: '{{base}}docs/validation.html' },
-  'docs/component-status.html':   { section: 'Foundations',   href: '{{base}}docs/component-status.html' },
-  'docs/typography.html':         { section: 'Foundations',    href: '{{base}}docs/typography.html' },
+  'docs/typography.html':         { section: 'Foundations',   href: '{{base}}docs/typography.html' },
+  'docs/layout.html':             { section: 'Foundations',   href: '{{base}}docs/layout.html' },
+  'docs/accessibility.html':      { section: 'Foundations',   href: '{{base}}docs/accessibility.html' },
+  'docs/utilities.html':          { section: 'Resources',     href: '{{base}}docs/utilities.html' },
+  'docs/research.html':           { section: 'Resources',     href: '{{base}}docs/research.html' },
+  'docs/validation.html':         { section: 'Resources',     href: '{{base}}docs/validation.html' },
+  'docs/component-status.html':   { section: 'Resources',     href: '{{base}}docs/component-status.html' },
   'docs/forms.html':              { section: 'Components', group: 'Forms &amp; inputs', href: '{{base}}docs/forms.html' },
   'docs/cards.html':              { section: 'Components', group: 'Containment &amp; overlays', href: '{{base}}docs/cards.html' },
   'docs/lists.html':              { section: 'Components', group: 'Content &amp; display', href: '{{base}}docs/lists.html' },
@@ -107,6 +111,11 @@ function stampCurrent(navStr, rel) {
   const c = CURRENT[rel];
   if (!c) return navStr;
   let out = navStr;
+  // Stamp the current link from the start of its own section, so a href that is
+  // ALSO linked elsewhere in the rail (e.g. docs/research.html appears as both
+  // the Components "Citation list" leaf and the Resources "Evidence model" leaf)
+  // is marked in the right place rather than at its first occurrence anywhere.
+  let from = 0;
   if (c.section) {
     // The summary may wrap its label in an <a> (a section that links to its own
     // index, e.g. Components), so allow an optional anchor open-tag before the name.
@@ -114,20 +123,22 @@ function stampCurrent(navStr, rel) {
       new RegExp('<details class="wire-doc-nav__section">(\\s*<summary class="wire-doc-nav__section-summary">(?:<a\\b[^>]*>)?' + esc(c.section) + ')'),
       '<details class="wire-doc-nav__section" open>$1'
     );
+    const at = out.search(new RegExp('<details class="wire-doc-nav__section" open>\\s*<summary class="wire-doc-nav__section-summary">(?:<a\\b[^>]*>)?' + esc(c.section)));
+    if (at !== -1) from = at;
   }
-  // Category groups are always-visible now (flat, Nextra-style), so there's
-  // nothing to open — opening the section that holds the page is enough. The
-  // `group` field in CURRENT is retained as documentation of where each page
-  // lives, but no longer drives any markup change.
+  // Category groups are always-visible now (flat, Nextra-style), so opening the
+  // section that holds the page is enough. The `group` field in CURRENT is kept
+  // as documentation of where each page lives, but no longer drives markup.
   //
   // Stamp the rail link by href, whatever its class — a leaf (wire-doc-nav__link),
   // a standalone top-link, or a section label that's itself a link
-  // (wire-doc-nav__section-link, e.g. Components → the components landing).
-  out = out.replace(
+  // (wire-doc-nav__section-link). Scoped to the section's region (see above).
+  const head = out.slice(0, from);
+  const tail = out.slice(from).replace(
     new RegExp('<a class="([^"]*)" href="' + esc(c.href) + '">'),
     (m, klass) => `<a class="${klass} is-current" aria-current="page" href="${c.href}">`
   );
-  return out;
+  return head + tail;
 }
 
 // Ensure <body> carries the wire-shell class so the shell layout applies.

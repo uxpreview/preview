@@ -47,10 +47,8 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Accessibility &amp; evidence</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/layout.html">Layout</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/accessibility.html">Accessibility</a></li>
         </ul>
       </div>
     </details>
@@ -199,6 +197,18 @@
       </div>
     </details>
 
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../resources/">Resources</a></summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Evidence model</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+
     <div class="wire-doc-nav__theme" data-wire-theme role="group" aria-label="Color theme">
       <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="light" aria-pressed="false" aria-label="Light theme" title="Light">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
@@ -230,7 +240,7 @@
         <section aria-labelledby="found-core">
           <header class="u-stack u-stack--xs">
             <h2 class="wire-h3" id="found-core">Core</h2>
-            <p class="u-text-muted">The bedrock every page is built from — the rules, the raw values, the type, and the layout helpers.</p>
+            <p class="u-text-muted">The bedrock: the rules that govern decisions, the values everything references, and the accessibility floor the whole system clears.</p>
           </header>
           <div class="u-grid u-grid--3 u-mt-lg">
 
@@ -238,7 +248,7 @@
               <div class="wire-card__body">
                 <span class="wire-card__eyebrow">Principle</span>
                 <h3 class="wire-card__title">Principles</h3>
-                <p class="wire-card__desc">The ten governance rules every change follows — curate over add, content not style, honesty over polish.</p>
+                <p class="wire-card__desc">The governance rules every change follows — curate over add, content not style, honesty over polish.</p>
               </div>
             </a>
 
@@ -250,6 +260,24 @@
               </div>
             </a>
 
+            <a class="wire-card wire-card--linked" href="../docs/accessibility.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Access</span>
+                <h3 class="wire-card__title">Accessibility</h3>
+                <p class="wire-card__desc">The WCAG 2.2 AA conformance map, the keyboard and interaction contracts, and the everyday practices every page follows.</p>
+              </div>
+            </a>
+
+          </div>
+        </section>
+
+        <section aria-labelledby="found-visual">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="found-visual">Visual language</h2>
+            <p class="u-text-muted">How the system looks and moves — type, icons, motion, and depth, all in grayscale.</p>
+          </header>
+          <div class="u-grid u-grid--3 u-mt-lg">
+
             <a class="wire-card wire-card--linked" href="../docs/typography.html">
               <div class="wire-card__body">
                 <span class="wire-card__eyebrow">Type</span>
@@ -258,45 +286,21 @@
               </div>
             </a>
 
-            <a class="wire-card wire-card--linked" href="../docs/utilities.html">
-              <div class="wire-card__body">
-                <span class="wire-card__eyebrow">Layout</span>
-                <h3 class="wire-card__title">Layout &amp; utilities</h3>
-                <p class="wire-card__desc">Container, stack, cluster, grid, sidebar, and the <code>u-*</code> helpers that compose every page without bespoke CSS.</p>
-              </div>
-            </a>
-
           </div>
         </section>
 
-        <section aria-labelledby="found-evidence">
+        <section aria-labelledby="found-structure">
           <header class="u-stack u-stack--xs">
-            <h2 class="wire-h3" id="found-evidence">Evidence &amp; process</h2>
-            <p class="u-text-muted">How the system defends its decisions and keeps itself honest — the research basis, the test protocol, and the stability map.</p>
+            <h2 class="wire-h3" id="found-structure">Structure &amp; content</h2>
+            <p class="u-text-muted">How a page is composed and written — the layout primitives and the words that fill them.</p>
           </header>
           <div class="u-grid u-grid--3 u-mt-lg">
 
-            <a class="wire-card wire-card--linked" href="../docs/research.html">
+            <a class="wire-card wire-card--linked" href="../docs/layout.html">
               <div class="wire-card__body">
-                <span class="wire-card__eyebrow">Evidence</span>
-                <h3 class="wire-card__title">Accessibility &amp; evidence</h3>
-                <p class="wire-card__desc">The WCAG 2.2 AA compliance map and the four-tier evidence base — standard, empirical, convention, judgment — behind each decision.</p>
-              </div>
-            </a>
-
-            <a class="wire-card wire-card--linked" href="../docs/validation.html">
-              <div class="wire-card__body">
-                <span class="wire-card__eyebrow">Quality</span>
-                <h3 class="wire-card__title">Validation</h3>
-                <p class="wire-card__desc">The checklist run on every generated page — grayscale, tokens-only, no invented classes, a11y holds — before it ships.</p>
-              </div>
-            </a>
-
-            <a class="wire-card wire-card--linked" href="../docs/component-status.html">
-              <div class="wire-card__body">
-                <span class="wire-card__eyebrow">Lifecycle</span>
-                <h3 class="wire-card__title">Component status</h3>
-                <p class="wire-card__desc">What's safe to build on and what's still settling — stable, beta, alpha, deprecated — across every component.</p>
+                <span class="wire-card__eyebrow">Layout</span>
+                <h3 class="wire-card__title">Layout</h3>
+                <p class="wire-card__desc">Container, stack, cluster, grid, sidebar — the structural primitives, plus the spacing scale and breakpoints, that compose every page.</p>
               </div>
             </a>
 

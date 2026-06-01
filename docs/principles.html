@@ -47,10 +47,8 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Layout &amp; utilities</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Accessibility &amp; evidence</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/layout.html">Layout</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/accessibility.html">Accessibility</a></li>
         </ul>
       </div>
     </details>
@@ -199,6 +197,18 @@
       </div>
     </details>
 
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../resources/">Resources</a></summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/utilities.html">Utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/research.html">Evidence model</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+
     <div class="wire-doc-nav__theme" data-wire-theme role="group" aria-label="Color theme">
       <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="light" aria-pressed="false" aria-label="Light theme" title="Light">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
@@ -235,16 +245,16 @@
     </header>
 
     <div class="wire-shell__doc">
-      <article class="wire-prose u-flow" style="--flow-gap: var(--space-lg)">
+      <article class="wire-prose u-flow" style="--flow-gap: var(--space-2xl)">
 
         <section id="philosophy">
-          <h2 class="wire-h2">1. Wireframes should provoke conversation about content, not color.</h2>
+          <h2 class="wire-h3">1. Wireframes should provoke conversation about content, not color.</h2>
           <p>The system is entirely grayscale. Hierarchy comes from weight, scale, spacing, and contrast. Clients react to the structure on the page, not "what shade of blue is that." When color is decided later, the layout shouldn't have to change to accommodate it.</p>
           <p>The grayscale ramp is designed against WCAG 2.2 AA contrast at every step. Body text always exceeds 4.5:1; large text always exceeds 3:1.</p>
         </section>
 
         <section id="naming">
-          <h2 class="wire-h2">2. Names should be predictable, not clever.</h2>
+          <h2 class="wire-h3">2. Names should be predictable, not clever.</h2>
           <p>Two prefixes, always:</p>
           <dl class="wire-deflist wire-deflist--two-col">
             <dt class="wire-deflist__term"><code>.wire-*</code></dt>
@@ -260,14 +270,14 @@
         </section>
 
         <section id="variants">
-          <h2 class="wire-h2">3. Variants are content variations, not style overrides.</h2>
+          <h2 class="wire-h3">3. Variants are content variations, not style overrides.</h2>
           <p>A designer should be able to look at a component and pick the right variant without thinking. If they have to deliberate, the variant set is wrong.</p>
           <p>What variants <em>are</em>: semantic decisions about emphasis (<code>primary</code> vs <code>ghost</code>), shape (<code>icon-only</code>), purpose (<code>person</code> vs <code>resource</code>).</p>
           <p>What variants <em>aren't</em>: arbitrary style tweaks. No "extra-large with red border" buttons. If a one-off treatment is needed, that's a signal to either add a documented variant or push back on the design.</p>
         </section>
 
         <section id="accessibility">
-          <h2 class="wire-h2">4. Accessibility is baked in, not bolted on.</h2>
+          <h2 class="wire-h3">4. Accessibility is baked in, not bolted on.</h2>
           <ul>
             <li><strong>Focus visible.</strong> Every interactive element shows a 2px focus ring with offset, regardless of background.</li>
             <li><strong>Touch targets.</strong> Buttons, links, and form controls are at least 44×44px.</li>
@@ -278,7 +288,7 @@
         </section>
 
         <section id="consumption">
-          <h2 class="wire-h2">5. The artifact should work everywhere, unchanged.</h2>
+          <h2 class="wire-h3">5. The artifact should work everywhere, unchanged.</h2>
           <p>One folder, no build step. The same files serve:</p>
           <ol>
             <li>Local browsing — open <code>index.html</code>, click around.</li>
@@ -291,7 +301,7 @@
         </section>
 
         <section id="extension">
-          <h2 class="wire-h2">6. Extension is a documented pattern, not a free-for-all.</h2>
+          <h2 class="wire-h3">6. Extension is a documented pattern, not a free-for-all.</h2>
           <p>v1 does not ship a client-overlay system. When the second client lands, a single file like <code>css/clients/&lt;client&gt;.css</code> will override a constrained set of semantic tokens — never component selectors directly. The shape of that file is sketched here so we agree on the lane before paving it:</p>
           <pre><code>/* css/clients/example.css — illustrative only, not built yet */
 :root {
@@ -312,7 +322,7 @@
         </section>
 
         <section id="semver" class="u-stack u-stack--md u-mt-2xl">
-          <h2 class="wire-h2">7. Versioning is a contract, not a label.</h2>
+          <h2 class="wire-h3">7. Versioning is a contract, not a label.</h2>
           <p>The system follows <a href="https://semver.org/">semver</a> as a real contract with clients who build on it. When the version changes, you can tell exactly what work that implies on the consuming side.</p>
           <dl class="wire-deflist">
             <dt class="wire-deflist__term">Patch (1.x.y → 1.x.z)</dt>
