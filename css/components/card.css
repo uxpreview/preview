@@ -58,6 +58,18 @@
   outline-offset: var(--focus-ring-offset);
 }
 
+/* When the whole card IS the link, don't underline its text or paint it the
+   link colour — every part would otherwise underline at once. Clickability is
+   carried by the pointer and the hover border; the title underlines on hover as
+   the destination cue, matching the title-only link pattern. */
+a.wire-card {
+  color: inherit;
+  text-decoration: none;
+}
+a.wire-card:hover .wire-card__title {
+  text-decoration: underline;
+}
+
 /* ---------- Horizontal layout (media beside body) ----------
    For list rows / search results. The media becomes a fixed-proportion column
    that fills the card height; below the small breakpoint it stacks like a
