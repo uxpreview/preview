@@ -196,6 +196,25 @@
   --color-overlay-light: rgba(0, 0, 0, 0.4);
 }
 
+/* Dark theme: large inverse SURFACES (hero, footer, callout, inverse card, and
+   .u-bg-inverse sections) become an elevated dark surface instead of flipping
+   to a bright block — the standard dark-mode treatment, and it keeps their
+   light-ramp secondary text readable. Done by re-aliasing the inverse tokens
+   locally, so every descendant that reads them follows automatically. Small
+   inverse accents (status pills, primary buttons) still flip to light via the
+   global --color-bg-inverse above. */
+[data-theme="dark"] :is(
+  .u-bg-inverse,
+  .wire-card--inverse,
+  .wire-hero--inverse,
+  .wire-footer--inverse,
+  .wire-callout--inverse
+) {
+  --color-bg-inverse: var(--color-bg-subtle);
+  --color-text-inverse: var(--color-text);
+  --color-border-inverse: var(--color-border);
+}
+
 /* Breakpoint constants (for documentation — used in media queries):
    sm: 30em   / 480px
    md: 48em   / 768px

@@ -35,6 +35,16 @@
   color: var(--color-text-inverse);
 }
 
+/* Secondary text on the inverse (dark) surface uses a light ramp value, like
+   the inverse hero/footer — not the page-relative muted token, which is too
+   dark here in light mode and flips to the surface tone in dark. (In dark the
+   surface itself becomes elevated-dark via tokens.css, so this stays readable.) */
+.wire-card--inverse .wire-card__eyebrow,
+.wire-card--inverse .wire-card__desc,
+.wire-card--inverse .wire-card__meta {
+  color: var(--gray-30);
+}
+
 .wire-card--linked {
   cursor: pointer;
 }

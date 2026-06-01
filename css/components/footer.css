@@ -79,6 +79,12 @@
   margin-block-end: var(--space-md);
 }
 
+/* Column titles use a light ramp value on the inverse surface, like the other
+   inverse footer text — the page-relative muted token is too dark here. */
+.wire-footer--inverse .wire-footer__col-title {
+  color: var(--gray-30);
+}
+
 .wire-footer__list {
   display: flex;
   flex-direction: column;
