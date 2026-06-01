@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing page template — Preview Design System</title>
+  <meta name="description" content="The landing page template: a marketing or section homepage that opens with a hero and stacks alternating content bands down to the footer. Live preview, region anatomy, and page-level accessibility.">
+  <link rel="stylesheet" href="../../css/wire.css">
+  <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
+</head>
+<body class="wire-shell">
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- NAV:START -->
+<header class="wire-topnav wire-topnav--shell">
+  <div class="wire-topnav__inner">
+    <div class="wire-topnav__lead">
+      <button class="wire-button wire-button--icon-only wire-button--ghost wire-topnav__burger" data-wire-drawer-open="site-nav" aria-label="Open navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <a href="../../index.html" class="wire-topnav__brand" aria-label="Preview">
+        <span>Preview</span>
+      </a>
+    </div>
+
+    <div class="wire-topnav__utility">
+      <a class="wire-topnav__source" href="https://github.com/uxpreview/preview">View source</a>
+    </div>
+  </div>
+</header>
+
+<!-- One rail: persistent left nav (desktop) + slide-over (mobile). -->
+<nav id="site-nav" class="wire-railnav" aria-label="Sections">
+  <button class="wire-button wire-button--ghost wire-button--sm wire-railnav__close" data-wire-drawer-close>← Close</button>
+  <div class="wire-doc-nav">
+    <div class="wire-doc-nav__search" data-wire-nav-search>
+      <svg class="wire-doc-nav__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <label class="u-visually-hidden" for="nav-search">Filter the navigation</label>
+      <input id="nav-search" type="search" class="wire-doc-nav__search-input" placeholder="Search components…" autocomplete="off">
+    </div>
+    <a class="wire-doc-nav__top-link" href="../../index.html">Overview</a>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../foundations/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/principles.html">Principles</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/utilities.html">Layout &amp; utilities</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Accessibility &amp; evidence</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/validation.html">Validation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/component-status.html">Component status</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Components</summary>
+      <div class="wire-doc-nav__section-body">
+        <a class="wire-doc-nav__top-link" href="../../components/">All components</a>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Actions</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/buttons/">Button</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Forms &amp; inputs</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Field</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Search</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Choice</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Form layout</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Selection &amp; status</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/badge/">Badge</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tag/">Tag</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Containment &amp; overlays</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/cards/">Card</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/accordion/">Accordion</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tabs/">Tabs</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/modal/">Modal</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/drawer/">Drawer</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/divider/">Divider</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Navigation</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Breadcrumb</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Top nav</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Mega menu</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Side nav</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">In-page nav</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Layout</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Two-column</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Feature grid</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/heroes.html">Hero</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/footers.html">Footer</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Content &amp; display</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Callout</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Quote</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Timeline</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Media</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/media.html">Gallery</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Linked list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Definition list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/lists.html">Article list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Citation list</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/tables.html">Table</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Messaging &amp; feedback</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Toast</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Banner</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Empty state</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Stepper</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Tooltip</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Skeleton</a></li>
+          </ul>
+        </details>
+
+        <details class="wire-doc-nav__group">
+          <summary class="wire-doc-nav__group-title">Patient affordances</summary>
+          <ul class="wire-doc-nav__list" role="list">
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Help bar</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Phone link</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Text size</a></li>
+          </ul>
+        </details>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Patterns</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../patterns/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/navigation.html">Navigation family</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/content-blocks.html">Content blocks</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Healthcare patterns</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section" open>
+      <summary class="wire-doc-nav__section-summary">Templates</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../templates/">Overview</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../templates/landing/">Landing page</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/page-shells.html">Page shells</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../directory.html">All demo pages</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Experiences</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../experiences/">Overview</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="wire-doc-nav__section">
+      <summary class="wire-doc-nav__section-summary">Demo</summary>
+      <div class="wire-doc-nav__section-body">
+        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/hospital-homepage.html">Riverside (healthcare)</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../pages/university-homepage.html">Northgate (higher-ed)</a></li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="wire-doc-nav__theme" data-wire-theme role="group" aria-label="Color theme">
+      <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="light" aria-pressed="false" aria-label="Light theme" title="Light">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
+      </button>
+      <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="dark" aria-pressed="false" aria-label="Dark theme" title="Dark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"></path></svg>
+      </button>
+      <button type="button" class="wire-doc-nav__theme-btn" data-wire-theme-value="system" aria-pressed="false" aria-label="System theme" title="System">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="wire-drawer-backdrop"></div>
+<!-- NAV:END -->
+
+<main id="main">
+
+  <section class="u-section">
+    <div class="u-container u-container--wide">
+
+      <!-- ===================== BREADCRUMB ===================== -->
+      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+        <ol class="wire-breadcrumb__list">
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../templates/">Templates</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Landing page</span></li>
+        </ol>
+      </nav>
+
+      <!-- ===================== DOC HEADER (template masthead) ===================== -->
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">Template · Tier 4 · Page</span>
+        <div class="wire-doc-header__row">
+          <h1 class="wire-doc-header__title">Landing page</h1>
+          <span class="wire-doc-header__status"><span class="wire-status-pill">Landing shell</span></span>
+        </div>
+        <p class="wire-doc-header__lead">A marketing or section homepage: it opens with a hero, then stacks alternating content bands — features, a card grid, a bold inverse moment, resources — and closes on a contact prompt and the footer. The recipe one level above components; it composes them into a whole page.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">Based on the <a href="../../docs/page-shells.html">landing</a> page shell</li>
+          <li class="wire-doc-header__meta-item">Example: <a href="../../pages/hospital-homepage.html">Riverside Medical Center</a></li>
+        </ul>
+      </header>
+
+      <!-- ===================== TABS: Preview / Anatomy / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Landing template documentation">
+          <button role="tab" id="tab-preview" class="wire-tabs__tab" aria-controls="preview" aria-selected="true" tabindex="0">Preview</button>
+          <button role="tab" id="tab-anatomy" class="wire-tabs__tab" aria-controls="anatomy" aria-selected="false" tabindex="-1">Anatomy</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — PREVIEW                                               -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="preview" aria-labelledby="tab-preview" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live preview ---------- -->
+              <section id="live-preview" class="doc-section" aria-labelledby="h-live-preview">
+                <h2 class="wire-h3" id="h-live-preview">Live preview</h2>
+                <p class="u-text-muted u-mt-sm">A real page built only from the system — the Riverside Medical Center homepage. Scroll it inside the frame, or open it full-width to use it at real scale.</p>
+                <div class="doc-preview">
+                  <div class="doc-preview__bar">
+                    <span class="doc-preview__label">pages/hospital-homepage.html</span>
+                    <a class="doc-preview__open" href="../../pages/hospital-homepage.html" target="_blank" rel="noopener">Open full page ↗</a>
+                  </div>
+                  <iframe class="doc-preview__frame" src="../../pages/hospital-homepage.html" title="Live preview: Riverside Medical Center homepage" loading="lazy"></iframe>
+                </div>
+              </section>
+
+              <!-- ---------- What it is ---------- -->
+              <section id="what-it-is" class="doc-section" aria-labelledby="h-what-it-is">
+                <h2 class="wire-h3" id="h-what-it-is">What it is</h2>
+                <p class="u-text-muted u-mt-sm">A landing page is the front door to an organization or a section of it. It does one job well: orient a first-time visitor and send them to the few things they came for. It leads with a hero that states who you are and the primary action, then uses a vertical stack of content bands — alternating surfaces to mark the rhythm — to surface services, proof, and resources without burying them in navigation.</p>
+              </section>
+
+              <!-- ---------- When to use ---------- -->
+              <section id="when-to-use" class="doc-section" aria-labelledby="h-when-to-use">
+                <h2 class="wire-h3" id="h-when-to-use">When to use</h2>
+                <ul>
+                  <li>An organization homepage, or the home of a major section (a service line, a campaign).</li>
+                  <li>A page whose job is orientation and routing, not a single transaction or a long read.</li>
+                  <li>When you have a few distinct things to promote and want them scannable in one scroll.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a single task or transaction — use a focused flow, and end it on a <a href="../../components/modal/">confirmation</a>, not a landing page.</li>
+                  <li>For a long-form read — that's the <a href="../../docs/page-shells.html">article</a> shell.</li>
+                  <li>For a searchable set of results — that's the <a href="../../docs/page-shells.html">listing</a> shell (a directory).</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== PREVIEW TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-preview">Live preview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#what-it-is">What it is</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when-to-use">When to use</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — ANATOMY                                               -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="anatomy" aria-labelledby="tab-anatomy" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Regions ---------- -->
+              <section id="regions" class="doc-section" aria-labelledby="h-regions">
+                <h2 class="wire-h3" id="h-regions">Regions, top to bottom</h2>
+                <p class="u-text-muted u-mt-sm">The landing shell is a fixed spine of regions. Each is built from components that already carry their own docs — the template is the order and the choices, not new CSS.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th>Region</th><th>Built from</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td>Global header</td><td><a href="../../docs/navigation.html">Top nav</a> · <a href="../../docs/navigation.html">Mega menu</a> · <a href="../../components/drawer/">Drawer</a></td><td>Identity and primary navigation; the drawer carries it on mobile.</td></tr>
+                    <tr><td>Hero</td><td><a href="../../docs/heroes.html">Hero</a> (editorial)</td><td>Who you are and the one action that matters most.</td></tr>
+                    <tr><td>Intro band</td><td><a href="../../docs/content-blocks.html">Two-column</a> · <a href="../../components/buttons/">Button</a></td><td>A short positioning statement and the next-most-likely route.</td></tr>
+                    <tr><td>Featured grid</td><td><a href="../../components/cards/">Card</a> grid</td><td>Services, programs, or news as equal-weight, scannable teasers.</td></tr>
+                    <tr><td>Highlight</td><td><a href="../../docs/content-blocks.html">Two-column</a> · <a href="../../docs/media.html">Media</a></td><td>One program or story given room, media beside copy.</td></tr>
+                    <tr><td>Inverse moment</td><td><code>u-bg-inverse</code> · <a href="../../docs/content-blocks.html">Quote</a> / stat</td><td>A bold dark band for proof — a testimonial or a few numbers.</td></tr>
+                    <tr><td>Resources</td><td><a href="../../docs/lists.html">Article list</a> · <a href="../../docs/lists.html">Linked list</a></td><td>Deeper content for visitors who want to read on.</td></tr>
+                    <tr><td>Contact / CTA</td><td><a href="../../docs/content-blocks.html">Callout</a> · <a href="../../docs/forms.html">Field</a></td><td>A clear prompt to get in touch or take the primary action.</td></tr>
+                    <tr><td>Footer</td><td><a href="../../docs/footers.html">Footer</a> (inverse)</td><td>The full site map, contact, and legal.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Content model ---------- -->
+              <section id="content-model" class="doc-section" aria-labelledby="h-content-model">
+                <h2 class="wire-h3" id="h-content-model">Content model</h2>
+                <p class="u-text-muted u-mt-sm">What the page needs from content before it can be filled in:</p>
+                <ul>
+                  <li><strong>Hero</strong> — a headline (the org's promise in a sentence), a one-line sub, one primary action, optional secondary.</li>
+                  <li><strong>Featured grid</strong> — 3–6 items of one kind (don't mix services with news), each a title + one-line description + link.</li>
+                  <li><strong>Highlight</strong> — one story: an eyebrow, a headline, a short paragraph, a media slot, a link.</li>
+                  <li><strong>Proof</strong> — either one quote with attribution, or 3–4 stats (a number + a label each).</li>
+                  <li><strong>Resources</strong> — a short list of links with dates or read-times.</li>
+                  <li><strong>Contact</strong> — a single prompt with one field or one button; don't open a full form on the homepage.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Composition notes ---------- -->
+              <section id="composition" class="doc-section" aria-labelledby="h-composition">
+                <h2 class="wire-h3" id="h-composition">Composition notes</h2>
+                <ul>
+                  <li><strong>Alternate surfaces, sparingly</strong> — default and <code>u-bg-subtle</code> bands set the rhythm; reserve one <code>u-bg-inverse</code> band for a single high-emphasis moment, not several.</li>
+                  <li><strong>One primary action</strong> — the hero owns it; later CTAs are secondary so the page has a clear top priority.</li>
+                  <li><strong>One card type per grid</strong> — a grid of person cards, or of content cards, never a mix; the silhouette break is jarring.</li>
+                  <li><strong>Edit down</strong> — every band competes for the same scroll; cut a band before crowding it.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Source & related ---------- -->
+              <section id="source" class="doc-section" aria-labelledby="h-source">
+                <h2 class="wire-h3" id="h-source">Source &amp; related</h2>
+                <ul>
+                  <li><a href="../../pages/hospital-homepage.html">View the example page</a> — the Riverside homepage this previews.</li>
+                  <li><a href="../../pages/university-homepage.html">Northgate homepage</a> — the same shell for a higher-ed voice.</li>
+                  <li><a href="../../docs/page-shells.html">Page shells</a> — the four abstract recipes (landing, article, listing, detail).</li>
+                  <li><a href="../">All templates</a> — the rest of the tier.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ANATOMY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#regions">Regions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-model">Content model</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composition">Composition notes</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#source">Source &amp; related</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Landmarks ---------- -->
+              <section id="landmarks" class="doc-section" aria-labelledby="h-landmarks">
+                <h2 class="wire-h3" id="h-landmarks">Landmarks &amp; structure</h2>
+                <p class="u-text-muted u-mt-sm">A whole-page contract: the parts each carry their own ARIA, but the page is responsible for putting them in the right order and not repeating roles.</p>
+                <ul>
+                  <li>One <code>&lt;header&gt;</code> banner, one <code>&lt;main&gt;</code>, one <code>&lt;footer&gt;</code> contentinfo; every <code>&lt;nav&gt;</code> labelled (Primary, Breadcrumb, In-page).</li>
+                  <li>A skip link as the first focusable element, jumping to <code>#main</code>.</li>
+                  <li>Content bands are <code>&lt;section&gt;</code>s; give each a heading so it shows in the document outline.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Headings ---------- -->
+              <section id="headings" class="doc-section" aria-labelledby="h-headings">
+                <h2 class="wire-h3" id="h-headings">Heading order</h2>
+                <ul>
+                  <li><strong>Exactly one <code>h1</code></strong> — the hero headline. The org name in the header is not the h1.</li>
+                  <li>Each band's title is an <code>h2</code>; subsections step to <code>h3</code> without skipping a level.</li>
+                  <li>Card titles take the level that fits their band (usually <code>h3</code>), not a fixed level.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard & focus ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard &amp; focus</h2>
+                <ul>
+                  <li>Focus order follows source order top to bottom; no positive <code>tabindex</code>.</li>
+                  <li>The mobile menu is a <a href="../../components/drawer/">drawer</a> — focus trapped while open, returned to the trigger on close.</li>
+                  <li>The mega menu opens on click and closes on Escape, moving focus into the panel.</li>
+                  <li>Every interactive element shows the shared 2px focus ring; targets clear the 24px floor.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Audience affordances ---------- -->
+              <section id="affordances" class="doc-section" aria-labelledby="h-affordances">
+                <h2 class="wire-h3" id="h-affordances">Audience affordances</h2>
+                <ul>
+                  <li>For healthcare and older audiences, keep the text-size control and the help bar / phone affordance reachable — a landing page is often the first and most-shared page.</li>
+                  <li>Respect <code>prefers-reduced-motion</code>; any hero or reveal motion is decorative and drops out.</li>
+                  <li>Grayscale throughout — meaning never rides on color; the inverse band earns emphasis from contrast and weight.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmarks">Landmarks &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#headings">Heading order</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; focus</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#affordances">Audience affordances</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Template pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
+          <span class="wire-doc-pager__direction">Tier 4</span>
+          <span class="wire-doc-pager__title">All templates</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../../docs/page-shells.html">
+          <span class="wire-doc-pager__direction">Reference</span>
+          <span class="wire-doc-pager__title">Page shells</span>
+        </a>
+      </nav>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER:START -->
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="../../index.html"><span class="wire-topnav__brand-mark wire-topnav__brand-mark--logo" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M6 4 L 18 4 L 24 10 L 24 24 L 6 24 Z" fill="currentColor"/></svg></span> Preview Design System</a>
+    <p class="wire-footer__tagline">Designed and built by Ryan McCarty</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+
+<script src="../../js/wire.js" defer></script>
+</body>
+</html>

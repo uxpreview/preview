@@ -50,7 +50,7 @@ function targetList() {
     'components/drawer/index.html',
     'components/cards/index.html',
     'foundations/index.html', 'patterns/index.html',
-    'templates/index.html', 'experiences/index.html',
+    'templates/index.html', 'templates/landing/index.html', 'experiences/index.html',
   ];
   for (const f of readdirSync(join(ROOT, 'docs')).sort()) {
     if (f.endsWith('.html')) list.push('docs/' + f);
@@ -81,6 +81,7 @@ const CURRENT = {
   'foundations/index.html':       { section: 'Foundations',   href: '{{base}}foundations/' },
   'patterns/index.html':          { section: 'Patterns',      href: '{{base}}patterns/' },
   'templates/index.html':         { section: 'Templates',     href: '{{base}}templates/' },
+  'templates/landing/index.html': { section: 'Templates',     href: '{{base}}templates/landing/' },
   'experiences/index.html':       { section: 'Experiences',   href: '{{base}}experiences/' },
   'docs/principles.html':         { section: 'Foundations',   href: '{{base}}docs/principles.html' },
   'docs/tokens.html':             { section: 'Foundations',   href: '{{base}}docs/tokens.html' },
