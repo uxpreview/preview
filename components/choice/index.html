@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Field — Preview Design System</title>
+  <title>Choice — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -70,9 +70,9 @@
         <div class="wire-doc-nav__group">
           <p class="wire-doc-nav__group-title">Forms &amp; inputs</p>
           <ul class="wire-doc-nav__list" role="list">
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/field/">Field</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/field/">Field</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/search/">Search</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/choice/">Choice</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/choice/">Choice</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Form layout</a></li>
           </ul>
         </div>
@@ -238,16 +238,16 @@
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-forms">Forms &amp; inputs</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Field</span></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Choice</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Field</h1>
+          <h1 class="wire-doc-header__title">Choice</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A labeled input: a stack of label, control, and optional hint or error. <code>.wire-field</code> is the wrapper; the control inside is a text <code>.wire-input</code>, a <code>.wire-textarea</code>, or a <code>.wire-select</code>.</p>
+        <p class="wire-doc-header__lead">Controls for picking from options: a <code>.wire-checkbox</code> for any-number, a <code>.wire-radio</code> for exactly-one, and a <code>.wire-toggle</code> for an instant on/off setting. Each is a label wrapping a styled native input, so the whole row is clickable.</p>
         <ul class="wire-doc-header__meta" role="list">
           <li class="wire-doc-header__meta-item">css/components/form.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
@@ -255,7 +255,7 @@
       </header>
 
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Field documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Choice documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -268,63 +268,46 @@
 
               <section id="live-demo" class="doc-section">
                 <h2 class="wire-h3">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">A field is a label bound to a control, with optional hint text below. Everything is keyboard- and screen-reader-ready out of the box.</p>
+                <p class="u-text-muted u-mt-sm">Each control is a <code>&lt;label&gt;</code> wrapping its input, so clicking the text toggles it. Related choices group inside a <code>&lt;fieldset&gt;</code> with a legend.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Default field</span>
-                  <div class="wire-field">
-                    <label class="wire-field__label" for="demo-name">Full name</label>
-                    <input id="demo-name" class="wire-input" type="text" placeholder="Jane Doe">
-                    <span class="wire-field__hint">As it appears on your insurance card.</span>
-                  </div>
+                  <span class="doc-example__label">Checkbox group</span>
+                  <fieldset class="wire-fieldset">
+                    <legend class="wire-fieldset__legend">Filter by location</legend>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Chicago — Streeterville</span></label>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Homewood</span></label>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" disabled><span>Lake Forest (coming 2027)</span></label>
+                  </fieldset>
                 </div>
               </section>
 
-              <section id="anatomy" class="doc-section">
-                <h2 class="wire-h3">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">Four parts, stacked. The control is required; label is required; hint and error are optional and mutually exclusive at a glance.</p>
+              <section id="which" class="doc-section">
+                <h2 class="wire-h3">Which one</h2>
+                <p class="u-text-muted u-mt-sm">The shape of the answer picks the control.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <thead><tr><th scope="col">Control</th><th scope="col">Answer shape</th><th scope="col">Use for</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Label</th><td><code>.wire-field__label</code></td><td>Names the field; bound to the control with <code>for</code>/<code>id</code>.</td></tr>
-                    <tr><th scope="row">Control</th><td><code>.wire-input</code> · <code>.wire-textarea</code> · <code>.wire-select</code></td><td>The input the user types into or chooses from.</td></tr>
-                    <tr><th scope="row">Hint</th><td><code>.wire-field__hint</code></td><td>Quiet helper text under the control.</td></tr>
-                    <tr><th scope="row">Error</th><td><code>.wire-field__error</code></td><td>Replaces the hint when the field is invalid.</td></tr>
+                    <tr><th scope="row">Checkbox</th><td>zero or more</td><td>Multi-select filters, or a single yes/no agreement.</td></tr>
+                    <tr><th scope="row">Radio</th><td>exactly one</td><td>One choice from a small, fully-visible set (2–5).</td></tr>
+                    <tr><th scope="row">Toggle</th><td>on / off</td><td>An immediate setting that takes effect with no save step.</td></tr>
                   </tbody>
                 </table>
-              </section>
-
-              <section id="when" class="doc-section">
-                <h2 class="wire-h3">When to use</h2>
-                <ul>
-                  <li>Use <code>.wire-input</code> for short single-line text; <code>.wire-textarea</code> for multi-line free text.</li>
-                  <li>Use <code>.wire-select</code> for a small, fixed list of mutually exclusive options.</li>
-                  <li>Reach for a different control when the input isn't free text — Search, Choice (checkbox/radio/toggle), and Form layout are documented separately.</li>
-                </ul>
-                <p class="u-text-muted u-mt-md">Avoid a <code>.wire-select</code> for more than ~10 options (use search or autocomplete), and never add a bare required asterisk — use the <code>.wire-field__label-required</code> modifier so the marker stays consistent.</p>
+                <p class="u-text-muted u-mt-md">Use radios, not a select, when the set is small and seeing every option matters. Use a toggle only when the change is instant — if it needs a Save or confirmation, use a checkbox.</p>
               </section>
 
               <section id="in-context" class="doc-section">
                 <h2 class="wire-h3">In context</h2>
-                <p class="u-text-muted u-mt-sm">Fields stack in a form. Keep one column for scannability; pair related short fields in a row only when they're clearly connected.</p>
+                <p class="u-text-muted u-mt-sm">Choices cluster in filter panels and settings. Group with a fieldset; keep the legend short.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">A short intake</span>
-                  <div class="u-stack u-stack--md">
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="ctx-email">Email</label>
-                      <input id="ctx-email" class="wire-input" type="email" placeholder="you@example.com">
-                    </div>
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="ctx-reason">Reason for visit</label>
-                      <select id="ctx-reason" class="wire-select">
-                        <option>Outpatient evaluation</option>
-                        <option>Inpatient referral</option>
-                        <option>Day rehab consult</option>
-                      </select>
-                    </div>
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="ctx-notes">Anything we should know?</label>
-                      <textarea id="ctx-notes" class="wire-textarea" placeholder="A few sentences is fine."></textarea>
-                    </div>
+                  <span class="doc-example__label">A filter and a setting</span>
+                  <div class="u-stack u-stack--lg">
+                    <fieldset class="wire-fieldset">
+                      <legend class="wire-fieldset__legend">Visit type</legend>
+                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit" checked><span>In-person</span></label>
+                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit"><span>Telehealth</span></label>
+                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit"><span>Either is fine</span></label>
+                    </fieldset>
+                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span>Show only providers accepting new patients</span></label>
                   </div>
                 </div>
               </section>
@@ -335,17 +318,17 @@
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
                     <ul>
-                      <li>Bind every label to its control with <code>for</code>/<code>id</code>.</li>
-                      <li>Put format help in the hint, before the user types.</li>
-                      <li>Keep forms to a single column.</li>
+                      <li>Wrap each control in a <code>&lt;label&gt;</code> so the text is clickable.</li>
+                      <li>Group related radios/checkboxes in a <code>&lt;fieldset&gt;</code> with a legend.</li>
+                      <li>Give every radio in a set the same <code>name</code>.</li>
                     </ul>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
                     <ul>
-                      <li>Use placeholder text as the label — it vanishes on focus.</li>
-                      <li>Mark required fields with a bare <code>*</code> instead of the modifier.</li>
-                      <li>Pack format rules into a tooltip the user can't see while typing.</li>
+                      <li>Use a toggle for a change that needs a Save or confirmation.</li>
+                      <li>Use radios for a long list — switch to a select past ~5 options.</li>
+                      <li>Use a lone checkbox where exactly one of several must be chosen.</li>
                     </ul>
                   </div>
                 </div>
@@ -356,8 +339,7 @@
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#which">Which one</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
@@ -370,104 +352,77 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="controls" class="doc-section">
-                <h2 class="wire-h3">Controls</h2>
-                <p class="u-text-muted u-mt-sm">Three controls share one look — same height, border, radius, and focus treatment — so a form reads as one surface.</p>
+              <section id="checkbox" class="doc-section">
+                <h2 class="wire-h3">Checkbox</h2>
+                <p class="u-text-muted u-mt-sm"><code>.wire-checkbox</code> wraps a <code>.wire-checkbox__input</code>. Checked shows a clean checkmark; supports a disabled state.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Text input</span>
-                  <div class="wire-field">
-                    <label class="wire-field__label" for="spec-input">Email</label>
-                    <input id="spec-input" class="wire-input" type="email" placeholder="you@example.com">
-                  </div>
-                </div>
-                <div class="doc-example">
-                  <span class="doc-example__label">Textarea</span>
-                  <div class="wire-field">
-                    <label class="wire-field__label" for="spec-ta">What brings you in today?</label>
-                    <textarea id="spec-ta" class="wire-textarea" placeholder="A few sentences is fine — we'll follow up with a full intake."></textarea>
-                  </div>
-                </div>
-                <div class="doc-example">
-                  <span class="doc-example__label">Select</span>
-                  <div class="wire-field">
-                    <label class="wire-field__label" for="spec-sel">Reason for visit</label>
-                    <select id="spec-sel" class="wire-select">
-                      <option>Outpatient evaluation</option>
-                      <option>Inpatient referral</option>
-                      <option>Day rehab consult</option>
-                      <option>Research participation</option>
-                    </select>
-                  </div>
+                  <span class="doc-example__label">Checked · unchecked · disabled</span>
+                  <fieldset class="wire-fieldset">
+                    <legend class="wire-fieldset__legend">Filter by location</legend>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Chicago — Streeterville</span></label>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
+                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" disabled><span>Lake Forest (coming 2027)</span></label>
+                  </fieldset>
                 </div>
               </section>
 
-              <section id="states" class="doc-section">
-                <h2 class="wire-h3">States</h2>
-                <p class="u-text-muted u-mt-sm">Every control ships default, hover, focus-visible, disabled, and <code>.is-invalid</code>. Invalid swaps the hint for a <code>.wire-field__error</code> and links it with <code>aria-describedby</code>.</p>
+              <section id="radio" class="doc-section">
+                <h2 class="wire-h3">Radio</h2>
+                <p class="u-text-muted u-mt-sm"><code>.wire-radio</code> wraps a <code>.wire-radio__input</code>. Checked shows a filled dot; all options in a set share a <code>name</code>.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Default · with hint · invalid · disabled</span>
-                  <div class="u-stack u-stack--md">
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="st-default">Email</label>
-                      <input id="st-default" class="wire-input" type="email" placeholder="you@example.com">
-                    </div>
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="st-hint">Phone</label>
-                      <input id="st-hint" class="wire-input" type="tel" placeholder="(312) 555-0142">
-                      <span class="wire-field__hint">We'll only use this to confirm your appointment.</span>
-                    </div>
-                    <div class="wire-field">
-                      <label class="wire-field__label wire-field__label-required" for="st-invalid">Date of birth</label>
-                      <input id="st-invalid" class="wire-input is-invalid" type="text" placeholder="MM / DD / YYYY" aria-describedby="st-dob-err">
-                      <span id="st-dob-err" class="wire-field__error">Enter a valid date in MM / DD / YYYY format</span>
-                    </div>
-                    <div class="wire-field">
-                      <label class="wire-field__label" for="st-disabled">Member ID</label>
-                      <input id="st-disabled" class="wire-input" type="text" value="MRN-44829-1" disabled>
-                    </div>
+                  <span class="doc-example__label">Radio group</span>
+                  <fieldset class="wire-fieldset">
+                    <legend class="wire-fieldset__legend">Visit type</legend>
+                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit" checked><span>In-person</span></label>
+                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit"><span>Telehealth</span></label>
+                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit"><span>Either is fine</span></label>
+                  </fieldset>
+                </div>
+              </section>
+
+              <section id="toggle" class="doc-section">
+                <h2 class="wire-h3">Toggle</h2>
+                <p class="u-text-muted u-mt-sm"><code>.wire-toggle</code> is a switch built on a checkbox input; the thumb slides on check. Use it only for instant settings.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">On · off</span>
+                  <div class="u-stack u-stack--sm">
+                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span>Accepting new patients</span></label>
+                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span>Show telehealth-only providers</span></label>
                   </div>
                 </div>
-                <table class="doc-spec-table">
-                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">Treatment</th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">Default</th><td>—</td><td>1px border at <code>--color-border-strong</code>.</td></tr>
-                    <tr><th scope="row">Hover / focus</th><td>pointer / keyboard</td><td>Border darkens to <code>--color-text</code>; focus also shows the ring.</td></tr>
-                    <tr><th scope="row">Invalid</th><td><code>.is-invalid</code></td><td>2px border; <code>.wire-field__error</code> replaces the hint.</td></tr>
-                    <tr><th scope="row">Disabled</th><td><code>disabled</code></td><td>Muted surface and text; not focusable.</td></tr>
-                  </tbody>
-                </table>
               </section>
 
               <section id="tokens" class="doc-section">
-                <h2 class="wire-h3">Tokens</h2>
+                <h2 class="wire-h3">States &amp; tokens</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Min height</th><td>2.75rem (44px target)</td></tr>
-                    <tr><th scope="row">Padding</th><td><code>--space-xs</code> / <code>--space-md</code></td></tr>
-                    <tr><th scope="row">Border</th><td><code>--border-thin</code> · <code>--color-border-strong</code></td></tr>
-                    <tr><th scope="row">Radius</th><td><code>--radius-md</code></td></tr>
-                    <tr><th scope="row">Text</th><td><code>--text-md</code> · <code>--color-text</code></td></tr>
+                    <tr><th scope="row">Control size</th><td>1.25rem (checkbox / radio); 2.5×1.5rem (toggle)</td></tr>
+                    <tr><th scope="row">Row target</th><td>2.75rem min-height (44px)</td></tr>
+                    <tr><th scope="row">Border</th><td><code>--border-md</code> · <code>--color-border-strong</code></td></tr>
+                    <tr><th scope="row">Checked fill</th><td><code>--color-accent</code>, mark in <code>--color-bg</code></td></tr>
+                    <tr><th scope="row">Disabled</th><td>0.4 opacity, not focusable</td></tr>
                   </tbody>
                 </table>
               </section>
 
               <section id="snippet" class="doc-section">
                 <h2 class="wire-h3">Snippet</h2>
-                <pre class="doc-snippet">&lt;div class="wire-field"&gt;
-  &lt;label class="wire-field__label" for="email"&gt;Email&lt;/label&gt;
-  &lt;input id="email" class="wire-input" type="email" placeholder="you@example.com"&gt;
-  &lt;span class="wire-field__hint"&gt;We'll never share it.&lt;/span&gt;
-&lt;/div&gt;</pre>
+                <pre class="doc-snippet">&lt;fieldset class="wire-fieldset"&gt;
+  &lt;legend class="wire-fieldset__legend"&gt;Visit type&lt;/legend&gt;
+  &lt;label class="wire-radio"&gt;&lt;input class="wire-radio__input" type="radio" name="visit"&gt;&lt;span&gt;In-person&lt;/span&gt;&lt;/label&gt;
+  &lt;label class="wire-radio"&gt;&lt;input class="wire-radio__input" type="radio" name="visit"&gt;&lt;span&gt;Telehealth&lt;/span&gt;&lt;/label&gt;
+&lt;/fieldset&gt;</pre>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#controls">Controls</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#checkbox">Checkbox</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#radio">Radio</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#toggle">Toggle</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">States &amp; tokens</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
               </ul>
             </nav>
@@ -479,53 +434,43 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="labeling" class="doc-section">
-                <h2 class="wire-h3">Labels</h2>
+              <section id="grouping" class="doc-section">
+                <h2 class="wire-h3">Grouping</h2>
                 <ul>
-                  <li>Every control has a visible <code>&lt;label&gt;</code> bound with <code>for</code>/<code>id</code> — never a placeholder standing in for a label (WCAG 3.3.2).</li>
-                  <li>Clicking the label focuses the control, enlarging the effective target.</li>
-                  <li>Hint text is announced as part of the field when linked with <code>aria-describedby</code>.</li>
+                  <li>Wrap a set of related radios or checkboxes in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> — the legend names the group for assistive tech.</li>
+                  <li>Every radio in one group shares the same <code>name</code>, which makes them mutually exclusive and arrow-navigable.</li>
                 </ul>
               </section>
 
-              <section id="required" class="doc-section">
-                <h2 class="wire-h3">Required &amp; optional</h2>
+              <section id="labels" class="doc-section">
+                <h2 class="wire-h3">Labels &amp; target</h2>
                 <ul>
-                  <li>Mark required fields with <code>.wire-field__label-required</code>, which adds a consistent visual marker; pair it with <code>required</code> on the control so the requirement is programmatic, not just visual.</li>
-                  <li>If most fields are required, mark the few optional ones instead — whichever is the shorter list.</li>
-                </ul>
-              </section>
-
-              <section id="errors" class="doc-section">
-                <h2 class="wire-h3">Errors</h2>
-                <ul>
-                  <li>On invalid, add <code>.is-invalid</code> to the control and link the message with <code>aria-describedby</code> so a screen reader reads the error with the field.</li>
-                  <li>Error copy says what happened and how to fix it — "Enter a date in MM / DD / YYYY format", not "Invalid input".</li>
-                  <li>Color is never the only signal: the heavier border and the text message carry the state too (WCAG 1.4.1).</li>
+                  <li>Each control is a <code>&lt;label&gt;</code> wrapping its input, so the text is part of the control — no separate <code>for</code>/<code>id</code> needed, and the whole row is clickable.</li>
+                  <li>The row keeps a 44px-tall target even though the box itself is smaller.</li>
+                  <li>Checked state is carried by the control's shape and fill, never color alone (WCAG 1.4.1).</li>
                 </ul>
               </section>
 
               <section id="keyboard" class="doc-section">
-                <h2 class="wire-h3">Keyboard &amp; input</h2>
+                <h2 class="wire-h3">Keyboard</h2>
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Tab</th><td>Moves to the control in source order.</td></tr>
-                    <tr><th scope="row">Type / arrows</th><td>Edit text, or open and move through a select's options.</td></tr>
-                    <tr><th scope="row">Esc</th><td>Closes an open select without changing the value.</td></tr>
+                    <tr><th scope="row">Space</th><td>Toggles a checkbox or toggle; selects the focused radio.</td></tr>
+                    <tr><th scope="row">Arrows</th><td>Move and select within a radio group.</td></tr>
+                    <tr><th scope="row">Tab</th><td>Enters the group at the checked radio, or each checkbox in turn.</td></tr>
                   </tbody>
                 </table>
-                <p class="u-text-muted u-mt-md">Use a real <code>type</code> (<code>email</code>, <code>tel</code>, <code>search</code>) and an <code>autocomplete</code> token so mobile keyboards and autofill work. Controls keep a 44px-tall target.</p>
+                <p class="u-text-muted u-mt-md">All controls keep the visible focus ring; disabled controls are skipped in the tab order.</p>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labeling">Labels</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#required">Required &amp; optional</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#errors">Errors</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; input</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#grouping">Grouping</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labels">Labels &amp; target</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard</a></li>
               </ul>
             </nav>
           </div>
@@ -534,13 +479,13 @@
       </div>
 
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
-          <span class="wire-doc-pager__direction">All components</span>
-          <span class="wire-doc-pager__title">Back to index</span>
-        </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../search/">
-          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../search/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
           <span class="wire-doc-pager__title">Search</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../#cat-forms">
+          <span class="wire-doc-pager__direction">In Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Form layout</span>
         </a>
       </nav>
 

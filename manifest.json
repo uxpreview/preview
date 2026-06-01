@@ -276,7 +276,7 @@
       "category": "forms",
       "class": "wire-checkbox | wire-radio | wire-toggle",
       "file": "css/components/form.css",
-      "ref": "docs/forms.html",
+      "ref": "components/choice/",
       "status": "stable",
       "variants": ["checkbox", "radio", "toggle"],
       "elements": ["wire-checkbox__input", "wire-radio__input", "wire-toggle__input"],
