@@ -27,6 +27,16 @@ let nav = readFileSync(join(ROOT, 'partials/nav.html'), 'utf8')
   .replace(/^<!--[\s\S]*?-->\s*/, '')   // strip the leading doc comment
   .trim();
 
+let footer = readFileSync(join(ROOT, 'partials/footer.html'), 'utf8')
+  .replace(/^<!--[\s\S]*?-->\s*/, '')   // strip the leading doc comment
+  .trim();
+
+const FOOTER_START = '<!-- FOOTER:START -->';
+const FOOTER_END = '<!-- FOOTER:END -->';
+// The page's own chrome footer (matched only in the region after </main>, so
+// demo footers inside the page body are never touched).
+const FOOTER_RE = /<footer class="wire-footer[\s\S]*?<\/footer>/;
+
 function targetList() {
   const list = [
     'index.html', 'directory.html',
@@ -142,6 +152,24 @@ function ensureThemeInit(html) {
   return html.replace(/<\/head>/i, '  ' + THEME_INIT + '\n</head>');
 }
 
+// Propagate the canonical footer. Operates ONLY on the region after the last
+// </main> so demo footers in the page body are never replaced. First run swaps
+// the page's existing chrome footer for the markers; thereafter it fills them.
+function syncFooter(html, base) {
+  const mi = html.lastIndexOf('</main>');
+  if (mi === -1) return html;
+  const cut = mi + '</main>'.length;
+  const head = html.slice(0, cut);
+  let tail = html.slice(cut);
+  if (!tail.includes(FOOTER_START)) {
+    if (!FOOTER_RE.test(tail)) return html;   // no chrome footer to replace
+    tail = tail.replace(FOOTER_RE, `${FOOTER_START}\n${FOOTER_END}`);
+  }
+  const block = `${FOOTER_START}\n${footer.replace(/\{\{base\}\}/g, base)}\n${FOOTER_END}`;
+  const region = new RegExp(esc(FOOTER_START) + '[\\s\\S]*?' + esc(FOOTER_END));
+  return head + tail.replace(region, block);
+}
+
 // Match a page's existing top-chrome: the topnav header, plus an
 // optional comment, drawer aside, and backdrop that follow it.
 const CHROME_RE = new RegExp(
@@ -181,6 +209,9 @@ for (const rel of targetList()) {
 
   // 4. Ensure the pre-paint theme-init script is in <head> (no-flash dark mode).
   next = ensureThemeInit(next);
+
+  // 5. Propagate the canonical footer (single-sourced like the nav).
+  next = syncFooter(next, base);
 
   if (next !== html) { writeFileSync(abs, next); updated++; console.log('  synced   ', rel, `(base="${base}")`); }
   else { skipped++; }
