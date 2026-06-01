@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Choice — Preview Design System</title>
+  <title>Pagination — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -72,7 +72,7 @@
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/field/">Field</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/search/">Search</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/choice/">Choice</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/choice/">Choice</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/form-layout/">Form layout</a></li>
           </ul>
         </div>
@@ -101,7 +101,7 @@
           <p class="wire-doc-nav__group-title">Navigation</p>
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/breadcrumb/">Breadcrumb</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/pagination/">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/pagination/">Pagination</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Top nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/side-nav/">Side nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/in-page-nav/">In-page nav</a></li>
@@ -236,25 +236,25 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-forms">Forms &amp; inputs</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Choice</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-navigation">Navigation</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Pagination</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Choice</h1>
+          <h1 class="wire-doc-header__title">Pagination</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">Controls for picking from options: a <code>.wire-checkbox</code> for any-number, a <code>.wire-radio</code> for exactly-one, and a <code>.wire-toggle</code> for an instant on/off setting. Each is a label wrapping a styled native input, so the whole row is clickable.</p>
+        <p class="wire-doc-header__lead">A control for moving through a long, ordered set one page at a time — previous and next, numbered pages, and an ellipsis where the middle is collapsed. The current page is shown, not linked.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">css/components/pagination.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
         </ul>
       </header>
 
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Choice documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Pagination documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -267,46 +267,71 @@
 
               <section id="live-demo" class="doc-section">
                 <h2 class="wire-h3">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Each control is a <code>&lt;label&gt;</code> wrapping its input, so clicking the text toggles it. Related choices group inside a <code>&lt;fieldset&gt;</code> with a legend.</p>
+                <p class="u-text-muted u-mt-sm">Previous and next flank a numbered list. First and last stay reachable; the gap between collapses to an ellipsis. Page 2 is current.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Checkbox group</span>
-                  <fieldset class="wire-fieldset">
-                    <legend class="wire-fieldset__legend">Filter by location</legend>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Chicago — Streeterville</span></label>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Homewood</span></label>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" disabled><span>Lake Forest (coming 2027)</span></label>
-                  </fieldset>
+                  <span class="doc-example__label">Paged results</span>
+                  <nav class="wire-pagination" aria-label="Pagination (demo)">
+                    <a class="wire-pagination__nav" href="#">← Previous</a>
+                    <ul class="wire-pagination__list" role="list">
+                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">1</a></li>
+                      <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">2</span></li>
+                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
+                      <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
+                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">12</a></li>
+                    </ul>
+                    <a class="wire-pagination__nav" href="#">Next →</a>
+                  </nav>
                 </div>
               </section>
 
-              <section id="which" class="doc-section">
-                <h2 class="wire-h3">Which one</h2>
-                <p class="u-text-muted u-mt-sm">The shape of the answer picks the control.</p>
+              <section id="anatomy" class="doc-section">
+                <h2 class="wire-h3">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A labeled landmark holds optional previous/next controls around an ordered list of page links. The current page and the ellipsis are non-interactive.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Control</th><th scope="col">Answer shape</th><th scope="col">Use for</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Checkbox</th><td>zero or more</td><td>Multi-select filters, or a single yes/no agreement.</td></tr>
-                    <tr><th scope="row">Radio</th><td>exactly one</td><td>One choice from a small, fully-visible set (2–5).</td></tr>
-                    <tr><th scope="row">Toggle</th><td>on / off</td><td>An immediate setting that takes effect with no save step.</td></tr>
+                    <tr><th scope="row">Landmark</th><td><code>.wire-pagination</code></td><td>A <code>&lt;nav&gt;</code> with <code>aria-label="Pagination"</code>.</td></tr>
+                    <tr><th scope="row">Prev / Next</th><td><code>.wire-pagination__nav</code></td><td>Step controls; <code>aria-disabled="true"</code> at the ends.</td></tr>
+                    <tr><th scope="row">List</th><td><code>.wire-pagination__list</code></td><td>The page numbers.</td></tr>
+                    <tr><th scope="row">Page link</th><td><code>.wire-pagination__link</code></td><td>A link to a specific page.</td></tr>
+                    <tr><th scope="row">Current</th><td><code>.wire-pagination__current</code></td><td>The current page as a filled, non-link span with <code>aria-current="page"</code>.</td></tr>
+                    <tr><th scope="row">Ellipsis</th><td><code>.wire-pagination__ellipsis</code></td><td>A decorative gap for skipped pages.</td></tr>
                   </tbody>
                 </table>
-                <p class="u-text-muted u-mt-md">Use radios, not a select, when the set is small and seeing every option matters. Use a toggle only when the change is instant — if it needs a Save or confirmation, use a checkbox.</p>
+              </section>
+
+              <section id="when" class="doc-section">
+                <h2 class="wire-h3">When to use</h2>
+                <ul>
+                  <li>Use pagination to split a <strong>long, ordered set</strong> into pages users move through — search results, a provider directory, an article archive.</li>
+                  <li>Reach for it when the total count or a specific page matters, or users want to jump to the first or last page.</li>
+                  <li>For an open, continuous feed, a "load more" or infinite scroll fits better — pagination is for bounded, indexable sets.</li>
+                  <li>It's not for steps in a process (use a stepper) or for hierarchy (use a <a href="../breadcrumb/">Breadcrumb</a>).</li>
+                </ul>
               </section>
 
               <section id="in-context" class="doc-section">
                 <h2 class="wire-h3">In context</h2>
-                <p class="u-text-muted u-mt-sm">Choices cluster in filter panels and settings. Group with a fieldset; keep the legend short.</p>
+                <p class="u-text-muted u-mt-sm">Pagination sits centered below the result set it pages, with previous disabled on the first page.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">A filter and a setting</span>
-                  <div class="u-stack u-stack--lg">
-                    <fieldset class="wire-fieldset">
-                      <legend class="wire-fieldset__legend">Visit type</legend>
-                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit" checked><span>In-person</span></label>
-                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit"><span>Telehealth</span></label>
-                      <label class="wire-radio"><input class="wire-radio__input" type="radio" name="ctx-visit"><span>Either is fine</span></label>
-                    </fieldset>
-                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span>Show only providers accepting new patients</span></label>
+                  <span class="doc-example__label">Below a results list, first page</span>
+                  <div class="u-stack u-stack--md">
+                    <ul class="u-stack u-stack--xs" role="list">
+                      <li class="u-text-muted">Dr. Alicia Romero — Stroke rehabilitation</li>
+                      <li class="u-text-muted">Dr. Ben Whitfield — Spinal cord injury</li>
+                      <li class="u-text-muted">Dr. Carla Nguyen — Brain injury</li>
+                    </ul>
+                    <nav class="wire-pagination" aria-label="Pagination (context)">
+                      <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
+                      <ul class="wire-pagination__list" role="list">
+                        <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">1</span></li>
+                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">2</a></li>
+                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
+                        <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
+                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">9</a></li>
+                      </ul>
+                      <a class="wire-pagination__nav" href="#">Next →</a>
+                    </nav>
                   </div>
                 </div>
               </section>
@@ -317,17 +342,17 @@
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
                     <ul>
-                      <li>Wrap each control in a <code>&lt;label&gt;</code> so the text is clickable.</li>
-                      <li>Group related radios/checkboxes in a <code>&lt;fieldset&gt;</code> with a legend.</li>
-                      <li>Give every radio in a set the same <code>name</code>.</li>
+                      <li>Show the current page as a non-link with <code>aria-current="page"</code>.</li>
+                      <li>Disable previous on the first page and next on the last.</li>
+                      <li>Keep first and last reachable; collapse the middle with an ellipsis.</li>
                     </ul>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
                     <ul>
-                      <li>Use a toggle for a change that needs a Save or confirmation.</li>
-                      <li>Use radios for a long list — switch to a select past ~5 options.</li>
-                      <li>Use a lone checkbox where exactly one of several must be chosen.</li>
+                      <li>Link the current page to itself.</li>
+                      <li>Remove prev/next when disabled — dim them so position stays stable.</li>
+                      <li>Use pagination for unbounded, continuously loading content.</li>
                     </ul>
                   </div>
                 </div>
@@ -338,7 +363,8 @@
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#which">Which one</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
@@ -351,77 +377,54 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="checkbox" class="doc-section">
-                <h2 class="wire-h3">Checkbox</h2>
-                <p class="u-text-muted u-mt-sm"><code>.wire-checkbox</code> wraps a <code>.wire-checkbox__input</code>. Checked shows a clean checkmark; supports a disabled state.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Checked · unchecked · disabled</span>
-                  <fieldset class="wire-fieldset">
-                    <legend class="wire-fieldset__legend">Filter by location</legend>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Chicago — Streeterville</span></label>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
-                    <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" disabled><span>Lake Forest (coming 2027)</span></label>
-                  </fieldset>
-                </div>
-              </section>
-
-              <section id="radio" class="doc-section">
-                <h2 class="wire-h3">Radio</h2>
-                <p class="u-text-muted u-mt-sm"><code>.wire-radio</code> wraps a <code>.wire-radio__input</code>. Checked shows a filled dot; all options in a set share a <code>name</code>.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Radio group</span>
-                  <fieldset class="wire-fieldset">
-                    <legend class="wire-fieldset__legend">Visit type</legend>
-                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit" checked><span>In-person</span></label>
-                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit"><span>Telehealth</span></label>
-                    <label class="wire-radio"><input class="wire-radio__input" type="radio" name="spec-visit"><span>Either is fine</span></label>
-                  </fieldset>
-                </div>
-              </section>
-
-              <section id="toggle" class="doc-section">
-                <h2 class="wire-h3">Toggle</h2>
-                <p class="u-text-muted u-mt-sm"><code>.wire-toggle</code> is a switch built on a checkbox input; the thumb slides on check. Use it only for instant settings.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">On · off</span>
-                  <div class="u-stack u-stack--sm">
-                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span>Accepting new patients</span></label>
-                    <label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span>Show telehealth-only providers</span></label>
-                  </div>
-                </div>
+              <section id="structure" class="doc-section">
+                <h2 class="wire-h3">Structure</h2>
+                <ul>
+                  <li>A <code>&lt;nav&gt;</code> landmark holds optional prev/next controls flanking an unordered list of page links.</li>
+                  <li>Page links and the current page are 40px minimum squares (<code>min-inline-size</code> and <code>min-block-size: 2.5rem</code>) with a pill radius.</li>
+                  <li>The current page is a filled <code>&lt;span&gt;</code>, not a link; the ellipsis is a non-interactive span.</li>
+                  <li>Disabled prev/next carry <code>aria-disabled="true"</code> (40% opacity, <code>pointer-events: none</code>) — visible but inert, so the row doesn't reflow at the ends.</li>
+                </ul>
               </section>
 
               <section id="tokens" class="doc-section">
-                <h2 class="wire-h3">States &amp; tokens</h2>
+                <h2 class="wire-h3">Tokens</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Control size</th><td>1.25rem (checkbox / radio); 2.5×1.5rem (toggle)</td></tr>
-                    <tr><th scope="row">Row target</th><td>2.75rem min-height (44px)</td></tr>
-                    <tr><th scope="row">Border</th><td><code>--border-md</code> · <code>--color-border-strong</code></td></tr>
-                    <tr><th scope="row">Checked fill</th><td><code>--color-accent</code>, mark in <code>--color-bg</code></td></tr>
-                    <tr><th scope="row">Disabled</th><td>0.4 opacity, not focusable</td></tr>
+                    <tr><th scope="row">Target size</th><td>2.5rem × 2.5rem</td></tr>
+                    <tr><th scope="row">Outer gap / list gap</th><td><code>--space-xs</code> · <code>--space-2xs</code></td></tr>
+                    <tr><th scope="row">Type</th><td><code>--text-sm</code>, <code>--weight-medium</code></td></tr>
+                    <tr><th scope="row">Link hover</th><td><code>--color-bg-muted</code></td></tr>
+                    <tr><th scope="row">Current (fill / text)</th><td><code>--color-accent</code> / <code>--color-text-inverse</code></td></tr>
+                    <tr><th scope="row">Ellipsis</th><td><code>--color-text-subtle</code></td></tr>
+                    <tr><th scope="row">Radius / transition</th><td><code>--radius-pill</code> · <code>--duration-fast</code> <code>--ease-out</code></td></tr>
                   </tbody>
                 </table>
               </section>
 
               <section id="snippet" class="doc-section">
                 <h2 class="wire-h3">Snippet</h2>
-                <pre class="doc-snippet">&lt;fieldset class="wire-fieldset"&gt;
-  &lt;legend class="wire-fieldset__legend"&gt;Visit type&lt;/legend&gt;
-  &lt;label class="wire-radio"&gt;&lt;input class="wire-radio__input" type="radio" name="visit"&gt;&lt;span&gt;In-person&lt;/span&gt;&lt;/label&gt;
-  &lt;label class="wire-radio"&gt;&lt;input class="wire-radio__input" type="radio" name="visit"&gt;&lt;span&gt;Telehealth&lt;/span&gt;&lt;/label&gt;
-&lt;/fieldset&gt;</pre>
+                <pre class="doc-snippet">&lt;nav class="wire-pagination" aria-label="Pagination"&gt;
+  &lt;a class="wire-pagination__nav" href="?page=1" aria-disabled="true"&gt;← Previous&lt;/a&gt;
+  &lt;ul class="wire-pagination__list" role="list"&gt;
+    &lt;li class="wire-pagination__item"&gt;
+      &lt;span class="wire-pagination__current" aria-current="page"&gt;1&lt;/span&gt;
+    &lt;/li&gt;
+    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=2"&gt;2&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="wire-pagination__item"&gt;&lt;span class="wire-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;&lt;/li&gt;
+    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=9"&gt;9&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;a class="wire-pagination__nav" href="?page=2"&gt;Next →&lt;/a&gt;
+&lt;/nav&gt;</pre>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#checkbox">Checkbox</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#radio">Radio</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#toggle">Toggle</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">States &amp; tokens</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#structure">Structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
               </ul>
             </nav>
@@ -433,43 +436,42 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="grouping" class="doc-section">
-                <h2 class="wire-h3">Grouping</h2>
+              <section id="landmark" class="doc-section">
+                <h2 class="wire-h3">Landmark &amp; labeling</h2>
                 <ul>
-                  <li>Wrap a set of related radios or checkboxes in a <code>&lt;fieldset&gt;</code> with a <code>&lt;legend&gt;</code> — the legend names the group for assistive tech.</li>
-                  <li>Every radio in one group shares the same <code>name</code>, which makes them mutually exclusive and arrow-navigable.</li>
+                  <li>Wrap the control in <code>&lt;nav aria-label="Pagination"&gt;</code> so it's a distinct landmark.</li>
+                  <li>Mark the current page with <code>aria-current="page"</code> on a non-link <code>&lt;span&gt;</code>.</li>
+                  <li>Give prev/next real text ("Previous", "Next") — an arrow glyph alone isn't an accessible name.</li>
                 </ul>
               </section>
 
-              <section id="labels" class="doc-section">
-                <h2 class="wire-h3">Labels &amp; target</h2>
+              <section id="states" class="doc-section">
+                <h2 class="wire-h3">Disabled &amp; decorative</h2>
                 <ul>
-                  <li>Each control is a <code>&lt;label&gt;</code> wrapping its input, so the text is part of the control — no separate <code>for</code>/<code>id</code> needed, and the whole row is clickable.</li>
-                  <li>The row keeps a 44px-tall target even though the box itself is smaller.</li>
-                  <li>Checked state is carried by the control's shape and fill, never color alone (WCAG 1.4.1).</li>
+                  <li>At the ends, set <code>aria-disabled="true"</code> on prev/next rather than removing them — they stay announced and the layout stays put.</li>
+                  <li>The ellipsis is decorative (<code>aria-hidden="true"</code>): it marks skipped pages, not a control.</li>
                 </ul>
               </section>
 
               <section id="keyboard" class="doc-section">
-                <h2 class="wire-h3">Keyboard</h2>
+                <h2 class="wire-h3">Keyboard &amp; target size</h2>
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Space</th><td>Toggles a checkbox or toggle; selects the focused radio.</td></tr>
-                    <tr><th scope="row">Arrows</th><td>Move and select within a radio group.</td></tr>
-                    <tr><th scope="row">Tab</th><td>Enters the group at the checked radio, or each checkbox in turn.</td></tr>
+                    <tr><th scope="row">Tab</th><td>Moves across prev, page links, and next in order.</td></tr>
+                    <tr><th scope="row">Enter</th><td>Activates the focused page link or step control.</td></tr>
                   </tbody>
                 </table>
-                <p class="u-text-muted u-mt-md">All controls keep the visible focus ring; disabled controls are skipped in the tab order.</p>
+                <p class="u-text-muted u-mt-md">The current-page span and the ellipsis aren't focusable. Every control clears a 40px target, comfortably past the WCAG 2.5.8 minimum.</p>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#grouping">Grouping</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labels">Labels &amp; target</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmark">Landmark &amp; labeling</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">Disabled &amp; decorative</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; target size</a></li>
               </ul>
             </nav>
           </div>
@@ -478,13 +480,13 @@
       </div>
 
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../search/">
-          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
-          <span class="wire-doc-pager__title">Search</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../breadcrumb/">
+          <span class="wire-doc-pager__direction">Previous in Navigation</span>
+          <span class="wire-doc-pager__title">Breadcrumb</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../form-layout/">
-          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
-          <span class="wire-doc-pager__title">Form layout</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../top-nav/">
+          <span class="wire-doc-pager__direction">Next in Navigation</span>
+          <span class="wire-doc-pager__title">Top nav</span>
         </a>
       </nav>
 
