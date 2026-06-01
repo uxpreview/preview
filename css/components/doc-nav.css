@@ -30,74 +30,36 @@
   font-size: var(--text-sm);
 }
 
-/* A category group is now a nested disclosure (collapsed by default; the
-   sync opens the group holding the current page). Compact, with a chevron
-   and a second-level tree line down its items — Nextra-style. */
+/* A category group is a non-interactive cluster: a bold label anchoring a
+   list of always-visible items (Nextra's "Layout Components" model). The
+   spacing between groups is carried by the section-body gap. */
 .wire-doc-nav__group {
   display: flex;
   flex-direction: column;
 }
 
-.wire-doc-nav__group + .wire-doc-nav__group {
-  margin-block-start: var(--space-3xs);
-}
-.wire-doc-nav__top-link + .wire-doc-nav__group {
-  margin-block-start: var(--space-xs);
-}
-
+/* The group label is the anchor of each cluster: near-full-strength and
+   semibold so the eye reads it as a heading, the leaves below it as quieter
+   children. No chevron, no hover — it's a label, not a control. */
 .wire-doc-nav__group-title {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-
   margin: 0;
   padding-block: var(--space-2xs);
   padding-inline: var(--space-sm);
-  border-radius: var(--radius-sm);
-  min-block-size: 2rem;
 
   font-family: var(--font-sans);
   font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--color-text-muted);
-  line-height: var(--leading-snug);
-
-  transition: background-color var(--duration-fast) var(--ease-out),
-              color var(--duration-fast) var(--ease-out);
-}
-
-.wire-doc-nav__group-title::-webkit-details-marker { display: none; }
-
-.wire-doc-nav__group-title:hover {
-  background-color: var(--color-bg-muted);
+  font-weight: var(--weight-semibold);
   color: var(--color-text);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
 }
 
-.wire-doc-nav__group-title:focus-visible {
-  outline: var(--focus-ring-width) solid var(--color-focus);
-  outline-offset: var(--focus-ring-offset);
-}
-
-.wire-doc-nav__group-title::after {
-  content: "›";
-  flex: none;
-  font-size: var(--text-md);
-  line-height: 1;
-  color: var(--color-text-subtle);
-  transition: transform var(--duration-fast) var(--ease-out);
-}
-
-.wire-doc-nav__group[open] > .wire-doc-nav__group-title::after {
-  transform: rotate(90deg);
-}
-
-/* Second-level tree line: guides the category's items, indented under the
-   group summary. Only group lists get it — section-level lists already sit
-   inside the section-body's tree line. */
-.wire-doc-nav__group > .wire-doc-nav__list {
+/* Tree line: one line guides the leaves, both inside a category group and
+   inside a flat section (Foundations, Patterns…). It sits beside the LEAVES
+   only — never beside a group label — so the hierarchy reads cleanly the way
+   Nextra's does. */
+.wire-doc-nav__group > .wire-doc-nav__list,
+.wire-doc-nav__section-body > .wire-doc-nav__list {
   margin-inline-start: var(--space-sm);
   padding-inline-start: var(--space-2xs);
   padding-block-start: var(--space-3xs);
@@ -187,12 +149,13 @@
    Built on native <details> + <summary> for keyboard accessibility
    and progressive enhancement. Chevron rotates on open via CSS.
 
-   Anatomy:
+   Anatomy (a section whose label links to its own index page):
      <details class="wire-doc-nav__section" open>
-       <summary class="wire-doc-nav__section-summary">Components</summary>
+       <summary class="wire-doc-nav__section-summary">
+         <a class="wire-doc-nav__section-link" href="../">Components</a>
+       </summary>
        <div class="wire-doc-nav__section-body">
-         <a class="wire-doc-nav__top-link" href="../">All components</a>
-         <section class="wire-doc-nav__group">...</section>
+         <div class="wire-doc-nav__group">...</div>
        </div>
      </details>
    ============================================================ */
@@ -253,15 +216,42 @@
   transform: rotate(90deg);
 }
 
+/* A section whose label is itself a link (a folder with an index page, e.g.
+   Components → the components landing). The link fills the row so the label
+   navigates, while the chevron still toggles the disclosure. It reclaims the
+   summary's block padding via negative margin so its hit area covers the full
+   row height; the JS disclosure handler skips clicks that land on this anchor
+   so navigation isn't swallowed by the toggle. */
+.wire-doc-nav__section-link {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  align-items: center;
+  margin-block: calc(-1 * var(--space-xs));
+  padding-block: var(--space-xs);
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.wire-doc-nav__section-link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* "You are here" on the section's own index page: the leaf list can't carry the
+   current marker (there's no leaf), so the summary row takes the soft fill. */
+.wire-doc-nav__section-summary:has(.wire-doc-nav__section-link.is-current) {
+  background-color: var(--color-bg-muted);
+}
+
 .wire-doc-nav__section-body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
-  padding-block-start: 0;
-  padding-block-end: var(--space-3xs);
+  gap: var(--space-md);
+  padding-block-start: var(--space-2xs);
+  padding-block-end: var(--space-2xs);
   padding-inline-start: var(--space-sm);
-  border-inline-start: var(--border-thin) solid var(--color-border);
-  margin-inline-start: var(--space-sm);
 }
 
 /* Top-level standalone link (no children) — Get started, All components, etc. */

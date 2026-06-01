@@ -108,23 +108,24 @@ function stampCurrent(navStr, rel) {
   if (!c) return navStr;
   let out = navStr;
   if (c.section) {
+    // The summary may wrap its label in an <a> (a section that links to its own
+    // index, e.g. Components), so allow an optional anchor open-tag before the name.
     out = out.replace(
-      new RegExp('<details class="wire-doc-nav__section">(\\s*<summary class="wire-doc-nav__section-summary">' + c.section + '</summary>)'),
+      new RegExp('<details class="wire-doc-nav__section">(\\s*<summary class="wire-doc-nav__section-summary">(?:<a\\b[^>]*>)?' + esc(c.section) + ')'),
       '<details class="wire-doc-nav__section" open>$1'
     );
   }
-  // Category groups are collapsed by default; open the one holding this page so
-  // "you are here" is never hidden inside a collapsed group.
-  if (c.group) {
-    out = out.replace(
-      new RegExp('<details class="wire-doc-nav__group">(\\s*<summary class="wire-doc-nav__group-title">' + esc(c.group) + '</summary>)'),
-      '<details class="wire-doc-nav__group" open>$1'
-    );
-  }
-  const cls = c.top ? 'wire-doc-nav__top-link' : 'wire-doc-nav__link';
+  // Category groups are always-visible now (flat, Nextra-style), so there's
+  // nothing to open — opening the section that holds the page is enough. The
+  // `group` field in CURRENT is retained as documentation of where each page
+  // lives, but no longer drives any markup change.
+  //
+  // Stamp the rail link by href, whatever its class — a leaf (wire-doc-nav__link),
+  // a standalone top-link, or a section label that's itself a link
+  // (wire-doc-nav__section-link, e.g. Components → the components landing).
   out = out.replace(
-    `<a class="${cls}" href="${c.href}">`,
-    `<a class="${cls} is-current" aria-current="page" href="${c.href}">`
+    new RegExp('<a class="([^"]*)" href="' + esc(c.href) + '">'),
+    (m, klass) => `<a class="${klass} is-current" aria-current="page" href="${c.href}">`
   );
   return out;
 }
