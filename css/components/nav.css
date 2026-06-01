@@ -413,6 +413,17 @@
   transform: translateX(0);
 }
 
+/* Start-anchored: slides in from the inline-start (left in LTR) instead of the
+   end. Same mechanics, mirrored geometry — the direction the shell's own rail
+   already uses. */
+.wire-drawer--start {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  border-inline-start: 0;
+  border-inline-end: var(--border-thin) solid var(--color-border);
+  transform: translateX(-100%);
+}
+
 .wire-drawer__close {
   margin-block-end: var(--space-lg);
 }

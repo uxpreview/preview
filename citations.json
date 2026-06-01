@@ -273,6 +273,12 @@
       "verified_date": null, "verification": "from research.html — pending fidelity check", "supports": ["modal"],
       "notes": "Year not stated; confirm recency." },
 
+    { "id": "nng-hamburger-hidden-nav", "tier": "empirical",
+      "finding": "Hiding primary navigation behind a menu (hamburger / off-canvas) lowers discoverability and engagement; reserve it for where space genuinely forces it. Backs using the drawer for mobile nav, not as a default to hide working navigation.",
+      "source": { "org": "Nielsen Norman Group", "title": "Hamburger Menus and Hidden Navigation Hurt UX Metrics", "year": null, "url": "https://www.nngroup.com/articles/hamburger-menus/" },
+      "verified_date": null, "verification": "UNVERIFIED — pending human review", "supports": ["drawer"],
+      "notes": "Agent-drafted candidate; confirm the exact article, finding, and recency before use." },
+
     { "id": "nng-indicators-validations-notifications", "tier": "empirical",
       "finding": "When to use transient vs. persistent feedback; backs the toast's polite live region.",
       "source": { "org": "Nielsen Norman Group", "title": "Indicators, Validations, and Notifications", "year": null, "url": "https://www.nngroup.com/articles/indicators-validations-notifications/" },
