@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Utilities — Preview Design System</title>
+  <title>Layout &amp; utilities — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
   <style>
     /* Doc-page-only scaffold. Keep tiny. */
@@ -50,10 +50,9 @@
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
     <details class="wire-doc-nav__section" open>
-      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../foundations/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
@@ -226,18 +225,24 @@
 <!-- NAV:END -->
 
 <main id="main">
-  <section class="wire-hero wire-hero--editorial">
-    <div class="u-container">
-      <div class="wire-hero__inner">
-        <span class="wire-hero__eyebrow">Foundation</span>
-        <h1 class="wire-hero__title">Utilities, primitives &amp; layout</h1>
-        <p class="wire-hero__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="u-section">
-    <div class="u-container">
+    <div class="u-container u-container--wide">
+
+      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+        <ol class="wire-breadcrumb__list">
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Layout &amp; utilities</span></li>
+        </ol>
+      </nav>
+
+      <header class="wire-doc-header">
+        <div class="wire-doc-header__row">
+          <h1 class="wire-doc-header__title">Layout &amp; utilities</h1>
+        </div>
+        <p class="wire-doc-header__lead">Small visual primitives (badges, tags, dividers) and single-purpose layout helpers that compose every page. Each one does one thing — label, group, separate, stack, cluster, grid, contain, hide — so components can stay focused on identity.</p>
+      </header>
+
+      <div class="wire-shell__doc">
       <div class="u-stack u-stack--3xl">
 
         <section class="doc-section" id="visual-primitives">
@@ -339,7 +344,7 @@
           </ul>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="container">
           <h2 class="wire-h3">Container</h2>
           <p class="u-text-muted u-mt-sm">Centers content with a responsive max width. Override per-instance with the <code>--container-max</code> custom property or the size modifiers.</p>
           <div class="doc-example">
@@ -359,7 +364,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="stack">
           <h2 class="wire-h3">Stack</h2>
           <p class="u-text-muted u-mt-sm">Vertical rhythm with a configurable gap. Use size modifiers <code>--3xs</code> through <code>--3xl</code> or set <code>--stack-gap</code>.</p>
           <div class="doc-example">
@@ -380,7 +385,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="cluster">
           <h2 class="wire-h3">Cluster</h2>
           <p class="u-text-muted u-mt-sm">Horizontal wrapping with gap. Modifiers control gap, alignment, and justification.</p>
           <div class="doc-example">
@@ -408,7 +413,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="grid">
           <h2 class="wire-h3">Grid</h2>
           <p class="u-text-muted u-mt-sm">Auto-fit responsive grid. Choose <code>--2</code>, <code>--3</code>, <code>--4</code>, or rely on default auto-fit with <code>--grid-min</code>.</p>
           <div class="doc-example">
@@ -433,7 +438,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="sidebar">
           <h2 class="wire-h3">Sidebar</h2>
           <p class="u-text-muted u-mt-sm">Two-track layout: fixed-width sidebar, fluid main. Wraps gracefully on narrow screens.</p>
           <div class="doc-example">
@@ -445,7 +450,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="section">
           <h2 class="wire-h3">Section</h2>
           <p class="u-text-muted u-mt-sm">Vertical padding for page sections. Use size modifiers <code>--sm</code>, <code>--md</code>, <code>--lg</code>, <code>--xl</code>.</p>
           <div class="doc-example">
@@ -458,7 +463,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="flow">
           <h2 class="wire-h3">Flow</h2>
           <p class="u-text-muted u-mt-sm">Owl-selector spacing for prose-like blocks where children come from different sources. Override the gap with <code>--flow-gap</code>.</p>
           <div class="doc-example">
@@ -473,7 +478,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="center">
           <h2 class="wire-h3">Center</h2>
           <p class="u-text-muted u-mt-sm">Horizontally centers its children, with centered text alignment. Useful for empty states and landing CTAs.</p>
           <div class="doc-example">
@@ -486,7 +491,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="text-utilities">
           <h2 class="wire-h3">Text utilities</h2>
           <p class="u-text-muted u-mt-sm">Alignment, color, balance.</p>
           <div class="doc-example">
@@ -512,7 +517,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="background-utilities">
           <h2 class="wire-h3">Background utilities</h2>
           <p class="u-text-muted u-mt-sm">Apply a token-backed surface color.</p>
           <div class="doc-example">
@@ -526,7 +531,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="visibility">
           <h2 class="wire-h3">Visibility</h2>
           <p class="u-text-muted u-mt-sm">Hide on every screen, only on mobile, only on desktop, or visually-hide for screen-reader-only text.</p>
           <div class="doc-example">
@@ -540,7 +545,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="spacing-helpers">
           <h2 class="wire-h3">Width &amp; spacing helpers</h2>
           <p class="u-text-muted u-mt-sm">Tiny escape hatches. Prefer stack/cluster gap for spacing; reach for margin utilities only when no parent gap fits.</p>
           <div class="doc-example">
@@ -563,7 +568,7 @@
           </div>
         </section>
 
-        <section class="doc-section">
+        <section class="doc-section" id="when-to-use">
           <h2 class="wire-h3">When to reach for utilities</h2>
           <ul>
             <li>Use a utility when you need a single, one-off behavior that does not belong in a component.</li>
@@ -578,6 +583,38 @@
         </section>
 
       </div>
+      <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+        <p class="wire-inpagenav__title">On this page</p>
+        <ul class="wire-inpagenav__list" role="list">
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visual-primitives">Visual primitives</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#container">Container</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#stack">Stack</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#cluster">Cluster</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#grid">Grid</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#sidebar">Sidebar</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#section">Section</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#flow">Flow</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#center">Center</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#text-utilities">Text utilities</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#background-utilities">Background utilities</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visibility">Visibility</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#spacing-helpers">Width &amp; spacing helpers</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when-to-use">When to reach for utilities</a></li>
+        </ul>
+      </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="typography.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Typography</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="research.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Accessibility &amp; evidence</span>
+        </a>
+      </nav>
+
     </div>
   </section>
 </main>

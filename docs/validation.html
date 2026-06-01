@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Validation &amp; testing — Preview Design System</title>
+  <title>Validation — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
   <style>
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
@@ -49,10 +49,9 @@
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
     <details class="wire-doc-nav__section" open>
-      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../foundations/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
@@ -226,38 +225,24 @@
 
 <main id="main">
 
-<section class="wire-hero wire-hero--editorial">
-  <div class="u-container">
-    <div class="wire-hero__inner">
-      <span class="wire-hero__eyebrow">v1.7 · Validation &amp; testing</span>
-      <h1 class="wire-hero__title">What we test, how we test it, and what we don't.</h1>
-      <p class="wire-hero__lead">A research-backed system has to be a tested system. This page documents the protocol: which tools run on which pages, how often, what the budgets are, and — honestly — what hasn't been validated yet. Where a check requires tooling that doesn't ship with the repo, the runnable config is shipped alongside it.</p>
-    </div>
-  </div>
-</section>
-
 <section class="u-section">
-  <div class="u-container">
-    <div class="u-sidebar">
+  <div class="u-container u-container--wide">
 
-      <aside aria-label="On this page">
-        <nav class="wire-inpagenav" data-wire-inpagenav>
-          <div class="wire-inpagenav__title">On this page</div>
-          <ul class="wire-inpagenav__list" role="list">
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#status">Status snapshot</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#a11y">Automated a11y (Pa11y)</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#lighthouse">Lighthouse</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-reader">Screen-reader audit</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visual">Visual regression</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#browsers">Browser support matrix</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#devices">Device &amp; viewport matrix</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#print">Print testing matrix</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#budgets">Performance budgets</a></li>
-            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#run">How to run all of it</a></li>
-          </ul>
-        </nav>
-      </aside>
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Validation</span></li>
+      </ol>
+    </nav>
 
+    <header class="wire-doc-header">
+      <div class="wire-doc-header__row">
+        <h1 class="wire-doc-header__title">Validation</h1>
+      </div>
+      <p class="wire-doc-header__lead">A research-backed system has to be a tested system. This page documents the protocol: which tools run on which pages, how often, what the budgets are, and — honestly — what hasn't been validated yet. Where a check requires tooling that doesn't ship with the repo, the runnable config is shipped alongside it.</p>
+    </header>
+
+    <div class="wire-shell__doc">
       <div class="wire-prose u-stack u-stack--3xl">
 
         <!-- ===== Status snapshot ===== -->
@@ -496,7 +481,34 @@ npm run validate         # Runs all three in sequence</pre>
         </section>
 
       </div>
+      <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+        <p class="wire-inpagenav__title">On this page</p>
+        <ul class="wire-inpagenav__list" role="list">
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#status">Status snapshot</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#a11y">Automated a11y (Pa11y)</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#lighthouse">Lighthouse</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-reader">Screen-reader audit</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#visual">Visual regression</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#browsers">Browser support matrix</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#devices">Device &amp; viewport matrix</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#print">Print testing matrix</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#budgets">Performance budgets</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#run">How to run all of it</a></li>
+        </ul>
+      </nav>
     </div>
+
+    <nav class="wire-doc-pager" aria-label="Foundations pagination">
+      <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="research.html">
+        <span class="wire-doc-pager__direction">Previous</span>
+        <span class="wire-doc-pager__title">Accessibility &amp; evidence</span>
+      </a>
+      <a class="wire-doc-pager__link wire-doc-pager__link--next" href="component-status.html">
+        <span class="wire-doc-pager__direction">Next</span>
+        <span class="wire-doc-pager__title">Component status</span>
+      </a>
+    </nav>
+
   </div>
 </section>
 

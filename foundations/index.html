@@ -41,10 +41,9 @@
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
     <details class="wire-doc-nav__section" open>
-      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link is-current" aria-current="page" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../foundations/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
@@ -226,55 +225,83 @@
         <p class="wire-doc-header__lead">Before any component: the principles that govern decisions, the tokens that hold every value, the layout primitives, and the evidence base that makes the system defensible in a client room.</p>
       </header>
 
-      <div class="u-grid u-grid--3" style="margin-block-start: var(--space-2xl);">
+      <div class="u-stack u-stack--2xl u-mt-xl">
 
-        <a class="wire-card wire-card--linked" href="../docs/principles.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Principle</span>
-            <h2 class="wire-card__title">Principles</h2>
-            <p class="wire-card__desc">The ten governance rules every change follows — curate over add, content not style, honesty over polish.</p>
-          </div>
-        </a>
+        <section aria-labelledby="found-core">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="found-core">Core</h2>
+            <p class="u-text-muted">The bedrock every page is built from — the rules, the raw values, the type, and the layout helpers.</p>
+          </header>
+          <div class="u-grid u-grid--3 u-mt-lg">
 
-        <a class="wire-card wire-card--linked" href="../docs/tokens.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Tokens</span>
-            <h2 class="wire-card__title">Tokens</h2>
-            <p class="wire-card__desc">The only file with raw values: grayscale ramp, type and spacing scales, radii, borders, shadows, motion. Everything references these.</p>
-          </div>
-        </a>
+            <a class="wire-card wire-card--linked" href="../docs/principles.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Principle</span>
+                <h3 class="wire-card__title">Principles</h3>
+                <p class="wire-card__desc">The ten governance rules every change follows — curate over add, content not style, honesty over polish.</p>
+              </div>
+            </a>
 
-        <a class="wire-card wire-card--linked" href="../docs/utilities.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Layout</span>
-            <h2 class="wire-card__title">Layout &amp; utilities</h2>
-            <p class="wire-card__desc">Container, stack, cluster, grid, sidebar, and the <code>u-*</code> helpers that compose every page without bespoke CSS.</p>
-          </div>
-        </a>
+            <a class="wire-card wire-card--linked" href="../docs/tokens.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Tokens</span>
+                <h3 class="wire-card__title">Tokens</h3>
+                <p class="wire-card__desc">The only file with raw values: grayscale ramp, type and spacing scales, radii, borders, shadows, motion. Everything references these.</p>
+              </div>
+            </a>
 
-        <a class="wire-card wire-card--linked" href="../docs/research.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Evidence</span>
-            <h2 class="wire-card__title">Accessibility &amp; evidence</h2>
-            <p class="wire-card__desc">The WCAG 2.2 AA compliance map and the four-tier evidence base — standard, empirical, convention, judgment — behind each decision.</p>
-          </div>
-        </a>
+            <a class="wire-card wire-card--linked" href="../docs/typography.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Type</span>
+                <h3 class="wire-card__title">Typography</h3>
+                <p class="wire-card__desc">One modular scale from a 12px eyebrow to an 88px display — hierarchy from size, weight, and space, never color.</p>
+              </div>
+            </a>
 
-        <a class="wire-card wire-card--linked" href="../docs/validation.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Quality</span>
-            <h2 class="wire-card__title">Validation</h2>
-            <p class="wire-card__desc">The checklist run on every generated page — grayscale, tokens-only, no invented classes, a11y holds — before it ships.</p>
-          </div>
-        </a>
+            <a class="wire-card wire-card--linked" href="../docs/utilities.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Layout</span>
+                <h3 class="wire-card__title">Layout &amp; utilities</h3>
+                <p class="wire-card__desc">Container, stack, cluster, grid, sidebar, and the <code>u-*</code> helpers that compose every page without bespoke CSS.</p>
+              </div>
+            </a>
 
-        <a class="wire-card wire-card--linked" href="../docs/component-status.html">
-          <div class="wire-card__body">
-            <span class="wire-card__eyebrow">Lifecycle</span>
-            <h2 class="wire-card__title">Component status</h2>
-            <p class="wire-card__desc">What's safe to build on and what's still settling — stable, beta, alpha, deprecated — across every component.</p>
           </div>
-        </a>
+        </section>
+
+        <section aria-labelledby="found-evidence">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="found-evidence">Evidence &amp; process</h2>
+            <p class="u-text-muted">How the system defends its decisions and keeps itself honest — the research basis, the test protocol, and the stability map.</p>
+          </header>
+          <div class="u-grid u-grid--3 u-mt-lg">
+
+            <a class="wire-card wire-card--linked" href="../docs/research.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Evidence</span>
+                <h3 class="wire-card__title">Accessibility &amp; evidence</h3>
+                <p class="wire-card__desc">The WCAG 2.2 AA compliance map and the four-tier evidence base — standard, empirical, convention, judgment — behind each decision.</p>
+              </div>
+            </a>
+
+            <a class="wire-card wire-card--linked" href="../docs/validation.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Quality</span>
+                <h3 class="wire-card__title">Validation</h3>
+                <p class="wire-card__desc">The checklist run on every generated page — grayscale, tokens-only, no invented classes, a11y holds — before it ships.</p>
+              </div>
+            </a>
+
+            <a class="wire-card wire-card--linked" href="../docs/component-status.html">
+              <div class="wire-card__body">
+                <span class="wire-card__eyebrow">Lifecycle</span>
+                <h3 class="wire-card__title">Component status</h3>
+                <p class="wire-card__desc">What's safe to build on and what's still settling — stable, beta, alpha, deprecated — across every component.</p>
+              </div>
+            </a>
+
+          </div>
+        </section>
 
       </div>
 

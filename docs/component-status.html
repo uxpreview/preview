@@ -48,10 +48,9 @@
     <a class="wire-doc-nav__top-link" href="../index.html">Overview</a>
 
     <details class="wire-doc-nav__section" open>
-      <summary class="wire-doc-nav__section-summary">Foundations</summary>
+      <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../foundations/">Foundations</a></summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../foundations/">Overview</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/principles.html">Principles</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
@@ -225,23 +224,28 @@
 
 <main id="main">
 
-<section class="wire-hero wire-hero--editorial">
-  <div class="u-container">
-    <div class="wire-hero__inner">
-      <span class="wire-hero__eyebrow">v1.8 · Component status</span>
-      <h1 class="wire-hero__title">What's safe to build on, what's still settling.</h1>
-      <p class="wire-hero__lead">Every component carries a status. Stable means the API is frozen until the next major version. Beta means it works and is used in real demos, but the class names or markup shape may refine. Alpha means experimental — don't use in client work. Deprecated means scheduled for removal at v2.0.</p>
-    </div>
-  </div>
-</section>
-
 <section class="u-section">
-  <div class="u-container" style="max-inline-size: 56rem">
+  <div class="u-container u-container--wide">
 
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Component status</span></li>
+      </ol>
+    </nav>
+
+    <header class="wire-doc-header">
+      <div class="wire-doc-header__row">
+        <h1 class="wire-doc-header__title">Component status</h1>
+      </div>
+      <p class="wire-doc-header__lead">Every component carries a status. Stable means the API is frozen until the next major version. Beta means it works and is used in real demos, but the class names or markup shape may refine. Alpha means experimental — don't use in client work. Deprecated means scheduled for removal at v2.0.</p>
+    </header>
+
+    <div class="wire-shell__doc">
     <div class="u-stack u-stack--lg">
 
       <!-- Legend -->
-      <section class="u-stack u-stack--sm">
+      <section id="legend" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Status legend</h2>
         <div class="u-cluster" style="gap: var(--space-md)">
           <span class="u-cluster" style="gap: var(--space-xs)"><span class="status status--stable">Stable</span> <span class="u-text-muted">API frozen until v2.0</span></span>
@@ -253,7 +257,7 @@
       </section>
 
       <!-- Foundations -->
-      <section class="u-stack u-stack--sm">
+      <section id="foundations" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Foundations</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -271,7 +275,7 @@
       </section>
 
       <!-- Primitives -->
-      <section class="u-stack u-stack--sm">
+      <section id="primitives" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Primitives</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -289,7 +293,7 @@
       </section>
 
       <!-- Forms -->
-      <section class="u-stack u-stack--sm">
+      <section id="forms" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Forms</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -303,7 +307,7 @@
       </section>
 
       <!-- Navigation -->
-      <section class="u-stack u-stack--sm">
+      <section id="navigation" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Navigation</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -321,7 +325,7 @@
       </section>
 
       <!-- Cards & layout -->
-      <section class="u-stack u-stack--sm">
+      <section id="cards-layout" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Cards, layout, content blocks</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -342,7 +346,7 @@
       </section>
 
       <!-- Media & lists -->
-      <section class="u-stack u-stack--sm">
+      <section id="media-lists" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Media, lists, tables</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -360,7 +364,7 @@
       </section>
 
       <!-- Feedback patterns (v1.4) -->
-      <section class="u-stack u-stack--sm">
+      <section id="feedback" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Feedback &amp; communication (v1.4)</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -378,7 +382,7 @@
       </section>
 
       <!-- Healthcare-specific -->
-      <section class="u-stack u-stack--sm">
+      <section id="healthcare" class="u-stack u-stack--sm">
         <h2 class="wire-h4">Healthcare-specific</h2>
         <div class="wire-table-wrap">
           <table class="wire-table">
@@ -397,6 +401,32 @@
       </div>
 
     </div>
+    <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+      <p class="wire-inpagenav__title">On this page</p>
+      <ul class="wire-inpagenav__list" role="list">
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#legend">Status legend</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#foundations">Foundations</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#primitives">Primitives</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#forms">Forms</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#navigation">Navigation</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#cards-layout">Cards, layout, content blocks</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#media-lists">Media, lists, tables</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#feedback">Feedback &amp; communication</a></li>
+        <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#healthcare">Healthcare-specific</a></li>
+      </ul>
+    </nav>
+    </div>
+
+    <nav class="wire-doc-pager" aria-label="Foundations pagination">
+      <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="validation.html">
+        <span class="wire-doc-pager__direction">Previous</span>
+        <span class="wire-doc-pager__title">Validation</span>
+      </a>
+      <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../foundations/">
+        <span class="wire-doc-pager__direction">Next</span>
+        <span class="wire-doc-pager__title">Foundations overview</span>
+      </a>
+    </nav>
 
   </div>
 </section>
