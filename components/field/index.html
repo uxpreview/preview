@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Landing page template — Preview Design System</title>
-  <meta name="description" content="The landing page template: a marketing or section homepage that opens with a hero and stacks alternating content bands down to the footer. Live preview, region anatomy, and page-level accessibility.">
+  <title>Field — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -58,7 +57,7 @@
       </div>
     </details>
 
-    <details class="wire-doc-nav__section">
+    <details class="wire-doc-nav__section" open>
       <summary class="wire-doc-nav__section-summary"><a class="wire-doc-nav__section-link" href="../../components/">Components</a></summary>
       <div class="wire-doc-nav__section-body">
         <div class="wire-doc-nav__group">
@@ -71,7 +70,7 @@
         <div class="wire-doc-nav__group">
           <p class="wire-doc-nav__group-title">Forms &amp; inputs</p>
           <ul class="wire-doc-nav__list" role="list">
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/field/">Field</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/field/">Field</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Search</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Choice</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/forms.html">Form layout</a></li>
@@ -171,12 +170,12 @@
       </div>
     </details>
 
-    <details class="wire-doc-nav__section" open>
+    <details class="wire-doc-nav__section">
       <summary class="wire-doc-nav__section-summary">Templates</summary>
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../templates/">Overview</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../templates/landing/">Landing page</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../templates/landing/">Landing page</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/page-shells.html">Page shells</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../directory.html">All demo pages</a></li>
         </ul>
@@ -235,248 +234,313 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
-      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../templates/">Templates</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Landing page</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-forms">Forms &amp; inputs</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Field</span></li>
         </ol>
       </nav>
 
-      <!-- ===================== DOC HEADER (template masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Landing page</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Landing shell</span></span>
+          <h1 class="wire-doc-header__title">Field</h1>
+          <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A marketing or section homepage: it opens with a hero, then stacks alternating content bands — features, a card grid, a bold inverse moment, resources — and closes on a contact prompt and the footer. The recipe one level above components; it composes them into a whole page.</p>
+        <p class="wire-doc-header__lead">A labeled input: a stack of label, control, and optional hint or error. <code>.wire-field</code> is the wrapper; the control inside is a text <code>.wire-input</code>, a <code>.wire-textarea</code>, or a <code>.wire-select</code>.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">Based on the <a href="../../docs/page-shells.html">landing</a> page shell</li>
-          <li class="wire-doc-header__meta-item">Example: <a href="../../pages/hospital-homepage.html">Riverside Medical Center</a></li>
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">Since v1.0</li>
         </ul>
       </header>
 
-      <!-- ===================== TABS: Preview / Anatomy / Accessibility ===================== -->
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Landing template documentation">
-          <button role="tab" id="tab-preview" class="wire-tabs__tab" aria-controls="preview" aria-selected="true" tabindex="0">Preview</button>
-          <button role="tab" id="tab-anatomy" class="wire-tabs__tab" aria-controls="anatomy" aria-selected="false" tabindex="-1">Anatomy</button>
+        <div role="tablist" class="wire-tabs__list" aria-label="Field documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- TAB 1 — PREVIEW                                               -->
-        <!-- ============================================================ -->
-        <section role="tabpanel" id="preview" aria-labelledby="tab-preview" class="wire-tabs__panel">
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
           <div class="wire-shell__doc">
             <div>
 
-              <!-- ---------- Live preview ---------- -->
-              <section id="live-preview" class="doc-section" aria-labelledby="h-live-preview">
-                <h2 class="wire-h3" id="h-live-preview">Live preview</h2>
-                <p class="u-text-muted u-mt-sm">A real page built only from the system — the Riverside Medical Center homepage. Scroll it inside the frame, or open it full-width to use it at real scale.</p>
-                <div class="doc-preview">
-                  <div class="doc-preview__bar">
-                    <span class="doc-preview__label">pages/hospital-homepage.html</span>
-                    <a class="doc-preview__open" href="../../pages/hospital-homepage.html" target="_blank" rel="noopener">Open full page ↗</a>
+              <section id="live-demo" class="doc-section">
+                <h2 class="wire-h3">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A field is a label bound to a control, with optional hint text below. Everything is keyboard- and screen-reader-ready out of the box.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Default field</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="demo-name">Full name</label>
+                    <input id="demo-name" class="wire-input" type="text" placeholder="Jane Doe">
+                    <span class="wire-field__hint">As it appears on your insurance card.</span>
                   </div>
-                  <iframe class="doc-preview__frame" src="../../pages/hospital-homepage.html" title="Live preview: Riverside Medical Center homepage" loading="lazy"></iframe>
                 </div>
               </section>
 
-              <!-- ---------- What it is ---------- -->
-              <section id="what-it-is" class="doc-section" aria-labelledby="h-what-it-is">
-                <h2 class="wire-h3" id="h-what-it-is">What it is</h2>
-                <p class="u-text-muted u-mt-sm">A landing page is the front door to an organization or a section of it. It does one job well: orient a first-time visitor and send them to the few things they came for. It leads with a hero that states who you are and the primary action, then uses a vertical stack of content bands — alternating surfaces to mark the rhythm — to surface services, proof, and resources without burying them in navigation.</p>
-              </section>
-
-              <!-- ---------- When to use ---------- -->
-              <section id="when-to-use" class="doc-section" aria-labelledby="h-when-to-use">
-                <h2 class="wire-h3" id="h-when-to-use">When to use</h2>
-                <ul>
-                  <li>An organization homepage, or the home of a major section (a service line, a campaign).</li>
-                  <li>A page whose job is orientation and routing, not a single transaction or a long read.</li>
-                  <li>When you have a few distinct things to promote and want them scannable in one scroll.</li>
-                </ul>
-
-                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
-                <ul>
-                  <li>For a single task or transaction — use a focused flow, and end it on a <a href="../../components/modal/">confirmation</a>, not a landing page.</li>
-                  <li>For a long-form read — that's the <a href="../../docs/page-shells.html">article</a> shell.</li>
-                  <li>For a searchable set of results — that's the <a href="../../docs/page-shells.html">listing</a> shell (a directory).</li>
-                </ul>
-              </section>
-
-            </div>
-
-            <!-- ===================== PREVIEW TOC ===================== -->
-            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
-              <p class="wire-inpagenav__title">On this page</p>
-              <ul class="wire-inpagenav__list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-preview">Live preview</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#what-it-is">What it is</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when-to-use">When to use</a></li>
-              </ul>
-            </nav>
-
-          </div>
-        </section>
-
-        <!-- ============================================================ -->
-        <!-- TAB 2 — ANATOMY                                               -->
-        <!-- ============================================================ -->
-        <section role="tabpanel" id="anatomy" aria-labelledby="tab-anatomy" class="wire-tabs__panel" hidden>
-          <div class="wire-shell__doc">
-            <div>
-
-              <!-- ---------- Regions ---------- -->
-              <section id="regions" class="doc-section" aria-labelledby="h-regions">
-                <h2 class="wire-h3" id="h-regions">Regions, top to bottom</h2>
-                <p class="u-text-muted u-mt-sm">The landing shell is a fixed spine of regions. Each is built from components that already carry their own docs — the template is the order and the choices, not new CSS.</p>
+              <section id="anatomy" class="doc-section">
+                <h2 class="wire-h3">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">Four parts, stacked. The control is required; label is required; hint and error are optional and mutually exclusive at a glance.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Region</th><th>Built from</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
-                    <tr><td>Global header</td><td><a href="../../docs/navigation.html">Top nav</a> · <a href="../../docs/navigation.html">Mega menu</a> · <a href="../../components/drawer/">Drawer</a></td><td>Identity and primary navigation; the drawer carries it on mobile.</td></tr>
-                    <tr><td>Hero</td><td><a href="../../docs/heroes.html">Hero</a> (editorial)</td><td>Who you are and the one action that matters most.</td></tr>
-                    <tr><td>Intro band</td><td><a href="../../docs/content-blocks.html">Two-column</a> · <a href="../../components/buttons/">Button</a></td><td>A short positioning statement and the next-most-likely route.</td></tr>
-                    <tr><td>Featured grid</td><td><a href="../../components/cards/">Card</a> grid</td><td>Services, programs, or news as equal-weight, scannable teasers.</td></tr>
-                    <tr><td>Highlight</td><td><a href="../../docs/content-blocks.html">Two-column</a> · <a href="../../docs/media.html">Media</a></td><td>One program or story given room, media beside copy.</td></tr>
-                    <tr><td>Inverse moment</td><td><code>u-bg-inverse</code> · <a href="../../docs/content-blocks.html">Quote</a> / stat</td><td>A bold dark band for proof — a testimonial or a few numbers.</td></tr>
-                    <tr><td>Resources</td><td><a href="../../docs/lists.html">Article list</a> · <a href="../../docs/lists.html">Linked list</a></td><td>Deeper content for visitors who want to read on.</td></tr>
-                    <tr><td>Contact / CTA</td><td><a href="../../docs/content-blocks.html">Callout</a> · <a href="../../docs/forms.html">Field</a></td><td>A clear prompt to get in touch or take the primary action.</td></tr>
-                    <tr><td>Footer</td><td><a href="../../docs/footers.html">Footer</a> (inverse)</td><td>The full site map, contact, and legal.</td></tr>
+                    <tr><th scope="row">Label</th><td><code>.wire-field__label</code></td><td>Names the field; bound to the control with <code>for</code>/<code>id</code>.</td></tr>
+                    <tr><th scope="row">Control</th><td><code>.wire-input</code> · <code>.wire-textarea</code> · <code>.wire-select</code></td><td>The input the user types into or chooses from.</td></tr>
+                    <tr><th scope="row">Hint</th><td><code>.wire-field__hint</code></td><td>Quiet helper text under the control.</td></tr>
+                    <tr><th scope="row">Error</th><td><code>.wire-field__error</code></td><td>Replaces the hint when the field is invalid.</td></tr>
                   </tbody>
                 </table>
               </section>
 
-              <!-- ---------- Content model ---------- -->
-              <section id="content-model" class="doc-section" aria-labelledby="h-content-model">
-                <h2 class="wire-h3" id="h-content-model">Content model</h2>
-                <p class="u-text-muted u-mt-sm">What the page needs from content before it can be filled in:</p>
+              <section id="when" class="doc-section">
+                <h2 class="wire-h3">When to use</h2>
                 <ul>
-                  <li><strong>Hero</strong> — a headline (the org's promise in a sentence), a one-line sub, one primary action, optional secondary.</li>
-                  <li><strong>Featured grid</strong> — 3–6 items of one kind (don't mix services with news), each a title + one-line description + link.</li>
-                  <li><strong>Highlight</strong> — one story: an eyebrow, a headline, a short paragraph, a media slot, a link.</li>
-                  <li><strong>Proof</strong> — either one quote with attribution, or 3–4 stats (a number + a label each).</li>
-                  <li><strong>Resources</strong> — a short list of links with dates or read-times.</li>
-                  <li><strong>Contact</strong> — a single prompt with one field or one button; don't open a full form on the homepage.</li>
+                  <li>Use <code>.wire-input</code> for short single-line text; <code>.wire-textarea</code> for multi-line free text.</li>
+                  <li>Use <code>.wire-select</code> for a small, fixed list of mutually exclusive options.</li>
+                  <li>Reach for a different control when the input isn't free text — Search, Choice (checkbox/radio/toggle), and Form layout are documented separately.</li>
                 </ul>
+                <p class="u-text-muted u-mt-md">Avoid a <code>.wire-select</code> for more than ~10 options (use search or autocomplete), and never add a bare required asterisk — use the <code>.wire-field__label-required</code> modifier so the marker stays consistent.</p>
               </section>
 
-              <!-- ---------- Composition notes ---------- -->
-              <section id="composition" class="doc-section" aria-labelledby="h-composition">
-                <h2 class="wire-h3" id="h-composition">Composition notes</h2>
-                <ul>
-                  <li><strong>Alternate surfaces, sparingly</strong> — default and <code>u-bg-subtle</code> bands set the rhythm; reserve one <code>u-bg-inverse</code> band for a single high-emphasis moment, not several.</li>
-                  <li><strong>One primary action</strong> — the hero owns it; later CTAs are secondary so the page has a clear top priority.</li>
-                  <li><strong>One card type per grid</strong> — a grid of person cards, or of content cards, never a mix; the silhouette break is jarring.</li>
-                  <li><strong>Edit down</strong> — every band competes for the same scroll; cut a band before crowding it.</li>
-                </ul>
+              <section id="in-context" class="doc-section">
+                <h2 class="wire-h3">In context</h2>
+                <p class="u-text-muted u-mt-sm">Fields stack in a form. Keep one column for scannability; pair related short fields in a row only when they're clearly connected.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">A short intake</span>
+                  <div class="u-stack u-stack--md">
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="ctx-email">Email</label>
+                      <input id="ctx-email" class="wire-input" type="email" placeholder="you@example.com">
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="ctx-reason">Reason for visit</label>
+                      <select id="ctx-reason" class="wire-select">
+                        <option>Outpatient evaluation</option>
+                        <option>Inpatient referral</option>
+                        <option>Day rehab consult</option>
+                      </select>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="ctx-notes">Anything we should know?</label>
+                      <textarea id="ctx-notes" class="wire-textarea" placeholder="A few sentences is fine."></textarea>
+                    </div>
+                  </div>
+                </div>
               </section>
 
-              <!-- ---------- Source & related ---------- -->
-              <section id="source" class="doc-section" aria-labelledby="h-source">
-                <h2 class="wire-h3" id="h-source">Source &amp; related</h2>
-                <ul>
-                  <li><a href="../../pages/hospital-homepage.html">View the example page</a> — the Riverside homepage this previews.</li>
-                  <li><a href="../../pages/university-homepage.html">Northgate homepage</a> — the same shell for a higher-ed voice.</li>
-                  <li><a href="../../docs/page-shells.html">Page shells</a> — the four abstract recipes (landing, article, listing, detail).</li>
-                  <li><a href="../">All templates</a> — the rest of the tier.</li>
-                </ul>
+              <section id="do-dont" class="doc-section">
+                <h2 class="wire-h3">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <ul>
+                      <li>Bind every label to its control with <code>for</code>/<code>id</code>.</li>
+                      <li>Put format help in the hint, before the user types.</li>
+                      <li>Keep forms to a single column.</li>
+                    </ul>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <ul>
+                      <li>Use placeholder text as the label — it vanishes on focus.</li>
+                      <li>Mark required fields with a bare <code>*</code> instead of the modifier.</li>
+                      <li>Pack format rules into a tooltip the user can't see while typing.</li>
+                    </ul>
+                  </div>
+                </div>
               </section>
 
             </div>
-
-            <!-- ===================== ANATOMY TOC ===================== -->
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
-              <ul class="wire-inpagenav__list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#regions">Regions</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-model">Content model</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composition">Composition notes</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#source">Source &amp; related</a></li>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
             </nav>
-
           </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- TAB 3 — ACCESSIBILITY                                         -->
-        <!-- ============================================================ -->
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="controls" class="doc-section">
+                <h2 class="wire-h3">Controls</h2>
+                <p class="u-text-muted u-mt-sm">Three controls share one look — same height, border, radius, and focus treatment — so a form reads as one surface.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Text input</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="spec-input">Email</label>
+                    <input id="spec-input" class="wire-input" type="email" placeholder="you@example.com">
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Textarea</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="spec-ta">What brings you in today?</label>
+                    <textarea id="spec-ta" class="wire-textarea" placeholder="A few sentences is fine — we'll follow up with a full intake."></textarea>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Select</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="spec-sel">Reason for visit</label>
+                    <select id="spec-sel" class="wire-select">
+                      <option>Outpatient evaluation</option>
+                      <option>Inpatient referral</option>
+                      <option>Day rehab consult</option>
+                      <option>Research participation</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section id="states" class="doc-section">
+                <h2 class="wire-h3">States</h2>
+                <p class="u-text-muted u-mt-sm">Every control ships default, hover, focus-visible, disabled, and <code>.is-invalid</code>. Invalid swaps the hint for a <code>.wire-field__error</code> and links it with <code>aria-describedby</code>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Default · with hint · invalid · disabled</span>
+                  <div class="u-stack u-stack--md">
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-default">Email</label>
+                      <input id="st-default" class="wire-input" type="email" placeholder="you@example.com">
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-hint">Phone</label>
+                      <input id="st-hint" class="wire-input" type="tel" placeholder="(312) 555-0142">
+                      <span class="wire-field__hint">We'll only use this to confirm your appointment.</span>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label wire-field__label-required" for="st-invalid">Date of birth</label>
+                      <input id="st-invalid" class="wire-input is-invalid" type="text" placeholder="MM / DD / YYYY" aria-describedby="st-dob-err">
+                      <span id="st-dob-err" class="wire-field__error">Enter a valid date in MM / DD / YYYY format</span>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-disabled">Member ID</label>
+                      <input id="st-disabled" class="wire-input" type="text" value="MRN-44829-1" disabled>
+                    </div>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">Treatment</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Default</th><td>—</td><td>1px border at <code>--color-border-strong</code>.</td></tr>
+                    <tr><th scope="row">Hover / focus</th><td>pointer / keyboard</td><td>Border darkens to <code>--color-text</code>; focus also shows the ring.</td></tr>
+                    <tr><th scope="row">Invalid</th><td><code>.is-invalid</code></td><td>2px border; <code>.wire-field__error</code> replaces the hint.</td></tr>
+                    <tr><th scope="row">Disabled</th><td><code>disabled</code></td><td>Muted surface and text; not focusable.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="tokens" class="doc-section">
+                <h2 class="wire-h3">Tokens</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Min height</th><td>2.75rem (44px target)</td></tr>
+                    <tr><th scope="row">Padding</th><td><code>--space-xs</code> / <code>--space-md</code></td></tr>
+                    <tr><th scope="row">Border</th><td><code>--border-thin</code> · <code>--color-border-strong</code></td></tr>
+                    <tr><th scope="row">Radius</th><td><code>--radius-md</code></td></tr>
+                    <tr><th scope="row">Text</th><td><code>--text-md</code> · <code>--color-text</code></td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="snippet" class="doc-section">
+                <h2 class="wire-h3">Snippet</h2>
+                <pre class="doc-snippet">&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="email"&gt;Email&lt;/label&gt;
+  &lt;input id="email" class="wire-input" type="email" placeholder="you@example.com"&gt;
+  &lt;span class="wire-field__hint"&gt;We'll never share it.&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#controls">Controls</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
         <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
           <div class="wire-shell__doc">
             <div>
 
-              <!-- ---------- Landmarks ---------- -->
-              <section id="landmarks" class="doc-section" aria-labelledby="h-landmarks">
-                <h2 class="wire-h3" id="h-landmarks">Landmarks &amp; structure</h2>
-                <p class="u-text-muted u-mt-sm">A whole-page contract: the parts each carry their own ARIA, but the page is responsible for putting them in the right order and not repeating roles.</p>
+              <section id="labeling" class="doc-section">
+                <h2 class="wire-h3">Labels</h2>
                 <ul>
-                  <li>One <code>&lt;header&gt;</code> banner, one <code>&lt;main&gt;</code>, one <code>&lt;footer&gt;</code> contentinfo; every <code>&lt;nav&gt;</code> labelled (Primary, Breadcrumb, In-page).</li>
-                  <li>A skip link as the first focusable element, jumping to <code>#main</code>.</li>
-                  <li>Content bands are <code>&lt;section&gt;</code>s; give each a heading so it shows in the document outline.</li>
+                  <li>Every control has a visible <code>&lt;label&gt;</code> bound with <code>for</code>/<code>id</code> — never a placeholder standing in for a label (WCAG 3.3.2).</li>
+                  <li>Clicking the label focuses the control, enlarging the effective target.</li>
+                  <li>Hint text is announced as part of the field when linked with <code>aria-describedby</code>.</li>
                 </ul>
               </section>
 
-              <!-- ---------- Headings ---------- -->
-              <section id="headings" class="doc-section" aria-labelledby="h-headings">
-                <h2 class="wire-h3" id="h-headings">Heading order</h2>
+              <section id="required" class="doc-section">
+                <h2 class="wire-h3">Required &amp; optional</h2>
                 <ul>
-                  <li><strong>Exactly one <code>h1</code></strong> — the hero headline. The org name in the header is not the h1.</li>
-                  <li>Each band's title is an <code>h2</code>; subsections step to <code>h3</code> without skipping a level.</li>
-                  <li>Card titles take the level that fits their band (usually <code>h3</code>), not a fixed level.</li>
+                  <li>Mark required fields with <code>.wire-field__label-required</code>, which adds a consistent visual marker; pair it with <code>required</code> on the control so the requirement is programmatic, not just visual.</li>
+                  <li>If most fields are required, mark the few optional ones instead — whichever is the shorter list.</li>
                 </ul>
               </section>
 
-              <!-- ---------- Keyboard & focus ---------- -->
-              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
-                <h2 class="wire-h3" id="h-keyboard">Keyboard &amp; focus</h2>
+              <section id="errors" class="doc-section">
+                <h2 class="wire-h3">Errors</h2>
                 <ul>
-                  <li>Focus order follows source order top to bottom; no positive <code>tabindex</code>.</li>
-                  <li>The mobile menu is a <a href="../../components/drawer/">drawer</a> — focus trapped while open, returned to the trigger on close.</li>
-                  <li>The mega menu opens on click and closes on Escape, moving focus into the panel.</li>
-                  <li>Every interactive element shows the shared 2px focus ring; targets clear the 24px floor.</li>
+                  <li>On invalid, add <code>.is-invalid</code> to the control and link the message with <code>aria-describedby</code> so a screen reader reads the error with the field.</li>
+                  <li>Error copy says what happened and how to fix it — "Enter a date in MM / DD / YYYY format", not "Invalid input".</li>
+                  <li>Color is never the only signal: the heavier border and the text message carry the state too (WCAG 1.4.1).</li>
                 </ul>
               </section>
 
-              <!-- ---------- Audience affordances ---------- -->
-              <section id="affordances" class="doc-section" aria-labelledby="h-affordances">
-                <h2 class="wire-h3" id="h-affordances">Audience affordances</h2>
-                <ul>
-                  <li>For healthcare and older audiences, keep the text-size control and the help bar / phone affordance reachable — a landing page is often the first and most-shared page.</li>
-                  <li>Respect <code>prefers-reduced-motion</code>; any hero or reveal motion is decorative and drops out.</li>
-                  <li>Grayscale throughout — meaning never rides on color; the inverse band earns emphasis from contrast and weight.</li>
-                </ul>
+              <section id="keyboard" class="doc-section">
+                <h2 class="wire-h3">Keyboard &amp; input</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Tab</th><td>Moves to the control in source order.</td></tr>
+                    <tr><th scope="row">Type / arrows</th><td>Edit text, or open and move through a select's options.</td></tr>
+                    <tr><th scope="row">Esc</th><td>Closes an open select without changing the value.</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Use a real <code>type</code> (<code>email</code>, <code>tel</code>, <code>search</code>) and an <code>autocomplete</code> token so mobile keyboards and autofill work. Controls keep a 44px-tall target.</p>
               </section>
 
             </div>
-
-            <!-- ===================== ACCESSIBILITY TOC ===================== -->
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
-              <ul class="wire-inpagenav__list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmarks">Landmarks &amp; structure</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#headings">Heading order</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; focus</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#affordances">Audience affordances</a></li>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labeling">Labels</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#required">Required &amp; optional</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#errors">Errors</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; input</a></li>
               </ul>
             </nav>
-
           </div>
         </section>
 
       </div>
 
-      <!-- Pager -->
-      <nav class="wire-doc-pager" aria-label="Template pagination">
+      <nav class="wire-doc-pager" aria-label="Component pagination">
         <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
-          <span class="wire-doc-pager__direction">Tier 4</span>
-          <span class="wire-doc-pager__title">All templates</span>
+          <span class="wire-doc-pager__direction">All components</span>
+          <span class="wire-doc-pager__title">Back to index</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../../docs/page-shells.html">
-          <span class="wire-doc-pager__direction">Reference</span>
-          <span class="wire-doc-pager__title">Page shells</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../#cat-forms">
+          <span class="wire-doc-pager__direction">In Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Search</span>
         </a>
       </nav>
 
