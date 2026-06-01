@@ -131,9 +131,16 @@
   inset-inline-start: var(--space-md);
   transform: translateY(-50%);
   pointer-events: none;
-  color: var(--color-text-muted);
   inline-size: 1.125rem;
   block-size: 1.125rem;
+  /* Render a proper magnifier in the icon slot: hide the legacy text glyph and
+     mask the icon color into a magnifier shape (matches the rail's SVG icon and
+     the Iconography convention). CSS-only, so every usage gets it without
+     touching the markup. */
+  color: transparent;
+  background-color: var(--color-text-muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .wire-search__input {
@@ -192,12 +199,13 @@
 .wire-checkbox__input:checked::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(45deg, transparent 38%, var(--color-bg) 38%, var(--color-bg) 50%, transparent 50%),
-                    linear-gradient(-45deg, transparent 62%, var(--color-bg) 62%, var(--color-bg) 74%, transparent 74%);
-  background-position: 35% 60%, 70% 40%;
-  background-repeat: no-repeat;
-  background-size: 50% 4px, 80% 4px;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 0.3rem;
+  block-size: 0.6rem;
+  border: solid var(--color-bg);
+  border-width: 0 var(--border-md) var(--border-md) 0;
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 .wire-radio__input:checked::after {
