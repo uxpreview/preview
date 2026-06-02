@@ -528,7 +528,8 @@
       ],
       "a11y": "Min 44px target, visible focus ring, loading state announces busy. Primary is the unmodified base class. Icon-leading/trailing is DOM order of wire-button__icon, not a class.",
       "notes": "Canonical M3 doc template is components/buttons/index.html (tabbed Overview/Specs/Guidelines/Accessibility with hash deep-linking).",
-      "label": "Button"
+      "label": "Button",
+      "desc": "A pill-shaped action with three emphasis levels and three sizes."
     },
     {
       "id": "badge",
@@ -576,7 +577,8 @@
       ],
       "composable": "Leaf; composes into cards, tables, and list items, and (as --count via wire-badge-anchor) onto a focusable host such as an icon button.",
       "notes": "Non-interactive. Count overlay (wire-badge--count + wire-badge-anchor): the host carries the accessible name and the visual count is aria-hidden. Prior manifest's 'live' variant does not exist.",
-      "label": "Badge"
+      "label": "Badge",
+      "desc": "A compact status indicator, with variants, a dot, and a count overlay."
     },
     {
       "id": "tag",
@@ -639,7 +641,8 @@
         "button"
       ],
       "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list.",
-      "label": "Tag"
+      "label": "Tag",
+      "desc": "An interactive filter / removable chip and a read-only metadata label, in two sizes."
     },
     {
       "id": "divider",
@@ -678,7 +681,8 @@
         "two-column"
       ],
       "notes": "Horizontal (an <hr>, semantic separator) and vertical (decorative inline rule). Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier.",
-      "label": "Divider"
+      "label": "Divider",
+      "desc": "A horizontal or vertical rule for separating content, with weight and style variants."
     },
     {
       "id": "field",
@@ -740,7 +744,8 @@
       ],
       "a11y": "Label always present; error text tied via aria-describedby; is-invalid + aria-invalid on the control.",
       "notes": "wire-field is the labeled wrapper around wire-input/wire-textarea/wire-select. Prior manifest treated input/select/textarea as standalone and invented helper/field slots.",
-      "label": "Field"
+      "label": "Field",
+      "desc": "The label + input + hint + error wrapper, with text input, textarea, and select. Every form control composes through this."
     },
     {
       "id": "search",
@@ -767,7 +772,8 @@
         "field",
         "icon"
       ],
-      "label": "Search"
+      "label": "Search",
+      "desc": "A text input tuned for finding things — leading magnifier and the search input type."
     },
     {
       "id": "choice",
@@ -792,7 +798,8 @@
         "label"
       ],
       "notes": "Three distinct classes, not one wire-choice with modifiers. Label-wrapped pattern.",
-      "label": "Choice"
+      "label": "Choice",
+      "desc": "Checkbox, radio, and toggle — pick any number, exactly one, or an instant on/off."
     },
     {
       "id": "form-layout",
@@ -819,7 +826,8 @@
       ],
       "behaviors": [],
       "notes": "Form scaffolding: wire-form, wire-form__row (multi-column rows), wire-fieldset + wire-fieldset__legend for grouped choices.",
-      "label": "Form layout"
+      "label": "Form layout",
+      "desc": "The scaffolding that assembles fields — form, rows, and fieldset groups."
     },
     {
       "id": "breadcrumb",
@@ -839,7 +847,8 @@
       "slots": [
         "items"
       ],
-      "label": "Breadcrumb"
+      "label": "Breadcrumb",
+      "desc": "A trail showing the user's position in a hierarchical structure."
     },
     {
       "id": "pagination",
@@ -863,7 +872,8 @@
         "pages",
         "next"
       ],
-      "label": "Pagination"
+      "label": "Pagination",
+      "desc": "Numbered page navigation for long, ordered result sets."
     },
     {
       "id": "topnav",
@@ -893,7 +903,8 @@
         "utility"
       ],
       "notes": "The page-shell common scaffold opens with wire-topnav on every page.",
-      "label": "Top nav"
+      "label": "Top nav",
+      "desc": "The sticky masthead — brand, primary menu, and an optional mega menu."
     },
     {
       "id": "megamenu",
@@ -935,7 +946,8 @@
         "click-toggle, outside-click close, Escape closes and refocuses trigger (initMegamenu)"
       ],
       "notes": "Trigger remains <a href> for no-JS fallback.",
-      "label": "Mega menu"
+      "label": "Mega menu",
+      "desc": "A full-width panel under the masthead for broad, grouped navigation."
     },
     {
       "id": "sidenav",
@@ -974,7 +986,8 @@
       ],
       "behaviors": [],
       "notes": "Three documented compositions (local / secondary / section tree). wire-sidenav__sublist + __link--parent are beta until used beyond the hospital vertical.",
-      "label": "Side nav"
+      "label": "Side nav",
+      "desc": "A vertical rail for local sections — peer, child, and section-tree patterns."
     },
     {
       "id": "inpagenav",
@@ -1013,7 +1026,8 @@
         "IntersectionObserver highlights the link for the section in view via .is-current (initInPageNav)"
       ],
       "notes": "Non-sticky below 48em.",
-      "label": "In-page nav"
+      "label": "In-page nav",
+      "desc": "A scroll-spy table of contents that tracks the section in view."
     },
     {
       "id": "drawer",
@@ -1052,7 +1066,8 @@
         "focus trap (WCAG 2.1.2), backdrop click closes, Escape closes, body scroll locked, role=dialog + aria-modal set (initDrawer)"
       ],
       "notes": "Mobile navigation drawer. Pairs with wire-topnav__burger.",
-      "label": "Drawer"
+      "label": "Drawer",
+      "desc": "An off-canvas panel with focus trap, used on mobile and as a side sheet."
     },
     {
       "id": "card",
@@ -1125,7 +1140,8 @@
         "(resource) resource-type"
       ],
       "notes": "Content is the unmodified base (no wire-card--content). Modifiers compose: e.g. wire-card wire-card--person wire-card--bordered.",
-      "label": "Card"
+      "label": "Card",
+      "desc": "A self-contained surface for an article, person, resource, or stat."
     },
     {
       "id": "hero",
@@ -1178,7 +1194,8 @@
         "stats"
       ],
       "notes": "Pick by intent: editorial = story/emotion; split = service/CTA pair; centered = single focus; stat = credibility/proof. inverse is a separate modifier (prior manifest's 'stat-led-inverse' = wire-hero--stat wire-hero--inverse). The page h1 lives once, inside the hero.",
-      "label": "Hero"
+      "label": "Hero",
+      "desc": "The opening block at the top of a page, in five variants."
     },
     {
       "id": "feature-grid",
@@ -1212,7 +1229,8 @@
       "slots": [
         "items[icon, title, desc, link]"
       ],
-      "label": "Feature grid"
+      "label": "Feature grid",
+      "desc": "A row of equally-weighted features or capabilities."
     },
     {
       "id": "two-column",
@@ -1243,7 +1261,8 @@
         "actions"
       ],
       "notes": "Class is wire-twocol (prior manifest's wire-two-col was wrong). top/bottom control vertical alignment; reverse swaps column order.",
-      "label": "Two-column"
+      "label": "Two-column",
+      "desc": "A balanced two-column layout for headline + supporting content."
     },
     {
       "id": "accordion",
@@ -1275,7 +1294,8 @@
         "items[question, answer]"
       ],
       "a11y": "Native disclosure pattern; keyboard operable for free.",
-      "label": "Accordion"
+      "label": "Accordion",
+      "desc": "Disclosure groups using native <details> for FAQs and progressive content."
     },
     {
       "id": "tabs",
@@ -1324,7 +1344,8 @@
         "tabs[label, panel]"
       ],
       "notes": "wire-tabs--sticky is defined in doc-shell.css. The components/buttons M3 template uses data-wire-tabs-hash for #overview/#specs/#guidelines/#accessibility.",
-      "label": "Tabs"
+      "label": "Tabs",
+      "desc": "The ARIA tabs pattern with hash deep-linking and a pill variant."
     },
     {
       "id": "callout",
@@ -1364,7 +1385,8 @@
         "actions"
       ],
       "notes": "Prior manifest's enrolling/navigator/alert-inline were content uses, not real variants. Real variants are subtle/inverse/bordered/inline.",
-      "label": "Callout"
+      "label": "Callout",
+      "desc": "A boxed editorial aside in five surfaces, for a single lifted message."
     },
     {
       "id": "quote",
@@ -1402,7 +1424,8 @@
         "attribution role"
       ],
       "notes": "Pull-quote. Class is wire-quote (prior manifest's wire-pullquote was wrong).",
-      "label": "Quote"
+      "label": "Quote",
+      "desc": "A pull quote with attribution — default, large display, and inline."
     },
     {
       "id": "timeline",
@@ -1430,7 +1453,8 @@
       "slots": [
         "items[date, title, body]"
       ],
-      "label": "Timeline"
+      "label": "Timeline",
+      "desc": "A vertical sequence of dated milestones."
     },
     {
       "id": "media",
@@ -1467,7 +1491,8 @@
       ],
       "a11y": "aria-hidden placeholder by default (decorative).",
       "notes": "Aspect-ratio placeholders. Variants are explicit ratios, not the prior 'ratio-placeholder' guess.",
-      "label": "Media"
+      "label": "Media",
+      "desc": "Aspect-ratio image and video placeholders for wireframing."
     },
     {
       "id": "gallery",
@@ -1483,7 +1508,8 @@
       ],
       "behaviors": [],
       "notes": "Mosaic variant collapses to a single column on mobile.",
-      "label": "Gallery"
+      "label": "Gallery",
+      "desc": "A responsive grid of media in grid or mosaic layouts."
     },
     {
       "id": "linked-list",
@@ -1512,7 +1538,8 @@
         "items[label, meta]"
       ],
       "notes": "Standalone class (prior manifest's wire-list--linked modifier pattern was wrong).",
-      "label": "Linked list"
+      "label": "Linked list",
+      "desc": "Rows of titled links with optional supporting text."
     },
     {
       "id": "deflist",
@@ -1530,7 +1557,8 @@
       "slots": [
         "items[term, definition]"
       ],
-      "label": "Definition list"
+      "label": "Definition list",
+      "desc": "Term-and-definition pairs for metadata and glossaries."
     },
     {
       "id": "article-list",
@@ -1553,7 +1581,8 @@
       "slots": [
         "items[category, date, title, excerpt]"
       ],
-      "label": "Article list"
+      "label": "Article list",
+      "desc": "A list of articles with title, meta, and excerpt."
     },
     {
       "id": "citation-list",
@@ -1584,7 +1613,8 @@
         "items[num, title, authors, meta, body]"
       ],
       "notes": "Used on hospital-measure.html and directory.html. Beta until a third page uses it.",
-      "label": "Citation list"
+      "label": "Citation list",
+      "desc": "Numbered references for bibliographies and evidence sections."
     },
     {
       "id": "table",
@@ -1626,7 +1656,8 @@
         "rows"
       ],
       "notes": "Comparison modifier is wire-table--comparison (prior manifest's --compare was wrong). wire-table__num applies tabular numerals.",
-      "label": "Table"
+      "label": "Table",
+      "desc": "A data table and a comparison matrix, with a required scroll wrapper."
     },
     {
       "id": "stepper",
@@ -1660,7 +1691,8 @@
         "items[marker, label, label-meta]"
       ],
       "notes": "Multi-step progress indicator. Used in booking/appointment/trial/program flows. Beta until WCAG screen-reader pass.",
-      "label": "Stepper"
+      "label": "Stepper",
+      "desc": "A numbered progress indicator for multi-step flows."
     },
     {
       "id": "modal",
@@ -1709,7 +1741,8 @@
         "footer"
       ],
       "notes": "Centered dialog. Beta until SR pass + a third use.",
-      "label": "Modal"
+      "label": "Modal",
+      "desc": "A centered dialog with focus trap and ARIA dialog semantics."
     },
     {
       "id": "toast",
@@ -1750,7 +1783,8 @@
         "body"
       ],
       "notes": "API surface may refine.",
-      "label": "Toast"
+      "label": "Toast",
+      "desc": "Transient status messages via a polite live region."
     },
     {
       "id": "banner",
@@ -1793,7 +1827,8 @@
         "body",
         "actions"
       ],
-      "label": "Banner"
+      "label": "Banner",
+      "desc": "A persistent inline message for warnings, info, or success."
     },
     {
       "id": "empty-state",
@@ -1831,7 +1866,8 @@
         "actions"
       ],
       "notes": "Used in 5 demos (404, search, portal, appointment, etc.).",
-      "label": "Empty state"
+      "label": "Empty state",
+      "desc": "A blank-slate prompt when a list or page has no content yet."
     },
     {
       "id": "skeleton",
@@ -1864,7 +1900,8 @@
       "behaviors": [],
       "a11y": "Pairs with aria-busy on the loading container.",
       "notes": "Loading placeholders.",
-      "label": "Skeleton"
+      "label": "Skeleton",
+      "desc": "Loading-state placeholders that match the layout that's coming."
     },
     {
       "id": "tooltip",
@@ -1889,7 +1926,8 @@
         "PURE CSS — no JS init; pseudo-element renders the bubble"
       ],
       "notes": "Attribute-driven, not a class. Long content needs a popover (post-v1.4).",
-      "label": "Tooltip"
+      "label": "Tooltip",
+      "desc": "A small contextual hint attached to a control."
     },
     {
       "id": "footer",
@@ -1928,7 +1966,8 @@
         "legal"
       ],
       "notes": "Four variants: standard (default), compact, expanded (closing-CTA), inverse. Always inside <footer>, outside <main>.",
-      "label": "Footer"
+      "label": "Footer",
+      "desc": "Four variants: compact, standard, expanded, inverse."
     },
     {
       "id": "help-bar",
@@ -1965,7 +2004,8 @@
         "actions"
       ],
       "notes": "Persistent 'talk to someone' affordance (NIA Senior-Friendly). Class is wire-help-bar.",
-      "label": "Help bar"
+      "label": "Help bar",
+      "desc": "A persistent contact bar for time-sensitive support paths."
     },
     {
       "id": "phone-link",
@@ -1992,7 +2032,8 @@
         "number"
       ],
       "notes": "Topnav-ready, tabular numerals, tel: href. Class is wire-phone-link; lives in help-bar.css.",
-      "label": "Phone link"
+      "label": "Phone link",
+      "desc": "A tap-to-call number formatted for clarity and accessibility."
     },
     {
       "id": "text-size-control",
@@ -2039,7 +2080,8 @@
         "buttons"
       ],
       "notes": "Prior manifest's options ['A','A','A+'] were wrong. Behavior exposes four scales sm/md/lg/xl; CSS button modifiers are sm/md/lg.",
-      "label": "Text size"
+      "label": "Text size",
+      "desc": "A user-controlled text scale with persistence and SR announcement."
     },
     {
       "id": "icon-button",
@@ -3416,7 +3458,8 @@
               "status": "planned",
               "id": "chat-launcher"
             }
-          ]
+          ],
+          "desc": "Things the user can click, tap, or trigger."
         },
         {
           "type": "group",
@@ -3524,7 +3567,8 @@
               "status": "planned",
               "id": "error-summary"
             }
-          ]
+          ],
+          "desc": "Controls for collecting and editing user input."
         },
         {
           "type": "group",
@@ -3599,7 +3643,8 @@
               "status": "planned",
               "id": "insurance-indicator"
             }
-          ]
+          ],
+          "desc": "Status labels and interactive selection chips."
         },
         {
           "type": "group",
@@ -3663,7 +3708,8 @@
               "status": "planned",
               "id": "bottom-sheet"
             }
-          ]
+          ],
+          "desc": "Surfaces that group, disclose, or layer content."
         },
         {
           "type": "group",
@@ -3727,7 +3773,8 @@
               "status": "planned",
               "id": "mobile-nav"
             }
-          ]
+          ],
+          "desc": "Wayfinding between and within pages."
         },
         {
           "type": "group",
@@ -3870,7 +3917,8 @@
               "status": "planned",
               "id": "alert-bar"
             }
-          ]
+          ],
+          "desc": "Full-width page sections and bands."
         },
         {
           "type": "group",
@@ -3965,7 +4013,8 @@
               "status": "planned",
               "id": "figure"
             }
-          ]
+          ],
+          "desc": "Presenting text, media, lists, and tables."
         },
         {
           "type": "group",
@@ -4035,7 +4084,8 @@
               "status": "planned",
               "id": "emergency-line"
             }
-          ]
+          ],
+          "desc": "Communicating status, progress, and system messages."
         },
         {
           "type": "group",
@@ -4076,7 +4126,8 @@
               "status": "planned",
               "id": "language-switcher"
             }
-          ]
+          ],
+          "desc": "Global page controls and accessibility affordances."
         }
       ]
     },

@@ -355,6 +355,83 @@ function syncFooter(html, base) {
   return head + tail.replace(region, block);
 }
 
+// ---------------------------------------------------------------------------
+// 5. COMPONENTS LANDING  (cards generated from the same manifest as the rail)
+// ---------------------------------------------------------------------------
+const LANDING_START = '<!-- LANDING:START -->';
+const LANDING_END = '<!-- LANDING:END -->';
+
+function cardPill(comp, ref) {
+  const status = (comp && comp.status) || 'planned';
+  if (status === 'planned') return { text: 'Planned', pending: true };
+  if (ref.startsWith('docs/')) return { text: 'Migrating', pending: true };
+  if (status === 'beta') return { text: 'Beta', pending: true };
+  return { text: 'Stable', pending: false };
+}
+
+function buildComponentsLanding(base) {
+  const byId = new Map(manifest.components.map((c) => [c.id, c]));
+  const section = NAV.find((n) => n.label === 'Components');
+  const groups = section.items.filter((it) => it.type === 'group');
+  let total = 0;
+
+  const sections = groups.map((g) => {
+    const cards = g.items.map((leaf) => {
+      total++;
+      const comp = byId.get(leaf.id) || {};
+      const { text, pending } = cardPill(comp, leaf.ref);
+      const pillClass = 'wire-status-pill' + (pending ? ' wire-status-pill--pending' : '');
+      const desc = comp.desc ? `<p class="u-text-muted">${htmlesc(comp.desc)}</p>` : '';
+      return `            <a class="wire-card wire-card--linked" href="${base}${leaf.ref}"><div class="wire-card__body"><span class="${pillClass}">${text}</span><h3 class="wire-card__title">${htmlesc(leaf.label)}</h3>${desc}</div></a>`;
+    }).join('\n');
+    return `        <section aria-labelledby="cat-${g.category}">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="cat-${g.category}">${htmlesc(g.label)}</h2>
+            <p class="u-text-muted">${htmlesc(g.desc || '')}</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+${cards}
+          </div>
+        </section>`;
+  }).join('\n\n');
+
+  return `  <section class="u-section">
+    <div class="u-container">
+
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">Components</span>
+        <h1 class="wire-doc-header__title">${total} components in ${groups.length} categories.</h1>
+        <p class="wire-doc-header__lead">Every component in the system, grouped by what it does. Each one carries an anatomy diagram, a spec sheet, written guidelines, and an accessibility profile. Click a card to start.</p>
+      </header>
+
+      <div class="u-stack u-stack--3xl" style="padding-block-start: var(--space-2xl);">
+
+${sections}
+
+      </div>
+    </div>
+  </section>`;
+}
+
+// Fill (and self-heal) the LANDING region of components/index.html. Returns 1
+// if the file changed, else 0.
+function fillLanding() {
+  const rel = 'components/index.html';
+  const abs = join(ROOT, rel);
+  let html;
+  try { html = readFileSync(abs, 'utf8'); } catch { return 0; }
+  if (!html.includes(LANDING_START)) {
+    if (!/<main id="main">[\s\S]*?<\/main>/.test(html)) return 0;
+    html = html.replace(/(<main id="main">)[\s\S]*?(<\/main>)/, `$1\n${LANDING_START}\n${LANDING_END}\n$2`);
+  }
+  const landing = buildComponentsLanding('../');
+  const region = new RegExp(esc(LANDING_START) + '[\\s\\S]*?' + esc(LANDING_END));
+  const next = html.replace(region, `${LANDING_START}\n${landing}\n${LANDING_END}`);
+  if (next === html) return 0;
+  writeFileSync(abs, next);
+  return 1;
+}
+
 export function run() {
   // Emit the canonical partial (handy for diffing / reference).
   writeFileSync(join(ROOT, 'partials/nav.html'), NAV_HTML + '\n');
@@ -384,8 +461,10 @@ export function run() {
     else skipped++;
   }
 
+  const landing = fillLanding();
   console.log(`build-ia: stubs created — ${stubbedChrome} chrome, ${stubbedDemo} demo`);
   console.log(`build-ia: nav propagated — ${updated} updated, ${skipped} unchanged, ${missing} missing (of ${targetSet.size} targets)`);
+  console.log(`build-ia: components landing — ${landing ? 'regenerated' : 'unchanged'}`);
 }
 
 // Run when invoked directly.
