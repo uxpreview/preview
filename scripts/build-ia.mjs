@@ -413,10 +413,35 @@ ${sections}
   </section>`;
 }
 
-// Fill (and self-heal) the LANDING region of components/index.html. Returns 1
-// if the file changed, else 0.
-function fillLanding() {
-  const rel = 'components/index.html';
+// A flat (un-grouped) section landing — hero + one card grid. Cards link to
+// their ref; only planned leaves carry a pill (existing pages are just ready).
+function buildFlatLanding(section, cfg, base) {
+  const cards = section.items.filter((it) => it.type !== 'group').map((leaf) => {
+    const pill = leaf.status === 'planned'
+      ? '<span class="wire-status-pill wire-status-pill--pending">Planned</span>'
+      : '';
+    const desc = leaf.desc ? `<p class="u-text-muted">${htmlesc(leaf.desc)}</p>` : '';
+    return `        <a class="wire-card wire-card--linked" href="${base}${leaf.ref}"><div class="wire-card__body">${pill}<h3 class="wire-card__title">${htmlesc(leaf.label)}</h3>${desc}</div></a>`;
+  }).join('\n');
+  return `  <section class="u-section">
+    <div class="u-container">
+
+      <header class="wire-doc-header">
+        <span class="wire-doc-header__eyebrow">${htmlesc(section.label)}</span>
+        <h1 class="wire-doc-header__title">${htmlesc(cfg.title)}</h1>
+        <p class="wire-doc-header__lead">${htmlesc(cfg.lead)}</p>
+      </header>
+
+      <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-2xl);">
+${cards}
+      </div>
+    </div>
+  </section>`;
+}
+
+// Fill (and self-heal) a LANDING region in a section index page. Returns 1 if
+// the file changed, else 0.
+function fillLandingRegion(rel, landingHtml) {
   const abs = join(ROOT, rel);
   let html;
   try { html = readFileSync(abs, 'utf8'); } catch { return 0; }
@@ -424,12 +449,25 @@ function fillLanding() {
     if (!/<main id="main">[\s\S]*?<\/main>/.test(html)) return 0;
     html = html.replace(/(<main id="main">)[\s\S]*?(<\/main>)/, `$1\n${LANDING_START}\n${LANDING_END}\n$2`);
   }
-  const landing = buildComponentsLanding('../');
   const region = new RegExp(esc(LANDING_START) + '[\\s\\S]*?' + esc(LANDING_END));
-  const next = html.replace(region, `${LANDING_START}\n${landing}\n${LANDING_END}`);
+  const next = html.replace(region, `${LANDING_START}\n${landingHtml}\n${LANDING_END}`);
   if (next === html) return 0;
   writeFileSync(abs, next);
   return 1;
+}
+
+// Regenerate every generated section landing. Returns the count changed.
+function fillLandings() {
+  let n = 0;
+  n += fillLandingRegion('components/index.html', buildComponentsLanding('../'));
+  const styles = NAV.find((s) => s.label === 'Styles');
+  if (styles) {
+    n += fillLandingRegion('styles/index.html', buildFlatLanding(styles, {
+      title: 'The visual language.',
+      lead: 'Color, type, iconography, shape, elevation, and motion — and the tokens that encode them.',
+    }, '../'));
+  }
+  return n;
 }
 
 export function run() {
@@ -461,10 +499,10 @@ export function run() {
     else skipped++;
   }
 
-  const landing = fillLanding();
+  const landings = fillLandings();
   console.log(`build-ia: stubs created — ${stubbedChrome} chrome, ${stubbedDemo} demo`);
   console.log(`build-ia: nav propagated — ${updated} updated, ${skipped} unchanged, ${missing} missing (of ${targetSet.size} targets)`);
-  console.log(`build-ia: components landing — ${landing ? 'regenerated' : 'unchanged'}`);
+  console.log(`build-ia: section landings — ${landings} regenerated`);
 }
 
 // Run when invoked directly.

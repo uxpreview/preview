@@ -3352,38 +3352,45 @@
           "type": "page",
           "label": "Color & theming",
           "ref": "styles/color-theming.html",
-          "status": "planned"
+          "status": "planned",
+          "desc": "Grayscale ramp, semantic color tokens, and the light/dark theming model."
         },
         {
           "type": "page",
           "label": "Typography",
-          "ref": "docs/typography.html"
+          "ref": "docs/typography.html",
+          "desc": "The type scale, families, and prose measures."
         },
         {
           "type": "page",
           "label": "Iconography",
-          "ref": "docs/iconography.html"
+          "ref": "docs/iconography.html",
+          "desc": "The icon set, sizing, and usage rules."
         },
         {
           "type": "page",
           "label": "Shape & radius",
           "ref": "styles/shape-radius.html",
-          "status": "planned"
+          "status": "planned",
+          "desc": "Corner radii and shape tokens."
         },
         {
           "type": "page",
           "label": "Elevation",
-          "ref": "docs/elevation.html"
+          "ref": "docs/elevation.html",
+          "desc": "Shadow levels and the elevation scale."
         },
         {
           "type": "page",
           "label": "Motion",
-          "ref": "docs/motion.html"
+          "ref": "docs/motion.html",
+          "desc": "Duration and easing tokens, and reduced-motion behavior."
         },
         {
           "type": "page",
           "label": "Tokens",
-          "ref": "docs/tokens.html"
+          "ref": "docs/tokens.html",
+          "desc": "Every design token, visualized — the single source of raw values."
         }
       ]
     },
@@ -4371,6 +4378,6 @@
   "get_started": {
     "label": "Get started",
     "ref": "get-started.html",
-    "status": "planned"
+    "status": "stable"
   }
 }

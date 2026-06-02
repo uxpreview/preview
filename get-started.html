@@ -373,22 +373,47 @@
 <main id="main">
 
   <section class="u-section">
-    <div class="u-container u-container--wide">
-
-      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
-        <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Get started</span></li>
-        </ol>
-      </nav>
+    <div class="u-container">
 
       <header class="wire-doc-header">
-        <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Get started</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
-        </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <span class="wire-doc-header__eyebrow">Get started</span>
+        <h1 class="wire-doc-header__title">Get started with Preview.</h1>
+        <p class="wire-doc-header__lead">Preview is a grayscale, tokens-first wireframe and mid-fidelity system for healthcare and higher-ed. It's a component library plus demo pages you compose from — a strong first draft in seconds, then you edit.</p>
       </header>
 
+      <div class="u-stack u-stack--3xl" style="padding-block-start: var(--space-2xl);">
+
+        <section aria-labelledby="gs-organized">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="gs-organized">How it's organized</h2>
+            <p class="u-text-muted">Six areas, from the lowest level of detail up to whole pages.</p>
+          </header>
+          <div class="u-grid" style="--grid-min: 16rem; margin-block-start: var(--space-lg);">
+            <a class="wire-card wire-card--linked" href="foundations/"><div class="wire-card__body"><h3 class="wire-card__title">Foundations</h3><p class="u-text-muted">Principles, accessibility, layout, and cross-cutting UX guidance.</p></div></a>
+            <a class="wire-card wire-card--linked" href="styles/"><div class="wire-card__body"><h3 class="wire-card__title">Styles</h3><p class="u-text-muted">Color, type, iconography, shape, elevation, motion, and tokens.</p></div></a>
+            <a class="wire-card wire-card--linked" href="components/"><div class="wire-card__body"><h3 class="wire-card__title">Components</h3><p class="u-text-muted">The full component library, grouped by what it does.</p></div></a>
+            <a class="wire-card wire-card--linked" href="templates/"><div class="wire-card__body"><h3 class="wire-card__title">Templates</h3><p class="u-text-muted">Page-level recipes — basic shells and composed advanced page types.</p></div></a>
+            <a class="wire-card wire-card--linked" href="pages/hospital-homepage.html"><div class="wire-card__body"><h3 class="wire-card__title">Demo</h3><p class="u-text-muted">Filled example sites: Riverside (healthcare) and Northgate (higher-ed).</p></div></a>
+            <a class="wire-card wire-card--linked" href="resources/"><div class="wire-card__body"><h3 class="wire-card__title">Resources</h3><p class="u-text-muted">Evidence model, validation, component status, and utility classes.</p></div></a>
+          </div>
+        </section>
+
+        <section aria-labelledby="gs-use">
+          <header class="u-stack u-stack--xs">
+            <h2 class="wire-h3" id="gs-use">How to use it</h2>
+            <p class="u-text-muted">Compose from existing parts — don't start from a blank page.</p>
+          </header>
+          <div class="wire-prose" style="margin-block-start: var(--space-lg);">
+            <ol>
+              <li><strong>Start at the right altitude.</strong> Atom → molecule → organism → template. Begin from a template or demo page when one fits; drop to a component to fill a slot.</li>
+              <li><strong>Reuse only what exists.</strong> Components, utility classes, and tokens — no new CSS, no inline overrides, grayscale only.</li>
+              <li><strong>Wire interactivity declaratively.</strong> Add the documented <code>data-wire-*</code> hook and include <code>js/wire.js</code>.</li>
+              <li><strong>Keep it honest.</strong> Label evidence by tier and never present convention as measured fact.</li>
+            </ol>
+          </div>
+        </section>
+
+      </div>
     </div>
   </section>
 
