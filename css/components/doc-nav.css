@@ -30,9 +30,9 @@
   font-size: var(--text-sm);
 }
 
-/* A category group is a non-interactive cluster: a bold label anchoring a
-   list of always-visible items (Nextra's "Layout Components" model). The
-   spacing between groups is carried by the section-body gap. */
+/* A category group is the second level of disclosure: a collapsible <details>
+   whose summary anchors a list of leaves. Spacing between groups is carried by
+   the section-body gap. */
 .wire-doc-nav__group {
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@
 
 /* The group label is the anchor of each cluster: near-full-strength and
    semibold so the eye reads it as a heading, the leaves below it as quieter
-   children. No chevron, no hover — it's a label, not a control. */
+   children. (Legacy non-collapsible label, kept for the components landing.) */
 .wire-doc-nav__group-title {
   margin: 0;
   padding-block: var(--space-2xs);
@@ -52,6 +52,59 @@
   color: var(--color-text);
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
+}
+
+/* Collapsible group summary — one register quieter than a section summary
+   (text-sm vs text-md), same right-pointing chevron that rotates down on open.
+   This is the second level of the rail's disclosure. */
+.wire-doc-nav__group-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+  min-block-size: 2rem;
+
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group-summary::-webkit-details-marker {
+  display: none;
+}
+
+.wire-doc-nav__group-summary:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.wire-doc-nav__group-summary:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__group-summary::after {
+  content: "›";
+  display: inline-block;
+  font-size: var(--text-md);
+  line-height: 1;
+  color: var(--color-text-subtle);
+  transform: rotate(0);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group[open] > .wire-doc-nav__group-summary::after {
+  transform: rotate(90deg);
 }
 
 /* Tree line: one line guides the leaves, both inside a category group and
@@ -248,7 +301,7 @@
 .wire-doc-nav__section-body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-2xs);
   padding-block-start: var(--space-2xs);
   padding-block-end: var(--space-2xs);
   padding-inline-start: var(--space-sm);

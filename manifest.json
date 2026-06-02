@@ -29,26 +29,93 @@
     "WCAG 2.2 AA: contrast tested, visible focus on everything, targets >=44px, reduced-motion respected, labels on all inputs.",
     "Healthcare audiences skew older — prefer larger text defaults and keep the help-bar / text-size / phone affordances available where appropriate."
   ],
-  "levels": ["atom", "molecule", "organism", "template", "experience"],
+  "levels": [
+    "atom",
+    "molecule",
+    "organism",
+    "template",
+    "experience"
+  ],
   "category_taxonomy": {
-    "note": "The nine component categories shown in the rail and components/index.html (Actions, Forms & inputs, Selection & status, Containment & overlays, Navigation, Layout, Content & display, Messaging & feedback, Patient affordances), plus foundation for type and doc-chrome for docs-site furniture. Used for the `category` field on each component.",
-    "values": ["foundation", "actions", "forms", "selection", "containment", "navigation", "layout", "content", "feedback", "affordances", "doc-chrome"]
+    "note": "The nine component categories shown in the rail and components/index.html (Actions, Forms & inputs, Selection & status, Containment & overlays, Navigation, Sections, Content & display, Messaging & feedback, Utilities), plus foundation for type and doc-chrome for docs-site furniture. Used for the `category` field on each component. The ordered, labelled rail tree lives in `nav`.",
+    "values": [
+      "foundation",
+      "actions",
+      "forms",
+      "selection",
+      "containment",
+      "navigation",
+      "sections",
+      "content",
+      "feedback",
+      "utilities",
+      "doc-chrome"
+    ]
   },
   "evidence": {
     "store": "citations.json",
     "model": "EVIDENCE-MODEL.md",
     "render": "docs/research.html (the human-readable surface of the same evidence)",
-    "tiers": ["standard", "empirical", "convention", "judgment"],
+    "tiers": [
+      "standard",
+      "empirical",
+      "convention",
+      "judgment"
+    ],
     "rule": "Evidence is the sixth, cross-cutting dimension every node carries. A node's `rationale` cites citations.json by id. Never invent a citation; never present an unverified one as fact; never promote a claim above the tier its evidence supports. Curated per EVIDENCE-MODEL.md §6: `rationale` covers decisions that are client-questioned, non-obvious, or carry accessibility/legal weight — not every node. Nodes without a `rationale` block are still linked to evidence via each citation's `supports` array (the reverse index).",
     "system_rationale": [
-      { "decision": "Grayscale forces hierarchy from weight/scale/proximity/contrast — the perceptual mechanisms the cited research describes; the system demonstrates what it cites", "citation_ids": ["judgment-grayscale-evidence-reinforcement", "gestalt-proximity", "wcag-1.4.3-contrast-minimum"] },
-      { "decision": "Grayscale ramp meets WCAG AA contrast at named steps", "citation_ids": ["wcag-1.4.3-contrast-minimum", "wcag-1.4.11-non-text-contrast"] },
-      { "decision": "12-step ramp granularity", "citation_ids": ["judgment-grayscale-ramp-steps"] },
-      { "decision": "4px spacing base", "citation_ids": ["convention-spacing-4px-base"] },
-      { "decision": "1.25 modular type scale", "citation_ids": ["convention-type-scale-1-25"] },
-      { "decision": "Motion durations 150/250/400ms; reduced-motion zeroes them", "citation_ids": ["judgment-motion-durations", "wcag-2.3.3-animation-from-interactions"] },
-      { "decision": "Pill button radius (aesthetic)", "citation_ids": ["judgment-pill-button-radius"] },
-      { "decision": "System-font default for portability", "citation_ids": ["judgment-system-font-default"] }
+      {
+        "decision": "Grayscale forces hierarchy from weight/scale/proximity/contrast — the perceptual mechanisms the cited research describes; the system demonstrates what it cites",
+        "citation_ids": [
+          "judgment-grayscale-evidence-reinforcement",
+          "gestalt-proximity",
+          "wcag-1.4.3-contrast-minimum"
+        ]
+      },
+      {
+        "decision": "Grayscale ramp meets WCAG AA contrast at named steps",
+        "citation_ids": [
+          "wcag-1.4.3-contrast-minimum",
+          "wcag-1.4.11-non-text-contrast"
+        ]
+      },
+      {
+        "decision": "12-step ramp granularity",
+        "citation_ids": [
+          "judgment-grayscale-ramp-steps"
+        ]
+      },
+      {
+        "decision": "4px spacing base",
+        "citation_ids": [
+          "convention-spacing-4px-base"
+        ]
+      },
+      {
+        "decision": "1.25 modular type scale",
+        "citation_ids": [
+          "convention-type-scale-1-25"
+        ]
+      },
+      {
+        "decision": "Motion durations 150/250/400ms; reduced-motion zeroes them",
+        "citation_ids": [
+          "judgment-motion-durations",
+          "wcag-2.3.3-animation-from-interactions"
+        ]
+      },
+      {
+        "decision": "Pill button radius (aesthetic)",
+        "citation_ids": [
+          "judgment-pill-button-radius"
+        ]
+      },
+      {
+        "decision": "System-font default for portability",
+        "citation_ids": [
+          "judgment-system-font-default"
+        ]
+      }
     ]
   },
   "tokens": {
@@ -56,23 +123,142 @@
     "reference": "docs/tokens.html",
     "note": "Raw values live only here. tokens.css aliases the gray ramp into semantic color tokens; client overlays re-alias these (see extension_lanes).",
     "groups": {
-      "gray_ramp": ["gray-00 #ffffff", "gray-05 #fafafa", "gray-10 #f4f4f4", "gray-20 #e6e6e6", "gray-30 #d4d4d4", "gray-40 #a8a8a8", "gray-50 #767676", "gray-60 #595959", "gray-70 #404040", "gray-80 #2b2b2b", "gray-90 #1a1a1a", "gray-95 #0f0f0f", "gray-100 #000000"],
-      "semantic_color": ["--color-bg", "--color-bg-subtle", "--color-bg-muted", "--color-bg-inverse", "--color-text", "--color-text-muted", "--color-text-subtle", "--color-text-inverse", "--color-border", "--color-border-strong", "--color-border-inverse", "--color-accent", "--color-accent-hover", "--color-focus", "--color-overlay", "--color-overlay-light"],
-      "space": ["3xs/2", "2xs/4", "xs/8", "sm/12", "md/16", "lg/24", "xl/32", "2xl/48", "3xl/64", "4xl/96", "5xl/128"],
-      "type_scale": ["2xs/12", "xs/13", "sm/14", "md/16", "lg/18", "xl/22", "2xl/28", "3xl/36", "4xl/48", "5xl/64", "6xl/88"],
-      "font_family": ["--font-sans", "--font-serif", "--font-mono"],
-      "font_weight": ["regular/400", "medium/500", "semibold/600", "bold/700"],
-      "line_height": ["tight/1.1", "snug/1.25", "normal/1.5", "loose/1.7"],
-      "letter_spacing": ["tight/-0.02em", "normal/0", "wide/0.08em", "wider/0.16em"],
-      "radii": ["xs/4", "sm/8", "md/12", "lg/16", "xl/24", "2xl/32", "pill/999px"],
-      "borders": ["thin/1px", "md/2px", "thick/3px"],
-      "shadows": ["xs", "sm", "md", "lg"],
-      "containers": ["narrow/640", "md/864", "wide/1200", "full/1440", "--container-padding-x"],
-      "z_index": ["base/1", "dropdown/100", "sticky/200", "overlay/300", "modal/400", "toast/500"],
-      "motion": ["--duration-fast/150ms", "--duration-base/250ms", "--duration-slow/400ms", "--ease-out", "--ease-in-out", "reduced-motion zeroes all durations"],
-      "focus_ring": ["--focus-ring-width/2px", "--focus-ring-offset/2px"]
+      "gray_ramp": [
+        "gray-00 #ffffff",
+        "gray-05 #fafafa",
+        "gray-10 #f4f4f4",
+        "gray-20 #e6e6e6",
+        "gray-30 #d4d4d4",
+        "gray-40 #a8a8a8",
+        "gray-50 #767676",
+        "gray-60 #595959",
+        "gray-70 #404040",
+        "gray-80 #2b2b2b",
+        "gray-90 #1a1a1a",
+        "gray-95 #0f0f0f",
+        "gray-100 #000000"
+      ],
+      "semantic_color": [
+        "--color-bg",
+        "--color-bg-subtle",
+        "--color-bg-muted",
+        "--color-bg-inverse",
+        "--color-text",
+        "--color-text-muted",
+        "--color-text-subtle",
+        "--color-text-inverse",
+        "--color-border",
+        "--color-border-strong",
+        "--color-border-inverse",
+        "--color-accent",
+        "--color-accent-hover",
+        "--color-focus",
+        "--color-overlay",
+        "--color-overlay-light"
+      ],
+      "space": [
+        "3xs/2",
+        "2xs/4",
+        "xs/8",
+        "sm/12",
+        "md/16",
+        "lg/24",
+        "xl/32",
+        "2xl/48",
+        "3xl/64",
+        "4xl/96",
+        "5xl/128"
+      ],
+      "type_scale": [
+        "2xs/12",
+        "xs/13",
+        "sm/14",
+        "md/16",
+        "lg/18",
+        "xl/22",
+        "2xl/28",
+        "3xl/36",
+        "4xl/48",
+        "5xl/64",
+        "6xl/88"
+      ],
+      "font_family": [
+        "--font-sans",
+        "--font-serif",
+        "--font-mono"
+      ],
+      "font_weight": [
+        "regular/400",
+        "medium/500",
+        "semibold/600",
+        "bold/700"
+      ],
+      "line_height": [
+        "tight/1.1",
+        "snug/1.25",
+        "normal/1.5",
+        "loose/1.7"
+      ],
+      "letter_spacing": [
+        "tight/-0.02em",
+        "normal/0",
+        "wide/0.08em",
+        "wider/0.16em"
+      ],
+      "radii": [
+        "xs/4",
+        "sm/8",
+        "md/12",
+        "lg/16",
+        "xl/24",
+        "2xl/32",
+        "pill/999px"
+      ],
+      "borders": [
+        "thin/1px",
+        "md/2px",
+        "thick/3px"
+      ],
+      "shadows": [
+        "xs",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "containers": [
+        "narrow/640",
+        "md/864",
+        "wide/1200",
+        "full/1440",
+        "--container-padding-x"
+      ],
+      "z_index": [
+        "base/1",
+        "dropdown/100",
+        "sticky/200",
+        "overlay/300",
+        "modal/400",
+        "toast/500"
+      ],
+      "motion": [
+        "--duration-fast/150ms",
+        "--duration-base/250ms",
+        "--duration-slow/400ms",
+        "--ease-out",
+        "--ease-in-out",
+        "reduced-motion zeroes all durations"
+      ],
+      "focus_ring": [
+        "--focus-ring-width/2px",
+        "--focus-ring-offset/2px"
+      ]
     },
-    "breakpoints_doc_only": ["sm 30em/480", "md 48em/768", "lg 64em/1024", "xl 80em/1280"]
+    "breakpoints_doc_only": [
+      "sm 30em/480",
+      "md 48em/768",
+      "lg 64em/1024",
+      "xl 80em/1280"
+    ]
   },
   "foundations": [
     {
@@ -86,7 +272,22 @@
       "file": "css/base.css",
       "ref": "docs/typography.html",
       "status": "stable",
-      "classes": ["wire-display", "wire-display--serif", "wire-h1", "wire-h2", "wire-h3", "wire-h4", "wire-h5", "wire-h6", "wire-eyebrow", "wire-lead", "wire-prose", "wire-caption", "wire-quote", "wire-skip-link"],
+      "classes": [
+        "wire-display",
+        "wire-display--serif",
+        "wire-h1",
+        "wire-h2",
+        "wire-h3",
+        "wire-h4",
+        "wire-h5",
+        "wire-h6",
+        "wire-eyebrow",
+        "wire-lead",
+        "wire-prose",
+        "wire-caption",
+        "wire-quote",
+        "wire-skip-link"
+      ],
       "notes": "Typographic primitives + the focus-ring/skip-link contract. Body capped ~70ch via .wire-prose. wire-quote here is the base blockquote; the pull-quote component is css/components/quote.css."
     },
     {
@@ -95,13 +296,57 @@
       "ref": "docs/utilities.html",
       "status": "stable",
       "classes": {
-        "container": ["u-container", "u-container--narrow", "u-container--md", "u-container--wide", "u-container--full"],
-        "stack": ["u-stack", "u-stack--3xs", "u-stack--2xs", "u-stack--xs", "u-stack--sm", "u-stack--md", "u-stack--lg", "u-stack--xl", "u-stack--2xl", "u-stack--3xl"],
-        "cluster": ["u-cluster", "u-cluster--xs", "u-cluster--md", "u-cluster--lg", "u-cluster--center", "u-cluster--between", "u-cluster--end", "u-cluster--baseline", "u-cluster--start-align"],
-        "grid": ["u-grid", "u-grid--2", "u-grid--3", "u-grid--4"],
-        "sidebar": ["u-sidebar", "u-sidebar--right"],
-        "section": ["u-section", "u-section--sm", "u-section--md", "u-section--lg", "u-section--xl"],
-        "other": ["u-flow", "u-center"]
+        "container": [
+          "u-container",
+          "u-container--narrow",
+          "u-container--md",
+          "u-container--wide",
+          "u-container--full"
+        ],
+        "stack": [
+          "u-stack",
+          "u-stack--3xs",
+          "u-stack--2xs",
+          "u-stack--xs",
+          "u-stack--sm",
+          "u-stack--md",
+          "u-stack--lg",
+          "u-stack--xl",
+          "u-stack--2xl",
+          "u-stack--3xl"
+        ],
+        "cluster": [
+          "u-cluster",
+          "u-cluster--xs",
+          "u-cluster--md",
+          "u-cluster--lg",
+          "u-cluster--center",
+          "u-cluster--between",
+          "u-cluster--end",
+          "u-cluster--baseline",
+          "u-cluster--start-align"
+        ],
+        "grid": [
+          "u-grid",
+          "u-grid--2",
+          "u-grid--3",
+          "u-grid--4"
+        ],
+        "sidebar": [
+          "u-sidebar",
+          "u-sidebar--right"
+        ],
+        "section": [
+          "u-section",
+          "u-section--sm",
+          "u-section--md",
+          "u-section--lg",
+          "u-section--xl"
+        ],
+        "other": [
+          "u-flow",
+          "u-center"
+        ]
       }
     },
     {
@@ -110,12 +355,44 @@
       "ref": "docs/utilities.html",
       "status": "stable",
       "classes": {
-        "background": ["u-bg-default", "u-bg-subtle", "u-bg-muted", "u-bg-inverse"],
-        "text": ["u-text-default", "u-text-muted", "u-text-subtle", "u-text-inverse", "u-text-left", "u-text-center", "u-text-right", "u-text-balance", "u-text-pretty"],
-        "visibility": ["u-hidden", "u-hidden-mobile", "u-hidden-desktop", "u-visually-hidden"],
-        "spacing": ["u-mt-0", "u-mt-xs", "u-mt-sm", "u-mt-md", "u-mt-lg", "u-mt-xl"],
-        "width": ["u-full-width", "u-max-prose"],
-        "other": ["u-drop-cap"]
+        "background": [
+          "u-bg-default",
+          "u-bg-subtle",
+          "u-bg-muted",
+          "u-bg-inverse"
+        ],
+        "text": [
+          "u-text-default",
+          "u-text-muted",
+          "u-text-subtle",
+          "u-text-inverse",
+          "u-text-left",
+          "u-text-center",
+          "u-text-right",
+          "u-text-balance",
+          "u-text-pretty"
+        ],
+        "visibility": [
+          "u-hidden",
+          "u-hidden-mobile",
+          "u-hidden-desktop",
+          "u-visually-hidden"
+        ],
+        "spacing": [
+          "u-mt-0",
+          "u-mt-xs",
+          "u-mt-sm",
+          "u-mt-md",
+          "u-mt-lg",
+          "u-mt-xl"
+        ],
+        "width": [
+          "u-full-width",
+          "u-max-prose"
+        ],
+        "other": [
+          "u-drop-cap"
+        ]
       }
     },
     {
@@ -130,18 +407,48 @@
       "id": "typography",
       "level": "atom",
       "rationale": [
-        { "decision": "Body 16px default, never below 14px in flow", "citation_ids": ["nng-legibility", "wcag-1.4.3-contrast-minimum"] },
-        { "decision": "Max line length 50-75ch (70ch cap)", "citation_ids": ["nng-line-length", "bringhurst-elements-typographic-style"] },
-        { "decision": "text-wrap: balance on headings", "citation_ids": ["css-text-wrap-balance"] },
-        { "decision": "One descriptive h1 per page; ordered headings", "citation_ids": ["wcag-2.4.6-headings-and-labels"] }
+        {
+          "decision": "Body 16px default, never below 14px in flow",
+          "citation_ids": [
+            "nng-legibility",
+            "wcag-1.4.3-contrast-minimum"
+          ]
+        },
+        {
+          "decision": "Max line length 50-75ch (70ch cap)",
+          "citation_ids": [
+            "nng-line-length",
+            "bringhurst-elements-typographic-style"
+          ]
+        },
+        {
+          "decision": "text-wrap: balance on headings",
+          "citation_ids": [
+            "css-text-wrap-balance"
+          ]
+        },
+        {
+          "decision": "One descriptive h1 per page; ordered headings",
+          "citation_ids": [
+            "wcag-2.4.6-headings-and-labels"
+          ]
+        }
       ],
       "category": "foundation",
       "class": "wire-h1 .. wire-h6, wire-display, wire-lead, wire-eyebrow, wire-prose, wire-caption",
       "file": "css/base.css",
       "ref": "docs/typography.html",
       "status": "stable",
-      "variants": ["display", "display--serif"],
-      "slots": ["eyebrow", "heading", "lead", "body"],
+      "variants": [
+        "display",
+        "display--serif"
+      ],
+      "slots": [
+        "eyebrow",
+        "heading",
+        "lead",
+        "body"
+      ],
       "behaviors": [],
       "notes": "Lives in base.css, not a components/ partial. Lead is muted so it doesn't compete with the heading."
     },
@@ -149,11 +456,40 @@
       "id": "button",
       "level": "atom",
       "rationale": [
-        { "decision": ">=44px primary target size", "citation_ids": ["wcag-2.5.8-target-size-minimum", "wcag-2.5.5-target-size-enhanced", "laws-of-ux-fitts"] },
-        { "decision": "Three-tier action hierarchy (primary/secondary/ghost)", "citation_ids": ["nng-primary-secondary"] },
-        { "decision": "Hover affordance via background fill, not underline-only", "citation_ids": ["nng-flat-ui-clickability", "wcag-1.4.13-content-on-hover-or-focus"] },
-        { "decision": "Visible focus ring with 2px offset", "citation_ids": ["wcag-2.4.7-focus-visible", "wcag-2.4.13-focus-appearance"] },
-        { "decision": "Loading state announces busy", "citation_ids": ["wcag-4.1.3-status-messages"] }
+        {
+          "decision": ">=44px primary target size",
+          "citation_ids": [
+            "wcag-2.5.8-target-size-minimum",
+            "wcag-2.5.5-target-size-enhanced",
+            "laws-of-ux-fitts"
+          ]
+        },
+        {
+          "decision": "Three-tier action hierarchy (primary/secondary/ghost)",
+          "citation_ids": [
+            "nng-primary-secondary"
+          ]
+        },
+        {
+          "decision": "Hover affordance via background fill, not underline-only",
+          "citation_ids": [
+            "nng-flat-ui-clickability",
+            "wcag-1.4.13-content-on-hover-or-focus"
+          ]
+        },
+        {
+          "decision": "Visible focus ring with 2px offset",
+          "citation_ids": [
+            "wcag-2.4.7-focus-visible",
+            "wcag-2.4.13-focus-appearance"
+          ]
+        },
+        {
+          "decision": "Loading state announces busy",
+          "citation_ids": [
+            "wcag-4.1.3-status-messages"
+          ]
+        }
       ],
       "category": "actions",
       "class": "wire-button",
@@ -161,16 +497,38 @@
       "ref": "components/buttons/index.html",
       "ref_template": "components/buttons/index.html",
       "status": "stable",
-      "variants": ["(default = primary)", "secondary", "ghost"],
-      "sizes": ["(default = md)", "sm", "lg"],
-      "modifiers": ["full", "icon-only"],
-      "states": ["is-disabled", "is-loading"],
-      "elements": ["wire-button__icon"],
-      "companions": ["wire-button-group"],
+      "variants": [
+        "(default = primary)",
+        "secondary",
+        "ghost"
+      ],
+      "sizes": [
+        "(default = md)",
+        "sm",
+        "lg"
+      ],
+      "modifiers": [
+        "full",
+        "icon-only"
+      ],
+      "states": [
+        "is-disabled",
+        "is-loading"
+      ],
+      "elements": [
+        "wire-button__icon"
+      ],
+      "companions": [
+        "wire-button-group"
+      ],
       "behaviors": [],
-      "slots": ["label", "icon"],
+      "slots": [
+        "label",
+        "icon"
+      ],
       "a11y": "Min 44px target, visible focus ring, loading state announces busy. Primary is the unmodified base class. Icon-leading/trailing is DOM order of wire-button__icon, not a class.",
-      "notes": "Canonical M3 doc template is components/buttons/index.html (tabbed Overview/Specs/Guidelines/Accessibility with hash deep-linking)."
+      "notes": "Canonical M3 doc template is components/buttons/index.html (tabbed Overview/Specs/Guidelines/Accessibility with hash deep-linking).",
+      "label": "Button"
     },
     {
       "id": "badge",
@@ -181,39 +539,107 @@
       "ref": "components/badge/index.html",
       "status": "stable",
       "rationale": [
-        { "decision": "Grayscale fill-density variants with a load-bearing text label; status is never carried by color alone", "citation_ids": ["wcag-1.4.1-use-of-color", "ibm-carbon-tag", "material-design-3-badge"] },
-        { "decision": "A badge draws attention through contrast of form and proximity to its host, not color", "citation_ids": ["laws-of-ux-von-restorff", "gestalt-proximity"] }
+        {
+          "decision": "Grayscale fill-density variants with a load-bearing text label; status is never carried by color alone",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "ibm-carbon-tag",
+            "material-design-3-badge"
+          ]
+        },
+        {
+          "decision": "A badge draws attention through contrast of form and proximity to its host, not color",
+          "citation_ids": [
+            "laws-of-ux-von-restorff",
+            "gestalt-proximity"
+          ]
+        }
       ],
-      "variants": ["(default)", "subtle", "outline", "inverse", "count"],
-      "elements": ["wire-badge__dot", "wire-badge-anchor"],
+      "variants": [
+        "(default)",
+        "subtle",
+        "outline",
+        "inverse",
+        "count"
+      ],
+      "elements": [
+        "wire-badge__dot",
+        "wire-badge-anchor"
+      ],
       "behaviors": [],
-      "slots": ["label"],
-      "related": ["tag", "status-pill"],
+      "slots": [
+        "label"
+      ],
+      "related": [
+        "tag",
+        "status-pill"
+      ],
       "composable": "Leaf; composes into cards, tables, and list items, and (as --count via wire-badge-anchor) onto a focusable host such as an icon button.",
-      "notes": "Non-interactive. Count overlay (wire-badge--count + wire-badge-anchor): the host carries the accessible name and the visual count is aria-hidden. Prior manifest's 'live' variant does not exist."
+      "notes": "Non-interactive. Count overlay (wire-badge--count + wire-badge-anchor): the host carries the accessible name and the visual count is aria-hidden. Prior manifest's 'live' variant does not exist.",
+      "label": "Badge"
     },
     {
       "id": "tag",
       "level": "atom",
       "rationale": [
-        { "decision": "Chip / removable-tag pattern", "citation_ids": ["material-design-3-chips", "ibm-carbon-tag"] },
-        { "decision": "tag--sm holds the 24px AA target floor", "citation_ids": ["wcag-2.5.8-target-size-minimum"] },
-        { "decision": "Interactive tag is a real button/a; selection exposed via aria-pressed (not fill alone); remove target meets 24px", "citation_ids": ["wcag-1.4.1-use-of-color", "wcag-2.5.8-target-size-minimum"] },
-        { "decision": "Filter chips let users narrow and undo a query; controls sized per Fitts's law", "citation_ids": ["nng-filtering-faceted", "laws-of-ux-fitts"] }
+        {
+          "decision": "Chip / removable-tag pattern",
+          "citation_ids": [
+            "material-design-3-chips",
+            "ibm-carbon-tag"
+          ]
+        },
+        {
+          "decision": "tag--sm holds the 24px AA target floor",
+          "citation_ids": [
+            "wcag-2.5.8-target-size-minimum"
+          ]
+        },
+        {
+          "decision": "Interactive tag is a real button/a; selection exposed via aria-pressed (not fill alone); remove target meets 24px",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "wcag-2.5.8-target-size-minimum"
+          ]
+        },
+        {
+          "decision": "Filter chips let users narrow and undo a query; controls sized per Fitts's law",
+          "citation_ids": [
+            "nng-filtering-faceted",
+            "laws-of-ux-fitts"
+          ]
+        }
       ],
       "category": "selection",
       "class": "wire-tag",
       "file": "css/components/tag.css",
       "ref": "components/tag/index.html",
       "status": "stable",
-      "variants": ["(default)", "sm", "selected"],
-      "states": ["is-selected"],
-      "elements": ["wire-tag__remove"],
-      "companions": ["wire-tag-list"],
+      "variants": [
+        "(default)",
+        "sm",
+        "selected"
+      ],
+      "states": [
+        "is-selected"
+      ],
+      "elements": [
+        "wire-tag__remove"
+      ],
+      "companions": [
+        "wire-tag-list"
+      ],
       "behaviors": [],
-      "slots": ["label"],
-      "related": ["badge", "choice", "button"],
-      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list."
+      "slots": [
+        "label"
+      ],
+      "related": [
+        "badge",
+        "choice",
+        "button"
+      ],
+      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list.",
+      "label": "Tag"
     },
     {
       "id": "divider",
@@ -224,51 +650,124 @@
       "ref": "components/divider/index.html",
       "status": "stable",
       "rationale": [
-        { "decision": "Rules and vertical rhythm separate content; use sparingly and let spacing carry most grouping", "citation_ids": ["bringhurst-elements-typographic-style", "gestalt-proximity", "gestalt-common-region"] }
+        {
+          "decision": "Rules and vertical rhythm separate content; use sparingly and let spacing carry most grouping",
+          "citation_ids": [
+            "bringhurst-elements-typographic-style",
+            "gestalt-proximity",
+            "gestalt-common-region"
+          ]
+        }
       ],
-      "variants": ["(default)", "dashed", "strong", "thick", "vertical"],
-      "companions": ["wire-divider-labeled"],
+      "variants": [
+        "(default)",
+        "dashed",
+        "strong",
+        "thick",
+        "vertical"
+      ],
+      "companions": [
+        "wire-divider-labeled"
+      ],
       "behaviors": [],
-      "slots": ["label (via wire-divider-labeled)"],
-      "related": ["accordion", "two-column"],
-      "notes": "Horizontal (an <hr>, semantic separator) and vertical (decorative inline rule). Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier."
+      "slots": [
+        "label (via wire-divider-labeled)"
+      ],
+      "related": [
+        "accordion",
+        "two-column"
+      ],
+      "notes": "Horizontal (an <hr>, semantic separator) and vertical (decorative inline rule). Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier.",
+      "label": "Divider"
     },
     {
       "id": "field",
       "level": "molecule",
       "rationale": [
-        { "decision": "Labels above inputs, never placeholder-as-label", "citation_ids": ["baymard-labels-above", "nng-placeholders-harmful", "wcag-3.3.2-labels-or-instructions"] },
-        { "decision": "Inline error adjacent to field via aria-describedby", "citation_ids": ["baymard-inline-validation", "wcag-3.3.1-error-identification"] },
-        { "decision": "Required-field asterisk + visible label note", "citation_ids": ["nng-required-fields"] },
-        { "decision": "Input border clears 3:1 non-text contrast", "citation_ids": ["wcag-1.4.11-non-text-contrast"] }
+        {
+          "decision": "Labels above inputs, never placeholder-as-label",
+          "citation_ids": [
+            "baymard-labels-above",
+            "nng-placeholders-harmful",
+            "wcag-3.3.2-labels-or-instructions"
+          ]
+        },
+        {
+          "decision": "Inline error adjacent to field via aria-describedby",
+          "citation_ids": [
+            "baymard-inline-validation",
+            "wcag-3.3.1-error-identification"
+          ]
+        },
+        {
+          "decision": "Required-field asterisk + visible label note",
+          "citation_ids": [
+            "nng-required-fields"
+          ]
+        },
+        {
+          "decision": "Input border clears 3:1 non-text contrast",
+          "citation_ids": [
+            "wcag-1.4.11-non-text-contrast"
+          ]
+        }
       ],
       "category": "forms",
       "class": "wire-field",
       "file": "css/components/form.css",
       "ref": "components/field/",
       "status": "stable",
-      "controls": ["wire-input", "wire-textarea", "wire-select"],
-      "elements": ["wire-field__label", "wire-field__label-required", "wire-field__hint", "wire-field__error"],
-      "states": ["is-invalid"],
+      "controls": [
+        "wire-input",
+        "wire-textarea",
+        "wire-select"
+      ],
+      "elements": [
+        "wire-field__label",
+        "wire-field__label-required",
+        "wire-field__hint",
+        "wire-field__error"
+      ],
+      "states": [
+        "is-invalid"
+      ],
       "behaviors": [],
-      "slots": ["label", "field", "hint", "error"],
+      "slots": [
+        "label",
+        "field",
+        "hint",
+        "error"
+      ],
       "a11y": "Label always present; error text tied via aria-describedby; is-invalid + aria-invalid on the control.",
-      "notes": "wire-field is the labeled wrapper around wire-input/wire-textarea/wire-select. Prior manifest treated input/select/textarea as standalone and invented helper/field slots."
+      "notes": "wire-field is the labeled wrapper around wire-input/wire-textarea/wire-select. Prior manifest treated input/select/textarea as standalone and invented helper/field slots.",
+      "label": "Field"
     },
     {
       "id": "search",
       "level": "molecule",
       "rationale": [
-        { "decision": "Leading magnifier icon for search", "citation_ids": ["nng-search-magnifier"] }
+        {
+          "decision": "Leading magnifier icon for search",
+          "citation_ids": [
+            "nng-search-magnifier"
+          ]
+        }
       ],
       "category": "forms",
       "class": "wire-search",
       "file": "css/components/form.css",
       "ref": "components/search/",
       "status": "stable",
-      "elements": ["wire-search__input", "wire-search__icon"],
+      "elements": [
+        "wire-search__input",
+        "wire-search__icon"
+      ],
       "behaviors": [],
-      "slots": ["field", "icon"]
+      "slots": [
+        "field",
+        "icon"
+      ],
+      "label": "Search"
     },
     {
       "id": "choice",
@@ -278,27 +777,49 @@
       "file": "css/components/form.css",
       "ref": "components/choice/",
       "status": "stable",
-      "variants": ["checkbox", "radio", "toggle"],
-      "elements": ["wire-checkbox__input", "wire-radio__input", "wire-toggle__input"],
+      "variants": [
+        "checkbox",
+        "radio",
+        "toggle"
+      ],
+      "elements": [
+        "wire-checkbox__input",
+        "wire-radio__input",
+        "wire-toggle__input"
+      ],
       "behaviors": [],
-      "slots": ["label"],
-      "notes": "Three distinct classes, not one wire-choice with modifiers. Label-wrapped pattern."
+      "slots": [
+        "label"
+      ],
+      "notes": "Three distinct classes, not one wire-choice with modifiers. Label-wrapped pattern.",
+      "label": "Choice"
     },
     {
       "id": "form-layout",
       "level": "molecule",
       "rationale": [
-        { "decision": "Single-column form layout by default", "citation_ids": ["baymard-avoid-multi-column-forms"] }
+        {
+          "decision": "Single-column form layout by default",
+          "citation_ids": [
+            "baymard-avoid-multi-column-forms"
+          ]
+        }
       ],
       "category": "forms",
       "class": "wire-form",
       "file": "css/components/form.css",
       "ref": "components/form-layout/",
       "status": "stable",
-      "elements": ["wire-form__row"],
-      "companions": ["wire-fieldset", "wire-fieldset__legend"],
+      "elements": [
+        "wire-form__row"
+      ],
+      "companions": [
+        "wire-fieldset",
+        "wire-fieldset__legend"
+      ],
       "behaviors": [],
-      "notes": "Form scaffolding: wire-form, wire-form__row (multi-column rows), wire-fieldset + wire-fieldset__legend for grouped choices."
+      "notes": "Form scaffolding: wire-form, wire-form__row (multi-column rows), wire-fieldset + wire-fieldset__legend for grouped choices.",
+      "label": "Form layout"
     },
     {
       "id": "breadcrumb",
@@ -308,9 +829,17 @@
       "file": "css/components/breadcrumb.css",
       "ref": "components/breadcrumb/",
       "status": "stable",
-      "elements": ["wire-breadcrumb__list", "wire-breadcrumb__item", "wire-breadcrumb__link", "wire-breadcrumb__current"],
+      "elements": [
+        "wire-breadcrumb__list",
+        "wire-breadcrumb__item",
+        "wire-breadcrumb__link",
+        "wire-breadcrumb__current"
+      ],
       "behaviors": [],
-      "slots": ["items"]
+      "slots": [
+        "items"
+      ],
+      "label": "Breadcrumb"
     },
     {
       "id": "pagination",
@@ -320,9 +849,21 @@
       "file": "css/components/pagination.css",
       "ref": "components/pagination/",
       "status": "stable",
-      "elements": ["wire-pagination__nav", "wire-pagination__list", "wire-pagination__item", "wire-pagination__link", "wire-pagination__current", "wire-pagination__ellipsis"],
+      "elements": [
+        "wire-pagination__nav",
+        "wire-pagination__list",
+        "wire-pagination__item",
+        "wire-pagination__link",
+        "wire-pagination__current",
+        "wire-pagination__ellipsis"
+      ],
       "behaviors": [],
-      "slots": ["prev", "pages", "next"]
+      "slots": [
+        "prev",
+        "pages",
+        "next"
+      ],
+      "label": "Pagination"
     },
     {
       "id": "topnav",
@@ -332,250 +873,601 @@
       "file": "css/components/nav.css",
       "ref": "components/top-nav/",
       "status": "stable",
-      "elements": ["wire-topnav__inner", "wire-topnav__brand", "wire-topnav__brand-mark", "wire-topnav__brand-mark--logo", "wire-topnav__menu", "wire-topnav__item", "wire-topnav__link", "wire-topnav__utility", "wire-topnav__burger"],
-      "behaviors": ["Pairs with the mobile drawer: wire-topnav__burger carries data-wire-drawer-open"],
-      "slots": ["brand", "menu", "utility"],
-      "notes": "The page-shell common scaffold opens with wire-topnav on every page."
+      "elements": [
+        "wire-topnav__inner",
+        "wire-topnav__brand",
+        "wire-topnav__brand-mark",
+        "wire-topnav__brand-mark--logo",
+        "wire-topnav__menu",
+        "wire-topnav__item",
+        "wire-topnav__link",
+        "wire-topnav__utility",
+        "wire-topnav__burger"
+      ],
+      "behaviors": [
+        "Pairs with the mobile drawer: wire-topnav__burger carries data-wire-drawer-open"
+      ],
+      "slots": [
+        "brand",
+        "menu",
+        "utility"
+      ],
+      "notes": "The page-shell common scaffold opens with wire-topnav on every page.",
+      "label": "Top nav"
     },
     {
       "id": "megamenu",
       "level": "organism",
       "rationale": [
-        { "decision": "Mega menu for multi-audience IA fan-out", "citation_ids": ["nng-mega-menus"] },
-        { "decision": "Trigger stays <a href> for no-JS fallback; JS adds aria-haspopup/expanded", "citation_ids": ["apg-menubar-editor", "wcag-4.1.2-name-role-value"] }
+        {
+          "decision": "Mega menu for multi-audience IA fan-out",
+          "citation_ids": [
+            "nng-mega-menus"
+          ]
+        },
+        {
+          "decision": "Trigger stays <a href> for no-JS fallback; JS adds aria-haspopup/expanded",
+          "citation_ids": [
+            "apg-menubar-editor",
+            "wcag-4.1.2-name-role-value"
+          ]
+        }
       ],
       "category": "navigation",
       "class": "wire-megamenu",
       "file": "css/components/nav.css",
       "ref": "components/top-nav/",
       "status": "stable",
-      "elements": ["wire-megamenu__panel", "wire-megamenu__grid", "wire-megamenu__col", "wire-megamenu__title", "wire-megamenu__link", "wire-megamenu__link-desc"],
-      "states": ["is-open"],
-      "behaviors": ["data-wire-megamenu (init)", "data-wire-megamenu-trigger (the toggle; sets aria-haspopup/aria-expanded)", "click-toggle, outside-click close, Escape closes and refocuses trigger (initMegamenu)"],
-      "notes": "Trigger remains <a href> for no-JS fallback."
+      "elements": [
+        "wire-megamenu__panel",
+        "wire-megamenu__grid",
+        "wire-megamenu__col",
+        "wire-megamenu__title",
+        "wire-megamenu__link",
+        "wire-megamenu__link-desc"
+      ],
+      "states": [
+        "is-open"
+      ],
+      "behaviors": [
+        "data-wire-megamenu (init)",
+        "data-wire-megamenu-trigger (the toggle; sets aria-haspopup/aria-expanded)",
+        "click-toggle, outside-click close, Escape closes and refocuses trigger (initMegamenu)"
+      ],
+      "notes": "Trigger remains <a href> for no-JS fallback.",
+      "label": "Mega menu"
     },
     {
       "id": "sidenav",
       "level": "organism",
       "rationale": [
-        { "decision": "Left-rail vertical nav for deep IAs", "citation_ids": ["nng-left-side-vertical-navigation", "ibm-carbon-side-nav"] },
-        { "decision": "aria-current=page on the active item", "citation_ids": ["wcag-4.1.2-name-role-value"] }
+        {
+          "decision": "Left-rail vertical nav for deep IAs",
+          "citation_ids": [
+            "nng-left-side-vertical-navigation",
+            "ibm-carbon-side-nav"
+          ]
+        },
+        {
+          "decision": "aria-current=page on the active item",
+          "citation_ids": [
+            "wcag-4.1.2-name-role-value"
+          ]
+        }
       ],
       "category": "navigation",
       "class": "wire-sidenav",
       "file": "css/components/nav.css",
       "ref": "components/side-nav/",
       "status": "stable (sublist/parent compositions: beta)",
-      "elements": ["wire-sidenav__title", "wire-sidenav__list", "wire-sidenav__group", "wire-sidenav__item", "wire-sidenav__link", "wire-sidenav__link--parent", "wire-sidenav__sublist"],
-      "states": ["is-current"],
+      "elements": [
+        "wire-sidenav__title",
+        "wire-sidenav__list",
+        "wire-sidenav__group",
+        "wire-sidenav__item",
+        "wire-sidenav__link",
+        "wire-sidenav__link--parent",
+        "wire-sidenav__sublist"
+      ],
+      "states": [
+        "is-current"
+      ],
       "behaviors": [],
-      "notes": "Three documented compositions (local / secondary / section tree). wire-sidenav__sublist + __link--parent are beta until used beyond the hospital vertical."
+      "notes": "Three documented compositions (local / secondary / section tree). wire-sidenav__sublist + __link--parent are beta until used beyond the hospital vertical.",
+      "label": "Side nav"
     },
     {
       "id": "inpagenav",
       "level": "molecule",
       "rationale": [
-        { "decision": "In-page TOC with scroll-spy on long-form pages", "citation_ids": ["nng-table-of-contents"] },
-        { "decision": "Non-sticky below 48em to preserve reflow", "citation_ids": ["wcag-1.4.10-reflow", "wcag-2.4.11-focus-not-obscured"] }
+        {
+          "decision": "In-page TOC with scroll-spy on long-form pages",
+          "citation_ids": [
+            "nng-table-of-contents"
+          ]
+        },
+        {
+          "decision": "Non-sticky below 48em to preserve reflow",
+          "citation_ids": [
+            "wcag-1.4.10-reflow",
+            "wcag-2.4.11-focus-not-obscured"
+          ]
+        }
       ],
       "category": "navigation",
       "class": "wire-inpagenav",
       "file": "css/components/nav.css",
       "ref": "components/in-page-nav/",
       "status": "stable",
-      "elements": ["wire-inpagenav__title", "wire-inpagenav__list", "wire-inpagenav__item", "wire-inpagenav__link"],
-      "states": ["is-current"],
-      "behaviors": ["data-wire-inpagenav (init)", "IntersectionObserver highlights the link for the section in view via .is-current (initInPageNav)"],
-      "notes": "Non-sticky below 48em."
+      "elements": [
+        "wire-inpagenav__title",
+        "wire-inpagenav__list",
+        "wire-inpagenav__item",
+        "wire-inpagenav__link"
+      ],
+      "states": [
+        "is-current"
+      ],
+      "behaviors": [
+        "data-wire-inpagenav (init)",
+        "IntersectionObserver highlights the link for the section in view via .is-current (initInPageNav)"
+      ],
+      "notes": "Non-sticky below 48em.",
+      "label": "In-page nav"
     },
     {
       "id": "drawer",
       "level": "molecule",
       "rationale": [
-        { "decision": "Modal-dialog pattern with focus trap, Esc, focus restore", "citation_ids": ["apg-dialog-modal", "wcag-2.1.2-no-keyboard-trap", "wcag-4.1.2-name-role-value"] }
+        {
+          "decision": "Modal-dialog pattern with focus trap, Esc, focus restore",
+          "citation_ids": [
+            "apg-dialog-modal",
+            "wcag-2.1.2-no-keyboard-trap",
+            "wcag-4.1.2-name-role-value"
+          ]
+        }
       ],
       "category": "containment",
       "class": "wire-drawer",
       "file": "css/components/nav.css",
       "ref": "components/drawer/index.html",
       "status": "stable",
-      "variants": ["(default)", "start"],
-      "elements": ["wire-drawer__close"],
-      "companions": ["wire-drawer-backdrop"],
-      "states": ["is-open"],
-      "behaviors": ["data-wire-drawer-open=\"<drawerId>\" on the toggle", "data-wire-drawer-close on close buttons", "focus trap (WCAG 2.1.2), backdrop click closes, Escape closes, body scroll locked, role=dialog + aria-modal set (initDrawer)"],
-      "notes": "Mobile navigation drawer. Pairs with wire-topnav__burger."
+      "variants": [
+        "(default)",
+        "start"
+      ],
+      "elements": [
+        "wire-drawer__close"
+      ],
+      "companions": [
+        "wire-drawer-backdrop"
+      ],
+      "states": [
+        "is-open"
+      ],
+      "behaviors": [
+        "data-wire-drawer-open=\"<drawerId>\" on the toggle",
+        "data-wire-drawer-close on close buttons",
+        "focus trap (WCAG 2.1.2), backdrop click closes, Escape closes, body scroll locked, role=dialog + aria-modal set (initDrawer)"
+      ],
+      "notes": "Mobile navigation drawer. Pairs with wire-topnav__burger.",
+      "label": "Drawer"
     },
     {
       "id": "card",
       "level": "molecule",
       "rationale": [
-        { "decision": "Grouping by proximity + shared region", "citation_ids": ["gestalt-proximity", "gestalt-common-region", "nng-cards-definition"] },
-        { "decision": "Card pattern for related content", "citation_ids": ["material-design-3-cards", "ibm-carbon-tile"] },
-        { "decision": "Bordered variant clears 3:1 non-text contrast", "citation_ids": ["wcag-1.4.11-non-text-contrast"] }
+        {
+          "decision": "Grouping by proximity + shared region",
+          "citation_ids": [
+            "gestalt-proximity",
+            "gestalt-common-region",
+            "nng-cards-definition"
+          ]
+        },
+        {
+          "decision": "Card pattern for related content",
+          "citation_ids": [
+            "material-design-3-cards",
+            "ibm-carbon-tile"
+          ]
+        },
+        {
+          "decision": "Bordered variant clears 3:1 non-text contrast",
+          "citation_ids": [
+            "wcag-1.4.11-non-text-contrast"
+          ]
+        }
       ],
       "category": "containment",
       "class": "wire-card",
       "file": "css/components/card.css",
       "ref": "components/cards/index.html",
       "status": "stable",
-      "variants": ["(default = content)", "person", "resource", "stat", "linked", "bordered", "subtle", "inverse", "horizontal"],
-      "elements": ["wire-card__media", "wire-card__body", "wire-card__eyebrow", "wire-card__title", "wire-card__desc", "wire-card__meta", "wire-card__meta-item", "wire-card__footer", "wire-card__role", "wire-card__credentials", "wire-card__resource-type", "wire-card__stat-value", "wire-card__stat-label", "wire-card__stat-trend"],
+      "variants": [
+        "(default = content)",
+        "person",
+        "resource",
+        "stat",
+        "linked",
+        "bordered",
+        "subtle",
+        "inverse",
+        "horizontal"
+      ],
+      "elements": [
+        "wire-card__media",
+        "wire-card__body",
+        "wire-card__eyebrow",
+        "wire-card__title",
+        "wire-card__desc",
+        "wire-card__meta",
+        "wire-card__meta-item",
+        "wire-card__footer",
+        "wire-card__role",
+        "wire-card__credentials",
+        "wire-card__resource-type",
+        "wire-card__stat-value",
+        "wire-card__stat-label",
+        "wire-card__stat-trend"
+      ],
       "behaviors": [],
-      "slots": ["eyebrow", "title", "desc", "media", "meta", "footer", "(person) role/credentials", "(stat) value/label/trend", "(resource) resource-type"],
-      "notes": "Content is the unmodified base (no wire-card--content). Modifiers compose: e.g. wire-card wire-card--person wire-card--bordered."
+      "slots": [
+        "eyebrow",
+        "title",
+        "desc",
+        "media",
+        "meta",
+        "footer",
+        "(person) role/credentials",
+        "(stat) value/label/trend",
+        "(resource) resource-type"
+      ],
+      "notes": "Content is the unmodified base (no wire-card--content). Modifiers compose: e.g. wire-card wire-card--person wire-card--bordered.",
+      "label": "Card"
     },
     {
       "id": "hero",
       "level": "organism",
       "rationale": [
-        { "decision": "Mobile-first hero scaling (step up at md/lg)", "citation_ids": ["httparchive-web-almanac-2024-mobile"] },
-        { "decision": "The single page h1 lives in the hero", "citation_ids": ["wcag-2.4.6-headings-and-labels"] }
+        {
+          "decision": "Mobile-first hero scaling (step up at md/lg)",
+          "citation_ids": [
+            "httparchive-web-almanac-2024-mobile"
+          ]
+        },
+        {
+          "decision": "The single page h1 lives in the hero",
+          "citation_ids": [
+            "wcag-2.4.6-headings-and-labels"
+          ]
+        }
       ],
-      "category": "layout",
+      "category": "sections",
       "class": "wire-hero",
       "file": "css/components/hero.css",
       "ref": "docs/heroes.html",
       "status": "stable",
-      "variants": ["editorial", "split", "centered", "stat"],
-      "modifiers": ["inverse"],
-      "elements": ["wire-hero__inner", "wire-hero__eyebrow", "wire-hero__title", "wire-hero__lead", "wire-hero__actions", "wire-hero__media", "wire-hero__stat-value", "wire-hero__stat-label"],
+      "variants": [
+        "editorial",
+        "split",
+        "centered",
+        "stat"
+      ],
+      "modifiers": [
+        "inverse"
+      ],
+      "elements": [
+        "wire-hero__inner",
+        "wire-hero__eyebrow",
+        "wire-hero__title",
+        "wire-hero__lead",
+        "wire-hero__actions",
+        "wire-hero__media",
+        "wire-hero__stat-value",
+        "wire-hero__stat-label"
+      ],
       "behaviors": [],
-      "slots": ["eyebrow", "heading", "lead", "actions", "media", "stats"],
-      "notes": "Pick by intent: editorial = story/emotion; split = service/CTA pair; centered = single focus; stat = credibility/proof. inverse is a separate modifier (prior manifest's 'stat-led-inverse' = wire-hero--stat wire-hero--inverse). The page h1 lives once, inside the hero."
+      "slots": [
+        "eyebrow",
+        "heading",
+        "lead",
+        "actions",
+        "media",
+        "stats"
+      ],
+      "notes": "Pick by intent: editorial = story/emotion; split = service/CTA pair; centered = single focus; stat = credibility/proof. inverse is a separate modifier (prior manifest's 'stat-led-inverse' = wire-hero--stat wire-hero--inverse). The page h1 lives once, inside the hero.",
+      "label": "Hero"
     },
     {
       "id": "feature-grid",
       "level": "organism",
       "rationale": [
-        { "decision": "Icon + title + description grid for landing pages", "citation_ids": ["nng-cards-definition", "gestalt-proximity"] }
+        {
+          "decision": "Icon + title + description grid for landing pages",
+          "citation_ids": [
+            "nng-cards-definition",
+            "gestalt-proximity"
+          ]
+        }
       ],
-      "category": "layout",
+      "category": "sections",
       "class": "wire-feature-grid",
       "file": "css/components/feature-grid.css",
       "ref": "docs/content-blocks.html",
       "status": "stable",
-      "variants": ["(default)", "bordered"],
+      "variants": [
+        "(default)",
+        "bordered"
+      ],
       "item_class": "wire-feature",
-      "elements": ["wire-feature__icon", "wire-feature__title", "wire-feature__desc", "wire-feature__link"],
+      "elements": [
+        "wire-feature__icon",
+        "wire-feature__title",
+        "wire-feature__desc",
+        "wire-feature__link"
+      ],
       "behaviors": [],
-      "slots": ["items[icon, title, desc, link]"]
+      "slots": [
+        "items[icon, title, desc, link]"
+      ],
+      "label": "Feature grid"
     },
     {
       "id": "two-column",
       "level": "organism",
-      "category": "layout",
+      "category": "sections",
       "class": "wire-twocol",
       "file": "css/components/two-column.css",
       "ref": "docs/content-blocks.html",
       "status": "stable",
-      "variants": ["(default)", "reverse", "top", "bottom"],
-      "elements": ["wire-twocol__text", "wire-twocol__eyebrow", "wire-twocol__title", "wire-twocol__body", "wire-twocol__actions"],
+      "variants": [
+        "(default)",
+        "reverse",
+        "top",
+        "bottom"
+      ],
+      "elements": [
+        "wire-twocol__text",
+        "wire-twocol__eyebrow",
+        "wire-twocol__title",
+        "wire-twocol__body",
+        "wire-twocol__actions"
+      ],
       "behaviors": [],
-      "slots": ["eyebrow", "title", "body", "actions"],
-      "notes": "Class is wire-twocol (prior manifest's wire-two-col was wrong). top/bottom control vertical alignment; reverse swaps column order."
+      "slots": [
+        "eyebrow",
+        "title",
+        "body",
+        "actions"
+      ],
+      "notes": "Class is wire-twocol (prior manifest's wire-two-col was wrong). top/bottom control vertical alignment; reverse swaps column order.",
+      "label": "Two-column"
     },
     {
       "id": "accordion",
       "level": "organism",
       "rationale": [
-        { "decision": "Native <details> disclosure; single-open option", "citation_ids": ["apg-accordion", "wcag-2.1.1-keyboard"] }
+        {
+          "decision": "Native <details> disclosure; single-open option",
+          "citation_ids": [
+            "apg-accordion",
+            "wcag-2.1.1-keyboard"
+          ]
+        }
       ],
       "category": "containment",
       "class": "wire-accordion",
       "file": "css/components/accordion.css",
       "ref": "components/accordion/index.html",
       "status": "stable",
-      "elements": ["wire-accordion__item", "wire-accordion__summary", "wire-accordion__body", "wire-accordion__icon"],
-      "behaviors": ["data-wire-accordion=\"single\" enables single-open mode (closes siblings on open). Built on native <details>/<summary> (initAccordion)"],
-      "slots": ["items[question, answer]"],
-      "a11y": "Native disclosure pattern; keyboard operable for free."
+      "elements": [
+        "wire-accordion__item",
+        "wire-accordion__summary",
+        "wire-accordion__body",
+        "wire-accordion__icon"
+      ],
+      "behaviors": [
+        "data-wire-accordion=\"single\" enables single-open mode (closes siblings on open). Built on native <details>/<summary> (initAccordion)"
+      ],
+      "slots": [
+        "items[question, answer]"
+      ],
+      "a11y": "Native disclosure pattern; keyboard operable for free.",
+      "label": "Accordion"
     },
     {
       "id": "tabs",
       "level": "organism",
       "rationale": [
-        { "decision": "APG tabs keyboard model (arrows / Home / End)", "citation_ids": ["apg-tabs", "wcag-2.1.1-keyboard", "wcag-4.1.2-name-role-value"] },
-        { "decision": "Parallel peer content shown one panel at a time; follow the conventional tab interaction so it is understood without learning", "citation_ids": ["nng-tabs", "laws-of-ux-jakob"] }
+        {
+          "decision": "APG tabs keyboard model (arrows / Home / End)",
+          "citation_ids": [
+            "apg-tabs",
+            "wcag-2.1.1-keyboard",
+            "wcag-4.1.2-name-role-value"
+          ]
+        },
+        {
+          "decision": "Parallel peer content shown one panel at a time; follow the conventional tab interaction so it is understood without learning",
+          "citation_ids": [
+            "nng-tabs",
+            "laws-of-ux-jakob"
+          ]
+        }
       ],
       "category": "containment",
       "class": "wire-tabs",
       "file": "css/components/tabs.css",
       "ref": "components/tabs/index.html",
       "status": "stable",
-      "variants": ["(default)", "pill", "sticky"],
-      "elements": ["wire-tabs__list", "wire-tabs__tab", "wire-tabs__panel"],
-      "states": ["is-active (on panel)"],
-      "behaviors": ["data-wire-tabs (init)", "data-wire-tabs-hash (sync active tab with URL hash via History API; deep-linkable, survives back/forward)", "ARIA APG tabpanel pattern: roving tabindex, arrow/Home/End keys, aria-selected, aria-controls (initTabs)"],
-      "slots": ["tabs[label, panel]"],
-      "notes": "wire-tabs--sticky is defined in doc-shell.css. The components/buttons M3 template uses data-wire-tabs-hash for #overview/#specs/#guidelines/#accessibility."
+      "variants": [
+        "(default)",
+        "pill",
+        "sticky"
+      ],
+      "elements": [
+        "wire-tabs__list",
+        "wire-tabs__tab",
+        "wire-tabs__panel"
+      ],
+      "states": [
+        "is-active (on panel)"
+      ],
+      "behaviors": [
+        "data-wire-tabs (init)",
+        "data-wire-tabs-hash (sync active tab with URL hash via History API; deep-linkable, survives back/forward)",
+        "ARIA APG tabpanel pattern: roving tabindex, arrow/Home/End keys, aria-selected, aria-controls (initTabs)"
+      ],
+      "slots": [
+        "tabs[label, panel]"
+      ],
+      "notes": "wire-tabs--sticky is defined in doc-shell.css. The components/buttons M3 template uses data-wire-tabs-hash for #overview/#specs/#guidelines/#accessibility.",
+      "label": "Tabs"
     },
     {
       "id": "callout",
       "level": "molecule",
       "rationale": [
-        { "decision": "Aside emphasis as a distinct, programmatically-identifiable region", "citation_ids": ["nng-visual-hierarchy", "wcag-1.3.1-info-relationships"] }
+        {
+          "decision": "Aside emphasis as a distinct, programmatically-identifiable region",
+          "citation_ids": [
+            "nng-visual-hierarchy",
+            "wcag-1.3.1-info-relationships"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-callout",
       "file": "css/components/callout.css",
       "ref": "components/callout/",
       "status": "stable",
-      "variants": ["(default)", "subtle", "inverse", "bordered", "inline"],
-      "elements": ["wire-callout__eyebrow", "wire-callout__title", "wire-callout__body", "wire-callout__actions"],
+      "variants": [
+        "(default)",
+        "subtle",
+        "inverse",
+        "bordered",
+        "inline"
+      ],
+      "elements": [
+        "wire-callout__eyebrow",
+        "wire-callout__title",
+        "wire-callout__body",
+        "wire-callout__actions"
+      ],
       "behaviors": [],
-      "slots": ["eyebrow", "title", "body", "actions"],
-      "notes": "Prior manifest's enrolling/navigator/alert-inline were content uses, not real variants. Real variants are subtle/inverse/bordered/inline."
+      "slots": [
+        "eyebrow",
+        "title",
+        "body",
+        "actions"
+      ],
+      "notes": "Prior manifest's enrolling/navigator/alert-inline were content uses, not real variants. Real variants are subtle/inverse/bordered/inline.",
+      "label": "Callout"
     },
     {
       "id": "quote",
       "level": "molecule",
       "rationale": [
-        { "decision": "Pull quote for scannability and rhythm", "citation_ids": ["nng-pull-quotes", "bringhurst-elements-typographic-style"] }
+        {
+          "decision": "Pull quote for scannability and rhythm",
+          "citation_ids": [
+            "nng-pull-quotes",
+            "bringhurst-elements-typographic-style"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-quote",
       "file": "css/components/quote.css",
       "ref": "components/quote/",
       "status": "stable",
-      "variants": ["(default)", "inline", "large"],
-      "elements": ["wire-quote__mark", "wire-quote__text", "wire-quote__attribution", "wire-quote__name", "wire-quote__role"],
+      "variants": [
+        "(default)",
+        "inline",
+        "large"
+      ],
+      "elements": [
+        "wire-quote__mark",
+        "wire-quote__text",
+        "wire-quote__attribution",
+        "wire-quote__name",
+        "wire-quote__role"
+      ],
       "behaviors": [],
-      "slots": ["quote", "attribution name", "attribution role"],
-      "notes": "Pull-quote. Class is wire-quote (prior manifest's wire-pullquote was wrong)."
+      "slots": [
+        "quote",
+        "attribution name",
+        "attribution role"
+      ],
+      "notes": "Pull-quote. Class is wire-quote (prior manifest's wire-pullquote was wrong).",
+      "label": "Quote"
     },
     {
       "id": "timeline",
       "level": "organism",
       "rationale": [
-        { "decision": "Vertical chronology with anchored date markers", "citation_ids": ["nng-timelines"] }
+        {
+          "decision": "Vertical chronology with anchored date markers",
+          "citation_ids": [
+            "nng-timelines"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-timeline",
       "file": "css/components/timeline.css",
       "ref": "components/timeline/",
       "status": "stable",
-      "elements": ["wire-timeline__item", "wire-timeline__date", "wire-timeline__title", "wire-timeline__body"],
+      "elements": [
+        "wire-timeline__item",
+        "wire-timeline__date",
+        "wire-timeline__title",
+        "wire-timeline__body"
+      ],
       "behaviors": [],
-      "slots": ["items[date, title, body]"]
+      "slots": [
+        "items[date, title, body]"
+      ],
+      "label": "Timeline"
     },
     {
       "id": "media",
       "level": "atom",
       "rationale": [
-        { "decision": "Decorative placeholders marked aria-hidden", "citation_ids": ["wcag-1.1.1-non-text-content"] }
+        {
+          "decision": "Decorative placeholders marked aria-hidden",
+          "citation_ids": [
+            "wcag-1.1.1-non-text-content"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-media",
       "file": "css/components/media.css",
       "ref": "components/media/",
       "status": "stable",
-      "variants": ["16-9", "4-3", "square", "wide", "portrait", "portrait-tall", "video", "rounded"],
-      "elements": ["wire-media__label"],
+      "variants": [
+        "16-9",
+        "4-3",
+        "square",
+        "wide",
+        "portrait",
+        "portrait-tall",
+        "video",
+        "rounded"
+      ],
+      "elements": [
+        "wire-media__label"
+      ],
       "behaviors": [],
-      "slots": ["label"],
+      "slots": [
+        "label"
+      ],
       "a11y": "aria-hidden placeholder by default (decorative).",
-      "notes": "Aspect-ratio placeholders. Variants are explicit ratios, not the prior 'ratio-placeholder' guess."
+      "notes": "Aspect-ratio placeholders. Variants are explicit ratios, not the prior 'ratio-placeholder' guess.",
+      "label": "Media"
     },
     {
       "id": "gallery",
@@ -585,25 +1477,42 @@
       "file": "css/components/media.css",
       "ref": "components/media/",
       "status": "stable",
-      "variants": ["(default)", "mosaic"],
+      "variants": [
+        "(default)",
+        "mosaic"
+      ],
       "behaviors": [],
-      "notes": "Mosaic variant collapses to a single column on mobile."
+      "notes": "Mosaic variant collapses to a single column on mobile.",
+      "label": "Gallery"
     },
     {
       "id": "linked-list",
       "level": "molecule",
       "rationale": [
-        { "decision": "Large clickable rows + descriptive meta for category landings", "citation_ids": ["nng-category-pages", "wcag-2.4.4-link-purpose"] }
+        {
+          "decision": "Large clickable rows + descriptive meta for category landings",
+          "citation_ids": [
+            "nng-category-pages",
+            "wcag-2.4.4-link-purpose"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-linked-list",
       "file": "css/components/list.css",
       "ref": "components/lists/",
       "status": "stable",
-      "elements": ["wire-linked-list__item", "wire-linked-list__link", "wire-linked-list__meta"],
+      "elements": [
+        "wire-linked-list__item",
+        "wire-linked-list__link",
+        "wire-linked-list__meta"
+      ],
       "behaviors": [],
-      "slots": ["items[label, meta]"],
-      "notes": "Standalone class (prior manifest's wire-list--linked modifier pattern was wrong)."
+      "slots": [
+        "items[label, meta]"
+      ],
+      "notes": "Standalone class (prior manifest's wire-list--linked modifier pattern was wrong).",
+      "label": "Linked list"
     },
     {
       "id": "deflist",
@@ -613,9 +1522,15 @@
       "file": "css/components/list.css",
       "ref": "components/lists/",
       "status": "stable",
-      "elements": ["wire-deflist__term", "wire-deflist__desc"],
+      "elements": [
+        "wire-deflist__term",
+        "wire-deflist__desc"
+      ],
       "behaviors": [],
-      "slots": ["items[term, definition]"]
+      "slots": [
+        "items[term, definition]"
+      ],
+      "label": "Definition list"
     },
     {
       "id": "article-list",
@@ -625,226 +1540,919 @@
       "file": "css/components/list.css",
       "ref": "components/lists/",
       "status": "stable",
-      "elements": ["wire-article-list__article", "wire-article-list__item", "wire-article-list__category", "wire-article-list__date", "wire-article-list__meta", "wire-article-list__title", "wire-article-list__excerpt"],
+      "elements": [
+        "wire-article-list__article",
+        "wire-article-list__item",
+        "wire-article-list__category",
+        "wire-article-list__date",
+        "wire-article-list__meta",
+        "wire-article-list__title",
+        "wire-article-list__excerpt"
+      ],
       "behaviors": [],
-      "slots": ["items[category, date, title, excerpt]"]
+      "slots": [
+        "items[category, date, title, excerpt]"
+      ],
+      "label": "Article list"
     },
     {
       "id": "citation-list",
       "level": "organism",
       "rationale": [
-        { "decision": "APA / Chicago reference-list visual conventions", "citation_ids": ["apa-chicago-reference-style"] }
+        {
+          "decision": "APA / Chicago reference-list visual conventions",
+          "citation_ids": [
+            "apa-chicago-reference-style"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-citation-list",
       "file": "css/components/citation-list.css",
       "ref": "components/citation-list/",
       "status": "beta",
-      "elements": ["wire-citation-list__item", "wire-citation-list__num", "wire-citation-list__title", "wire-citation-list__authors", "wire-citation-list__meta", "wire-citation-list__body"],
+      "elements": [
+        "wire-citation-list__item",
+        "wire-citation-list__num",
+        "wire-citation-list__title",
+        "wire-citation-list__authors",
+        "wire-citation-list__meta",
+        "wire-citation-list__body"
+      ],
       "behaviors": [],
-      "slots": ["items[num, title, authors, meta, body]"],
-      "notes": "Used on hospital-measure.html and directory.html. Beta until a third page uses it."
+      "slots": [
+        "items[num, title, authors, meta, body]"
+      ],
+      "notes": "Used on hospital-measure.html and directory.html. Beta until a third page uses it.",
+      "label": "Citation list"
     },
     {
       "id": "table",
       "level": "organism",
       "rationale": [
-        { "decision": "Header scope + programmatic association; tabular figures", "citation_ids": ["wcag-1.3.1-info-relationships", "apg-table", "bringhurst-elements-typographic-style"] }
+        {
+          "decision": "Header scope + programmatic association; tabular figures",
+          "citation_ids": [
+            "wcag-1.3.1-info-relationships",
+            "apg-table",
+            "bringhurst-elements-typographic-style"
+          ]
+        }
       ],
       "category": "content",
       "class": "wire-table",
       "file": "css/components/table.css",
       "ref": "components/table/",
       "status": "stable",
-      "variants": ["(default = data)", "comparison", "compact", "striped"],
-      "elements": ["wire-table__num"],
-      "companions": ["wire-table-wrap (horizontal-scroll wrapper)"],
-      "states": ["is-featured (highlighted column/row)"],
+      "variants": [
+        "(default = data)",
+        "comparison",
+        "compact",
+        "striped"
+      ],
+      "elements": [
+        "wire-table__num"
+      ],
+      "companions": [
+        "wire-table-wrap (horizontal-scroll wrapper)"
+      ],
+      "states": [
+        "is-featured (highlighted column/row)"
+      ],
       "behaviors": [],
-      "slots": ["caption", "head", "rows"],
-      "notes": "Comparison modifier is wire-table--comparison (prior manifest's --compare was wrong). wire-table__num applies tabular numerals."
+      "slots": [
+        "caption",
+        "head",
+        "rows"
+      ],
+      "notes": "Comparison modifier is wire-table--comparison (prior manifest's --compare was wrong). wire-table__num applies tabular numerals.",
+      "label": "Table"
     },
     {
       "id": "stepper",
       "level": "molecule",
       "rationale": [
-        { "decision": "Step indicator for multi-step flows (ol + aria-current=step)", "citation_ids": ["material-design-3-steppers", "ibm-carbon-progress-indicator"] }
+        {
+          "decision": "Step indicator for multi-step flows (ol + aria-current=step)",
+          "citation_ids": [
+            "material-design-3-steppers",
+            "ibm-carbon-progress-indicator"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "wire-stepper",
       "file": "css/components/stepper.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "elements": ["wire-stepper__item", "wire-stepper__marker", "wire-stepper__label", "wire-stepper__label-meta"],
-      "states": ["is-current", "is-complete"],
+      "elements": [
+        "wire-stepper__item",
+        "wire-stepper__marker",
+        "wire-stepper__label",
+        "wire-stepper__label-meta"
+      ],
+      "states": [
+        "is-current",
+        "is-complete"
+      ],
       "behaviors": [],
-      "slots": ["items[marker, label, label-meta]"],
-      "notes": "Multi-step progress indicator. Used in booking/appointment/trial/program flows. Beta until WCAG screen-reader pass."
+      "slots": [
+        "items[marker, label, label-meta]"
+      ],
+      "notes": "Multi-step progress indicator. Used in booking/appointment/trial/program flows. Beta until WCAG screen-reader pass.",
+      "label": "Stepper"
     },
     {
       "id": "modal",
       "level": "organism",
       "rationale": [
-        { "decision": "Modal-dialog pattern; blocking reserved for justified cases", "citation_ids": ["apg-dialog-modal", "nng-modal-nonmodal", "wcag-2.1.2-no-keyboard-trap"] }
+        {
+          "decision": "Modal-dialog pattern; blocking reserved for justified cases",
+          "citation_ids": [
+            "apg-dialog-modal",
+            "nng-modal-nonmodal",
+            "wcag-2.1.2-no-keyboard-trap"
+          ]
+        }
       ],
       "category": "containment",
       "class": "wire-modal",
       "file": "css/components/modal.css",
       "ref": "components/modal/index.html",
       "status": "beta",
-      "variants": ["(default)", "lg"],
-      "elements": ["wire-modal__backdrop", "wire-modal__panel", "wire-modal__header", "wire-modal__title", "wire-modal__body", "wire-modal__footer", "wire-modal__close"],
-      "states": ["is-open"],
-      "behaviors": ["data-wire-modal-open=\"<modalId>\" on the trigger", "data-wire-modal-close on close buttons", "focus trap, backdrop click closes, Escape closes, restores focus to opener, body scroll locked, role=dialog + aria-modal (initModal)", "data-wire-modal-static suppresses backdrop-click dismissal (Esc + close controls still work)", "autofocus sets initial focus; aria-describedby auto-wired to the body (initModal)"],
-      "slots": ["title", "body", "footer"],
-      "notes": "Centered dialog. Beta until SR pass + a third use."
+      "variants": [
+        "(default)",
+        "lg"
+      ],
+      "elements": [
+        "wire-modal__backdrop",
+        "wire-modal__panel",
+        "wire-modal__header",
+        "wire-modal__title",
+        "wire-modal__body",
+        "wire-modal__footer",
+        "wire-modal__close"
+      ],
+      "states": [
+        "is-open"
+      ],
+      "behaviors": [
+        "data-wire-modal-open=\"<modalId>\" on the trigger",
+        "data-wire-modal-close on close buttons",
+        "focus trap, backdrop click closes, Escape closes, restores focus to opener, body scroll locked, role=dialog + aria-modal (initModal)",
+        "data-wire-modal-static suppresses backdrop-click dismissal (Esc + close controls still work)",
+        "autofocus sets initial focus; aria-describedby auto-wired to the body (initModal)"
+      ],
+      "slots": [
+        "title",
+        "body",
+        "footer"
+      ],
+      "notes": "Centered dialog. Beta until SR pass + a third use.",
+      "label": "Modal"
     },
     {
       "id": "toast",
       "level": "molecule",
       "rationale": [
-        { "decision": "Transient status via a polite live region", "citation_ids": ["wcag-4.1.3-status-messages", "nng-indicators-validations-notifications"] }
+        {
+          "decision": "Transient status via a polite live region",
+          "citation_ids": [
+            "wcag-4.1.3-status-messages",
+            "nng-indicators-validations-notifications"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "wire-toast",
       "file": "css/components/toast.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "elements": ["wire-toast__content", "wire-toast__title", "wire-toast__body", "wire-toast__close"],
-      "companions": ["wire-toast-region (lazily created live region)"],
-      "states": ["is-open"],
-      "behaviors": ["window.wireToast({title, body, duration}) JS API", "declarative: data-wire-toast-trigger + data-toast-title / data-toast-body / data-toast-duration", "WCAG 4.1.3 status region, aria-live=polite (initToast)"],
-      "slots": ["title", "body"],
-      "notes": "API surface may refine."
+      "elements": [
+        "wire-toast__content",
+        "wire-toast__title",
+        "wire-toast__body",
+        "wire-toast__close"
+      ],
+      "companions": [
+        "wire-toast-region (lazily created live region)"
+      ],
+      "states": [
+        "is-open"
+      ],
+      "behaviors": [
+        "window.wireToast({title, body, duration}) JS API",
+        "declarative: data-wire-toast-trigger + data-toast-title / data-toast-body / data-toast-duration",
+        "WCAG 4.1.3 status region, aria-live=polite (initToast)"
+      ],
+      "slots": [
+        "title",
+        "body"
+      ],
+      "notes": "API surface may refine.",
+      "label": "Toast"
     },
     {
       "id": "banner",
       "level": "molecule",
       "rationale": [
-        { "decision": "Site-level message, dismissable, programmatically distinguishable", "citation_ids": ["nng-notifications-ux", "wcag-2.2.2-pause-stop-hide", "wcag-1.3.1-info-relationships"] }
+        {
+          "decision": "Site-level message, dismissable, programmatically distinguishable",
+          "citation_ids": [
+            "nng-notifications-ux",
+            "wcag-2.2.2-pause-stop-hide",
+            "wcag-1.3.1-info-relationships"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "wire-banner",
       "file": "css/components/banner.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "variants": ["(default)", "subtle", "inverse", "alert"],
-      "elements": ["wire-banner__icon", "wire-banner__content", "wire-banner__title", "wire-banner__body", "wire-banner__actions", "wire-banner__close"],
-      "behaviors": ["wire-banner__close removes the closest .wire-banner (initBanner) — no data attribute required"],
-      "slots": ["icon", "title", "body", "actions"]
+      "variants": [
+        "(default)",
+        "subtle",
+        "inverse",
+        "alert"
+      ],
+      "elements": [
+        "wire-banner__icon",
+        "wire-banner__content",
+        "wire-banner__title",
+        "wire-banner__body",
+        "wire-banner__actions",
+        "wire-banner__close"
+      ],
+      "behaviors": [
+        "wire-banner__close removes the closest .wire-banner (initBanner) — no data attribute required"
+      ],
+      "slots": [
+        "icon",
+        "title",
+        "body",
+        "actions"
+      ],
+      "label": "Banner"
     },
     {
       "id": "empty-state",
       "level": "molecule",
       "rationale": [
-        { "decision": "Empty state: explain, reduce confusion, offer recovery", "citation_ids": ["nng-empty-state", "ibm-carbon-empty"] }
+        {
+          "decision": "Empty state: explain, reduce confusion, offer recovery",
+          "citation_ids": [
+            "nng-empty-state",
+            "ibm-carbon-empty"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "wire-empty",
       "file": "css/components/empty-state.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "variants": ["(default)", "bordered", "inline"],
-      "elements": ["wire-empty__visual", "wire-empty__title", "wire-empty__body", "wire-empty__actions"],
+      "variants": [
+        "(default)",
+        "bordered",
+        "inline"
+      ],
+      "elements": [
+        "wire-empty__visual",
+        "wire-empty__title",
+        "wire-empty__body",
+        "wire-empty__actions"
+      ],
       "behaviors": [],
-      "slots": ["visual", "title", "body", "actions"],
-      "notes": "Used in 5 demos (404, search, portal, appointment, etc.)."
+      "slots": [
+        "visual",
+        "title",
+        "body",
+        "actions"
+      ],
+      "notes": "Used in 5 demos (404, search, portal, appointment, etc.).",
+      "label": "Empty state"
     },
     {
       "id": "skeleton",
       "level": "atom",
       "rationale": [
-        { "decision": "Loading placeholder reduces perceived wait; shimmer respects reduced-motion", "citation_ids": ["nng-progress-indicators", "wcag-2.3.3-animation-from-interactions", "wcag-4.1.3-status-messages"] }
+        {
+          "decision": "Loading placeholder reduces perceived wait; shimmer respects reduced-motion",
+          "citation_ids": [
+            "nng-progress-indicators",
+            "wcag-2.3.3-animation-from-interactions",
+            "wcag-4.1.3-status-messages"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "wire-skeleton",
       "file": "css/components/skeleton.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "variants": ["text", "title", "image", "avatar", "button"],
-      "companions": ["wire-skeleton-group"],
+      "variants": [
+        "text",
+        "title",
+        "image",
+        "avatar",
+        "button"
+      ],
+      "companions": [
+        "wire-skeleton-group"
+      ],
       "behaviors": [],
       "a11y": "Pairs with aria-busy on the loading container.",
-      "notes": "Loading placeholders."
+      "notes": "Loading placeholders.",
+      "label": "Skeleton"
     },
     {
       "id": "tooltip",
       "level": "atom",
       "rationale": [
-        { "decision": "Dismissable / hoverable / persistent hover content; aria-label is the name", "citation_ids": ["wcag-1.4.13-content-on-hover-or-focus", "apg-tooltip"] }
+        {
+          "decision": "Dismissable / hoverable / persistent hover content; aria-label is the name",
+          "citation_ids": [
+            "wcag-1.4.13-content-on-hover-or-focus",
+            "apg-tooltip"
+          ]
+        }
       ],
       "category": "feedback",
       "class": "[data-wire-tooltip]",
       "file": "css/components/tooltip.css",
       "ref": "docs/feedback.html",
       "status": "beta",
-      "behaviors": ["data-wire-tooltip=\"<text>\" (content)", "data-wire-tooltip-placement=\"top|bottom|left|right\"", "PURE CSS — no JS init; pseudo-element renders the bubble"],
-      "notes": "Attribute-driven, not a class. Long content needs a popover (post-v1.4)."
+      "behaviors": [
+        "data-wire-tooltip=\"<text>\" (content)",
+        "data-wire-tooltip-placement=\"top|bottom|left|right\"",
+        "PURE CSS — no JS init; pseudo-element renders the bubble"
+      ],
+      "notes": "Attribute-driven, not a class. Long content needs a popover (post-v1.4).",
+      "label": "Tooltip"
     },
     {
       "id": "footer",
       "level": "organism",
-      "category": "layout",
+      "category": "sections",
       "class": "wire-footer",
       "file": "css/components/footer.css",
       "ref": "docs/footers.html",
       "status": "stable",
-      "variants": ["(default = standard)", "compact", "expanded", "inverse"],
-      "elements": ["wire-footer__inner", "wire-footer__brand", "wire-footer__brand-mark", "wire-footer__tagline", "wire-footer__cta-title", "wire-footer__columns", "wire-footer__col-title", "wire-footer__list", "wire-footer__list-item", "wire-footer__link", "wire-footer__bottom", "wire-footer__legal"],
+      "variants": [
+        "(default = standard)",
+        "compact",
+        "expanded",
+        "inverse"
+      ],
+      "elements": [
+        "wire-footer__inner",
+        "wire-footer__brand",
+        "wire-footer__brand-mark",
+        "wire-footer__tagline",
+        "wire-footer__cta-title",
+        "wire-footer__columns",
+        "wire-footer__col-title",
+        "wire-footer__list",
+        "wire-footer__list-item",
+        "wire-footer__link",
+        "wire-footer__bottom",
+        "wire-footer__legal"
+      ],
       "behaviors": [],
-      "slots": ["brand", "tagline", "column-groups[col-title, links]", "cta-title (expanded)", "legal"],
-      "notes": "Four variants: standard (default), compact, expanded (closing-CTA), inverse. Always inside <footer>, outside <main>."
+      "slots": [
+        "brand",
+        "tagline",
+        "column-groups[col-title, links]",
+        "cta-title (expanded)",
+        "legal"
+      ],
+      "notes": "Four variants: standard (default), compact, expanded (closing-CTA), inverse. Always inside <footer>, outside <main>.",
+      "label": "Footer"
     },
     {
       "id": "help-bar",
       "level": "molecule",
       "rationale": [
-        { "decision": "Persistent high-contrast help/contact affordance for older adults", "citation_ids": ["nia-senior-friendly", "pew-health-online-2013"] }
+        {
+          "decision": "Persistent high-contrast help/contact affordance for older adults",
+          "citation_ids": [
+            "nia-senior-friendly",
+            "pew-health-online-2013"
+          ]
+        }
       ],
-      "category": "affordances",
+      "category": "feedback",
       "class": "wire-help-bar",
       "file": "css/components/help-bar.css",
       "ref": "docs/research.html",
       "status": "stable",
-      "variants": ["(default)", "fixed"],
-      "elements": ["wire-help-bar__icon", "wire-help-bar__text", "wire-help-bar__title", "wire-help-bar__desc", "wire-help-bar__actions"],
+      "variants": [
+        "(default)",
+        "fixed"
+      ],
+      "elements": [
+        "wire-help-bar__icon",
+        "wire-help-bar__text",
+        "wire-help-bar__title",
+        "wire-help-bar__desc",
+        "wire-help-bar__actions"
+      ],
       "behaviors": [],
-      "slots": ["title", "desc", "actions"],
-      "notes": "Persistent 'talk to someone' affordance (NIA Senior-Friendly). Class is wire-help-bar."
+      "slots": [
+        "title",
+        "desc",
+        "actions"
+      ],
+      "notes": "Persistent 'talk to someone' affordance (NIA Senior-Friendly). Class is wire-help-bar.",
+      "label": "Help bar"
     },
     {
       "id": "phone-link",
       "level": "atom",
       "rationale": [
-        { "decision": "Prominent phone channel for care contact", "citation_ids": ["pew-health-online-2013", "nia-senior-friendly"] }
+        {
+          "decision": "Prominent phone channel for care contact",
+          "citation_ids": [
+            "pew-health-online-2013",
+            "nia-senior-friendly"
+          ]
+        }
       ],
-      "category": "affordances",
+      "category": "actions",
       "class": "wire-phone-link",
       "file": "css/components/help-bar.css",
       "ref": "docs/research.html",
       "status": "stable",
-      "elements": ["wire-phone-link__icon"],
+      "elements": [
+        "wire-phone-link__icon"
+      ],
       "behaviors": [],
-      "slots": ["number"],
-      "notes": "Topnav-ready, tabular numerals, tel: href. Class is wire-phone-link; lives in help-bar.css."
+      "slots": [
+        "number"
+      ],
+      "notes": "Topnav-ready, tabular numerals, tel: href. Class is wire-phone-link; lives in help-bar.css.",
+      "label": "Phone link"
     },
     {
       "id": "text-size-control",
       "level": "molecule",
       "rationale": [
-        { "decision": "User-controllable text sizing for older audiences", "citation_ids": ["nia-senior-friendly"] },
-        { "decision": "44px controls (AAA) on the accessibility widget itself", "citation_ids": ["wcag-2.5.5-target-size-enhanced"] },
-        { "decision": "Announces the new scale via a polite live region", "citation_ids": ["wcag-4.1.3-status-messages"] }
+        {
+          "decision": "User-controllable text sizing for older audiences",
+          "citation_ids": [
+            "nia-senior-friendly"
+          ]
+        },
+        {
+          "decision": "44px controls (AAA) on the accessibility widget itself",
+          "citation_ids": [
+            "wcag-2.5.5-target-size-enhanced"
+          ]
+        },
+        {
+          "decision": "Announces the new scale via a polite live region",
+          "citation_ids": [
+            "wcag-4.1.3-status-messages"
+          ]
+        }
       ],
-      "category": "affordances",
+      "category": "utilities",
       "class": "wire-text-size",
       "file": "css/components/text-size-control.css",
       "ref": "docs/research.html",
       "status": "stable",
-      "elements": ["wire-text-size__label", "wire-text-size__btn", "wire-text-size__btn--sm", "wire-text-size__btn--md", "wire-text-size__btn--lg"],
-      "behaviors": ["data-wire-text-size (init on the widget)", "data-wire-text-size-value=\"sm|md|lg|xl\" on each button (A- / A / A+ / A++)", "sets --wire-text-scale (0.9/1/1.15/1.3) on <html>, persists to localStorage 'wire-text-scale', aria-pressed on active, polite live-region announcement (initTextSize)"],
-      "slots": ["label", "buttons"],
-      "notes": "Prior manifest's options ['A','A','A+'] were wrong. Behavior exposes four scales sm/md/lg/xl; CSS button modifiers are sm/md/lg."
+      "elements": [
+        "wire-text-size__label",
+        "wire-text-size__btn",
+        "wire-text-size__btn--sm",
+        "wire-text-size__btn--md",
+        "wire-text-size__btn--lg"
+      ],
+      "behaviors": [
+        "data-wire-text-size (init on the widget)",
+        "data-wire-text-size-value=\"sm|md|lg|xl\" on each button (A- / A / A+ / A++)",
+        "sets --wire-text-scale (0.9/1/1.15/1.3) on <html>, persists to localStorage 'wire-text-scale', aria-pressed on active, polite live-region announcement (initTextSize)"
+      ],
+      "slots": [
+        "label",
+        "buttons"
+      ],
+      "notes": "Prior manifest's options ['A','A','A+'] were wrong. Behavior exposes four scales sm/md/lg/xl; CSS button modifiers are sm/md/lg.",
+      "label": "Text size"
+    },
+    {
+      "id": "icon-button",
+      "label": "Icon button",
+      "category": "actions",
+      "ref": "components/actions/icon-button/",
+      "status": "planned"
+    },
+    {
+      "id": "button-group",
+      "label": "Button group",
+      "category": "actions",
+      "ref": "components/actions/button-group/",
+      "status": "planned"
+    },
+    {
+      "id": "menu",
+      "label": "Menu",
+      "category": "actions",
+      "ref": "components/actions/menu/",
+      "status": "planned"
+    },
+    {
+      "id": "link",
+      "label": "Link",
+      "category": "actions",
+      "ref": "components/actions/link/",
+      "status": "planned"
+    },
+    {
+      "id": "disclosure",
+      "label": "Disclosure",
+      "category": "actions",
+      "ref": "components/actions/disclosure/",
+      "status": "planned"
+    },
+    {
+      "id": "save-portal-link",
+      "label": "Save / portal link",
+      "category": "actions",
+      "ref": "components/actions/save-portal-link/",
+      "status": "planned"
+    },
+    {
+      "id": "chat-launcher",
+      "label": "Chat launcher",
+      "category": "actions",
+      "ref": "components/actions/chat-launcher/",
+      "status": "planned"
+    },
+    {
+      "id": "textarea",
+      "label": "Textarea",
+      "category": "forms",
+      "ref": "components/forms-inputs/textarea/",
+      "status": "planned"
+    },
+    {
+      "id": "select",
+      "label": "Select",
+      "category": "forms",
+      "ref": "components/forms-inputs/select/",
+      "status": "planned"
+    },
+    {
+      "id": "combobox",
+      "label": "Combobox",
+      "category": "forms",
+      "ref": "components/forms-inputs/combobox/",
+      "status": "planned"
+    },
+    {
+      "id": "date-picker",
+      "label": "Date picker",
+      "category": "forms",
+      "ref": "components/forms-inputs/date-picker/",
+      "status": "planned"
+    },
+    {
+      "id": "toggle",
+      "label": "Toggle",
+      "category": "forms",
+      "ref": "components/forms-inputs/toggle/",
+      "status": "planned"
+    },
+    {
+      "id": "slider",
+      "label": "Slider",
+      "category": "forms",
+      "ref": "components/forms-inputs/slider/",
+      "status": "planned"
+    },
+    {
+      "id": "number-stepper",
+      "label": "Number stepper",
+      "category": "forms",
+      "ref": "components/forms-inputs/number-stepper/",
+      "status": "planned"
+    },
+    {
+      "id": "file-upload",
+      "label": "File upload",
+      "category": "forms",
+      "ref": "components/forms-inputs/file-upload/",
+      "status": "planned"
+    },
+    {
+      "id": "rating",
+      "label": "Rating",
+      "category": "forms",
+      "ref": "components/forms-inputs/rating/",
+      "status": "planned"
+    },
+    {
+      "id": "fieldset",
+      "label": "Fieldset",
+      "category": "forms",
+      "ref": "components/forms-inputs/fieldset/",
+      "status": "planned"
+    },
+    {
+      "id": "error-summary",
+      "label": "Error summary",
+      "category": "forms",
+      "ref": "components/forms-inputs/error-summary/",
+      "status": "planned"
+    },
+    {
+      "id": "avatar",
+      "label": "Avatar",
+      "category": "selection",
+      "ref": "components/selection-status/avatar/",
+      "status": "planned"
+    },
+    {
+      "id": "avatar-group",
+      "label": "Avatar group",
+      "category": "selection",
+      "ref": "components/selection-status/avatar-group/",
+      "status": "planned"
+    },
+    {
+      "id": "filter-chip",
+      "label": "Filter chip",
+      "category": "selection",
+      "ref": "components/selection-status/filter-chip/",
+      "status": "planned"
+    },
+    {
+      "id": "status-dot",
+      "label": "Status dot",
+      "category": "selection",
+      "ref": "components/selection-status/status-dot/",
+      "status": "planned"
+    },
+    {
+      "id": "progress",
+      "label": "Progress",
+      "category": "selection",
+      "ref": "components/selection-status/progress/",
+      "status": "planned"
+    },
+    {
+      "id": "meter",
+      "label": "Meter",
+      "category": "selection",
+      "ref": "components/selection-status/meter/",
+      "status": "planned"
+    },
+    {
+      "id": "wait-time",
+      "label": "Wait time",
+      "category": "selection",
+      "ref": "components/selection-status/wait-time/",
+      "status": "planned"
+    },
+    {
+      "id": "insurance-indicator",
+      "label": "Insurance indicator",
+      "category": "selection",
+      "ref": "components/selection-status/insurance-indicator/",
+      "status": "planned"
+    },
+    {
+      "id": "popover",
+      "label": "Popover",
+      "category": "containment",
+      "ref": "components/containment-overlays/popover/",
+      "status": "planned"
+    },
+    {
+      "id": "carousel",
+      "label": "Carousel",
+      "category": "containment",
+      "ref": "components/containment-overlays/carousel/",
+      "status": "planned"
+    },
+    {
+      "id": "bottom-sheet",
+      "label": "Bottom sheet",
+      "category": "containment",
+      "ref": "components/containment-overlays/bottom-sheet/",
+      "status": "planned"
+    },
+    {
+      "id": "utility-nav",
+      "label": "Utility nav",
+      "category": "navigation",
+      "ref": "components/navigation/utility-nav/",
+      "status": "planned"
+    },
+    {
+      "id": "facet-panel",
+      "label": "Facet panel",
+      "category": "navigation",
+      "ref": "components/navigation/facet-panel/",
+      "status": "planned"
+    },
+    {
+      "id": "mobile-nav",
+      "label": "Mobile nav",
+      "category": "navigation",
+      "ref": "components/navigation/mobile-nav/",
+      "status": "planned"
+    },
+    {
+      "id": "page-header",
+      "label": "Page header",
+      "category": "sections",
+      "ref": "components/sections/page-header/",
+      "status": "planned"
+    },
+    {
+      "id": "stat-band",
+      "label": "Stat band",
+      "category": "sections",
+      "ref": "components/sections/stat-band/",
+      "status": "planned"
+    },
+    {
+      "id": "cta-band",
+      "label": "CTA band",
+      "category": "sections",
+      "ref": "components/sections/cta-band/",
+      "status": "planned"
+    },
+    {
+      "id": "profile-header",
+      "label": "Profile header",
+      "category": "sections",
+      "ref": "components/sections/profile-header/",
+      "status": "planned"
+    },
+    {
+      "id": "contact-location",
+      "label": "Contact & location",
+      "category": "sections",
+      "ref": "components/sections/contact-location/",
+      "status": "planned"
+    },
+    {
+      "id": "map",
+      "label": "Map",
+      "category": "sections",
+      "ref": "components/sections/map/",
+      "status": "planned"
+    },
+    {
+      "id": "event-card",
+      "label": "Event card",
+      "category": "sections",
+      "ref": "components/sections/event-card/",
+      "status": "planned"
+    },
+    {
+      "id": "search-results",
+      "label": "Search results",
+      "category": "sections",
+      "ref": "components/sections/search-results/",
+      "status": "planned"
+    },
+    {
+      "id": "comparison-table",
+      "label": "Comparison table",
+      "category": "sections",
+      "ref": "components/sections/comparison-table/",
+      "status": "planned"
+    },
+    {
+      "id": "pricing-table",
+      "label": "Pricing table",
+      "category": "sections",
+      "ref": "components/sections/pricing-table/",
+      "status": "planned"
+    },
+    {
+      "id": "faq",
+      "label": "FAQ",
+      "category": "sections",
+      "ref": "components/sections/faq/",
+      "status": "planned"
+    },
+    {
+      "id": "logo-wall",
+      "label": "Logo wall",
+      "category": "sections",
+      "ref": "components/sections/logo-wall/",
+      "status": "planned"
+    },
+    {
+      "id": "related-content",
+      "label": "Related content",
+      "category": "sections",
+      "ref": "components/sections/related-content/",
+      "status": "planned"
+    },
+    {
+      "id": "newsletter",
+      "label": "Newsletter",
+      "category": "sections",
+      "ref": "components/sections/newsletter/",
+      "status": "planned"
+    },
+    {
+      "id": "steps",
+      "label": "Steps",
+      "category": "sections",
+      "ref": "components/sections/steps/",
+      "status": "planned"
+    },
+    {
+      "id": "alert-bar",
+      "label": "Alert bar",
+      "category": "sections",
+      "ref": "components/sections/alert-bar/",
+      "status": "planned"
+    },
+    {
+      "id": "chart",
+      "label": "Chart",
+      "category": "content",
+      "ref": "components/content-display/chart/",
+      "status": "planned"
+    },
+    {
+      "id": "kpi-stat",
+      "label": "KPI stat",
+      "category": "content",
+      "ref": "components/content-display/kpi-stat/",
+      "status": "planned"
+    },
+    {
+      "id": "byline",
+      "label": "Byline",
+      "category": "content",
+      "ref": "components/content-display/byline/",
+      "status": "planned"
+    },
+    {
+      "id": "figure",
+      "label": "Figure",
+      "category": "content",
+      "ref": "components/content-display/figure/",
+      "status": "planned"
+    },
+    {
+      "id": "spinner",
+      "label": "Spinner",
+      "category": "feedback",
+      "ref": "components/messaging-feedback/spinner/",
+      "status": "planned"
+    },
+    {
+      "id": "inline-alert",
+      "label": "Inline alert",
+      "category": "feedback",
+      "ref": "components/messaging-feedback/inline-alert/",
+      "status": "planned"
+    },
+    {
+      "id": "emergency-line",
+      "label": "Emergency line",
+      "category": "feedback",
+      "ref": "components/messaging-feedback/emergency-line/",
+      "status": "planned"
+    },
+    {
+      "id": "print-share",
+      "label": "Print & share",
+      "category": "utilities",
+      "ref": "components/utilities/print-share/",
+      "status": "planned"
+    },
+    {
+      "id": "skip-link",
+      "label": "Skip link",
+      "category": "utilities",
+      "ref": "components/utilities/skip-link/",
+      "status": "planned"
+    },
+    {
+      "id": "back-to-top",
+      "label": "Back to top",
+      "category": "utilities",
+      "ref": "components/utilities/back-to-top/",
+      "status": "planned"
+    },
+    {
+      "id": "language-switcher",
+      "label": "Language switcher",
+      "category": "utilities",
+      "ref": "components/utilities/language-switcher/",
+      "status": "planned"
     }
   ],
   "doc_chrome": {
@@ -856,7 +2464,12 @@
         "file": "css/components/status-pill.css",
         "ref": "docs/component-status.html",
         "status": "beta",
-        "variants": ["alpha", "beta", "pending", "deprecated"],
+        "variants": [
+          "alpha",
+          "beta",
+          "pending",
+          "deprecated"
+        ],
         "notes": "Inline component-lifecycle pill. Differentiates by fill density in grayscale."
       },
       {
@@ -864,22 +2477,46 @@
         "class": "wire-doc-header",
         "file": "css/components/doc-header.css",
         "status": "beta",
-        "elements": ["wire-doc-header__eyebrow", "wire-doc-header__title", "wire-doc-header__status", "wire-doc-header__lead", "wire-doc-header__meta", "wire-doc-header__meta-item", "wire-doc-header__row"]
+        "elements": [
+          "wire-doc-header__eyebrow",
+          "wire-doc-header__title",
+          "wire-doc-header__status",
+          "wire-doc-header__lead",
+          "wire-doc-header__meta",
+          "wire-doc-header__meta-item",
+          "wire-doc-header__row"
+        ]
       },
       {
         "id": "doc-nav",
         "class": "wire-doc-nav",
         "file": "css/components/doc-nav.css",
         "status": "beta",
-        "elements": ["wire-doc-nav__top-link", "wire-doc-nav__section", "wire-doc-nav__section-summary", "wire-doc-nav__section-body", "wire-doc-nav__group", "wire-doc-nav__group-title", "wire-doc-nav__list", "wire-doc-nav__item", "wire-doc-nav__link", "wire-doc-nav__pending"],
-        "states": ["is-current"]
+        "elements": [
+          "wire-doc-nav__top-link",
+          "wire-doc-nav__section",
+          "wire-doc-nav__section-summary",
+          "wire-doc-nav__section-body",
+          "wire-doc-nav__group",
+          "wire-doc-nav__group-title",
+          "wire-doc-nav__list",
+          "wire-doc-nav__item",
+          "wire-doc-nav__link",
+          "wire-doc-nav__pending"
+        ],
+        "states": [
+          "is-current"
+        ]
       },
       {
         "id": "doc-shell",
         "class": "wire-doc-shell",
         "file": "css/components/doc-shell.css",
         "status": "beta",
-        "elements": ["wire-doc-shell__nav", "wire-doc-shell__main"],
+        "elements": [
+          "wire-doc-shell__nav",
+          "wire-doc-shell__main"
+        ],
         "notes": "Two-column sticky-nav + main layout. Superseded as page chrome by the global app-shell (v1.12); retained because it still defines wire-tabs--sticky used by component detail pages."
       },
       {
@@ -887,17 +2524,42 @@
         "class": "wire-doc-pager",
         "file": "css/components/doc-pager.css",
         "status": "beta",
-        "elements": ["wire-doc-pager__link", "wire-doc-pager__link--prev", "wire-doc-pager__link--next", "wire-doc-pager__link--placeholder", "wire-doc-pager__direction", "wire-doc-pager__title"]
+        "elements": [
+          "wire-doc-pager__link",
+          "wire-doc-pager__link--prev",
+          "wire-doc-pager__link--next",
+          "wire-doc-pager__link--placeholder",
+          "wire-doc-pager__direction",
+          "wire-doc-pager__title"
+        ]
       },
       {
         "id": "app-shell",
         "class": "wire-shell",
         "file": "css/components/shell.css",
         "status": "beta",
-        "elements": ["wire-topnav--shell", "wire-topnav__source", "wire-railnav", "wire-railnav__close", "wire-shell__doc"],
-        "companions": ["wire-doc-nav", "wire-inpagenav", "wire-drawer-backdrop"],
-        "tokens": ["--shell-header-h", "--shell-sidenav-w", "--shell-toc-w"],
-        "behaviors": ["body.wire-shell scopes the chrome so client demo pages (which share wire-topnav) are unaffected", "wire-railnav is the persistent left nav at >=64em and the off-canvas slide-over below it — one element, reusing initDrawer via data-wire-drawer-open=\"site-nav\"; modal semantics applied only while open", "current page stamped at sync time: aria-current + is-current on the link and open on its section (no JS needed for the highlight)"],
+        "elements": [
+          "wire-topnav--shell",
+          "wire-topnav__source",
+          "wire-railnav",
+          "wire-railnav__close",
+          "wire-shell__doc"
+        ],
+        "companions": [
+          "wire-doc-nav",
+          "wire-inpagenav",
+          "wire-drawer-backdrop"
+        ],
+        "tokens": [
+          "--shell-header-h",
+          "--shell-sidenav-w",
+          "--shell-toc-w"
+        ],
+        "behaviors": [
+          "body.wire-shell scopes the chrome so client demo pages (which share wire-topnav) are unaffected",
+          "wire-railnav is the persistent left nav at >=64em and the off-canvas slide-over below it — one element, reusing initDrawer via data-wire-drawer-open=\"site-nav\"; modal semantics applied only while open",
+          "current page stamped at sync time: aria-current + is-current on the link and open on its section (no JS needed for the highlight)"
+        ],
         "notes": "Carbon-style doc-site shell (v1.12): slim fixed header (wire-topnav--shell) + persistent left rail (wire-railnav holding the wire-doc-nav tree) + optional in-page TOC (wire-inpagenav). The horizontal wire-topnav__menu and wire-megamenu are no longer doc-site chrome — megamenu remains a documented nav-family pattern/component. Maintained by scripts/sync-nav.mjs from partials/nav.html."
       }
     ]
@@ -906,50 +2568,485 @@
     "_note": "Two kinds. page_shells are abstract reusable recipes (docs/page-shells.html). The rest are concrete pressure-test DEMO pages — verified markup to copy from. The brief's 'four Riverside mocks' is outdated: there are now 18 Riverside (hospital) + 3 Northgate (university) demos. composed_of is derived from each file's real wire-* usage.",
     "page_shells": {
       "file": "docs/page-shells.html",
-      "common_scaffold": ["wire-skip-link", "wire-topnav", "<main id=\"main\">", "wire-footer", "links css/wire.css (+ js/wire.js when interactive)"],
+      "common_scaffold": [
+        "wire-skip-link",
+        "wire-topnav",
+        "<main id=\"main\">",
+        "wire-footer",
+        "links css/wire.css (+ js/wire.js when interactive)"
+      ],
       "shells": [
-        { "id": "landing", "intent": "Marketing front door — awareness + one clear next step.", "spine": ["hero", "stat strip (card--stat in u-grid)", "feature-grid", "twocol", "card grid", "callout/quote", "footer--expanded CTA"] },
-        { "id": "article", "intent": "Long-form editorial with a table of contents.", "spine": ["breadcrumb", "hero--editorial", "inpagenav (sticky) + wire-prose body (quote, callout, media, timeline)", "article-list (related)", "footer"] },
-        { "id": "listing", "intent": "Filterable index/directory.", "spine": ["breadcrumb", "hero--centered", "search + tag-list filters", "sidenav facets + u-grid--3 cards / article-list", "pagination", "footer"] },
-        { "id": "detail", "intent": "A single nameable entity (provider, condition, lab, program).", "spine": ["breadcrumb", "hero--split", "stat strip", "inpagenav + tabs / stacked sections (twocol, accordion, deflist)", "related person cards", "callout--inverse CTA", "footer"] }
+        {
+          "id": "landing",
+          "intent": "Marketing front door — awareness + one clear next step.",
+          "spine": [
+            "hero",
+            "stat strip (card--stat in u-grid)",
+            "feature-grid",
+            "twocol",
+            "card grid",
+            "callout/quote",
+            "footer--expanded CTA"
+          ]
+        },
+        {
+          "id": "article",
+          "intent": "Long-form editorial with a table of contents.",
+          "spine": [
+            "breadcrumb",
+            "hero--editorial",
+            "inpagenav (sticky) + wire-prose body (quote, callout, media, timeline)",
+            "article-list (related)",
+            "footer"
+          ]
+        },
+        {
+          "id": "listing",
+          "intent": "Filterable index/directory.",
+          "spine": [
+            "breadcrumb",
+            "hero--centered",
+            "search + tag-list filters",
+            "sidenav facets + u-grid--3 cards / article-list",
+            "pagination",
+            "footer"
+          ]
+        },
+        {
+          "id": "detail",
+          "intent": "A single nameable entity (provider, condition, lab, program).",
+          "spine": [
+            "breadcrumb",
+            "hero--split",
+            "stat strip",
+            "inpagenav + tabs / stacked sections (twocol, accordion, deflist)",
+            "related person cards",
+            "callout--inverse CTA",
+            "footer"
+          ]
+        }
       ]
     },
     "riverside_mocks": {
       "_note": "Anonymized rehabilitation-hospital demo (Riverside Medical Center). 18 pages. file = the markup to copy.",
       "pages": [
-        { "id": "homepage", "file": "pages/hospital-homepage.html", "shell": "landing", "composed_of": ["topnav", "megamenu", "drawer", "sidenav", "hero", "twocol", "card", "article-list", "linked-list", "media", "quote", "callout", "input", "footer"] },
-        { "id": "specialty", "file": "pages/hospital-specialty.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "hero", "twocol", "tabs", "accordion", "deflist", "linked-list", "media", "quote", "callout", "table", "inpagenav", "footer"] },
-        { "id": "research", "file": "pages/hospital-research.html", "shell": "landing", "composed_of": ["topnav", "drawer", "sidenav", "hero", "feature-grid", "twocol", "card", "article-list", "media", "timeline", "callout", "footer"] },
-        { "id": "find-a-doctor", "file": "pages/hospital-find-a-doctor.html", "shell": "listing", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "search", "field", "input", "select", "checkbox", "toggle", "tag", "badge", "card (person)", "media", "pagination", "callout", "footer"] },
-        { "id": "provider-profile", "file": "pages/hospital-provider.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "card (person)", "badge", "tag", "tabs", "timeline", "article-list", "linked-list", "media", "quote", "help-bar", "callout", "footer"] },
-        { "id": "patient-visitor", "file": "pages/hospital-patient-visitor.html", "shell": "article", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "hero", "inpagenav", "accordion", "deflist", "card", "table", "help-bar", "text-size", "callout", "footer"] },
-        { "id": "location", "file": "pages/hospital-location.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "card", "media", "accordion", "linked-list", "table", "divider", "callout", "footer"] },
-        { "id": "patient-story", "file": "pages/hospital-patient-story.html", "shell": "article", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "hero", "quote", "media", "card", "article-list", "callout", "footer"] },
-        { "id": "measure", "file": "pages/hospital-measure.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "drawer", "sidenav", "hero", "inpagenav", "table", "deflist", "citation-list", "tag", "badge", "pagination", "callout", "footer"] },
-        { "id": "medication", "file": "pages/hospital-medication.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "hero", "inpagenav", "banner", "table", "deflist", "linked-list", "tag", "callout", "footer"] },
-        { "id": "trial", "file": "pages/hospital-trial.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "hero", "inpagenav", "stepper", "accordion", "deflist", "table", "field", "checkbox", "radio", "tag", "card", "toast", "callout", "footer"] },
-        { "id": "search-results", "file": "pages/hospital-search.html", "shell": "listing", "composed_of": ["topnav", "field", "input", "search", "checkbox", "radio", "tag", "article-list", "empty-state", "pagination", "footer"] },
-        { "id": "portal-dashboard", "file": "pages/hospital-portal.html", "shell": "detail (app/dashboard)", "composed_of": ["topnav", "card", "badge", "table", "linked-list", "empty-state", "callout", "footer"] },
-        { "id": "settings", "file": "pages/hospital-settings.html", "shell": "detail (app/settings)", "composed_of": ["topnav", "sidenav", "field", "input", "checkbox", "radio", "toggle", "table", "divider", "modal", "toast", "text-size", "callout", "footer"] },
-        { "id": "login", "file": "pages/hospital-login.html", "shell": "auth", "composed_of": ["topnav", "field", "input", "checkbox", "divider", "help-bar", "callout", "footer"] },
-        { "id": "booking", "file": "pages/hospital-booking.html", "shell": "flow", "composed_of": ["topnav", "breadcrumb", "stepper", "field", "checkbox", "radio", "callout", "footer"] },
-        { "id": "appointment-confirm", "file": "pages/hospital-appointment.html", "shell": "flow", "composed_of": ["topnav", "drawer", "sidenav", "hero", "stepper", "card", "banner", "modal", "toast", "skeleton", "empty-state", "divider", "footer"] },
-        { "id": "not-found-404", "file": "pages/hospital-404.html", "shell": "utility", "composed_of": ["topnav", "empty-state", "linked-list", "callout", "footer"] }
+        {
+          "id": "homepage",
+          "file": "pages/hospital-homepage.html",
+          "shell": "landing",
+          "composed_of": [
+            "topnav",
+            "megamenu",
+            "drawer",
+            "sidenav",
+            "hero",
+            "twocol",
+            "card",
+            "article-list",
+            "linked-list",
+            "media",
+            "quote",
+            "callout",
+            "input",
+            "footer"
+          ]
+        },
+        {
+          "id": "specialty",
+          "file": "pages/hospital-specialty.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "hero",
+            "twocol",
+            "tabs",
+            "accordion",
+            "deflist",
+            "linked-list",
+            "media",
+            "quote",
+            "callout",
+            "table",
+            "inpagenav",
+            "footer"
+          ]
+        },
+        {
+          "id": "research",
+          "file": "pages/hospital-research.html",
+          "shell": "landing",
+          "composed_of": [
+            "topnav",
+            "drawer",
+            "sidenav",
+            "hero",
+            "feature-grid",
+            "twocol",
+            "card",
+            "article-list",
+            "media",
+            "timeline",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "find-a-doctor",
+          "file": "pages/hospital-find-a-doctor.html",
+          "shell": "listing",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "search",
+            "field",
+            "input",
+            "select",
+            "checkbox",
+            "toggle",
+            "tag",
+            "badge",
+            "card (person)",
+            "media",
+            "pagination",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "provider-profile",
+          "file": "pages/hospital-provider.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "card (person)",
+            "badge",
+            "tag",
+            "tabs",
+            "timeline",
+            "article-list",
+            "linked-list",
+            "media",
+            "quote",
+            "help-bar",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "patient-visitor",
+          "file": "pages/hospital-patient-visitor.html",
+          "shell": "article",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "hero",
+            "inpagenav",
+            "accordion",
+            "deflist",
+            "card",
+            "table",
+            "help-bar",
+            "text-size",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "location",
+          "file": "pages/hospital-location.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "card",
+            "media",
+            "accordion",
+            "linked-list",
+            "table",
+            "divider",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "patient-story",
+          "file": "pages/hospital-patient-story.html",
+          "shell": "article",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "hero",
+            "quote",
+            "media",
+            "card",
+            "article-list",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "measure",
+          "file": "pages/hospital-measure.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "drawer",
+            "sidenav",
+            "hero",
+            "inpagenav",
+            "table",
+            "deflist",
+            "citation-list",
+            "tag",
+            "badge",
+            "pagination",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "medication",
+          "file": "pages/hospital-medication.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "hero",
+            "inpagenav",
+            "banner",
+            "table",
+            "deflist",
+            "linked-list",
+            "tag",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "trial",
+          "file": "pages/hospital-trial.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "hero",
+            "inpagenav",
+            "stepper",
+            "accordion",
+            "deflist",
+            "table",
+            "field",
+            "checkbox",
+            "radio",
+            "tag",
+            "card",
+            "toast",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "search-results",
+          "file": "pages/hospital-search.html",
+          "shell": "listing",
+          "composed_of": [
+            "topnav",
+            "field",
+            "input",
+            "search",
+            "checkbox",
+            "radio",
+            "tag",
+            "article-list",
+            "empty-state",
+            "pagination",
+            "footer"
+          ]
+        },
+        {
+          "id": "portal-dashboard",
+          "file": "pages/hospital-portal.html",
+          "shell": "detail (app/dashboard)",
+          "composed_of": [
+            "topnav",
+            "card",
+            "badge",
+            "table",
+            "linked-list",
+            "empty-state",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "settings",
+          "file": "pages/hospital-settings.html",
+          "shell": "detail (app/settings)",
+          "composed_of": [
+            "topnav",
+            "sidenav",
+            "field",
+            "input",
+            "checkbox",
+            "radio",
+            "toggle",
+            "table",
+            "divider",
+            "modal",
+            "toast",
+            "text-size",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "login",
+          "file": "pages/hospital-login.html",
+          "shell": "auth",
+          "composed_of": [
+            "topnav",
+            "field",
+            "input",
+            "checkbox",
+            "divider",
+            "help-bar",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "booking",
+          "file": "pages/hospital-booking.html",
+          "shell": "flow",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "stepper",
+            "field",
+            "checkbox",
+            "radio",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "appointment-confirm",
+          "file": "pages/hospital-appointment.html",
+          "shell": "flow",
+          "composed_of": [
+            "topnav",
+            "drawer",
+            "sidenav",
+            "hero",
+            "stepper",
+            "card",
+            "banner",
+            "modal",
+            "toast",
+            "skeleton",
+            "empty-state",
+            "divider",
+            "footer"
+          ]
+        },
+        {
+          "id": "not-found-404",
+          "file": "pages/hospital-404.html",
+          "shell": "utility",
+          "composed_of": [
+            "topnav",
+            "empty-state",
+            "linked-list",
+            "callout",
+            "footer"
+          ]
+        }
       ]
     },
     "northgate_mocks": {
       "_note": "Higher-ed demo (Northgate University). 3 pages.",
       "pages": [
-        { "id": "homepage", "file": "pages/university-homepage.html", "shell": "landing", "composed_of": ["topnav", "megamenu", "drawer", "sidenav", "hero", "feature-grid", "card", "article-list", "media", "tag", "input", "callout", "footer"] },
-        { "id": "program", "file": "pages/university-program.html", "shell": "detail", "composed_of": ["topnav", "breadcrumb", "hero", "inpagenav", "sidenav", "accordion", "deflist", "card", "media", "stepper", "table", "tag", "callout", "footer"] },
-        { "id": "faculty-directory", "file": "pages/university-faculty.html", "shell": "listing", "composed_of": ["topnav", "breadcrumb", "hero", "field", "input", "checkbox", "tag", "card (person)", "media", "pagination", "footer"] }
+        {
+          "id": "homepage",
+          "file": "pages/university-homepage.html",
+          "shell": "landing",
+          "composed_of": [
+            "topnav",
+            "megamenu",
+            "drawer",
+            "sidenav",
+            "hero",
+            "feature-grid",
+            "card",
+            "article-list",
+            "media",
+            "tag",
+            "input",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "program",
+          "file": "pages/university-program.html",
+          "shell": "detail",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "hero",
+            "inpagenav",
+            "sidenav",
+            "accordion",
+            "deflist",
+            "card",
+            "media",
+            "stepper",
+            "table",
+            "tag",
+            "callout",
+            "footer"
+          ]
+        },
+        {
+          "id": "faculty-directory",
+          "file": "pages/university-faculty.html",
+          "shell": "listing",
+          "composed_of": [
+            "topnav",
+            "breadcrumb",
+            "hero",
+            "field",
+            "input",
+            "checkbox",
+            "tag",
+            "card (person)",
+            "media",
+            "pagination",
+            "footer"
+          ]
+        }
       ]
     }
   },
   "experiences": [],
   "experiences_status": {
     "built": false,
-    "note": "The Experiences tier (first-class directories/flows with NAMED VARIANTS + a recipe) does NOT exist yet. PREVIEW-SYSTEM-BRIEF.md §7 marks it '(New tier — missing today.)' and the roadmap §9 Phase 2 is where it gets built (starting with find-a-doctor-directory). The prior manifest's two experiences (find-a-doctor-directory, plan-your-visit) with variants were VISION, not source — removed. What exists today are concrete demo pages: pages/hospital-find-a-doctor.html and pages/hospital-patient-visitor.html (see templates.riverside_mocks). When the tier is built, the brief envisions variants like filter-left / search-first / browse-by-specialty for find-a-doctor."
+    "note": "Folded into Templates ▸ Advanced (see nav). The advanced template pages are scaffolded as stubs (status: planned) and composed from existing demo pages until built."
   },
   "extension_lanes": {
     "_note": "How client divergence is intended to work (PREVIEW-SYSTEM-BRIEF.md §4) vs what exists in source today. Use these lanes; do not invent a parallel mechanism. Both lanes are example/empty today.",
@@ -966,12 +3063,1263 @@
   "content_model_hint": {
     "purpose": "Pull realistic placeholder content from the project brief, not lorem ipsum. Generated pages land with clients only when the content is plausible.",
     "common_entities": {
-      "condition": ["name", "program", "count"],
-      "provider": ["name", "role", "credentials", "specialty", "location", "accepting_new"],
-      "location": ["name", "neighborhood", "services", "hours"],
-      "story": ["patient_name", "program", "headline", "summary"],
-      "study": ["title", "lead", "status", "eligibility"],
-      "stat": ["value", "label"]
+      "condition": [
+        "name",
+        "program",
+        "count"
+      ],
+      "provider": [
+        "name",
+        "role",
+        "credentials",
+        "specialty",
+        "location",
+        "accepting_new"
+      ],
+      "location": [
+        "name",
+        "neighborhood",
+        "services",
+        "hours"
+      ],
+      "story": [
+        "patient_name",
+        "program",
+        "headline",
+        "summary"
+      ],
+      "study": [
+        "title",
+        "lead",
+        "status",
+        "eligibility"
+      ],
+      "stat": [
+        "value",
+        "label"
+      ]
     }
+  },
+  "nav": [
+    {
+      "type": "link",
+      "label": "Home",
+      "ref": "index.html"
+    },
+    {
+      "type": "link",
+      "label": "Get started",
+      "ref": "get-started.html",
+      "status": "planned"
+    },
+    {
+      "type": "section",
+      "label": "Foundations",
+      "ref": "foundations/",
+      "items": [
+        {
+          "type": "page",
+          "label": "Principles",
+          "ref": "docs/principles.html"
+        },
+        {
+          "type": "page",
+          "label": "Accessibility",
+          "ref": "docs/accessibility.html"
+        },
+        {
+          "type": "page",
+          "label": "Layout",
+          "ref": "docs/layout.html"
+        },
+        {
+          "type": "page",
+          "label": "Responsive",
+          "ref": "foundations/responsive.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Density",
+          "ref": "foundations/density.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Interaction states",
+          "ref": "foundations/interaction-states.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Content & voice",
+          "ref": "docs/content.html"
+        },
+        {
+          "type": "page",
+          "label": "Plain language",
+          "ref": "foundations/plain-language.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Localization",
+          "ref": "foundations/localization.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Formatting",
+          "ref": "foundations/formatting.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Imagery",
+          "ref": "foundations/imagery.html",
+          "status": "planned"
+        },
+        {
+          "type": "group",
+          "label": "UX guidance",
+          "items": [
+            {
+              "type": "page",
+              "label": "Wayfinding",
+              "ref": "foundations/ux-guidance/wayfinding.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Page composition",
+              "ref": "foundations/ux-guidance/page-composition.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "System feedback",
+              "ref": "foundations/ux-guidance/system-feedback.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Search & filter",
+              "ref": "foundations/ux-guidance/search-filter.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Form design",
+              "ref": "foundations/ux-guidance/form-design.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Wizard",
+              "ref": "foundations/ux-guidance/wizard.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Empty, error & loading",
+              "ref": "foundations/ux-guidance/empty-error-loading.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Compare & save",
+              "ref": "foundations/ux-guidance/compare-save.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Audience & personalization",
+              "ref": "foundations/ux-guidance/audience-personalization.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Auth & entry",
+              "ref": "foundations/ux-guidance/auth-entry.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Alerts & emergencies",
+              "ref": "foundations/ux-guidance/alerts-emergencies.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Consent & disclosure",
+              "ref": "foundations/ux-guidance/consent-disclosure.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Accessibility patterns",
+              "ref": "foundations/ux-guidance/accessibility-patterns.html",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Playbook",
+          "items": [
+            {
+              "type": "page",
+              "label": "Healthcare overview",
+              "ref": "foundations/playbook/healthcare-overview.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Senior-friendly",
+              "ref": "foundations/playbook/senior-friendly.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Health literacy",
+              "ref": "foundations/playbook/health-literacy.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Care-journey wayfinding",
+              "ref": "foundations/playbook/care-journey-wayfinding.html",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Higher-ed RFI & apply",
+              "ref": "foundations/playbook/higher-ed-rfi-apply.html",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": "Styles",
+      "ref": "styles/",
+      "items": [
+        {
+          "type": "page",
+          "label": "Color & theming",
+          "ref": "styles/color-theming.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Typography",
+          "ref": "docs/typography.html"
+        },
+        {
+          "type": "page",
+          "label": "Iconography",
+          "ref": "docs/iconography.html"
+        },
+        {
+          "type": "page",
+          "label": "Shape & radius",
+          "ref": "styles/shape-radius.html",
+          "status": "planned"
+        },
+        {
+          "type": "page",
+          "label": "Elevation",
+          "ref": "docs/elevation.html"
+        },
+        {
+          "type": "page",
+          "label": "Motion",
+          "ref": "docs/motion.html"
+        },
+        {
+          "type": "page",
+          "label": "Tokens",
+          "ref": "docs/tokens.html"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": "Components",
+      "ref": "components/",
+      "items": [
+        {
+          "type": "group",
+          "label": "Actions",
+          "category": "actions",
+          "items": [
+            {
+              "type": "page",
+              "label": "Button",
+              "ref": "components/buttons/",
+              "id": "button"
+            },
+            {
+              "type": "page",
+              "label": "Phone link",
+              "ref": "docs/research.html",
+              "id": "phone-link"
+            },
+            {
+              "type": "page",
+              "label": "Icon button",
+              "ref": "components/actions/icon-button/",
+              "status": "planned",
+              "id": "icon-button"
+            },
+            {
+              "type": "page",
+              "label": "Button group",
+              "ref": "components/actions/button-group/",
+              "status": "planned",
+              "id": "button-group"
+            },
+            {
+              "type": "page",
+              "label": "Menu",
+              "ref": "components/actions/menu/",
+              "status": "planned",
+              "id": "menu"
+            },
+            {
+              "type": "page",
+              "label": "Link",
+              "ref": "components/actions/link/",
+              "status": "planned",
+              "id": "link"
+            },
+            {
+              "type": "page",
+              "label": "Disclosure",
+              "ref": "components/actions/disclosure/",
+              "status": "planned",
+              "id": "disclosure"
+            },
+            {
+              "type": "page",
+              "label": "Save / portal link",
+              "ref": "components/actions/save-portal-link/",
+              "status": "planned",
+              "id": "save-portal-link"
+            },
+            {
+              "type": "page",
+              "label": "Chat launcher",
+              "ref": "components/actions/chat-launcher/",
+              "status": "planned",
+              "id": "chat-launcher"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Forms & inputs",
+          "category": "forms",
+          "items": [
+            {
+              "type": "page",
+              "label": "Field",
+              "ref": "components/field/",
+              "id": "field"
+            },
+            {
+              "type": "page",
+              "label": "Search",
+              "ref": "components/search/",
+              "id": "search"
+            },
+            {
+              "type": "page",
+              "label": "Choice",
+              "ref": "components/choice/",
+              "id": "choice"
+            },
+            {
+              "type": "page",
+              "label": "Form layout",
+              "ref": "components/form-layout/",
+              "id": "form-layout"
+            },
+            {
+              "type": "page",
+              "label": "Textarea",
+              "ref": "components/forms-inputs/textarea/",
+              "status": "planned",
+              "id": "textarea"
+            },
+            {
+              "type": "page",
+              "label": "Select",
+              "ref": "components/forms-inputs/select/",
+              "status": "planned",
+              "id": "select"
+            },
+            {
+              "type": "page",
+              "label": "Combobox",
+              "ref": "components/forms-inputs/combobox/",
+              "status": "planned",
+              "id": "combobox"
+            },
+            {
+              "type": "page",
+              "label": "Date picker",
+              "ref": "components/forms-inputs/date-picker/",
+              "status": "planned",
+              "id": "date-picker"
+            },
+            {
+              "type": "page",
+              "label": "Toggle",
+              "ref": "components/forms-inputs/toggle/",
+              "status": "planned",
+              "id": "toggle"
+            },
+            {
+              "type": "page",
+              "label": "Slider",
+              "ref": "components/forms-inputs/slider/",
+              "status": "planned",
+              "id": "slider"
+            },
+            {
+              "type": "page",
+              "label": "Number stepper",
+              "ref": "components/forms-inputs/number-stepper/",
+              "status": "planned",
+              "id": "number-stepper"
+            },
+            {
+              "type": "page",
+              "label": "File upload",
+              "ref": "components/forms-inputs/file-upload/",
+              "status": "planned",
+              "id": "file-upload"
+            },
+            {
+              "type": "page",
+              "label": "Rating",
+              "ref": "components/forms-inputs/rating/",
+              "status": "planned",
+              "id": "rating"
+            },
+            {
+              "type": "page",
+              "label": "Fieldset",
+              "ref": "components/forms-inputs/fieldset/",
+              "status": "planned",
+              "id": "fieldset"
+            },
+            {
+              "type": "page",
+              "label": "Error summary",
+              "ref": "components/forms-inputs/error-summary/",
+              "status": "planned",
+              "id": "error-summary"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Selection & status",
+          "category": "selection",
+          "items": [
+            {
+              "type": "page",
+              "label": "Badge",
+              "ref": "components/badge/",
+              "id": "badge"
+            },
+            {
+              "type": "page",
+              "label": "Tag",
+              "ref": "components/tag/",
+              "id": "tag"
+            },
+            {
+              "type": "page",
+              "label": "Avatar",
+              "ref": "components/selection-status/avatar/",
+              "status": "planned",
+              "id": "avatar"
+            },
+            {
+              "type": "page",
+              "label": "Avatar group",
+              "ref": "components/selection-status/avatar-group/",
+              "status": "planned",
+              "id": "avatar-group"
+            },
+            {
+              "type": "page",
+              "label": "Filter chip",
+              "ref": "components/selection-status/filter-chip/",
+              "status": "planned",
+              "id": "filter-chip"
+            },
+            {
+              "type": "page",
+              "label": "Status dot",
+              "ref": "components/selection-status/status-dot/",
+              "status": "planned",
+              "id": "status-dot"
+            },
+            {
+              "type": "page",
+              "label": "Progress",
+              "ref": "components/selection-status/progress/",
+              "status": "planned",
+              "id": "progress"
+            },
+            {
+              "type": "page",
+              "label": "Meter",
+              "ref": "components/selection-status/meter/",
+              "status": "planned",
+              "id": "meter"
+            },
+            {
+              "type": "page",
+              "label": "Wait time",
+              "ref": "components/selection-status/wait-time/",
+              "status": "planned",
+              "id": "wait-time"
+            },
+            {
+              "type": "page",
+              "label": "Insurance indicator",
+              "ref": "components/selection-status/insurance-indicator/",
+              "status": "planned",
+              "id": "insurance-indicator"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Containment & overlays",
+          "category": "containment",
+          "items": [
+            {
+              "type": "page",
+              "label": "Card",
+              "ref": "components/cards/",
+              "id": "card"
+            },
+            {
+              "type": "page",
+              "label": "Accordion",
+              "ref": "components/accordion/",
+              "id": "accordion"
+            },
+            {
+              "type": "page",
+              "label": "Tabs",
+              "ref": "components/tabs/",
+              "id": "tabs"
+            },
+            {
+              "type": "page",
+              "label": "Modal",
+              "ref": "components/modal/",
+              "id": "modal"
+            },
+            {
+              "type": "page",
+              "label": "Drawer",
+              "ref": "components/drawer/",
+              "id": "drawer"
+            },
+            {
+              "type": "page",
+              "label": "Divider",
+              "ref": "components/divider/",
+              "id": "divider"
+            },
+            {
+              "type": "page",
+              "label": "Popover",
+              "ref": "components/containment-overlays/popover/",
+              "status": "planned",
+              "id": "popover"
+            },
+            {
+              "type": "page",
+              "label": "Carousel",
+              "ref": "components/containment-overlays/carousel/",
+              "status": "planned",
+              "id": "carousel"
+            },
+            {
+              "type": "page",
+              "label": "Bottom sheet",
+              "ref": "components/containment-overlays/bottom-sheet/",
+              "status": "planned",
+              "id": "bottom-sheet"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Navigation",
+          "category": "navigation",
+          "items": [
+            {
+              "type": "page",
+              "label": "Breadcrumb",
+              "ref": "components/breadcrumb/",
+              "id": "breadcrumb"
+            },
+            {
+              "type": "page",
+              "label": "Pagination",
+              "ref": "components/pagination/",
+              "id": "pagination"
+            },
+            {
+              "type": "page",
+              "label": "Top nav",
+              "ref": "components/top-nav/",
+              "id": "topnav"
+            },
+            {
+              "type": "page",
+              "label": "Mega menu",
+              "ref": "components/top-nav/",
+              "id": "megamenu"
+            },
+            {
+              "type": "page",
+              "label": "Side nav",
+              "ref": "components/side-nav/",
+              "id": "sidenav"
+            },
+            {
+              "type": "page",
+              "label": "In-page nav",
+              "ref": "components/in-page-nav/",
+              "id": "inpagenav"
+            },
+            {
+              "type": "page",
+              "label": "Utility nav",
+              "ref": "components/navigation/utility-nav/",
+              "status": "planned",
+              "id": "utility-nav"
+            },
+            {
+              "type": "page",
+              "label": "Facet panel",
+              "ref": "components/navigation/facet-panel/",
+              "status": "planned",
+              "id": "facet-panel"
+            },
+            {
+              "type": "page",
+              "label": "Mobile nav",
+              "ref": "components/navigation/mobile-nav/",
+              "status": "planned",
+              "id": "mobile-nav"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Sections",
+          "category": "sections",
+          "items": [
+            {
+              "type": "page",
+              "label": "Hero",
+              "ref": "docs/heroes.html",
+              "id": "hero"
+            },
+            {
+              "type": "page",
+              "label": "Two-column",
+              "ref": "docs/content-blocks.html",
+              "id": "two-column"
+            },
+            {
+              "type": "page",
+              "label": "Feature grid",
+              "ref": "docs/content-blocks.html",
+              "id": "feature-grid"
+            },
+            {
+              "type": "page",
+              "label": "Footer",
+              "ref": "docs/footers.html",
+              "id": "footer"
+            },
+            {
+              "type": "page",
+              "label": "Page header",
+              "ref": "components/sections/page-header/",
+              "status": "planned",
+              "id": "page-header"
+            },
+            {
+              "type": "page",
+              "label": "Stat band",
+              "ref": "components/sections/stat-band/",
+              "status": "planned",
+              "id": "stat-band"
+            },
+            {
+              "type": "page",
+              "label": "CTA band",
+              "ref": "components/sections/cta-band/",
+              "status": "planned",
+              "id": "cta-band"
+            },
+            {
+              "type": "page",
+              "label": "Profile header",
+              "ref": "components/sections/profile-header/",
+              "status": "planned",
+              "id": "profile-header"
+            },
+            {
+              "type": "page",
+              "label": "Contact & location",
+              "ref": "components/sections/contact-location/",
+              "status": "planned",
+              "id": "contact-location"
+            },
+            {
+              "type": "page",
+              "label": "Map",
+              "ref": "components/sections/map/",
+              "status": "planned",
+              "id": "map"
+            },
+            {
+              "type": "page",
+              "label": "Event card",
+              "ref": "components/sections/event-card/",
+              "status": "planned",
+              "id": "event-card"
+            },
+            {
+              "type": "page",
+              "label": "Search results",
+              "ref": "components/sections/search-results/",
+              "status": "planned",
+              "id": "search-results"
+            },
+            {
+              "type": "page",
+              "label": "Comparison table",
+              "ref": "components/sections/comparison-table/",
+              "status": "planned",
+              "id": "comparison-table"
+            },
+            {
+              "type": "page",
+              "label": "Pricing table",
+              "ref": "components/sections/pricing-table/",
+              "status": "planned",
+              "id": "pricing-table"
+            },
+            {
+              "type": "page",
+              "label": "FAQ",
+              "ref": "components/sections/faq/",
+              "status": "planned",
+              "id": "faq"
+            },
+            {
+              "type": "page",
+              "label": "Logo wall",
+              "ref": "components/sections/logo-wall/",
+              "status": "planned",
+              "id": "logo-wall"
+            },
+            {
+              "type": "page",
+              "label": "Related content",
+              "ref": "components/sections/related-content/",
+              "status": "planned",
+              "id": "related-content"
+            },
+            {
+              "type": "page",
+              "label": "Newsletter",
+              "ref": "components/sections/newsletter/",
+              "status": "planned",
+              "id": "newsletter"
+            },
+            {
+              "type": "page",
+              "label": "Steps",
+              "ref": "components/sections/steps/",
+              "status": "planned",
+              "id": "steps"
+            },
+            {
+              "type": "page",
+              "label": "Alert bar",
+              "ref": "components/sections/alert-bar/",
+              "status": "planned",
+              "id": "alert-bar"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Content & display",
+          "category": "content",
+          "items": [
+            {
+              "type": "page",
+              "label": "Callout",
+              "ref": "components/callout/",
+              "id": "callout"
+            },
+            {
+              "type": "page",
+              "label": "Quote",
+              "ref": "components/quote/",
+              "id": "quote"
+            },
+            {
+              "type": "page",
+              "label": "Timeline",
+              "ref": "components/timeline/",
+              "id": "timeline"
+            },
+            {
+              "type": "page",
+              "label": "Media",
+              "ref": "components/media/",
+              "id": "media"
+            },
+            {
+              "type": "page",
+              "label": "Gallery",
+              "ref": "components/media/",
+              "id": "gallery"
+            },
+            {
+              "type": "page",
+              "label": "Linked list",
+              "ref": "components/lists/",
+              "id": "linked-list"
+            },
+            {
+              "type": "page",
+              "label": "Definition list",
+              "ref": "components/lists/",
+              "id": "deflist"
+            },
+            {
+              "type": "page",
+              "label": "Article list",
+              "ref": "components/lists/",
+              "id": "article-list"
+            },
+            {
+              "type": "page",
+              "label": "Citation list",
+              "ref": "components/citation-list/",
+              "id": "citation-list"
+            },
+            {
+              "type": "page",
+              "label": "Table",
+              "ref": "components/table/",
+              "id": "table"
+            },
+            {
+              "type": "page",
+              "label": "Chart",
+              "ref": "components/content-display/chart/",
+              "status": "planned",
+              "id": "chart"
+            },
+            {
+              "type": "page",
+              "label": "KPI stat",
+              "ref": "components/content-display/kpi-stat/",
+              "status": "planned",
+              "id": "kpi-stat"
+            },
+            {
+              "type": "page",
+              "label": "Byline",
+              "ref": "components/content-display/byline/",
+              "status": "planned",
+              "id": "byline"
+            },
+            {
+              "type": "page",
+              "label": "Figure",
+              "ref": "components/content-display/figure/",
+              "status": "planned",
+              "id": "figure"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Messaging & feedback",
+          "category": "feedback",
+          "items": [
+            {
+              "type": "page",
+              "label": "Toast",
+              "ref": "docs/feedback.html",
+              "id": "toast"
+            },
+            {
+              "type": "page",
+              "label": "Banner",
+              "ref": "docs/feedback.html",
+              "id": "banner"
+            },
+            {
+              "type": "page",
+              "label": "Empty state",
+              "ref": "docs/feedback.html",
+              "id": "empty-state"
+            },
+            {
+              "type": "page",
+              "label": "Stepper",
+              "ref": "docs/feedback.html",
+              "id": "stepper"
+            },
+            {
+              "type": "page",
+              "label": "Tooltip",
+              "ref": "docs/feedback.html",
+              "id": "tooltip"
+            },
+            {
+              "type": "page",
+              "label": "Skeleton",
+              "ref": "docs/feedback.html",
+              "id": "skeleton"
+            },
+            {
+              "type": "page",
+              "label": "Help bar",
+              "ref": "docs/research.html",
+              "id": "help-bar"
+            },
+            {
+              "type": "page",
+              "label": "Spinner",
+              "ref": "components/messaging-feedback/spinner/",
+              "status": "planned",
+              "id": "spinner"
+            },
+            {
+              "type": "page",
+              "label": "Inline alert",
+              "ref": "components/messaging-feedback/inline-alert/",
+              "status": "planned",
+              "id": "inline-alert"
+            },
+            {
+              "type": "page",
+              "label": "Emergency line",
+              "ref": "components/messaging-feedback/emergency-line/",
+              "status": "planned",
+              "id": "emergency-line"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Utilities",
+          "category": "utilities",
+          "items": [
+            {
+              "type": "page",
+              "label": "Text size",
+              "ref": "docs/research.html",
+              "id": "text-size-control"
+            },
+            {
+              "type": "page",
+              "label": "Print & share",
+              "ref": "components/utilities/print-share/",
+              "status": "planned",
+              "id": "print-share"
+            },
+            {
+              "type": "page",
+              "label": "Skip link",
+              "ref": "components/utilities/skip-link/",
+              "status": "planned",
+              "id": "skip-link"
+            },
+            {
+              "type": "page",
+              "label": "Back to top",
+              "ref": "components/utilities/back-to-top/",
+              "status": "planned",
+              "id": "back-to-top"
+            },
+            {
+              "type": "page",
+              "label": "Language switcher",
+              "ref": "components/utilities/language-switcher/",
+              "status": "planned",
+              "id": "language-switcher"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": "Templates",
+      "ref": "templates/",
+      "items": [
+        {
+          "type": "group",
+          "label": "Basic",
+          "items": [
+            {
+              "type": "page",
+              "label": "Landing",
+              "ref": "templates/landing/"
+            },
+            {
+              "type": "page",
+              "label": "Page shells",
+              "ref": "docs/page-shells.html"
+            },
+            {
+              "type": "page",
+              "label": "Section landing",
+              "ref": "templates/basic/section-landing/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Article detail",
+              "ref": "templates/basic/article-detail/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Listing",
+              "ref": "templates/basic/listing/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Profile",
+              "ref": "templates/basic/profile/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Contact & location",
+              "ref": "templates/basic/contact-location/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Form wizard",
+              "ref": "templates/basic/form-wizard/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Error 404",
+              "ref": "templates/basic/error-404/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Sitemap & search",
+              "ref": "templates/basic/sitemap-search/",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Advanced",
+          "items": [
+            {
+              "type": "page",
+              "label": "Find a doctor",
+              "ref": "templates/advanced/find-a-doctor/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Program finder",
+              "ref": "templates/advanced/program-finder/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Content hub",
+              "ref": "templates/advanced/content-hub/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Plan your visit",
+              "ref": "templates/advanced/plan-your-visit/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Faculty directory",
+              "ref": "templates/advanced/faculty-directory/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Location finder",
+              "ref": "templates/advanced/location-finder/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Events hub",
+              "ref": "templates/advanced/events-hub/",
+              "status": "planned"
+            },
+            {
+              "type": "page",
+              "label": "Admissions & apply",
+              "ref": "templates/advanced/admissions-apply/",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": "Demo",
+      "items": [
+        {
+          "type": "group",
+          "label": "Riverside (healthcare)",
+          "items": [
+            {
+              "type": "page",
+              "label": "Homepage",
+              "ref": "pages/hospital-homepage.html"
+            },
+            {
+              "type": "page",
+              "label": "Specialty",
+              "ref": "pages/hospital-specialty.html"
+            },
+            {
+              "type": "page",
+              "label": "Research",
+              "ref": "pages/hospital-research.html"
+            },
+            {
+              "type": "page",
+              "label": "Find a doctor",
+              "ref": "pages/hospital-find-a-doctor.html"
+            },
+            {
+              "type": "page",
+              "label": "Provider",
+              "ref": "pages/hospital-provider.html"
+            },
+            {
+              "type": "page",
+              "label": "Plan your visit",
+              "ref": "pages/hospital-patient-visitor.html"
+            },
+            {
+              "type": "page",
+              "label": "Location",
+              "ref": "pages/hospital-location.html"
+            },
+            {
+              "type": "page",
+              "label": "Patient story",
+              "ref": "pages/hospital-patient-story.html"
+            },
+            {
+              "type": "page",
+              "label": "Measure",
+              "ref": "pages/hospital-measure.html"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": "Northgate (higher-ed)",
+          "items": [
+            {
+              "type": "page",
+              "label": "Homepage",
+              "ref": "pages/university-homepage.html"
+            },
+            {
+              "type": "page",
+              "label": "Program",
+              "ref": "pages/university-program.html"
+            },
+            {
+              "type": "page",
+              "label": "Faculty",
+              "ref": "pages/university-faculty.html"
+            },
+            {
+              "type": "page",
+              "label": "Admissions",
+              "ref": "pages/university-admissions.html",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "label": "Resources",
+      "ref": "resources/",
+      "items": [
+        {
+          "type": "page",
+          "label": "Evidence model",
+          "ref": "docs/research.html"
+        },
+        {
+          "type": "page",
+          "label": "Validation",
+          "ref": "docs/validation.html"
+        },
+        {
+          "type": "page",
+          "label": "Component status",
+          "ref": "docs/component-status.html"
+        },
+        {
+          "type": "page",
+          "label": "Utility classes",
+          "ref": "docs/utilities.html"
+        }
+      ]
+    }
+  ],
+  "get_started": {
+    "label": "Get started",
+    "ref": "get-started.html",
+    "status": "planned"
   }
 }

@@ -455,11 +455,9 @@
     nav.classList.add("is-js");
 
     const links = Array.from(nav.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link"));
+    // Sections AND category groups are both <details>, so one list drives both
+    // levels of disclosure — hidden/open settle deepest-first in filter().
     const details = Array.from(nav.querySelectorAll("details"));
-    // Category groups are always-visible <div>s (not <details>), so the filter
-    // must hide a group whose items are all filtered out — otherwise its label
-    // is left stranded with nothing under it.
-    const groups = Array.from(nav.querySelectorAll(".wire-doc-nav__group"));
 
     const empty = document.createElement("p");
     empty.className = "wire-doc-nav__noresults";
@@ -474,7 +472,6 @@
 
     function restore() {
       links.forEach((a) => { rowFor(a).hidden = false; });
-      groups.forEach((g) => { g.hidden = false; });
       details.forEach((d, i) => { d.hidden = false; if (savedOpen) d.open = savedOpen[i]; });
       savedOpen = null;
       empty.hidden = true;
@@ -491,12 +488,9 @@
         rowFor(a).hidden = !match;
         if (match) any = true;
       });
-      // Hide group labels whose items all filtered out (settle before sections).
-      groups.forEach((g) => {
-        const hit = Array.from(g.querySelectorAll(".wire-doc-nav__link")).some(isVisible);
-        g.hidden = !hit;
-      });
-      // Deepest-first so a group's visibility is settled before its section.
+      // Deepest-first: a group's visibility/open settles before its parent
+      // section (both are <details>). A leaf match reveals and opens its group
+      // and section; a fully-filtered details is hidden.
       for (let i = details.length - 1; i >= 0; i--) {
         const d = details[i];
         const hit = Array.from(d.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link")).some(isVisible);
