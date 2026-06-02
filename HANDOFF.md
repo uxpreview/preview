@@ -9,11 +9,25 @@ A self-contained briefing for the next agent. Read this top-to-bottom once; afte
 - **What it is**: a grayscale wireframe and mid-fidelity component system. Plain HTML/CSS/vanilla JS, no build step for the runtime. Open `index.html`, it works.
 - **Brand**: Preview Design System. Class prefix is `wire-` — deliberate; the brand is what clients see, the prefix names the visual register.
 - **Where**: branch `claude/primacy-design-system-YDvsP` on `uxpreview/preview`. Open PR is #2.
-- **Version**: v1.10.4. Semver as documented in `docs/principles.html` § 7.
-- **Scale**: 30 components, 42 HTML pages (1 system landing + 1 directory + 19 docs + 21 demos), 14 cited external sources.
+- **Version**: v1.11.0 (in progress). Semver as documented in `docs/principles.html` § 7.
+- **Scale**: ~30 components; 77 HTML pages (system landing, directory, **25 canonical component pages** under `components/`, 20 docs, 21 demos, section landings), 14 cited external sources. **Mid-migration to canonical component pages — see the next section.**
 - **Two demo verticals**: Riverside Medical Center (18 hospital archetypes) and Northgate University (3 higher-ed archetypes).
 - **Hard rules**: see `CONTRIBUTING.md` § "The ten rules". Every commit since v1.0 has cleared them.
 - **Audit status**: two documented WCAG 2.2 AA passes (v1.1 + v1.2). Live screen-reader, Pa11y, and Lighthouse runs are documented gaps in `docs/validation.html`.
+
+---
+
+## Component-page migration (active workstream — as of 2026-06-02)
+
+The docs site is migrating from aggregated `docs/*.html` pages to **one canonical 3-tab page per component** under `components/<slug>/` (tabs: Usage / Specs / Accessibility). **`manifest.json` is the source of truth for state**: a component's `ref` is `components/<slug>/` once migrated, `docs/X.html` while not — so a fresh session derives done-vs-remaining for free.
+
+- **Mechanics:** `COMPONENT-MIGRATION-PLAYBOOK.md`. The per-cycle wiring is: rail link in `partials/nav.html`, `targetList` + `CURRENT` entry in `scripts/sync-nav.mjs`, the `ref` in `manifest.json`, the `wire-doc-pager` chain — then `node scripts/sync-nav.mjs` injects nav/footer between the empty `NAV/FOOTER` markers and stamps `is-current`. Clone the scaffold from a recent page (`components/search/index.html`).
+- **Migrated groups (25 pages):** Actions, Forms & inputs, Selection & status, Containment & overlays, Navigation, Content & display.
+- **Remaining:** Messaging & feedback (`docs/feedback.html`), Layout (`docs/content-blocks.html` / `heroes.html` / `footers.html` — overlaps the Foundations `docs/layout.html`), Patient affordances (`docs/research.html`).
+- **Process:** one group at a time. **Gate the page split and the push with the user** (AskUserQuestion); push only on explicit yes (deploys to public GitHub Pages). On group completion, reconcile the `components/index.html` landing cards and retire any fully-superseded source doc (`content-blocks.html` and `research.html` stay — shared). Verify each page with the Playwright MCP (CDP cache-disabled): zero broken TOC anchors, correct pager/rail-current, zero inline styles, dark-mode spot-check.
+- **Branch** `claude/primacy-design-system-YDvsP`, latest `c53ef26`. The most recent session's full gotchas/lessons writeup is at `/tmp/preview-ds-handoff.md` (machine-local; fold into this file or the playbook if it should persist).
+
+> Some figures in the 30-second TLDR and the file tree below predate this migration. Trust `manifest.json` and the live tree over them.
 
 ---
 

@@ -89,8 +89,9 @@ rather than quietly working around it.
 
 1. Read `manifest.json`. Match the intent to a `page_shell` (for the spine) and the
    closest concrete demo in `riverside_mocks` / `northgate_mocks` (for markup to copy).
-2. Pull verified markup from the referenced `file` in `pages/` (or `docs/<component>.html`
-   for a single component). Copy real snippets — don't reconstruct from memory. Every
+2. Pull verified markup from the referenced `file` in `pages/` (or a component's own doc
+   page — its `ref` in `manifest.json`, which is `components/<slug>/` for migrated families
+   and `docs/<component>.html` for the rest). Copy real snippets — don't reconstruct from memory. Every
    component entry carries the exact `class`, `variants`, `elements`, `behaviors`, and
    `file`.
 3. Fill content slots from the brief's content model. Make it specific and plausible.
