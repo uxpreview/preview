@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pagination — Preview Design System</title>
+  <title>Quote — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -101,7 +101,7 @@
           <p class="wire-doc-nav__group-title">Navigation</p>
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/breadcrumb/">Breadcrumb</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/pagination/">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/pagination/">Pagination</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Top nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/side-nav/">Side nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/in-page-nav/">In-page nav</a></li>
@@ -122,7 +122,7 @@
           <p class="wire-doc-nav__group-title">Content &amp; display</p>
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/callout/">Callout</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/quote/">Quote</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/quote/">Quote</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/timeline/">Timeline</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/media/">Media</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/lists/">Lists</a></li>
@@ -233,25 +233,25 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-navigation">Navigation</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Pagination</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-content">Content &amp; display</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Quote</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Pagination</h1>
+          <h1 class="wire-doc-header__title">Quote</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A control for moving through a long, ordered set one page at a time — previous and next, numbered pages, and an ellipsis where the middle is collapsed. The current page is shown, not linked.</p>
+        <p class="wire-doc-header__lead">A pull quote that surfaces a person's words — a patient, a clinician, a researcher — set in a serif display with their attribution. Three variants: default, large display, and an inline left-bar.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/pagination.css</li>
+          <li class="wire-doc-header__meta-item">css/components/quote.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
         </ul>
       </header>
 
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Pagination documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Quote documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -264,73 +264,67 @@
 
               <section id="live-demo" class="doc-section">
                 <h2 class="wire-h3">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Previous and next flank a numbered list. First and last stay reachable; the gap between collapses to an ellipsis. Page 2 is current.</p>
+                <p class="u-text-muted u-mt-sm">A blockquote carries the words; a figcaption attributes them. The opening mark is a decorative serif glyph.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Paged results</span>
-                  <nav class="wire-pagination" aria-label="Pagination (demo)">
-                    <a class="wire-pagination__nav" href="#">← Previous</a>
-                    <ul class="wire-pagination__list" role="list">
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">1</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">2</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">12</a></li>
-                    </ul>
-                    <a class="wire-pagination__nav" href="#">Next →</a>
-                  </nav>
+                  <span class="doc-example__label">Default</span>
+                  <figure class="wire-quote">
+                    <div class="wire-quote__mark" aria-hidden="true">"</div>
+                    <blockquote class="wire-quote__text">They didn't just teach me how to walk again. They taught me how to expect more.</blockquote>
+                    <figcaption class="wire-quote__attribution">
+                      <span class="wire-quote__name">Maya Sundaresan</span>
+                      <span class="wire-quote__role">Patient, Stroke Recovery Program</span>
+                    </figcaption>
+                  </figure>
                 </div>
               </section>
 
               <section id="anatomy" class="doc-section">
                 <h2 class="wire-h3">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A labeled landmark holds optional previous/next controls around an ordered list of page links. The current page and the ellipsis are non-interactive.</p>
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Landmark</th><td><code>.wire-pagination</code></td><td>A <code>&lt;nav&gt;</code> with <code>aria-label="Pagination"</code>.</td></tr>
-                    <tr><th scope="row">Prev / Next</th><td><code>.wire-pagination__nav</code></td><td>Step controls; <code>aria-disabled="true"</code> at the ends.</td></tr>
-                    <tr><th scope="row">List</th><td><code>.wire-pagination__list</code></td><td>The page numbers.</td></tr>
-                    <tr><th scope="row">Page link</th><td><code>.wire-pagination__link</code></td><td>A link to a specific page.</td></tr>
-                    <tr><th scope="row">Current</th><td><code>.wire-pagination__current</code></td><td>The current page as a filled, non-link span with <code>aria-current="page"</code>.</td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>.wire-pagination__ellipsis</code></td><td>A decorative gap for skipped pages.</td></tr>
+                    <tr><th scope="row">Figure</th><td><code>.wire-quote</code></td><td>A <code>&lt;figure&gt;</code> wrapping the quotation and its caption.</td></tr>
+                    <tr><th scope="row">Mark</th><td><code>.wire-quote__mark</code></td><td>A decorative opening quotation glyph (<code>aria-hidden</code>); default variant only.</td></tr>
+                    <tr><th scope="row">Text</th><td><code>.wire-quote__text</code></td><td>A <code>&lt;blockquote&gt;</code> with the words.</td></tr>
+                    <tr><th scope="row">Attribution</th><td><code>.wire-quote__attribution</code></td><td>A <code>&lt;figcaption&gt;</code> holding name and role.</td></tr>
+                    <tr><th scope="row">Name / Role</th><td><code>.wire-quote__name</code> · <code>__role</code></td><td>Who said it, and in what capacity.</td></tr>
                   </tbody>
                 </table>
+              </section>
+
+              <section id="variants" class="doc-section">
+                <h2 class="wire-h3">Variants</h2>
+                <p class="u-text-muted u-mt-sm">The structure is constant; the scale and framing change.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Large (display)</span>
+                  <figure class="wire-quote wire-quote--large">
+                    <blockquote class="wire-quote__text">Research lives next to the patients whose lives it will change.</blockquote>
+                    <figcaption class="wire-quote__attribution">
+                      <span class="wire-quote__name">Dr. Ana Mitchell</span>
+                      <span class="wire-quote__role">Director, Spinal Cord Injury Program</span>
+                    </figcaption>
+                  </figure>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Inline (left-bar)</span>
+                  <figure class="wire-quote wire-quote--inline">
+                    <blockquote class="wire-quote__text">The first appointment felt like a real plan, not a list of tests.</blockquote>
+                    <figcaption class="wire-quote__attribution">
+                      <span class="wire-quote__name">Daniel R.</span>
+                      <span class="wire-quote__role">Outpatient, 2026</span>
+                    </figcaption>
+                  </figure>
+                </div>
               </section>
 
               <section id="when" class="doc-section">
                 <h2 class="wire-h3">When to use</h2>
                 <ul>
-                  <li>Use pagination to split a <strong>long, ordered set</strong> into pages users move through — search results, a provider directory, an article archive.</li>
-                  <li>Reach for it when the total count or a specific page matters, or users want to jump to the first or last page.</li>
-                  <li>For an open, continuous feed, a "load more" or infinite scroll fits better — pagination is for bounded, indexable sets.</li>
-                  <li>It's not for steps in a process (use a stepper) or for hierarchy (use a <a href="../breadcrumb/">Breadcrumb</a>).</li>
+                  <li>Use a pull quote to surface a person's words for rhythm and credibility — a testimonial, a researcher's framing.</li>
+                  <li>Default for a standard quote; <strong>large</strong> for a display moment at the top of a story; <strong>inline</strong> for a short quotation inside running text.</li>
+                  <li>It's for someone's words, not editorial emphasis (use a <a href="../callout/">Callout</a>) and not a statistic.</li>
+                  <li>Keep it short — a pull quote is a highlight, not a transcript.</li>
                 </ul>
-              </section>
-
-              <section id="in-context" class="doc-section">
-                <h2 class="wire-h3">In context</h2>
-                <p class="u-text-muted u-mt-sm">Pagination sits centered below the result set it pages, with previous disabled on the first page.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Below a results list, first page</span>
-                  <div class="u-stack u-stack--md">
-                    <ul class="u-stack u-stack--xs" role="list">
-                      <li class="u-text-muted">Dr. Alicia Romero — Stroke rehabilitation</li>
-                      <li class="u-text-muted">Dr. Ben Whitfield — Spinal cord injury</li>
-                      <li class="u-text-muted">Dr. Carla Nguyen — Brain injury</li>
-                    </ul>
-                    <nav class="wire-pagination" aria-label="Pagination (context)">
-                      <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
-                      <ul class="wire-pagination__list" role="list">
-                        <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">1</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">2</a></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                        <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">9</a></li>
-                      </ul>
-                      <a class="wire-pagination__nav" href="#">Next →</a>
-                    </nav>
-                  </div>
-                </div>
               </section>
 
               <section id="do-dont" class="doc-section">
@@ -339,17 +333,17 @@
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
                     <ul>
-                      <li>Show the current page as a non-link with <code>aria-current="page"</code>.</li>
-                      <li>Disable previous on the first page and next on the last.</li>
-                      <li>Keep first and last reachable; collapse the middle with an ellipsis.</li>
+                      <li>Attribute every quote with a name and role.</li>
+                      <li>Keep it to a sentence or two.</li>
+                      <li>Pair the words and source with <code>figure</code> / <code>figcaption</code>.</li>
                     </ul>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
                     <ul>
-                      <li>Link the current page to itself.</li>
-                      <li>Remove prev/next when disabled — dim them so position stays stable.</li>
-                      <li>Use pagination for unbounded, continuously loading content.</li>
+                      <li>Invent or paraphrase an attribution.</li>
+                      <li>Use a quote for non-quotation emphasis.</li>
+                      <li>Stack several pull quotes in a row.</li>
                     </ul>
                   </div>
                 </div>
@@ -361,8 +355,8 @@
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#variants">Variants</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
             </nav>
@@ -374,13 +368,12 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="structure" class="doc-section">
-                <h2 class="wire-h3">Structure</h2>
+              <section id="type" class="doc-section">
+                <h2 class="wire-h3">Type &amp; scale</h2>
                 <ul>
-                  <li>A <code>&lt;nav&gt;</code> landmark holds optional prev/next controls flanking an unordered list of page links.</li>
-                  <li>Page links and the current page are 40px minimum squares (<code>min-inline-size</code> and <code>min-block-size: 2.5rem</code>) with a pill radius.</li>
-                  <li>The current page is a filled <code>&lt;span&gt;</code>, not a link; the ellipsis is a non-interactive span.</li>
-                  <li>Disabled prev/next carry <code>aria-disabled="true"</code> (40% opacity, <code>pointer-events: none</code>) — visible but inert, so the row doesn't reflow at the ends.</li>
+                  <li>The quotation is a serif italic display; attribution is sans. The contrast in voice is the point.</li>
+                  <li>Size scales with the variant: default <code>--text-2xl</code> → <code>--text-3xl</code> at 48em; large climbs to <code>--text-5xl</code>; inline sits at <code>--text-lg</code> → <code>--text-xl</code>.</li>
+                  <li><code>text-wrap: balance</code> keeps the display lines even; the figure caps at <code>--container-md</code> for a readable measure.</li>
                 </ul>
               </section>
 
@@ -389,38 +382,33 @@
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Target size</th><td>2.5rem × 2.5rem</td></tr>
-                    <tr><th scope="row">Outer gap / list gap</th><td><code>--space-xs</code> · <code>--space-2xs</code></td></tr>
-                    <tr><th scope="row">Type</th><td><code>--text-sm</code>, <code>--weight-medium</code></td></tr>
-                    <tr><th scope="row">Link hover</th><td><code>--color-bg-muted</code></td></tr>
-                    <tr><th scope="row">Current (fill / text)</th><td><code>--color-accent</code> / <code>--color-text-inverse</code></td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>--color-text-subtle</code></td></tr>
-                    <tr><th scope="row">Radius / transition</th><td><code>--radius-pill</code> · <code>--duration-fast</code> <code>--ease-out</code></td></tr>
+                    <tr><th scope="row">Quote text</th><td><code>--font-serif</code>, italic, <code>--leading-snug</code></td></tr>
+                    <tr><th scope="row">Mark</th><td><code>--text-5xl</code>, <code>--color-text-subtle</code></td></tr>
+                    <tr><th scope="row">Name</th><td><code>--text-md</code>, <code>--weight-semibold</code></td></tr>
+                    <tr><th scope="row">Role</th><td><code>--text-sm</code>, <code>--color-text-muted</code></td></tr>
+                    <tr><th scope="row">Inline bar</th><td><code>--border-thick</code> <code>--color-border-strong</code></td></tr>
+                    <tr><th scope="row">Measure</th><td><code>--container-md</code></td></tr>
                   </tbody>
                 </table>
               </section>
 
               <section id="snippet" class="doc-section">
                 <h2 class="wire-h3">Snippet</h2>
-                <pre class="doc-snippet">&lt;nav class="wire-pagination" aria-label="Pagination"&gt;
-  &lt;a class="wire-pagination__nav" href="?page=1" aria-disabled="true"&gt;← Previous&lt;/a&gt;
-  &lt;ul class="wire-pagination__list" role="list"&gt;
-    &lt;li class="wire-pagination__item"&gt;
-      &lt;span class="wire-pagination__current" aria-current="page"&gt;1&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=2"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;span class="wire-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=9"&gt;9&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;a class="wire-pagination__nav" href="?page=2"&gt;Next →&lt;/a&gt;
-&lt;/nav&gt;</pre>
+                <pre class="doc-snippet">&lt;figure class="wire-quote"&gt;
+  &lt;div class="wire-quote__mark" aria-hidden="true"&gt;"&lt;/div&gt;
+  &lt;blockquote class="wire-quote__text"&gt;They taught me how to expect more.&lt;/blockquote&gt;
+  &lt;figcaption class="wire-quote__attribution"&gt;
+    &lt;span class="wire-quote__name"&gt;Maya Sundaresan&lt;/span&gt;
+    &lt;span class="wire-quote__role"&gt;Patient, Stroke Recovery Program&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</pre>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#structure">Structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#type">Type &amp; scale</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
               </ul>
@@ -433,42 +421,37 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="landmark" class="doc-section">
-                <h2 class="wire-h3">Landmark &amp; labeling</h2>
+              <section id="semantics" class="doc-section">
+                <h2 class="wire-h3">Semantics</h2>
                 <ul>
-                  <li>Wrap the control in <code>&lt;nav aria-label="Pagination"&gt;</code> so it's a distinct landmark.</li>
-                  <li>Mark the current page with <code>aria-current="page"</code> on a non-link <code>&lt;span&gt;</code>.</li>
-                  <li>Give prev/next real text ("Previous", "Next") — an arrow glyph alone isn't an accessible name.</li>
+                  <li>Use <code>&lt;figure&gt;</code> + <code>&lt;blockquote&gt;</code> + <code>&lt;figcaption&gt;</code>: the blockquote is the quotation, the figcaption its source. This binds the words to their attribution programmatically.</li>
+                  <li>Don't wrap the attribution inside the blockquote — only the quoted words belong there.</li>
                 </ul>
               </section>
 
-              <section id="states" class="doc-section">
-                <h2 class="wire-h3">Disabled &amp; decorative</h2>
+              <section id="decorative" class="doc-section">
+                <h2 class="wire-h3">Decorative mark</h2>
                 <ul>
-                  <li>At the ends, set <code>aria-disabled="true"</code> on prev/next rather than removing them — they stay announced and the layout stays put.</li>
-                  <li>The ellipsis is decorative (<code>aria-hidden="true"</code>): it marks skipped pages, not a control.</li>
+                  <li>The large opening quotation glyph is decorative and marked <code>aria-hidden="true"</code> — the real quotation marks live in the punctuation a screen reader already reads.</li>
+                  <li>It's the only variant-specific element; large and inline drop it.</li>
                 </ul>
               </section>
 
-              <section id="keyboard" class="doc-section">
-                <h2 class="wire-h3">Keyboard &amp; target size</h2>
-                <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">Tab</th><td>Moves across prev, page links, and next in order.</td></tr>
-                    <tr><th scope="row">Enter</th><td>Activates the focused page link or step control.</td></tr>
-                  </tbody>
-                </table>
-                <p class="u-text-muted u-mt-md">The current-page span and the ellipsis aren't focusable. Every control clears a 40px target, comfortably past the WCAG 2.5.8 minimum.</p>
+              <section id="measure" class="doc-section">
+                <h2 class="wire-h3">Readability</h2>
+                <ul>
+                  <li>The figure caps at a comfortable measure (<code>--container-md</code>) so a display quote never runs to an unreadable line length.</li>
+                  <li>All text holds AA contrast in both themes; the role line uses muted text that still clears AA.</li>
+                </ul>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmark">Landmark &amp; labeling</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">Disabled &amp; decorative</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; target size</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantics">Semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#decorative">Decorative mark</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measure">Readability</a></li>
               </ul>
             </nav>
           </div>
@@ -477,13 +460,13 @@
       </div>
 
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../breadcrumb/">
-          <span class="wire-doc-pager__direction">Previous in Navigation</span>
-          <span class="wire-doc-pager__title">Breadcrumb</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../callout/">
+          <span class="wire-doc-pager__direction">Previous in Content &amp; display</span>
+          <span class="wire-doc-pager__title">Callout</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../top-nav/">
-          <span class="wire-doc-pager__direction">Next in Navigation</span>
-          <span class="wire-doc-pager__title">Top nav</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../timeline/">
+          <span class="wire-doc-pager__direction">Next in Content &amp; display</span>
+          <span class="wire-doc-pager__title">Timeline</span>
         </a>
       </nav>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pagination — Preview Design System</title>
+  <title>Media — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -101,7 +101,7 @@
           <p class="wire-doc-nav__group-title">Navigation</p>
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/breadcrumb/">Breadcrumb</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/pagination/">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/pagination/">Pagination</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Top nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/side-nav/">Side nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/in-page-nav/">In-page nav</a></li>
@@ -124,7 +124,7 @@
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/callout/">Callout</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/quote/">Quote</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/timeline/">Timeline</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/media/">Media</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/media/">Media</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/lists/">Lists</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/citation-list/">Citation list</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/table/">Table</a></li>
@@ -233,25 +233,25 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-navigation">Navigation</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Pagination</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-content">Content &amp; display</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Media</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Pagination</h1>
+          <h1 class="wire-doc-header__title">Media</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A control for moving through a long, ordered set one page at a time — previous and next, numbered pages, and an ellipsis where the middle is collapsed. The current page is shown, not linked.</p>
+        <p class="wire-doc-header__lead">Greybox image and video placeholders that hold an aspect ratio while a wireframe stands in for real imagery, plus a gallery grid that arranges several together. Decorative by default — production swaps in real images with alt text.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/pagination.css</li>
+          <li class="wire-doc-header__meta-item">css/components/media.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
         </ul>
       </header>
 
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Pagination documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Media documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -264,73 +264,83 @@
 
               <section id="live-demo" class="doc-section">
                 <h2 class="wire-h3">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Previous and next flank a numbered list. First and last stay reachable; the gap between collapses to an ellipsis. Page 2 is current.</p>
+                <p class="u-text-muted u-mt-sm">A greybox at a fixed ratio. The <code>data-ratio</code> attribute prints a corner label; an optional <code>.wire-media__label</code> names what the image will be.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Paged results</span>
-                  <nav class="wire-pagination" aria-label="Pagination (demo)">
-                    <a class="wire-pagination__nav" href="#">← Previous</a>
-                    <ul class="wire-pagination__list" role="list">
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">1</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">2</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">12</a></li>
-                    </ul>
-                    <a class="wire-pagination__nav" href="#">Next →</a>
-                  </nav>
+                  <span class="doc-example__label">Default (16:9) with a label</span>
+                  <div class="wire-media wire-media--16-9" aria-hidden="true" data-ratio="16:9"><span class="wire-media__label">Hero image — patient on therapy treadmill</span></div>
                 </div>
               </section>
 
               <section id="anatomy" class="doc-section">
                 <h2 class="wire-h3">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A labeled landmark holds optional previous/next controls around an ordered list of page links. The current page and the ellipsis are non-interactive.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / attribute</th><th scope="col">Role</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Landmark</th><td><code>.wire-pagination</code></td><td>A <code>&lt;nav&gt;</code> with <code>aria-label="Pagination"</code>.</td></tr>
-                    <tr><th scope="row">Prev / Next</th><td><code>.wire-pagination__nav</code></td><td>Step controls; <code>aria-disabled="true"</code> at the ends.</td></tr>
-                    <tr><th scope="row">List</th><td><code>.wire-pagination__list</code></td><td>The page numbers.</td></tr>
-                    <tr><th scope="row">Page link</th><td><code>.wire-pagination__link</code></td><td>A link to a specific page.</td></tr>
-                    <tr><th scope="row">Current</th><td><code>.wire-pagination__current</code></td><td>The current page as a filled, non-link span with <code>aria-current="page"</code>.</td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>.wire-pagination__ellipsis</code></td><td>A decorative gap for skipped pages.</td></tr>
+                    <tr><th scope="row">Placeholder</th><td><code>.wire-media</code> (+ ratio modifier)</td><td>The greybox; holds an aspect ratio.</td></tr>
+                    <tr><th scope="row">Ratio label</th><td><code>data-ratio="16:9"</code></td><td>Prints a small mono label in the top corner.</td></tr>
+                    <tr><th scope="row">Caption</th><td><code>.wire-media__label</code></td><td>Centered text naming the intended image.</td></tr>
+                    <tr><th scope="row">Gallery</th><td><code>.wire-gallery</code> (+ <code>--2/3/4/mosaic</code>)</td><td>A grid that arranges several placeholders.</td></tr>
                   </tbody>
                 </table>
+              </section>
+
+              <section id="ratios" class="doc-section">
+                <h2 class="wire-h3">Ratios &amp; video</h2>
+                <p class="u-text-muted u-mt-sm">Seven ratio modifiers plus a rounded radius and a video placeholder with a play glyph.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Ratios</span>
+                  <div class="u-grid u-grid--3">
+                    <div class="wire-media wire-media--16-9" aria-hidden="true" data-ratio="16:9"></div>
+                    <div class="wire-media wire-media--4-3" aria-hidden="true" data-ratio="4:3"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--portrait" aria-hidden="true" data-ratio="3:4"></div>
+                    <div class="wire-media wire-media--portrait-tall" aria-hidden="true" data-ratio="2:3"></div>
+                    <div class="wire-media wire-media--wide" aria-hidden="true" data-ratio="21:9"></div>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Rounded · Video</span>
+                  <div class="u-grid u-grid--2">
+                    <div class="wire-media wire-media--rounded wire-media--16-9" aria-hidden="true" data-ratio="16:9"></div>
+                    <div class="wire-media wire-media--video wire-media--16-9" aria-hidden="true" data-ratio="16:9"></div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="gallery" class="doc-section">
+                <h2 class="wire-h3">Gallery</h2>
+                <p class="u-text-muted u-mt-sm">A responsive grid. <code>--2</code>, <code>--3</code>, and <code>--4</code> are even columns that collapse on mobile; <code>--mosaic</code> is an asymmetric feature layout that stacks to one column below 48em.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Three column</span>
+                  <div class="wire-gallery wire-gallery--3">
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                    <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Mosaic</span>
+                  <div class="wire-gallery wire-gallery--mosaic">
+                    <div class="wire-media" aria-hidden="true"></div>
+                    <div class="wire-media" aria-hidden="true"></div>
+                    <div class="wire-media" aria-hidden="true"></div>
+                    <div class="wire-media" aria-hidden="true"></div>
+                    <div class="wire-media" aria-hidden="true"></div>
+                  </div>
+                </div>
               </section>
 
               <section id="when" class="doc-section">
                 <h2 class="wire-h3">When to use</h2>
                 <ul>
-                  <li>Use pagination to split a <strong>long, ordered set</strong> into pages users move through — search results, a provider directory, an article archive.</li>
-                  <li>Reach for it when the total count or a specific page matters, or users want to jump to the first or last page.</li>
-                  <li>For an open, continuous feed, a "load more" or infinite scroll fits better — pagination is for bounded, indexable sets.</li>
-                  <li>It's not for steps in a process (use a stepper) or for hierarchy (use a <a href="../breadcrumb/">Breadcrumb</a>).</li>
+                  <li>Use a placeholder to <strong>reserve image space</strong> at a chosen ratio while the layout is still grey — it keeps the page from reflowing when real images land.</li>
+                  <li>Reach for a gallery when three or more placeholders sit together; a single image is just one <code>.wire-media</code>.</li>
+                  <li>Use the video variant where a player will go; use mosaic for a feature wall, even columns for a uniform grid.</li>
+                  <li>These are wireframe stand-ins, not final imagery — production replaces each with a real <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code>.</li>
                 </ul>
-              </section>
-
-              <section id="in-context" class="doc-section">
-                <h2 class="wire-h3">In context</h2>
-                <p class="u-text-muted u-mt-sm">Pagination sits centered below the result set it pages, with previous disabled on the first page.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Below a results list, first page</span>
-                  <div class="u-stack u-stack--md">
-                    <ul class="u-stack u-stack--xs" role="list">
-                      <li class="u-text-muted">Dr. Alicia Romero — Stroke rehabilitation</li>
-                      <li class="u-text-muted">Dr. Ben Whitfield — Spinal cord injury</li>
-                      <li class="u-text-muted">Dr. Carla Nguyen — Brain injury</li>
-                    </ul>
-                    <nav class="wire-pagination" aria-label="Pagination (context)">
-                      <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
-                      <ul class="wire-pagination__list" role="list">
-                        <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">1</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">2</a></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                        <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">9</a></li>
-                      </ul>
-                      <a class="wire-pagination__nav" href="#">Next →</a>
-                    </nav>
-                  </div>
-                </div>
               </section>
 
               <section id="do-dont" class="doc-section">
@@ -339,17 +349,17 @@
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
                     <ul>
-                      <li>Show the current page as a non-link with <code>aria-current="page"</code>.</li>
-                      <li>Disable previous on the first page and next on the last.</li>
-                      <li>Keep first and last reachable; collapse the middle with an ellipsis.</li>
+                      <li>Pick the ratio the real image will use, so nothing reflows later.</li>
+                      <li>Name the intended image with a label during wireframing.</li>
+                      <li>Replace placeholders with real images carrying meaningful alt text.</li>
                     </ul>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
                     <ul>
-                      <li>Link the current page to itself.</li>
-                      <li>Remove prev/next when disabled — dim them so position stays stable.</li>
-                      <li>Use pagination for unbounded, continuously loading content.</li>
+                      <li>Ship a greybox as a finished image.</li>
+                      <li>Put meaningful content only inside a decorative placeholder.</li>
+                      <li>Mix wildly different ratios in one even-column gallery.</li>
                     </ul>
                   </div>
                 </div>
@@ -361,8 +371,9 @@
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#ratios">Ratios &amp; video</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#gallery">Gallery</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
             </nav>
@@ -377,10 +388,9 @@
               <section id="structure" class="doc-section">
                 <h2 class="wire-h3">Structure</h2>
                 <ul>
-                  <li>A <code>&lt;nav&gt;</code> landmark holds optional prev/next controls flanking an unordered list of page links.</li>
-                  <li>Page links and the current page are 40px minimum squares (<code>min-inline-size</code> and <code>min-block-size: 2.5rem</code>) with a pill radius.</li>
-                  <li>The current page is a filled <code>&lt;span&gt;</code>, not a link; the ellipsis is a non-interactive span.</li>
-                  <li>Disabled prev/next carry <code>aria-disabled="true"</code> (40% opacity, <code>pointer-events: none</code>) — visible but inert, so the row doesn't reflow at the ends.</li>
+                  <li>The ratio is a custom property (<code>--media-ratio</code>) driving <code>aspect-ratio</code>; each modifier just re-sets it (16:9, 4:3, 1:1, 3:4, 2:3, 21:9).</li>
+                  <li>The greybox texture is two diagonal gradient lines forming an X — a recognizable "image goes here" cue.</li>
+                  <li>The corner label is generated from <code>attr(data-ratio)</code>; the video variant swaps the texture for a dark fill and a CSS play triangle.</li>
                 </ul>
               </section>
 
@@ -389,31 +399,27 @@
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Target size</th><td>2.5rem × 2.5rem</td></tr>
-                    <tr><th scope="row">Outer gap / list gap</th><td><code>--space-xs</code> · <code>--space-2xs</code></td></tr>
-                    <tr><th scope="row">Type</th><td><code>--text-sm</code>, <code>--weight-medium</code></td></tr>
-                    <tr><th scope="row">Link hover</th><td><code>--color-bg-muted</code></td></tr>
-                    <tr><th scope="row">Current (fill / text)</th><td><code>--color-accent</code> / <code>--color-text-inverse</code></td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>--color-text-subtle</code></td></tr>
-                    <tr><th scope="row">Radius / transition</th><td><code>--radius-pill</code> · <code>--duration-fast</code> <code>--ease-out</code></td></tr>
+                    <tr><th scope="row">Placeholder fill</th><td><code>--color-bg-muted</code>, X lines in <code>--color-border</code></td></tr>
+                    <tr><th scope="row">Radius</th><td><code>--radius-md</code> (<code>--radius-xl</code> rounded)</td></tr>
+                    <tr><th scope="row">Corner label</th><td><code>--font-mono</code>, <code>--text-2xs</code></td></tr>
+                    <tr><th scope="row">Gallery gap</th><td><code>--space-md</code></td></tr>
+                    <tr><th scope="row">Mosaic rows (≥48em)</th><td>6-column grid, <code>8rem</code> auto-rows</td></tr>
                   </tbody>
                 </table>
               </section>
 
               <section id="snippet" class="doc-section">
                 <h2 class="wire-h3">Snippet</h2>
-                <pre class="doc-snippet">&lt;nav class="wire-pagination" aria-label="Pagination"&gt;
-  &lt;a class="wire-pagination__nav" href="?page=1" aria-disabled="true"&gt;← Previous&lt;/a&gt;
-  &lt;ul class="wire-pagination__list" role="list"&gt;
-    &lt;li class="wire-pagination__item"&gt;
-      &lt;span class="wire-pagination__current" aria-current="page"&gt;1&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=2"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;span class="wire-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=9"&gt;9&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;a class="wire-pagination__nav" href="?page=2"&gt;Next →&lt;/a&gt;
-&lt;/nav&gt;</pre>
+                <pre class="doc-snippet">&lt;!-- single placeholder --&gt;
+&lt;div class="wire-media wire-media--16-9" aria-hidden="true" data-ratio="16:9"&gt;
+  &lt;span class="wire-media__label"&gt;Hero image&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- gallery --&gt;
+&lt;div class="wire-gallery wire-gallery--3"&gt;
+  &lt;div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"&gt;&lt;/div&gt;
+  …
+&lt;/div&gt;</pre>
               </section>
 
             </div>
@@ -433,42 +439,38 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="landmark" class="doc-section">
-                <h2 class="wire-h3">Landmark &amp; labeling</h2>
+              <section id="decorative" class="doc-section">
+                <h2 class="wire-h3">Decorative by default</h2>
                 <ul>
-                  <li>Wrap the control in <code>&lt;nav aria-label="Pagination"&gt;</code> so it's a distinct landmark.</li>
-                  <li>Mark the current page with <code>aria-current="page"</code> on a non-link <code>&lt;span&gt;</code>.</li>
-                  <li>Give prev/next real text ("Previous", "Next") — an arrow glyph alone isn't an accessible name.</li>
+                  <li>Placeholders carry <code>aria-hidden="true"</code> — they're greyboxes with no information, so they're hidden from assistive tech (WCAG 1.1.1).</li>
+                  <li>The label and corner ratio are inside the hidden element; they orient sighted reviewers during wireframing, not end users.</li>
                 </ul>
               </section>
 
-              <section id="states" class="doc-section">
-                <h2 class="wire-h3">Disabled &amp; decorative</h2>
+              <section id="production" class="doc-section">
+                <h2 class="wire-h3">In production</h2>
                 <ul>
-                  <li>At the ends, set <code>aria-disabled="true"</code> on prev/next rather than removing them — they stay announced and the layout stays put.</li>
-                  <li>The ellipsis is decorative (<code>aria-hidden="true"</code>): it marks skipped pages, not a control.</li>
+                  <li>Each placeholder is replaced by a real <code>&lt;img&gt;</code> with meaningful <code>alt</code> text (or empty <code>alt=""</code> when the image is purely decorative).</li>
+                  <li>A video placeholder becomes a real player with captions and accessible controls.</li>
+                  <li>Keep the same ratio so the swap doesn't shift the layout.</li>
                 </ul>
               </section>
 
-              <section id="keyboard" class="doc-section">
-                <h2 class="wire-h3">Keyboard &amp; target size</h2>
-                <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">Tab</th><td>Moves across prev, page links, and next in order.</td></tr>
-                    <tr><th scope="row">Enter</th><td>Activates the focused page link or step control.</td></tr>
-                  </tbody>
-                </table>
-                <p class="u-text-muted u-mt-md">The current-page span and the ellipsis aren't focusable. Every control clears a 40px target, comfortably past the WCAG 2.5.8 minimum.</p>
+              <section id="contrast" class="doc-section">
+                <h2 class="wire-h3">Contrast</h2>
+                <ul>
+                  <li>The greybox and its X lines are non-text decoration, exempt from text-contrast rules; they remain visibly distinct in both themes.</li>
+                  <li>The corner label sits on an opaque chip so it stays legible over the texture.</li>
+                </ul>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmark">Landmark &amp; labeling</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">Disabled &amp; decorative</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; target size</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#decorative">Decorative by default</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#production">In production</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#contrast">Contrast</a></li>
               </ul>
             </nav>
           </div>
@@ -477,13 +479,13 @@
       </div>
 
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../breadcrumb/">
-          <span class="wire-doc-pager__direction">Previous in Navigation</span>
-          <span class="wire-doc-pager__title">Breadcrumb</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../timeline/">
+          <span class="wire-doc-pager__direction">Previous in Content &amp; display</span>
+          <span class="wire-doc-pager__title">Timeline</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../top-nav/">
-          <span class="wire-doc-pager__direction">Next in Navigation</span>
-          <span class="wire-doc-pager__title">Top nav</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../lists/">
+          <span class="wire-doc-pager__direction">Next in Content &amp; display</span>
+          <span class="wire-doc-pager__title">Lists</span>
         </a>
       </nav>
 

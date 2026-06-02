@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pagination — Preview Design System</title>
+  <title>Callout — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -101,7 +101,7 @@
           <p class="wire-doc-nav__group-title">Navigation</p>
           <ul class="wire-doc-nav__list" role="list">
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/breadcrumb/">Breadcrumb</a></li>
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/pagination/">Pagination</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/pagination/">Pagination</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Top nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/side-nav/">Side nav</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/in-page-nav/">In-page nav</a></li>
@@ -121,7 +121,7 @@
         <div class="wire-doc-nav__group">
           <p class="wire-doc-nav__group-title">Content &amp; display</p>
           <ul class="wire-doc-nav__list" role="list">
-            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/callout/">Callout</a></li>
+            <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/callout/">Callout</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/quote/">Quote</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/timeline/">Timeline</a></li>
             <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/media/">Media</a></li>
@@ -233,25 +233,25 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-navigation">Navigation</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Pagination</span></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-content">Content &amp; display</a></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Callout</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Pagination</h1>
+          <h1 class="wire-doc-header__title">Callout</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A control for moving through a long, ordered set one page at a time — previous and next, numbered pages, and an ellipsis where the middle is collapsed. The current page is shown, not linked.</p>
+        <p class="wire-doc-header__lead">A boxed editorial aside that lifts a single message out of the page — an enrolling study, a closure notice, a referral pathway. Use it sparingly: at most one per long page.</p>
         <ul class="wire-doc-header__meta" role="list">
-          <li class="wire-doc-header__meta-item">css/components/pagination.css</li>
+          <li class="wire-doc-header__meta-item">css/components/callout.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
         </ul>
       </header>
 
       <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
-        <div role="tablist" class="wire-tabs__list" aria-label="Pagination documentation">
+        <div role="tablist" class="wire-tabs__list" aria-label="Callout documentation">
           <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
           <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
           <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
@@ -264,73 +264,84 @@
 
               <section id="live-demo" class="doc-section">
                 <h2 class="wire-h3">Live demo</h2>
-                <p class="u-text-muted u-mt-sm">Previous and next flank a numbered list. First and last stay reachable; the gap between collapses to an ellipsis. Page 2 is current.</p>
+                <p class="u-text-muted u-mt-sm">An eyebrow frames the message, a title carries it, body copy supports it, and up to two actions follow.</p>
                 <div class="doc-example">
-                  <span class="doc-example__label">Paged results</span>
-                  <nav class="wire-pagination" aria-label="Pagination (demo)">
-                    <a class="wire-pagination__nav" href="#">← Previous</a>
-                    <ul class="wire-pagination__list" role="list">
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">1</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">2</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                      <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                      <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">12</a></li>
-                    </ul>
-                    <a class="wire-pagination__nav" href="#">Next →</a>
-                  </nav>
+                  <span class="doc-example__label">Default</span>
+                  <div class="wire-callout">
+                    <span class="wire-callout__eyebrow">Now enrolling</span>
+                    <h3 class="wire-callout__title">Study on robotic-assisted gait training</h3>
+                    <p class="wire-callout__body">We are recruiting adults 18–65 who have experienced a stroke in the last 12 months.</p>
+                    <div class="wire-callout__actions">
+                      <a class="wire-button wire-button--sm" href="#">See eligibility</a>
+                      <a class="wire-button wire-button--secondary wire-button--sm" href="#">Contact the team</a>
+                    </div>
+                  </div>
                 </div>
               </section>
 
               <section id="anatomy" class="doc-section">
                 <h2 class="wire-h3">Anatomy</h2>
-                <p class="u-text-muted u-mt-sm">A labeled landmark holds optional previous/next controls around an ordered list of page links. The current page and the ellipsis are non-interactive.</p>
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Landmark</th><td><code>.wire-pagination</code></td><td>A <code>&lt;nav&gt;</code> with <code>aria-label="Pagination"</code>.</td></tr>
-                    <tr><th scope="row">Prev / Next</th><td><code>.wire-pagination__nav</code></td><td>Step controls; <code>aria-disabled="true"</code> at the ends.</td></tr>
-                    <tr><th scope="row">List</th><td><code>.wire-pagination__list</code></td><td>The page numbers.</td></tr>
-                    <tr><th scope="row">Page link</th><td><code>.wire-pagination__link</code></td><td>A link to a specific page.</td></tr>
-                    <tr><th scope="row">Current</th><td><code>.wire-pagination__current</code></td><td>The current page as a filled, non-link span with <code>aria-current="page"</code>.</td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>.wire-pagination__ellipsis</code></td><td>A decorative gap for skipped pages.</td></tr>
+                    <tr><th scope="row">Container</th><td><code>.wire-callout</code></td><td>The boxed region (plus a variant modifier).</td></tr>
+                    <tr><th scope="row">Eyebrow</th><td><code>.wire-callout__eyebrow</code></td><td>An uppercase kicker that frames the message.</td></tr>
+                    <tr><th scope="row">Title</th><td><code>.wire-callout__title</code></td><td>The headline — set on a real heading at the level that fits the page.</td></tr>
+                    <tr><th scope="row">Body</th><td><code>.wire-callout__body</code></td><td>Supporting copy.</td></tr>
+                    <tr><th scope="row">Actions</th><td><code>.wire-callout__actions</code></td><td>Up to two buttons.</td></tr>
                   </tbody>
                 </table>
+              </section>
+
+              <section id="variants" class="doc-section">
+                <h2 class="wire-h3">Variants</h2>
+                <p class="u-text-muted u-mt-sm">Four surfaces plus a denser inline form. The surface changes; the structure doesn't.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Subtle</span>
+                  <div class="wire-callout wire-callout--subtle">
+                    <span class="wire-callout__eyebrow">Note</span>
+                    <h3 class="wire-callout__title">Memorial Day hours</h3>
+                    <p class="wire-callout__body">Our Streeterville location will be closed Monday, May 25. Outpatient visits resume Tuesday.</p>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Bordered</span>
+                  <div class="wire-callout wire-callout--bordered">
+                    <span class="wire-callout__eyebrow">For clinicians</span>
+                    <h3 class="wire-callout__title">Referral pathways</h3>
+                    <p class="wire-callout__body">Step-by-step referral templates for inpatient, day rehab, and outpatient services.</p>
+                    <div class="wire-callout__actions">
+                      <a class="wire-button wire-button--secondary wire-button--sm" href="#">View pathways</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Inverse</span>
+                  <div class="wire-callout wire-callout--inverse">
+                    <span class="wire-callout__eyebrow">Speak with a navigator</span>
+                    <h3 class="wire-callout__title">Not sure where to start?</h3>
+                    <p class="wire-callout__body">A care navigator can help you understand your options and the next step.</p>
+                    <div class="wire-callout__actions">
+                      <a class="wire-button wire-button--secondary wire-button--sm" href="#">Get in touch</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Inline (in-content)</span>
+                  <div class="wire-callout wire-callout--inline">
+                    <p class="wire-callout__body"><strong>Heads up:</strong> This program is currently accepting new patients on a four-week wait.</p>
+                  </div>
+                </div>
               </section>
 
               <section id="when" class="doc-section">
                 <h2 class="wire-h3">When to use</h2>
                 <ul>
-                  <li>Use pagination to split a <strong>long, ordered set</strong> into pages users move through — search results, a provider directory, an article archive.</li>
-                  <li>Reach for it when the total count or a specific page matters, or users want to jump to the first or last page.</li>
-                  <li>For an open, continuous feed, a "load more" or infinite scroll fits better — pagination is for bounded, indexable sets.</li>
-                  <li>It's not for steps in a process (use a stepper) or for hierarchy (use a <a href="../breadcrumb/">Breadcrumb</a>).</li>
+                  <li>Use a callout to lift <strong>one</strong> editorial message out of the flow — an enrolling study, a closure, a navigator prompt.</li>
+                  <li>At most one boxed callout per long page; more than one and none of them stands out.</li>
+                  <li>It isn't a system message. For validation, status, or an urgent alert use a Banner; for a person's words use <a href="../quote/">Quote</a>.</li>
+                  <li>The inline variant is a denser, left-bar aside for a short note inside running content.</li>
                 </ul>
-              </section>
-
-              <section id="in-context" class="doc-section">
-                <h2 class="wire-h3">In context</h2>
-                <p class="u-text-muted u-mt-sm">Pagination sits centered below the result set it pages, with previous disabled on the first page.</p>
-                <div class="doc-example">
-                  <span class="doc-example__label">Below a results list, first page</span>
-                  <div class="u-stack u-stack--md">
-                    <ul class="u-stack u-stack--xs" role="list">
-                      <li class="u-text-muted">Dr. Alicia Romero — Stroke rehabilitation</li>
-                      <li class="u-text-muted">Dr. Ben Whitfield — Spinal cord injury</li>
-                      <li class="u-text-muted">Dr. Carla Nguyen — Brain injury</li>
-                    </ul>
-                    <nav class="wire-pagination" aria-label="Pagination (context)">
-                      <a class="wire-pagination__nav" href="#" aria-disabled="true">← Previous</a>
-                      <ul class="wire-pagination__list" role="list">
-                        <li class="wire-pagination__item"><span class="wire-pagination__current" aria-current="page">1</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">2</a></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">3</a></li>
-                        <li class="wire-pagination__item"><span class="wire-pagination__ellipsis" aria-hidden="true">…</span></li>
-                        <li class="wire-pagination__item"><a class="wire-pagination__link" href="#">9</a></li>
-                      </ul>
-                      <a class="wire-pagination__nav" href="#">Next →</a>
-                    </nav>
-                  </div>
-                </div>
               </section>
 
               <section id="do-dont" class="doc-section">
@@ -339,17 +350,17 @@
                   <div class="doc-do-dont__cell doc-do-dont__cell--do">
                     <p class="doc-do-dont__label">Do</p>
                     <ul>
-                      <li>Show the current page as a non-link with <code>aria-current="page"</code>.</li>
-                      <li>Disable previous on the first page and next on the last.</li>
-                      <li>Keep first and last reachable; collapse the middle with an ellipsis.</li>
+                      <li>Keep it to one message and at most two actions.</li>
+                      <li>Lead with an eyebrow that frames what follows.</li>
+                      <li>Reserve the inverse surface for a single high-emphasis prompt.</li>
                     </ul>
                   </div>
                   <div class="doc-do-dont__cell doc-do-dont__cell--dont">
                     <p class="doc-do-dont__label">Don't</p>
                     <ul>
-                      <li>Link the current page to itself.</li>
-                      <li>Remove prev/next when disabled — dim them so position stays stable.</li>
-                      <li>Use pagination for unbounded, continuously loading content.</li>
+                      <li>Stack several boxed callouts in a row.</li>
+                      <li>Use a callout for errors or urgent status — that's a Banner.</li>
+                      <li>Hide body copy here that belongs in the page itself.</li>
                     </ul>
                   </div>
                 </div>
@@ -361,8 +372,8 @@
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#variants">Variants</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
             </nav>
@@ -374,14 +385,19 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="structure" class="doc-section">
-                <h2 class="wire-h3">Structure</h2>
-                <ul>
-                  <li>A <code>&lt;nav&gt;</code> landmark holds optional prev/next controls flanking an unordered list of page links.</li>
-                  <li>Page links and the current page are 40px minimum squares (<code>min-inline-size</code> and <code>min-block-size: 2.5rem</code>) with a pill radius.</li>
-                  <li>The current page is a filled <code>&lt;span&gt;</code>, not a link; the ellipsis is a non-interactive span.</li>
-                  <li>Disabled prev/next carry <code>aria-disabled="true"</code> (40% opacity, <code>pointer-events: none</code>) — visible but inert, so the row doesn't reflow at the ends.</li>
-                </ul>
+              <section id="surfaces" class="doc-section">
+                <h2 class="wire-h3">Surfaces</h2>
+                <p class="u-text-muted u-mt-sm">Each variant re-maps the callout's three custom properties; nothing else changes.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Surface</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Default</th><td><code>--color-bg-muted</code>, no border.</td></tr>
+                    <tr><th scope="row">Subtle</th><td><code>--color-bg-subtle</code>, muted body.</td></tr>
+                    <tr><th scope="row">Bordered</th><td>Transparent fill, <code>--color-border-strong</code> outline.</td></tr>
+                    <tr><th scope="row">Inverse</th><td><code>--color-bg-inverse</code> on <code>--color-text-inverse</code>; focus + secondary button re-mapped for the dark surface.</td></tr>
+                    <tr><th scope="row">Inline</th><td><code>--color-bg-subtle</code> with a <code>--color-accent</code> leading bar; denser, row layout.</td></tr>
+                  </tbody>
+                </table>
               </section>
 
               <section id="tokens" class="doc-section">
@@ -389,38 +405,33 @@
                 <table class="doc-spec-table">
                   <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
                   <tbody>
-                    <tr><th scope="row">Target size</th><td>2.5rem × 2.5rem</td></tr>
-                    <tr><th scope="row">Outer gap / list gap</th><td><code>--space-xs</code> · <code>--space-2xs</code></td></tr>
-                    <tr><th scope="row">Type</th><td><code>--text-sm</code>, <code>--weight-medium</code></td></tr>
-                    <tr><th scope="row">Link hover</th><td><code>--color-bg-muted</code></td></tr>
-                    <tr><th scope="row">Current (fill / text)</th><td><code>--color-accent</code> / <code>--color-text-inverse</code></td></tr>
-                    <tr><th scope="row">Ellipsis</th><td><code>--color-text-subtle</code></td></tr>
-                    <tr><th scope="row">Radius / transition</th><td><code>--radius-pill</code> · <code>--duration-fast</code> <code>--ease-out</code></td></tr>
+                    <tr><th scope="row">Padding</th><td><code>--space-xl</code> (boxed) · <code>--space-md</code> <code>--space-lg</code> (inline)</td></tr>
+                    <tr><th scope="row">Radius</th><td><code>--radius-lg</code> (boxed) · <code>--radius-md</code> (inline)</td></tr>
+                    <tr><th scope="row">Stack gap</th><td><code>--space-sm</code></td></tr>
+                    <tr><th scope="row">Title</th><td><code>--text-xl</code>, <code>--weight-semibold</code>, <code>--leading-snug</code></td></tr>
+                    <tr><th scope="row">Body</th><td><code>--text-md</code> (<code>--text-sm</code> inline)</td></tr>
+                    <tr><th scope="row">Eyebrow</th><td><code>--text-2xs</code>, <code>--tracking-wider</code>, <code>--color-text-muted</code></td></tr>
                   </tbody>
                 </table>
               </section>
 
               <section id="snippet" class="doc-section">
                 <h2 class="wire-h3">Snippet</h2>
-                <pre class="doc-snippet">&lt;nav class="wire-pagination" aria-label="Pagination"&gt;
-  &lt;a class="wire-pagination__nav" href="?page=1" aria-disabled="true"&gt;← Previous&lt;/a&gt;
-  &lt;ul class="wire-pagination__list" role="list"&gt;
-    &lt;li class="wire-pagination__item"&gt;
-      &lt;span class="wire-pagination__current" aria-current="page"&gt;1&lt;/span&gt;
-    &lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=2"&gt;2&lt;/a&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;span class="wire-pagination__ellipsis" aria-hidden="true"&gt;…&lt;/span&gt;&lt;/li&gt;
-    &lt;li class="wire-pagination__item"&gt;&lt;a class="wire-pagination__link" href="?page=9"&gt;9&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;a class="wire-pagination__nav" href="?page=2"&gt;Next →&lt;/a&gt;
-&lt;/nav&gt;</pre>
+                <pre class="doc-snippet">&lt;div class="wire-callout"&gt;
+  &lt;span class="wire-callout__eyebrow"&gt;Now enrolling&lt;/span&gt;
+  &lt;h3 class="wire-callout__title"&gt;Study on robotic-assisted gait training&lt;/h3&gt;
+  &lt;p class="wire-callout__body"&gt;Recruiting adults 18–65 who had a stroke in the last year.&lt;/p&gt;
+  &lt;div class="wire-callout__actions"&gt;
+    &lt;a class="wire-button wire-button--sm" href="/eligibility"&gt;See eligibility&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#structure">Structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#surfaces">Surfaces</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
               </ul>
@@ -433,42 +444,39 @@
           <div class="wire-shell__doc">
             <div>
 
-              <section id="landmark" class="doc-section">
-                <h2 class="wire-h3">Landmark &amp; labeling</h2>
+              <section id="semantics" class="doc-section">
+                <h2 class="wire-h3">Semantics</h2>
                 <ul>
-                  <li>Wrap the control in <code>&lt;nav aria-label="Pagination"&gt;</code> so it's a distinct landmark.</li>
-                  <li>Mark the current page with <code>aria-current="page"</code> on a non-link <code>&lt;span&gt;</code>.</li>
-                  <li>Give prev/next real text ("Previous", "Next") — an arrow glyph alone isn't an accessible name.</li>
+                  <li>A callout is a styled region, not a landmark or an alert. Don't add <code>role="alert"</code> — it's editorial, not a live status message (that's a Banner).</li>
+                  <li>The title is a real heading: choose the level that continues the page outline rather than skipping one.</li>
+                  <li>The eyebrow is decorative emphasis; keep the meaning in the title and body, not in the kicker alone.</li>
                 </ul>
               </section>
 
-              <section id="states" class="doc-section">
-                <h2 class="wire-h3">Disabled &amp; decorative</h2>
+              <section id="contrast" class="doc-section">
+                <h2 class="wire-h3">Contrast on the inverse surface</h2>
                 <ul>
-                  <li>At the ends, set <code>aria-disabled="true"</code> on prev/next rather than removing them — they stay announced and the layout stays put.</li>
-                  <li>The ellipsis is decorative (<code>aria-hidden="true"</code>): it marks skipped pages, not a control.</li>
+                  <li>The inverse variant flips text to <code>--color-text-inverse</code> and re-maps <code>--color-focus</code> so the focus ring stays visible on the dark fill (WCAG 2.4.7).</li>
+                  <li>It also re-maps the secondary button's border and text so the button reads on dark instead of vanishing.</li>
+                  <li>All five surfaces hold AA text contrast in both light and dark themes.</li>
                 </ul>
               </section>
 
-              <section id="keyboard" class="doc-section">
-                <h2 class="wire-h3">Keyboard &amp; target size</h2>
-                <table class="doc-spec-table">
-                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
-                  <tbody>
-                    <tr><th scope="row">Tab</th><td>Moves across prev, page links, and next in order.</td></tr>
-                    <tr><th scope="row">Enter</th><td>Activates the focused page link or step control.</td></tr>
-                  </tbody>
-                </table>
-                <p class="u-text-muted u-mt-md">The current-page span and the ellipsis aren't focusable. Every control clears a 40px target, comfortably past the WCAG 2.5.8 minimum.</p>
+              <section id="targets" class="doc-section">
+                <h2 class="wire-h3">Actions &amp; targets</h2>
+                <ul>
+                  <li>Action buttons are real <code>&lt;a&gt;</code>/<code>&lt;button&gt;</code> elements from the button component, so they carry a 44px target and a visible focus ring.</li>
+                  <li>Keep to two actions; a callout is a prompt, not a toolbar.</li>
+                </ul>
               </section>
 
             </div>
             <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#landmark">Landmark &amp; labeling</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">Disabled &amp; decorative</a></li>
-                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard &amp; target size</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantics">Semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#contrast">Contrast</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#targets">Actions &amp; targets</a></li>
               </ul>
             </nav>
           </div>
@@ -477,13 +485,13 @@
       </div>
 
       <nav class="wire-doc-pager" aria-label="Component pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../breadcrumb/">
-          <span class="wire-doc-pager__direction">Previous in Navigation</span>
-          <span class="wire-doc-pager__title">Breadcrumb</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../">
+          <span class="wire-doc-pager__direction">All components</span>
+          <span class="wire-doc-pager__title">Back to index</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../top-nav/">
-          <span class="wire-doc-pager__direction">Next in Navigation</span>
-          <span class="wire-doc-pager__title">Top nav</span>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../quote/">
+          <span class="wire-doc-pager__direction">Next in Content &amp; display</span>
+          <span class="wire-doc-pager__title">Quote</span>
         </a>
       </nav>
 
