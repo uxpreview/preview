@@ -310,7 +310,7 @@
 /* Top-level standalone link (no children) — Get started, All components, etc. */
 .wire-doc-nav__top-link {
   display: block;
-  padding-block: var(--space-2xs);
+  padding-block: var(--space-xs);
   padding-inline: var(--space-sm);
   font-family: var(--font-sans);
   font-size: var(--text-md);
