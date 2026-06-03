@@ -377,7 +377,8 @@
 
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Select</span></li>
         </ol>
       </nav>
@@ -385,10 +386,318 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Select</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A control for choosing one option from a fixed, predefined list, rendered inside a <a href="../../field/">Field</a>. Preview's Select is a styled <strong>native</strong> <code>&lt;select&gt;</code> by default — the most resilient choice for assistive tech, touch, and older users. It's the right tool for a handful of stable options, not the first reach for short or long lists.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">Since v1.0</li>
+        </ul>
       </header>
+
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Select documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section">
+                <h2 class="wire-h3">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A native select inside a field: a visible label bound to the control, and a non-value first option that prompts a choice without standing in for the label.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Single select</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="demo-reason">Reason for visit</label>
+                    <select id="demo-reason" class="wire-select">
+                      <option value="">Select a reason</option>
+                      <option>Annual check-up</option>
+                      <option>Follow-up visit</option>
+                      <option>New symptom or concern</option>
+                      <option>Prescription refill</option>
+                      <option>Lab or test results</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section id="when" class="doc-section">
+                <h2 class="wire-h3">When to use</h2>
+                <p class="u-text-muted u-mt-sm">Select is the control of <em>third</em> choice for a single pick. Match the control to the number of options, and let input volume — not habit — decide.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Options</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">2–5, mutually exclusive</th><td><a href="../../choice/">Choice</a> (radio) — all options visible, lower cognitive load.</td></tr>
+                    <tr><th scope="row">~6–15, stable</th><td><strong>Select</strong> — constrains input and conserves vertical space.</td></tr>
+                    <tr><th scope="row">16–100, or memorable (states, countries)</th><td><a href="../combobox/">Combobox</a> (type-to-filter).</td></tr>
+                    <tr><th scope="row">100+</th><td>Search with typeahead.</td></tr>
+                    <tr><th scope="row">More than one selection</th><td>Checkboxes or a multi-select listbox — not <code>&lt;select multiple&gt;</code>.</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Public-sector research is openly cautious about selects — some users find them hard to operate — so treat the threshold as a ceiling, not a target. For yes/no or on/off, use a radio or toggle, not a Select. Don't use a Select for site navigation.</p>
+              </section>
+
+              <section id="anatomy" class="doc-section">
+                <h2 class="wire-h3">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">The label, hint, and error come from the <a href="../../field/">Field</a> wrapper; the Select itself is the trigger, the chevron, and the options.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Trigger</th><td><code>.wire-select</code> (native <code>&lt;select&gt;</code>)</td><td>Shows the current value or the prompt; opens the option list.</td></tr>
+                    <tr><th scope="row">Indicator</th><td>built-in chevron</td><td>Signals the control expands. Drawn in <code>--color-text</code>, no image asset.</td></tr>
+                    <tr><th scope="row">Option</th><td><code>&lt;option&gt;</code></td><td>One choice; its text is its accessible name.</td></tr>
+                    <tr><th scope="row">Group</th><td><code>&lt;optgroup label&gt;</code></td><td>Labels a category of related options.</td></tr>
+                    <tr><th scope="row">Label / hint / error</th><td><code>.wire-field__label</code> · <code>.wire-field__hint</code> · <code>.wire-field__error</code></td><td>Provided by the Field, not the control.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="in-context" class="doc-section">
+                <h2 class="wire-h3">In context</h2>
+                <p class="u-text-muted u-mt-sm">Two moderate, known lists — one clinical, one academic. The university example groups options with <code>&lt;optgroup&gt;</code>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Healthcare — appointment booking</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="ctx-appt">Reason for visit</label>
+                    <select id="ctx-appt" class="wire-select" aria-describedby="ctx-appt-hint">
+                      <option value="">Select a reason</option>
+                      <option>Annual check-up</option>
+                      <option>Follow-up visit</option>
+                      <option>New symptom or concern</option>
+                      <option>Prescription refill</option>
+                    </select>
+                    <span class="wire-field__hint" id="ctx-appt-hint">Choose the option that best matches your appointment.</span>
+                  </div>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Higher-ed — program inquiry (grouped)</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="ctx-prog">Program of interest</label>
+                    <select id="ctx-prog" class="wire-select">
+                      <option value="">Select a program</option>
+                      <optgroup label="Undergraduate">
+                        <option>Nursing</option>
+                        <option>Business</option>
+                      </optgroup>
+                      <optgroup label="Graduate">
+                        <option>Public Health</option>
+                        <option>Education</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <section id="do-dont" class="doc-section">
+                <h2 class="wire-h3">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <ul>
+                      <li>Keep a visible label above the field at all times.</li>
+                      <li>Use radio (Choice) for a two-option yes/no answer.</li>
+                      <li>Order options alphabetically, or by a clearer logical grouping.</li>
+                      <li>Let people open, browse, and press Esc to keep their prior value.</li>
+                      <li>Promote to a Combobox once a list runs past ~15 options.</li>
+                    </ul>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <ul>
+                      <li>Delete the label and lean on "Select a state" to name the field.</li>
+                      <li>Put a yes/no or on/off choice in a Select.</li>
+                      <li>List 50 states or 200 countries in raw database order.</li>
+                      <li>Auto-submit the form the instant an option is chosen.</li>
+                      <li>Use <code>&lt;select multiple&gt;</code> for multi-select.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="states" class="doc-section">
+                <h2 class="wire-h3">States</h2>
+                <p class="u-text-muted u-mt-sm">Each state pairs a non-color cue with the change, so it reads in grayscale: a focus ring, a thicker border for errors, reduced contrast when disabled.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Rest · disabled · invalid</span>
+                  <div class="u-stack u-stack--md">
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-rest">Rest</label>
+                      <select id="st-rest" class="wire-select">
+                        <option>Annual check-up</option>
+                        <option>Follow-up visit</option>
+                      </select>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-disabled">Disabled</label>
+                      <select id="st-disabled" class="wire-select" disabled>
+                        <option>Unavailable</option>
+                      </select>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="st-invalid">Invalid</label>
+                      <select id="st-invalid" class="wire-select is-invalid" aria-invalid="true" aria-describedby="st-invalid-err">
+                        <option value="">Select a reason</option>
+                        <option>Annual check-up</option>
+                      </select>
+                      <span class="wire-field__error" id="st-invalid-err">Select a reason for your visit.</span>
+                    </div>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">State</th><th scope="col">Grayscale-safe cue</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Hover</th><td>Border darkens to <code>--color-text</code>.</td></tr>
+                    <tr><th scope="row">Focus-visible</th><td>Visible focus ring (never removed without a replacement).</td></tr>
+                    <tr><th scope="row">Disabled</th><td>Subtle fill, reduced text contrast, not-allowed cursor, out of focus order.</td></tr>
+                    <tr><th scope="row">Invalid</th><td><code>.is-invalid</code> thickens the border; <code>.wire-field__error</code> adds an icon + message — never color alone.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="native-custom" class="doc-section">
+                <h2 class="wire-h3">Native vs. custom</h2>
+                <p class="u-text-muted u-mt-sm">Default to the native control. It submits reliably, invokes the OS picker on mobile, and needs no ARIA — which is why it's the most robust choice for an older, accessibility-sensitive audience.</p>
+                <p class="u-text-muted u-mt-md">Reach for a custom control only when grouping with bespoke styling, rich option content, or token-exact visuals genuinely require it — native options can't be richly styled. A custom Select must implement the ARIA APG <strong>Select-Only Combobox</strong> pattern (a <code>combobox</code> trigger with a <code>listbox</code> popup), the full keyboard model on the Accessibility tab, and grayscale state cues — then pass assistive-tech testing before release. "No ARIA is better than bad ARIA": a half-built custom widget is worse than the native element.</p>
+              </section>
+
+              <section id="tokens" class="doc-section">
+                <h2 class="wire-h3">Tokens</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Token</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Min height (target)</th><td>2.75rem (44px — exceeds the 24px AA floor)</td></tr>
+                    <tr><th scope="row">Padding</th><td><code>--space-xs</code> block · <code>--space-md</code> inline</td></tr>
+                    <tr><th scope="row">Border</th><td><code>--border-thin</code> solid <code>--color-border-strong</code></td></tr>
+                    <tr><th scope="row">Radius</th><td><code>--radius-md</code></td></tr>
+                    <tr><th scope="row">Invalid border</th><td><code>--border-md</code> (thicker)</td></tr>
+                    <tr><th scope="row">Chevron</th><td>drawn in <code>--color-text</code></td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="snippet" class="doc-section">
+                <h2 class="wire-h3">Snippet</h2>
+                <pre class="doc-snippet">&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="reason"&gt;Reason for visit&lt;/label&gt;
+  &lt;select id="reason" class="wire-select"&gt;
+    &lt;option value=""&gt;Select a reason&lt;/option&gt;
+    &lt;option&gt;Annual check-up&lt;/option&gt;
+    &lt;option&gt;Follow-up visit&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;</pre>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#native-custom">Native vs. custom</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="labeling" class="doc-section">
+                <h2 class="wire-h3">Labeling</h2>
+                <ul>
+                  <li>Every Select needs a visible, persistent label, bound with <code>for</code>/<code>id</code> via the Field. A placeholder option is a prompt, not a label — it must not replace one.</li>
+                  <li>Mark required fields with the <code>.wire-field__label-required</code> modifier, never a bare asterisk.</li>
+                  <li>Associate a hint or error with <code>aria-describedby</code> so it's announced with the control.</li>
+                </ul>
+              </section>
+
+              <section id="semantics" class="doc-section">
+                <h2 class="wire-h3">Semantics</h2>
+                <ul>
+                  <li><strong>Native:</strong> a labeled <code>&lt;select&gt;</code> needs no ARIA — the browser supplies role, state, and value. This is the default for good reason.</li>
+                  <li><strong>Custom:</strong> follow the APG Select-Only Combobox — a <code>role="combobox"</code> trigger with <code>aria-expanded</code>, <code>aria-controls</code>, and <code>aria-activedescendant</code>, plus a <code>role="listbox"</code> of <code>role="option"</code> children, the chosen one carrying <code>aria-selected="true"</code>. DOM focus stays on the trigger.</li>
+                  <li>The trigger border, chevron, and focus ring must meet 3:1 non-text contrast — in grayscale they carry all the meaning.</li>
+                </ul>
+              </section>
+
+              <section id="keyboard" class="doc-section">
+                <h2 class="wire-h3">Keyboard</h2>
+                <p class="u-text-muted u-mt-sm">The browser provides this for native selects; a custom control must implement it in full (ARIA APG).</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Down / Up / Enter / Space</th><td>When closed, opens the list.</td></tr>
+                    <tr><th scope="row">Down / Up</th><td>When open, moves through options (stops at the ends).</td></tr>
+                    <tr><th scope="row">Home / End</th><td>Jumps to the first / last option.</td></tr>
+                    <tr><th scope="row">Type a character</th><td>Jumps to the next option starting with it (matching, not filtering).</td></tr>
+                    <tr><th scope="row">Enter / Space</th><td>Commits the focused option and closes.</td></tr>
+                    <tr><th scope="row">Tab</th><td>Commits the value and moves focus onward.</td></tr>
+                    <tr><th scope="row">Esc</th><td>Closes and keeps the prior value.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="target-color" class="doc-section">
+                <h2 class="wire-h3">Targets, color &amp; motion</h2>
+                <ul>
+                  <li><strong>Target size:</strong> the control is at least 44×44px — beyond the AA minimum, sized for older and motor-impaired users.</li>
+                  <li><strong>Use of color:</strong> open, focused, selected, and error states each pair a non-color cue (chevron rotation, focus ring, checkmark/weight, icon + thicker border). Color-only status fails WCAG 1.4.1.</li>
+                  <li><strong>Reduced motion:</strong> any chevron or popup animation honors <code>prefers-reduced-motion</code>.</li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labeling">Labeling</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantics">Semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#target-color">Targets, color &amp; motion</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../textarea/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Textarea</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../combobox/">
+          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Combobox</span>
+        </a>
+      </nav>
 
     </div>
   </section>

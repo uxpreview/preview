@@ -2144,7 +2144,68 @@
       "label": "Select",
       "category": "forms",
       "ref": "components/forms-inputs/select/",
-      "status": "planned"
+      "status": "beta",
+      "desc": "Choose one option from a short, fixed list — a styled native <select> by default.",
+      "class": "wire-select",
+      "variants": [
+        "native (default)",
+        "grouped (optgroup)",
+        "custom (APG select-only combobox)"
+      ],
+      "elements": [
+        "wire-field__label",
+        "wire-select",
+        "optgroup",
+        "option"
+      ],
+      "behaviors": [],
+      "rationale": [
+        {
+          "decision": "Default to a native <select>; custom only when grouping/visual fidelity require it",
+          "citation_ids": [
+            "apg-combobox-select-only",
+            "ibm-carbon-dropdown",
+            "uswds-select"
+          ]
+        },
+        {
+          "decision": "Option-count ladder: radio for 2–5, select for 6–15, combobox for 16–100",
+          "citation_ids": [
+            "va-select",
+            "nng-listbox-dropdown",
+            "govuk-select"
+          ]
+        },
+        {
+          "decision": "Visible, persistent label; a placeholder option is not a label",
+          "citation_ids": [
+            "wcag-4.1.2-name-role-value",
+            "nng-placeholders-harmful"
+          ]
+        },
+        {
+          "decision": "Signal open/focused/selected/error without color (grayscale)",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "wcag-1.4.11-non-text-contrast"
+          ]
+        },
+        {
+          "decision": "44px minimum target for older and motor-impaired users",
+          "citation_ids": [
+            "wcag-2.5.8-target-size-minimum",
+            "wcag-2.5.5-target-size-enhanced",
+            "nng-seniors"
+          ]
+        },
+        {
+          "decision": "Avoid select for long/memorable lists and for multi-select",
+          "citation_ids": [
+            "baymard-dropdown",
+            "govuk-select"
+          ]
+        }
+      ]
     },
     {
       "id": "combobox",
@@ -3508,7 +3569,6 @@
               "type": "page",
               "label": "Select",
               "ref": "components/forms-inputs/select/",
-              "status": "planned",
               "id": "select"
             },
             {
