@@ -252,12 +252,12 @@
         <details class="wire-doc-nav__group">
           <summary class="wire-doc-nav__group-summary">Messaging &amp; feedback</summary>
           <ul class="wire-doc-nav__list" role="list">
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Toast</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Banner</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Empty state</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Stepper</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Tooltip</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/feedback.html">Skeleton</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/toast/">Toast</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/banner/">Banner</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/empty-state/">Empty state</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/stepper/">Stepper</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/tooltip/">Tooltip</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/skeleton/">Skeleton</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../docs/research.html">Help bar</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/messaging-feedback/spinner/">Spinner</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/messaging-feedback/inline-alert/">Inline alert</a></li>
@@ -486,7 +486,7 @@
               <!-- ---------- Overview ---------- -->
               <section id="overview" class="doc-section" aria-labelledby="h-overview">
                 <h2 class="wire-h3" id="h-overview">Overview</h2>
-                <p class="u-text-muted u-mt-sm">A modal stops the page and asks for one thing: a confirmation, a decision, or a small piece of input. Because it traps focus and dims the rest of the screen, it is an interruption — powerful, and worth using sparingly. If the user can keep working around the message, it is not a modal; it is a <a href="../../docs/feedback.html">banner</a> or a <a href="../../docs/feedback.html">toast</a>.</p>
+                <p class="u-text-muted u-mt-sm">A modal stops the page and asks for one thing: a confirmation, a decision, or a small piece of input. Because it traps focus and dims the rest of the screen, it is an interruption — powerful, and worth using sparingly. If the user can keep working around the message, it is not a modal; it is a <a href="../banner/">banner</a> or a <a href="../toast/">toast</a>.</p>
 
                 <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
                 <ul>
@@ -498,7 +498,7 @@
                 <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
                 <ul>
                   <li>For information the user can read and move past — use a banner or callout that doesn't trap them.</li>
-                  <li>For a long form or a multi-step flow — give it its own page or a <a href="../../docs/feedback.html">stepper</a>; a modal that scrolls a lot defeats the focus it promises.</li>
+                  <li>For a long form or a multi-step flow — give it its own page or a <a href="../stepper/">stepper</a>; a modal that scrolls a lot defeats the focus it promises.</li>
                   <li>For content paning in from the side or a navigation surface — that is the <a href="../drawer/">drawer</a>.</li>
                   <li>To nag. Every modal spends the user's attention; if it isn't worth blocking on, don't block.</li>
                 </ul>
@@ -562,7 +562,7 @@
                   <li><strong>Title slot</strong> — <code>.wire-modal__title</code> with an <code>id</code> the root points at via <code>aria-labelledby</code>.</li>
                   <li><strong>Body slot</strong> — any content: a sentence, a form, a short list. It scrolls independently if tall.</li>
                   <li><strong>Footer slot</strong> — the action buttons. End with the primary action; put the safe / cancel action first and give it <code>data-wire-modal-autofocus</code> on destructive dialogs.</li>
-                  <li><strong>Chaining</strong> — a footer button can both close the modal and fire a <a href="../../docs/feedback.html">toast</a> (<code>data-wire-toast-trigger</code>) to confirm what happened, as the demos do.</li>
+                  <li><strong>Chaining</strong> — a footer button can both close the modal and fire a <a href="../toast/">toast</a> (<code>data-wire-toast-trigger</code>) to confirm what happened, as the demos do.</li>
                 </ul>
               </section>
 
@@ -620,9 +620,9 @@
                 <h2 class="wire-h3" id="h-related">Related</h2>
                 <ul>
                   <li><a href="../drawer/">Drawer</a> — the side-anchored companion; same dialog mechanics, different geometry.</li>
-                  <li><a href="../../docs/feedback.html">Toast</a> — to confirm something without blocking.</li>
-                  <li><a href="../../docs/feedback.html">Banner</a> — for a persistent message the user can read past.</li>
-                  <li><a href="../../docs/feedback.html">Stepper</a> — when the task is a sequence, not a single decision.</li>
+                  <li><a href="../toast/">Toast</a> — to confirm something without blocking.</li>
+                  <li><a href="../banner/">Banner</a> — for a persistent message the user can read past.</li>
+                  <li><a href="../stepper/">Stepper</a> — when the task is a sequence, not a single decision.</li>
                   <li><a href="../">All components</a> — the full library.</li>
                 </ul>
               </section>

@@ -335,24 +335,29 @@
 
   /* ---------- Toast — transient status messages, WCAG 4.1.3 ---------- */
   function initToast() {
-    // Lazily-created region so pages without toasts don't pay for the DOM.
-    let region = null;
+    // Two lazily-created regions: a polite one for confirmations and an
+    // assertive one for errors that should interrupt. Pages without toasts
+    // pay for neither. Errors render in the assertive region so screen
+    // readers announce them at once; everything else stays polite.
+    const regions = {};
 
-    function ensureRegion() {
-      if (region) return region;
-      region = document.createElement("div");
-      region.className = "wire-toast-region";
-      region.setAttribute("role", "status");
-      region.setAttribute("aria-live", "polite");
-      region.setAttribute("aria-atomic", "false");
-      document.body.appendChild(region);
-      return region;
+    function ensureRegion(assertive) {
+      const key = assertive ? "assertive" : "polite";
+      if (regions[key]) return regions[key];
+      const r = document.createElement("div");
+      r.className = "wire-toast-region" + (assertive ? " wire-toast-region--assertive" : "");
+      r.setAttribute("role", assertive ? "alert" : "status");
+      r.setAttribute("aria-live", assertive ? "assertive" : "polite");
+      r.setAttribute("aria-atomic", "false");
+      document.body.appendChild(r);
+      regions[key] = r;
+      return r;
     }
 
-    function show({ title = "", body = "", duration = 5000 } = {}) {
-      const r = ensureRegion();
+    function show({ title = "", body = "", duration = 5000, assertive = false } = {}) {
+      const r = ensureRegion(assertive);
       const toast = document.createElement("div");
-      toast.className = "wire-toast";
+      toast.className = "wire-toast" + (assertive ? " wire-toast--assertive" : "");
       toast.innerHTML =
         '<div class="wire-toast__content">' +
         (title ? '<div class="wire-toast__title"></div>' : "") +
@@ -371,20 +376,48 @@
         setTimeout(() => toast.remove(), 300);
       };
 
-      toast.querySelector(".wire-toast__close").addEventListener("click", dismiss);
-      if (duration > 0) setTimeout(dismiss, duration);
+      // Auto-dismiss with hover/focus pause (NN/g): the countdown holds while
+      // the pointer is over the toast or focus is inside it, so a user reading
+      // — or a keyboard user tabbing to the close — is never rushed.
+      let timer = null, remaining = duration, startedAt = 0;
+      const clear = () => { if (timer) { clearTimeout(timer); timer = null; } };
+      const startTimer = () => {
+        if (duration <= 0) return;
+        startedAt = performance.now();
+        timer = setTimeout(dismiss, Math.max(remaining, 400));
+      };
+      const pause = () => {
+        if (!timer) return;
+        clear();
+        remaining -= performance.now() - startedAt;
+      };
+      if (duration > 0) {
+        toast.addEventListener("mouseenter", pause);
+        toast.addEventListener("mouseleave", startTimer);
+        toast.addEventListener("focusin", pause);
+        toast.addEventListener("focusout", startTimer);
+        startTimer();
+      }
+
+      toast.querySelector(".wire-toast__close").addEventListener("click", () => {
+        clear();
+        dismiss();
+      });
     }
 
     // Public API.
     window.wireToast = show;
 
-    // Declarative triggers: any [data-wire-toast-trigger] with data-title / data-body.
+    // Declarative triggers: any [data-wire-toast-trigger] with data-toast-*.
+    // data-toast-assertive (or data-toast-variant="error") routes the message
+    // to the assertive region.
     document.querySelectorAll("[data-wire-toast-trigger]").forEach((btn) => {
       btn.addEventListener("click", () => {
         show({
           title: btn.getAttribute("data-toast-title") || "",
           body: btn.getAttribute("data-toast-body") || "",
           duration: Number(btn.getAttribute("data-toast-duration")) || 5000,
+          assertive: btn.hasAttribute("data-toast-assertive") || btn.getAttribute("data-toast-variant") === "error",
         });
       });
     });
@@ -397,6 +430,25 @@
         const banner = btn.closest(".wire-banner");
         if (banner) banner.remove();
       });
+    });
+  }
+
+  /* ---------- Tooltip — Esc dismisses without moving focus (WCAG 1.4.13) ----------
+     The bubble itself is pure CSS (::after on [data-wire-tooltip]); this adds
+     only the "dismissable" leg of SC 1.4.13: Escape hides the hint while the
+     trigger keeps focus, and the hint returns on the next blur / pointer-leave
+     so it is never lost. No JS is required for the tooltip to appear. */
+  function initTooltip() {
+    document.querySelectorAll("[data-wire-tooltip]").forEach((el) => {
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !el.classList.contains("is-tooltip-dismissed")) {
+          el.classList.add("is-tooltip-dismissed");
+          e.stopPropagation();
+        }
+      });
+      const restore = () => el.classList.remove("is-tooltip-dismissed");
+      el.addEventListener("blur", restore);
+      el.addEventListener("mouseleave", restore);
     });
   }
 
@@ -564,6 +616,7 @@
     initModal();
     initToast();
     initBanner();
+    initTooltip();
     initNavDisclosure();
     initNavSearch();
     initTheme();

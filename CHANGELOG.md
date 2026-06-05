@@ -6,6 +6,41 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Messaging & feedback group migrated + feedback a11y upgrades (2026-06-05)
+
+Migrates the six Messaging & feedback components onto canonical
+3-tab pages and lands targeted accessibility upgrades to each. The
+old aggregated `docs/feedback.html` is retired from the IA (kept on
+disk, still chrome-synced); its inbound cross-links in Modal, Drawer,
+and Tabs now point at the new pages.
+
+**Added**
+- Canonical pages: `components/{toast,banner,empty-state,stepper,
+  tooltip,skeleton}/index.html` (Usage / Specs / Accessibility).
+- Toast assertive variant for errors — `wire-toast--assertive` plus a
+  second `role="alert"` / `aria-live="assertive"` live region, fired
+  with `data-toast-assertive` or `data-toast-variant="error"` (or
+  `assertive: true` on `wireToast`).
+- Toast hover/focus pause — the auto-dismiss countdown holds while the
+  pointer is over the toast or focus is inside it, then resumes from
+  the remaining time (NN/g). `duration: 0` still disables it.
+- Tooltip Esc-to-dismiss — `initTooltip` adds `.is-tooltip-dismissed`
+  on Escape without moving focus, supplying the *dismissable* leg of
+  WCAG 1.4.13 that a CSS-only tooltip cannot meet. The bubble itself
+  stays pure CSS.
+
+**Changed**
+- Toast and Banner close buttons bumped to 44px targets (WCAG 2.5.5
+  enhanced); the toast uses negative margins to keep the glyph compact.
+- Stepper now conveys step state to assistive tech, not color alone:
+  `aria-hidden` markers, a visually-hidden "Completed:" in finished
+  steps, and `aria-current="step"` on the current one.
+- `manifest.json` — the six nav + component `ref`s point at
+  `components/<slug>/`; `components/index.html` cards flip to Beta via
+  `build-ia.mjs`.
+
+---
+
 Restructures the docs IA toward Material Design 3's component-page
 shape (tabbed Overview / Specs / Guidelines / Accessibility, sticky
 left nav, status pills, prev/next pager) without changing the

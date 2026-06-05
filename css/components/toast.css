@@ -85,17 +85,30 @@
 
 .wire-toast__close {
   align-self: start;
-  margin-block-start: calc(-1 * var(--space-2xs));
-  inline-size: 1.5rem;
-  block-size: 1.5rem;
+  /* 44px target (WCAG 2.5.5 enhanced); negative margins pull the larger hit
+     area back into the corner so the glyph stays visually compact. */
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  margin: calc(-1 * var(--space-xs)) calc(-1 * var(--space-sm)) calc(-1 * var(--space-xs)) calc(-1 * var(--space-2xs));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: 0;
+  border-radius: var(--radius-sm);
   color: var(--gray-30);
   cursor: pointer;
   line-height: 1;
   font-size: var(--text-lg);
 }
 .wire-toast__close:hover { color: var(--color-text-inverse); }
+
+/* Assertive variant — errors that interrupt. A heavier inline-start edge
+   reads as "serious" without leaving grayscale. Renders into the assertive
+   live region (js/wire.js). */
+.wire-toast--assertive {
+  border-inline-start: var(--border-md) solid var(--color-text-inverse);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .wire-toast { transition: none; transform: none; }

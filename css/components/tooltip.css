@@ -47,6 +47,14 @@
   opacity: 1;
 }
 
+/* Esc dismisses the hint without moving focus (WCAG 1.4.13 Dismissable).
+   js/wire.js sets .is-tooltip-dismissed; it clears on the next blur / leave
+   so the hint returns. Placed after the show rules to win the specificity
+   tie. No JS = no dismiss, but the hover/focus hint still works. */
+[data-wire-tooltip].is-tooltip-dismissed::after {
+  opacity: 0;
+}
+
 /* Side placement — opt-in via data-wire-tooltip-placement="below" */
 [data-wire-tooltip][data-wire-tooltip-placement="below"]::after {
   inset-block-end: auto;

@@ -71,8 +71,12 @@
 
 .wire-banner__close {
   flex-shrink: 0;
-  inline-size: 1.75rem;
-  block-size: 1.75rem;
+  /* 44px target (WCAG 2.5.5 enhanced) — the strip has room, so no offset. */
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
   border: 0;
   border-radius: var(--radius-sm);

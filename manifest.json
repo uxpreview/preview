@@ -2629,7 +2629,7 @@
       "category": "feedback",
       "class": "wire-stepper",
       "file": "css/components/stepper.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/stepper/",
       "status": "beta",
       "elements": [
         "wire-stepper__item",
@@ -2641,11 +2641,13 @@
         "is-current",
         "is-complete"
       ],
-      "behaviors": [],
+      "behaviors": [
+        "aria-current=\"step\" on the current item; visually-hidden \"Completed:\" text + aria-hidden markers convey complete/upcoming to assistive tech (no reliance on color)"
+      ],
       "slots": [
         "items[marker, label, label-meta]"
       ],
-      "notes": "Multi-step progress indicator. Used in booking/appointment/trial/program flows. Beta until WCAG screen-reader pass.",
+      "notes": "Multi-step progress indicator. State reaches SR via aria-current + u-visually-hidden text. Beta until live SR pass.",
       "label": "Stepper",
       "desc": "A numbered progress indicator for multi-step flows."
     },
@@ -2714,7 +2716,7 @@
       "category": "feedback",
       "class": "wire-toast",
       "file": "css/components/toast.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/toast/",
       "status": "beta",
       "elements": [
         "wire-toast__content",
@@ -2729,17 +2731,22 @@
         "is-open"
       ],
       "behaviors": [
-        "window.wireToast({title, body, duration}) JS API",
-        "declarative: data-wire-toast-trigger + data-toast-title / data-toast-body / data-toast-duration",
-        "WCAG 4.1.3 status region, aria-live=polite (initToast)"
+        "window.wireToast({title, body, duration, assertive}) JS API",
+        "declarative: data-wire-toast-trigger + data-toast-title / data-toast-body / data-toast-duration; data-toast-assertive (or data-toast-variant=\"error\") routes to the assertive region",
+        "auto-dismiss pauses on hover/focus and resumes from remaining time (NN/g); duration 0 disables it",
+        "WCAG 4.1.3 status: polite (role=status) and assertive (role=alert) live regions (initToast)"
       ],
       "slots": [
         "title",
         "body"
       ],
-      "notes": "API surface may refine.",
+      "notes": "Polite by default; errors render assertive. Hover/focus pauses auto-dismiss.",
       "label": "Toast",
-      "desc": "Transient status messages via a polite live region."
+      "desc": "Transient status messages via a polite live region.",
+      "variants": [
+        "(default / polite)",
+        "assertive"
+      ]
     },
     {
       "id": "banner",
@@ -2757,7 +2764,7 @@
       "category": "feedback",
       "class": "wire-banner",
       "file": "css/components/banner.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/banner/",
       "status": "beta",
       "variants": [
         "(default)",
@@ -2800,7 +2807,7 @@
       "category": "feedback",
       "class": "wire-empty",
       "file": "css/components/empty-state.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/empty-state/",
       "status": "beta",
       "variants": [
         "(default)",
@@ -2840,7 +2847,7 @@
       "category": "feedback",
       "class": "wire-skeleton",
       "file": "css/components/skeleton.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/skeleton/",
       "status": "beta",
       "variants": [
         "text",
@@ -2873,14 +2880,14 @@
       "category": "feedback",
       "class": "[data-wire-tooltip]",
       "file": "css/components/tooltip.css",
-      "ref": "docs/feedback.html",
+      "ref": "components/tooltip/",
       "status": "beta",
       "behaviors": [
         "data-wire-tooltip=\"<text>\" (content)",
-        "data-wire-tooltip-placement=\"top|bottom|left|right\"",
-        "PURE CSS — no JS init; pseudo-element renders the bubble"
+        "data-wire-tooltip-placement=\"below|start|end\" (default above)",
+        "CSS pseudo-element renders the bubble; initTooltip adds Esc-to-dismiss (.is-tooltip-dismissed) for the dismissable leg of WCAG 1.4.13"
       ],
-      "notes": "Attribute-driven, not a class. Long content needs a popover (post-v1.4).",
+      "notes": "Attribute-driven, not a class. Bubble is CSS; Esc-dismiss needs js/wire.js. Long content needs a popover (planned).",
       "label": "Tooltip",
       "desc": "A small contextual hint attached to a control."
     },
@@ -5081,37 +5088,37 @@
             {
               "type": "page",
               "label": "Toast",
-              "ref": "docs/feedback.html",
+              "ref": "components/toast/",
               "id": "toast"
             },
             {
               "type": "page",
               "label": "Banner",
-              "ref": "docs/feedback.html",
+              "ref": "components/banner/",
               "id": "banner"
             },
             {
               "type": "page",
               "label": "Empty state",
-              "ref": "docs/feedback.html",
+              "ref": "components/empty-state/",
               "id": "empty-state"
             },
             {
               "type": "page",
               "label": "Stepper",
-              "ref": "docs/feedback.html",
+              "ref": "components/stepper/",
               "id": "stepper"
             },
             {
               "type": "page",
               "label": "Tooltip",
-              "ref": "docs/feedback.html",
+              "ref": "components/tooltip/",
               "id": "tooltip"
             },
             {
               "type": "page",
               "label": "Skeleton",
-              "ref": "docs/feedback.html",
+              "ref": "components/skeleton/",
               "id": "skeleton"
             },
             {
