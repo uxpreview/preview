@@ -260,6 +260,466 @@
       "xl 80em/1280"
     ]
   },
+  "figma": {
+    "_note": "Declarative code->Figma mapping contract. This is a DERIVATION over what exists in source today (tokens.css, css/components/*.css), not the vision in PREVIEW-SYSTEM-BRIEF.md. It states ONCE how existing tokens/components surface in a Figma library so a build is deterministic and idempotent. CSS is unchanged; this block only declares the mapping. Consumed by the figma-generate-library skill in Phase 0 (discovery/scope-lock) so it reads a contract instead of inferring.",
+    "v1_scope": {
+      "rule": "Generate components with status 'stable' first; 'beta' second; never 'planned'.",
+      "counts_today": "stable: 34, beta: 9, planned: 58 (see components[].status)",
+      "decision_needed": "RESOLVED: v1 = stable only (34)."
+    },
+    "collections": [
+      {
+        "name": "Primitives",
+        "modes": [
+          "Value"
+        ],
+        "source": "tokens.css gray ramp",
+        "members": "gray/00 .. gray/100",
+        "scope": [],
+        "note": "Raw values. Hidden from pickers (empty scope). Semantic tokens alias these; nothing else references raw grays."
+      },
+      {
+        "name": "Color",
+        "modes": [
+          "Light",
+          "Dark"
+        ],
+        "source": "tokens.css semantic color",
+        "note": "Aliases Primitives. Light = :root, Dark = [data-theme=\"dark\"] (re-aliases semantics only, ramp untouched). FUTURE: per-client overlays (extension_lanes.styling) are the same re-alias mechanism and should become ADDITIONAL MODES here (e.g. Light/Dark x Client) or sibling brand collections, not new variables."
+      },
+      {
+        "name": "Spacing",
+        "modes": [
+          "Value"
+        ],
+        "source": "tokens.css --space-* (4px base)",
+        "members": "spacing/3xs .. spacing/5xl"
+      },
+      {
+        "name": "Radius",
+        "modes": [
+          "Value"
+        ],
+        "source": "tokens.css --radius-*",
+        "members": "radius/xs .. radius/2xl, radius/pill"
+      },
+      {
+        "name": "Typography",
+        "modes": [
+          "Value"
+        ],
+        "source": "tokens.css type tokens",
+        "members": "font-family/*, font-size/*, font-weight/*, line-height/*, letter-spacing/*",
+        "note": "These FLOAT/STRING variables feed the composite text_styles below. Both exist: variables for binding, named styles for application."
+      },
+      {
+        "name": "Border",
+        "modes": [
+          "Value"
+        ],
+        "source": "tokens.css --border-*",
+        "members": "border-width/thin (1), border-width/md (2), border-width/thick (3)"
+      }
+    ],
+    "name_translation": {
+      "rule": "Strip leading '--'; split into slash segments at the group boundary; t-shirt size or ramp step is the leaf. A semantic base name with siblings gets a '/default' leaf so it can't collide with its own group folder (Figma forbids a variable and a folder sharing a path).",
+      "boundaries": {
+        "color": "color / {bg|text|border|accent|focus|overlay} / {modifier|default}",
+        "spacing": "spacing / {size}",
+        "radius": "radius / {size}",
+        "typography": "{font-family|font-size|font-weight|line-height|letter-spacing} / {leaf}",
+        "primitives": "gray / {step}",
+        "border": "border-width / {weight}"
+      },
+      "examples": {
+        "--gray-50": "gray/50",
+        "--color-bg": "color/bg/default",
+        "--color-bg-subtle": "color/bg/subtle",
+        "--color-bg-inverse": "color/bg/inverse",
+        "--color-text": "color/text/default",
+        "--color-text-muted": "color/text/muted",
+        "--color-border-strong": "color/border/strong",
+        "--color-accent": "color/accent/default",
+        "--color-accent-hover": "color/accent/hover",
+        "--color-focus": "color/focus/default",
+        "--color-overlay-light": "color/overlay/light",
+        "--space-md": "spacing/md",
+        "--radius-md": "radius/md",
+        "--text-lg": "font-size/lg",
+        "--weight-semibold": "font-weight/semibold",
+        "--leading-snug": "line-height/snug",
+        "--tracking-tight": "letter-spacing/tight",
+        "--font-sans": "font-family/sans",
+        "--border-thin": "border-width/thin"
+      }
+    },
+    "code_syntax": {
+      "WEB": "var(<exact css custom property>)  e.g. color/bg/subtle -> var(--color-bg-subtle)",
+      "ANDROID_iOS": "omitted; this is a web-only system",
+      "rule": "Every variable carries WEB code syntax = the literal CSS custom property wrapped in var(). Set on ALL variables; never leave code syntax empty."
+    },
+    "scopes": {
+      "_rule": "Set an explicit scope on every variable. Never ALL_SCOPES. Primitives are hidden ([]).",
+      "gray/*": [],
+      "color/bg/*": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "color/text/*": [
+        "TEXT_FILL"
+      ],
+      "color/border/*": [
+        "STROKE_COLOR"
+      ],
+      "color/accent/*": [
+        "FRAME_FILL",
+        "SHAPE_FILL",
+        "TEXT_FILL"
+      ],
+      "color/focus/*": [
+        "STROKE_COLOR"
+      ],
+      "color/overlay/*": [
+        "FRAME_FILL",
+        "SHAPE_FILL"
+      ],
+      "spacing/*": [
+        "GAP"
+      ],
+      "radius/*": [
+        "CORNER_RADIUS"
+      ],
+      "border-width/*": [
+        "STROKE_FLOAT"
+      ],
+      "font-size/*": [
+        "FONT_SIZE"
+      ],
+      "line-height/*": [
+        "LINE_HEIGHT"
+      ],
+      "letter-spacing/*": [
+        "LETTER_SPACING"
+      ],
+      "font-weight/*": [
+        "FONT_WEIGHT"
+      ],
+      "font-family/*": [
+        "FONT_FAMILY"
+      ]
+    },
+    "text_styles": {
+      "_note": "Composite typographic styles, verified against css/base.css. Each lists its constituent Typography variables. COLOR is applied as a separate bound fill (default_fill), not part of the text style. CASE = Figma text-case. responsive: where base.css bumps size at >=48em, both steps are listed; figma_canonical names which one the Figma style uses (default: desktop/md). RESOLVED: desktop (>=48em) sizes are canonical (size_md where present); mobile base (size_base) is kept as a per-style note, NOT a separate style.",
+      "figma_canonical": "md",
+      "styles": [
+        {
+          "name": "Heading/H1",
+          "selector": ".wire-h1, h1",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "tight",
+          "letter-spacing": "tight",
+          "size_base": "font-size/4xl",
+          "size_md": "font-size/5xl"
+        },
+        {
+          "name": "Heading/H2",
+          "selector": ".wire-h2, h2",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "tight",
+          "letter-spacing": "tight",
+          "size_base": "font-size/3xl",
+          "size_md": "font-size/4xl"
+        },
+        {
+          "name": "Heading/H3",
+          "selector": ".wire-h3, h3",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "snug",
+          "size_base": "font-size/2xl",
+          "size_md": "font-size/3xl"
+        },
+        {
+          "name": "Heading/H4",
+          "selector": ".wire-h4, h4",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "snug",
+          "size": "font-size/xl"
+        },
+        {
+          "name": "Heading/H5",
+          "selector": ".wire-h5, h5",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "snug",
+          "size": "font-size/lg"
+        },
+        {
+          "name": "Heading/H6",
+          "selector": ".wire-h6, h6",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "snug",
+          "letter-spacing": "wide",
+          "case": "UPPER",
+          "size": "font-size/md"
+        },
+        {
+          "name": "Display",
+          "selector": ".wire-display",
+          "font-family": "sans",
+          "font-weight": "bold",
+          "line-height": "tight",
+          "letter-spacing": "tight",
+          "size_base": "font-size/5xl",
+          "size_md": "font-size/6xl"
+        },
+        {
+          "name": "Display/Serif",
+          "selector": ".wire-display--serif",
+          "font-family": "serif",
+          "font-weight": "regular",
+          "italic": true,
+          "note": "Modifier on Display; same sizes."
+        },
+        {
+          "name": "Lead",
+          "selector": ".wire-lead",
+          "font-family": "sans",
+          "font-weight": "regular",
+          "line-height": "normal",
+          "default_fill": "color/text/muted",
+          "size_base": "font-size/lg",
+          "size_md": "font-size/xl"
+        },
+        {
+          "name": "Eyebrow",
+          "selector": ".wire-eyebrow",
+          "font-family": "sans",
+          "font-weight": "semibold",
+          "line-height": "snug",
+          "letter-spacing": "wider",
+          "case": "UPPER",
+          "default_fill": "color/text/muted",
+          "size": "font-size/2xs"
+        },
+        {
+          "name": "Caption",
+          "selector": ".wire-caption",
+          "font-family": "sans",
+          "font-weight": "regular",
+          "line-height": "snug",
+          "default_fill": "color/text/muted",
+          "size": "font-size/sm"
+        },
+        {
+          "name": "Body",
+          "selector": "body, p",
+          "font-family": "sans",
+          "font-weight": "regular",
+          "line-height": "normal",
+          "default_fill": "color/text/default",
+          "size": "font-size/md"
+        }
+      ]
+    },
+    "effect_styles": {
+      "_note": "Single-layer neutral drop shadows from tokens.css --shadow-*. color is gray-95 (#0f0f0f) at the listed opacity; offset {x,y}, blur, spread=0.",
+      "styles": [
+        {
+          "name": "Shadow/XS",
+          "token": "--shadow-xs",
+          "offset": [
+            0,
+            1
+          ],
+          "blur": 2,
+          "spread": 0,
+          "color": "#0f0f0f",
+          "opacity": 0.04
+        },
+        {
+          "name": "Shadow/SM",
+          "token": "--shadow-sm",
+          "offset": [
+            0,
+            2
+          ],
+          "blur": 6,
+          "spread": 0,
+          "color": "#0f0f0f",
+          "opacity": 0.06
+        },
+        {
+          "name": "Shadow/MD",
+          "token": "--shadow-md",
+          "offset": [
+            0,
+            6
+          ],
+          "blur": 16,
+          "spread": 0,
+          "color": "#0f0f0f",
+          "opacity": 0.08
+        },
+        {
+          "name": "Shadow/LG",
+          "token": "--shadow-lg",
+          "offset": [
+            0,
+            16
+          ],
+          "blur": 40,
+          "spread": 0,
+          "color": "#0f0f0f",
+          "opacity": 0.1
+        }
+      ]
+    },
+    "not_in_figma": {
+      "_note": "Token groups with no native Figma variable binding. Keep doc-only; do not fabricate variables for them.",
+      "motion": "--duration-*, --ease-* : prototype timing reference only.",
+      "z_index": "--z-* : no Figma concept.",
+      "containers": "--container-* : layout max-widths; optional Size variables (WIDTH_HEIGHT) if you bind them, else doc-only. DECISION NEEDED.",
+      "shell": "--shell-* : doc-site chrome geometry, not a library token.",
+      "focus_ring": "--focus-ring-width/-offset : express via the focus effect/stroke on components, not standalone variables."
+    },
+    "component_prop_mapping": {
+      "_note": "How the per-component axes already in components[] become Figma component properties. The manifest separates axes cleanly; this declares the prop TYPE for each, plus normalization rules for the messy cases. Apply uniformly; per-component overrides can live in a component's own figma_props key if added later.",
+      "rules": {
+        "class": "Component name base AND the Code Connect snippet root (e.g. wire-button).",
+        "variants": "VARIANT property (enum), usually named 'Style'. Strip prose defaults ((default = X)/(default)); the named value becomes the property default. Pull size-like values (sm/lg/compact) OUT into the Size axis. If the array conflates concepts (type + emphasis + layout), SPLIT into multiple variant properties.",
+        "sizes": "VARIANT property named 'Size'.",
+        "modifiers": "BOOLEAN property, one per modifier (e.g. Full, Icon only).",
+        "states": "VARIANT property named 'State' (or Figma interactive states). Collapse any duplicate variant+state encoding of the same thing (e.g. a 'selected' variant AND an 'is-selected' state) into ONE property.",
+        "slots": "Text slots -> TEXT property. Icon/media slots -> INSTANCE_SWAP property. Structural/repeating slots (head/rows, items[]) -> nested child layers, not props.",
+        "elements": "wire-x__y -> named child LAYERS inside the component, not properties.",
+        "companions": "Separate sibling components (e.g. wire-button-group, wire-tag-list), not props of this one.",
+        "behaviors": "Not Figma props. Capture as prototype interactions / usage docs only."
+      },
+      "variant_explosion_cap": "If Style x Size x State (the variant-property axes) exceeds ~30 combinations, do NOT build the full matrix. Move an axis to a boolean, split into a sub-component, or generate base + key combinations only and log what was skipped. Booleans/instance-swaps do not multiply the variant set.",
+      "examples": {
+        "button": {
+          "Style": {
+            "type": "VARIANT",
+            "values": [
+              "primary",
+              "secondary",
+              "ghost"
+            ],
+            "default": "primary"
+          },
+          "Size": {
+            "type": "VARIANT",
+            "values": [
+              "sm",
+              "md",
+              "lg"
+            ],
+            "default": "md"
+          },
+          "State": {
+            "type": "VARIANT",
+            "values": [
+              "default",
+              "disabled",
+              "loading"
+            ],
+            "default": "default"
+          },
+          "Full": {
+            "type": "BOOLEAN",
+            "default": false
+          },
+          "Icon only": {
+            "type": "BOOLEAN",
+            "default": false
+          },
+          "Label": {
+            "type": "TEXT",
+            "slot": "label"
+          },
+          "Icon": {
+            "type": "INSTANCE_SWAP",
+            "slot": "icon",
+            "child": "wire-button__icon",
+            "optional": true
+          },
+          "_matrix": "Style(3) x Size(3) x State(3) = 27, under cap. Full/Icon only are booleans (no multiply).",
+          "_code_connect": "<button class=\"wire-button[ wire-button--{Style!=primary}][ wire-button--{Size!=md}][ wire-button--full][ wire-button--icon-only][ is-disabled| is-loading]\">"
+        },
+        "card": {
+          "_problem": "components[].variants for card conflated THREE concepts in one array: type, emphasis, layout. Resolved by splitting axes and demoting layout/linked to booleans.",
+          "Type": {
+            "type": "VARIANT",
+            "values": [
+              "content",
+              "person",
+              "resource",
+              "stat"
+            ],
+            "default": "content"
+          },
+          "Emphasis": {
+            "type": "VARIANT",
+            "values": [
+              "default",
+              "bordered",
+              "subtle",
+              "inverse"
+            ],
+            "default": "default"
+          },
+          "Horizontal": {
+            "type": "BOOLEAN",
+            "default": false
+          },
+          "Linked": {
+            "type": "BOOLEAN",
+            "default": false
+          },
+          "_matrix": "Type(4) x Emphasis(4) = 16 (<=30). See card figma_props in components[].",
+          "_slots": "title/desc/eyebrow/meta/footer -> TEXT; media -> INSTANCE_SWAP; person/stat/resource fields are Type-conditional TEXT slots."
+        },
+        "tag": {
+          "_problem": "variants:[(default), sm, selected] + states:[is-selected] double-encodes size and selection.",
+          "Size": {
+            "type": "VARIANT",
+            "values": [
+              "default",
+              "sm"
+            ],
+            "default": "default",
+            "_from": "pulled 'sm' out of variants"
+          },
+          "Selected": {
+            "type": "BOOLEAN",
+            "default": false,
+            "_from": "collapsed 'selected' variant + 'is-selected' state into one"
+          },
+          "Label": {
+            "type": "TEXT",
+            "slot": "label"
+          },
+          "Removable": {
+            "type": "BOOLEAN",
+            "child": "wire-tag__remove",
+            "default": false
+          }
+        }
+      }
+    },
+    "resolved_decisions": {
+      "v1_scope": "stable only (34).",
+      "responsive_type": "desktop (>=48em) canonical; mobile base kept as text_styles[].size_base note, not separate styles.",
+      "multi_axis_matrix": "demote layout/linked-style axes to booleans to stay <=30; keep primary semantic axes (Type, Emphasis, Style, Size, State) as variant properties. See components[].figma_props.",
+      "containers_border_widths": "border-widths bound (Border collection); containers doc-only (not_in_figma).",
+      "normalize_now": "DONE - components[].figma_props added to all 34 stable components, non-destructively (original variants/sizes/modifiers/states/slots retained for reference)."
+    }
+  },
   "foundations": [
     {
       "id": "reset",
@@ -450,7 +910,10 @@
         "body"
       ],
       "behaviors": [],
-      "notes": "Lives in base.css, not a components/ partial. Lead is muted so it doesn't compete with the heading."
+      "notes": "Lives in base.css, not a components/ partial. Lead is muted so it doesn't compete with the heading.",
+      "figma_props": {
+        "_maps_to": "figma.text_styles (composite text styles), not a variant component. 'display'/'display--serif' are the Display style and its serif modifier."
+      }
     },
     {
       "id": "button",
@@ -529,7 +992,55 @@
       "a11y": "Min 44px target, visible focus ring, loading state announces busy. Primary is the unmodified base class. Icon-leading/trailing is DOM order of wire-button__icon, not a class.",
       "notes": "Canonical M3 doc template is components/buttons/index.html (tabbed Overview/Specs/Guidelines/Accessibility with hash deep-linking).",
       "label": "Button",
-      "desc": "A pill-shaped action with three emphasis levels and three sizes."
+      "desc": "A pill-shaped action with three emphasis levels and three sizes.",
+      "figma_props": {
+        "Style": {
+          "type": "VARIANT",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost"
+          ],
+          "default": "primary"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "State": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "disabled",
+            "loading"
+          ],
+          "default": "default"
+        },
+        "Full": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Icon only": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Icon": {
+          "type": "INSTANCE_SWAP",
+          "slot": "icon",
+          "child": "wire-button__icon",
+          "optional": true
+        },
+        "_matrix": "Style(3) x Size(3) x State(3) = 27 (<=30). Full/Icon only are booleans (no multiply)."
+      }
     },
     {
       "id": "badge",
@@ -578,7 +1089,34 @@
       "composable": "Leaf; composes into cards, tables, and list items, and (as --count via wire-badge-anchor) onto a focusable host such as an icon button.",
       "notes": "Non-interactive. Count overlay (wire-badge--count + wire-badge-anchor): the host carries the accessible name and the visual count is aria-hidden. Prior manifest's 'live' variant does not exist.",
       "label": "Badge",
-      "desc": "A compact status indicator, with variants, a dot, and a count overlay."
+      "desc": "A compact status indicator, with variants, a dot, and a count overlay.",
+      "figma_props": {
+        "_normalized_from": "variants conflated emphasis with a 'count' type and an implicit dot.",
+        "Style": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "subtle",
+            "outline",
+            "inverse"
+          ],
+          "default": "default"
+        },
+        "Count": {
+          "type": "BOOLEAN",
+          "default": false,
+          "note": "numeric count pill"
+        },
+        "Dot": {
+          "type": "BOOLEAN",
+          "default": false,
+          "child": "wire-badge__dot"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        }
+      }
     },
     {
       "id": "tag",
@@ -642,7 +1180,31 @@
       ],
       "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list.",
       "label": "Tag",
-      "desc": "An interactive filter / removable chip and a read-only metadata label, in two sizes."
+      "desc": "An interactive filter / removable chip and a read-only metadata label, in two sizes.",
+      "figma_props": {
+        "_normalized_from": "pulled 'sm' out of variants into Size; collapsed 'selected' variant + 'is-selected' state into one Selected boolean.",
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "sm"
+          ],
+          "default": "default"
+        },
+        "Selected": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Removable": {
+          "type": "BOOLEAN",
+          "default": false,
+          "child": "wire-tag__remove"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        }
+      }
     },
     {
       "id": "divider",
@@ -682,7 +1244,35 @@
       ],
       "notes": "Horizontal (an <hr>, semantic separator) and vertical (decorative inline rule). Labeled divider is a separate class wire-divider-labeled, not a --labeled modifier.",
       "label": "Divider",
-      "desc": "A horizontal or vertical rule for separating content, with weight and style variants."
+      "desc": "A horizontal or vertical rule for separating content, with weight and style variants.",
+      "figma_props": {
+        "_normalized_from": "variants conflated orientation (vertical), line-style (dashed) and emphasis (strong, thick).",
+        "Orientation": {
+          "type": "VARIANT",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        },
+        "Style": {
+          "type": "VARIANT",
+          "values": [
+            "solid",
+            "dashed"
+          ],
+          "default": "solid"
+        },
+        "Emphasis": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "strong",
+            "thick"
+          ],
+          "default": "default"
+        }
+      }
     },
     {
       "id": "field",
@@ -745,7 +1335,39 @@
       "a11y": "Label always present; error text tied via aria-describedby; is-invalid + aria-invalid on the control.",
       "notes": "wire-field is the labeled wrapper around wire-input/wire-textarea/wire-select. Prior manifest treated input/select/textarea as standalone and invented helper/field slots.",
       "label": "Field",
-      "desc": "The label + input + hint + error wrapper, with text input, textarea, and select. Every form control composes through this."
+      "desc": "The label + input + hint + error wrapper, with text input, textarea, and select. Every form control composes through this.",
+      "figma_props": {
+        "Invalid": {
+          "type": "BOOLEAN",
+          "default": false,
+          "from": "states is-invalid"
+        },
+        "Required": {
+          "type": "BOOLEAN",
+          "default": false,
+          "child": "wire-field__label-required"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Hint": {
+          "type": "TEXT",
+          "slot": "hint",
+          "optional": true
+        },
+        "Error": {
+          "type": "TEXT",
+          "slot": "error",
+          "optional": true,
+          "note": "shown when Invalid"
+        },
+        "Control": {
+          "type": "INSTANCE_SWAP",
+          "slot": "field",
+          "note": "the input/select/textarea"
+        }
+      }
     },
     {
       "id": "search",
@@ -773,7 +1395,17 @@
         "icon"
       ],
       "label": "Search",
-      "desc": "A text input tuned for finding things — leading magnifier and the search input type."
+      "desc": "A text input tuned for finding things — leading magnifier and the search input type.",
+      "figma_props": {
+        "Control": {
+          "type": "INSTANCE_SWAP",
+          "slot": "field"
+        },
+        "Icon": {
+          "type": "INSTANCE_SWAP",
+          "slot": "icon"
+        }
+      }
     },
     {
       "id": "choice",
@@ -799,7 +1431,25 @@
       ],
       "notes": "Three distinct classes, not one wire-choice with modifiers. Label-wrapped pattern.",
       "label": "Choice",
-      "desc": "Checkbox, radio, and toggle — pick any number, exactly one, or an instant on/off."
+      "desc": "Checkbox, radio, and toggle — pick any number, exactly one, or an instant on/off.",
+      "figma_props": {
+        "Type": {
+          "type": "VARIANT",
+          "values": [
+            "checkbox",
+            "radio",
+            "toggle"
+          ],
+          "default": "checkbox"
+        },
+        "Checked": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Label": {
+          "type": "TEXT"
+        }
+      }
     },
     {
       "id": "form-layout",
@@ -827,7 +1477,10 @@
       "behaviors": [],
       "notes": "Form scaffolding: wire-form, wire-form__row (multi-column rows), wire-fieldset + wire-fieldset__legend for grouped choices.",
       "label": "Form layout",
-      "desc": "The scaffolding that assembles fields — form, rows, and fieldset groups."
+      "desc": "The scaffolding that assembles fields — form, rows, and fieldset groups.",
+      "figma_props": {
+        "_note": "Layout container (auto-layout grid for fields), not a variant component."
+      }
     },
     {
       "id": "breadcrumb",
@@ -848,7 +1501,10 @@
         "items"
       ],
       "label": "Breadcrumb",
-      "desc": "A trail showing the user's position in a hierarchical structure."
+      "desc": "A trail showing the user's position in a hierarchical structure.",
+      "figma_props": {
+        "_note": "items[] -> repeated link child layers, not a prop."
+      }
     },
     {
       "id": "pagination",
@@ -873,7 +1529,20 @@
         "next"
       ],
       "label": "Pagination",
-      "desc": "Numbered page navigation for long, ordered result sets."
+      "desc": "Numbered page navigation for long, ordered result sets.",
+      "figma_props": {
+        "Prev": {
+          "type": "INSTANCE_SWAP",
+          "slot": "prev",
+          "optional": true
+        },
+        "Next": {
+          "type": "INSTANCE_SWAP",
+          "slot": "next",
+          "optional": true
+        },
+        "_note": "pages[] -> repeated page-number child layers."
+      }
     },
     {
       "id": "topnav",
@@ -904,7 +1573,22 @@
       ],
       "notes": "The page-shell common scaffold opens with wire-topnav on every page.",
       "label": "Top nav",
-      "desc": "The sticky masthead — brand, primary menu, and an optional mega menu."
+      "desc": "The sticky masthead — brand, primary menu, and an optional mega menu.",
+      "figma_props": {
+        "Brand": {
+          "type": "INSTANCE_SWAP",
+          "slot": "brand"
+        },
+        "Menu": {
+          "type": "INSTANCE_SWAP",
+          "slot": "menu"
+        },
+        "Utility": {
+          "type": "INSTANCE_SWAP",
+          "slot": "utility",
+          "optional": true
+        }
+      }
     },
     {
       "id": "megamenu",
@@ -947,7 +1631,15 @@
       ],
       "notes": "Trigger remains <a href> for no-JS fallback.",
       "label": "Mega menu",
-      "desc": "A full-width panel under the masthead for broad, grouped navigation."
+      "desc": "A full-width panel under the masthead for broad, grouped navigation.",
+      "figma_props": {
+        "Open": {
+          "type": "BOOLEAN",
+          "default": false,
+          "from": "states is-open"
+        },
+        "_note": "Nav organism; panel contents are nested layers."
+      }
     },
     {
       "id": "sidenav",
@@ -1027,7 +1719,15 @@
       ],
       "notes": "Non-sticky below 48em.",
       "label": "In-page nav",
-      "desc": "A scroll-spy table of contents that tracks the section in view."
+      "desc": "A scroll-spy table of contents that tracks the section in view.",
+      "figma_props": {
+        "_note": "'on this page' TOC. is-current is a per-item state -> model as a Current boolean on the item child, not a top-level prop.",
+        "Current (item)": {
+          "type": "BOOLEAN",
+          "default": false,
+          "from": "states is-current"
+        }
+      }
     },
     {
       "id": "drawer",
@@ -1067,7 +1767,23 @@
       ],
       "notes": "Mobile navigation drawer. Pairs with wire-topnav__burger.",
       "label": "Drawer",
-      "desc": "An off-canvas panel with focus trap, used on mobile and as a side sheet."
+      "desc": "An off-canvas panel with focus trap, used on mobile and as a side sheet.",
+      "figma_props": {
+        "_normalized_from": "variant 'start' is a side, not a style.",
+        "Side": {
+          "type": "VARIANT",
+          "values": [
+            "end",
+            "start"
+          ],
+          "default": "end"
+        },
+        "Open": {
+          "type": "BOOLEAN",
+          "default": false,
+          "from": "states is-open"
+        }
+      }
     },
     {
       "id": "card",
@@ -1141,7 +1857,68 @@
       ],
       "notes": "Content is the unmodified base (no wire-card--content). Modifiers compose: e.g. wire-card wire-card--person wire-card--bordered.",
       "label": "Card",
-      "desc": "A self-contained surface for an article, person, resource, or stat."
+      "desc": "A self-contained surface for an article, person, resource, or stat.",
+      "figma_props": {
+        "_normalized_from": "variants conflated type (person/resource/stat), emphasis (bordered/subtle/inverse) and layout (horizontal); 'linked' demoted to boolean.",
+        "Type": {
+          "type": "VARIANT",
+          "values": [
+            "content",
+            "person",
+            "resource",
+            "stat"
+          ],
+          "default": "content"
+        },
+        "Emphasis": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "bordered",
+            "subtle",
+            "inverse"
+          ],
+          "default": "default"
+        },
+        "Horizontal": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Linked": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Eyebrow": {
+          "type": "TEXT",
+          "slot": "eyebrow",
+          "optional": true
+        },
+        "Title": {
+          "type": "TEXT",
+          "slot": "title"
+        },
+        "Desc": {
+          "type": "TEXT",
+          "slot": "desc",
+          "optional": true
+        },
+        "Meta": {
+          "type": "TEXT",
+          "slot": "meta",
+          "optional": true
+        },
+        "Footer": {
+          "type": "TEXT",
+          "slot": "footer",
+          "optional": true
+        },
+        "Media": {
+          "type": "INSTANCE_SWAP",
+          "slot": "media",
+          "optional": true
+        },
+        "_matrix": "Type(4) x Emphasis(4) = 16 (<=30). Horizontal/Linked are booleans. Type-conditional text slots (person role/credentials, stat value/label/trend, resource resource-type) appear by Type."
+      }
     },
     {
       "id": "hero",
@@ -1195,7 +1972,39 @@
       ],
       "notes": "Pick by intent: editorial = story/emotion; split = service/CTA pair; centered = single focus; stat = credibility/proof. inverse is a separate modifier (prior manifest's 'stat-led-inverse' = wire-hero--stat wire-hero--inverse). The page h1 lives once, inside the hero.",
       "label": "Hero",
-      "desc": "The opening block at the top of a page, in five variants."
+      "desc": "The opening block at the top of a page, in five variants.",
+      "figma_props": {
+        "_normalized_from": "modifier 'inverse' -> boolean.",
+        "Layout": {
+          "type": "VARIANT",
+          "values": [
+            "editorial",
+            "split",
+            "centered",
+            "stat"
+          ],
+          "default": "editorial"
+        },
+        "Inverse": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Eyebrow": {
+          "type": "TEXT",
+          "optional": true
+        },
+        "Title": {
+          "type": "TEXT"
+        },
+        "Lead": {
+          "type": "TEXT",
+          "optional": true
+        },
+        "Media": {
+          "type": "INSTANCE_SWAP",
+          "optional": true
+        }
+      }
     },
     {
       "id": "feature-grid",
@@ -1230,7 +2039,13 @@
         "items[icon, title, desc, link]"
       ],
       "label": "Feature grid",
-      "desc": "A row of equally-weighted features or capabilities."
+      "desc": "A row of equally-weighted features or capabilities.",
+      "figma_props": {
+        "Bordered": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "two-column",
@@ -1262,7 +2077,23 @@
       ],
       "notes": "Class is wire-twocol (prior manifest's wire-two-col was wrong). top/bottom control vertical alignment; reverse swaps column order.",
       "label": "Two-column",
-      "desc": "A balanced two-column layout for headline + supporting content."
+      "desc": "A balanced two-column layout for headline + supporting content.",
+      "figma_props": {
+        "_normalized_from": "variants conflated order (reverse) with vertical alignment (top, bottom).",
+        "Reverse": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Align": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "top",
+            "bottom"
+          ],
+          "default": "default"
+        }
+      }
     },
     {
       "id": "accordion",
@@ -1295,7 +2126,14 @@
       ],
       "a11y": "Native disclosure pattern; keyboard operable for free.",
       "label": "Accordion",
-      "desc": "Disclosure groups using native <details> for FAQs and progressive content."
+      "desc": "Disclosure groups using native <details> for FAQs and progressive content.",
+      "figma_props": {
+        "_note": "items[question, answer] -> repeated item child layers; per-item Open boolean (native <details>).",
+        "Open (item)": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "tabs",
@@ -1345,7 +2183,22 @@
       ],
       "notes": "wire-tabs--sticky is defined in doc-shell.css. The components/buttons M3 template uses data-wire-tabs-hash for #overview/#specs/#guidelines/#accessibility.",
       "label": "Tabs",
-      "desc": "The ARIA tabs pattern with hash deep-linking and a pill variant."
+      "desc": "The ARIA tabs pattern with hash deep-linking and a pill variant.",
+      "figma_props": {
+        "_normalized_from": "variants conflated style (pill) with behavior (sticky). is-active is a tab/panel runtime state -> child layer state, not a top-level prop.",
+        "Style": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "pill"
+          ],
+          "default": "default"
+        },
+        "Sticky": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "callout",
@@ -1386,7 +2239,24 @@
       ],
       "notes": "Prior manifest's enrolling/navigator/alert-inline were content uses, not real variants. Real variants are subtle/inverse/bordered/inline.",
       "label": "Callout",
-      "desc": "A boxed editorial aside in five surfaces, for a single lifted message."
+      "desc": "A boxed editorial aside in five surfaces, for a single lifted message.",
+      "figma_props": {
+        "_normalized_from": "variants conflated emphasis (subtle/inverse/bordered) with layout (inline).",
+        "Emphasis": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "subtle",
+            "inverse",
+            "bordered"
+          ],
+          "default": "default"
+        },
+        "Inline": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "quote",
@@ -1425,7 +2295,22 @@
       ],
       "notes": "Pull-quote. Class is wire-quote (prior manifest's wire-pullquote was wrong).",
       "label": "Quote",
-      "desc": "A pull quote with attribution — default, large display, and inline."
+      "desc": "A pull quote with attribution — default, large display, and inline.",
+      "figma_props": {
+        "_normalized_from": "variants conflated size (large) with layout (inline).",
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "large"
+          ],
+          "default": "default"
+        },
+        "Inline": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "timeline",
@@ -1454,7 +2339,10 @@
         "items[date, title, body]"
       ],
       "label": "Timeline",
-      "desc": "A vertical sequence of dated milestones."
+      "desc": "A vertical sequence of dated milestones.",
+      "figma_props": {
+        "_note": "items[date, title, body] -> repeated item child layers."
+      }
     },
     {
       "id": "media",
@@ -1492,7 +2380,31 @@
       "a11y": "aria-hidden placeholder by default (decorative).",
       "notes": "Aspect-ratio placeholders. Variants are explicit ratios, not the prior 'ratio-placeholder' guess.",
       "label": "Media",
-      "desc": "Aspect-ratio image and video placeholders for wireframing."
+      "desc": "Aspect-ratio image and video placeholders for wireframing.",
+      "figma_props": {
+        "_normalized_from": "variants conflated aspect ratio with a 'video' type and a 'rounded' shape.",
+        "Ratio": {
+          "type": "VARIANT",
+          "values": [
+            "16-9",
+            "4-3",
+            "square",
+            "wide",
+            "portrait",
+            "portrait-tall"
+          ],
+          "default": "16-9"
+        },
+        "Video": {
+          "type": "BOOLEAN",
+          "default": false,
+          "note": "play overlay"
+        },
+        "Rounded": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "gallery",
@@ -1509,7 +2421,17 @@
       "behaviors": [],
       "notes": "Mosaic variant collapses to a single column on mobile.",
       "label": "Gallery",
-      "desc": "A responsive grid of media in grid or mosaic layouts."
+      "desc": "A responsive grid of media in grid or mosaic layouts.",
+      "figma_props": {
+        "Layout": {
+          "type": "VARIANT",
+          "values": [
+            "default",
+            "mosaic"
+          ],
+          "default": "default"
+        }
+      }
     },
     {
       "id": "linked-list",
@@ -1539,7 +2461,10 @@
       ],
       "notes": "Standalone class (prior manifest's wire-list--linked modifier pattern was wrong).",
       "label": "Linked list",
-      "desc": "Rows of titled links with optional supporting text."
+      "desc": "Rows of titled links with optional supporting text.",
+      "figma_props": {
+        "_note": "items[label, meta] -> repeated item child layers."
+      }
     },
     {
       "id": "deflist",
@@ -1558,7 +2483,10 @@
         "items[term, definition]"
       ],
       "label": "Definition list",
-      "desc": "Term-and-definition pairs for metadata and glossaries."
+      "desc": "Term-and-definition pairs for metadata and glossaries.",
+      "figma_props": {
+        "_note": "items[term, definition] -> repeated row child layers."
+      }
     },
     {
       "id": "article-list",
@@ -1582,7 +2510,10 @@
         "items[category, date, title, excerpt]"
       ],
       "label": "Article list",
-      "desc": "A list of articles with title, meta, and excerpt."
+      "desc": "A list of articles with title, meta, and excerpt.",
+      "figma_props": {
+        "_note": "items[category, date, title, excerpt] -> repeated item child layers."
+      }
     },
     {
       "id": "citation-list",
@@ -1657,7 +2588,31 @@
       ],
       "notes": "Comparison modifier is wire-table--comparison (prior manifest's --compare was wrong). wire-table__num applies tabular numerals.",
       "label": "Table",
-      "desc": "A data table and a comparison matrix, with a required scroll wrapper."
+      "desc": "A data table and a comparison matrix, with a required scroll wrapper.",
+      "figma_props": {
+        "_normalized_from": "variants conflated type (comparison) with density (compact) and style (striped); is-featured -> boolean.",
+        "Type": {
+          "type": "VARIANT",
+          "values": [
+            "data",
+            "comparison"
+          ],
+          "default": "data"
+        },
+        "Compact": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Striped": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Featured": {
+          "type": "BOOLEAN",
+          "default": false,
+          "from": "states is-featured (highlighted column/row)"
+        }
+      }
     },
     {
       "id": "stepper",
@@ -1967,7 +2922,23 @@
       ],
       "notes": "Four variants: standard (default), compact, expanded (closing-CTA), inverse. Always inside <footer>, outside <main>.",
       "label": "Footer",
-      "desc": "Four variants: compact, standard, expanded, inverse."
+      "desc": "Four variants: compact, standard, expanded, inverse.",
+      "figma_props": {
+        "_normalized_from": "variants conflated size (compact/expanded) with emphasis (inverse).",
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "standard",
+            "compact",
+            "expanded"
+          ],
+          "default": "standard"
+        },
+        "Inverse": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "help-bar",
@@ -2005,7 +2976,13 @@
       ],
       "notes": "Persistent 'talk to someone' affordance (NIA Senior-Friendly). Class is wire-help-bar.",
       "label": "Help bar",
-      "desc": "A persistent contact bar for time-sensitive support paths."
+      "desc": "A persistent contact bar for time-sensitive support paths.",
+      "figma_props": {
+        "Fixed": {
+          "type": "BOOLEAN",
+          "default": false
+        }
+      }
     },
     {
       "id": "phone-link",
@@ -2033,7 +3010,13 @@
       ],
       "notes": "Topnav-ready, tabular numerals, tel: href. Class is wire-phone-link; lives in help-bar.css.",
       "label": "Phone link",
-      "desc": "A tap-to-call number formatted for clarity and accessibility."
+      "desc": "A tap-to-call number formatted for clarity and accessibility.",
+      "figma_props": {
+        "Number": {
+          "type": "TEXT",
+          "slot": "number"
+        }
+      }
     },
     {
       "id": "text-size-control",
@@ -2081,7 +3064,14 @@
       ],
       "notes": "Prior manifest's options ['A','A','A+'] were wrong. Behavior exposes four scales sm/md/lg/xl; CSS button modifiers are sm/md/lg.",
       "label": "Text size",
-      "desc": "A user-controlled text scale with persistence and SR announcement."
+      "desc": "A user-controlled text scale with persistence and SR announcement.",
+      "figma_props": {
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "_note": "buttons[] -> repeated control child layers."
+      }
     },
     {
       "id": "icon-button",
