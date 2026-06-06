@@ -40,6 +40,13 @@
   .wire-tabs__panel { display: block !important; }
   .wire-tabs__panel + .wire-tabs__panel { margin-block-start: var(--space-lg); }
 
+  /* Force-expand native <details> elements (accordion uses them).
+     The UA stylesheet hides non-summary children when [open] is absent;
+     override so printed pages don't lose collapsed content. */
+  details > *:not(summary) { display: block !important; }
+  details > summary { list-style: none; cursor: default; }
+  details > summary::-webkit-details-marker { display: none; }
+
   /* Expose link URLs after the link text. */
   main a[href^="http"]::after,
   main a[href^="mailto:"]::after,

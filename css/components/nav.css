@@ -5,16 +5,43 @@
 
 /* ---------- Top nav ---------- */
 .wire-topnav {
+  /* Sticky everywhere — top-quality mobile UX keeps the primary nav and
+     the drawer trigger reachable while scrolling. Background stays opaque
+     so content scrolling beneath remains legible. The border-block-end
+     serves as the visual separator. */
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
   border-block-end: var(--border-thin) solid var(--color-border);
   background-color: var(--color-bg);
+  /* iPhone notch / status bar — respect the safe area when sticky. */
+  padding-block-start: env(safe-area-inset-top, 0);
 }
 
 .wire-topnav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
-  min-block-size: 4.5rem;
+  gap: var(--space-md);
+  /* Tighter chrome on mobile so a sticky bar doesn't eat the viewport;
+     scales up at tablet+. */
+  min-block-size: 3.5rem;
+}
+
+@media (min-width: 48em) {
+  .wire-topnav__inner {
+    gap: var(--space-lg);
+    min-block-size: 4.5rem;
+  }
+}
+
+/* Allow brand text to shrink/truncate gracefully on narrow widths so a
+   long brand ("Riverside Medical Center · Portal") never forces overflow. */
+.wire-topnav__brand { min-inline-size: 0; }
+.wire-topnav__brand > span:not(.wire-topnav__brand-mark) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wire-topnav__brand {
@@ -40,6 +67,29 @@
   color: var(--color-text-inverse);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
+  flex-shrink: 0;
+}
+
+/* Logo modifier — when the mark is an inline SVG instead of a letter.
+   Drops the accent background and inherits text color so the SVG can
+   use currentColor. Used by the Preview Design System brand; demo
+   brands (Riverside R, Northgate N) keep the letter-square form. */
+.wire-topnav__brand-mark--logo {
+  background-color: transparent;
+  color: var(--color-text);
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  padding: 0;
+}
+.wire-topnav__brand-mark--logo svg {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+}
+/* Inverse contexts (dark footers) — flip currentColor to white. */
+.wire-footer--inverse .wire-topnav__brand-mark--logo,
+.u-bg-inverse .wire-topnav__brand-mark--logo {
+  color: var(--color-text-inverse);
 }
 
 .wire-topnav__menu {
@@ -234,11 +284,62 @@
   border-inline-start-color: var(--color-accent);
 }
 
+/* Parent-level link — used at the top of a section tree where the
+   link represents the current section as a whole. Slightly bolder
+   weight and a separator below set it apart from siblings. */
+.wire-sidenav__link--parent {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-md);
+  padding-block-end: var(--space-sm);
+  margin-block-end: var(--space-xs);
+  border-block-end: var(--border-thin) solid var(--color-border);
+  border-radius: 0;
+}
+
+/* Nested children list — sits under a sibling link to show the
+   subsections of the current page. Indented one step, smaller text. */
+.wire-sidenav__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding: 0;
+  margin-block-start: var(--space-2xs);
+  margin-inline-start: var(--space-md);
+  list-style: none;
+  border-inline-start: var(--border-thin) solid var(--color-border);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  border-inline-start: 0;
+  color: var(--color-text-muted);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link:hover {
+  color: var(--color-text);
+}
+
+.wire-sidenav__sublist .wire-sidenav__link.is-current {
+  background-color: transparent;
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
 /* ---------- In-page nav (table of contents / anchors) ---------- */
 .wire-inpagenav {
-  position: sticky;
-  inset-block-start: var(--space-lg);
   font-size: var(--text-sm);
+}
+
+/* Sticky only on tablet+ — on phones a sticky 8-link TOC eats too much
+   viewport height. Below 48em the nav scrolls with the page. */
+@media (min-width: 48em) {
+  .wire-inpagenav {
+    position: sticky;
+    inset-block-start: var(--space-lg);
+  }
 }
 
 .wire-inpagenav__title {
@@ -294,15 +395,33 @@
   background-color: var(--color-bg);
   border-inline-start: var(--border-thin) solid var(--color-border);
   box-shadow: var(--shadow-lg);
-  padding: var(--space-xl);
+  /* Respect iPhone notch + home indicator so the close button isn't
+     hidden under the status bar and the last items aren't under the
+     gesture strip. */
+  padding-block-start: calc(var(--space-xl) + env(safe-area-inset-top, 0px));
+  padding-block-end: calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
+  padding-inline: var(--space-xl);
   z-index: var(--z-modal);
   transform: translateX(100%);
   transition: transform var(--duration-base) var(--ease-out);
   overflow-y: auto;
+  /* Don't let scrolling inside the drawer chain to the page underneath. */
+  overscroll-behavior: contain;
 }
 
 .wire-drawer.is-open {
   transform: translateX(0);
+}
+
+/* Start-anchored: slides in from the inline-start (left in LTR) instead of the
+   end. Same mechanics, mirrored geometry — the direction the shell's own rail
+   already uses. */
+.wire-drawer--start {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  border-inline-start: 0;
+  border-inline-end: var(--border-thin) solid var(--color-border);
+  transform: translateX(-100%);
 }
 
 .wire-drawer__close {

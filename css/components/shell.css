@@ -1,0 +1,239 @@
+/* ============================================================
+   App shell — Carbon-style doc-site chrome.
+
+   A slim fixed header, a persistent left rail, and an optional
+   in-page TOC column. EVERYTHING here is scoped under `body.wire-shell`
+   so the shared wire-topnav / wire-megamenu used by the 21 client demo
+   pages is never touched. Only the design-system chrome pages carry the
+   `wire-shell` body class (added by scripts/sync-nav.mjs).
+
+   Geometry resolves from three tokens — --shell-header-h,
+   --shell-sidenav-w, --shell-toc-w — so every offset stays in lockstep.
+
+   Anatomy (one rail element doing both jobs):
+     <body class="wire-shell">
+       <a class="wire-skip-link" href="#main">…</a>
+       <header class="wire-topnav wire-topnav--shell">…</header>
+       <nav id="site-nav" class="wire-railnav" aria-label="Sections">
+         <nav class="wire-doc-nav">…tree…</nav>
+       </nav>
+       <div class="wire-drawer-backdrop"></div>
+       <main id="main">…</main>
+     </body>
+
+   >=64em: rail is a persistent left column, main is offset right.
+   <64em : rail is an off-canvas slide-over toggled by the header burger
+           (reuses the drawer JS + backdrop; modal semantics applied by
+           js/wire.js only while open).
+   ============================================================ */
+
+/* ---------- Slim fixed header ---------- */
+body.wire-shell .wire-topnav--shell {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-sticky);
+}
+
+/* Full-bleed bar (no centered container) at the slim shell height. */
+body.wire-shell .wire-topnav--shell .wire-topnav__inner {
+  max-inline-size: none;
+  margin-inline: 0;
+  padding-inline: var(--space-lg);
+  min-block-size: var(--shell-header-h);
+}
+
+/* Lead cluster: the hamburger sits to the LEFT of the brand (Carbon-style).
+   On desktop the burger is display:none, so this collapses to the brand. */
+body.wire-shell .wire-topnav__lead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-inline-size: 0;
+}
+
+/* A larger, crisper burger than the default thin glyph. The icon-only base
+   is a 44px target; the shell bumps it to 48px with a 24px line icon. Nudged
+   toward the edge so the icon optically aligns with the content gutter. */
+body.wire-shell .wire-topnav--shell .wire-topnav__burger {
+  inline-size: 3rem;
+  block-size: 3rem;
+  color: var(--color-text);
+  margin-inline-start: calc(-1 * var(--space-xs));
+}
+body.wire-shell .wire-topnav--shell .wire-topnav__burger svg {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  display: block;
+}
+
+@media (min-width: 48em) {
+  /* Override the base topnav's taller desktop bar — the shell stays slim. */
+  body.wire-shell .wire-topnav--shell .wire-topnav__inner {
+    min-block-size: var(--shell-header-h);
+  }
+}
+
+/* A quiet "view source" affordance sitting in the utility cluster. */
+body.wire-shell .wire-topnav__source {
+  display: none;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-inline: var(--space-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+body.wire-shell .wire-topnav__source:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+@media (min-width: 64em) {
+  body.wire-shell .wire-topnav__source { display: inline-flex; }
+}
+
+/* ---------- Persistent left rail ---------- */
+body.wire-shell .wire-railnav {
+  position: fixed;
+  inset-block-start: var(--shell-header-h);
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  inline-size: var(--shell-sidenav-w);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background-color: var(--color-bg);
+  border-inline-end: var(--border-thin) solid var(--color-border);
+  padding-block: var(--space-md);
+  padding-inline: var(--space-sm);
+  z-index: var(--z-base);
+
+  /* Column so the nav can grow and the theme toggle pins to the bottom. */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav fills the rail height so the theme control's margin-auto reaches the
+   foot even when the link list is short. */
+body.wire-shell .wire-railnav > .wire-doc-nav {
+  flex: 1 0 auto;
+}
+
+/* Close control lives in the rail but only matters in the mobile
+   slide-over; hidden while the rail is persistent. */
+body.wire-shell .wire-railnav__close { display: none; }
+
+/* ---------- Main column ---------- */
+body.wire-shell > main {
+  margin-block-start: var(--shell-header-h);
+  min-block-size: calc(100vh - var(--shell-header-h));
+}
+
+@media (min-width: 64em) {
+  body.wire-shell > main {
+    margin-inline-start: var(--shell-sidenav-w);
+  }
+}
+
+/* ---------- Doc layout: content + "on this page" ----------
+   Opt-in wrapper for detail/doc pages that carry a TOC. Single column
+   until there's room for the rail without crowding content. */
+body.wire-shell .wire-shell__doc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 80em) {
+  body.wire-shell .wire-shell__doc {
+    grid-template-columns: minmax(0, 1fr) var(--shell-toc-w);
+    gap: var(--space-2xl);
+  }
+}
+
+/* Comfortable reading measure for doc body text. The content column grows with
+   the viewport, so without this long-form prose runs the full width (~70ch+,
+   right up to the TOC gutter) and reads as a dense block. Cap text to the
+   system's prose utility (65ch); figures — examples, tables, grids — and the
+   TOC keep the full column. */
+body.wire-shell .wire-shell__doc > :is(div, article) :is(p, li) {
+  max-inline-size: 65ch;
+}
+
+/* Breathing room below the doc-header divider, ONLY where the grid follows the
+   masthead directly (the no-tabs doc pages). Pushes both the content and the
+   "On this page" TOC clear of the divider, aligned. Component pages put the
+   grid inside tab panels, so the `+` adjacency leaves them untouched. The
+   doc-section first-of-type top padding is zeroed here so it doesn't double up
+   on top of this. */
+body.wire-shell .wire-doc-header + .wire-shell__doc {
+  padding-block-start: var(--space-2xl);
+}
+body.wire-shell .wire-doc-header + .wire-shell__doc .doc-section:first-of-type {
+  padding-block-start: 0;
+}
+
+/* In-page TOC sticks below the fixed header on shell pages (the base
+   wire-inpagenav offset is header-agnostic). Applies across the whole
+   sticky range — both the wire-shell__doc layout and pages that place a
+   TOC with u-sidebar — so it always clears the header. */
+@media (min-width: 48em) {
+  body.wire-shell .wire-inpagenav {
+    position: sticky;
+    inset-block-start: calc(var(--shell-header-h) + var(--space-lg));
+    align-self: start;
+  }
+}
+
+/* On a tabbed component page the per-tab TOC sits below BOTH the fixed header
+   and the sticky tab strip (~3.5rem tall). Clear both so the TOC title isn't
+   tucked under the tabs. Higher specificity than the rule above, so it wins. */
+@media (min-width: 48em) {
+  body.wire-shell .wire-tabs--sticky .wire-inpagenav {
+    inset-block-start: calc(var(--shell-header-h) + 3.75rem);
+  }
+}
+
+/* Anchor jumps on a tabbed shell page must clear the header + sticky tab strip,
+   so a TOC click lands the heading below the tabs rather than behind them.
+   Degrades gracefully (to the global scroll-padding) where :has() is unsupported. */
+html:has(.wire-tabs--sticky) {
+  scroll-padding-block-start: calc(var(--shell-header-h) + 4rem);
+}
+
+/* Below xl the right rail is gone, so surface the in-page TOC at the TOP of the
+   content (Carbon-style on mobile), static rather than sticky, with a rule under
+   it to set it off from the body copy. */
+@media (max-width: 79.99em) {
+  body.wire-shell .wire-shell__doc > .wire-inpagenav {
+    order: -1;
+    position: static;
+    margin-block-end: var(--space-xl);
+    padding-block-end: var(--space-md);
+    border-block-end: var(--border-thin) solid var(--color-border);
+  }
+}
+
+/* ---------- Mobile: rail becomes an off-canvas slide-over ---------- */
+@media (max-width: 63.99em) {
+  body.wire-shell .wire-railnav {
+    inset-block-start: 0;
+    inset-block-end: 0;
+    inline-size: min(20rem, 86vw);
+    padding-block-start: calc(var(--space-lg) + env(safe-area-inset-top, 0px));
+    padding-block-end: calc(var(--space-lg) + env(safe-area-inset-bottom, 0px));
+    padding-inline: var(--space-lg);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-100%);
+    transition: transform var(--duration-base) var(--ease-out);
+    z-index: var(--z-modal);
+  }
+  body.wire-shell .wire-railnav.is-open {
+    transform: translateX(0);
+  }
+  body.wire-shell .wire-railnav__close {
+    display: inline-flex;
+    margin-block-end: var(--space-md);
+  }
+}

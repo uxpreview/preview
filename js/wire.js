@@ -1,5 +1,5 @@
 /* ============================================================
-   Wireframe Design System — behavior.
+   Preview Design System — behavior.
    One script. Auto-initializes anything with a data-wire-* attribute.
    No dependencies. Drop in <body> with `defer`.
    ============================================================ */
@@ -7,14 +7,21 @@
 (function () {
   "use strict";
 
-  /* ---------- Tabs (ARIA pattern) ---------- */
+  /* ---------- Tabs (ARIA pattern) ----------
+     Reads: data-wire-tabs (presence) — required to init
+            data-wire-tabs-hash (presence) — sync active tab with URL hash
+     If hash sync is on, the active tab is reflected in window.location.hash
+     via history.replaceState (no scroll jump, no history pollution), and
+     browser back/forward (hashchange) re-activates the matching tab.
+  */
   function initTabs(root) {
     const tablist = root.querySelector('[role="tablist"]');
     if (!tablist) return;
     const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
     const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
+    const useHash = root.hasAttribute("data-wire-tabs-hash");
 
-    function activate(idx, focus) {
+    function activate(idx, focus, updateHash) {
       tabs.forEach((tab, i) => {
         const selected = i === idx;
         tab.setAttribute("aria-selected", selected);
@@ -25,27 +32,49 @@
         }
       });
       if (focus && tabs[idx]) tabs[idx].focus();
+      if (useHash && updateHash && tabs[idx]) {
+        const panelId = tabs[idx].getAttribute("aria-controls");
+        if (panelId) {
+          history.replaceState(null, "", "#" + panelId);
+        }
+      }
     }
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activate(i));
+      tab.addEventListener("click", () => activate(i, false, true));
       tab.addEventListener("keydown", (e) => {
         let next = -1;
         if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
         if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
         if (e.key === "Home") next = 0;
         if (e.key === "End") next = tabs.length - 1;
-        if (next >= 0) { e.preventDefault(); activate(next, true); }
+        if (next >= 0) { e.preventDefault(); activate(next, true, true); }
       });
     });
 
-    const initialIdx = Math.max(0, tabs.findIndex(t => t.getAttribute("aria-selected") === "true"));
-    activate(initialIdx);
+    // Initial activation: hash > aria-selected > first tab
+    let initialIdx = -1;
+    if (useHash && window.location.hash) {
+      const hashId = window.location.hash.slice(1);
+      initialIdx = tabs.findIndex(t => t.getAttribute("aria-controls") === hashId);
+    }
+    if (initialIdx < 0) {
+      initialIdx = Math.max(0, tabs.findIndex(t => t.getAttribute("aria-selected") === "true"));
+    }
+    activate(initialIdx, false, false);
+
+    if (useHash) {
+      window.addEventListener("hashchange", () => {
+        const hashId = window.location.hash.slice(1);
+        const idx = tabs.findIndex(t => t.getAttribute("aria-controls") === hashId);
+        if (idx >= 0) activate(idx, false, false);
+      });
+    }
   }
 
   /* ---------- Accordion (single-open option) ---------- */
   function initAccordion(root) {
-    if (root.dataset.pAccordion !== "single") return;
+    if (root.dataset.wireAccordion !== "single") return;
     const items = root.querySelectorAll("details");
     items.forEach((d) => {
       d.addEventListener("toggle", () => {
@@ -87,7 +116,13 @@
     });
   }
 
-  /* ---------- Mobile drawer (with focus trap — WCAG 2.1.2) ---------- */
+  /* ---------- Mobile drawer / off-canvas rail (focus trap — WCAG 2.1.2) ----------
+     The same element can be a persistent <nav> at desktop and an off-canvas
+     slide-over at mobile (the shell rail). So modal semantics — role=dialog,
+     aria-modal, focus trap, scroll lock — are applied ONLY while open, and
+     stripped on close, leaving a plain navigation landmark the rest of the
+     time. The trigger that opens it is hidden by CSS above the breakpoint,
+     so a persistent rail never enters dialog mode. */
   const FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
   function initDrawer() {
@@ -100,14 +135,15 @@
         ? drawer.nextElementSibling
         : null;
 
-      drawer.setAttribute("role", drawer.getAttribute("role") || "dialog");
-      drawer.setAttribute("aria-modal", "true");
+      const hadRole = drawer.hasAttribute("role");
 
       function open() {
         drawer.classList.add("is-open");
         if (backdrop) backdrop.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
         document.body.style.overflow = "hidden";
+        drawer.setAttribute("role", "dialog");
+        drawer.setAttribute("aria-modal", "true");
         const first = drawer.querySelector(FOCUSABLE);
         if (first) first.focus();
       }
@@ -117,6 +153,8 @@
         if (backdrop) backdrop.classList.remove("is-open");
         toggle.setAttribute("aria-expanded", "false");
         document.body.style.overflow = "";
+        drawer.removeAttribute("aria-modal");
+        if (!hadRole) drawer.removeAttribute("role");
         toggle.focus();
       }
 
@@ -181,27 +219,390 @@
 
     const STORAGE_KEY = "wire-text-scale";
     const SCALES = { sm: 0.9, md: 1, lg: 1.15, xl: 1.3 };
+    const LABELS = { sm: "small", md: "medium", lg: "large", xl: "extra-large" };
+
+    // Polite live region so assistive tech announces scale changes.
+    const announcer = document.createElement("span");
+    announcer.className = "u-visually-hidden";
+    announcer.setAttribute("role", "status");
+    announcer.setAttribute("aria-live", "polite");
+    document.body.appendChild(announcer);
+
+    let initialized = false;
 
     function apply(value) {
       const scale = SCALES[value] || 1;
       document.documentElement.style.setProperty("--wire-text-scale", String(scale));
       widgets.forEach((w) => {
         w.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
-          btn.setAttribute("aria-pressed", btn.dataset.pTextSizeValue === value ? "true" : "false");
+          btn.setAttribute("aria-pressed", btn.dataset.wireTextSizeValue === value ? "true" : "false");
         });
       });
+      if (initialized) {
+        announcer.textContent = "Text size: " + (LABELS[value] || "default");
+      }
       try { localStorage.setItem(STORAGE_KEY, value); } catch (_) {}
     }
 
     widgets.forEach((widget) => {
       widget.querySelectorAll("[data-wire-text-size-value]").forEach((btn) => {
-        btn.addEventListener("click", () => apply(btn.dataset.pTextSizeValue));
+        btn.addEventListener("click", () => apply(btn.dataset.wireTextSizeValue));
       });
     });
 
     let saved = "md";
     try { saved = localStorage.getItem(STORAGE_KEY) || "md"; } catch (_) {}
     apply(saved);
+    initialized = true;
+  }
+
+  /* ---------- Modal — centered dialog overlay ---------- */
+  function initModal() {
+    const toggles = document.querySelectorAll("[data-wire-modal-open]");
+    toggles.forEach((toggle) => {
+      const targetId = toggle.getAttribute("data-wire-modal-open");
+      const modal = document.getElementById(targetId);
+      if (!modal) return;
+
+      const backdrop = modal.querySelector(".wire-modal__backdrop");
+      const panel = modal.querySelector(".wire-modal__panel");
+      if (panel) {
+        modal.setAttribute("role", modal.getAttribute("role") || "dialog");
+        modal.setAttribute("aria-modal", "true");
+      }
+
+      // Give the dialog an accessible description by pointing aria-describedby
+      // at the body (APG). Authors can override by setting it themselves.
+      const bodyEl = modal.querySelector(".wire-modal__body");
+      if (bodyEl && !modal.getAttribute("aria-describedby")) {
+        if (!bodyEl.id) bodyEl.id = targetId + "-body";
+        modal.setAttribute("aria-describedby", bodyEl.id);
+      }
+
+      // Static: a backdrop click does NOT dismiss (decisions that need an
+      // explicit choice). Esc and the close/cancel controls still close it, so
+      // the dialog is never a keyboard trap (WCAG 2.1.2).
+      const isStatic = modal.hasAttribute("data-wire-modal-static");
+
+      let previouslyFocused = null;
+
+      function open() {
+        previouslyFocused = document.activeElement;
+        modal.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+        // Initial focus: an explicit [data-wire-modal-autofocus] target (e.g.
+        // the safe action on a destructive confirm), else the first focusable.
+        const target = modal.querySelector("[data-wire-modal-autofocus]") || modal.querySelector(FOCUSABLE);
+        if (target) target.focus();
+      }
+
+      function close() {
+        modal.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        if (previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
+      }
+
+      function trap(e) {
+        if (e.key !== "Tab" || !modal.classList.contains("is-open")) return;
+        const items = Array.from(modal.querySelectorAll(FOCUSABLE)).filter((el) => !el.disabled && el.offsetParent !== null);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+
+      toggle.setAttribute("aria-controls", targetId);
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.addEventListener("click", open);
+
+      modal.querySelectorAll("[data-wire-modal-close]").forEach((btn) => btn.addEventListener("click", close));
+      if (backdrop && !isStatic) backdrop.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+        trap(e);
+      });
+    });
+  }
+
+  /* ---------- Toast — transient status messages, WCAG 4.1.3 ---------- */
+  function initToast() {
+    // Two lazily-created regions: a polite one for confirmations and an
+    // assertive one for errors that should interrupt. Pages without toasts
+    // pay for neither. Errors render in the assertive region so screen
+    // readers announce them at once; everything else stays polite.
+    const regions = {};
+
+    function ensureRegion(assertive) {
+      const key = assertive ? "assertive" : "polite";
+      if (regions[key]) return regions[key];
+      const r = document.createElement("div");
+      r.className = "wire-toast-region" + (assertive ? " wire-toast-region--assertive" : "");
+      r.setAttribute("role", assertive ? "alert" : "status");
+      r.setAttribute("aria-live", assertive ? "assertive" : "polite");
+      r.setAttribute("aria-atomic", "false");
+      document.body.appendChild(r);
+      regions[key] = r;
+      return r;
+    }
+
+    function show({ title = "", body = "", duration = 5000, assertive = false } = {}) {
+      const r = ensureRegion(assertive);
+      const toast = document.createElement("div");
+      toast.className = "wire-toast" + (assertive ? " wire-toast--assertive" : "");
+      toast.innerHTML =
+        '<div class="wire-toast__content">' +
+        (title ? '<div class="wire-toast__title"></div>' : "") +
+        (body ? '<div class="wire-toast__body"></div>' : "") +
+        "</div>" +
+        '<button type="button" class="wire-toast__close" aria-label="Dismiss notification">×</button>';
+      if (title) toast.querySelector(".wire-toast__title").textContent = title;
+      if (body) toast.querySelector(".wire-toast__body").textContent = body;
+
+      r.appendChild(toast);
+      // Force reflow so the transition runs.
+      requestAnimationFrame(() => toast.classList.add("is-open"));
+
+      const dismiss = () => {
+        toast.classList.remove("is-open");
+        setTimeout(() => toast.remove(), 300);
+      };
+
+      // Auto-dismiss with hover/focus pause (NN/g): the countdown holds while
+      // the pointer is over the toast or focus is inside it, so a user reading
+      // — or a keyboard user tabbing to the close — is never rushed.
+      let timer = null, remaining = duration, startedAt = 0;
+      const clear = () => { if (timer) { clearTimeout(timer); timer = null; } };
+      const startTimer = () => {
+        if (duration <= 0) return;
+        startedAt = performance.now();
+        timer = setTimeout(dismiss, Math.max(remaining, 400));
+      };
+      const pause = () => {
+        if (!timer) return;
+        clear();
+        remaining -= performance.now() - startedAt;
+      };
+      if (duration > 0) {
+        toast.addEventListener("mouseenter", pause);
+        toast.addEventListener("mouseleave", startTimer);
+        toast.addEventListener("focusin", pause);
+        toast.addEventListener("focusout", startTimer);
+        startTimer();
+      }
+
+      toast.querySelector(".wire-toast__close").addEventListener("click", () => {
+        clear();
+        dismiss();
+      });
+    }
+
+    // Public API.
+    window.wireToast = show;
+
+    // Declarative triggers: any [data-wire-toast-trigger] with data-toast-*.
+    // data-toast-assertive (or data-toast-variant="error") routes the message
+    // to the assertive region.
+    document.querySelectorAll("[data-wire-toast-trigger]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        show({
+          title: btn.getAttribute("data-toast-title") || "",
+          body: btn.getAttribute("data-toast-body") || "",
+          duration: Number(btn.getAttribute("data-toast-duration")) || 5000,
+          assertive: btn.hasAttribute("data-toast-assertive") || btn.getAttribute("data-toast-variant") === "error",
+        });
+      });
+    });
+  }
+
+  /* ---------- Banner dismiss — simple close button on [data-wire-banner] ---------- */
+  function initBanner() {
+    document.querySelectorAll(".wire-banner__close").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const banner = btn.closest(".wire-banner");
+        if (banner) banner.remove();
+      });
+    });
+  }
+
+  /* ---------- Tooltip — Esc dismisses without moving focus (WCAG 1.4.13) ----------
+     The bubble itself is pure CSS (::after on [data-wire-tooltip]); this adds
+     only the "dismissable" leg of SC 1.4.13: Escape hides the hint while the
+     trigger keeps focus, and the hint returns on the next blur / pointer-leave
+     so it is never lost. No JS is required for the tooltip to appear. */
+  function initTooltip() {
+    document.querySelectorAll("[data-wire-tooltip]").forEach((el) => {
+      el.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !el.classList.contains("is-tooltip-dismissed")) {
+          el.classList.add("is-tooltip-dismissed");
+          e.stopPropagation();
+        }
+      });
+      const restore = () => el.classList.remove("is-tooltip-dismissed");
+      el.addEventListener("blur", restore);
+      el.addEventListener("mouseleave", restore);
+    });
+  }
+
+  /* ---------- Rail disclosures: smooth expand/collapse (progressive enhancement) ----------
+     Native <details> in the left rail snap open/closed. This animates the
+     height of the content after each <summary> so sections and category groups
+     glide (Nextra-style). With JS off the rail still works — it just snaps, as
+     before. Honors prefers-reduced-motion by letting the native toggle run. */
+  function initNavDisclosure() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const DUR = 200;
+    const EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+    document.querySelectorAll(".wire-doc-nav details").forEach((d) => {
+      const summary = d.querySelector(":scope > summary");
+      const body = summary && summary.nextElementSibling;
+      if (!summary || !body) return;
+      let anim = null;
+
+      summary.addEventListener("click", (e) => {
+        // A section label can be a link (folder with an index page). Let clicks
+        // on it navigate rather than toggle — don't preventDefault those.
+        if (e.target.closest("a")) return;
+        e.preventDefault();
+        if (anim) { anim.cancel(); anim = null; }
+        const opening = !d.open;
+        if (opening) d.open = true;        // reveal before measuring
+        const full = body.offsetHeight;
+        const frames = [{ height: "0px", opacity: 0 }, { height: full + "px", opacity: 1 }];
+        body.style.overflow = "hidden";
+        anim = body.animate(opening ? frames : frames.slice().reverse(), { duration: DUR, easing: EASE });
+        anim.onfinish = () => {
+          body.style.overflow = "";
+          body.style.height = "";
+          if (!opening) d.open = false;    // hide only after the collapse finishes
+          anim = null;
+        };
+      });
+    });
+  }
+
+  /* ---------- Rail search: client-side filter over the nav links ----------
+     Filters the left rail by component/section name as you type. Auto-expands
+     groups that contain a match, hides the rest, and restores the prior
+     open/closed state when cleared. Esc clears. This filters the NAV only — it
+     is not a full-text page search. JS-only: the box is revealed by adding
+     `.is-js` so it never shows as a dead control without scripting. */
+  function initNavSearch() {
+    const wrap = document.querySelector("[data-wire-nav-search]");
+    if (!wrap) return;
+    const input = wrap.querySelector("input");
+    const nav = wrap.closest(".wire-doc-nav");
+    if (!input || !nav) return;
+
+    nav.classList.add("is-js");
+
+    const links = Array.from(nav.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link"));
+    // Sections AND category groups are both <details>, so one list drives both
+    // levels of disclosure — hidden/open settle deepest-first in filter().
+    const details = Array.from(nav.querySelectorAll("details"));
+
+    const empty = document.createElement("p");
+    empty.className = "wire-doc-nav__noresults";
+    empty.setAttribute("role", "status");
+    empty.hidden = true;
+    empty.textContent = "No matches.";
+    nav.appendChild(empty);
+
+    const rowFor = (a) => a.closest("li.wire-doc-nav__item") || a;
+    const isVisible = (a) => !rowFor(a).hidden;
+    let savedOpen = null;
+
+    function restore() {
+      links.forEach((a) => { rowFor(a).hidden = false; });
+      details.forEach((d, i) => { d.hidden = false; if (savedOpen) d.open = savedOpen[i]; });
+      savedOpen = null;
+      empty.hidden = true;
+    }
+
+    function filter(raw) {
+      const q = raw.trim().toLowerCase();
+      if (!q) { restore(); return; }
+      if (!savedOpen) savedOpen = details.map((d) => d.open);
+
+      let any = false;
+      links.forEach((a) => {
+        const match = a.textContent.toLowerCase().includes(q);
+        rowFor(a).hidden = !match;
+        if (match) any = true;
+      });
+      // Deepest-first: a group's visibility/open settles before its parent
+      // section (both are <details>). A leaf match reveals and opens its group
+      // and section; a fully-filtered details is hidden.
+      for (let i = details.length - 1; i >= 0; i--) {
+        const d = details[i];
+        const hit = Array.from(d.querySelectorAll(".wire-doc-nav__link, .wire-doc-nav__top-link")).some(isVisible);
+        d.hidden = !hit;
+        if (hit) d.open = true;
+      }
+      empty.hidden = any;
+    }
+
+    input.addEventListener("input", () => filter(input.value));
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { input.value = ""; filter(""); }
+    });
+  }
+
+  /* ---------- Theme toggle: light / dark / system ----------
+     Stores the PREFERENCE (light|dark|system) and applies the RESOLVED theme
+     (light|dark) to <html data-theme>. A pre-paint head script (injected by
+     sync-nav into chrome pages) sets the same attribute before first paint, so
+     there's no flash; this re-applies it and wires the control. Scoped to the
+     doc-site shell so client demo pages are never themed. */
+  function initTheme() {
+    if (!document.body.classList.contains("wire-shell")) return;
+    const root = document.documentElement;
+    const nav = document.querySelector(".wire-doc-nav");
+    if (nav) nav.classList.add("is-js");   // reveal the toggle (and search) once JS is live
+    const group = document.querySelector("[data-wire-theme]");
+    const KEY = "wire-theme";
+    const mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+    const resolve = (pref) =>
+      pref === "dark" ? "dark" : pref === "light" ? "light" : (mq && mq.matches ? "dark" : "light");
+
+    function readPref() {
+      try { return localStorage.getItem(KEY) || "system"; } catch (_) { return "system"; }
+    }
+
+    function apply(pref) {
+      root.setAttribute("data-theme", resolve(pref));
+      if (group) {
+        group.querySelectorAll("[data-wire-theme-value]").forEach((b) => {
+          b.setAttribute("aria-pressed", b.dataset.wireThemeValue === pref ? "true" : "false");
+        });
+      }
+      try { localStorage.setItem(KEY, pref); } catch (_) {}
+    }
+
+    apply(readPref());
+
+    if (group) {
+      group.querySelectorAll("[data-wire-theme-value]").forEach((b) => {
+        b.addEventListener("click", () => apply(b.dataset.wireThemeValue));
+      });
+    }
+
+    if (mq) {
+      const onChange = () => { if (readPref() === "system") root.setAttribute("data-theme", resolve("system")); };
+      if (mq.addEventListener) mq.addEventListener("change", onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
   }
 
   /* ---------- Boot ---------- */
@@ -212,6 +613,13 @@
     initDrawer();
     initInPageNav();
     initTextSize();
+    initModal();
+    initToast();
+    initBanner();
+    initTooltip();
+    initNavDisclosure();
+    initNavSearch();
+    initTheme();
   }
 
   if (document.readyState === "loading") {

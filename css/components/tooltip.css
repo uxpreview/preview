@@ -1,0 +1,81 @@
+/* ============================================================
+   Tooltip — short hover/focus help. Pure CSS via pseudo-elements
+   on any element with [data-wire-tooltip="text"]. For longer
+   content with interactive children, use a popover (post-v1.4)
+   or render the help text inline.
+
+   WCAG 1.4.13 (Content on Hover or Focus): the tooltip is
+   dismissable (Esc — handled by browser when focus moves out),
+   hoverable (the trigger stays visible), and persistent (no
+   auto-close timer). Touch users get the help text on focus.
+   ============================================================ */
+
+[data-wire-tooltip] {
+  position: relative;
+  /* Make sure focusable elements with tooltips show one. Non-focusable
+     elements (spans) can still get hover tooltips but won't be reachable
+     by keyboard — pair with role="img" + aria-label if needed. */
+}
+
+[data-wire-tooltip]::after {
+  content: attr(data-wire-tooltip);
+  position: absolute;
+  inset-block-end: calc(100% + var(--space-2xs));
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+
+  padding: var(--space-2xs) var(--space-xs);
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
+  line-height: var(--leading-snug);
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+  z-index: var(--z-dropdown);
+}
+
+[data-wire-tooltip]:hover::after,
+[data-wire-tooltip]:focus-visible::after,
+[data-wire-tooltip]:focus-within::after {
+  opacity: 1;
+}
+
+/* Esc dismisses the hint without moving focus (WCAG 1.4.13 Dismissable).
+   js/wire.js sets .is-tooltip-dismissed; it clears on the next blur / leave
+   so the hint returns. Placed after the show rules to win the specificity
+   tie. No JS = no dismiss, but the hover/focus hint still works. */
+[data-wire-tooltip].is-tooltip-dismissed::after {
+  opacity: 0;
+}
+
+/* Side placement — opt-in via data-wire-tooltip-placement="below" */
+[data-wire-tooltip][data-wire-tooltip-placement="below"]::after {
+  inset-block-end: auto;
+  inset-block-start: calc(100% + var(--space-2xs));
+}
+
+[data-wire-tooltip][data-wire-tooltip-placement="start"]::after {
+  inset-block-end: auto;
+  inset-inline-start: auto;
+  inset-inline-end: calc(100% + var(--space-2xs));
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+[data-wire-tooltip][data-wire-tooltip-placement="end"]::after {
+  inset-block-end: auto;
+  inset-inline-start: calc(100% + var(--space-2xs));
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-wire-tooltip]::after { transition: none; }
+}

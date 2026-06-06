@@ -39,8 +39,10 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-inline-size: 2rem;
-  min-block-size: 2rem;
+  /* 44px tap target — Apple HIG + WCAG 2.5.5 AAA. The text-size widget
+     IS the accessibility affordance; we apply the strictest target here. */
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
   padding-inline: var(--space-xs);
   font-family: inherit;
   font-weight: var(--weight-semibold);

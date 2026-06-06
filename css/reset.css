@@ -67,8 +67,20 @@ h5,
 h6 {
   text-wrap: balance;
   /* WCAG 2.4.11 Focus Not Obscured — leave clearance for sticky chrome
-     when an in-page anchor jumps to a heading. */
-  scroll-margin-block-start: var(--space-2xl);
+     when an in-page anchor jumps to a heading. The scroll-padding on
+     :root below also covers it; this preserves behavior in legacy
+     anchor-jump cases. Bumped to clear the v1.9 sticky topnav. */
+  scroll-margin-block-start: 5rem;
+}
+
+/* Sticky topnav clearance for any scrollIntoView / anchor jump.
+   Mobile topnav is 3.5rem + safe-area + a token gap; desktop 4.5rem.
+   The value lands just past the larger of the two. */
+html {
+  scroll-padding-block-start: 5rem;
+}
+@media (min-width: 48em) {
+  html { scroll-padding-block-start: 6rem; }
 }
 
 ul[role="list"],

@@ -46,6 +46,17 @@
   color: var(--gray-40);
 }
 
+/* Secondary button must read on the inverse surface (it would otherwise use the
+   page-relative text colour and vanish). Mirrors the inverse hero. */
+.wire-callout--inverse .wire-button--secondary {
+  --btn-fg: var(--color-text-inverse);
+  --btn-border: var(--gray-40);
+}
+.wire-callout--inverse .wire-button--secondary:hover {
+  --btn-bg: var(--gray-80);
+  --btn-border: var(--color-text-inverse);
+}
+
 .wire-callout__title {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);

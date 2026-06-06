@@ -1,0 +1,110 @@
+/* ============================================================
+   Doc shell — two-column layout used across the new docs IA.
+   Sticky left nav + scrollable main. Stacks on mobile.
+
+   Anatomy:
+     .wire-doc-shell
+       .wire-doc-shell__nav        (sticky, contains wire-doc-nav)
+       .wire-doc-shell__main       (page content)
+
+   On mobile (<48em), the nav is hidden by default and surfaced via
+   the existing mobile drawer pattern. The desktop sticky nav uses
+   the same topnav offset as the rest of the system.
+   ============================================================ */
+
+.wire-doc-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-inline-size: var(--container-full);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+@media (min-width: 64em) {
+  .wire-doc-shell {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    gap: var(--space-2xl);
+  }
+}
+
+@media (min-width: 80em) {
+  .wire-doc-shell {
+    grid-template-columns: 18rem minmax(0, 1fr);
+    gap: var(--space-3xl);
+  }
+}
+
+.wire-doc-shell__nav {
+  display: none;
+}
+
+@media (min-width: 64em) {
+  .wire-doc-shell__nav {
+    display: block;
+    position: sticky;
+    /* Clear the slim fixed shell header, plus a breathing gutter. */
+    inset-block-start: calc(var(--shell-header-h) + var(--space-lg));
+    align-self: start;
+    max-block-size: calc(100vh - 6rem);
+    overflow-y: auto;
+    padding-block: var(--space-md);
+    padding-inline-end: var(--space-md);
+    /* Right border separates nav from main on wide screens. */
+    border-inline-end: var(--border-thin) solid var(--color-border);
+  }
+}
+
+.wire-doc-shell__main {
+  min-inline-size: 0;
+  padding-block: var(--space-lg) var(--space-4xl);
+}
+
+@media (min-width: 64em) {
+  .wire-doc-shell__main {
+    padding-block: var(--space-xl) var(--space-5xl);
+    padding-inline-start: 0;
+    max-inline-size: 56rem;
+  }
+}
+
+/* Sticky tab bar variant — sits flush below the slim fixed shell header.
+   On narrow viewports the tabs scroll horizontally instead of wrapping;
+   keeps the bar one row tall and the tab targets full-height. */
+.wire-tabs--sticky .wire-tabs__list {
+  position: sticky;
+  inset-block-start: var(--shell-header-h);
+  z-index: var(--z-sticky);
+  background-color: var(--color-bg);
+  margin-inline: calc(-1 * var(--container-padding-x));
+  padding-inline: var(--container-padding-x);
+
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  /* Hide scrollbar; the horizontal nudge is the affordance. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.wire-tabs--sticky .wire-tabs__list::-webkit-scrollbar {
+  display: none;
+}
+
+.wire-tabs--sticky .wire-tabs__tab {
+  flex-shrink: 0;
+}
+
+@media (min-width: 64em) {
+  .wire-tabs--sticky .wire-tabs__list {
+    margin-inline: 0;
+    padding-inline: 0;
+    /* Desktop has room; allow wrap as a safety net for very long labels. */
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+.wire-tabs--sticky.wire-tabs {
+  gap: var(--space-2xl);
+}

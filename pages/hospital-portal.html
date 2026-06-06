@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patient portal — Riverside Medical Center</title>
+  <link rel="stylesheet" href="../css/wire.css">
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./hospital-homepage.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">R</span>
+      <span>Riverside Medical Center · Portal</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link is-current" href="./hospital-portal.html" aria-current="page">Home</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Appointments</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Test results</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Messages</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Bills</a></li>
+      </ul>
+    </nav>
+    <div class="wire-topnav__utility">
+      <a class="wire-button wire-button--ghost wire-button--sm u-hidden-mobile" href="./hospital-settings.html">Settings</a>
+      <a class="wire-button wire-button--ghost wire-button--sm" href="#">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- Personalized hero -->
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-stack u-stack--md">
+      <span class="wire-eyebrow">Tuesday, May 26, 2026</span>
+      <h1 class="wire-h2">Good morning, Marcus.</h1>
+      <p class="wire-lead">You have <strong>one upcoming visit</strong> and <strong>two new messages</strong>. Your last test results posted on Friday.</p>
+    </div>
+  </div>
+</section>
+
+<!-- At-a-glance stats -->
+<section class="u-section u-section--sm">
+  <div class="u-container">
+    <div class="u-grid u-grid--4" style="--grid-min: 12rem">
+      <a class="wire-card wire-card--stat wire-card--bordered" href="#" style="text-decoration: none; color: inherit; display: block">
+        <div class="wire-card__body">
+          <div class="wire-card__stat-value">June 9</div>
+          <div class="wire-card__stat-label">Next appointment · Dr. Okonkwo, 10:30 AM</div>
+        </div>
+      </a>
+      <a class="wire-card wire-card--stat wire-card--bordered" href="#" style="text-decoration: none; color: inherit; display: block">
+        <div class="wire-card__body">
+          <div class="wire-card__stat-value">2</div>
+          <div class="wire-card__stat-label">Unread messages</div>
+        </div>
+      </a>
+      <a class="wire-card wire-card--stat wire-card--bordered" href="#" style="text-decoration: none; color: inherit; display: block">
+        <div class="wire-card__body">
+          <div class="wire-card__stat-value">3</div>
+          <div class="wire-card__stat-label">New test results since last login</div>
+        </div>
+      </a>
+      <a class="wire-card wire-card--stat wire-card--bordered" href="#" style="text-decoration: none; color: inherit; display: block">
+        <div class="wire-card__body">
+          <div class="wire-card__stat-value">$240.00</div>
+          <div class="wire-card__stat-label">Open balance · due June 15</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Main two-column: cards on left, sidebar on right -->
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+
+      <div class="u-stack u-stack--3xl">
+
+        <!-- Upcoming visit -->
+        <section class="u-stack u-stack--md">
+          <div class="u-cluster u-cluster--between">
+            <h2 class="wire-h3">Upcoming visit</h2>
+            <a class="wire-button wire-button--ghost wire-button--sm" href="#">All appointments →</a>
+          </div>
+          <div class="wire-card wire-card--bordered">
+            <div class="wire-card__body u-stack u-stack--md">
+              <div class="u-cluster u-cluster--between">
+                <span class="wire-eyebrow">Tue, June 9, 2026 · 10:30 AM</span>
+                <span class="wire-badge">Confirmed</span>
+              </div>
+              <div class="u-stack u-stack--xs">
+                <h3 class="wire-h4">Dr. Maya Okonkwo</h3>
+                <p class="u-text-muted">Spinal Cord Injury Medicine · New patient consult</p>
+                <p class="u-text-muted" style="font-size: var(--text-sm)">Riverside Streeterville · 355 East Erie Street · Floor 24</p>
+              </div>
+              <div class="u-cluster">
+                <a class="wire-button wire-button--secondary wire-button--sm" href="./hospital-appointment.html">View details</a>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Add to calendar</a>
+                <a class="wire-button wire-button--ghost wire-button--sm" href="#">Reschedule</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent test results -->
+        <section class="u-stack u-stack--md">
+          <div class="u-cluster u-cluster--between">
+            <h2 class="wire-h3">Recent test results</h2>
+            <a class="wire-button wire-button--ghost wire-button--sm" href="#">All results →</a>
+          </div>
+          <div class="wire-table-wrap">
+            <table class="wire-table">
+              <caption class="u-visually-hidden">Recent test results</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Test</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col" class="u-text-right">Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><a href="#">Complete blood count</a></th>
+                  <td>May 22, 2026</td>
+                  <td><span class="wire-badge">In range</span></td>
+                  <td class="u-text-right">View</td>
+                </tr>
+                <tr>
+                  <th scope="row"><a href="#">Comprehensive metabolic panel</a></th>
+                  <td>May 22, 2026</td>
+                  <td><span class="wire-badge wire-badge--subtle">Flagged</span></td>
+                  <td class="u-text-right">View</td>
+                </tr>
+                <tr>
+                  <th scope="row"><a href="#">Lipid panel</a></th>
+                  <td>May 22, 2026</td>
+                  <td><span class="wire-badge">In range</span></td>
+                  <td class="u-text-right">View</td>
+                </tr>
+                <tr>
+                  <th scope="row"><a href="#">A1C</a></th>
+                  <td>Apr 30, 2026</td>
+                  <td><span class="wire-badge">In range</span></td>
+                  <td class="u-text-right">View</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Messages -->
+        <section class="u-stack u-stack--md">
+          <div class="u-cluster u-cluster--between">
+            <h2 class="wire-h3">Messages</h2>
+            <a class="wire-button wire-button--ghost wire-button--sm" href="#">Inbox →</a>
+          </div>
+          <ul class="wire-linked-list" role="list">
+            <li class="wire-linked-list__item">
+              <a class="wire-linked-list__link" href="#">
+                <span><strong>Dr. Okonkwo</strong> — Pre-visit forms for June 9 are ready in your portal.</span>
+                <span class="wire-linked-list__meta">May 26</span>
+              </a>
+            </li>
+            <li class="wire-linked-list__item">
+              <a class="wire-linked-list__link" href="#">
+                <span><strong>Riverside Pharmacy</strong> — Your prescription is ready for pickup at the Streeterville location.</span>
+                <span class="wire-linked-list__meta">May 25</span>
+              </a>
+            </li>
+            <li class="wire-linked-list__item">
+              <a class="wire-linked-list__link" href="#">
+                <span><strong>Billing</strong> — Your May statement is available.</span>
+                <span class="wire-linked-list__meta">May 20</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Empty state — health goals not yet set -->
+        <section class="u-stack u-stack--md">
+          <h2 class="wire-h3">Your health goals</h2>
+          <div class="wire-empty wire-empty--bordered wire-empty--inline">
+            <div class="wire-empty__visual" aria-hidden="true">+</div>
+            <div>
+              <h3 class="wire-empty__title">No goals set yet</h3>
+              <p class="wire-empty__body">Set a goal with your care team to track progress between visits — blood pressure, weight, mobility, medication adherence, or anything else that matters to you.</p>
+              <div class="wire-empty__actions">
+                <a class="wire-button" href="#">Set a goal with Dr. Okonkwo</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Sidebar: quick actions + care team -->
+      <aside aria-label="Quick actions and care team" class="u-stack u-stack--xl">
+
+        <div class="u-stack u-stack--sm">
+          <div class="wire-eyebrow">Quick actions</div>
+          <div class="u-stack u-stack--xs">
+            <a class="wire-button wire-button--secondary wire-button--full" href="#">Message a provider</a>
+            <a class="wire-button wire-button--secondary wire-button--full" href="#">Request a prescription refill</a>
+            <a class="wire-button wire-button--secondary wire-button--full" href="#">Pay a bill</a>
+            <a class="wire-button wire-button--secondary wire-button--full" href="./hospital-find-a-doctor.html">Schedule an appointment</a>
+            <a class="wire-button wire-button--ghost wire-button--full" href="#">Request medical records</a>
+          </div>
+        </div>
+
+        <div class="u-stack u-stack--sm">
+          <div class="wire-eyebrow">Your care team</div>
+          <div class="u-stack u-stack--xs">
+            <article class="wire-card wire-card--person wire-card--bordered">
+              <div class="wire-card__body u-stack u-stack--xs" style="padding: var(--space-md)">
+                <h3 class="wire-card__title" style="font-size: var(--text-md)"><a href="./hospital-provider.html">Dr. Maya Okonkwo</a></h3>
+                <p class="u-text-muted" style="font-size: var(--text-sm)">Primary specialist · SCI Medicine</p>
+              </div>
+            </article>
+            <article class="wire-card wire-card--person wire-card--bordered">
+              <div class="wire-card__body u-stack u-stack--xs" style="padding: var(--space-md)">
+                <h3 class="wire-card__title" style="font-size: var(--text-md)"><a href="#">Dr. James Coltrane</a></h3>
+                <p class="u-text-muted" style="font-size: var(--text-sm)">Primary care</p>
+              </div>
+            </article>
+            <article class="wire-card wire-card--person wire-card--bordered">
+              <div class="wire-card__body u-stack u-stack--xs" style="padding: var(--space-md)">
+                <h3 class="wire-card__title" style="font-size: var(--text-md)"><a href="#">Sara Whitfield, PT</a></h3>
+                <p class="u-text-muted" style="font-size: var(--text-sm)">Physical therapy</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="wire-callout wire-callout--bordered">
+          <span class="wire-callout__eyebrow">Need help?</span>
+          <h3 class="wire-callout__title">Portal help line</h3>
+          <p class="wire-callout__body" style="font-size: var(--text-sm)">7 AM–9 PM Central, seven days a week.</p>
+          <div class="wire-callout__actions">
+            <a class="wire-button wire-button--sm wire-button--secondary" href="#">312.555.1100</a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="./hospital-homepage.html"><span class="wire-topnav__brand-mark">R</span> Riverside Medical Center</a>
+    <p class="wire-footer__tagline">355 East Erie Street · Chicago, IL 60611 · 312.555.1000</p>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

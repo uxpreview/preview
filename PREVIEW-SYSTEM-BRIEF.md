@@ -12,7 +12,7 @@
 > **Read this carefully — current state vs. destination.** This brief describes the
 > **end goal**: a generation system. The repo today is a strong *component library*
 > (v1.1) — the right foundation, but it does not yet reflect the full vision. That gap
-> is intentional and is what the roadmap (§9) bridges. So: **this brief is the north
+> is intentional and is what the roadmap (§10) bridges. So: **this brief is the north
 > star; `manifest.json` and `CLAUDE.md` are accurate mirrors of what exists *right
 > now*.** Do not invent components or experiences in the manifest to match this vision,
 > and do not shrink this vision to match the current code. Build toward the destination;
@@ -89,10 +89,13 @@ behaviors — tabs, accordion, mega menu, the mobile drawer — via `data-wire-*
 CSS is linked through a single `css/wire.css`; `css/tokens.css` is the only file with
 raw values.
 
-Proof: **four Riverside pressure-test mocks** built from the system only — homepage,
-specialty, research, find-a-doctor — with no inline styles and no hardcoded values.
-"Riverside" is the anonymized rehabilitation-hospital demo. Separately, the system ships
-documented **page shells** (landing, article, listing, detail) as reusable scaffolds.
+Proof: the system began with **four Riverside pressure-test mocks** — homepage, specialty,
+research, find-a-doctor — built from the system only, no inline styles, no hardcoded
+values. That set has since grown to **18 Riverside (healthcare) demo pages plus 3 Northgate
+(higher-ed)**; nine Riverside archetypes are featured on the home page, and all 21 are
+listed in the directory. "Riverside" is the anonymized rehabilitation-hospital demo.
+Separately, the system ships documented **page shells** (landing, article, listing, detail)
+as reusable scaffolds.
 
 Naming is BEM-ish and consistent: `.wire-block__element`, `.wire-block--modifier`,
 `.is-state`, `data-wire-*` for JS hooks, `.u-*` for utilities — lowercase, kebab-case.
@@ -159,6 +162,11 @@ pile of blocks. Example — `find-a-doctor-directory` variants:
 Each variant is a real **IA decision**, never a style tweak. That distinction is the
 governance rule for the whole system (see §8).
 
+Every node carries six dimensions: its **level**, its **variants**, its **composability**,
+its **states**, its **behaviors**, and — cross-cutting all of them — its **evidence**
+(the *why*: the tier and citations that defend it). Evidence is a first-class dimension,
+not an afterthought; see §9.
+
 ## 6. The generation workflow
 
 1. **Brief first.** Fill the project brief (template in `CLAUDE.md`). Where possible,
@@ -209,7 +217,66 @@ The payoff: any request resolves to "what level am I working at?" and the nav an
   projects, promote it into the core. This is how the system compounds instead of
   stagnating. When you notice a likely candidate, flag it.
 
-## 9. Roadmap
+## 9. Evidence & research model
+
+Design decisions in this system must be defensible with **evidence, not taste**, so that
+in a client conversation we can validate a choice and carry credibility behind it.
+Evidence is a **first-class, cross-cutting dimension** — the *why* every node carries
+(see §5). `EVIDENCE-MODEL.md` is the canonical statement; this section is the summary.
+
+**The governing principle: honesty is the credibility engine.** The fastest way to lose
+a sharp client (or their analytics team) is to dress up convention or taste as "research
+shows." One exposed overclaim taints every other claim we make. So the discipline is not
+"cite more" — it is to **label every rationale by the kind of evidence it actually rests
+on, and never present a weaker kind as a stronger one.** Over-labeling everything
+"research" devalues the genuinely research-backed claims and erodes trust.
+
+**The four tiers.** Every rationale is tagged with one, and treated accordingly:
+- **standard** — binding specifications (WCAG 2.2, Section 508, ARIA APG). Citable, often
+  legal weight. State it as a requirement.
+- **empirical** — findings from studies (Nielsen Norman Group, Baymard, peer-reviewed
+  HCI, eye-tracking). Citable, but always with context: sample, domain, and recency.
+- **convention** — established laws/heuristics and design-system consensus (Gestalt,
+  Fitts/Hick and the other Laws of UX, Material/Carbon, Bringhurst). Well-established
+  practice, not "proven" in an RCT sense.
+- **judgment** — our reasoned call, no external backing claimed. Said plainly; a
+  well-reasoned judgment honestly labeled is more credible than one wearing a borrowed
+  lab coat.
+
+Rule: **never promote a claim to a higher tier than its evidence supports.** A convention
+is not an empirical finding; a judgment is not a standard.
+
+**Architecture: one store, referenced everywhere.** Mirroring the tokens pattern,
+`citations.json` is the single source of evidence and everything references it by `id` —
+no duplicated, drifting citations. Each manifest node carries a `rationale` field that
+cites by id, used only where a decision is worth defending (clients question it, it's
+non-obvious, or it carries accessibility/legal weight — never to footnote the existence
+of a button). Citations carry provenance and a `verified_date`, because **research rots**:
+studies get superseded, findings update, URLs move. `docs/research.html` is the
+human-readable render of the same store.
+
+**The hard rule: never invent a citation.** A fabricated source, finding, or statistic
+shown to a client is a credibility-extinction event — the biggest risk of having an agent
+in the loop. The store is **human-verified**: the agent may *draft* candidate citations
+(each marked `UNVERIFIED — pending human review`) but never invents a source, never fills
+a gap with a plausible-sounding study, and never sets `verified` on its own authority.
+Same logic as not letting the system grade its own homework — the evidence it cites must
+come from outside the system and be checkable by a human.
+
+**The payoff: evidence as a generation output.** Because evidence is structured against
+components, Claude Code can generate not just a prototype but a **design rationale sheet**
+alongside it: each non-obvious decision, its tier and citation(s) with sources, and a
+one-line "what this means for the client" in plain language. The prototype ships *with
+its own defense* — that turns "research-backed" from a value into a deliverable.
+
+**Why grayscale and evidence reinforce each other.** Removing color forces visual
+hierarchy to come from weight, scale, proximity, and contrast — precisely the perceptual
+mechanisms that Gestalt and contrast-sensitivity research describe. The system is, in
+effect, a live demonstration of the principles it cites. "We work in grayscale *because*
+hierarchy should come from these mechanisms, and here's the research" is a strong, honest
+thing to say in a room.
+
+## 10. Roadmap
 
 **Phase 1 — Make the inventory trustworthy.**
 Reconcile `manifest.json` `class` values against the real stylesheet; add a `file`
@@ -235,12 +302,14 @@ system hold?" retro → log gaps in the decisions log → promote the good ones 
 **Ongoing.**
 Batch maintenance, never trickle. Curate over add. Tag versions on meaningful change.
 
-## 10. Definition of done
+## 11. Definition of done
 
 A good generated output:
 - uses only existing components/classes/tokens (nothing invented),
 - is grayscale, token-driven, with no inline styles,
 - reads as plausible for the specific client (real content, not filler),
+- non-obvious decisions carry a correctly-tiered citation from `citations.json` — no
+  invented, over-tiered, or unverified-as-fact claims,
 - passes the validation checklist,
 - opens standalone in a browser,
 - comes with a short note on what was used and anything flagged.

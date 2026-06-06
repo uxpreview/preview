@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in — Riverside Patient Portal</title>
+  <link rel="stylesheet" href="../css/wire.css">
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<!-- Minimal topnav — auth pages reduce chrome to keep focus on the form -->
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./hospital-homepage.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">R</span>
+      <span>Riverside Medical Center</span>
+    </a>
+    <div class="wire-topnav__utility">
+      <a class="wire-button wire-button--ghost wire-button--sm" href="./hospital-homepage.html">← Back to main site</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="u-section">
+  <div class="u-container" style="max-inline-size: 28rem">
+
+    <div class="u-stack u-stack--xl">
+
+      <div class="u-stack u-stack--sm">
+        <span class="wire-eyebrow">Patient portal</span>
+        <h1 class="wire-h2">Sign in</h1>
+        <p class="u-text-muted">Access appointments, test results, messages, and bills.</p>
+      </div>
+
+      <form class="wire-form u-stack u-stack--md" novalidate>
+
+        <div class="wire-field">
+          <label class="wire-field__label" for="email">Email or username</label>
+          <input class="wire-input" id="email" name="email" type="email" autocomplete="username" required>
+        </div>
+
+        <div class="wire-field">
+          <div class="u-cluster u-cluster--between">
+            <label class="wire-field__label" for="password">Password</label>
+            <a href="#" style="font-size: var(--text-sm)">Forgot password?</a>
+          </div>
+          <input class="wire-input" id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <label class="wire-checkbox">
+          <input class="wire-checkbox__input" id="remember" name="remember" type="checkbox">
+          <span>Keep me signed in on this device</span>
+        </label>
+
+        <button type="submit" class="wire-button wire-button--full">Sign in</button>
+
+        <p class="u-text-muted u-text-center" style="font-size: var(--text-sm)">
+          New here? <a href="#">Create a patient portal account</a>
+        </p>
+
+      </form>
+
+      <hr class="wire-divider">
+
+      <!-- Help bar — NIA pattern for senior-friendly contact -->
+      <div class="wire-help-bar">
+        <span class="wire-help-bar__icon" aria-hidden="true">?</span>
+        <div class="wire-help-bar__text">
+          <div class="wire-help-bar__title">Need help signing in?</div>
+          <div class="wire-help-bar__desc">Call the patient portal help line, 7 AM–9 PM Central, seven days a week.</div>
+        </div>
+        <div class="wire-help-bar__actions">
+          <a class="wire-button wire-button--secondary wire-button--sm" href="#">312.555.1100</a>
+        </div>
+      </div>
+
+      <div class="wire-callout wire-callout--inline">
+        <p class="wire-callout__body" style="font-size: var(--text-sm)"><strong>Security note.</strong> Riverside will never email or text you a one-time code unless you've started a sign-in. If you receive an unexpected code, do not share it — <a href="#">report it here</a>.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="./hospital-homepage.html"><span class="wire-topnav__brand-mark">R</span> Riverside Medical Center</a>
+    <ul class="wire-footer__legal" role="list">
+      <li><a class="wire-footer__link" href="#">Privacy</a></li>
+      <li><a class="wire-footer__link" href="#">Accessibility</a></li>
+      <li><a class="wire-footer__link" href="#">Terms of use</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

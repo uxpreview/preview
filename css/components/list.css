@@ -64,8 +64,11 @@
 
 @media (min-width: 48em) {
   .wire-deflist--two-col {
-    grid-template-columns: 1fr 2fr;
-    gap: var(--space-md) var(--space-xl);
+    /* Term column sizes to its content between 8 and 16rem, so a short term sits
+       next to its description instead of stranded across a third of the row, while
+       a long term still wraps instead of crushing the description. */
+    grid-template-columns: minmax(8rem, 16rem) 1fr;
+    gap: var(--space-md) var(--space-lg);
   }
 }
 
@@ -76,6 +79,14 @@
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-muted);
   line-height: var(--leading-snug);
+}
+
+/* A term that's code (e.g. .wire-* prefixes) keeps its real casing and spacing —
+   the uppercase/tracking treatment is for label-style terms only. */
+.wire-deflist__term:has(code),
+.wire-deflist__term code {
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .wire-deflist__desc {

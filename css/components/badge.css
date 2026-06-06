@@ -48,3 +48,32 @@
   border-radius: 50%;
   background-color: currentColor;
 }
+
+/* ---------- Count / notification overlay ----------
+   A filled badge pinned to the corner of a host (icon button, avatar).
+   Wrap the host in .wire-badge-anchor. The host carries the accessible
+   name including the count (e.g. aria-label="Notifications, 3 unread");
+   the visual count is aria-hidden so screen readers announce it once. */
+.wire-badge-anchor {
+  position: relative;
+  display: inline-flex;
+}
+
+.wire-badge--count {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  transform: translate(40%, -40%);
+  justify-content: center;
+
+  min-inline-size: 1.25rem;
+  block-size: 1.25rem;
+  padding-block: 0;
+  padding-inline: var(--space-2xs);
+
+  --badge-bg: var(--color-bg-inverse);
+  --badge-fg: var(--color-text-inverse);
+  /* A ring in the surface color separates the badge from a busy host. */
+  border-color: var(--color-bg);
+  border-width: var(--border-md);
+}

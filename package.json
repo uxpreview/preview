@@ -1,5 +1,20 @@
 {
+  "name": "preview-design-system",
+  "version": "1.10.4",
+  "description": "A grayscale wireframe and mid-fidelity component system. No build step required for the runtime; tooling here is opt-in for validation.",
   "private": true,
-  "name": "uxpreview-project",
-  "version": "1.0.0"
+  "scripts": {
+    "serve": "npx --yes serve -l 8080 .",
+    "a11y": "npx --yes pa11y-ci",
+    "lh": "npx --yes @lhci/cli@latest autorun",
+    "visual": "npx --yes playwright test",
+    "validate": "npm run a11y && npm run lh",
+    "bundle": "node -e \"const fs=require('fs'),p=require('path');const css=p.join(__dirname,'css');const files=['tokens.css','reset.css','base.css','layout.css','utilities.css',...fs.readdirSync(p.join(css,'components')).map(f=>'components/'+f),'print.css'];const out=files.map(f=>'/* === '+f+' === */\\n'+fs.readFileSync(p.join(css,f),'utf8').replace(/@import[^;]+;/g,'')).join('\\n\\n');fs.mkdirSync(p.join(__dirname,'dist'),{recursive:true});fs.writeFileSync(p.join(__dirname,'dist','wire.bundle.css'),out);console.log('Wrote dist/wire.bundle.css ('+out.length+' bytes)');\""
+  },
+  "devDependencies": {
+    "pa11y-ci": "^3.1.0",
+    "@lhci/cli": "^0.13.0",
+    "@playwright/test": "^1.45.0",
+    "serve": "^14.0.0"
+  }
 }

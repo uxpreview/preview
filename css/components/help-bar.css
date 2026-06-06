@@ -11,8 +11,11 @@
   --help-bar-bg: var(--color-bg-inverse);
   --help-bar-fg: var(--color-text-inverse);
 
+  /* Mobile-first: stack vertically so icon, text, and actions each get
+     full width on narrow phones. Switches to a row at tablet+. */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
   background-color: var(--help-bar-bg);
@@ -20,6 +23,13 @@
   border-radius: var(--radius-lg);
   /* Focus must remain visible on dark surface (WCAG 2.4.7). */
   --color-focus: var(--color-text-inverse);
+}
+
+@media (min-width: 48em) {
+  .wire-help-bar {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .wire-help-bar__icon {
@@ -61,12 +71,13 @@
 }
 
 /* Fixed-to-viewport variant — appears on every page, sticks to bottom on
-   small screens. Use sparingly; one per page. */
+   small screens. Use sparingly; one per page. Respects iPhone home-
+   indicator safe area so the bar never sits on the gesture strip. */
 .wire-help-bar--fixed {
   position: fixed;
-  inset-block-end: var(--space-md);
-  inset-inline-end: var(--space-md);
-  inset-inline-start: var(--space-md);
+  inset-block-end: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
+  inset-inline-end: calc(var(--space-md) + env(safe-area-inset-right, 0px));
+  inset-inline-start: calc(var(--space-md) + env(safe-area-inset-left, 0px));
   z-index: var(--z-sticky);
   box-shadow: var(--shadow-lg);
 }

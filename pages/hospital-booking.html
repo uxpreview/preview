@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pick a time with Dr. Okonkwo — Riverside Medical Center</title>
+  <link rel="stylesheet" href="../css/wire.css">
+  <style>
+    /* Page-local: calendar grid + time slots. Tiny on purpose; everything else is the system. */
+    .booking-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-2xs); }
+    .booking-calendar__head { font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wider); color: var(--color-text-muted); text-align: center; padding-block: var(--space-xs); }
+    .booking-calendar__cell {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2xs);
+      min-block-size: 3.5rem; padding: var(--space-xs);
+      background: var(--color-bg); border: var(--border-thin) solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: inherit; font-size: var(--text-sm); color: var(--color-text);
+      cursor: pointer; transition: background-color var(--duration-fast) var(--ease-out);
+    }
+    .booking-calendar__cell:hover:not(:disabled) { background: var(--color-bg-muted); }
+    .booking-calendar__cell.is-selected { background: var(--color-accent); color: var(--color-text-inverse); border-color: var(--color-accent); }
+    .booking-calendar__cell.is-other-month { color: var(--color-text-subtle); background: transparent; border-color: transparent; }
+    .booking-calendar__cell:disabled { color: var(--color-text-subtle); cursor: not-allowed; background: transparent; }
+    .booking-calendar__count { font-size: var(--text-2xs); color: var(--color-text-muted); }
+    .booking-calendar__cell.is-selected .booking-calendar__count { color: var(--gray-30); }
+
+    .booking-slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); gap: var(--space-xs); }
+    .booking-slots__slot {
+      padding: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-sm); font-variant-numeric: tabular-nums;
+      background: var(--color-bg); color: var(--color-text);
+      border: var(--border-thin) solid var(--color-border-strong); border-radius: var(--radius-md);
+      cursor: pointer; min-block-size: 2.75rem;
+    }
+    .booking-slots__slot:hover:not(:disabled) { background: var(--color-bg-muted); }
+    .booking-slots__slot.is-selected { background: var(--color-accent); color: var(--color-text-inverse); border-color: var(--color-accent); }
+    .booking-slots__slot:disabled { color: var(--color-text-subtle); cursor: not-allowed; background: var(--color-bg-subtle); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./hospital-homepage.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">R</span>
+      <span>Riverside Medical Center</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./hospital-find-a-doctor.html">Find a doctor</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./hospital-specialty.html">Conditions &amp; care</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./hospital-patient-visitor.html">Patients &amp; visitors</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="./hospital-research.html">Research</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- Stepper -->
+<section class="u-section u-section--sm u-bg-subtle">
+  <div class="u-container">
+    <ol class="wire-stepper" aria-label="Booking progress">
+      <li class="wire-stepper__item is-complete"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Choose provider <span class="wire-stepper__label-meta">Dr. Okonkwo</span></span></li>
+      <li class="wire-stepper__item is-current" aria-current="step"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Pick a time</span></li>
+      <li class="wire-stepper__item"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Confirm</span></li>
+      <li class="wire-stepper__item"><span class="wire-stepper__marker"></span><span class="wire-stepper__label">Done</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section class="u-section u-section--sm">
+  <div class="u-container">
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list" role="list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="./hospital-find-a-doctor.html">Find a doctor</a></li>
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="./hospital-provider.html">Dr. Maya Okonkwo</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Pick a time</span></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- Hero -->
+<section class="u-section u-section--sm">
+  <div class="u-container">
+    <div class="u-stack u-stack--sm">
+      <span class="wire-eyebrow">Step 2 of 4 · Pick a time</span>
+      <h1 class="wire-h2">When works for you?</h1>
+      <p class="wire-lead">Dates with availability are bordered. Pick a day to see open times. New-patient consults are 45 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Booking grid -->
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+
+      <!-- Filters -->
+      <aside aria-label="Booking filters" class="u-stack u-stack--lg">
+        <div class="u-stack u-stack--sm">
+          <div class="wire-eyebrow">Visit type</div>
+          <fieldset class="wire-field">
+            <legend class="u-visually-hidden">Visit type</legend>
+            <div class="u-stack u-stack--xs">
+              <label class="wire-radio"><input class="wire-radio__input" type="radio" name="visit-type" checked><span>In person · 45 min</span></label>
+              <label class="wire-radio"><input class="wire-radio__input" type="radio" name="visit-type"><span>Video visit · 30 min</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="u-stack u-stack--sm">
+          <div class="wire-eyebrow">Location</div>
+          <fieldset class="wire-field">
+            <legend class="u-visually-hidden">Location</legend>
+            <div class="u-stack u-stack--xs">
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Streeterville (main)</span></label>
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Burr Ridge</span></label>
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Homewood</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="u-stack u-stack--sm">
+          <div class="wire-eyebrow">Time of day</div>
+          <fieldset class="wire-field">
+            <legend class="u-visually-hidden">Time of day</legend>
+            <div class="u-stack u-stack--xs">
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Morning (before noon)</span></label>
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox" checked><span>Afternoon (12–5 PM)</span></label>
+              <label class="wire-checkbox"><input class="wire-checkbox__input" type="checkbox"><span>Evening (after 5 PM)</span></label>
+            </div>
+          </fieldset>
+        </div>
+      </aside>
+
+      <!-- Calendar + slots -->
+      <div class="u-stack u-stack--xl">
+
+        <!-- Month navigation -->
+        <div class="u-cluster u-cluster--between">
+          <h2 class="wire-h4">June 2026</h2>
+          <div class="u-cluster">
+            <button type="button" class="wire-button wire-button--secondary wire-button--sm" aria-label="Previous month">←</button>
+            <button type="button" class="wire-button wire-button--secondary wire-button--sm" aria-label="Next month">→</button>
+          </div>
+        </div>
+
+        <!-- Calendar grid -->
+        <div class="booking-calendar" role="grid" aria-label="June 2026">
+          <span class="booking-calendar__head" role="columnheader">Sun</span>
+          <span class="booking-calendar__head" role="columnheader">Mon</span>
+          <span class="booking-calendar__head" role="columnheader">Tue</span>
+          <span class="booking-calendar__head" role="columnheader">Wed</span>
+          <span class="booking-calendar__head" role="columnheader">Thu</span>
+          <span class="booking-calendar__head" role="columnheader">Fri</span>
+          <span class="booking-calendar__head" role="columnheader">Sat</span>
+
+          <button type="button" class="booking-calendar__cell is-other-month" disabled>31</button>
+          <button type="button" class="booking-calendar__cell" disabled>1</button>
+          <button type="button" class="booking-calendar__cell" disabled>2</button>
+          <button type="button" class="booking-calendar__cell"><span>3</span><span class="booking-calendar__count">5 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>4</span><span class="booking-calendar__count">3 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>5</span><span class="booking-calendar__count">8 open</span></button>
+          <button type="button" class="booking-calendar__cell" disabled>6</button>
+
+          <button type="button" class="booking-calendar__cell" disabled>7</button>
+          <button type="button" class="booking-calendar__cell"><span>8</span><span class="booking-calendar__count">2 open</span></button>
+          <button type="button" class="booking-calendar__cell is-selected" aria-pressed="true"><span>9</span><span class="booking-calendar__count">4 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>10</span><span class="booking-calendar__count">7 open</span></button>
+          <button type="button" class="booking-calendar__cell" disabled>11</button>
+          <button type="button" class="booking-calendar__cell"><span>12</span><span class="booking-calendar__count">6 open</span></button>
+          <button type="button" class="booking-calendar__cell" disabled>13</button>
+
+          <button type="button" class="booking-calendar__cell" disabled>14</button>
+          <button type="button" class="booking-calendar__cell"><span>15</span><span class="booking-calendar__count">3 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>16</span><span class="booking-calendar__count">5 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>17</span><span class="booking-calendar__count">4 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>18</span><span class="booking-calendar__count">6 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>19</span><span class="booking-calendar__count">2 open</span></button>
+          <button type="button" class="booking-calendar__cell" disabled>20</button>
+
+          <button type="button" class="booking-calendar__cell" disabled>21</button>
+          <button type="button" class="booking-calendar__cell"><span>22</span><span class="booking-calendar__count">8 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>23</span><span class="booking-calendar__count">5 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>24</span><span class="booking-calendar__count">4 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>25</span><span class="booking-calendar__count">6 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>26</span><span class="booking-calendar__count">2 open</span></button>
+          <button type="button" class="booking-calendar__cell" disabled>27</button>
+
+          <button type="button" class="booking-calendar__cell" disabled>28</button>
+          <button type="button" class="booking-calendar__cell"><span>29</span><span class="booking-calendar__count">7 open</span></button>
+          <button type="button" class="booking-calendar__cell"><span>30</span><span class="booking-calendar__count">3 open</span></button>
+          <button type="button" class="booking-calendar__cell is-other-month" disabled>1</button>
+          <button type="button" class="booking-calendar__cell is-other-month" disabled>2</button>
+          <button type="button" class="booking-calendar__cell is-other-month" disabled>3</button>
+          <button type="button" class="booking-calendar__cell is-other-month" disabled>4</button>
+        </div>
+
+        <!-- Available time slots -->
+        <div class="u-stack u-stack--md">
+          <h3 class="wire-h5">Available times — Tuesday, June 9</h3>
+
+          <div class="u-stack u-stack--sm">
+            <div class="wire-eyebrow">Morning</div>
+            <div class="booking-slots">
+              <button type="button" class="booking-slots__slot">8:00 AM</button>
+              <button type="button" class="booking-slots__slot">9:15 AM</button>
+              <button type="button" class="booking-slots__slot is-selected" aria-pressed="true">10:30 AM</button>
+              <button type="button" class="booking-slots__slot" disabled>11:45 AM</button>
+            </div>
+          </div>
+
+          <div class="u-stack u-stack--sm">
+            <div class="wire-eyebrow">Afternoon</div>
+            <div class="booking-slots">
+              <button type="button" class="booking-slots__slot" disabled>1:00 PM</button>
+              <button type="button" class="booking-slots__slot" disabled>2:15 PM</button>
+              <button type="button" class="booking-slots__slot">3:30 PM</button>
+              <button type="button" class="booking-slots__slot">4:45 PM</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selection summary + actions -->
+        <div class="wire-callout wire-callout--bordered">
+          <span class="wire-callout__eyebrow">Selected</span>
+          <h3 class="wire-callout__title">Tuesday, June 9 · 10:30 AM · Streeterville</h3>
+          <p class="wire-callout__body">In-person consult, 45 minutes, with Dr. Maya Okonkwo. We'll hold this slot for 10 minutes while you confirm.</p>
+          <div class="wire-callout__actions">
+            <a class="wire-button" href="./hospital-appointment.html">Continue to confirm</a>
+            <a class="wire-button wire-button--ghost" href="./hospital-find-a-doctor.html">Change provider</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="./hospital-homepage.html"><span class="wire-topnav__brand-mark">R</span> Riverside Medical Center</a>
+    <p class="wire-footer__tagline">355 East Erie Street · Chicago, IL 60611 · 312.555.1000</p>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

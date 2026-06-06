@@ -23,7 +23,6 @@
   color: var(--tag-fg);
   border: var(--border-thin) solid var(--tag-border);
   border-radius: var(--radius-pill);
-  cursor: pointer;
   text-decoration: none;
   transition:
     background-color var(--duration-fast) var(--ease-out),
@@ -31,7 +30,14 @@
     border-color var(--duration-fast) var(--ease-out);
 }
 
-.wire-tag:hover {
+/* Only interactive tags (rendered as a link or button) react like controls.
+   A static metadata tag (a <span>) must not imply clickability. */
+a.wire-tag,
+button.wire-tag {
+  cursor: pointer;
+}
+a.wire-tag:hover,
+button.wire-tag:hover {
   --tag-bg: var(--color-bg-muted);
   text-decoration: none;
 }
@@ -43,12 +49,23 @@
   --tag-border: var(--color-accent);
 }
 
+/* ---------- Small variant — for dense metadata rows (e.g. citation entries).
+   min-block-size meets the WCAG 2.5.8 AA floor of 24px. ---------- */
+.wire-tag--sm {
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-xs);
+  min-block-size: 1.5rem;
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+}
+
 .wire-tag__remove {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  inline-size: 1rem;
-  block-size: 1rem;
+  /* 24px hit target meets WCAG 2.5.8 (AA); the glyph stays optically small. */
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
   border-radius: 50%;
   margin-inline-start: var(--space-2xs);
   background: none;
@@ -56,7 +73,7 @@
   cursor: pointer;
 }
 .wire-tag__remove:hover {
-  background-color: rgba(15, 15, 15, 0.1);
+  background-color: var(--color-overlay-light);
 }
 
 .wire-tag-list {

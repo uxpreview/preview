@@ -1,0 +1,149 @@
+/* ============================================================
+   Doc-site helpers — shared scaffolding for documentation and
+   tier pages. NOT wireframe components for client work; these
+   are the system's own docs furniture. Previously duplicated
+   inline in every doc page; extracted here so pages reference
+   one source. Tokens only, grayscale only.
+   ============================================================ */
+
+/* Live template preview — an embedded iframe of a real rendered page, under a
+   bar with a label and an "open full page" link. Doc-chrome only. */
+.doc-preview {
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+.doc-preview__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  border-block-end: var(--border-thin) solid var(--color-border);
+  background-color: var(--color-bg-subtle);
+}
+.doc-preview__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-subtle);
+}
+.doc-preview__open {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+.doc-preview__frame {
+  display: block;
+  inline-size: 100%;
+  block-size: min(70vh, 44rem);
+  border: 0;
+  background-color: var(--color-bg);
+}
+
+/* Section rhythm on long single-column doc pages. */
+.doc-section {
+  padding-block: var(--space-2xl);
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+.doc-section:first-of-type { border-block-start: 0; }
+
+/* Example surface — frames a live component example. */
+.doc-example {
+  padding: var(--space-xl);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+  margin-block-start: var(--space-md);
+}
+.doc-example__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-subtle);
+  margin-block-end: var(--space-md);
+  display: block;
+}
+
+/* Copy-paste code block. */
+.doc-snippet {
+  padding: var(--space-md);
+  background-color: var(--color-bg-muted);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  overflow-x: auto;
+  white-space: pre;
+  margin-block-start: var(--space-md);
+}
+
+/* Do / Don't comparison grid. */
+.doc-do-dont {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-block-start: var(--space-md);
+}
+@media (min-width: 48em) {
+  .doc-do-dont { grid-template-columns: 1fr 1fr; }
+}
+.doc-do-dont__cell {
+  padding: var(--space-lg);
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+}
+.doc-do-dont__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-text-subtle);
+  margin: 0 0 var(--space-md) 0;
+}
+.doc-do-dont__cell--do .doc-do-dont__label::before {
+  content: "✓ ";
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+}
+.doc-do-dont__cell--dont .doc-do-dont__label::before {
+  content: "✗ ";
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+}
+
+/* Spec / reference table. */
+.doc-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block-start: var(--space-md);
+  font-size: var(--text-sm);
+}
+.doc-spec-table th,
+.doc-spec-table td {
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  border-block-end: var(--border-thin) solid var(--color-border);
+  vertical-align: top;
+}
+.doc-spec-table th {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  background-color: var(--color-bg-subtle);
+}
+.doc-spec-table code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background-color: var(--color-bg-muted);
+  padding: 0.1em 0.3em;
+  border-radius: var(--radius-xs);
+  /* Only long, unbreakable selector tokens may break, so a narrow column
+     never forces page overflow. Normal prose and labels still wrap on spaces
+     and never break mid-word. */
+  overflow-wrap: anywhere;
+}

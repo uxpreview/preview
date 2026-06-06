@@ -1,0 +1,80 @@
+/* ============================================================
+   Empty state — what to render when a list, search, or section
+   has no items. Three jobs: explain what's missing, reduce
+   confusion ("did the page break?"), and offer a recovery action.
+
+   Anatomy:
+     .wire-empty                 — centered container
+     .wire-empty__visual         — optional grayscale shape/icon
+     .wire-empty__title
+     .wire-empty__body
+     .wire-empty__actions
+
+   Variants: default (centered), inline (left-aligned for use
+   inside cards / table replacements).
+   ============================================================ */
+
+.wire-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl);
+  max-inline-size: 36rem;
+  margin-inline: auto;
+  color: var(--color-text);
+}
+
+.wire-empty__visual {
+  inline-size: 4rem;
+  block-size: 4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-muted);
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  font-size: var(--text-2xl);
+  margin-block-end: var(--space-xs);
+}
+
+.wire-empty__title {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.wire-empty__body {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  max-inline-size: 40ch;
+  margin: 0;
+}
+
+.wire-empty__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-xs);
+}
+
+/* ---------- Inline variant ---------- */
+.wire-empty--inline {
+  align-items: flex-start;
+  text-align: start;
+  padding: var(--space-xl);
+  margin-inline: 0;
+}
+.wire-empty--inline .wire-empty__body { max-inline-size: 60ch; }
+.wire-empty--inline .wire-empty__actions { justify-content: flex-start; }
+
+/* ---------- Bordered variant — useful inside tables / dashboards ---------- */
+.wire-empty--bordered {
+  border: var(--border-thin) dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}

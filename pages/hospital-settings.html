@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings — Riverside Patient Portal</title>
+  <link rel="stylesheet" href="../css/wire.css">
+</head>
+<body>
+
+<a href="#main" class="wire-skip-link">Skip to content</a>
+
+<header class="wire-topnav">
+  <div class="u-container wire-topnav__inner">
+    <a href="./hospital-homepage.html" class="wire-topnav__brand">
+      <span class="wire-topnav__brand-mark">R</span>
+      <span>Riverside Medical Center · Portal</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="wire-topnav__menu" role="list">
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Appointments</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Test results</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Messages</a></li>
+        <li class="wire-topnav__item"><a class="wire-topnav__link" href="#">Bills</a></li>
+      </ul>
+    </nav>
+    <div class="wire-topnav__utility">
+      <a class="wire-button wire-button--ghost wire-button--sm" href="#">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="u-section u-section--sm">
+  <div class="u-container">
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list" role="list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Portal home</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Settings</span></li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section class="u-section">
+  <div class="u-container">
+    <div class="u-sidebar">
+
+      <!-- Secondary nav: children of Settings (the wire-sidenav__link--parent + sublist pattern from v1.3) -->
+      <aside aria-label="Settings sections">
+        <nav class="wire-sidenav">
+          <div class="wire-sidenav__group">
+            <a class="wire-sidenav__link wire-sidenav__link--parent" href="#">Settings</a>
+            <ul class="wire-sidenav__list" role="list">
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="#account" aria-current="page">Account</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#contact">Contact preferences</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#notifications">Notifications</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#sharing">Sharing &amp; access</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#accessibility">Accessibility</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#security">Security</a></li>
+              <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#danger">Close account</a></li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="u-stack u-stack--3xl" style="max-inline-size: 44rem">
+
+        <div class="u-stack u-stack--sm">
+          <h1 class="wire-h2">Settings</h1>
+          <p class="u-text-muted">Manage your account, contact preferences, notifications, and access. Changes save when you click <em>Save changes</em> in each section.</p>
+        </div>
+
+        <!-- Account -->
+        <section id="account" class="u-stack u-stack--lg">
+          <div class="u-stack u-stack--xs">
+            <h2 class="wire-h3">Account</h2>
+            <p class="u-text-muted" style="font-size: var(--text-sm)">Your name and date of birth come from your medical record. To change them, contact patient registration.</p>
+          </div>
+
+          <form class="wire-form u-stack u-stack--md" novalidate>
+            <div class="wire-form__row wire-form__row--2">
+              <div class="wire-field">
+                <label class="wire-field__label" for="first-name">First name</label>
+                <input class="wire-input" id="first-name" value="Marcus" readonly>
+                <p class="wire-field__hint" style="font-size: var(--text-xs)">Read-only · from medical record</p>
+              </div>
+              <div class="wire-field">
+                <label class="wire-field__label" for="last-name">Last name</label>
+                <input class="wire-input" id="last-name" value="Reyes" readonly>
+              </div>
+            </div>
+            <div class="wire-field">
+              <label class="wire-field__label" for="preferred">Preferred name <span class="u-text-muted">(optional)</span></label>
+              <input class="wire-input" id="preferred" value="Marcus" placeholder="What we'll call you in messages">
+              <p class="wire-field__hint" style="font-size: var(--text-xs)">Shown in messages and at check-in. Doesn't change your legal record.</p>
+            </div>
+            <div class="wire-field">
+              <label class="wire-field__label" for="dob">Date of birth</label>
+              <input class="wire-input" id="dob" value="1968-04-12" readonly>
+            </div>
+            <div>
+              <button type="submit" class="wire-button">Save changes</button>
+            </div>
+          </form>
+        </section>
+
+        <hr class="wire-divider">
+
+        <!-- Contact -->
+        <section id="contact" class="u-stack u-stack--lg">
+          <div class="u-stack u-stack--xs">
+            <h2 class="wire-h3">Contact preferences</h2>
+            <p class="u-text-muted" style="font-size: var(--text-sm)">How we reach you. You can have more than one of each — we'll use the primary first.</p>
+          </div>
+
+          <form class="wire-form u-stack u-stack--md" novalidate>
+            <div class="wire-field">
+              <label class="wire-field__label" for="email-primary">Primary email</label>
+              <input class="wire-input" id="email-primary" type="email" value="marcus.reyes@example.com">
+              <p class="wire-field__hint" style="font-size: var(--text-xs)">Verified · last confirmed May 18, 2026</p>
+            </div>
+            <div class="wire-field">
+              <label class="wire-field__label" for="phone-mobile">Mobile phone</label>
+              <input class="wire-input" id="phone-mobile" type="tel" value="(312) 555-0142">
+            </div>
+            <fieldset class="wire-field">
+              <legend class="wire-field__label">Preferred contact method</legend>
+              <div class="u-stack u-stack--xs u-mt-xs">
+                <label class="wire-radio"><input type="radio" name="prefer" class="wire-radio__input" checked><span>Text message</span></label>
+                <label class="wire-radio"><input type="radio" name="prefer" class="wire-radio__input"><span>Email</span></label>
+                <label class="wire-radio"><input type="radio" name="prefer" class="wire-radio__input"><span>Phone call</span></label>
+                <label class="wire-radio"><input type="radio" name="prefer" class="wire-radio__input"><span>Postal mail</span></label>
+              </div>
+            </fieldset>
+            <div>
+              <button type="submit" class="wire-button">Save changes</button>
+            </div>
+          </form>
+        </section>
+
+        <hr class="wire-divider">
+
+        <!-- Notifications -->
+        <section id="notifications" class="u-stack u-stack--lg">
+          <div class="u-stack u-stack--xs">
+            <h2 class="wire-h3">Notifications</h2>
+            <p class="u-text-muted" style="font-size: var(--text-sm)">What we send you. We always confirm appointments and send urgent test results — those can't be turned off.</p>
+          </div>
+
+          <div class="wire-table-wrap">
+            <table class="wire-table">
+              <caption class="u-visually-hidden">Notification preferences by channel</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Type</th>
+                  <th scope="col">Text</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Appointment confirmation</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Text appointment confirmation</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Email appointment confirmation</span></label></td>
+                </tr>
+                <tr><th scope="row">Day-before reminder</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Text reminder</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Email reminder</span></label></td>
+                </tr>
+                <tr><th scope="row">Test result available</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Text test result</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Email test result</span></label></td>
+                </tr>
+                <tr><th scope="row">Billing statement</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Text billing</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox" checked><span class="u-visually-hidden">Email billing</span></label></td>
+                </tr>
+                <tr><th scope="row">Research opportunities</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Text research</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Email research</span></label></td>
+                </tr>
+                <tr><th scope="row">Newsletter</th>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Text newsletter</span></label></td>
+                  <td><label class="wire-toggle"><input class="wire-toggle__input" type="checkbox"><span class="u-visually-hidden">Email newsletter</span></label></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <button type="button" class="wire-button" data-wire-toast-trigger data-toast-title="Notification preferences saved" data-toast-body="Changes take effect immediately.">Save changes</button>
+          </div>
+        </section>
+
+        <hr class="wire-divider">
+
+        <!-- Accessibility -->
+        <section id="accessibility" class="u-stack u-stack--lg">
+          <div class="u-stack u-stack--xs">
+            <h2 class="wire-h3">Accessibility</h2>
+            <p class="u-text-muted" style="font-size: var(--text-sm)">Adjust how Riverside displays and announces information for you. These settings persist on this device.</p>
+          </div>
+
+          <form class="wire-form u-stack u-stack--md" novalidate>
+
+            <fieldset class="wire-field">
+              <legend class="wire-field__label">Text size</legend>
+              <p class="wire-field__hint u-mt-2xs" style="font-size: var(--text-xs)">The system also exposes a text-size widget you can use anywhere — set the default here.</p>
+              <div class="wire-text-size u-mt-sm" data-wire-text-size role="group" aria-label="Default text size">
+                <button class="wire-text-size__btn wire-text-size__btn--sm" data-wire-text-size-value="sm" aria-pressed="false">A</button>
+                <button class="wire-text-size__btn wire-text-size__btn--md" data-wire-text-size-value="md" aria-pressed="true">A</button>
+                <button class="wire-text-size__btn wire-text-size__btn--lg" data-wire-text-size-value="lg" aria-pressed="false">A</button>
+                <button class="wire-text-size__btn wire-text-size__btn--xl" data-wire-text-size-value="xl" aria-pressed="false">A</button>
+              </div>
+            </fieldset>
+
+            <label class="wire-checkbox">
+              <input class="wire-checkbox__input" type="checkbox" id="reduce-motion">
+              <span>Always reduce motion <span class="u-text-muted">(your OS setting is respected automatically; this forces it on)</span></span>
+            </label>
+            <label class="wire-checkbox">
+              <input class="wire-checkbox__input" type="checkbox" id="high-contrast">
+              <span>Increase contrast</span>
+            </label>
+            <div class="wire-field">
+              <label class="wire-field__label" for="screen-reader">Screen reader profile</label>
+              <select class="wire-input" id="screen-reader">
+                <option>Auto-detect (recommended)</option>
+                <option>VoiceOver</option>
+                <option>NVDA</option>
+                <option>JAWS</option>
+                <option>None</option>
+              </select>
+              <p class="wire-field__hint" style="font-size: var(--text-xs)">Optimizes ARIA live regions for the screen reader you use.</p>
+            </div>
+
+            <div>
+              <button type="button" class="wire-button" data-wire-toast-trigger data-toast-title="Accessibility preferences saved">Save changes</button>
+            </div>
+
+          </form>
+        </section>
+
+        <hr class="wire-divider">
+
+        <!-- Danger zone -->
+        <section id="danger" class="u-stack u-stack--lg">
+          <div class="u-stack u-stack--xs">
+            <h2 class="wire-h3">Close account</h2>
+            <p class="u-text-muted" style="font-size: var(--text-sm)">Closing your portal account does not delete your medical record. To request medical-record deletion, contact health information management.</p>
+          </div>
+
+          <div class="wire-callout wire-callout--bordered">
+            <span class="wire-callout__eyebrow">Permanent</span>
+            <h3 class="wire-callout__title">This can't be undone from the portal.</h3>
+            <p class="wire-callout__body">You'll lose access to messages, appointment history, and bill pay. We'll keep what we're required to keep by law and policy.</p>
+            <div class="wire-callout__actions">
+              <button type="button" class="wire-button wire-button--secondary" data-wire-modal-open="close-account-modal">Close my account</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal: close account confirmation -->
+<div class="wire-modal" id="close-account-modal" aria-labelledby="close-account-title">
+  <div class="wire-modal__backdrop"></div>
+  <div class="wire-modal__panel">
+    <header class="wire-modal__header">
+      <h2 class="wire-modal__title" id="close-account-title">Close your portal account?</h2>
+      <button type="button" class="wire-modal__close" data-wire-modal-close aria-label="Close">×</button>
+    </header>
+    <div class="wire-modal__body">
+      <p>To confirm, type <strong>close account</strong> below. We'll send a confirmation email; the closure takes effect 48 hours later in case you change your mind.</p>
+      <div class="wire-field u-mt-md">
+        <label class="wire-field__label" for="confirm-text">Type to confirm</label>
+        <input class="wire-input" id="confirm-text" placeholder="close account">
+      </div>
+    </div>
+    <footer class="wire-modal__footer">
+      <button type="button" class="wire-button wire-button--ghost" data-wire-modal-close>Cancel</button>
+      <button type="button" class="wire-button" data-wire-modal-close data-wire-toast-trigger data-toast-title="Account closure scheduled" data-toast-body="We've emailed a confirmation. Closure takes effect in 48 hours.">Close account</button>
+    </footer>
+  </div>
+</div>
+
+</main>
+
+<footer class="wire-footer wire-footer--compact">
+  <div class="u-container wire-footer__inner">
+    <a class="wire-footer__brand-mark" href="./hospital-homepage.html"><span class="wire-topnav__brand-mark">R</span> Riverside Medical Center</a>
+    <p class="wire-footer__tagline">355 East Erie Street · Chicago, IL 60611 · 312.555.1000</p>
+  </div>
+</footer>
+
+<script src="../js/wire.js" defer></script>
+</body>
+</html>

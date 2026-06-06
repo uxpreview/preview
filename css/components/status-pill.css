@@ -1,0 +1,72 @@
+/* ============================================================
+   Status pill — small inline pill indicating component lifecycle
+   status. Used in the component-page header and on landing cards.
+
+   Variants:
+     .wire-status-pill                   → Stable (filled dark)
+     .wire-status-pill--beta             → Beta (medium fill)
+     .wire-status-pill--alpha            → Alpha (outlined)
+     .wire-status-pill--deprecated       → Deprecated (muted)
+
+   In grayscale, differentiation comes from fill density + label,
+   not hue. The label text is required and load-bearing.
+   ============================================================ */
+
+.wire-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  /* Hug the label even when it lands in a flex/grid column (e.g. a card body),
+     where a flex item would otherwise stretch to full width. */
+  align-self: start;
+  inline-size: fit-content;
+
+  padding-block: var(--space-3xs);
+  padding-inline: var(--space-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  line-height: 1;
+
+  background-color: var(--color-text);
+  color: var(--color-text-inverse);
+  border: var(--border-thin) solid var(--color-text);
+  border-radius: var(--radius-pill);
+
+  white-space: nowrap;
+}
+
+.wire-status-pill--beta {
+  background-color: var(--color-text-muted);
+  border-color: var(--color-text-muted);
+  color: var(--color-text-inverse);
+}
+
+.wire-status-pill--alpha {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
+  border-style: dashed;
+}
+
+.wire-status-pill--deprecated {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text-subtle);
+  border-color: var(--color-border);
+  text-decoration: line-through;
+  text-decoration-thickness: var(--border-thin);
+}
+
+/* Pending pill — for the migrated-IA period; marks components
+   whose new-IA page hasn't been built yet. Used in the left nav. */
+.wire-status-pill--pending {
+  background-color: transparent;
+  color: var(--color-text-subtle);
+  border-color: var(--color-border);
+  font-weight: var(--weight-medium);
+  text-transform: none;
+  letter-spacing: var(--tracking-normal);
+}

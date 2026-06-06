@@ -1,0 +1,457 @@
+/* ============================================================
+   Doc nav — the persistent left navigation that appears on
+   every docs/components/foundations/patterns/resources page.
+
+   Categorized. Current item highlighted. Pending items shown
+   non-interactively so the inventory stays visible during
+   migration.
+
+   Anatomy:
+     <nav class="wire-doc-nav" aria-label="Component library">
+       <section class="wire-doc-nav__group">
+         <h3 class="wire-doc-nav__group-title">Actions</h3>
+         <ul class="wire-doc-nav__list" role="list">
+           <li class="wire-doc-nav__item">
+             <a class="wire-doc-nav__link is-current" aria-current="page" href="...">Button</a>
+           </li>
+           <li class="wire-doc-nav__item wire-doc-nav__item--pending">
+             <span class="wire-doc-nav__pending">Tag</span>
+           </li>
+         </ul>
+       </section>
+     </nav>
+   ============================================================ */
+
+.wire-doc-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+}
+
+/* A category group is the second level of disclosure: a collapsible <details>
+   whose summary anchors a list of leaves. Spacing between groups is carried by
+   the section-body gap. */
+.wire-doc-nav__group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The group label is the anchor of each cluster: near-full-strength and
+   semibold so the eye reads it as a heading, the leaves below it as quieter
+   children. (Legacy non-collapsible label, kept for the components landing.) */
+.wire-doc-nav__group-title {
+  margin: 0;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Collapsible group summary — one register quieter than a section summary
+   (text-sm vs text-md), same right-pointing chevron that rotates down on open.
+   This is the second level of the rail's disclosure. */
+.wire-doc-nav__group-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+  min-block-size: 2rem;
+
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group-summary::-webkit-details-marker {
+  display: none;
+}
+
+.wire-doc-nav__group-summary:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.wire-doc-nav__group-summary:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__group-summary::after {
+  content: "›";
+  display: inline-block;
+  font-size: var(--text-md);
+  line-height: 1;
+  color: var(--color-text-subtle);
+  transform: rotate(0);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__group[open] > .wire-doc-nav__group-summary::after {
+  transform: rotate(90deg);
+}
+
+/* Tree line: one line guides the leaves, both inside a category group and
+   inside a flat section (Foundations, Patterns…). It sits beside the LEAVES
+   only — never beside a group label — so the hierarchy reads cleanly the way
+   Nextra's does. */
+.wire-doc-nav__group > .wire-doc-nav__list,
+.wire-doc-nav__section-body > .wire-doc-nav__list {
+  margin-inline-start: var(--space-sm);
+  padding-inline-start: var(--space-2xs);
+  padding-block-start: var(--space-3xs);
+  border-inline-start: var(--border-thin) solid var(--color-border);
+}
+
+.wire-doc-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.wire-doc-nav__item {
+  display: block;
+}
+
+.wire-doc-nav__link {
+  display: block;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+  min-block-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.wire-doc-nav__link:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.wire-doc-nav__link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__link.is-current,
+.wire-doc-nav__link[aria-current="page"] {
+  position: relative;
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+/* Left accent bar marks the current item — grayscale can't use a hue tint
+   the way Nextra does, so weight + fill + this bar carry the active state. */
+.wire-doc-nav__link.is-current::before,
+.wire-doc-nav__link[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: var(--space-3xs);
+  inset-block: var(--space-2xs);
+  inline-size: var(--border-md);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-text);
+}
+
+.wire-doc-nav__pending {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-sm);
+  color: var(--color-text-subtle);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  min-block-size: 2rem;
+}
+
+.wire-doc-nav__pending::after {
+  content: "·";
+  margin-inline-start: var(--space-2xs);
+  color: var(--color-border-strong);
+  font-weight: var(--weight-bold);
+}
+
+/* ============================================================
+   Collapsible top-level sections (Carbon-style sidebar IA).
+   Built on native <details> + <summary> for keyboard accessibility
+   and progressive enhancement. Chevron rotates on open via CSS.
+
+   Anatomy (a section whose label links to its own index page):
+     <details class="wire-doc-nav__section" open>
+       <summary class="wire-doc-nav__section-summary">
+         <a class="wire-doc-nav__section-link" href="../">Components</a>
+       </summary>
+       <div class="wire-doc-nav__section-body">
+         <div class="wire-doc-nav__group">...</div>
+       </div>
+     </details>
+   ============================================================ */
+
+.wire-doc-nav__section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide the native disclosure triangle so we can place our own chevron. */
+.wire-doc-nav__section-summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-sm);
+  border-radius: var(--radius-sm);
+
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  line-height: var(--leading-snug);
+
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__section-summary::-webkit-details-marker {
+  display: none;
+}
+
+.wire-doc-nav__section-summary:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.wire-doc-nav__section-summary:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__section-summary::after {
+  content: "›";
+  display: inline-block;
+  font-size: var(--text-lg);
+  line-height: 1;
+  color: var(--color-text-subtle);
+  /* Points RIGHT when collapsed, rotates DOWN when open (Nextra-style tree). */
+  transform: rotate(0);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__section[open] > .wire-doc-nav__section-summary::after {
+  transform: rotate(90deg);
+}
+
+/* A section whose label is itself a link (a folder with an index page, e.g.
+   Components → the components landing). The link fills the row so the label
+   navigates, while the chevron still toggles the disclosure. It reclaims the
+   summary's block padding via negative margin so its hit area covers the full
+   row height; the JS disclosure handler skips clicks that land on this anchor
+   so navigation isn't swallowed by the toggle. */
+.wire-doc-nav__section-link {
+  flex: 1;
+  min-inline-size: 0;
+  display: flex;
+  align-items: center;
+  margin-block: calc(-1 * var(--space-xs));
+  padding-block: var(--space-xs);
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+}
+
+.wire-doc-nav__section-link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* "You are here" on the section's own index page: the leaf list can't carry the
+   current marker (there's no leaf), so the summary row takes the soft fill. */
+.wire-doc-nav__section-summary:has(.wire-doc-nav__section-link.is-current) {
+  background-color: var(--color-bg-muted);
+}
+
+.wire-doc-nav__section-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding-block-start: var(--space-2xs);
+  padding-block-end: var(--space-2xs);
+  padding-inline-start: var(--space-sm);
+}
+
+/* Top-level standalone link (no children) — Get started, All components, etc. */
+.wire-doc-nav__top-link {
+  display: block;
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__top-link:hover {
+  background-color: var(--color-bg-muted);
+}
+
+.wire-doc-nav__top-link:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__top-link.is-current,
+.wire-doc-nav__top-link[aria-current="page"] {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   Rail search — a client-side filter over the nav links. It's a
+   pure JS enhancement (it filters the rail, it does not full-text
+   search page content), so the box stays hidden until the script
+   attaches `.is-js`, never appearing as a dead control without JS.
+   ============================================================ */
+.wire-doc-nav__search { display: none; }
+
+.wire-doc-nav.is-js .wire-doc-nav__search {
+  display: block;
+  position: relative;
+  margin-block-end: var(--space-sm);
+}
+
+.wire-doc-nav__search-icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--space-sm);
+  transform: translateY(-50%);
+  color: var(--color-text-subtle);
+  pointer-events: none;
+}
+
+.wire-doc-nav__search-input {
+  inline-size: 100%;
+  box-sizing: border-box;
+  padding-block: var(--space-xs);
+  padding-inline-start: calc(var(--space-sm) + var(--space-md));
+  padding-inline-end: var(--space-sm);
+
+  font-family: var(--font-sans);
+  /* 16px (not --text-sm/14px): iOS Safari auto-zooms on focus below 16px. */
+  font-size: var(--text-md);
+  color: var(--color-text);
+
+  background-color: var(--color-bg-muted);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.wire-doc-nav__search-input::placeholder { color: var(--color-text-subtle); }
+
+.wire-doc-nav__search-input:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+  background-color: var(--color-bg);
+  border-color: var(--color-border-strong);
+}
+
+.wire-doc-nav__noresults {
+  margin-block: var(--space-sm) 0;
+  padding-inline: var(--space-sm);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+/* The base display rules (block/flex) outrank the UA [hidden] rule, so the
+   filter's hidden attribute would be ignored. Re-assert it for the elements
+   the search toggles (attribute selectors raise specificity past the base). */
+.wire-doc-nav__item[hidden],
+.wire-doc-nav__top-link[hidden],
+.wire-doc-nav__group[hidden],
+.wire-doc-nav__section[hidden] {
+  display: none;
+}
+
+/* ============================================================
+   Theme toggle — light / dark / system, pinned to the foot of the
+   rail (Nextra-style). Icon-only segmented control; the pressed
+   segment carries a soft fill. Sits below everything via the rail's
+   flex column + margin auto (see shell.css).
+   ============================================================ */
+.wire-doc-nav__theme {
+  margin-block-start: auto;
+  padding-block-start: var(--space-md);
+  margin-block-end: var(--space-2xs);
+  display: none;            /* the buttons need JS; revealed once it attaches */
+  gap: var(--space-3xs);
+  border-block-start: var(--border-thin) solid var(--color-border);
+}
+
+.wire-doc-nav.is-js .wire-doc-nav__theme {
+  display: flex;
+}
+
+.wire-doc-nav__theme-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2rem;
+  padding-block: var(--space-2xs);
+  background: transparent;
+  color: var(--color-text-subtle);
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.wire-doc-nav__theme-btn:hover {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+}
+
+.wire-doc-nav__theme-btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-doc-nav__theme-btn[aria-pressed="true"] {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}

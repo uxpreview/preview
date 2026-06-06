@@ -1,0 +1,82 @@
+/* ============================================================
+   Skeleton — placeholder shapes for content that is still loading.
+   Two reasons to use one: tell the user the page isn't broken,
+   and reserve layout so when real content arrives there's no jump.
+
+   Anatomy: a single .wire-skeleton element with one of the shape
+   modifiers (--text, --title, --avatar, --image, --button) OR
+   inline width/height utility values via the size modifiers.
+
+   The shimmer animation pauses for prefers-reduced-motion users.
+   ============================================================ */
+
+.wire-skeleton {
+  display: block;
+  background-color: var(--color-bg-muted);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.wire-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-bg-subtle),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: wire-skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes wire-skeleton-shimmer {
+  to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire-skeleton::after { animation: none; opacity: 0; }
+}
+
+/* ---------- Shape modifiers ---------- */
+.wire-skeleton--text {
+  block-size: 0.875rem;
+  inline-size: 100%;
+  border-radius: var(--radius-xs);
+}
+.wire-skeleton--text + .wire-skeleton--text {
+  margin-block-start: var(--space-2xs);
+}
+
+.wire-skeleton--title {
+  block-size: 1.75rem;
+  inline-size: 60%;
+  border-radius: var(--radius-xs);
+}
+
+.wire-skeleton--avatar {
+  inline-size: 3rem;
+  block-size: 3rem;
+  border-radius: 50%;
+}
+
+.wire-skeleton--image {
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+}
+
+.wire-skeleton--button {
+  inline-size: 8rem;
+  block-size: 2.75rem;
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Group helper — for a stack of skeletons that mock a card ---------- */
+.wire-skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
