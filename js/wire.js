@@ -21,7 +21,7 @@
     const panels = tabs.map(t => document.getElementById(t.getAttribute("aria-controls")));
     const useHash = root.hasAttribute("data-wire-tabs-hash");
 
-    function activate(idx, focus, updateHash) {
+    function activate(idx, focus, updateHash, scrollToContent) {
       tabs.forEach((tab, i) => {
         const selected = i === idx;
         tab.setAttribute("aria-selected", selected);
@@ -38,17 +38,30 @@
           history.replaceState(null, "", "#" + panelId);
         }
       }
+      // On an explicit switch, return to the start of the new tab's content if the
+      // user had scrolled down. The tab strip is sticky at --shell-header-h, so
+      // aligning the tabs root to that offset lands the panel's first section just
+      // below the strip. Only fires when scrolled past it, so a switch near the top
+      // never jolts the page.
+      if (scrollToContent) {
+        const stickyTop = parseFloat(getComputedStyle(tablist).top) || 0;
+        // Document-space target so it's stable even as the panel swap shrinks the
+        // page. Jump instantly: a smooth scroll gets canceled by that same-tick
+        // reflow. Only reset when the user has actually scrolled past the top.
+        const target = root.getBoundingClientRect().top + window.scrollY - stickyTop;
+        if (window.scrollY > target) window.scrollTo(0, target);
+      }
     }
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activate(i, false, true));
+      tab.addEventListener("click", () => activate(i, false, true, true));
       tab.addEventListener("keydown", (e) => {
         let next = -1;
         if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
         if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
         if (e.key === "Home") next = 0;
         if (e.key === "End") next = tabs.length - 1;
-        if (next >= 0) { e.preventDefault(); activate(next, true, true); }
+        if (next >= 0) { e.preventDefault(); activate(next, true, true, true); }
       });
     });
 
