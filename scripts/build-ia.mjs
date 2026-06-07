@@ -136,9 +136,11 @@ function buildNavHtml() {
       <label class="u-visually-hidden" for="nav-search">Filter the navigation</label>
       <input id="nav-search" type="search" class="wire-doc-nav__search-input" placeholder="Search…" autocomplete="off">
     </div>
+    <div class="wire-doc-nav__scroll">
 ${topLinks}
 
 ${sections}
+    </div>
 
 ${THEME}
   </div>

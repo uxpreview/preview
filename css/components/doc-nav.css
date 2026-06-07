@@ -30,6 +30,20 @@
   font-size: var(--text-sm);
 }
 
+/* The scrollable middle: only the link list scrolls, so the search (pinned
+   above) and the theme control (pinned below) always stay in view, Nextra-style.
+   The flex chain — rail → doc-nav → scroll — each needs min-block-size:0 so this
+   can shrink and scroll instead of pushing the pinned ends out of the rail. */
+.wire-doc-nav__scroll {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
 /* A category group is the second level of disclosure: a collapsible <details>
    whose summary anchors a list of leaves. Spacing between groups is carried by
    the section-body gap. */
@@ -349,17 +363,13 @@
 
 .wire-doc-nav.is-js .wire-doc-nav__search {
   display: block;
-  /* Pinned to the top of the rail so the filter is always reachable while the
-     link list scrolls beneath it (Nextra-style). position:sticky also serves as
-     the containing block for the absolutely-positioned search icon. */
-  position: sticky;
-  inset-block-start: 0;
-  z-index: 2;
-  background-color: var(--color-bg);
-  /* Padding (not margin) so the rail bg extends below the box and the box-shadow
-     bleeds it over the flex gap — scrolling links never peek through the seam. */
-  padding-block-end: var(--space-sm);
-  box-shadow: 0 0 0 var(--space-3xs) var(--color-bg);
+  /* Fixed at the top of the rail (a non-scrolling flex item); the link list
+     scrolls in .wire-doc-nav__scroll below. position:relative anchors the
+     absolutely-positioned search icon. flex-shrink:0 keeps the box at its
+     natural height so the icon stays centered on the input. */
+  position: relative;
+  flex-shrink: 0;
+  margin-block-end: var(--space-sm);
 }
 
 .wire-doc-nav__search-icon {
@@ -421,19 +431,13 @@
    flex column + margin auto (see shell.css).
    ============================================================ */
 .wire-doc-nav__theme {
-  margin-block-start: auto;
   padding-block-start: var(--space-md);
   display: none;            /* the buttons need JS; revealed once it attaches */
+  /* Fixed at the foot of the rail (a non-scrolling flex item); the link list
+     scrolls in .wire-doc-nav__scroll above it, which pushes this to the bottom. */
+  flex-shrink: 0;
   gap: var(--space-3xs);
   border-block-start: var(--border-thin) solid var(--color-border);
-  /* Pinned to the foot of the rail so the theme control is always in view while
-     the link list scrolls above it. margin-auto still parks it at the bottom when
-     the list is short; sticky takes over once the list overflows. */
-  position: sticky;
-  inset-block-end: 0;
-  z-index: 2;
-  background-color: var(--color-bg);
-  box-shadow: 0 0 0 var(--space-3xs) var(--color-bg);
 }
 
 .wire-doc-nav.is-js .wire-doc-nav__theme {

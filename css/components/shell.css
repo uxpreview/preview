@@ -101,23 +101,25 @@ body.wire-shell .wire-railnav {
   inset-block-end: 0;
   inset-inline-start: 0;
   inline-size: var(--shell-sidenav-w);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  /* The rail itself doesn't scroll — only .wire-doc-nav__scroll does, so the
+     search and theme control stay pinned at the rail's top and foot. */
+  overflow: hidden;
   background-color: var(--color-bg);
   border-inline-end: var(--border-thin) solid var(--color-border);
   padding-block: var(--space-md);
   padding-inline: var(--space-sm);
   z-index: var(--z-base);
 
-  /* Column so the nav can grow and the theme toggle pins to the bottom. */
+  /* Column: search pinned top, scroll region in the middle, theme pinned foot. */
   display: flex;
   flex-direction: column;
 }
 
-/* Nav fills the rail height so the theme control's margin-auto reaches the
-   foot even when the link list is short. */
+/* Nav fills the rail height and constrains its own height (min-block-size:0) so
+   the inner scroll region can shrink and scroll rather than overflow the rail. */
 body.wire-shell .wire-railnav > .wire-doc-nav {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
+  min-block-size: 0;
 }
 
 /* Close control lives in the rail but only matters in the mobile
