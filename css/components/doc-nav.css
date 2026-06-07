@@ -349,8 +349,17 @@
 
 .wire-doc-nav.is-js .wire-doc-nav__search {
   display: block;
-  position: relative;
-  margin-block-end: var(--space-sm);
+  /* Pinned to the top of the rail so the filter is always reachable while the
+     link list scrolls beneath it (Nextra-style). position:sticky also serves as
+     the containing block for the absolutely-positioned search icon. */
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 2;
+  background-color: var(--color-bg);
+  /* Padding (not margin) so the rail bg extends below the box and the box-shadow
+     bleeds it over the flex gap — scrolling links never peek through the seam. */
+  padding-block-end: var(--space-sm);
+  box-shadow: 0 0 0 var(--space-3xs) var(--color-bg);
 }
 
 .wire-doc-nav__search-icon {
@@ -414,10 +423,17 @@
 .wire-doc-nav__theme {
   margin-block-start: auto;
   padding-block-start: var(--space-md);
-  margin-block-end: var(--space-2xs);
   display: none;            /* the buttons need JS; revealed once it attaches */
   gap: var(--space-3xs);
   border-block-start: var(--border-thin) solid var(--color-border);
+  /* Pinned to the foot of the rail so the theme control is always in view while
+     the link list scrolls above it. margin-auto still parks it at the bottom when
+     the list is short; sticky takes over once the list overflows. */
+  position: sticky;
+  inset-block-end: 0;
+  z-index: 2;
+  background-color: var(--color-bg);
+  box-shadow: 0 0 0 var(--space-3xs) var(--color-bg);
 }
 
 .wire-doc-nav.is-js .wire-doc-nav__theme {
