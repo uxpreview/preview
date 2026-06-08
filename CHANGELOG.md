@@ -6,6 +6,16 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Local navigation variants (feat/local-navigation-variants)
+
+**Added**
+- Add `wire-subnav` (Section sub-nav) component and page.
+- Rework Side nav page into "Local navigation" hub: variant decision framework, five variants, deep-hierarchy model.
+- Promote `wire-sidenav` sublist/parent compositions to stable; add `--sticky` modifier.
+- Add 5 verified local-nav citations; fix a stale NN/g URL.
+
+---
+
 ### Messaging & feedback group migrated + feedback a11y upgrades (2026-06-05)
 
 Migrates the six Messaging & feedback components onto canonical
