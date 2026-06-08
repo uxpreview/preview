@@ -387,10 +387,74 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Alerts &amp; emergencies</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">When something is genuinely urgent — a closure, a safety event, a critical health instruction — the system surfaces it loudly and accessibly. The discipline is reserving that volume for real urgency, so it never cries wolf.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="levels">
+            <h2 class="wire-h3">Levels of urgency</h2>
+            <p class="u-text-muted u-mt-sm">Match the channel to the stakes. Severity is signaled by placement, an icon, and the wording — never by color alone (see <a href="system-feedback.html">System feedback</a>).</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Level</th><th scope="col">Pattern</th><th scope="col">Example</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Site-wide</th><td><a href="../../components/sections/alert-bar/">Alert bar</a></td><td>Weather closure, system outage, public-health notice.</td></tr>
+                  <tr><th scope="row">Page-level</th><td><a href="../../components/banner/">Banner</a></td><td>This location's hours changed; this service is paused.</td></tr>
+                  <tr><th scope="row">Life-safety</th><td><a href="../../components/messaging-feedback/emergency-line/">Emergency line</a></td><td>Always-present "Call 911 / crisis line" affordance.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="emergency-line">
+            <h2 class="wire-h3">The emergency line</h2>
+            <p class="u-text-muted u-mt-sm">In healthcare, a path to emergency help is persistent, not buried in a flow. The <a href="../../components/messaging-feedback/emergency-line/">emergency line</a> stays reachable so that a person in crisis is one obvious tap from 911 or a crisis number — at any point, on any page. This is a healthcare convention the system treats as non-negotiable.</p>
+          </section>
+
+          <section class="doc-section" id="accessible">
+            <h2 class="wire-h3">Accessible and honest</h2>
+            <p class="u-text-muted u-mt-sm">Urgent messages have to reach everyone and mean what they say.</p>
+            <ul class="u-mt-md">
+              <li>Announce true alerts assertively (<code>role="alert"</code>) so screen readers interrupt. <em>(WCAG 2.2 — 4.1.3.)</em></li>
+              <li>Never rely on a red bar alone — state the urgency in words and an icon. <em>(WCAG 2.2 — 1.4.1.)</em></li>
+              <li>Reserve the top level for real emergencies; routine notices at maximum volume train people to ignore them.</li>
+              <li>Write the instruction in plain language — an emergency is the worst time to parse jargon.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="do-dont">
+            <h2 class="wire-h3">Do and don't</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Keep the emergency path reachable from everywhere.</dd>
+              <dt>Don't</dt><dd>Escalate routine updates to emergency styling.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#levels">Levels of urgency</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#emergency-line">The emergency line</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#accessible">Accessible and honest</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do and don't</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="auth-entry.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Auth &amp; entry</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="consent-disclosure.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Consent &amp; disclosure</span>
+        </a>
+      </nav>
 
     </div>
   </section>

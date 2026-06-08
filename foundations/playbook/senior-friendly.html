@@ -387,10 +387,66 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Senior-friendly</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Older adults are a primary healthcare audience, not an edge case. Larger text, simpler paths, bigger targets, and forgiving interactions — plus the help affordances the system ships for them.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="why">
+            <h2 class="wire-h3">Why it matters</h2>
+            <p class="u-text-muted u-mt-sm">With age, vision, motor control, and working memory all shift — smaller text is harder to read, small targets harder to hit, and dense, multi-step flows harder to hold in mind. Healthcare audiences skew older, so these aren't accommodations bolted on at the end; they're the default the system designs toward. <em>(Convention — established accessibility-and-aging practice.)</em></p>
+          </section>
+
+          <section class="doc-section" id="readable">
+            <h2 class="wire-h3">Readable by default</h2>
+            <ul class="u-mt-md">
+              <li>Large base text and open line-height out of the box — comfort is the resting state (see <a href="../density.html">Density</a>).</li>
+              <li>A text-size control (A− / A / A+ / A++) that persists the reader's choice across pages.</li>
+              <li>Grayscale contrast that holds at AA in both themes; nothing relies on color (see <a href="../ux-guidance/accessibility-patterns.html">Accessibility patterns</a>).</li>
+              <li>Content reflows cleanly at high zoom rather than forcing horizontal scroll (see <a href="../responsive.html">Responsive</a>).</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="targets-paths">
+            <h2 class="wire-h3">Big targets, short paths</h2>
+            <p class="u-text-muted u-mt-sm">Generous 44&nbsp;px targets with space around them reduce mis-taps, and linear flows with few steps and clear labels reduce the load of remembering where you are. A persistent help bar and a tappable phone number give a way through when the screen isn't working — picking up the phone is a legitimate path, not a failure.</p>
+          </section>
+
+          <section class="doc-section" id="forgiving">
+            <h2 class="wire-h3">Forgiving interactions</h2>
+            <p class="u-text-muted u-mt-sm">Remove pressure and make mistakes cheap. No countdown timers on tasks, easy undo, a clear confirm before anything destructive, and never an action hidden behind hover alone — touch and shaky aim don't hover (see <a href="../interaction-states.html">Interaction states</a>).</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Default to large text and targets; offer a persistent text-size control.</dd>
+              <dt>Do</dt><dd>Keep a visible phone path for people who'd rather call.</dd>
+              <dt>Don't</dt><dd>Gate essential actions behind hover, or rush users with timers.</dd>
+              <dt>Don't</dt><dd>Treat senior-friendly as a separate "accessible version" — it's the default.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#why">Why it matters</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#readable">Readable by default</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#targets-paths">Big targets, short paths</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#forgiving">Forgiving interactions</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="healthcare-overview.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Healthcare overview</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="health-literacy.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Health literacy</span>
+        </a>
+      </nav>
 
     </div>
   </section>

@@ -387,10 +387,64 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Wizard</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Break a long task into ordered steps — an application, a booking, a patient intake. Show where the user is, let them move back freely, and never lose their work along the way.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="when">
+            <h2 class="wire-h3">When to use a wizard</h2>
+            <p class="u-text-muted u-mt-sm">Reach for a stepped flow when a task is genuinely long or branches on earlier answers — insurance details that depend on coverage type, program questions that depend on applicant status. For a handful of fields, a single page is faster and less ceremonious. <em>(Judgment — weigh the cost of pagination against the relief of chunking.)</em></p>
+          </section>
+
+          <section class="doc-section" id="progress">
+            <h2 class="wire-h3">Show progress</h2>
+            <p class="u-text-muted u-mt-sm">A <a href="../../components/stepper/">Stepper</a> names the steps and marks each as complete, current, or upcoming. Number the steps, and set <code>aria-current="step"</code> on the active one so assistive tech announces position. Knowing "step 2 of 4" lowers the anxiety of an open-ended form.</p>
+          </section>
+
+          <section class="doc-section" id="movement">
+            <h2 class="wire-h3">Moving between steps</h2>
+            <p class="u-text-muted u-mt-sm">Forward and back are both first-class.</p>
+            <ul class="u-mt-md">
+              <li>Validate each step as the user leaves it, so errors surface close to where they were made.</li>
+              <li>Going back never discards entered data — returning to a step shows it exactly as left.</li>
+              <li>For long government or health forms, offer save-and-resume; people gather documents between sittings.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="review">
+            <h2 class="wire-h3">Review before submit</h2>
+            <p class="u-text-muted u-mt-sm">End with a summary of everything entered, with an edit link beside each section that returns to the relevant step and back. The final action is explicit and labeled for its outcome — "Submit application", not "Finish" — and a confirmation follows (see <a href="system-feedback.html">System feedback</a>).</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Persist answers across steps and across a save-and-resume gap.</dd>
+              <dt>Don't</dt><dd>Hide the step count, or block back-navigation once a step is "done".</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use a wizard</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#progress">Show progress</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#movement">Moving between steps</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#review">Review before submit</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="form-design.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Form design</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="empty-error-loading.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Empty, error &amp; loading</span>
+        </a>
+      </nav>
 
     </div>
   </section>

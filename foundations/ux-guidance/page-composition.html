@@ -387,10 +387,77 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Page composition</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">The spine of a page — the order and rhythm of its regions from header to footer. Compose from the system's page shells rather than reinventing the skeleton each time; the structure is solved, your job is the content.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="shells">
+            <h2 class="wire-h3">Start from a shell</h2>
+            <p class="u-text-muted u-mt-sm">Four abstract recipes cover almost every page type. Each defines a region order; pick the closest and adapt. <em>(See <a href="../../docs/page-shells.html">Page shells</a>.)</em></p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Shell</th><th scope="col">For</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Landing</th><td>A section's front door — hero, highlights, paths in.</td></tr>
+                  <tr><th scope="row">Article</th><td>A single read — title, body, related content.</td></tr>
+                  <tr><th scope="row">Listing</th><td>A set to browse or filter — results plus controls.</td></tr>
+                  <tr><th scope="row">Detail</th><td>One entity in depth — a provider, a program, a location.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="regions">
+            <h2 class="wire-h3">Regions and their order</h2>
+            <p class="u-text-muted u-mt-sm">Within a shell, regions stack in a predictable order so users learn the rhythm once and carry it everywhere.</p>
+            <ul class="u-mt-md">
+              <li><strong>Page header</strong> — title, summary, and the page's primary action.</li>
+              <li><strong>Body</strong> — the main content, occasionally with an aside.</li>
+              <li><strong>Related / cross-links</strong> — where to go next.</li>
+              <li><strong>CTA band</strong> — one focused conversion moment, if the page has one.</li>
+              <li><strong>Footer</strong> — site-wide links and contact.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="hierarchy">
+            <h2 class="wire-h3">One primary action</h2>
+            <p class="u-text-muted u-mt-sm">Each view has a single most-important action; everything else is secondary or tertiary. In a grayscale system, hierarchy comes from weight, scale, and space — not color — so the primary action earns its prominence through size and surrounding whitespace, and competing calls-to-action are demoted, not recolored.</p>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Anti-pattern</span>
+              <p class="wire-callout__body">Three equally loud buttons in a hero is three ways to say "I don't know what matters most." Decide, then let the layout show it.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="rhythm">
+            <h2 class="wire-h3">Vertical rhythm</h2>
+            <p class="u-text-muted u-mt-sm">Section spacing is consistent and drawn from the token scale (see <a href="../density.html">Density</a>). Equal, generous gaps between sections let the eye chunk the page into regions; cramped, uneven spacing makes a page feel improvised. Hold the same section gap down the whole page.</p>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#shells">Start from a shell</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#regions">Regions and their order</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#hierarchy">One primary action</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#rhythm">Vertical rhythm</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="wayfinding.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Wayfinding</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="system-feedback.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">System feedback</span>
+        </a>
+      </nav>
 
     </div>
   </section>

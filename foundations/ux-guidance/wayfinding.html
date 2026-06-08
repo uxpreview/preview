@@ -387,10 +387,78 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Wayfinding</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Help people know where they are, where they can go, and how to get back. On deep healthcare and higher-ed sites, wayfinding is often the difference between finding care — or a program — and bouncing.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="orientation">
+            <h2 class="wire-h3">Where am I?</h2>
+            <p class="u-text-muted u-mt-sm">Every page answers this without the user having to think. Four cues work together:</p>
+            <ul class="u-mt-md">
+              <li>A clear <a href="../../components/sections/page-header/">page header</a> and an <code>h1</code> that names the page.</li>
+              <li>A <a href="../../components/breadcrumb/">breadcrumb</a> showing the trail from home.</li>
+              <li>The current item marked in the nav with <code>is-current</code> + <code>aria-current</code> (see <a href="../interaction-states.html">Interaction states</a>).</li>
+              <li>A page title that matches the link the user clicked to get here.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="getting-around">
+            <h2 class="wire-h3">Where can I go?</h2>
+            <p class="u-text-muted u-mt-sm">Navigation is layered so the right scope is always within reach.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Scope</th><th scope="col">Pattern</th><th scope="col">Use</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Whole site</th><td><a href="../../components/top-nav/">Top nav</a> / mega menu</td><td>Primary sections, always present.</td></tr>
+                  <tr><th scope="row">Within a section</th><td><a href="../../components/side-nav/">Side nav</a></td><td>Sibling pages in a deep area.</td></tr>
+                  <tr><th scope="row">Within a page</th><td><a href="../../components/in-page-nav/">In-page nav</a></td><td>Jump links for long content.</td></tr>
+                  <tr><th scope="row">Account / language</th><td>Utility nav</td><td>Sign in, language, smaller tasks.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="getting-back">
+            <h2 class="wire-h3">How do I get back?</h2>
+            <p class="u-text-muted u-mt-sm">Going forward is easy; the system makes going back just as easy. The breadcrumb gives a one-click step up the hierarchy, the brand mark always returns home, and long pages offer back-to-top. Browser back must always do the obvious thing — never trap the user in a flow they can't reverse.</p>
+          </section>
+
+          <section class="doc-section" id="labels">
+            <h2 class="wire-h3">Labels people recognize</h2>
+            <p class="u-text-muted u-mt-sm">Wayfinding only works if the words match the reader's mental model. Use the audience's term, and keep it identical across the link, the breadcrumb, and the page title — a "Find a doctor" link should not land on a page titled "Provider directory". <em>(Convention — consistency and recognition over recall; see <a href="../plain-language.html">Plain language</a>.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Keep one label for one destination, everywhere it appears.</dd>
+              <dt>Do</dt><dd>Show the current location in both nav and breadcrumb.</dd>
+              <dt>Don't</dt><dd>Rename a page between the link and its title.</dd>
+              <dt>Don't</dt><dd>Bury the only path back inside browser chrome.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#orientation">Where am I?</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#getting-around">Where can I go?</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#getting-back">How do I get back?</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labels">Labels people recognize</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../imagery.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Imagery</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="page-composition.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Page composition</span>
+        </a>
+      </nav>
 
     </div>
   </section>

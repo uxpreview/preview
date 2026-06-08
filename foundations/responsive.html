@@ -387,10 +387,100 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Responsive</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Every page is built mobile-first and reflows fluidly. There is one set of breakpoints, taken from tokens, and the same content has to work from a 320&nbsp;px phone to a wide desktop — without a second layout to maintain.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="breakpoints">
+            <h2 class="wire-h3">Breakpoints</h2>
+            <p class="u-text-muted u-mt-sm">Four named breakpoints, defined as constants in <code>css/tokens.css</code> and expressed in <code>em</code> so they scale with the reader's text size rather than a fixed pixel grid.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Name</th><th scope="col">Min width</th><th scope="col">Typical shift</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><code>sm</code></th><td>30em / 480px</td><td>Large phones — cards can sit two-up.</td></tr>
+                  <tr><th scope="row"><code>md</code></th><td>48em / 768px</td><td>Tablets — the left rail appears, columns split.</td></tr>
+                  <tr><th scope="row"><code>lg</code></th><td>64em / 1024px</td><td>Laptops — full multi-column layouts.</td></tr>
+                  <tr><th scope="row"><code>xl</code></th><td>80em / 1280px</td><td>Wide desktop — content width holds; margins grow.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Why em, not px</span>
+              <p class="wire-callout__body">Because the breakpoints are em-based, a reader who bumps their browser text size up moves the layout with them — the page reflows to a more spacious arrangement instead of cramming larger type into a desktop grid.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="mobile-first">
+            <h2 class="wire-h3">Mobile-first</h2>
+            <p class="u-text-muted u-mt-sm">Base styles target the narrow viewport; <code>min-width</code> media queries layer enhancements on top. The default is a single column, stacked vertically, with full-width controls. Wider screens add columns and horizontal structure — they never strip anything away.</p>
+            <p class="u-mt-md">This order matters: the smallest screen is the hardest constraint, so it is designed first. If the content works there, widening the viewport only ever gives it more room.</p>
+          </section>
+
+          <section class="doc-section" id="fluid">
+            <h2 class="wire-h3">Fluid by default</h2>
+            <p class="u-text-muted u-mt-sm">Between breakpoints, the layout flexes. Containers cap and center the content; spacing comes from the token scale so gaps grow with the page rather than snapping at fixed sizes.</p>
+            <ul class="u-mt-md">
+              <li><code>u-container</code> — the standard reading-width wrapper for article and form content.</li>
+              <li><code>u-container--wide</code> — a wider wrapper for landings, listings, and dashboards.</li>
+            </ul>
+            <p class="u-mt-md">Avoid fixed pixel widths on content blocks. Let the container set the bounds and let the element fill the space it is given.</p>
+          </section>
+
+          <section class="doc-section" id="what-changes">
+            <h2 class="wire-h3">What changes, what doesn't</h2>
+            <p class="u-text-muted u-mt-sm">Layout adapts; the accessibility floor does not. Targets, focus, and contrast are the same at every width.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Region</th><th scope="col">Narrow</th><th scope="col">Wide</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Navigation</th><td>Off-canvas drawer behind a burger.</td><td>Persistent left rail.</td></tr>
+                  <tr><th scope="row">Columns</th><td>Stacked, full width.</td><td>Multi-column grid.</td></tr>
+                  <tr><th scope="row">Tables</th><td>Scroll inside <code>wire-table-wrap</code>.</td><td>Sit at full width.</td></tr>
+                  <tr><th scope="row">Tap targets</th><td>≥44px.</td><td>≥44px — unchanged.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="testing">
+            <h2 class="wire-h3">Testing the range</h2>
+            <p class="u-text-muted u-mt-sm">Before a page is done, walk it across the range. A quick checklist:</p>
+            <ul class="u-mt-md">
+              <li>At 320px wide there is no horizontal scroll and nothing is clipped.</li>
+              <li>At 200% browser zoom the content still reflows to one column with no loss of function <em>(WCAG 2.2 — 1.4.10 Reflow, a requirement)</em>.</li>
+              <li>The rail collapses to the drawer below <code>md</code>, and the drawer traps focus while open.</li>
+              <li>Touch targets hold at ≥44px on the phone layout.</li>
+              <li>Reduced-motion preferences are respected for any layout transition.</li>
+            </ul>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#breakpoints">Breakpoints</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#mobile-first">Mobile-first</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#fluid">Fluid by default</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#what-changes">What changes, what doesn't</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing">Testing the range</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../docs/layout.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Layout</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="density.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Density</span>
+        </a>
+      </nav>
 
     </div>
   </section>

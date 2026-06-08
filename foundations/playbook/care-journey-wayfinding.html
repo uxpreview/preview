@@ -387,10 +387,76 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Care-journey wayfinding</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A patient's path crosses many pages and several sessions — from a symptom to a specialty to a provider to a booking to the visit itself. Design the journey, not just the individual pages.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="journey">
+            <h2 class="wire-h3">The journey, stage by stage</h2>
+            <p class="u-text-muted u-mt-sm">Most care journeys move through the same arc. Each stage has a job and a likely next step.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Stage</th><th scope="col">The user's question</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Understand</th><td>"What's going on, and who treats it?"</td></tr>
+                  <tr><th scope="row">Find care</th><td>"Which provider or location is right for me?"</td></tr>
+                  <tr><th scope="row">Choose</th><td>"How do these options compare?"</td></tr>
+                  <tr><th scope="row">Book</th><td>"How do I get an appointment?"</td></tr>
+                  <tr><th scope="row">Prepare</th><td>"What do I bring and where do I go?"</td></tr>
+                  <tr><th scope="row">Follow up</th><td>"What happens after, and who do I call?"</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="continuity">
+            <h2 class="wire-h3">Continuity across steps</h2>
+            <p class="u-text-muted u-mt-sm">The journey spans sessions and devices, so context has to travel with the user. Carry the specialty or provider forward between pages, let people save options to return to (<a href="../ux-guidance/compare-save.html">Compare &amp; save</a>), and allow long tasks like booking to be resumed rather than restarted (<a href="../ux-guidance/wizard.html">Wizard</a>).</p>
+          </section>
+
+          <section class="doc-section" id="handoffs">
+            <h2 class="wire-h3">Handoffs</h2>
+            <p class="u-text-muted u-mt-sm">Real journeys cross channels — public site to patient portal to a phone call. Keep labels identical across that seam so "Schedule an appointment" leads to a page that says the same thing, and make a warm handoff to a person easy, especially for older patients who may prefer to finish by phone.</p>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Mind the seam</span>
+              <p class="wire-callout__body">Most journeys break at the handoff — site to portal, web to phone. Consistent labels and a preserved context are what hold them together.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="orientation">
+            <h2 class="wire-h3">Orientation at every step</h2>
+            <p class="u-text-muted u-mt-sm">At any point the user should know where they are in the journey and what comes next. Lean on the core <a href="../ux-guidance/wayfinding.html">Wayfinding</a> cues — breadcrumb, current-step markers, clear next actions — so no page is a dead end.</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Carry context and saved choices across pages, sessions, and channels.</dd>
+              <dt>Don't</dt><dd>Rename the same step between the site, the portal, and the phone tree.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#journey">The journey, stage by stage</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#continuity">Continuity across steps</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#handoffs">Handoffs</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#orientation">Orientation at every step</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="health-literacy.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Health literacy</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="higher-ed-rfi-apply.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Higher-ed RFI &amp; apply</span>
+        </a>
+      </nav>
 
     </div>
   </section>

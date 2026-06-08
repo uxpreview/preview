@@ -387,10 +387,96 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Imagery</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">This is a grayscale system, so "imagery" means placeholders, not photographs. The page's job is to reserve the right space and describe what the real image will be — its ratio, its content, and its alt text — so production has everything it needs.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="placeholders">
+            <h2 class="wire-h3">Placeholders, not photos</h2>
+            <p class="u-text-muted u-mt-sm">The <a href="../components/media/">Media</a> component renders a greybox at a fixed ratio. Its <code>data-ratio</code> prints a corner label, and an optional <code>.wire-media__label</code> names the intended image — a brief for whoever sources the real asset.</p>
+            <div class="doc-example">
+              <span class="doc-example__label">Default (16:9) with a label</span>
+              <div class="wire-media wire-media--16-9" aria-hidden="true" data-ratio="16:9"><span class="wire-media__label">Hero image — patient on therapy treadmill</span></div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="ratios">
+            <h2 class="wire-h3">Aspect ratios</h2>
+            <p class="u-text-muted u-mt-sm">Pick a ratio for a slot and hold it across the set — every provider portrait square, every story card 16:9 — so the grid stays even.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Ratio</th><th scope="col">Class</th><th scope="col">Typical use</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">16:9</th><td><code>wire-media--16-9</code></td><td>Heroes, video, story cards.</td></tr>
+                  <tr><th scope="row">4:3</th><td><code>wire-media--4-3</code></td><td>Editorial and content blocks.</td></tr>
+                  <tr><th scope="row">1:1</th><td><code>wire-media--square</code></td><td>Avatars, thumbnails, logos.</td></tr>
+                  <tr><th scope="row">Portrait</th><td><code>wire-media--portrait</code></td><td>Provider portraits, posters.</td></tr>
+                  <tr><th scope="row">Wide</th><td><code>wire-media--wide</code></td><td>Banners and page headers.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="alt">
+            <h2 class="wire-h3">Alt text</h2>
+            <p class="u-text-muted u-mt-sm">Every image is either informative or decorative, and the alt attribute follows from that. <em>(WCAG 2.2 — 1.1.1 Non-text Content — a requirement.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Informative</dt><dd>Concise alt describing the meaning or function, not the pixels. Skip "image of".</dd>
+              <dt>Decorative</dt><dd>Empty <code>alt=""</code> so assistive tech skips it; greyboxes carry <code>aria-hidden</code>.</dd>
+              <dt>In wireframes</dt><dd>The <code>wire-media__label</code> is the production brief; the real alt is authored when the asset is placed.</dd>
+            </dl>
+          </section>
+
+          <section class="doc-section" id="figures">
+            <h2 class="wire-h3">Figures and galleries</h2>
+            <p class="u-text-muted u-mt-sm">When an image needs a visible caption — a chart, a diagram, a credited photo — wrap it in a semantic <code>&lt;figure&gt;</code> with a <code>&lt;figcaption&gt;</code>. The caption is shown context; the alt is still required and does a different job.</p>
+            <p class="u-mt-md">For several placeholders together, <code>wire-gallery</code> (with <code>--2</code> / <code>--3</code> / <code>--4</code> / <code>--mosaic</code>) lays them out in a grid:</p>
+            <div class="doc-example">
+              <span class="doc-example__label">wire-gallery--3, square</span>
+              <div class="wire-gallery wire-gallery--3">
+                <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+                <div class="wire-media wire-media--square" aria-hidden="true" data-ratio="1:1"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" id="do-dont">
+            <h2 class="wire-h3">Do and don't</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Name the intended image in the label, so the greybox is a real brief.</dd>
+              <dt>Do</dt><dd>Hold one ratio across a set of related placeholders.</dd>
+              <dt>Don't</dt><dd>Bake text into an image — it can't translate or be read aloud. See <a href="localization.html">Localization</a>.</dd>
+              <dt>Don't</dt><dd>Write "image of…" in alt, or leave an informative image with empty alt.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#placeholders">Placeholders, not photos</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#ratios">Aspect ratios</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#alt">Alt text</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#figures">Figures and galleries</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do and don't</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="formatting.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Formatting</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../styles/color-theming.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Color &amp; theming</span>
+        </a>
+      </nav>
 
     </div>
   </section>

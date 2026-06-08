@@ -387,10 +387,54 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Audience &amp; personalization</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Show the right content to the right person without surprising them. Healthcare and higher-ed audiences diverge sharply — patient versus provider, prospective versus current student — and the system favors explicit choice over silent guessing.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="audiences">
+            <h2 class="wire-h3">Designing for distinct audiences</h2>
+            <p class="u-text-muted u-mt-sm">When groups want fundamentally different things, give them clear paths rather than one homepage that compromises for all. An audience selector ("I'm a patient / a provider / a referring physician") routes people to content built for them, and the choice is visible and reversible.</p>
+            <p class="u-mt-md">Let users pick their lane; don't infer it from a single signal and lock them in. A guess that's wrong is worse than an honest menu.</p>
+          </section>
+
+          <section class="doc-section" id="personalization">
+            <h2 class="wire-h3">Personalization with consent</h2>
+            <p class="u-text-muted u-mt-sm">Tailoring content can help — recently viewed providers, a saved program — but only when it's expected. Personalize on data the user knowingly gave (a selection, a saved item), and explain why something is shown. Anything drawn from sensitive inference, especially in health contexts, is opt-in and clearly described. <em>(See <a href="consent-disclosure.html">Consent &amp; disclosure</a>.)</em></p>
+          </section>
+
+          <section class="doc-section" id="transparency">
+            <h2 class="wire-h3">Keep it predictable</h2>
+            <p class="u-text-muted u-mt-sm">Personalization must never make the site feel unstable. Label tailored sections ("Because you viewed cardiology"), let users see and reset their preferences, and keep navigation and core content present for everyone — don't hide a section because an algorithm decided it didn't apply. <em>(Convention — consistency and user control over adaptive interfaces.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Make audience and personalization choices explicit, visible, and reversible.</dd>
+              <dt>Don't</dt><dd>Infer sensitive attributes silently, or remove nav based on a guess.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#audiences">Distinct audiences</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#personalization">Personalization with consent</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#transparency">Keep it predictable</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="compare-save.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Compare &amp; save</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="auth-entry.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Auth &amp; entry</span>
+        </a>
+      </nav>
 
     </div>
   </section>

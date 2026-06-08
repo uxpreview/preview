@@ -387,10 +387,86 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Formatting</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">One set of conventions for dates, times, numbers, phone numbers, and addresses, so the same kind of value looks the same everywhere. Consistency here is a quiet credibility signal — and these are the system defaults that <a href="localization.html">Localization</a> adapts per locale.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="dates">
+            <h2 class="wire-h3">Dates and times</h2>
+            <p class="u-text-muted u-mt-sm">In patient- and student-facing copy, spell the month — it removes the M/D versus D/M ambiguity that numeric dates carry across locales.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Type</th><th scope="col">Format</th><th scope="col">Example</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Full date</th><td>Month D, YYYY</td><td>March 4, 2026</td></tr>
+                  <tr><th scope="row">Day + date</th><td>Weekday, Month D</td><td>Tuesday, March 4</td></tr>
+                  <tr><th scope="row">Numeric (UI only)</th><td>M/D/YYYY</td><td>3/4/2026</td></tr>
+                  <tr><th scope="row">Time</th><td>h:mm a.m./p.m.</td><td>9:30 a.m.</td></tr>
+                  <tr><th scope="row">Time range</th><td>en dash, one meridiem</td><td>9:00–10:30 a.m.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="numbers">
+            <h2 class="wire-h3">Numbers and units</h2>
+            <ul class="u-mt-md">
+              <li>Thousands separator on four digits and up: <code>1,250</code>.</li>
+              <li>Round in prose, stay precise in data: "about 1,200 visits" in a sentence, <code>1,247</code> in a table.</li>
+              <li>Space between value and unit, except the percent sign: <code>20 mg</code>, <code>30 min</code>, <code>98%</code>.</li>
+              <li>Use tabular (lining) figures in tables and stats so digits align in columns — see <a href="../docs/typography.html">Typography</a>.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="phone-address">
+            <h2 class="wire-h3">Phone numbers and addresses</h2>
+            <p class="u-text-muted u-mt-sm">Format North American phone numbers as <code>(312) 555-0142</code>, and make them a tappable <code>tel:</code> link — on mobile, the Phone link component adds the tap target and call icon.</p>
+            <div class="doc-example">
+              <span class="doc-example__label">Tappable phone number</span>
+              <a href="tel:+13125550142">(312) 555-0142</a>
+            </div>
+            <p class="u-mt-md">Set addresses in block form, with the state abbreviated and the ZIP on the same line as the city:</p>
+            <ul class="u-mt-sm">
+              <li>Riverside Medical Center</li>
+              <li>500 Lakeshore Drive</li>
+              <li>Chicago, IL 60611</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="ranges-lists">
+            <h2 class="wire-h3">Ranges, lists, and truncation</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Numeric ranges</dt><dd>En dash, no spaces: <code>5–10 days</code>, <code>ages 18–65</code>.</dd>
+              <dt>Lists</dt><dd>Use the serial (Oxford) comma: "primary care, cardiology, and neurology".</dd>
+              <dt>Truncation</dt><dd>Clip only non-essential text with an ellipsis; never truncate a name, dose, date, or amount.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#dates">Dates and times</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#numbers">Numbers and units</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#phone-address">Phone numbers &amp; addresses</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#ranges-lists">Ranges, lists, truncation</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="localization.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Localization</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="imagery.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Imagery</span>
+        </a>
+      </nav>
 
     </div>
   </section>

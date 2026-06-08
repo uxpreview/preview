@@ -387,10 +387,79 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Empty, error &amp; loading</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">The three states that aren't the happy path but happen constantly. Designed deliberately, they reassure; left to chance, they read as broken. The system gives each its own treatment.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="loading">
+            <h2 class="wire-h3">Loading</h2>
+            <p class="u-text-muted u-mt-sm">Show the shape of what's coming. A <a href="../../components/skeleton/">skeleton</a> that mirrors the final layout beats a centered spinner for content, because it sets expectations and prevents the jolt of a layout shift. A <a href="../../components/messaging-feedback/spinner/">spinner</a> suits a short, self-contained action like saving.</p>
+            <ul class="u-mt-md">
+              <li>Reserve the space the content will occupy, so nothing jumps when it arrives.</li>
+              <li>Mark the region <code>aria-busy="true"</code> while it loads.</li>
+              <li>Don't freeze the whole page for one small update — load the part that changed.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="empty">
+            <h2 class="wire-h3">Empty</h2>
+            <p class="u-text-muted u-mt-sm">"Empty" is not one state. Distinguish them, because the right next step differs. Use the <a href="../../components/empty-state/">Empty state</a> component, always with a way forward.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Kind</th><th scope="col">Message + action</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">First use</th><td>Explain what will appear here and how to add the first item.</td></tr>
+                  <tr><th scope="row">No results</th><td>"No results for…" plus a way to broaden the search or clear filters.</td></tr>
+                  <tr><th scope="row">Cleared</th><td>Confirm the list is empty by choice; offer to undo if recent.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="error">
+            <h2 class="wire-h3">Error</h2>
+            <p class="u-text-muted u-mt-sm">A good error says three things: what failed, how to recover, and a way to try again — without blaming the user. Scope it correctly: a field problem belongs in an <a href="../../components/messaging-feedback/inline-alert/">inline alert</a> at the field; a page- or system-level problem belongs in a <a href="../../components/banner/">banner</a>. Whatever the user already entered is preserved.</p>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Tone</span>
+              <p class="wire-callout__body">"We couldn't reach the scheduling system. Try again in a moment, or call (312) 555-0142." States the problem, offers two paths, blames nobody.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="do-dont">
+            <h2 class="wire-h3">Do and don't</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Give every empty and error state a concrete next action.</dd>
+              <dt>Do</dt><dd>Hold layout space while loading to prevent content shift.</dd>
+              <dt>Don't</dt><dd>Leave a blank region — silence reads as a crash.</dd>
+              <dt>Don't</dt><dd>Phrase errors as the user's fault or strip what they typed.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#loading">Loading</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#empty">Empty</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#error">Error</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do and don't</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="wizard.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Wizard</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="compare-save.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Compare &amp; save</span>
+        </a>
+      </nav>
 
     </div>
   </section>

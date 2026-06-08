@@ -387,10 +387,81 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Healthcare overview</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">How the system applies to hospital and clinic work — who you are designing for, what they came to do, and the patterns that carry the most weight. A starting playbook for healthcare engagements.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="audiences">
+            <h2 class="wire-h3">Who you're designing for</h2>
+            <p class="u-text-muted u-mt-sm">Healthcare audiences arrive with real stakes and often under stress. They skew older, frequently navigate on a phone, and include people with low vision, motor, or literacy needs. Design for the hardest case and everyone benefits.</p>
+            <ul class="u-mt-md">
+              <li><strong>Patients</strong> — finding care, booking, preparing for a visit, managing follow-up.</li>
+              <li><strong>Family and caregivers</strong> — acting on someone else's behalf, often remotely.</li>
+              <li><strong>Referring providers</strong> — a smaller, task-focused audience with different language.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="priorities">
+            <h2 class="wire-h3">What matters most</h2>
+            <p class="u-text-muted u-mt-sm">A handful of tasks account for most healthcare visits. Make them the spine of the IA.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Top task</th><th scope="col">Where it lives</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Find a doctor or service</th><td>Directory + specialty landings.</td></tr>
+                  <tr><th scope="row">Plan a visit</th><td>Location, hours, parking, what to bring.</td></tr>
+                  <tr><th scope="row">Book or contact</th><td>Scheduling, phone, portal sign-in.</td></tr>
+                  <tr><th scope="row">Get help now</th><td>Always-present emergency path.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="patterns">
+            <h2 class="wire-h3">Patterns to reach for</h2>
+            <p class="u-text-muted u-mt-sm">The system ships healthcare-shaped parts; start from these rather than building anew.</p>
+            <ul class="u-mt-md">
+              <li>Directory flow — the <a href="../../templates/advanced/find-a-doctor/">Find a doctor</a> template and <a href="../../pages/hospital-find-a-doctor.html">demo</a>.</li>
+              <li>Visit planning — the <a href="../../templates/advanced/plan-your-visit/">Plan your visit</a> template.</li>
+              <li>Trust and logistics cues — <a href="../../components/selection-status/wait-time/">wait time</a>, <a href="../../components/selection-status/insurance-indicator/">insurance indicator</a>.</li>
+              <li>Safety — the always-reachable <a href="../../components/messaging-feedback/emergency-line/">emergency line</a> (see <a href="../ux-guidance/alerts-emergencies.html">Alerts &amp; emergencies</a>).</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="tone">
+            <h2 class="wire-h3">Tone and accessibility</h2>
+            <p class="u-text-muted u-mt-sm">Healthcare raises the floor on clarity and accessibility. Lean on the dedicated playbooks: <a href="senior-friendly.html">Senior-friendly</a> for older audiences, <a href="health-literacy.html">Health literacy</a> for comprehension, and <a href="care-journey-wayfinding.html">Care-journey wayfinding</a> for the multi-step path. Keep language plain (<a href="../plain-language.html">Plain language</a>) and density comfortable (<a href="../density.html">Density</a>).</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Build the IA around the few tasks that bring people here.</dd>
+              <dt>Don't</dt><dd>Bury "find care" or the emergency path beneath institutional content.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#audiences">Who you're designing for</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#priorities">What matters most</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#patterns">Patterns to reach for</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tone">Tone and accessibility</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../ux-guidance/accessibility-patterns.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Accessibility patterns</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="senior-friendly.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Senior-friendly</span>
+        </a>
+      </nav>
 
     </div>
   </section>

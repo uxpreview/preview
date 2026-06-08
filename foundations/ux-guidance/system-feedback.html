@@ -387,10 +387,76 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">System feedback</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Every action gets a response. The system tells people what happened, what is happening, and what to do next — through a small, consistent set of feedback channels rather than ad-hoc messages.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="channels">
+            <h2 class="wire-h3">The feedback channels</h2>
+            <p class="u-text-muted u-mt-sm">Pick the channel by how urgent the message is and how close it needs to be to the thing it's about.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Channel</th><th scope="col">Use</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><a href="../../components/toast/">Toast</a></th><td>Transient confirmation of a completed action ("Appointment saved").</td></tr>
+                  <tr><th scope="row"><a href="../../components/banner/">Banner</a></th><td>Persistent, page-level notice that stays until dismissed or resolved.</td></tr>
+                  <tr><th scope="row"><a href="../../components/messaging-feedback/inline-alert/">Inline alert</a></th><td>Message tied to a specific field or block, shown right beside it.</td></tr>
+                  <tr><th scope="row"><a href="../../components/skeleton/">Skeleton</a> / <a href="../../components/messaging-feedback/spinner/">spinner</a></th><td>Work in progress — content loading or an action processing.</td></tr>
+                  <tr><th scope="row"><a href="../../components/empty-state/">Empty state</a></th><td>Nothing here yet — with a clear way forward.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="severity">
+            <h2 class="wire-h3">Severity without color</h2>
+            <p class="u-text-muted u-mt-sm">Info, success, warning, and error read through an icon plus the wording, never hue alone. This is both a grayscale-system constraint and an accessibility requirement. <em>(WCAG 2.2 — 1.4.1 Use of Color — a requirement.)</em> The text states the state in words: "Saved", "Couldn't save — try again".</p>
+          </section>
+
+          <section class="doc-section" id="timing">
+            <h2 class="wire-h3">Timing and persistence</h2>
+            <p class="u-text-muted u-mt-sm">Match how long a message lingers to how much it matters.</p>
+            <ul class="u-mt-md">
+              <li>Transient confirmations (toasts) auto-dismiss, but pause on hover and focus so they can be read.</li>
+              <li>Anything the user must act on — an error, a required choice — persists until resolved.</li>
+              <li>Never auto-dismiss a critical message on a timer the user can't control. <em>(WCAG 2.2 — 2.2.1 Timing Adjustable.)</em></li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="announce">
+            <h2 class="wire-h3">Announce to assistive tech</h2>
+            <p class="u-text-muted u-mt-sm">A visual change that a screen reader never hears is no feedback at all. Status messages use a polite live region (<code>role="status"</code>); errors that interrupt use an assertive one (<code>role="alert"</code>). <em>(WCAG 2.2 — 4.1.3 Status Messages — a requirement.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Put the message where the action happened; route errors to the field.</dd>
+              <dt>Don't</dt><dd>Signal success or error with color or an icon alone.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#channels">The feedback channels</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#severity">Severity without color</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#timing">Timing and persistence</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#announce">Announce to assistive tech</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="page-composition.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Page composition</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="search-filter.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Search &amp; filter</span>
+        </a>
+      </nav>
 
     </div>
   </section>

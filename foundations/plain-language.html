@@ -387,10 +387,97 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Plain language</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Write so a first-time, stressed, or distracted reader understands on the first pass. Short sentences, common words, active voice, and the reader's terms — not ours. This is content's accessibility layer.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="why">
+            <h2 class="wire-h3">Write for a wide range of readers</h2>
+            <p class="u-text-muted u-mt-sm">Healthcare and higher-ed audiences span every reading level, and many arrive anxious or in a hurry. Plain language isn't dumbing down — it is removing friction so the meaning lands the first time.</p>
+            <p class="u-mt-md">Two anchors back this up: the U.S. Plain Writing Act, which governs public-facing government and health communication, and WCAG 2.2 <em>3.1.5 Reading Level (AAA)</em>, which aims for content readable at a lower-secondary level. <em>(Standard / convention — a requirement in the contexts it covers, good practice everywhere else.)</em></p>
+          </section>
+
+          <section class="doc-section" id="words">
+            <h2 class="wire-h3">Words and sentences</h2>
+            <p class="u-text-muted u-mt-sm">Prefer the everyday word. One idea per sentence, around 15–20 words. Active voice, because it names who does what.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Instead of</th><th scope="col">Use</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">utilize</th><td>use</td></tr>
+                  <tr><th scope="row">in order to</th><td>to</td></tr>
+                  <tr><th scope="row">prior to</th><td>before</td></tr>
+                  <tr><th scope="row">commence</th><td>start</td></tr>
+                  <tr><th scope="row">sufficient</th><td>enough</td></tr>
+                  <tr><th scope="row">physician</th><td>doctor</td></tr>
+                  <tr><th scope="row">You will be contacted</th><td>We will call you</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Use the reader's word</span>
+              <p class="wire-callout__body">Match the term the audience uses, not the internal one. A patient searches for "knee doctor," not "orthopaedic surgeon"; show both, but lead with theirs.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="structure">
+            <h2 class="wire-h3">Structure for scanning</h2>
+            <p class="u-text-muted u-mt-sm">People scan before they read. Build the page so the scan still delivers the point. <em>(Convention — scanning behavior is well established in usability practice.)</em></p>
+            <ul class="u-mt-md">
+              <li><strong>Front-load it.</strong> Put the conclusion or the action first, details after.</li>
+              <li><strong>Descriptive headings.</strong> A heading should tell you what's below without the paragraph.</li>
+              <li><strong>Short lists</strong> for steps and options, so each item is its own target for the eye.</li>
+              <li><strong>Bold sparingly</strong> — emphasis on everything is emphasis on nothing.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="specifics">
+            <h2 class="wire-h3">Numbers, dates, and instructions</h2>
+            <p class="u-text-muted u-mt-sm">Be concrete about what to do and when. Spell out the next step; don't make the reader infer it.</p>
+            <ul class="u-mt-md">
+              <li>Give one clear primary action per screen.</li>
+              <li>Write instructions as numbered steps, in the order they're performed.</li>
+              <li>Use real, unambiguous formats for dates, times, and numbers — see <a href="formatting.html">Formatting</a>.</li>
+              <li>State the outcome: "We'll send a confirmation to your email" beats "Submit."</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="do-dont">
+            <h2 class="wire-h3">Do and don't</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Lead with the point, then explain.</dd>
+              <dt>Do</dt><dd>Pick the shorter, more common word when meaning is unchanged.</dd>
+              <dt>Don't</dt><dd>Stack qualifiers and clauses into one long sentence.</dd>
+              <dt>Don't</dt><dd>Hide the action behind jargon or a vague verb like "proceed."</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#why">Write for a wide range</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#words">Words and sentences</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#structure">Structure for scanning</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#specifics">Numbers, dates, instructions</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do and don't</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../docs/content.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Content &amp; voice</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="localization.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Localization</span>
+        </a>
+      </nav>
 
     </div>
   </section>

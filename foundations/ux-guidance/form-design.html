@@ -387,10 +387,69 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Form design</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Forms are where the real work happens — booking, applying, registering, paying. Make them short, legible, and forgiving. Every input has a label; every error is recoverable.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="structure">
+            <h2 class="wire-h3">Structure</h2>
+            <p class="u-text-muted u-mt-sm">One column, top-to-bottom — multi-column forms invite skipped fields. Group related questions with a <a href="../../components/forms-inputs/fieldset/">fieldset</a> and lay them out with <a href="../../components/form-layout/">Form layout</a>. The shortest form is the best form: ask only what you genuinely need right now, and defer the rest.</p>
+          </section>
+
+          <section class="doc-section" id="labels">
+            <h2 class="wire-h3">Labels and help</h2>
+            <p class="u-text-muted u-mt-sm">Every field has a visible, persistent label — a placeholder is not a label; it vanishes on input and fails contrast. <em>(WCAG 2.2 — 3.3.2 Labels or Instructions, 1.3.1 Info and Relationships — requirements.)</em></p>
+            <ul class="u-mt-md">
+              <li>Put help text and format hints <em>before</em> the field, not buried in a placeholder.</li>
+              <li>Mark optional fields rather than starring every required one, when most are required.</li>
+              <li>Use the <a href="../../components/field/">Field</a> component so label, hint, and error are wired together.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="validation">
+            <h2 class="wire-h3">Validation and errors</h2>
+            <p class="u-text-muted u-mt-sm">Validate at the right moment — on submit or on blur, not on every keystroke — and make every error tell the user how to fix it. <em>(WCAG 2.2 — 3.3.1 Error Identification, 3.3.3 Error Suggestion.)</em></p>
+            <ul class="u-mt-md">
+              <li>On submit, show an <a href="../../components/forms-inputs/error-summary/">error summary</a> at the top that links to each bad field, and repeat the message inline.</li>
+              <li>Name the fix: "Enter a date in the future", not "Invalid date".</li>
+              <li>Preserve everything the user already typed — never clear the form on error.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="inputs">
+            <h2 class="wire-h3">Inputs sized for everyone</h2>
+            <p class="u-text-muted u-mt-sm">Controls are large and easy to hit — at least 44&nbsp;px, with roomy tap areas (see <a href="../density.html">Density</a>). Use the right input type and <code>inputmode</code> so mobile keyboards match the task, and set <code>autocomplete</code> attributes so browsers can fill names, addresses, and phone numbers. <em>(WCAG 2.2 — 1.3.5 Identify Input Purpose.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Keep the label, hint, and error visually connected to their field.</dd>
+              <dt>Don't</dt><dd>Use a placeholder as the only label, or disable submit to force a "complete" state.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#structure">Structure</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labels">Labels and help</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#validation">Validation and errors</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#inputs">Inputs sized for everyone</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="search-filter.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Search &amp; filter</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="wizard.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Wizard</span>
+        </a>
+      </nav>
 
     </div>
   </section>

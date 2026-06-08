@@ -387,10 +387,77 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Localization</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Design so the same layout survives translation. Text expands, scripts flow both directions, and dates and numbers follow the reader's locale — none of which should break the page or require a second design.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="expansion">
+            <h2 class="wire-h3">Design for text expansion</h2>
+            <p class="u-text-muted u-mt-sm">Translated text usually runs longer than English — for languages like German, commonly a third again as long. <em>(Convention — a widely cited working estimate, not a measured constant.)</em> A layout that fits English exactly will break the moment it's translated.</p>
+            <ul class="u-mt-md">
+              <li>Size containers to the content, not to one fixed string; let them grow.</li>
+              <li>Avoid fixed-height text boxes and single-line buttons that can't wrap.</li>
+              <li>Never truncate an essential label to make it fit — make room instead.</li>
+              <li>Pressure-test with a long-string pass before sign-off.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="direction">
+            <h2 class="wire-h3">Direction and mirroring</h2>
+            <p class="u-text-muted u-mt-sm">Right-to-left scripts — Arabic, Hebrew — mirror the interface: the nav, directional icons, and reading flow all flip. The system handles this when components use logical CSS properties (<code>start</code> / <code>end</code>) rather than hard-coded <code>left</code> / <code>right</code>.</p>
+            <p class="u-mt-md">A practical rule for content: don't bake direction into meaning. "Select the option on the right" is wrong under <code>dir="rtl"</code>; "select <em>Continue</em>" travels.</p>
+          </section>
+
+          <section class="doc-section" id="formatting">
+            <h2 class="wire-h3">Locale-aware formatting</h2>
+            <p class="u-text-muted u-mt-sm">Dates, times, numbers, currency, and even name order vary by locale. Don't hardcode <code>MM/DD/YYYY</code> or assume a given-name-first order.</p>
+            <div class="wire-callout u-mt-md">
+              <span class="wire-callout__eyebrow">Pair with Formatting</span>
+              <p class="wire-callout__body">The <a href="formatting.html">Formatting</a> page sets the system's default conventions; localization is where those conventions get swapped for the reader's locale. Keep the <em>rules</em> consistent and let the <em>values</em> localize.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="language">
+            <h2 class="wire-h3">Language attributes &amp; the switcher</h2>
+            <p class="u-text-muted u-mt-sm">Mark up language so assistive tech pronounces content correctly. Set <code>lang</code> on <code>&lt;html&gt;</code>, and on any inline passage in another language. <em>(WCAG 2.2 — 3.1.1 Language of Page, 3.1.2 Language of Parts — a requirement.)</em></p>
+            <ul class="u-mt-md">
+              <li>Offer the <a href="../components/utilities/language-switcher/">Language switcher</a> where multiple languages are available.</li>
+              <li>List each language in its own name — "Español", not "Spanish".</li>
+              <li>Never use a flag to stand for a language; flags are countries, not languages.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="images-text">
+            <h2 class="wire-h3">Keep text out of images</h2>
+            <p class="u-text-muted u-mt-sm">Text baked into an image can't be translated, can't be resized, and can't be read by assistive tech. In this system imagery is greyboxes anyway, so the rule is easy to hold: copy lives in HTML, the image stays a placeholder. See <a href="imagery.html">Imagery</a>.</p>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#expansion">Text expansion</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#direction">Direction and mirroring</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#formatting">Locale-aware formatting</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#language">Language attributes</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#images-text">Keep text out of images</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="plain-language.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Plain language</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="formatting.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Formatting</span>
+        </a>
+      </nav>
 
     </div>
   </section>

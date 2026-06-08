@@ -387,10 +387,88 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Interaction states</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Every interactive element communicates what it is doing. The system defines a consistent set of states, drawn in grayscale from weight and outline rather than color. Focus is always visible; hover is treated as an enhancement on top of states that work without it.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="state-set">
+            <h2 class="wire-h3">The state set</h2>
+            <p class="u-text-muted u-mt-sm">Interactive components share one vocabulary of states. Not every element has all of them, but where a state applies it looks and behaves the same way across the system.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">State</th><th scope="col">Signal</th><th scope="col">Notes</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Rest</th><td>Default weight and border.</td><td>The baseline every other state is measured against.</td></tr>
+                  <tr><th scope="row">Hover</th><td>Subtle background shift or underline.</td><td>Pointer devices only — an affordance, not a requirement.</td></tr>
+                  <tr><th scope="row">Focus</th><td>Visible focus ring.</td><td>Keyboard and programmatic focus; always shown.</td></tr>
+                  <tr><th scope="row">Active</th><td>Slight depress.</td><td>The moment of press, before release.</td></tr>
+                  <tr><th scope="row">Selected / current</th><td><code>is-current</code> weight + <code>aria-current</code>.</td><td>The item you are on, in nav or a set.</td></tr>
+                  <tr><th scope="row">Disabled</th><td>Reduced contrast, no pointer events.</td><td>Pair with <code>aria-disabled</code>; explain why nearby.</td></tr>
+                  <tr><th scope="row">Loading</th><td>Spinner or skeleton, <code>aria-busy</code>.</td><td>The control is working; see System feedback.</td></tr>
+                  <tr><th scope="row">Error</th><td>Inline alert + field treatment.</td><td>Message tied to the field; see Form design.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="focus">
+            <h2 class="wire-h3">Focus is non-negotiable</h2>
+            <p class="u-text-muted u-mt-sm">A visible focus indicator on every interactive element is a requirement, not a preference. <em>(WCAG 2.2 — 2.4.7 Focus Visible, 2.4.11 Focus Not Obscured, 2.4.13 Focus Appearance.)</em></p>
+            <ul class="u-mt-md">
+              <li>The focus ring is a token, so it reads clearly in both light and dark themes.</li>
+              <li>Never <code>outline: none</code> without an equally strong replacement — removing the ring with nothing in its place strands keyboard users.</li>
+              <li>Focus order follows reading order; moving focus into a drawer or modal traps it there until dismissed.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="hover">
+            <h2 class="wire-h3">Hover is an enhancement</h2>
+            <p class="u-text-muted u-mt-sm">Touch and keyboard have no hover. So hover can sweeten an interaction, but it can never be the only way to reach a function or see information. <em>(Convention — rooted in the reality of touch and assistive input.)</em></p>
+            <p class="u-mt-md">The classic trap: putting a row's only "delete" or "edit" behind a hover reveal. On a phone there is no hover, so the action effectively disappears. Keep essential controls visible; let hover add emphasis, not gate access.</p>
+          </section>
+
+          <section class="doc-section" id="disabled">
+            <h2 class="wire-h3">Disabled vs. read-only</h2>
+            <p class="u-text-muted u-mt-sm">They look similar and mean different things. <strong>Read-only</strong> shows a value that is real but can't be changed here. <strong>Disabled</strong> shows an action that isn't available right now.</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Prefer</dt><dd>Leaving a submit button enabled and validating on submit, so the user learns what's missing.</dd>
+              <dt>If disabled</dt><dd>Say why — a short note near the control beats a dead button with no explanation.</dd>
+              <dt>Remember</dt><dd>Some screen readers skip disabled controls, so don't hide context the user still needs inside one.</dd>
+            </dl>
+          </section>
+
+          <section class="doc-section" id="current">
+            <h2 class="wire-h3">Showing the current item</h2>
+            <p class="u-text-muted u-mt-sm">The "you are here" state pairs a visual cue with an ARIA one. The <code>is-current</code> class carries the weight; <code>aria-current="page"</code> (or <code>step</code>, <code>true</code>) carries the meaning for assistive tech.</p>
+            <p class="u-mt-md">Don't lean on weight alone — a slightly bolder link is easy to miss and invisible to a screen reader. The visual and the semantic cue travel together.</p>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#state-set">The state set</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#focus">Focus is non-negotiable</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#hover">Hover is an enhancement</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#disabled">Disabled vs. read-only</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#current">Showing the current item</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="density.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Density</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../docs/content.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Content &amp; voice</span>
+        </a>
+      </nav>
 
     </div>
   </section>

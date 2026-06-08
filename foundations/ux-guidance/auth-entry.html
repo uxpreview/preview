@@ -387,10 +387,65 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Auth &amp; entry</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">The front door to anything personal — patient portals, application accounts, saved work. Reduce friction without lowering the bar: make signing in legible, recovery easy, and let people do as much as possible before an account is required.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="entry">
+            <h2 class="wire-h3">Entry points</h2>
+            <p class="u-text-muted u-mt-sm">Sign in and create account are different doors; label them so no one picks the wrong one. Defer the account until it earns its place — let visitors search, browse, compare, and save locally first, and ask them to authenticate at the moment it genuinely matters (booking, viewing records, submitting).</p>
+          </section>
+
+          <section class="doc-section" id="forms">
+            <h2 class="wire-h3">The sign-in form</h2>
+            <p class="u-text-muted u-mt-sm">One clear path, built on solid <a href="form-design.html">form design</a>.</p>
+            <ul class="u-mt-md">
+              <li>Set <code>autocomplete</code> so password managers and browsers can fill credentials.</li>
+              <li>Offer a show-password toggle; typing a long password blind is a common failure.</li>
+              <li>Keep failure messages general ("Email or password is incorrect") — naming which field was wrong helps attackers, not users.</li>
+              <li>Where available, surface passkeys or institutional single sign-on as the faster path.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="recovery">
+            <h2 class="wire-h3">Recovery</h2>
+            <p class="u-text-muted u-mt-sm">Forgetting a password is normal, not an edge case. Put "Forgot password?" right beside the field, make the reset flow short and clearly worded, and never strand someone outside their own records. For older audiences especially, a slow or confusing recovery is where accounts get abandoned.</p>
+          </section>
+
+          <section class="doc-section" id="security-ux">
+            <h2 class="wire-h3">Security people can actually use</h2>
+            <p class="u-text-muted u-mt-sm">Protection that's too burdensome gets worked around. Warn before a session times out and offer to extend it rather than dropping the user mid-task, and treat health and education records with the sensitivity their context demands. <em>(WCAG 2.2 — 2.2.1 Timing Adjustable.)</em></p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Let people accomplish what they can before requiring an account.</dd>
+              <dt>Don't</dt><dd>Reveal which credential field failed, or time users out without warning.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#entry">Entry points</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#forms">The sign-in form</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#recovery">Recovery</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#security-ux">Usable security</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="audience-personalization.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Audience &amp; personalization</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="alerts-emergencies.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Alerts &amp; emergencies</span>
+        </a>
+      </nav>
 
     </div>
   </section>

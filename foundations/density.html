@@ -387,10 +387,90 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Density</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Spacing comes from one scale. The system leans comfortable by default — generous spacing and large targets suit healthcare and older audiences — and tightens only where dense data genuinely earns it.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="scale">
+            <h2 class="wire-h3">One spacing scale</h2>
+            <p class="u-text-muted u-mt-sm">Every gap, pad, and margin references a <code>--space-*</code> token; nothing is hand-typed. The scale is roughly geometric, so steps stay visually distinct, and it is shared across every component — the same rhythm runs through a form, a card, and a page header.</p>
+            <div class="wire-table-wrap u-mt-md">
+              <table class="wire-table">
+                <thead><tr><th scope="col">Token</th><th scope="col">rem</th><th scope="col">px</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><code>--space-3xs</code></th><td>0.125</td><td>2</td></tr>
+                  <tr><th scope="row"><code>--space-2xs</code></th><td>0.25</td><td>4</td></tr>
+                  <tr><th scope="row"><code>--space-xs</code></th><td>0.5</td><td>8</td></tr>
+                  <tr><th scope="row"><code>--space-sm</code></th><td>0.75</td><td>12</td></tr>
+                  <tr><th scope="row"><code>--space-md</code></th><td>1</td><td>16</td></tr>
+                  <tr><th scope="row"><code>--space-lg</code></th><td>1.5</td><td>24</td></tr>
+                  <tr><th scope="row"><code>--space-xl</code></th><td>2</td><td>32</td></tr>
+                  <tr><th scope="row"><code>--space-2xl</code></th><td>3</td><td>48</td></tr>
+                  <tr><th scope="row"><code>--space-3xl</code></th><td>4</td><td>64</td></tr>
+                  <tr><th scope="row"><code>--space-4xl</code></th><td>6</td><td>96</td></tr>
+                  <tr><th scope="row"><code>--space-5xl</code></th><td>8</td><td>128</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="doc-section" id="comfortable">
+            <h2 class="wire-h3">Comfortable by default</h2>
+            <p class="u-text-muted u-mt-sm">The resting density is roomy: larger body text, open line-height, and generous padding around controls and content. In healthcare and higher-ed the reader often skews older, is anxious, or is on a phone in a waiting room — comfortable density lowers the effort of every interaction.</p>
+            <p class="u-mt-md">Resist the urge to compress in order to fit more above the fold. Whitespace is doing work: it groups related things, separates unrelated ones, and gives the eye somewhere to rest. <em>(Convention — grouping by proximity is a Gestalt principle, not a measured number.)</em></p>
+          </section>
+
+          <section class="doc-section" id="when-dense">
+            <h2 class="wire-h3">When to increase density</h2>
+            <p class="u-text-muted u-mt-sm">Some views earn a tighter setting: data tables, comparison grids, dashboards, and internal admin tools, where seeing more rows at once is the task. There, step <strong>one</strong> level down the scale — say row padding from <code>--space-lg</code> to <code>--space-md</code> — and hold it consistently across the view.</p>
+            <div class="wire-callout u-mt-md">
+              <span class="wire-callout__eyebrow">Density is local</span>
+              <p class="wire-callout__body">It is a per-region decision, not a global theme. A dense comparison table can live happily on an otherwise comfortable page; the page does not have to commit to one density everywhere.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="targets">
+            <h2 class="wire-h3">Targets hold their size</h2>
+            <p class="u-text-muted u-mt-sm">Tightening density compresses spacing, never the hit area. WCAG 2.2 sets a 24&nbsp;px minimum target <em>(2.5.8 Target Size (Minimum), AA — a requirement)</em>; this system holds the stronger 44&nbsp;px target <em>(2.5.5 Enhanced / platform convention)</em> because of who uses these pages.</p>
+            <p class="u-mt-md">So when a row gets denser, the visible padding can shrink but the clickable region of a control stays at least 44&nbsp;px. Visual density and target size are two separate dials.</p>
+          </section>
+
+          <section class="doc-section" id="do-dont">
+            <h2 class="wire-h3">Do and don't</h2>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Compose spacing from the token scale so the same rhythm repeats everywhere.</dd>
+              <dt>Do</dt><dd>Step density down by one level for genuine data-dense views, consistently.</dd>
+              <dt>Don't</dt><dd>Compress a comfortable reading or form page just to raise the fold.</dd>
+              <dt>Don't</dt><dd>Shrink a tap target to fit a tighter row — compress the padding instead.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#scale">One spacing scale</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#comfortable">Comfortable by default</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when-dense">When to increase density</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#targets">Targets hold their size</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do and don't</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="responsive.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Responsive</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="interaction-states.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Interaction states</span>
+        </a>
+      </nav>
 
     </div>
   </section>

@@ -387,10 +387,62 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Compare &amp; save</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Help people weigh options side by side and hold onto the ones that matter — providers, plans, programs, locations. Comparison supports the decision; saving carries it forward.</p>
       </header>
+
+      <div class="wire-shell__doc">
+        <div class="u-stack u-stack--3xl">
+
+          <section class="doc-section" id="compare">
+            <h2 class="wire-h3">Comparing options</h2>
+            <p class="u-text-muted u-mt-sm">A <a href="../../components/sections/comparison-table/">comparison table</a> lines options up in columns and their attributes in rows, so the eye scans one dimension at a time. Keep the set small — two to four options — and keep attribute rows in the same order across everything compared.</p>
+            <ul class="u-mt-md">
+              <li>Pin the header row and the first column so labels stay visible while scanning.</li>
+              <li>Make differences legible through weight and a clear "—" for "not offered" — not color.</li>
+              <li>On small screens, let one option be the focus and others scroll, rather than crushing four columns.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="save">
+            <h2 class="wire-h3">Saving for later</h2>
+            <p class="u-text-muted u-mt-sm">People research across sessions and devices. A <a href="../../components/actions/save-portal-link/">save / portal link</a> lets them keep an option without losing their place. Where possible, allow saving without forcing an account first — gate the account on the moment it's actually needed.</p>
+            <div class="wire-callout wire-callout--subtle u-mt-md">
+              <span class="wire-callout__eyebrow">Clear state</span>
+              <p class="wire-callout__body">The save control shows whether an item is saved and toggles it back off. A saved thing the user can't un-save is a trap, not a feature.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="return">
+            <h2 class="wire-h3">Coming back to saved items</h2>
+            <p class="u-text-muted u-mt-sm">Saved items need a home the user can find — a clearly labeled list, reachable from the utility nav. When there's an account, the list follows the user across devices; without one, it persists on the device and says so. Removing an item is always one click, with undo where it's easy to offer.</p>
+            <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+              <dt>Do</dt><dd>Keep comparison rows consistent and saved-state obvious.</dd>
+              <dt>Don't</dt><dd>Force sign-in before a user is allowed to save or compare.</dd>
+            </dl>
+          </section>
+
+        </div>
+        <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+          <p class="wire-inpagenav__title">On this page</p>
+          <ul class="wire-inpagenav__list" role="list">
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#compare">Comparing options</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#save">Saving for later</a></li>
+            <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#return">Coming back to saved items</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Foundations pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="empty-error-loading.html">
+          <span class="wire-doc-pager__direction">Previous</span>
+          <span class="wire-doc-pager__title">Empty, error &amp; loading</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="audience-personalization.html">
+          <span class="wire-doc-pager__direction">Next</span>
+          <span class="wire-doc-pager__title">Audience &amp; personalization</span>
+        </a>
+      </nav>
 
     </div>
   </section>
