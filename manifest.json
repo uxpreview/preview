@@ -1649,7 +1649,15 @@
           "decision": "Left-rail vertical nav for deep IAs",
           "citation_ids": [
             "nng-left-side-vertical-navigation",
-            "ibm-carbon-side-nav"
+            "ibm-carbon-side-nav",
+            "nng-local-navigation"
+          ]
+        },
+        {
+          "decision": "Scope the rail to the nearest branch + breadcrumb for deep hierarchy; keep one active item",
+          "citation_ids": [
+            "cloudscape-side-navigation",
+            "nng-you-are-here"
           ]
         },
         {
@@ -1663,7 +1671,7 @@
       "class": "wire-sidenav",
       "file": "css/components/nav.css",
       "ref": "components/side-nav/",
-      "status": "stable (sublist/parent compositions: beta)",
+      "status": "stable",
       "elements": [
         "wire-sidenav__title",
         "wire-sidenav__list",
@@ -1673,6 +1681,7 @@
         "wire-sidenav__link--parent",
         "wire-sidenav__sublist"
       ],
+      "modifiers": ["wire-sidenav--sticky"],
       "states": [
         "is-current"
       ],
@@ -1680,6 +1689,33 @@
       "notes": "Three documented compositions (local / secondary / section tree). wire-sidenav__sublist + __link--parent are beta until used beyond the hospital vertical.",
       "label": "Side nav",
       "desc": "A vertical rail for local sections — peer, child, and section-tree patterns."
+    },
+    {
+      "id": "subnav",
+      "level": "molecule",
+      "category": "navigation",
+      "class": "wire-subnav",
+      "file": "css/components/subnav.css",
+      "ref": "components/subnav/",
+      "status": "stable",
+      "desc": "A horizontal row of sibling links for one level of local navigation, under the global top nav (the inverted-L).",
+      "elements": ["wire-subnav__list", "wire-subnav__item", "wire-subnav__link"],
+      "states": ["is-current"],
+      "rationale": [
+        {
+          "decision": "Horizontal section nav for shallow, content-first IAs",
+          "citation_ids": [
+            "nng-local-navigation",
+            "uswds-side-navigation"
+          ]
+        },
+        {
+          "decision": "aria-current=page on the active item",
+          "citation_ids": [
+            "wcag-4.1.2-name-role-value"
+          ]
+        }
+      ]
     },
     {
       "id": "inpagenav",
@@ -4806,9 +4842,15 @@
             },
             {
               "type": "page",
-              "label": "Side nav",
+              "label": "Local navigation",
               "ref": "components/side-nav/",
               "id": "sidenav"
+            },
+            {
+              "type": "page",
+              "label": "Section sub-nav",
+              "ref": "components/subnav/",
+              "id": "subnav"
             },
             {
               "type": "page",
