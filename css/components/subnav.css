@@ -1,0 +1,53 @@
+/* ============================================================
+   Section sub-nav — a horizontal row of sibling links for one
+   level of local navigation, sitting under the global top nav
+   (the inverted-L). The compact, content-first counterpart to
+   the left rail (wire-sidenav). Static links, no JS.
+   ============================================================ */
+.wire-subnav {
+  border-block-end: var(--border-thin) solid var(--color-border);
+}
+
+.wire-subnav__list {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2xs);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow-x: auto; /* scroll rather than wrap on narrow viewports */
+  overscroll-behavior-x: contain;
+  /* Hide the scrollbar: the bar only overflows on narrow/touch widths where
+     swipe is the natural affordance; on desktop it rarely overflows. */
+  scrollbar-width: none;
+}
+.wire-subnav__list::-webkit-scrollbar { display: none; }
+
+.wire-subnav__item {
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.wire-subnav__link {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem; /* WCAG 2.5.8 — comfortable target */
+  padding: var(--space-sm) var(--space-md);
+
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+
+  border-block-end: var(--border-md) solid transparent;
+}
+.wire-subnav__link:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.wire-subnav__link.is-current {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  border-block-end-color: var(--color-accent);
+}
