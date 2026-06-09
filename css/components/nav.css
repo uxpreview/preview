@@ -328,6 +328,16 @@
   font-weight: var(--weight-semibold);
 }
 
+/* Sticky variant — pins the rail within a scrolling content column on
+   tablet+. Released below 48em so a tall rail never traps content on
+   phones (the same reflow guard wire-inpagenav uses). */
+@media (min-width: 48em) {
+  .wire-sidenav--sticky {
+    position: sticky;
+    inset-block-start: var(--space-lg);
+  }
+}
+
 /* ---------- In-page nav (table of contents / anchors) ---------- */
 .wire-inpagenav {
   font-size: var(--text-sm);

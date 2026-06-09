@@ -759,15 +759,103 @@
         "org": "Nielsen Norman Group",
         "title": "Left-Side Vertical Navigation",
         "year": null,
-        "url": "https://www.nngroup.com/articles/left-side-vertical-navigation/"
+        "url": "https://www.nngroup.com/articles/vertical-nav/"
       },
-      "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verified_date": "2026-06-08",
+      "verification": "Re-fetched and read 2026-06-08; URL corrected to current canonical.",
       "supports": [
         "sidenav",
         "doc-nav"
       ],
       "notes": "Year not stated; confirm recency."
+    },
+    {
+      "id": "nng-local-navigation",
+      "tier": "empirical",
+      "finding": "Local navigation is contextual to the user's location: it shows the current node plus its siblings and applicable children, and should be visible but less salient than global nav. Placement is horizontal-below-global or left-vertical (the inverted-L); beyond ~4 tiers, breadcrumbs replace sibling display.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Local Navigation Is a Valuable Orientation and Wayfinding Aid",
+        "year": null,
+        "url": "https://www.nngroup.com/articles/local-navigation/"
+      },
+      "verified_date": "2026-06-08",
+      "verification": "Fetched and read 2026-06-08; findings reflected on the Local navigation page.",
+      "supports": [
+        "sidenav",
+        "subnav",
+        "navigation"
+      ]
+    },
+    {
+      "id": "nng-you-are-here",
+      "tier": "empirical",
+      "finding": "Navigation must show where you are, not just where you can go. Indicate current location by highlighting the active item and, in deeper hierarchies, with breadcrumbs; location signals are often too subtle, so test by asking users where they are.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Navigation: You Are Here",
+        "year": null,
+        "url": "https://www.nngroup.com/articles/navigation-you-are-here/"
+      },
+      "verified_date": "2026-06-08",
+      "verification": "Fetched and read 2026-06-08.",
+      "supports": [
+        "sidenav",
+        "breadcrumb",
+        "navigation"
+      ]
+    },
+    {
+      "id": "nng-right-rail-blindness",
+      "tier": "empirical",
+      "finding": "Reserve the right rail for secondary, contextual content (related links, an in-page table of contents). Banner/right-rail blindness means primary navigation placed there is widely ignored.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Fight Against Right-Rail Blindness",
+        "year": null,
+        "url": "https://www.nngroup.com/articles/fight-right-rail-blindness/"
+      },
+      "verified_date": "2026-06-08",
+      "verification": "Fetched and read 2026-06-08.",
+      "supports": [
+        "inpagenav",
+        "navigation"
+      ]
+    },
+    {
+      "id": "cloudscape-side-navigation",
+      "tier": "convention",
+      "finding": "Keep side navigation shallow (about three levels); always keep exactly one link active; for deeper hierarchies, surface lower levels via links within parent pages rather than deepening the rail.",
+      "source": {
+        "org": "AWS Cloudscape Design System",
+        "title": "Side navigation pattern",
+        "year": null,
+        "url": "https://cloudscape.design/patterns/general/service-navigation/side-navigation/"
+      },
+      "verified_date": "2026-06-08",
+      "verification": "Fetched and read 2026-06-08.",
+      "supports": [
+        "sidenav",
+        "navigation"
+      ]
+    },
+    {
+      "id": "uswds-side-navigation",
+      "tier": "convention",
+      "finding": "Side navigation suits one-to-three levels of hierarchy; nested lists express parent/child/grandchild; the current page is marked with a current class and aria-current; siblings render as same-level items.",
+      "source": {
+        "org": "U.S. Web Design System (USWDS)",
+        "title": "Side navigation",
+        "year": null,
+        "url": "https://designsystem.digital.gov/components/side-navigation/"
+      },
+      "verified_date": "2026-06-08",
+      "verification": "Fetched and read 2026-06-08.",
+      "supports": [
+        "sidenav",
+        "subnav",
+        "navigation"
+      ]
     },
     {
       "id": "nng-category-pages",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Side nav — Preview Design System</title>
+  <title>Local navigation — Preview Design System</title>
   <link rel="stylesheet" href="../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -195,7 +195,8 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/pagination/">Pagination</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Top nav</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/top-nav/">Mega menu</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/side-nav/">Side nav</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../components/side-nav/">Local navigation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/subnav/">Section sub-nav</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/in-page-nav/">In-page nav</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/navigation/utility-nav/">Utility nav</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../components/navigation/facet-panel/">Facet panel</a></li>
@@ -381,16 +382,16 @@
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../components/">Components</a></li>
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../#cat-navigation">Navigation</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Side nav</span></li>
+          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Local navigation</span></li>
         </ol>
       </nav>
 
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Side nav</h1>
+          <h1 class="wire-doc-header__title">Local navigation</h1>
           <span class="wire-doc-header__status"><span class="wire-status-pill">Stable</span></span>
         </div>
-        <p class="wire-doc-header__lead">A vertical rail for moving within a section — peer pages, child pages, or a two-level tree. It answers the questions a breadcrumb can't: where else can I go from here, and what's beneath this page.</p>
+        <p class="wire-doc-header__lead">The family of within-section navigation: left rails, a horizontal section bar, a contextual right rail, master-detail, and the mobile drawer. This page is the decision guide — which local nav to use, why, and where — plus the deep-hierarchy model for pages that sit many levels down.</p>
         <ul class="wire-doc-header__meta" role="list">
           <li class="wire-doc-header__meta-item">css/components/nav.css</li>
           <li class="wire-doc-header__meta-item">Since v1.0</li>
@@ -436,6 +437,22 @@
                 </div>
               </section>
 
+              <section id="choosing" class="doc-section">
+                <h2 class="wire-h3">Choosing a variant</h2>
+                <p class="u-text-muted u-mt-sm">Two questions decide it. First, <strong>is navigation or content the protagonist?</strong> Nav-primary screens (consoles, dashboards) lean on a persistent left rail; content-primary screens (articles, profiles) keep content full-width and push contextual nav to a horizontal bar or the right rail. Second, <strong>how deep is the IA?</strong> Shallow and few peers favor a horizontal bar; broad or growing favors a left rail; truly deep is solved by scoping the rail and letting the breadcrumb carry ancestry (see below). Local nav should always read as <em>less salient</em> than the global nav.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">If…</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">≤1 level, 2–7 peers, content-first</th><td>Horizontal <a href="../subnav/">section sub-nav</a></td></tr>
+                    <tr><th scope="row">Broad/growing IA, 4–12 peers, nav-first</th><td>Left rail (<code>wire-sidenav</code>)</td></tr>
+                    <tr><th scope="row">Long reading page</th><td>Quiet left rail + right-rail <a href="../in-page-nav/">in-page nav</a></td></tr>
+                    <tr><th scope="row">Deepest node is an entity viewed many ways</th><td>Master-detail (list + <a href="../tabs/">tabs</a>)</td></tr>
+                    <tr><th scope="row">Small screen</th><td>Off-canvas <a href="../drawer/">drawer</a> holding the rail</td></tr>
+                    <tr><th scope="row">≥4 levels deep</th><td>Scope the rail + <a href="../breadcrumb/">breadcrumb</a> for ancestry</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
               <section id="anatomy" class="doc-section">
                 <h2 class="wire-h3">Anatomy</h2>
                 <table class="doc-spec-table">
@@ -447,6 +464,7 @@
                     <tr><th scope="row">Link</th><td><code>.wire-sidenav__link</code></td><td>One destination; <code>.is-current</code> + <code>aria-current="page"</code> marks the active page.</td></tr>
                     <tr><th scope="row">Parent <span class="wire-status-pill wire-status-pill--pending">Beta</span></th><td><code>.wire-sidenav__link--parent</code></td><td>A section-title link above its children.</td></tr>
                     <tr><th scope="row">Sublist <span class="wire-status-pill wire-status-pill--pending">Beta</span></th><td><code>.wire-sidenav__sublist</code></td><td>Nested children of the current item.</td></tr>
+                    <tr><th scope="row">Sticky modifier</th><td><code>.wire-sidenav--sticky</code></td><td>Pins the rail beside long content; released below 48em (reflow guard).</td></tr>
                   </tbody>
                 </table>
               </section>
@@ -516,6 +534,100 @@
                 </div>
               </section>
 
+              <section id="variants" class="doc-section">
+                <h2 class="wire-h3">The five variants</h2>
+                <p class="u-text-muted u-mt-sm">One family, five form factors. The left rail and the section bar are components; the right rail, master-detail, and mobile drawer are compositions of parts you already have.</p>
+
+                <h3 class="wire-h5 u-mt-lg">1 · Left rail — within-section</h3>
+                <p class="u-text-muted u-mt-sm">The workhorse for within-section movement — peers, parent + children, or a shallow tree (all three demoed under Three patterns above). Reach for it on nav-primary screens and growing IAs; it sits on the leading (left) edge. Add <code>wire-sidenav--sticky</code> to pin it beside long content.</p>
+
+                <h3 class="wire-h5 u-mt-xl">2 · Horizontal section sub-nav</h3>
+                <p class="u-text-muted u-mt-sm">A single row of peers under the masthead — the inverted-L. Keeps the content column full-width. Best for 2–7 peers, one level.</p>
+                <div class="doc-example doc-example--flush">
+                  <span class="doc-example__label">wire-subnav</span>
+                  <nav class="wire-subnav" aria-label="Plan your visit (demo)">
+                    <ul class="wire-subnav__list" role="list">
+                      <li class="wire-subnav__item"><a class="wire-subnav__link is-current" href="#" aria-current="page">Before your visit</a></li>
+                      <li class="wire-subnav__item"><a class="wire-subnav__link" href="#">Parking &amp; transit</a></li>
+                      <li class="wire-subnav__item"><a class="wire-subnav__link" href="#">What to bring</a></li>
+                      <li class="wire-subnav__item"><a class="wire-subnav__link" href="#">Visitor policies</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                <p class="u-text-muted u-mt-sm">Full specs: <a href="../subnav/">Section sub-nav</a>.</p>
+
+                <h3 class="wire-h5 u-mt-xl">3 · Right-rail contextual nav</h3>
+                <p class="u-text-muted u-mt-sm">On long reading pages, the right rail carries an "On this page" table of contents and related links — never the primary structural nav (right-rail blindness). Compose <code>wire-twocol</code> + <a href="../in-page-nav/">in-page nav</a>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">In-page nav (right-rail role)</span>
+                  <nav class="wire-inpagenav" aria-label="On this page (demo)">
+                    <p class="wire-inpagenav__title">On this page</p>
+                    <ul class="wire-inpagenav__list" role="list">
+                      <li class="wire-inpagenav__item"><a class="wire-inpagenav__link is-current" href="#">Overview</a></li>
+                      <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#">Symptoms</a></li>
+                      <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#">Treatment</a></li>
+                      <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#">Recovery</a></li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <h3 class="wire-h5 u-mt-xl">4 · Master-detail</h3>
+                <p class="u-text-muted u-mt-sm">When the deepest node is an entity viewed many ways, it isn't a dead end: a list of objects on the left, the object's facets as <a href="../tabs/">tabs</a>, breadcrumb for ancestry.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">List + tabbed object</span>
+                  <nav class="wire-sidenav" aria-label="Providers (demo)">
+                    <div class="wire-sidenav__group">
+                      <div class="wire-sidenav__title">Providers</div>
+                      <ul class="wire-sidenav__list" role="list">
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="#" aria-current="page">Dr. Lena Ortiz</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Dr. Sam Reed</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Dr. Priya Shah</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+
+                <h3 class="wire-h5 u-mt-xl">5 · Mobile drawer</h3>
+                <p class="u-text-muted u-mt-sm">On small screens the rail collapses into an off-canvas <a href="../drawer/">drawer</a> opened by the top-nav burger (<code>data-wire-drawer-open</code>); the same <code>wire-sidenav</code> markup rides inside it. No drilldown — depth is handled by scoping + breadcrumb.</p>
+              </section>
+
+              <section id="deep-hierarchy" class="doc-section">
+                <h2 class="wire-h3">Deep hierarchy &amp; the dead-end leaf</h2>
+                <p class="u-text-muted u-mt-sm">A page five levels down with no children is not a taller rail problem — it's a division of labor. Don't render five indented levels. Scope the rail to the nearest branch and let the breadcrumb carry the way back.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Relationship</th><th scope="col">Rendered by</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Ancestors (going back)</th><td><a href="../breadcrumb/">Breadcrumb</a> — scales to any depth</td></tr>
+                    <tr><th scope="row">Siblings + current</th><td>Rail scoped to the nearest branch (<code>__link--parent</code> + sibling list)</td></tr>
+                    <tr><th scope="row">Children</th><td>None — it's a leaf; the rail shows lateral peers instead</td></tr>
+                    <tr><th scope="row">Current page</th><td><code>.is-current</code> + <code>aria-current="page"</code> — exactly one</td></tr>
+                  </tbody>
+                </table>
+                <div class="doc-example">
+                  <span class="doc-example__label">Scoped rail at a deep leaf (breadcrumb carries ancestry)</span>
+                  <nav class="wire-breadcrumb" aria-label="Breadcrumb (demo)">
+                    <ol class="wire-breadcrumb__list">
+                      <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Care</a></li>
+                      <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Rehabilitation</a></li>
+                      <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="#">Spinal cord injury</a></li>
+                      <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Day of your visit</span></li>
+                    </ol>
+                  </nav>
+                  <nav class="wire-sidenav" aria-label="Spinal cord injury (demo)">
+                    <div class="wire-sidenav__group">
+                      <a class="wire-sidenav__link wire-sidenav__link--parent" href="#">Spinal cord injury</a>
+                      <ul class="wire-sidenav__list" role="list">
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Before your visit</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link is-current" href="#" aria-current="page">Day of your visit</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">Parking &amp; transit</a></li>
+                        <li class="wire-sidenav__item"><a class="wire-sidenav__link" href="#">What to bring</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                </div>
+                <p class="u-text-muted u-mt-sm">This keeps best practice and the system's two-level rail cap aligned: depth lives in the breadcrumb, not in indentation.</p>
+              </section>
+
               <section id="when" class="doc-section">
                 <h2 class="wire-h3">When to use</h2>
                 <ul>
@@ -553,8 +665,11 @@
               <p class="wire-inpagenav__title">On this page</p>
               <ul class="wire-inpagenav__list" role="list">
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#choosing">Choosing a variant</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#patterns">Three patterns</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#variants">The five variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#deep-hierarchy">Deep hierarchy</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
                 <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
               </ul>
@@ -573,6 +688,7 @@
                   <li>The rail is a vertical flex column of groups; groups after the first add top margin for separation.</li>
                   <li>Links are full-width blocks with a transparent leading border that turns to <code>--color-accent</code> on the current item — the marker reads even in grayscale.</li>
                   <li>A <code>__link--parent</code> renders the section title as a heavier link with an underline rule; a <code>__sublist</code> indents children behind a thin guide line.</li>
+                  <li>The <code>--sticky</code> modifier pins the rail within a scrolling content column on tablet+, releasing below 48em.</li>
                 </ul>
               </section>
 
@@ -641,7 +757,7 @@
                 <h2 class="wire-h3">Landmark &amp; labeling</h2>
                 <ul>
                   <li>Wrap each rail in <code>&lt;nav&gt;</code> with a label describing the section ("Conditions we treat", "Research sections").</li>
-                  <li>A page with more than one nav landmark must label each distinctly so they're tellable apart.</li>
+                  <li>A page may carry several nav landmarks (rail, breadcrumb, in-page, section bar). Give each a distinct <code>aria-label</code> so they're tellable apart.</li>
                 </ul>
               </section>
 
@@ -680,9 +796,9 @@
           <span class="wire-doc-pager__direction">Previous in Navigation</span>
           <span class="wire-doc-pager__title">Top nav</span>
         </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../in-page-nav/">
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../subnav/">
           <span class="wire-doc-pager__direction">Next in Navigation</span>
-          <span class="wire-doc-pager__title">In-page nav</span>
+          <span class="wire-doc-pager__title">Section sub-nav</span>
         </a>
       </nav>
 
