@@ -11,6 +11,7 @@
   },
   "urls": [
     "http://localhost:8080/index.html",
+    "http://localhost:8080/404.html",
     "http://localhost:8080/directory.html",
 
     "http://localhost:8080/docs/principles.html",

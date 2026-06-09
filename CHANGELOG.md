@@ -6,6 +6,17 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Doc-site 404 page
+
+**Added**
+- Site-root `404.html` on the canonical doc shell (top nav, rail, footer, theme), composed from existing parts (`wire-doc-header`, `wire-button`, `wire-card`). GitHub Pages and Vercel serve it on any missing URL.
+- Head script resolves a site-root `<base>` so CSS/JS and relative nav/footer links load at any URL depth, and repoints the skip link at the served path.
+
+**Changed**
+- `scripts/build-ia.mjs` propagates chrome into `404.html` (added to `targetSet`); `.pa11yci.json` covers it (passes WCAG2AA).
+
+---
+
 ### Local navigation variants (feat/local-navigation-variants)
 
 **Added**
