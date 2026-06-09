@@ -245,7 +245,7 @@ function writeStub(file, html) {
 // Legacy chrome pages no longer surfaced in the rail (Patterns/Experiences
 // folded into Foundations ▸ UX guidance / Templates ▸ Advanced) but kept on
 // disk — still synced so they never show stale chrome if reached directly.
-const targetSet = new Set(['index.html', 'directory.html', 'patterns/index.html', 'experiences/index.html']);
+const targetSet = new Set(['index.html', '404.html', 'directory.html', 'patterns/index.html', 'experiences/index.html']);
 const CURRENT = {};
 let stubbedChrome = 0, stubbedDemo = 0;
 
