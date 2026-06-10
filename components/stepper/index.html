@@ -480,7 +480,7 @@
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
                 <p class="u-text-muted u-mt-sm">An ordered list of items; each carries a marker, a label, and optional meta. The state class drives the look, and parallel text or <code>aria-current</code> carries the same state to assistive tech.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
                     <tr><td>Root</td><td><code>.wire-stepper</code> (on <code>&lt;ol&gt;</code>)</td><td>The ordered list; its order conveys the sequence. Give it an <code>aria-label</code>.</td></tr>
                     <tr><td>Item</td><td><code>.wire-stepper__item</code> (on <code>&lt;li&gt;</code>)</td><td>One step. Carries <code>.is-complete</code>, <code>.is-current</code>, or neither (upcoming).</td></tr>
@@ -498,7 +498,7 @@
                 <h3 class="wire-h4" id="h-states">States</h3>
                 <p class="u-text-muted u-mt-sm">Each item is in exactly one of three states. The class sets the visual; a parallel cue sets the accessible meaning so it never rides on color alone.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Class / attribute</th><th>Cue to assistive tech</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Class / attribute</th><th scope="col">Cue to assistive tech</th></tr></thead>
                   <tbody>
                     <tr><td>Complete</td><td><code>.is-complete</code></td><td>Visually-hidden "Completed: " inside the label.</td></tr>
                     <tr><td>Current</td><td><code>.is-current</code> + <code>aria-current="step"</code></td><td><code>aria-current="step"</code> is announced as the current step.</td></tr>
@@ -603,7 +603,7 @@
               <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
                 <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><code>--color-accent</code></td><td>Filled markers and connectors on complete / current steps.</td></tr>
                     <tr><td><code>--color-bg</code> · <code>--color-border-strong</code></td><td>Upcoming marker fill and ring.</td></tr>
@@ -620,7 +620,7 @@
               <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
                 <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
                     <tr><td>Direction</td><td>Vertical stack below <code>48em</code>; horizontal row at and above.</td></tr>
                     <tr><td>Marker</td><td><code>2rem</code> disc, <code>--border-md</code> ring; number via CSS counter, ✓ on complete.</td></tr>
@@ -636,7 +636,7 @@
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
                 <p class="u-text-muted u-mt-sm">What each state <em>means</em> lives in <a href="#usage">Usage &rsaquo; Behaviors</a>.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">What changes</th></tr></thead>
                   <tbody>
                     <tr><td>Upcoming</td><td>(default)</td><td>Open disc, muted ring and label; the marker shows its number.</td></tr>
                     <tr><td>Current</td><td><code>.is-current</code></td><td>Accent-filled disc, full-weight label, leading connector accented.</td></tr>
@@ -709,7 +709,7 @@
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Stepper satisfies it</th></tr></thead>
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Stepper satisfies it</th></tr></thead>
                   <tbody>
                     <tr><td>1.3.1 Info and Relationships</td><td>The ordered list conveys sequence; the current step is marked with <code>aria-current</code>.</td></tr>
                     <tr><td>1.4.1 Use of Color</td><td>Complete / current / upcoming are conveyed by text and <code>aria-current</code>, not the accent fill alone.</td></tr>

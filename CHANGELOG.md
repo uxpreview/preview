@@ -6,6 +6,14 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### QA + consistency sweep — table header semantics
+
+**Changed**
+- Added `scope="col"` to documentation spec-table headers across 15 component pages and the landing template, closing a WCAG 2.2 AA header/data-association gap. The link/structure audit now reports zero tables with unscoped `<th>`.
+- Fixed a broken related-component link in `components/skeleton` (`../card/` → `../cards/`).
+
+---
+
 ### Doc-site 404 page
 
 **Added**
