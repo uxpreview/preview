@@ -489,7 +489,7 @@
 
                 <h3 class="wire-h4 u-mt-xl" id="h-bem">BEM structure</h3>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Part</th><th>Class / element</th><th>Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
                   <tbody>
                     <tr><td>Container</td><td><code>.wire-accordion</code></td><td>The stack; draws the top hairline. Carries <code>data-wire-accordion="single"</code> for single-open mode.</td></tr>
                     <tr><td>Item</td><td><code>.wire-accordion__item</code> (<code>&lt;details&gt;</code>)</td><td>One disclosure unit; the native <code>[open]</code> attribute is its state. Draws the bottom hairline.</td></tr>
@@ -505,7 +505,7 @@
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
                 <p class="u-text-muted u-mt-sm">Accordion has a single structural <strong>type</strong> (a stacked disclosure list) and no size or emphasis modifiers. The one meaningful variant is the <strong>open mode</strong>, set on the container.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Mode</th><th>How</th><th>Result</th></tr></thead>
+                  <thead><tr><th scope="col">Mode</th><th scope="col">How</th><th scope="col">Result</th></tr></thead>
                   <tbody>
                     <tr><td>Multi-open (default)</td><td>No attribute</td><td>Native behavior. Any number of items can be open at once. Zero JavaScript.</td></tr>
                     <tr><td>Single-open</td><td><code>data-wire-accordion="single"</code></td><td>Opening one item closes its siblings. Requires <code>js/wire.js</code>.</td></tr>
@@ -682,7 +682,7 @@
               <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
                 <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><code>--color-border</code></td><td>Item hairlines (top of container, bottom of each item).</td></tr>
                     <tr><td><code>--color-border-strong</code></td><td>The +/− icon ring.</td></tr>
@@ -701,7 +701,7 @@
               <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
                 <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
                     <tr><td>Summary padding (block)</td><td><code>--space-lg</code> top and bottom; full-width target.</td></tr>
                     <tr><td>Label / icon gap</td><td><code>--space-md</code>, pushed apart with <code>justify-content: space-between</code>.</td></tr>
@@ -720,7 +720,7 @@
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
                 <p class="u-text-muted u-mt-sm">The full visual set. What each state <em>means</em> lives in <a href="#usage">Usage &rsaquo; Behaviors</a>.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">What changes</th></tr></thead>
                   <tbody>
                     <tr><td>Collapsed</td><td>default</td><td>Body hidden; icon shows <code>+</code>. Only the summary row is visible.</td></tr>
                     <tr><td>Expanded</td><td><code>[open]</code></td><td>Body revealed below the summary; icon shows <code>−</code>.</td></tr>
@@ -809,7 +809,7 @@
               <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
                 <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Key</th><th>Action</th></tr></thead>
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
                   <tbody>
                     <tr><td><kbd>Tab</kbd></td><td>Moves focus to the next summary header.</td></tr>
                     <tr><td><kbd>Shift</kbd> + <kbd>Tab</kbd></td><td>Moves focus to the previous summary header.</td></tr>
@@ -822,7 +822,7 @@
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Accordion satisfies it</th></tr></thead>
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Accordion satisfies it</th></tr></thead>
                   <tbody>
                     <tr><td>1.4.3 Contrast (Minimum)</td><td>Summary label (<code>--color-text</code>): 19:1. Body (<code>--color-text-muted</code>): ≥4.5:1.</td></tr>
                     <tr><td>1.4.11 Non-text Contrast</td><td>The icon ring (<code>--color-border-strong</code>) meets ≥3:1 against the surface.</td></tr>

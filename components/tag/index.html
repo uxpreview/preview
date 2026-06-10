@@ -483,7 +483,7 @@
                   </ul>
                 </div>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
                     <tr><td>Tag</td><td><code>.wire-tag</code></td><td>The chip. Render as <code>&lt;button&gt;</code> / <code>&lt;a&gt;</code> (interactive) or <code>&lt;span&gt;</code> (metadata).</td></tr>
                     <tr><td>Remove</td><td><code>.wire-tag__remove</code></td><td>A 24px <code>&lt;button&gt;</code> that removes the tag; needs an <code>aria-label</code>.</td></tr>
@@ -497,7 +497,7 @@
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
                 <p class="u-text-muted u-mt-sm">One structural type, differentiated in grayscale by fill density.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Variant</th><th>Selector</th><th>Use</th></tr></thead>
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
                   <tbody>
                     <tr><td>Default</td><td><code>.wire-tag</code></td><td>Outlined, 28px tall. The resting chip.</td></tr>
                     <tr><td>Selected</td><td><code>.wire-tag--selected</code> / <code>.is-selected</code></td><td>Filled dark, inverse label. A toggled-on filter; pair with <code>aria-pressed</code>.</td></tr>
@@ -658,7 +658,7 @@
               <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
                 <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><code>--color-border-strong</code></td><td>Default outline (<code>--tag-border</code>).</td></tr>
                     <tr><td><code>--color-text</code></td><td>Default label.</td></tr>
@@ -677,7 +677,7 @@
               <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
                 <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
                     <tr><td>Min height (default)</td><td>1.75rem (28px).</td></tr>
                     <tr><td>Min height (small)</td><td>1.5rem (24px) — the WCAG 2.5.8 AA floor.</td></tr>
@@ -695,7 +695,7 @@
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
                 <p class="u-text-muted u-mt-sm">Visual states for the interactive tag. What each means lives in <a href="#usage">Usage &rsaquo; Behaviors</a>; a metadata tag has none of these.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">What changes</th></tr></thead>
                   <tbody>
                     <tr><td>Default</td><td>—</td><td>Transparent fill, <code>--color-border-strong</code> outline, dark label.</td></tr>
                     <tr><td>Hover</td><td><code>:hover</code> (a / button only)</td><td>Fill shifts to <code>--color-bg-muted</code>. Static span tags do not react.</td></tr>
@@ -776,7 +776,7 @@
               <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
                 <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Key</th><th>Action</th></tr></thead>
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
                   <tbody>
                     <tr><td><kbd>Tab</kbd></td><td>Moves focus to the next interactive tag, then to its remove button. Metadata tags are skipped.</td></tr>
                     <tr><td><kbd>Enter</kbd> or <kbd>Space</kbd></td><td>Toggles a filter, follows a link, or activates the remove button.</td></tr>
@@ -788,7 +788,7 @@
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Tag satisfies it</th></tr></thead>
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Tag satisfies it</th></tr></thead>
                   <tbody>
                     <tr><td>1.4.1 Use of Color</td><td>Selection is exposed via <code>aria-pressed</code>; meaning is in the label. Grayscale, no color-only state.</td></tr>
                     <tr><td>1.4.11 Non-text Contrast</td><td>Measured: the outlined border is 4.5:1, clearing the 3:1 boundary requirement.</td></tr>

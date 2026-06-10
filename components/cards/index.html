@@ -591,7 +591,7 @@
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
                 <p class="u-text-muted u-mt-sm">A container, an optional media slot, and a body of stacked parts. The footer pins to the bottom so it lines up across an equal-height row.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
                     <tr><td>Container</td><td><code>.wire-card</code></td><td>The bordered, rounded block; <code>block-size: 100%</code> for equal-height grids.</td></tr>
                     <tr><td>Media</td><td><code>.wire-card__media</code></td><td>Optional image slot, usually a <code>.wire-media</code> placeholder.</td></tr>
@@ -611,7 +611,7 @@
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
                 <p class="u-text-muted u-mt-sm">Purpose modifiers come first (person, resource, stat); surface and layout modifiers stack on top. Content is the unmodified base — there is no <code>--content</code>.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Modifier</th><th>Kind</th><th>Result</th></tr></thead>
+                  <thead><tr><th scope="col">Modifier</th><th scope="col">Kind</th><th scope="col">Result</th></tr></thead>
                   <tbody>
                     <tr><td>(none)</td><td>Type</td><td>Content card — media, eyebrow, title, description, meta.</td></tr>
                     <tr><td><code>--person</code></td><td>Type</td><td>Square media, smaller title, role + credentials slots.</td></tr>
@@ -764,7 +764,7 @@
                 <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
                 <p class="u-text-muted u-mt-sm">The card exposes four local custom properties — <code>--card-bg</code>, <code>--card-border</code>, <code>--card-pad</code>, <code>--card-radius</code> — that the surface and type modifiers re-point.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><code>--color-bg</code> · <code>--color-bg-subtle</code> · <code>--color-bg-inverse</code></td><td>Default / subtle / inverse surface (via <code>--card-bg</code>).</td></tr>
                     <tr><td><code>--color-border</code> · <code>--color-border-strong</code></td><td>Default and bordered frame (via <code>--card-border</code>).</td></tr>
@@ -782,7 +782,7 @@
               <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
                 <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
                     <tr><td>Container</td><td><code>display: flex; flex-direction: column;</code> <code>block-size: 100%;</code> <code>overflow: hidden;</code> 1px border, <code>--radius-lg</code>.</td></tr>
                     <tr><td>Body padding</td><td><code>--space-lg</code> (content / person / resource); <code>--space-xl</code> (stat).</td></tr>
@@ -800,7 +800,7 @@
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
                 <p class="u-text-muted u-mt-sm">What each state <em>means</em> lives in <a href="#usage">Usage &rsaquo; Behaviors</a>. Only the linked card is interactive.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">What changes</th></tr></thead>
                   <tbody>
                     <tr><td>Default</td><td>—</td><td>Resting surface and border per the variant.</td></tr>
                     <tr><td>Hover (linked)</td><td><code>.wire-card--linked:hover</code></td><td>Border darkens to <code>--color-text</code>.</td></tr>
@@ -895,7 +895,7 @@
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Card satisfies it</th></tr></thead>
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Card satisfies it</th></tr></thead>
                   <tbody>
                     <tr><td>1.4.1 Use of Color</td><td>Grouping and emphasis come from the border, surface, and spacing — never color. Grayscale throughout.</td></tr>
                     <tr><td>1.4.11 Non-text Contrast</td><td>The <code>--bordered</code> variant's border clears 3:1 against the page so the boundary is perceivable.</td></tr>

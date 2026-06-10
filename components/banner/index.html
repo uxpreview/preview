@@ -497,7 +497,7 @@
                 <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
                 <p class="u-text-muted u-mt-sm">An optional icon, a content column of title + body, an optional actions cluster, and an optional dismiss. It stacks on phones and goes inline from tablet up.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Part</th><th>Class</th><th>Role</th></tr></thead>
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
                   <tbody>
                     <tr><td>Root</td><td><code>.wire-banner</code></td><td>The strip; sets the surface and border via the variant.</td></tr>
                     <tr><td>Icon</td><td><code>.wire-banner__icon</code></td><td>A bordered glyph (i / !). Decorative — keep <code>aria-hidden="true"</code>.</td></tr>
@@ -515,7 +515,7 @@
                 <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
                 <p class="u-text-muted u-mt-sm">Four variants, all grayscale. Emphasis comes from surface and border weight, never hue — the alert variant reads as serious because its border is heavier, not because it is red.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Variant</th><th>Selector</th><th>Use for</th></tr></thead>
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use for</th></tr></thead>
                   <tbody>
                     <tr><td>Default</td><td><code>.wire-banner</code></td><td>Standard informational notice on a muted surface.</td></tr>
                     <tr><td>Subtle</td><td><code>.wire-banner--subtle</code></td><td>A quieter notice with a hairline border — environment notes, low-stakes context.</td></tr>
@@ -620,7 +620,7 @@
               <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
                 <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Token</th><th>Purpose</th></tr></thead>
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
                   <tbody>
                     <tr><td><code>--color-bg-muted</code> · <code>--color-bg-subtle</code> · <code>--color-bg</code> · <code>--color-bg-inverse</code></td><td>Surfaces for the default, subtle, alert, and inverse variants.</td></tr>
                     <tr><td><code>--color-text</code> · <code>--color-text-muted</code> · <code>--color-text-inverse</code></td><td>Title and body text per variant.</td></tr>
@@ -637,7 +637,7 @@
               <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
                 <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Property</th><th>Value</th></tr></thead>
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
                   <tbody>
                     <tr><td>Layout</td><td><code>display: flex</code>; column &amp; left-aligned on phones, row &amp; centered from <code>48em</code> up.</td></tr>
                     <tr><td>Padding</td><td><code>--space-md</code> block · <code>--space-lg</code> inline.</td></tr>
@@ -653,7 +653,7 @@
                 <h2 class="wire-h3" id="h-spec-states">States</h2>
                 <p class="u-text-muted u-mt-sm">What each state <em>means</em> lives in <a href="#usage">Usage &rsaquo; Behaviors</a>.</p>
                 <table class="doc-spec-table">
-                  <thead><tr><th>State</th><th>Trigger</th><th>What changes</th></tr></thead>
+                  <thead><tr><th scope="col">State</th><th scope="col">Trigger</th><th scope="col">What changes</th></tr></thead>
                   <tbody>
                     <tr><td>Present</td><td>—</td><td>The default rendered strip.</td></tr>
                     <tr><td>Dismissed</td><td>× click</td><td>The element is removed from the DOM (JS). No animation.</td></tr>
@@ -729,7 +729,7 @@
               <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
                 <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>Key</th><th>Action</th></tr></thead>
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
                   <tbody>
                     <tr><td><kbd>Tab</kbd></td><td>Moves to the action button (if any), then the dismiss — in source order.</td></tr>
                     <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates the focused action or dismiss (native).</td></tr>
@@ -741,7 +741,7 @@
               <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
                 <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
                 <table class="doc-spec-table">
-                  <thead><tr><th>SC</th><th>How Banner satisfies it</th></tr></thead>
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Banner satisfies it</th></tr></thead>
                   <tbody>
                     <tr><td>1.3.1 Info and Relationships</td><td>Title, body, and actions are real elements, so the structure survives without the visual strip.</td></tr>
                     <tr><td>1.4.1 Use of Color</td><td>The alert variant signals urgency with border weight and bolder type, not hue. Grayscale throughout.</td></tr>
