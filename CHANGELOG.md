@@ -6,6 +6,22 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Styles section — Color & theming, Shape & radius, and full section consolidation (2026-06-10)
+
+Completes the Styles section by building two new foundation pages and consolidating all seven pages under `styles/` with normalized navigation throughout.
+
+**Added**
+- `styles/color-theming.html` — Color & theming: full grayscale ramp (gray-0 – gray-100), semantic token layer (foreground, background, border, focus), light/dark theming model, and per-client overlay lane with an annotated `client-overlay.example.css` walkthrough.
+- `styles/shape-radius.html` — Shape & radius: radius scale (none through full), border-weight scale, and an "applying shape" guide covering component defaults and how to override via the token layer.
+
+**Changed**
+- Relocated Typography, Iconography, Elevation, Motion, and Tokens from `docs/` to `styles/`; meta-refresh redirect stubs left at the old `docs/` paths for any inbound links.
+- Added `styles/index.html` landing page covering all seven foundation categories with card-grid navigation.
+- Normalized breadcrumbs, pager chain (prev/next), and section nav across all seven `styles/` pages for consistency with the M3-style shell.
+- `.pa11yci.json` — added all seven `styles/` URLs (`styles/`, `styles/color-theming.html`, `styles/typography.html`, `styles/iconography.html`, `styles/shape-radius.html`, `styles/elevation.html`, `styles/motion.html`, `styles/tokens.html`). All pass WCAG2AA.
+
+---
+
 ### Doc-site 404 page
 
 **Added**

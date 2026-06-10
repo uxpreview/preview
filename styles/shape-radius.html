@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shape &amp; radius — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
+  <style>
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-2xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg-muted); margin-block-start: var(--space-md); }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .sr-row { display: flex; flex-wrap: wrap; gap: var(--space-lg); align-items: flex-end; }
+    .sr-item { text-align: center; }
+    .sr-box { width: 5rem; height: 5rem; background: var(--color-bg-muted); border: var(--border-thin) solid var(--color-border-strong); }
+    .sr-box--xs { border-radius: var(--radius-xs); } .sr-box--sm { border-radius: var(--radius-sm); }
+    .sr-box--md { border-radius: var(--radius-md); } .sr-box--lg { border-radius: var(--radius-lg); }
+    .sr-box--xl { border-radius: var(--radius-xl); } .sr-box--2xl { border-radius: var(--radius-2xl); }
+    .sr-box--pill { border-radius: var(--radius-pill); width: 8rem; }
+    .sr-box--bthin { border-width: var(--border-thin); border-radius: var(--radius-md); }
+    .sr-box--bmd { border-width: var(--border-md); border-radius: var(--radius-md); }
+    .sr-box--bthick { border-width: var(--border-thick); border-radius: var(--radius-md); }
+    .sr-item__name { display: block; font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-block-start: var(--space-xs); }
+  </style>
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
 <body class="wire-shell">
@@ -108,12 +125,12 @@
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/color-theming.html">Color &amp; theming</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/iconography.html">Iconography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/iconography.html">Iconography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../styles/shape-radius.html">Shape &amp; radius</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/elevation.html">Elevation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/motion.html">Motion</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/elevation.html">Elevation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/motion.html">Motion</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/tokens.html">Tokens</a></li>
         </ul>
       </div>
     </details>
@@ -375,26 +392,122 @@
 
 <main id="main">
 
-  <section class="u-section">
-    <div class="u-container u-container--wide">
+<section class="u-section">
+  <div class="u-container u-container--wide">
 
-      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
-        <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../styles/">Styles</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Shape &amp; radius</span></li>
-        </ol>
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../styles/">Styles</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Shape &amp; radius</span></li>
+      </ol>
+    </nav>
+
+    <header class="wire-doc-header">
+      <div class="wire-doc-header__row">
+        <h1 class="wire-doc-header__title">Shape &amp; radius</h1>
+      </div>
+      <p class="wire-doc-header__lead">Corner radii and border weights — the shape language. The radius scale is generous on purpose: soft corners read as approachable and modern at wireframe fidelity.</p>
+    </header>
+
+    <div class="wire-shell__doc">
+      <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section" id="radius">
+          <h2 class="wire-h3">The radius scale</h2>
+          <p class="u-text-muted u-mt-sm">Seven steps plus a pill. Pick the smallest radius that reads as intentional at the element's size — large radii on small elements look like mistakes, and vice versa.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">xs → 2xl, plus pill</span>
+            <div class="sr-row">
+              <div class="sr-item"><div class="sr-box sr-box--xs"></div><span class="sr-item__name">xs</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--sm"></div><span class="sr-item__name">sm</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--md"></div><span class="sr-item__name">md</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--lg"></div><span class="sr-item__name">lg</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--xl"></div><span class="sr-item__name">xl</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--2xl"></div><span class="sr-item__name">2xl</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--pill"></div><span class="sr-item__name">pill</span></div>
+            </div>
+          </div>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Typical use</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--radius-xs</code></th><td><code>0.25rem</code> (4px)</td><td>Small chips, tags, nested elements</td></tr>
+                <tr><th scope="row"><code>--radius-sm</code></th><td><code>0.5rem</code> (8px)</td><td>Inputs, buttons, small controls</td></tr>
+                <tr><th scope="row"><code>--radius-md</code></th><td><code>0.75rem</code> (12px)</td><td>Menus, popovers, default surfaces</td></tr>
+                <tr><th scope="row"><code>--radius-lg</code></th><td><code>1rem</code> (16px)</td><td>Cards, panels, example wells</td></tr>
+                <tr><th scope="row"><code>--radius-xl</code></th><td><code>1.5rem</code> (24px)</td><td>Large cards, modals</td></tr>
+                <tr><th scope="row"><code>--radius-2xl</code></th><td><code>2rem</code> (32px)</td><td>Hero / feature surfaces</td></tr>
+                <tr><th scope="row"><code>--radius-pill</code></th><td><code>999px</code></td><td>Pills, badges, avatars, toggles</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="borders">
+          <h2 class="wire-h3">Border weights</h2>
+          <p class="u-text-muted u-mt-sm">Three weights. Thin is the default hairline; heavier weights carry emphasis and selected states. Strong borders must clear 3:1 non-text contrast (WCAG 1.4.11), which is why bordered surfaces use <code>--color-border-strong</code>.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">thin / md / thick</span>
+            <div class="sr-row">
+              <div class="sr-item"><div class="sr-box sr-box--bthin"></div><span class="sr-item__name">thin · 1px</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--bmd"></div><span class="sr-item__name">md · 2px</span></div>
+              <div class="sr-item"><div class="sr-box sr-box--bthick"></div><span class="sr-item__name">thick · 3px</span></div>
+            </div>
+          </div>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Typical use</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--border-thin</code></th><td><code>1px</code></td><td>Hairline borders, dividers (default)</td></tr>
+                <tr><th scope="row"><code>--border-md</code></th><td><code>2px</code></td><td>Emphasis, selected states, focus ring</td></tr>
+                <tr><th scope="row"><code>--border-thick</code></th><td><code>3px</code></td><td>Heavy emphasis, active indicators</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="applying">
+          <h2 class="wire-h3">Applying shape</h2>
+          <p class="u-text-muted u-mt-sm">Match radius to element scale and role, and keep it consistent within a family (all inputs share one radius, all cards another).</p>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Element</th><th scope="col">Radius</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Inputs, buttons</th><td><code>--radius-sm</code></td></tr>
+                <tr><th scope="row">Menus, popovers, tooltips</th><td><code>--radius-md</code></td></tr>
+                <tr><th scope="row">Cards, panels</th><td><code>--radius-lg</code></td></tr>
+                <tr><th scope="row">Modals, drawers, sheets</th><td><code>--radius-xl</code></td></tr>
+                <tr><th scope="row">Badges, pills, avatars, toggles</th><td><code>--radius-pill</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+      <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+        <p class="wire-inpagenav__title">On this page</p>
+        <ul class="wire-inpagenav__list" role="list">
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#radius">The radius scale</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#borders">Border weights</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#applying">Applying shape</a></li>
+        </ul>
       </nav>
-
-      <header class="wire-doc-header">
-        <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Shape &amp; radius</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
-        </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
-      </header>
-
     </div>
-  </section>
+
+    <nav class="wire-doc-pager" aria-label="Styles pagination">
+      <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="iconography.html">
+        <span class="wire-doc-pager__direction">Previous</span>
+        <span class="wire-doc-pager__title">Iconography</span>
+      </a>
+      <a class="wire-doc-pager__link wire-doc-pager__link--next" href="elevation.html">
+        <span class="wire-doc-pager__direction">Next</span>
+        <span class="wire-doc-pager__title">Elevation &amp; shadow</span>
+      </a>
+    </nav>
+
+  </div>
+</section>
 
 </main>
 
