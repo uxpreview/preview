@@ -12,7 +12,7 @@
     .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
     .ct-ramp { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
     .ct-chip { width: 4.5rem; }
-    .ct-chip__sw { height: 3rem; border-radius: var(--radius-md); border: var(--border-thin) solid var(--color-border); }
+    .ct-chip__sw { height: var(--space-2xl); border-radius: var(--radius-md); border: var(--border-thin) solid var(--color-border); }
     .ct-chip__name { display: block; font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-block-start: var(--space-2xs); }
     .ct-g00 { background: var(--gray-00); } .ct-g05 { background: var(--gray-05); }
     .ct-g10 { background: var(--gray-10); } .ct-g20 { background: var(--gray-20); }
@@ -417,7 +417,7 @@
 
         <section class="doc-section" id="ramp">
           <h2 class="wire-h3">The grayscale ramp</h2>
-          <p class="u-text-muted">Thirteen steps from white to black. Every color in the system resolves to one of these — there are no hues to alias.</p>
+          <p class="u-text-muted u-mt-sm">Thirteen steps from white to black. Every color in the system resolves to one of these — there are no hues to alias.</p>
           <div class="doc-example">
             <span class="doc-example__label">All 13 steps</span>
             <div class="ct-ramp">
@@ -440,19 +440,19 @@
             <table class="wire-table">
               <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Typical role</th></tr></thead>
               <tbody>
-                <tr><td><code>--gray-00</code></td><td><code>#ffffff</code></td><td>Page background</td></tr>
-                <tr><td><code>--gray-05</code></td><td><code>#fafafa</code></td><td>Subtle raised surface</td></tr>
-                <tr><td><code>--gray-10</code></td><td><code>#f4f4f4</code></td><td>Muted panel / example well</td></tr>
-                <tr><td><code>--gray-20</code></td><td><code>#e6e6e6</code></td><td>Hairline borders</td></tr>
-                <tr><td><code>--gray-30</code></td><td><code>#d4d4d4</code></td><td>Disabled surface</td></tr>
-                <tr><td><code>--gray-40</code></td><td><code>#a8a8a8</code></td><td>Disabled text / icons</td></tr>
-                <tr><td><code>--gray-50</code></td><td><code>#767676</code></td><td>Subtle text, strong borders (≥3:1)</td></tr>
-                <tr><td><code>--gray-60</code></td><td><code>#595959</code></td><td>Muted / secondary text</td></tr>
-                <tr><td><code>--gray-70</code></td><td><code>#404040</code></td><td>Accent hover</td></tr>
-                <tr><td><code>--gray-80</code></td><td><code>#2b2b2b</code></td><td>Inverse borders</td></tr>
-                <tr><td><code>--gray-90</code></td><td><code>#1a1a1a</code></td><td>Dark surface</td></tr>
-                <tr><td><code>--gray-95</code></td><td><code>#0f0f0f</code></td><td>Body text, accent, focus</td></tr>
-                <tr><td><code>--gray-100</code></td><td><code>#000000</code></td><td>Maximum contrast</td></tr>
+                <tr><th scope="row"><code>--gray-00</code></th><td><code>#ffffff</code></td><td>Page background</td></tr>
+                <tr><th scope="row"><code>--gray-05</code></th><td><code>#fafafa</code></td><td>Subtle raised surface</td></tr>
+                <tr><th scope="row"><code>--gray-10</code></th><td><code>#f4f4f4</code></td><td>Muted panel / example well</td></tr>
+                <tr><th scope="row"><code>--gray-20</code></th><td><code>#e6e6e6</code></td><td>Hairline borders</td></tr>
+                <tr><th scope="row"><code>--gray-30</code></th><td><code>#d4d4d4</code></td><td>Disabled surface</td></tr>
+                <tr><th scope="row"><code>--gray-40</code></th><td><code>#a8a8a8</code></td><td>Disabled text / icons</td></tr>
+                <tr><th scope="row"><code>--gray-50</code></th><td><code>#767676</code></td><td>Subtle text, strong borders (≥3:1)</td></tr>
+                <tr><th scope="row"><code>--gray-60</code></th><td><code>#595959</code></td><td>Muted / secondary text</td></tr>
+                <tr><th scope="row"><code>--gray-70</code></th><td><code>#404040</code></td><td>Accent hover</td></tr>
+                <tr><th scope="row"><code>--gray-80</code></th><td><code>#2b2b2b</code></td><td>Inverse borders</td></tr>
+                <tr><th scope="row"><code>--gray-90</code></th><td><code>#1a1a1a</code></td><td>Dark surface</td></tr>
+                <tr><th scope="row"><code>--gray-95</code></th><td><code>#0f0f0f</code></td><td>Body text, accent, focus</td></tr>
+                <tr><th scope="row"><code>--gray-100</code></th><td><code>#000000</code></td><td>Maximum contrast</td></tr>
               </tbody>
             </table>
           </div>
@@ -460,7 +460,7 @@
 
         <section class="doc-section" id="semantic">
           <h2 class="wire-h3">Semantic tokens</h2>
-          <p class="u-text-muted">Components never reference the ramp directly — they use semantic tokens that alias it. This indirection is what makes theming possible: change the alias, not the component.</p>
+          <p class="u-text-muted u-mt-sm">Components never reference the ramp directly — they use semantic tokens that alias it. This indirection is what makes theming possible: change the alias, not the component.</p>
           <div class="doc-example">
             <span class="doc-example__label">Background, text, border, accent</span>
             <div class="ct-sem">
@@ -478,22 +478,22 @@
             <table class="wire-table">
               <thead><tr><th scope="col">Token</th><th scope="col">Aliases</th><th scope="col">Purpose</th></tr></thead>
               <tbody>
-                <tr><td><code>--color-bg</code></td><td><code>--gray-00</code></td><td>Page background</td></tr>
-                <tr><td><code>--color-bg-subtle</code></td><td><code>--gray-05</code></td><td>Subtle raised surface</td></tr>
-                <tr><td><code>--color-bg-muted</code></td><td><code>--gray-10</code></td><td>Muted panels, example wells</td></tr>
-                <tr><td><code>--color-bg-inverse</code></td><td><code>--gray-95</code></td><td>Inverse (dark) surfaces</td></tr>
-                <tr><td><code>--color-text</code></td><td><code>--gray-95</code></td><td>Body text</td></tr>
-                <tr><td><code>--color-text-muted</code></td><td><code>--gray-60</code></td><td>Secondary text</td></tr>
-                <tr><td><code>--color-text-subtle</code></td><td><code>--gray-50</code></td><td>Captions / labels</td></tr>
-                <tr><td><code>--color-text-inverse</code></td><td><code>--gray-00</code></td><td>Text on inverse surfaces</td></tr>
-                <tr><td><code>--color-border</code></td><td><code>--gray-20</code></td><td>Default hairline borders</td></tr>
-                <tr><td><code>--color-border-strong</code></td><td><code>--gray-50</code></td><td>Non-text contrast borders (≥3:1)</td></tr>
-                <tr><td><code>--color-border-inverse</code></td><td><code>--gray-80</code></td><td>Borders on inverse surfaces</td></tr>
-                <tr><td><code>--color-accent</code></td><td><code>--gray-95</code></td><td>Primary action / emphasis</td></tr>
-                <tr><td><code>--color-accent-hover</code></td><td><code>--gray-70</code></td><td>Accent hover state</td></tr>
-                <tr><td><code>--color-focus</code></td><td><code>--gray-95</code></td><td>Focus ring color</td></tr>
-                <tr><td><code>--color-overlay</code></td><td><code>rgba(15,15,15,.6)</code></td><td>Modal scrim</td></tr>
-                <tr><td><code>--color-overlay-light</code></td><td><code>rgba(15,15,15,.1)</code></td><td>Light scrim / hover wash</td></tr>
+                <tr><th scope="row"><code>--color-bg</code></th><td><code>--gray-00</code></td><td>Page background</td></tr>
+                <tr><th scope="row"><code>--color-bg-subtle</code></th><td><code>--gray-05</code></td><td>Subtle raised surface</td></tr>
+                <tr><th scope="row"><code>--color-bg-muted</code></th><td><code>--gray-10</code></td><td>Muted panels, example wells</td></tr>
+                <tr><th scope="row"><code>--color-bg-inverse</code></th><td><code>--gray-95</code></td><td>Inverse (dark) surfaces</td></tr>
+                <tr><th scope="row"><code>--color-text</code></th><td><code>--gray-95</code></td><td>Body text</td></tr>
+                <tr><th scope="row"><code>--color-text-muted</code></th><td><code>--gray-60</code></td><td>Secondary text</td></tr>
+                <tr><th scope="row"><code>--color-text-subtle</code></th><td><code>--gray-50</code></td><td>Captions / labels</td></tr>
+                <tr><th scope="row"><code>--color-text-inverse</code></th><td><code>--gray-00</code></td><td>Text on inverse surfaces</td></tr>
+                <tr><th scope="row"><code>--color-border</code></th><td><code>--gray-20</code></td><td>Default hairline borders</td></tr>
+                <tr><th scope="row"><code>--color-border-strong</code></th><td><code>--gray-50</code></td><td>Non-text contrast borders (≥3:1)</td></tr>
+                <tr><th scope="row"><code>--color-border-inverse</code></th><td><code>--gray-80</code></td><td>Borders on inverse surfaces</td></tr>
+                <tr><th scope="row"><code>--color-accent</code></th><td><code>--gray-95</code></td><td>Primary action / emphasis</td></tr>
+                <tr><th scope="row"><code>--color-accent-hover</code></th><td><code>--gray-70</code></td><td>Accent hover state</td></tr>
+                <tr><th scope="row"><code>--color-focus</code></th><td><code>--gray-95</code></td><td>Focus ring color</td></tr>
+                <tr><th scope="row"><code>--color-overlay</code></th><td><code>rgba(15,15,15,.6)</code></td><td>Modal scrim</td></tr>
+                <tr><th scope="row"><code>--color-overlay-light</code></th><td><code>rgba(15,15,15,.1)</code></td><td>Light scrim / hover wash</td></tr>
               </tbody>
             </table>
           </div>
@@ -501,14 +501,14 @@
 
         <section class="doc-section" id="theming">
           <h2 class="wire-h3">The light/dark theming model</h2>
-          <p class="u-text-muted">A <code>data-theme</code> attribute on <code>&lt;html&gt;</code> (set by the rail theme toggle, persisted to <code>localStorage</code>) selects the palette. A small inline script in every page's <code>&lt;head&gt;</code> applies it before first paint, so there is no flash. In dark mode, the semantic aliases re-point — components are unchanged because they only ever referenced the semantic layer.</p>
+          <p class="u-text-muted u-mt-sm">A <code>data-theme</code> attribute on <code>&lt;html&gt;</code> (set by the rail theme toggle, persisted to <code>localStorage</code>) selects the palette. A small inline script in every page's <code>&lt;head&gt;</code> applies it before first paint, so there is no flash. In dark mode, the semantic aliases re-point — components are unchanged because they only ever referenced the semantic layer.</p>
           <div class="wire-table-wrap u-mt-md">
             <table class="wire-table">
               <thead><tr><th scope="col">Mode</th><th scope="col">How it is set</th><th scope="col">What changes</th></tr></thead>
               <tbody>
-                <tr><td>Light (default)</td><td><code>color-scheme: light</code> on <code>:root</code></td><td>Semantic tokens alias the light end of the ramp</td></tr>
-                <tr><td>Dark</td><td><code>[data-theme="dark"]</code> on <code>&lt;html&gt;</code></td><td>Semantic aliases flip to the dark end; component CSS untouched</td></tr>
-                <tr><td>System</td><td><code>prefers-color-scheme</code> via the toggle's "system" option</td><td>Follows the OS setting</td></tr>
+                <tr><th scope="row">Light (default)</th><td><code>[data-theme="light"]</code> on <code>&lt;html&gt;</code> (pre-paint script default)</td><td>Semantic tokens alias the light end of the ramp</td></tr>
+                <tr><th scope="row">Dark</th><td><code>[data-theme="dark"]</code> on <code>&lt;html&gt;</code></td><td>Semantic aliases flip to the dark end; component CSS untouched</td></tr>
+                <tr><th scope="row">System</th><td><code>prefers-color-scheme</code> via the toggle's "system" option</td><td>Follows the OS setting</td></tr>
               </tbody>
             </table>
           </div>
@@ -517,15 +517,15 @@
 
         <section class="doc-section" id="hierarchy">
           <h2 class="wire-h3">Hierarchy without hue</h2>
-          <p class="u-text-muted">Because there is no color to lean on, emphasis is carried by other means. This is a constraint that keeps wireframes honest: if a layout only works once color is added, the structure is doing too little.</p>
+          <p class="u-text-muted u-mt-sm">Because there is no color to lean on, emphasis is carried by other means. This is a constraint that keeps wireframes honest: if a layout only works once color is added, the structure is doing too little.</p>
           <div class="wire-table-wrap u-mt-md">
             <table class="wire-table">
               <thead><tr><th scope="col">To signal…</th><th scope="col">Use…</th></tr></thead>
               <tbody>
-                <tr><td>Primary vs secondary</td><td>Weight (<code>--color-accent</code> fill vs outline) and size</td></tr>
-                <tr><td>Grouping</td><td>Space and surface (<code>--color-bg-subtle</code> / <code>-muted</code>)</td></tr>
-                <tr><td>Status</td><td>Icon + label, never color alone (meets WCAG 1.4.1)</td></tr>
-                <tr><td>Selected / active</td><td>Border weight (<code>--border-md</code>) and contrast</td></tr>
+                <tr><th scope="row">Primary vs secondary</th><td>Weight (<code>--color-accent</code> fill vs outline) and size</td></tr>
+                <tr><th scope="row">Grouping</th><td>Space and surface (<code>--color-bg-subtle</code> / <code>-muted</code>)</td></tr>
+                <tr><th scope="row">Status</th><td>Icon + label, never color alone (meets WCAG 1.4.1)</td></tr>
+                <tr><th scope="row">Selected / active</th><td>Border weight (<code>--border-md</code>) and contrast</td></tr>
               </tbody>
             </table>
           </div>
@@ -533,7 +533,7 @@
 
         <section class="doc-section" id="overlay">
           <h2 class="wire-h3">Per-client theming</h2>
-          <p class="u-text-muted">A client engagement can introduce brand color through one lane only: a token overlay loaded <em>after</em> <code>wire.css</code> that re-aliases <strong>semantic</strong> tokens (e.g. <code>--color-accent</code>) — never raw ramp values, never component selectors, never new components. The core system documented here stays grayscale; the overlay is the seam. See <code>css/client-overlay.example.css</code>.</p>
+          <p class="u-text-muted u-mt-sm">A client engagement can introduce brand color through one lane only: a token overlay loaded <em>after</em> <code>wire.css</code> that re-aliases <strong>semantic</strong> tokens (e.g. <code>--color-accent</code>) — never raw ramp values, never component selectors, never new components. The core system documented here stays grayscale; the overlay is the seam. See <code>css/client-overlay.example.css</code>.</p>
         </section>
 
       </div>
