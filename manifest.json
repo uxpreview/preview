@@ -120,7 +120,7 @@
   },
   "tokens": {
     "source": "css/tokens.css",
-    "reference": "docs/tokens.html",
+    "reference": "styles/tokens.html",
     "note": "Raw values live only here. tokens.css aliases the gray ramp into semantic color tokens; client overlays re-alias these (see extension_lanes).",
     "groups": {
       "gray_ramp": [
@@ -730,7 +730,7 @@
     {
       "id": "base-typography",
       "file": "css/base.css",
-      "ref": "docs/typography.html",
+      "ref": "styles/typography.html",
       "status": "stable",
       "classes": [
         "wire-display",
@@ -897,7 +897,7 @@
       "category": "foundation",
       "class": "wire-h1 .. wire-h6, wire-display, wire-lead, wire-eyebrow, wire-prose, wire-caption",
       "file": "css/base.css",
-      "ref": "docs/typography.html",
+      "ref": "styles/typography.html",
       "status": "stable",
       "variants": [
         "display",
@@ -4446,44 +4446,42 @@
           "type": "page",
           "label": "Color & theming",
           "ref": "styles/color-theming.html",
-          "status": "planned",
           "desc": "Grayscale ramp, semantic color tokens, and the light/dark theming model."
         },
         {
           "type": "page",
           "label": "Typography",
-          "ref": "docs/typography.html",
+          "ref": "styles/typography.html",
           "desc": "The type scale, families, and prose measures."
         },
         {
           "type": "page",
           "label": "Iconography",
-          "ref": "docs/iconography.html",
+          "ref": "styles/iconography.html",
           "desc": "The icon set, sizing, and usage rules."
         },
         {
           "type": "page",
           "label": "Shape & radius",
           "ref": "styles/shape-radius.html",
-          "status": "planned",
           "desc": "Corner radii and shape tokens."
         },
         {
           "type": "page",
           "label": "Elevation",
-          "ref": "docs/elevation.html",
+          "ref": "styles/elevation.html",
           "desc": "Shadow levels and the elevation scale."
         },
         {
           "type": "page",
           "label": "Motion",
-          "ref": "docs/motion.html",
+          "ref": "styles/motion.html",
           "desc": "Duration and easing tokens, and reduced-motion behavior."
         },
         {
           "type": "page",
           "label": "Tokens",
-          "ref": "docs/tokens.html",
+          "ref": "styles/tokens.html",
           "desc": "Every design token, visualized — the single source of raw values."
         }
       ]

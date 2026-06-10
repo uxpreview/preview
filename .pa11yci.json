@@ -15,8 +15,8 @@
     "http://localhost:8080/directory.html",
 
     "http://localhost:8080/docs/principles.html",
-    "http://localhost:8080/docs/tokens.html",
-    "http://localhost:8080/docs/typography.html",
+    "http://localhost:8080/styles/tokens.html",
+    "http://localhost:8080/styles/typography.html",
     "http://localhost:8080/docs/buttons.html",
     "http://localhost:8080/docs/forms.html",
     "http://localhost:8080/docs/navigation.html",

@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Typography — Preview Design System</title>
+  <title>Iconography — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
   <style>
-    /* Doc-page-only scaffold. Keep tiny. */
     .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
     .doc-section:first-of-type { border-block-start: 0; }
     .doc-example { padding: var(--space-xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg); margin-block-start: var(--space-md); }
     .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
     .doc-snippet { padding: var(--space-md); background-color: var(--color-bg-muted); border-radius: var(--radius-md); font-family: var(--font-mono); font-size: var(--text-sm); overflow-x: auto; white-space: pre; }
+    .ico-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: var(--space-md); }
+    .ico-cell { display: flex; flex-direction: column; align-items: center; gap: var(--space-xs); padding: var(--space-md); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-md); text-align: center; }
+    .ico-cell__name { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); }
+    .ico-sizes { display: flex; align-items: flex-end; gap: var(--space-lg); }
+    .ico-sizes > span { display: inline-flex; flex-direction: column; align-items: center; gap: var(--space-2xs); font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-subtle); }
   </style>
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -116,12 +120,12 @@
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/color-theming.html">Color &amp; theming</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/iconography.html">Iconography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../styles/iconography.html">Iconography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/shape-radius.html">Shape &amp; radius</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/elevation.html">Elevation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/motion.html">Motion</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/elevation.html">Elevation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/motion.html">Motion</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/tokens.html">Tokens</a></li>
         </ul>
       </div>
     </details>
@@ -382,180 +386,159 @@
 <!-- NAV:END -->
 
 <main id="main">
-  <section class="u-section">
-    <div class="u-container u-container--wide">
 
-      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
-        <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Typography</span></li>
-        </ol>
-      </nav>
+<section class="u-section">
+  <div class="u-container u-container--wide">
 
-      <header class="wire-doc-header">
-        <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Typography</h1>
-        </div>
-        <p class="wire-doc-header__lead">A single scale that carries everything from a 12px eyebrow to an 88px display headline. Hierarchy comes from size, weight, and space — never color.</p>
-      </header>
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../foundations/">Foundations</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Iconography</span></li>
+      </ol>
+    </nav>
 
-      <div class="wire-shell__doc">
+    <header class="wire-doc-header">
+      <div class="wire-doc-header__row">
+        <h1 class="wire-doc-header__title">Iconography</h1>
+      </div>
+      <p class="wire-doc-header__lead">Icons are monochrome line glyphs, authored inline as SVG and inheriting the text color. There is no icon font or sprite — the set is small and grows only as components need it, but every glyph follows one drawing convention so they read as a family.</p>
+    </header>
+
+    <div class="wire-shell__doc">
       <div class="u-stack u-stack--3xl">
 
-        <section id="anatomy" class="doc-section">
-          <h2 class="wire-h3">Anatomy</h2>
-          <p class="u-text-muted u-mt-sm">A typographic block typically stacks an eyebrow, a heading, a lead paragraph, and body copy. The eyebrow names the context, the heading carries the idea, the lead carries the second sentence, body fills in.</p>
-          <div class="doc-example">
-            <span class="doc-example__label">Default stack</span>
-            <p class="wire-eyebrow">Patient programs</p>
-            <p class="wire-h1 u-mt-sm">Therapy that starts the day you arrive.</p>
-            <p class="wire-lead u-mt-md">Most rehabilitation hospitals wait until you are stable. We start the moment it is safe — because the brain rewires fastest in the first weeks after injury.</p>
-            <p class="u-mt-md u-max-prose">Body text is the workhorse: set at 16px, comfortable line height, capped at roughly seventy characters per line. Long-form prose belongs inside <code>.wire-prose</code> to get the right rhythm between paragraphs and headings.</p>
-            <p class="wire-caption u-mt-md">Caption · supporting context, image credits, helper text.</p>
-          </div>
-        </section>
-
-        <section id="when-to-use" class="doc-section">
-          <h2 class="wire-h3">When to use</h2>
-          <ul>
-            <li>Use <code>.wire-display</code> for one moment per page — a hero or landing statement.</li>
-            <li>Use <code>.wire-h1</code>–<code>.wire-h6</code> in document order; do not skip levels for visual size.</li>
-            <li>Use <code>.wire-lead</code> directly after a heading to introduce a section.</li>
-            <li>Use <code>.wire-eyebrow</code> to label a section's category in two or three words.</li>
-          </ul>
-          <h2 class="wire-h3 u-mt-xl">When not to use</h2>
-          <ul>
-            <li>Do not use <code>.wire-display</code> inside cards or compact blocks — it will fight the surrounding scale.</li>
-            <li>Do not restyle a heading to look like another; pick the right class instead.</li>
-            <li>Do not use <code>.wire-caption</code> as body copy — it is intentionally muted and small.</li>
-          </ul>
-        </section>
-
-        <section id="variants" class="doc-section">
-          <h2 class="wire-h3">Variants</h2>
-          <p class="u-text-muted u-mt-sm">Every heading class has matching <code>h1</code>–<code>h6</code> element styling. The display class adds an optional serif italic for editorial moments.</p>
-
-          <div class="doc-example">
-            <span class="doc-example__label">Display — sans (default)</span>
-            <p class="wire-display">A grayscale system for thinking out loud.</p>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Display — serif italic</span>
-            <p class="wire-display wire-display--serif">A grayscale system for thinking out loud.</p>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 1 / .wire-h1</span>
-            <p class="wire-h1">Conditions we treat</p>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 2 / .wire-h2</span>
-            <h2 class="wire-h3">A team built around your goals</h2>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 3 / .wire-h3</span>
-            <h3 class="wire-h3">Outpatient rehabilitation</h3>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 4 / .wire-h4</span>
-            <h4 class="wire-h4">Eligibility and intake</h4>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 5 / .wire-h5</span>
-            <h5 class="wire-h5">Insurance accepted</h5>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Heading 6 / .wire-h6</span>
-            <h6 class="wire-h6">Before your visit</h6>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Lead paragraph / .wire-lead</span>
-            <p class="wire-lead">A lead paragraph carries the second sentence of a section — short, important, slightly muted so it does not compete with the heading above it.</p>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Eyebrow / .wire-eyebrow</span>
-            <span class="wire-eyebrow">Research · 2026</span>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Caption / .wire-caption</span>
-            <p class="wire-caption">Dr. Ana Mitchell, photographed in the Innovation Center, March 2026.</p>
-          </div>
-          <div class="doc-example">
-            <span class="doc-example__label">Prose container / .wire-prose</span>
-            <article class="wire-prose">
-              <h2 class="wire-h3">A confident outline of the section</h2>
-              <p>Inside a <code>.wire-prose</code> wrapper, paragraphs and headings get the right rhythm automatically. Use this for long-form editorial, articles, and policy pages.</p>
-              <p>Subsequent paragraphs gain a comfortable top margin, and headings that follow paragraphs get a larger break above them so sections breathe.</p>
-              <h3 class="wire-h3">A subhead inside prose</h3>
-              <p>Headings inside prose pull their following content closer, so the relationship between heading and body reads as a unit.</p>
-            </article>
-          </div>
-        </section>
-
-        <section id="measure" class="doc-section">
-          <h2 class="wire-h3">Measure &amp; rhythm</h2>
-          <p class="u-text-muted u-mt-sm">Line length and vertical rhythm matter as much as the scale. The system targets a comfortable reading measure and consistent spacing so long-form content stays legible without per-page tuning.</p>
+        <section class="doc-section" id="overview">
+          <h2 class="wire-h3">Overview</h2>
+          <p class="u-text-muted u-mt-sm">Icons clarify a control or label a status; they never carry meaning on their own. In a grayscale system that means they earn their place by function, not decoration, and they always sit beside or stand in for a word that an assistive technology can read.</p>
           <ul class="u-mt-md">
-            <li><strong>Measure</strong> — body text caps at roughly <strong>65–70 characters</strong> per line (about <code>65ch</code>). That's the readable range; longer lines tire the eye, shorter ones break the rhythm.</li>
-            <li><strong>Leading</strong> — headings use a tight line-height, body a looser one for sustained reading. Both come from the leading tokens, never ad-hoc values.</li>
-            <li><strong>Rhythm</strong> — wrap long-form content in <code>.wire-prose</code> for even spacing between paragraphs and a larger gap before each heading, so a block of text reads as one unit.</li>
+            <li>Inline <code>&lt;svg&gt;</code>, drawn with <code>stroke="currentColor"</code> so an icon takes the color of its surrounding text in either theme.</li>
+            <li>No icon font, no sprite sheet, no build step — an icon is copied into the markup where it's used.</li>
+            <li>One stroke-based style, so a new glyph drawn to the convention drops in without looking foreign.</li>
           </ul>
+        </section>
+
+        <section class="doc-section" id="style">
+          <h2 class="wire-h3">Drawing convention</h2>
+          <p class="u-text-muted u-mt-sm">Every glyph is drawn on a 24-unit grid with a 2-unit stroke, round caps and joins, and no fill. Keeping the grid and stroke constant is what makes the set feel coherent.</p>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Property</th><th scope="col">Value</th><th scope="col">Why</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">viewBox</th><td><code>0 0 24 24</code></td><td>One grid for every glyph; scales cleanly to any display size.</td></tr>
+                <tr><th scope="row">stroke</th><td><code>currentColor</code></td><td>Inherits text color; works in light and dark with no per-icon override.</td></tr>
+                <tr><th scope="row">stroke-width</th><td><code>2</code></td><td>Reads at 16–24px without thinning out or going heavy.</td></tr>
+                <tr><th scope="row">linecap / linejoin</th><td><code>round</code></td><td>Soft terminals match the system's pill radii and friendly tone.</td></tr>
+                <tr><th scope="row">fill</th><td><code>none</code></td><td>Line style only — no solid shapes, no second color.</td></tr>
+              </tbody>
+            </table>
+          </div>
           <div class="doc-example">
-            <span class="doc-example__label">.wire-prose — paragraph rhythm</span>
-            <div class="wire-prose">
-              <p>A paragraph of body text. Inside a prose container, paragraphs get even spacing and headings get extra room above them.</p>
-              <p>The second paragraph sits a comfortable step below the first — no manual margins, no guesswork.</p>
+            <span class="doc-example__label">A glyph drawn to the convention</span>
+            <pre class="doc-snippet">&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+     stroke="currentColor" stroke-width="2"
+     stroke-linecap="round" stroke-linejoin="round"
+     aria-hidden="true" focusable="false"&gt;
+  &lt;circle cx="11" cy="11" r="7"&gt;&lt;/circle&gt;
+  &lt;line x1="21" y1="21" x2="16.65" y2="16.65"&gt;&lt;/line&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </section>
+
+        <section class="doc-section" id="sizes">
+          <h2 class="wire-h3">Sizes</h2>
+          <p class="u-text-muted u-mt-sm">Three render sizes cover the system. The glyph stays a 24 viewBox; only the rendered <code>width</code>/<code>height</code> change, so the stroke scales with it.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">16 · 20 · 24</span>
+            <div class="ico-sizes">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>16</span>
+              <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>20</span>
+              <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>24</span>
+            </div>
+          </div>
+          <ul class="u-mt-md">
+            <li><strong>16px</strong> — inline with body text and inside dense controls.</li>
+            <li><strong>20px</strong> — default for buttons and form affordances.</li>
+            <li><strong>24px</strong> — standalone controls and the mobile header.</li>
+            <li>An <strong>icon-only control</strong> keeps a <strong>44×44px</strong> hit target regardless of the glyph size — pad the button, don't grow the icon.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="labeling">
+          <h2 class="wire-h3">Accessible labeling</h2>
+          <p class="u-text-muted u-mt-sm">Whether an icon needs a name depends on its job. Get this wrong and a screen reader either announces nothing useful or repeats the label twice.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Decorative — paired with a visible label</span>
+            <pre class="doc-snippet">&lt;button class="wire-button"&gt;
+  &lt;svg aria-hidden="true" focusable="false"&gt;…&lt;/svg&gt; Search
+&lt;/button&gt;</pre>
+          </div>
+          <div class="doc-example">
+            <span class="doc-example__label">Meaningful — icon-only control needs a name</span>
+            <pre class="doc-snippet">&lt;button class="wire-button wire-button--icon-only" aria-label="Open navigation"&gt;
+  &lt;svg aria-hidden="true" focusable="false"&gt;…&lt;/svg&gt;
+&lt;/button&gt;</pre>
+          </div>
+          <ul class="u-mt-md">
+            <li><strong>Decorative</strong> (a visible word already names the action): mark the SVG <code>aria-hidden="true" focusable="false"</code> so it's skipped.</li>
+            <li><strong>Meaningful</strong> (icon stands alone): give the <em>control</em> an <code>aria-label</code>, and still hide the SVG itself.</li>
+            <li>Never rely on the icon alone to convey state — pair it with text, shape, or position (WCAG 1.4.1).</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="set">
+          <h2 class="wire-h3">The set in use</h2>
+          <p class="u-text-muted u-mt-sm">The glyphs the system currently ships, all drawn to the convention above. The set is intentionally small; add to it only when a control genuinely needs an icon.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Current glyphs</span>
+            <div class="ico-grid">
+              <div class="ico-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg><span class="ico-cell__name">menu</span></div>
+              <div class="ico-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span class="ico-cell__name">search</span></div>
+              <div class="ico-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg><span class="ico-cell__name">theme-light</span></div>
+              <div class="ico-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"></path></svg><span class="ico-cell__name">theme-dark</span></div>
+              <div class="ico-cell"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="16" x2="12" y2="20"></line></svg><span class="ico-cell__name">theme-system</span></div>
             </div>
           </div>
         </section>
 
-        <section id="accessibility" class="doc-section">
-          <h2 class="wire-h3">Accessibility</h2>
-          <ul>
-            <li>Headings ship as both element styles (<code>h1</code>–<code>h6</code>) and utility classes (<code>.wire-h1</code>–<code>.wire-h6</code>) so semantics never have to lose to visuals.</li>
-            <li>Use document order: one <code>h1</code> per page, then nested levels in sequence. Skipping levels breaks assistive-tech outlines.</li>
-            <li>Body text exceeds 4.5:1 contrast against the page background; muted text exceeds 4.5:1 against white.</li>
-            <li>Paragraphs cap at roughly seventy characters per line by default, which keeps comfortable reading without manual width constraints.</li>
-          </ul>
-        </section>
-
-        <section id="code" class="doc-section">
-          <h2 class="wire-h3">Code</h2>
-          <details>
-            <summary class="wire-button wire-button--secondary wire-button--sm" style="cursor:pointer">Show snippet</summary>
-            <pre class="doc-snippet u-mt-md"><code>&lt;span class="wire-eyebrow"&gt;Patient programs&lt;/span&gt;
-&lt;h1 class="wire-h1"&gt;Therapy that starts the day you arrive.&lt;/h1&gt;
-&lt;p class="wire-lead"&gt;Most rehabilitation hospitals wait until you are stable. We start the moment it is safe.&lt;/p&gt;
-&lt;p&gt;Body text fills in the rest, capped at roughly seventy characters per line.&lt;/p&gt;</code></pre>
-          </details>
+        <section class="doc-section" id="do-dont">
+          <h2 class="wire-h3">Do / Don't</h2>
+          <dl class="wire-deflist wire-deflist--two-col u-mt-md">
+            <dt>Do</dt><dd>Draw new glyphs on the 24 grid with a 2-unit stroke so they match the set.</dd>
+            <dt>Do</dt><dd>Give every icon-only control an <code>aria-label</code> that names the action.</dd>
+            <dt>Don't</dt><dd>Introduce filled, duotone, or colored icons — the system is line-only and grayscale.</dd>
+            <dt>Don't</dt><dd>Ship an icon as the sole signal for status or meaning; back it with a word.</dd>
+            <dt>Don't</dt><dd>Shrink an icon-only button below the 44px target to fit a smaller glyph.</dd>
+          </dl>
         </section>
 
       </div>
       <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
         <p class="wire-inpagenav__title">On this page</p>
         <ul class="wire-inpagenav__list" role="list">
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when-to-use">When to use</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#variants">Variants</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measure">Measure &amp; rhythm</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#accessibility">Accessibility</a></li>
-          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#style">Drawing convention</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#sizes">Sizes</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labeling">Accessible labeling</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#set">The set in use</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
         </ul>
       </nav>
-      </div>
-
-      <nav class="wire-doc-pager" aria-label="Foundations pagination">
-        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="tokens.html">
-          <span class="wire-doc-pager__direction">Previous</span>
-          <span class="wire-doc-pager__title">Tokens</span>
-        </a>
-        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="iconography.html">
-          <span class="wire-doc-pager__direction">Next</span>
-          <span class="wire-doc-pager__title">Iconography</span>
-        </a>
-      </nav>
-
     </div>
-  </section>
+
+    <nav class="wire-doc-pager" aria-label="Foundations pagination">
+      <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="typography.html">
+        <span class="wire-doc-pager__direction">Previous</span>
+        <span class="wire-doc-pager__title">Typography</span>
+      </a>
+      <a class="wire-doc-pager__link wire-doc-pager__link--next" href="layout.html">
+        <span class="wire-doc-pager__direction">Next</span>
+        <span class="wire-doc-pager__title">Layout</span>
+      </a>
+    </nav>
+
+  </div>
+</section>
+
 </main>
 
 <!-- FOOTER:START -->
