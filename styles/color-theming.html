@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Color &amp; theming — Preview Design System</title>
   <link rel="stylesheet" href="../css/wire.css">
+  <style>
+    .doc-section { padding-block: var(--space-2xl); border-block-start: var(--border-thin) solid var(--color-border); }
+    .doc-section:first-of-type { border-block-start: 0; }
+    .doc-example { padding: var(--space-2xl); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-lg); background-color: var(--color-bg-muted); margin-block-start: var(--space-md); }
+    .doc-example__label { font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--color-text-subtle); margin-block-end: var(--space-md); display: block; }
+    .ct-ramp { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+    .ct-chip { width: 4.5rem; }
+    .ct-chip__sw { height: var(--space-2xl); border-radius: var(--radius-md); border: var(--border-thin) solid var(--color-border); }
+    .ct-chip__name { display: block; font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-block-start: var(--space-2xs); }
+    .ct-g00 { background: var(--gray-00); } .ct-g05 { background: var(--gray-05); }
+    .ct-g10 { background: var(--gray-10); } .ct-g20 { background: var(--gray-20); }
+    .ct-g30 { background: var(--gray-30); } .ct-g40 { background: var(--gray-40); }
+    .ct-g50 { background: var(--gray-50); } .ct-g60 { background: var(--gray-60); }
+    .ct-g70 { background: var(--gray-70); } .ct-g80 { background: var(--gray-80); }
+    .ct-g90 { background: var(--gray-90); } .ct-g95 { background: var(--gray-95); }
+    .ct-g100 { background: var(--gray-100); }
+    .ct-sem { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: var(--space-md); }
+    .ct-sem__sw { height: 3.5rem; border-radius: var(--radius-md); border: var(--border-thin) solid var(--color-border); }
+    .ct-sem__label { display: block; font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-block-start: var(--space-2xs); }
+  </style>
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
 <body class="wire-shell">
@@ -108,12 +128,12 @@
       <div class="wire-doc-nav__section-body">
         <ul class="wire-doc-nav__list" role="list">
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../styles/color-theming.html">Color &amp; theming</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/typography.html">Typography</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/iconography.html">Iconography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/typography.html">Typography</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/iconography.html">Iconography</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/shape-radius.html">Shape &amp; radius</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/elevation.html">Elevation</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/motion.html">Motion</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../docs/tokens.html">Tokens</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/elevation.html">Elevation</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/motion.html">Motion</a></li>
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../styles/tokens.html">Tokens</a></li>
         </ul>
       </div>
     </details>
@@ -375,26 +395,174 @@
 
 <main id="main">
 
-  <section class="u-section">
-    <div class="u-container u-container--wide">
+<section class="u-section">
+  <div class="u-container u-container--wide">
 
-      <nav class="wire-breadcrumb" aria-label="Breadcrumb">
-        <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../styles/">Styles</a></li>
-          <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Color &amp; theming</span></li>
-        </ol>
+    <nav class="wire-breadcrumb" aria-label="Breadcrumb">
+      <ol class="wire-breadcrumb__list">
+        <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../styles/">Styles</a></li>
+        <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Color &amp; theming</span></li>
+      </ol>
+    </nav>
+
+    <header class="wire-doc-header">
+      <div class="wire-doc-header__row">
+        <h1 class="wire-doc-header__title">Color &amp; theming</h1>
+      </div>
+      <p class="wire-doc-header__lead">The system is grayscale on purpose. Hierarchy comes from weight, scale, and space — not hue. This page covers the ramp, the semantic tokens that alias it, and the light/dark theming model.</p>
+    </header>
+
+    <div class="wire-shell__doc">
+      <div class="u-stack u-stack--3xl">
+
+        <section class="doc-section" id="ramp">
+          <h2 class="wire-h3">The grayscale ramp</h2>
+          <p class="u-text-muted u-mt-sm">Thirteen steps from white to black. Every color in the system resolves to one of these — there are no hues to alias.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">All 13 steps</span>
+            <div class="ct-ramp">
+              <div class="ct-chip"><div class="ct-chip__sw ct-g00"></div><span class="ct-chip__name">00</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g05"></div><span class="ct-chip__name">05</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g10"></div><span class="ct-chip__name">10</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g20"></div><span class="ct-chip__name">20</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g30"></div><span class="ct-chip__name">30</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g40"></div><span class="ct-chip__name">40</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g50"></div><span class="ct-chip__name">50</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g60"></div><span class="ct-chip__name">60</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g70"></div><span class="ct-chip__name">70</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g80"></div><span class="ct-chip__name">80</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g90"></div><span class="ct-chip__name">90</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g95"></div><span class="ct-chip__name">95</span></div>
+              <div class="ct-chip"><div class="ct-chip__sw ct-g100"></div><span class="ct-chip__name">100</span></div>
+            </div>
+          </div>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Typical role</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--gray-00</code></th><td><code>#ffffff</code></td><td>Page background</td></tr>
+                <tr><th scope="row"><code>--gray-05</code></th><td><code>#fafafa</code></td><td>Subtle raised surface</td></tr>
+                <tr><th scope="row"><code>--gray-10</code></th><td><code>#f4f4f4</code></td><td>Muted panel / example well</td></tr>
+                <tr><th scope="row"><code>--gray-20</code></th><td><code>#e6e6e6</code></td><td>Hairline borders</td></tr>
+                <tr><th scope="row"><code>--gray-30</code></th><td><code>#d4d4d4</code></td><td>Disabled surface</td></tr>
+                <tr><th scope="row"><code>--gray-40</code></th><td><code>#a8a8a8</code></td><td>Disabled text / icons</td></tr>
+                <tr><th scope="row"><code>--gray-50</code></th><td><code>#767676</code></td><td>Subtle text, strong borders (≥3:1)</td></tr>
+                <tr><th scope="row"><code>--gray-60</code></th><td><code>#595959</code></td><td>Muted / secondary text</td></tr>
+                <tr><th scope="row"><code>--gray-70</code></th><td><code>#404040</code></td><td>Accent hover</td></tr>
+                <tr><th scope="row"><code>--gray-80</code></th><td><code>#2b2b2b</code></td><td>Inverse borders</td></tr>
+                <tr><th scope="row"><code>--gray-90</code></th><td><code>#1a1a1a</code></td><td>Dark surface</td></tr>
+                <tr><th scope="row"><code>--gray-95</code></th><td><code>#0f0f0f</code></td><td>Body text, accent, focus</td></tr>
+                <tr><th scope="row"><code>--gray-100</code></th><td><code>#000000</code></td><td>Maximum contrast</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="semantic">
+          <h2 class="wire-h3">Semantic tokens</h2>
+          <p class="u-text-muted u-mt-sm">Components never reference the ramp directly — they use semantic tokens that alias it. This indirection is what makes theming possible: change the alias, not the component.</p>
+          <div class="doc-example">
+            <span class="doc-example__label">Background, text, border, accent</span>
+            <div class="ct-sem">
+              <div><div class="ct-sem__sw ct-g00"></div><span class="ct-sem__label">--color-bg</span></div>
+              <div><div class="ct-sem__sw ct-g05"></div><span class="ct-sem__label">--color-bg-subtle</span></div>
+              <div><div class="ct-sem__sw ct-g10"></div><span class="ct-sem__label">--color-bg-muted</span></div>
+              <div><div class="ct-sem__sw ct-g95"></div><span class="ct-sem__label">--color-bg-inverse</span></div>
+              <div><div class="ct-sem__sw ct-g20"></div><span class="ct-sem__label">--color-border</span></div>
+              <div><div class="ct-sem__sw ct-g50"></div><span class="ct-sem__label">--color-border-strong</span></div>
+              <div><div class="ct-sem__sw ct-g95"></div><span class="ct-sem__label">--color-accent</span></div>
+              <div><div class="ct-sem__sw ct-g70"></div><span class="ct-sem__label">--color-accent-hover</span></div>
+            </div>
+          </div>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Token</th><th scope="col">Aliases</th><th scope="col">Purpose</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>--color-bg</code></th><td><code>--gray-00</code></td><td>Page background</td></tr>
+                <tr><th scope="row"><code>--color-bg-subtle</code></th><td><code>--gray-05</code></td><td>Subtle raised surface</td></tr>
+                <tr><th scope="row"><code>--color-bg-muted</code></th><td><code>--gray-10</code></td><td>Muted panels, example wells</td></tr>
+                <tr><th scope="row"><code>--color-bg-inverse</code></th><td><code>--gray-95</code></td><td>Inverse (dark) surfaces</td></tr>
+                <tr><th scope="row"><code>--color-text</code></th><td><code>--gray-95</code></td><td>Body text</td></tr>
+                <tr><th scope="row"><code>--color-text-muted</code></th><td><code>--gray-60</code></td><td>Secondary text</td></tr>
+                <tr><th scope="row"><code>--color-text-subtle</code></th><td><code>--gray-50</code></td><td>Captions / labels</td></tr>
+                <tr><th scope="row"><code>--color-text-inverse</code></th><td><code>--gray-00</code></td><td>Text on inverse surfaces</td></tr>
+                <tr><th scope="row"><code>--color-border</code></th><td><code>--gray-20</code></td><td>Default hairline borders</td></tr>
+                <tr><th scope="row"><code>--color-border-strong</code></th><td><code>--gray-50</code></td><td>Non-text contrast borders (≥3:1)</td></tr>
+                <tr><th scope="row"><code>--color-border-inverse</code></th><td><code>--gray-80</code></td><td>Borders on inverse surfaces</td></tr>
+                <tr><th scope="row"><code>--color-accent</code></th><td><code>--gray-95</code></td><td>Primary action / emphasis</td></tr>
+                <tr><th scope="row"><code>--color-accent-hover</code></th><td><code>--gray-70</code></td><td>Accent hover state</td></tr>
+                <tr><th scope="row"><code>--color-focus</code></th><td><code>--gray-95</code></td><td>Focus ring color</td></tr>
+                <tr><th scope="row"><code>--color-overlay</code></th><td><code>rgba(15,15,15,.6)</code></td><td>Modal scrim</td></tr>
+                <tr><th scope="row"><code>--color-overlay-light</code></th><td><code>rgba(15,15,15,.1)</code></td><td>Light scrim / hover wash</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="theming">
+          <h2 class="wire-h3">The light/dark theming model</h2>
+          <p class="u-text-muted u-mt-sm">A <code>data-theme</code> attribute on <code>&lt;html&gt;</code> (set by the rail theme toggle, persisted to <code>localStorage</code>) selects the palette. A small inline script in every page's <code>&lt;head&gt;</code> applies it before first paint, so there is no flash. In dark mode, the semantic aliases re-point — components are unchanged because they only ever referenced the semantic layer.</p>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">Mode</th><th scope="col">How it is set</th><th scope="col">What changes</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Light (default)</th><td><code>[data-theme="light"]</code> on <code>&lt;html&gt;</code> (pre-paint script default)</td><td>Semantic tokens alias the light end of the ramp</td></tr>
+                <tr><th scope="row">Dark</th><td><code>[data-theme="dark"]</code> on <code>&lt;html&gt;</code></td><td>Semantic aliases flip to the dark end; component CSS untouched</td></tr>
+                <tr><th scope="row">System</th><td><code>prefers-color-scheme</code> via the toggle's "system" option</td><td>Follows the OS setting</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="u-text-muted u-mt-md">Use the theme toggle at the bottom of the left rail to see every swatch on this page re-theme live — they are all driven by tokens, so nothing on the page is hardcoded to a mode.</p>
+        </section>
+
+        <section class="doc-section" id="hierarchy">
+          <h2 class="wire-h3">Hierarchy without hue</h2>
+          <p class="u-text-muted u-mt-sm">Because there is no color to lean on, emphasis is carried by other means. This is a constraint that keeps wireframes honest: if a layout only works once color is added, the structure is doing too little.</p>
+          <div class="wire-table-wrap u-mt-md">
+            <table class="wire-table">
+              <thead><tr><th scope="col">To signal…</th><th scope="col">Use…</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Primary vs secondary</th><td>Weight (<code>--color-accent</code> fill vs outline) and size</td></tr>
+                <tr><th scope="row">Grouping</th><td>Space and surface (<code>--color-bg-subtle</code> / <code>-muted</code>)</td></tr>
+                <tr><th scope="row">Status</th><td>Icon + label, never color alone (meets WCAG 1.4.1)</td></tr>
+                <tr><th scope="row">Selected / active</th><td>Border weight (<code>--border-md</code>) and contrast</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="doc-section" id="overlay">
+          <h2 class="wire-h3">Per-client theming</h2>
+          <p class="u-text-muted u-mt-sm">A client engagement can introduce brand color through one lane only: a token overlay loaded <em>after</em> <code>wire.css</code> that re-aliases <strong>semantic</strong> tokens (e.g. <code>--color-accent</code>) — never raw ramp values, never component selectors, never new components. The core system documented here stays grayscale; the overlay is the seam. See <code>css/client-overlay.example.css</code>.</p>
+        </section>
+
+      </div>
+
+      <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+        <p class="wire-inpagenav__title">On this page</p>
+        <ul class="wire-inpagenav__list" role="list">
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#ramp">The grayscale ramp</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantic">Semantic tokens</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#theming">Light/dark theming</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#hierarchy">Hierarchy without hue</a></li>
+          <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overlay">Per-client theming</a></li>
+        </ul>
       </nav>
-
-      <header class="wire-doc-header">
-        <div class="wire-doc-header__row">
-          <h1 class="wire-doc-header__title">Color &amp; theming</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
-        </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
-      </header>
-
     </div>
-  </section>
+
+    <nav class="wire-doc-pager" aria-label="Styles pagination">
+      <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="index.html">
+        <span class="wire-doc-pager__direction">Previous</span>
+        <span class="wire-doc-pager__title">Styles overview</span>
+      </a>
+      <a class="wire-doc-pager__link wire-doc-pager__link--next" href="typography.html">
+        <span class="wire-doc-pager__direction">Next</span>
+        <span class="wire-doc-pager__title">Typography</span>
+      </a>
+    </nav>
+
+  </div>
+</section>
 
 </main>
 
