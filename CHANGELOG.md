@@ -6,6 +6,28 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Components — legacy Sections + utility pages promoted to canonical pages (2026-06-10)
+
+Promotes the seven remaining legacy-`docs/` component leaves into dedicated, nested canonical pages (3-tab Usage / Specs / Accessibility) on the verified `components/search/` scaffold, clearing the last legacy-`docs/` debt in the Components section.
+
+**Added**
+- `components/sections/hero/`, `components/sections/two-column/`, `components/sections/feature-grid/`, `components/sections/footer/` — the four layout organisms; content promoted from `docs/heroes.html`, `docs/content-blocks.html` (split into Two-column + Feature grid), and `docs/footers.html`.
+- `components/actions/phone-link/`, `components/messaging-feedback/help-bar/`, `components/utilities/text-size-control/` — three utilities authored from their existing CSS/JS (no prior doc page). Text size is a live, working control (`data-wire-text-size`; persists the choice and announces it).
+
+**Changed**
+- `manifest.json` — repointed all seven components' nav-leaf and `components[]` `ref`s from `docs/*` to nested `components/<group>/<slug>/` paths (status stays `stable`).
+- Meta-refresh redirect stubs left at `docs/heroes.html`, `docs/footers.html`, and `docs/content-blocks.html` (the latter targets the Components landing — its patterns now live across Sections / Content & display / Containment).
+- Repointed in-body links to the three legacy pages in `templates/landing/`, `directory.html`, `patterns/`, `components/cards/`, and `components/accordion/`; regenerated nav/footer/landing across the doc site (`build-ia.mjs`).
+- `.pa11yci.json` — added the five contrast-clean component pages (hero, two-column, feature-grid, phone-link, text-size); all pass WCAG2AA.
+
+**Fixed**
+- `styles/tokens.html` — three in-body links to Accessibility/Layout resolved to non-existent `styles/` paths; repointed to `../docs/`.
+
+**Flagged (not fixed — tracked separately)**
+- Pre-existing systemic contrast bug: content on inverse (dark) surfaces (`wire-help-bar`, `wire-footer--inverse`, and `wire-phone-link` on an inverse surface) keeps light/base text that doesn't flip with the surface, failing AA in at least one theme. Confirmed on shipped pages (`pages/hospital-login.html`, `pages/hospital-provider.html`). The help-bar and footer pages are held out of `.pa11yci.json` pending the CSS fix.
+
+---
+
 ### QA + consistency sweep — table header semantics
 
 **Changed**

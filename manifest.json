@@ -1976,7 +1976,7 @@
       "category": "sections",
       "class": "wire-hero",
       "file": "css/components/hero.css",
-      "ref": "docs/heroes.html",
+      "ref": "components/sections/hero/",
       "status": "stable",
       "variants": [
         "editorial",
@@ -2057,7 +2057,7 @@
       "category": "sections",
       "class": "wire-feature-grid",
       "file": "css/components/feature-grid.css",
-      "ref": "docs/content-blocks.html",
+      "ref": "components/sections/feature-grid/",
       "status": "stable",
       "variants": [
         "(default)",
@@ -2089,7 +2089,7 @@
       "category": "sections",
       "class": "wire-twocol",
       "file": "css/components/two-column.css",
-      "ref": "docs/content-blocks.html",
+      "ref": "components/sections/two-column/",
       "status": "stable",
       "variants": [
         "(default)",
@@ -2933,7 +2933,7 @@
       "category": "sections",
       "class": "wire-footer",
       "file": "css/components/footer.css",
-      "ref": "docs/footers.html",
+      "ref": "components/sections/footer/",
       "status": "stable",
       "variants": [
         "(default = standard)",
@@ -2998,7 +2998,7 @@
       "category": "feedback",
       "class": "wire-help-bar",
       "file": "css/components/help-bar.css",
-      "ref": "docs/research.html",
+      "ref": "components/messaging-feedback/help-bar/",
       "status": "stable",
       "variants": [
         "(default)",
@@ -3042,7 +3042,7 @@
       "category": "actions",
       "class": "wire-phone-link",
       "file": "css/components/help-bar.css",
-      "ref": "docs/research.html",
+      "ref": "components/actions/phone-link/",
       "status": "stable",
       "elements": [
         "wire-phone-link__icon"
@@ -3087,7 +3087,7 @@
       "category": "utilities",
       "class": "wire-text-size",
       "file": "css/components/text-size-control.css",
-      "ref": "docs/research.html",
+      "ref": "components/utilities/text-size-control/",
       "status": "stable",
       "elements": [
         "wire-text-size__label",
@@ -4505,7 +4505,7 @@
             {
               "type": "page",
               "label": "Phone link",
-              "ref": "docs/research.html",
+              "ref": "components/actions/phone-link/",
               "id": "phone-link"
             },
             {
@@ -4888,25 +4888,25 @@
             {
               "type": "page",
               "label": "Hero",
-              "ref": "docs/heroes.html",
+              "ref": "components/sections/hero/",
               "id": "hero"
             },
             {
               "type": "page",
               "label": "Two-column",
-              "ref": "docs/content-blocks.html",
+              "ref": "components/sections/two-column/",
               "id": "two-column"
             },
             {
               "type": "page",
               "label": "Feature grid",
-              "ref": "docs/content-blocks.html",
+              "ref": "components/sections/feature-grid/",
               "id": "feature-grid"
             },
             {
               "type": "page",
               "label": "Footer",
-              "ref": "docs/footers.html",
+              "ref": "components/sections/footer/",
               "id": "footer"
             },
             {
@@ -5164,7 +5164,7 @@
             {
               "type": "page",
               "label": "Help bar",
-              "ref": "docs/research.html",
+              "ref": "components/messaging-feedback/help-bar/",
               "id": "help-bar"
             },
             {
@@ -5199,7 +5199,7 @@
             {
               "type": "page",
               "label": "Text size",
-              "ref": "docs/research.html",
+              "ref": "components/utilities/text-size-control/",
               "id": "text-size-control"
             },
             {
