@@ -6,6 +6,27 @@ All notable changes to the Preview Design System are recorded here, newest first
 
 ## v1.11.0 (in progress) — M3-style IA: tabs, status, doc shell
 
+### Accessibility gate — migrated to axe-core; cleared the deferred contrast/ARIA debt (2026-06-11)
+
+Completes the audit deferred below: migrates `.pa11yci.json` from pa11y's default HTML_CodeSniffer runner to **axe-core** and takes the full 52-URL suite to green on WCAG2AA. axe resolves the flex-container backgrounds HTML_CodeSniffer could not, so the two held-out URLs — `components/messaging-feedback/help-bar/` and `components/sections/footer/` — rejoin the suite.
+
+A key finding reframed the work: most of the flagged "contrast" items were not WCAG failures but axe *"needs review"* (incomplete) results, which pa11y escalates to errors — decorative `aria-hidden` symbol glyphs (`☏ → ↓ ⌕ ∅ ▾ ★`, axe `nonBmp`), native `<select>` dropdown gradients (`bgGradient`), and stepper pseudo-element overlap (`pseudoContent`). These are surfaced as non-failing warnings rather than worked around; only the genuine violations are fixed at source.
+
+**Changed**
+- `.pa11yci.json` — `defaults.runners` → `["axe"]`; `concurrency` 2 → 1 (axe flakes at 2 with intermittent `Target.closeTarget` errors); re-added the help-bar and footer URLs. The suite is back to 52 URLs.
+- `.pa11yci.json` — `levelCapWhenNeedsReview: "warning"` caps axe's "needs review" (incomplete) results below error, so the decorative-glyph / native-select / stepper-pseudo false positives no longer fail the gate (they remain visible in the report). Genuine violations (`needsFurtherReview: false`) are untouched.
+
+**Fixed (accessibility)**
+- **Subtle text tier** — `--color-text-subtle` re-aliased `--gray-50` → `--gray-60` in light mode (`tokens.css`). `--gray-50` (#767676) is only 4.54:1 on white and drops below AA on the system's non-white surfaces (`--color-bg-subtle` #fafafa = 4.35:1, `--color-bg-muted` #f4f4f4 = 4.14:1), and the ramp has no step between 50 and 60. The subtle tier now collapses into `--color-text-muted` in light mode; dark mode keeps its distinct subtle tier (`--gray-40`, well clear of the floor). Resolves the real `.wire-stepper__label-meta` violation on the booking / appointment steppers and hardens subtle text across breadcrumb, card, doc-header, doc-nav, doc-helpers, table, form, pagination, and quote.
+- **Ghost buttons on inverse surfaces** — a ghost button (transparent fill and border) on a dark surface inherited the page-relative text colour and rendered dark-on-dark (1:1, invisible). Extends the existing inverse `--secondary` treatment to `--ghost` on `.wire-hero--inverse`, `.wire-callout--inverse`, and `.wire-help-bar` (`hero.css`, `callout.css`, `help-bar.css`). Fixes shipped CTAs on `hospital-specialty`, `hospital-research`, `hospital-provider`, and `hospital-patient-visitor`; verified legible in light (≈19:1) and dark (≈17:1).
+- **Scrollable code blocks** — an overflowing code block must be keyboard-operable (WCAG 2.1.1; axe `scrollable-region-focusable`). `js/wire.js` now adds `tabindex="0"` to any `<pre>` that actually scrolls (and removes it when it doesn't), re-checked on resize — covering `.doc-snippet` blocks and the `directory.html` repo block without adding inert tab stops to code samples that fit.
+- **Booking calendar ARIA** (`pages/hospital-booking.html`) — the demo calendar declared `role="grid"` with `role="columnheader"` cells outside any `role="row"` and no roving-tabindex / arrow-key model. Reclassed as a labelled `role="group"` of day buttons (`aria-label="June 2026"`), claiming only the semantics the markup implements; the day-of-week labels are `aria-hidden`. Clears all eight grid / columnheader violations.
+- **Skeleton loading region** (`pages/hospital-appointment.html`) — `aria-label` on a roleless `aria-busy` div is prohibited (`aria-prohibited-attr`); changed to `role="status"`, which supports the accessible name and implies a polite live region.
+
+The gate renders in light theme (`prefers-color-scheme`); the above were fixed in light and re-verified in dark. (Pre-existing dark-theme-only contrast on the demo pages' mobile nav chrome — `wire-topnav__burger`, `wire-drawer__close` — is unrelated to this work and outside the light-only gate.)
+
+---
+
 ### Components — legacy Sections + utility pages promoted to canonical pages (2026-06-10)
 
 Promotes the seven remaining legacy-`docs/` component leaves into dedicated, nested canonical pages (3-tab Usage / Specs / Accessibility) on the verified `components/search/` scaffold, clearing the last legacy-`docs/` debt in the Components section.
@@ -23,8 +44,12 @@ Promotes the seven remaining legacy-`docs/` component leaves into dedicated, nes
 **Fixed**
 - `styles/tokens.html` — three in-body links to Accessibility/Layout resolved to non-existent `styles/` paths; repointed to `../docs/`.
 
-**Flagged (not fixed — tracked separately)**
-- Pre-existing systemic contrast bug: content on inverse (dark) surfaces (`wire-help-bar`, `wire-footer--inverse`, and `wire-phone-link` on an inverse surface) keeps light/base text that doesn't flip with the surface, failing AA in at least one theme. Confirmed on shipped pages (`pages/hospital-login.html`, `pages/hospital-provider.html`). The help-bar and footer pages are held out of `.pa11yci.json` pending the CSS fix.
+**Fixed (accessibility)**
+- Inverse-surface contrast: `.wire-help-bar` now joins the dark-theme inverse-surface token re-alias (`tokens.css`) so it stays a dark elevated surface like `.wire-hero--inverse` / `.wire-footer--inverse` instead of flipping bright and dropping its muted text below AA. Its secondary action buttons flip to inverse tokens (they were invisible on the bar, 1:1), and the brand-mark accent box uses `--color-bg` (globally identical to `--color-text-inverse` but never re-aliased) for its on-accent label. axe-core confirms help-bar, hero, and footer pass WCAG2AA. Also fixes the shipped `pages/hospital-login.html` / `hospital-provider.html`.
+- Doc-nav nested interactive controls: the rail's collapsible section headers nested an `<a>` inside the `<summary>` toggle — axe / WCAG 4.1.2 "interactive controls must not be nested," ~120 instances across the doc site. The summary is now a pure text toggle and each section's landing is the first "overview" link in its body (`build-ia.mjs`; regenerated across 170 pages).
+
+**Deferred (tracked separately)**
+- Migrating the a11y gate from HTML_CodeSniffer to axe-core (which resolves flex-container backgrounds HTML_CodeSniffer cannot — the reason `help-bar`/`footer` are held out of `.pa11yci.json`) surfaced a broader pre-existing contrast/ARIA debt: notably `--color-text-subtle` (`--gray-50`) drops below AA on non-white backgrounds with no intermediate ramp step, plus axe over-flagging WCAG-exempt decorative / loading / disabled content and a demo-page ARIA grid. Scoped as a dedicated audit.
 
 ---
 

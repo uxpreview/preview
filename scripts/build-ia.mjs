@@ -70,13 +70,20 @@ function renderSectionBody(items) {
   return out.join('\n\n');
 }
 function renderSection(s) {
-  const summary = s.ref
-    ? `<a class="wire-doc-nav__section-link" href="{{base}}${s.ref}">${htmlesc(s.label)}</a>`
-    : htmlesc(s.label);
+  // The summary is a pure toggle — never nest an interactive control (a link)
+  // inside it (axe / WCAG 4.1.2 "interactive controls must not be nested").
+  // When the section has a landing page, surface it as the first link in the
+  // body so the toggle and the navigation stay separate controls.
+  const overview = s.ref
+    ? `        <ul class="wire-doc-nav__list" role="list">
+          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link wire-doc-nav__link--overview" href="{{base}}${s.ref}">${htmlesc(s.label)} overview</a></li>
+        </ul>`
+    : '';
+  const body = [overview, renderSectionBody(s.items)].filter(Boolean).join('\n\n');
   return `    <details class="wire-doc-nav__section">
-      <summary class="wire-doc-nav__section-summary">${summary}</summary>
+      <summary class="wire-doc-nav__section-summary">${htmlesc(s.label)}</summary>
       <div class="wire-doc-nav__section-body">
-${renderSectionBody(s.items)}
+${body}
       </div>
     </details>`;
 }

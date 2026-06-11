@@ -151,14 +151,18 @@
         </div>
 
         <!-- Calendar grid -->
-        <div class="booking-calendar" role="grid" aria-label="June 2026">
-          <span class="booking-calendar__head" role="columnheader">Sun</span>
-          <span class="booking-calendar__head" role="columnheader">Mon</span>
-          <span class="booking-calendar__head" role="columnheader">Tue</span>
-          <span class="booking-calendar__head" role="columnheader">Wed</span>
-          <span class="booking-calendar__head" role="columnheader">Thu</span>
-          <span class="booking-calendar__head" role="columnheader">Fri</span>
-          <span class="booking-calendar__head" role="columnheader">Sat</span>
+        <!-- A labelled group of day buttons, not an ARIA grid: these are
+             individually tab-focusable buttons with no roving-tabindex / arrow-key
+             model, so role="grid" would over-claim the interaction. role="group"
+             carries the month name and legitimately supports aria-label. -->
+        <div class="booking-calendar" role="group" aria-label="June 2026">
+          <span class="booking-calendar__head" aria-hidden="true">Sun</span>
+          <span class="booking-calendar__head" aria-hidden="true">Mon</span>
+          <span class="booking-calendar__head" aria-hidden="true">Tue</span>
+          <span class="booking-calendar__head" aria-hidden="true">Wed</span>
+          <span class="booking-calendar__head" aria-hidden="true">Thu</span>
+          <span class="booking-calendar__head" aria-hidden="true">Fri</span>
+          <span class="booking-calendar__head" aria-hidden="true">Sat</span>
 
           <button type="button" class="booking-calendar__cell is-other-month" disabled>31</button>
           <button type="button" class="booking-calendar__cell" disabled>1</button>

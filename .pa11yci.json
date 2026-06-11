@@ -1,9 +1,11 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
+    "runners": ["axe"],
     "timeout": 30000,
     "wait": 250,
-    "concurrency": 2,
+    "concurrency": 1,
+    "levelCapWhenNeedsReview": "warning",
     "ignore": [],
     "chromeLaunchConfig": {
       "args": ["--no-sandbox", "--disable-dev-shm-usage"]
@@ -27,7 +29,9 @@
     "http://localhost:8080/components/sections/hero/",
     "http://localhost:8080/components/sections/two-column/",
     "http://localhost:8080/components/sections/feature-grid/",
+    "http://localhost:8080/components/sections/footer/",
     "http://localhost:8080/components/actions/phone-link/",
+    "http://localhost:8080/components/messaging-feedback/help-bar/",
     "http://localhost:8080/components/utilities/text-size-control/",
     "http://localhost:8080/docs/buttons.html",
     "http://localhost:8080/docs/forms.html",

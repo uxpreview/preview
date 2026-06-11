@@ -33,7 +33,12 @@
 
   --color-text: var(--gray-95);
   --color-text-muted: var(--gray-60);
-  --color-text-subtle: var(--gray-50);
+  /* Aliases gray-60 (not gray-50): gray-50 (#767676) is only 4.54:1 on white and
+     drops below AA on the non-white surfaces (--color-bg-subtle #fafafa = 4.35:1,
+     --color-bg-muted #f4f4f4 = 4.14:1). With no ramp step between 50 and 60, the
+     subtle tier collapses into muted in light mode to hold AA on every surface.
+     Dark mode keeps a distinct subtle tier (gray-40, well clear of the floor). */
+  --color-text-subtle: var(--gray-60);
   --color-text-inverse: var(--gray-00);
 
   /* WCAG 2.2 §1.4.11 Non-text contrast: --color-border-strong must clear 3:1
@@ -208,7 +213,8 @@
   .wire-card--inverse,
   .wire-hero--inverse,
   .wire-footer--inverse,
-  .wire-callout--inverse
+  .wire-callout--inverse,
+  .wire-help-bar
 ) {
   --color-bg-inverse: var(--color-bg-subtle);
   --color-text-inverse: var(--color-text);

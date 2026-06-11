@@ -163,3 +163,13 @@
   --btn-bg: var(--gray-80);
   --btn-border: var(--color-text-inverse);
 }
+
+/* Ghost button is borderless and transparent; on the dark surface it would
+   inherit the page-relative text colour and vanish. Flip its label to the
+   inverse colour and darken its hover fill so the light label stays legible. */
+.wire-hero--inverse .wire-button--ghost {
+  --btn-fg: var(--color-text-inverse);
+}
+.wire-hero--inverse .wire-button--ghost:hover {
+  --btn-bg: var(--gray-80);
+}
