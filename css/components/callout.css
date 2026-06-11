@@ -57,6 +57,15 @@
   --btn-border: var(--color-text-inverse);
 }
 
+/* Ghost button has no border/background, so it would otherwise fall back to the
+   page text colour and vanish on the dark surface. Mirrors the inverse hero. */
+.wire-callout--inverse .wire-button--ghost {
+  --btn-fg: var(--color-text-inverse);
+}
+.wire-callout--inverse .wire-button--ghost:hover {
+  --btn-bg: var(--gray-80);
+}
+
 .wire-callout__title {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);

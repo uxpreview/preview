@@ -618,6 +618,26 @@
     }
   }
 
+  /* ---------- Scrollable code blocks ----------
+     A region that scrolls must be reachable and operable by keyboard (WCAG
+     2.1.1; axe "scrollable-region-focusable"). Code samples overflow only at
+     some widths, so mark just the ones that actually scroll — no inert tab
+     stops on blocks that fit. Re-checked on resize. */
+  function initScrollableCode() {
+    const blocks = document.querySelectorAll("pre");
+    const sync = () => blocks.forEach((pre) => {
+      const scrolls = pre.scrollWidth > pre.clientWidth || pre.scrollHeight > pre.clientHeight;
+      if (scrolls && !pre.hasAttribute("tabindex")) pre.setAttribute("tabindex", "0");
+      else if (!scrolls && pre.getAttribute("tabindex") === "0") pre.removeAttribute("tabindex");
+    });
+    sync();
+    let raf = 0;
+    window.addEventListener("resize", () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(sync);
+    });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
@@ -633,6 +653,7 @@
     initNavDisclosure();
     initNavSearch();
     initTheme();
+    initScrollableCode();
   }
 
   if (document.readyState === "loading") {

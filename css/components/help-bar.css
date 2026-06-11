@@ -82,6 +82,15 @@
   --btn-border: var(--color-text-inverse);
 }
 
+/* Ghost actions on the bar need the same treatment: borderless + transparent,
+   they would inherit the base text colour and disappear on the dark surface. */
+.wire-help-bar .wire-button--ghost {
+  --btn-fg: var(--color-text-inverse);
+}
+.wire-help-bar .wire-button--ghost:hover {
+  --btn-bg: var(--gray-80);
+}
+
 /* Fixed-to-viewport variant — appears on every page, sticks to bottom on
    small screens. Use sparingly; one per page. Respects iPhone home-
    indicator safe area so the bar never sits on the gesture strip. */
