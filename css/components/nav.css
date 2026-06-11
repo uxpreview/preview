@@ -64,7 +64,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-inverse);
+  /* On-accent text. Use --color-bg (globally identical to --color-text-inverse)
+     because inverse surfaces re-alias --color-text-inverse locally, which would
+     otherwise collide with the accent box on dark-theme inverse footers. */
+  color: var(--color-bg);
   font-size: var(--text-sm);
   font-weight: var(--weight-bold);
   flex-shrink: 0;

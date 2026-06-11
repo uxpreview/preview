@@ -208,7 +208,8 @@
   .wire-card--inverse,
   .wire-hero--inverse,
   .wire-footer--inverse,
-  .wire-callout--inverse
+  .wire-callout--inverse,
+  .wire-help-bar
 ) {
   --color-bg-inverse: var(--color-bg-subtle);
   --color-text-inverse: var(--color-text);
