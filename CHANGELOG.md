@@ -23,8 +23,12 @@ Promotes the seven remaining legacy-`docs/` component leaves into dedicated, nes
 **Fixed**
 - `styles/tokens.html` — three in-body links to Accessibility/Layout resolved to non-existent `styles/` paths; repointed to `../docs/`.
 
-**Flagged (not fixed — tracked separately)**
-- Pre-existing systemic contrast bug: content on inverse (dark) surfaces (`wire-help-bar`, `wire-footer--inverse`, and `wire-phone-link` on an inverse surface) keeps light/base text that doesn't flip with the surface, failing AA in at least one theme. Confirmed on shipped pages (`pages/hospital-login.html`, `pages/hospital-provider.html`). The help-bar and footer pages are held out of `.pa11yci.json` pending the CSS fix.
+**Fixed (accessibility)**
+- Inverse-surface contrast: `.wire-help-bar` now joins the dark-theme inverse-surface token re-alias (`tokens.css`) so it stays a dark elevated surface like `.wire-hero--inverse` / `.wire-footer--inverse` instead of flipping bright and dropping its muted text below AA. Its secondary action buttons flip to inverse tokens (they were invisible on the bar, 1:1), and the brand-mark accent box uses `--color-bg` (globally identical to `--color-text-inverse` but never re-aliased) for its on-accent label. axe-core confirms help-bar, hero, and footer pass WCAG2AA. Also fixes the shipped `pages/hospital-login.html` / `hospital-provider.html`.
+- Doc-nav nested interactive controls: the rail's collapsible section headers nested an `<a>` inside the `<summary>` toggle — axe / WCAG 4.1.2 "interactive controls must not be nested," ~120 instances across the doc site. The summary is now a pure text toggle and each section's landing is the first "overview" link in its body (`build-ia.mjs`; regenerated across 170 pages).
+
+**Deferred (tracked separately)**
+- Migrating the a11y gate from HTML_CodeSniffer to axe-core (which resolves flex-container backgrounds HTML_CodeSniffer cannot — the reason `help-bar`/`footer` are held out of `.pa11yci.json`) surfaced a broader pre-existing contrast/ARIA debt: notably `--color-text-subtle` (`--gray-50`) drops below AA on non-white backgrounds with no intermediate ramp step, plus axe over-flagging WCAG-exempt decorative / loading / disabled content and a demo-page ARIA grid. Scoped as a dedicated audit.
 
 ---
 
