@@ -8,9 +8,6 @@
    ============================================================ */
 
 .wire-help-bar {
-  --help-bar-bg: var(--color-bg-inverse);
-  --help-bar-fg: var(--color-text-inverse);
-
   /* Mobile-first: stack vertically so icon, text, and actions each get
      full width on narrow phones. Switches to a row at tablet+. */
   display: flex;
@@ -18,8 +15,11 @@
   align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
-  background-color: var(--help-bar-bg);
-  color: var(--help-bar-fg);
+  /* Reference the semantic inverse tokens directly (not through an
+     intermediary custom property) so automated contrast checkers can
+     resolve the surface. Mirrors .wire-hero--inverse. */
+  background-color: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
   border-radius: var(--radius-lg);
   /* Focus must remain visible on dark surface (WCAG 2.4.7). */
   --color-focus: var(--color-text-inverse);
@@ -68,6 +68,18 @@
   flex-wrap: wrap;
   gap: var(--space-xs);
   flex-shrink: 0;
+}
+
+/* Secondary buttons in the actions row sit on the inverse surface; flip
+   their label and border so they stay legible (mirrors .wire-hero--inverse).
+   Without this they default to base text color and vanish on the bar. */
+.wire-help-bar .wire-button--secondary {
+  --btn-fg: var(--color-text-inverse);
+  --btn-border: var(--gray-40);
+}
+.wire-help-bar .wire-button--secondary:hover {
+  --btn-bg: var(--gray-80);
+  --btn-border: var(--color-text-inverse);
 }
 
 /* Fixed-to-viewport variant — appears on every page, sticks to bottom on
