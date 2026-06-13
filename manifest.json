@@ -3121,10 +3121,38 @@
     },
     {
       "id": "icon-button",
-      "label": "Icon button",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Icon-only controls must carry an accessible name",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "wcag-1.1.1-non-text-content", "nng-icon-usability"]
+        },
+        {
+          "decision": ">=44px square target for a label-free control",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum", "wcag-2.5.5-target-size-enhanced", "laws-of-ux-fitts"]
+        },
+        {
+          "decision": "Optional tooltip hint complements, never replaces, the accessible name",
+          "citation_ids": ["wcag-1.4.13-content-on-hover-or-focus", "apg-tooltip"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-button--icon-only",
+      "file": "css/components/button.css",
       "ref": "components/actions/icon-button/",
-      "status": "planned"
+      "ref_template": "components/actions/icon-button/",
+      "status": "beta",
+      "variants": ["(default = primary)", "secondary", "ghost"],
+      "sizes": ["(default = md)", "sm", "lg"],
+      "states": ["disabled", "aria-busy", "aria-pressed (toggle)"],
+      "elements": ["wire-button__icon"],
+      "companions": ["wire-button-group", "wire-tooltip", "wire-badge"],
+      "behaviors": [],
+      "slots": ["icon", "aria-label"],
+      "a11y": "Not a separate CSS component — the icon-only application of Button. Requires an accessible name (aria-label/aria-labelledby); the icon is decorative (aria-hidden, focusable=false). 2.75rem square target, inherits Button's focus ring. Toggle via aria-pressed; busy via aria-busy.",
+      "notes": "Shares button.css and all of Button's emphasis/size/state surface; --icon-only only fixes the box to a square. Pair with Tooltip (data-wire-tooltip) for a visible hint. See components/buttons/ for the labelled base.",
+      "label": "Icon button",
+      "desc": "A compact, label-free button — Button's icon-only variant, with a required accessible name."
     },
     {
       "id": "button-group",
@@ -5050,7 +5078,6 @@
               "type": "page",
               "label": "Icon button",
               "ref": "components/actions/icon-button/",
-              "status": "planned",
               "id": "icon-button"
             },
             {

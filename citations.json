@@ -38,7 +38,8 @@
         "media",
         "gallery",
         "avatar",
-        "insurance-indicator"
+        "insurance-indicator",
+        "icon-button"
       ]
     },
     {
@@ -176,7 +177,8 @@
       "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "tooltip",
-        "button"
+        "button",
+        "icon-button"
       ],
       "notes": "Source criterion is from WCAG 2.1 (2018, pre-2020) per research.html; flagged for full review although it is a stable normative criterion carried into 2.2."
     },
@@ -370,7 +372,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "text-size-control",
-        "button"
+        "button",
+        "icon-button"
       ]
     },
     {
@@ -394,7 +397,8 @@
         "pagination",
         "footer",
         "inpagenav",
-        "megamenu"
+        "megamenu",
+        "icon-button"
       ]
     },
     {
@@ -469,7 +473,8 @@
         "sidenav",
         "doc-nav",
         "progress",
-        "meter"
+        "meter",
+        "icon-button"
       ]
     },
     {
@@ -593,7 +598,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "tooltip"
+        "tooltip",
+        "icon-button"
       ]
     },
     {
@@ -1517,7 +1523,8 @@
         "button",
         "topnav",
         "text-size-control",
-        "tag"
+        "tag",
+        "icon-button"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
@@ -1987,6 +1994,22 @@
       "verification": "UNVERIFIED \u2014 candidate from wait-time research brief; live-source check blocked by environment network policy, pending human review",
       "supports": [
         "wait-time"
+      ]
+    },
+    {
+      "id": "nng-icon-usability",
+      "tier": "empirical",
+      "finding": "Most UI icons are ambiguous without an accompanying text label; pairing an icon with a label (visible or accessible) measurably improves recognition and reduces user errors.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Icon Usability",
+        "year": 2024,
+        "url": "https://www.nngroup.com/articles/icon-usability/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from icon-button research, pending human review",
+      "supports": [
+        "icon-button"
       ]
     }
   ]
