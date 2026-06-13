@@ -1178,7 +1178,10 @@
         "choice",
         "button"
       ],
-      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list.",
+      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list. Covers the filter-chip pattern — a toggleable/removable selection chip is Tag with .is-selected + aria-pressed, so 'filter-chip' was removed as a separate component (folded here) rather than duplicating this.",
+      "supersedes": [
+        "filter-chip"
+      ],
       "label": "Tag",
       "desc": "An interactive filter / removable chip and a read-only metadata label, in two sizes.",
       "figma_props": {
@@ -3305,59 +3308,594 @@
     },
     {
       "id": "avatar",
+      "level": "atom",
       "label": "Avatar",
+      "desc": "A small thumbnail standing in for a person or entity, with image, initials, and placeholder-icon fallbacks.",
       "category": "selection",
+      "class": "wire-avatar",
+      "file": "css/components/avatar.css",
       "ref": "components/selection-status/avatar/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = circle)",
+        "square"
+      ],
+      "sizes": [
+        "(default = md)",
+        "sm",
+        "lg",
+        "xl"
+      ],
+      "modifiers": [
+        "ring"
+      ],
+      "elements": [
+        "wire-avatar__img",
+        "wire-avatar__icon"
+      ],
+      "behaviors": [],
+      "slots": [
+        "image | initials | icon"
+      ],
+      "related": [
+        "avatar-group",
+        "badge",
+        "byline",
+        "card"
+      ],
+      "a11y": "Name the person once: when the name is shown beside the avatar it is decorative (image alt=\"\", initials/icon aria-hidden); when it stands alone it carries the name via alt/aria-label. Initials are an abbreviation, never the sole accessible identity; the placeholder icon is always decorative.",
+      "rationale": [
+        {
+          "decision": "Image → initials → placeholder-icon fallback chain",
+          "citation_ids": [
+            "primer-avatar",
+            "atlassian-avatar"
+          ]
+        },
+        {
+          "decision": "Circle for people, rounded-square for non-human entities",
+          "citation_ids": [
+            "primer-avatar"
+          ]
+        },
+        {
+          "decision": "Image avatars carry a text alternative; decorative avatars are hidden so the adjacent name is announced once",
+          "citation_ids": [
+            "wcag-1.1.1-non-text-content",
+            "w3c-wai-decorative-images"
+          ]
+        },
+        {
+          "decision": "Identity is the name and shape, never hue; the avatar reads as belonging to the name beside it",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "gestalt-proximity"
+          ]
+        }
+      ],
+      "notes": "Three fallbacks in priority order; initials are direct text on .wire-avatar (no element). Diameters are fixed component geometry in rem via --avatar-size, mirroring Badge's dot/count, not spacing tokens. Composes as a host for Badge's count overlay (wire-badge-anchor) and stacks into Avatar group.",
+      "figma_props": {
+        "_normalized_from": "fallback is content, not a style; size and shape are the real axes.",
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "default": "md"
+        },
+        "Shape": {
+          "type": "VARIANT",
+          "values": [
+            "circle",
+            "square"
+          ],
+          "default": "circle"
+        },
+        "Ring": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Fallback": {
+          "type": "VARIANT",
+          "values": [
+            "image",
+            "initials",
+            "icon"
+          ],
+          "default": "initials",
+          "note": "which slot is filled; not a CSS modifier"
+        },
+        "Image": {
+          "type": "INSTANCE_SWAP",
+          "child": "wire-avatar__img",
+          "optional": true
+        },
+        "Initials": {
+          "type": "TEXT",
+          "optional": true
+        },
+        "_matrix": "Size(4) x Shape(2) x Fallback(3) = 24 (<=30). Ring is a boolean."
+      }
     },
     {
       "id": "avatar-group",
+      "level": "molecule",
       "label": "Avatar group",
+      "desc": "Overlapping avatars that summarise a set of people, with an optional +N overflow tile.",
       "category": "selection",
+      "class": "wire-avatar-group",
+      "file": "css/components/avatar-group.css",
       "ref": "components/selection-status/avatar-group/",
-      "status": "planned"
-    },
-    {
-      "id": "filter-chip",
-      "label": "Filter chip",
-      "category": "selection",
-      "ref": "components/selection-status/filter-chip/",
-      "status": "planned"
+      "status": "beta",
+      "elements": [
+        "wire-avatar-group__more"
+      ],
+      "behaviors": [],
+      "slots": [
+        "members (wire-avatar)",
+        "overflow (wire-avatar-group__more)"
+      ],
+      "related": [
+        "avatar",
+        "badge",
+        "card"
+      ],
+      "a11y": "Summary pattern: give the wrapper role=\"group\" + an aria-label with the count (\"Care team, 12 people\"), mark every member and the +N tile aria-hidden, and route to the named people via an adjacent link. role=group + name satisfies 1.3.1; the ring is decorative separation only.",
+      "rationale": [
+        {
+          "decision": "Overlapping avatars with a +N overflow as a people-set summary",
+          "citation_ids": [
+            "primer-avatar",
+            "atlassian-avatar"
+          ]
+        },
+        {
+          "decision": "Overlapping/touching tiles read as one set",
+          "citation_ids": [
+            "gestalt-proximity",
+            "gestalt-common-region"
+          ]
+        },
+        {
+          "decision": "Grouping conveyed by overlap + summary label, never colour",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color"
+          ]
+        }
+      ],
+      "notes": "Thin wrapper over Avatar: adds the overlap (negative inline margin via --avatar-group-overlap) and a surface-colour ring on each child; member size/shape/fill come from Avatar. Keep members one shared size. The +N tile is a .wire-avatar with .wire-avatar-group__more.",
+      "figma_props": {
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "default": "md",
+          "note": "applied to members; the group has no size of its own"
+        },
+        "Overflow": {
+          "type": "BOOLEAN",
+          "default": true,
+          "child": "wire-avatar-group__more"
+        },
+        "_note": "members[] -> repeated Avatar child instances, not a prop; count and remainder are author-computed."
+      }
     },
     {
       "id": "status-dot",
+      "level": "atom",
       "label": "Status dot",
+      "desc": "A small filled circle marking presence or state, always paired with a text label that carries the meaning.",
       "category": "selection",
+      "class": "wire-status-dot",
+      "file": "css/components/status-dot.css",
       "ref": "components/selection-status/status-dot/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = strong)",
+        "subtle",
+        "outline"
+      ],
+      "sizes": [
+        "(default = md)",
+        "sm",
+        "lg"
+      ],
+      "modifiers": [
+        "pulse"
+      ],
+      "behaviors": [],
+      "slots": [
+        "(none — pairs with an adjacent text label)"
+      ],
+      "related": [
+        "badge",
+        "wait-time",
+        "avatar"
+      ],
+      "a11y": "The dot is always decorative (aria-hidden, no role, not focusable); the adjacent visible text label is the status and the accessible name. Never the only signal. Runtime changes are announced via an aria-live region on the label. The pulse is disabled under prefers-reduced-motion.",
+      "rationale": [
+        {
+          "decision": "Status is carried by the text label, never the dot's appearance (grayscale, no hue)",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color"
+          ]
+        },
+        {
+          "decision": "A small high-contrast mark draws the eye to the status beside it; the dot reads as belonging to its label",
+          "citation_ids": [
+            "laws-of-ux-von-restorff",
+            "gestalt-proximity"
+          ]
+        },
+        {
+          "decision": "Pulse disabled under reduced-motion; runtime status changes announced via aria-live",
+          "citation_ids": [
+            "wcag-2.3.3-animation-from-interactions",
+            "wcag-4.1.3-status-messages"
+          ]
+        }
+      ],
+      "notes": "Decorative leaf paired with text. Diameter is fixed component geometry in rem via --status-dot-size, mirroring Badge's dot. Fill treatments map to emphasis, not to fixed states; bind a treatment to a meaning consistently within a screen and let the label name the state. The pulse is an ::after halo, not an interaction state.",
+      "figma_props": {
+        "_normalized_from": "treatments are emphasis, not states; pulse and size are independent axes.",
+        "Treatment": {
+          "type": "VARIANT",
+          "values": [
+            "strong",
+            "subtle",
+            "outline"
+          ],
+          "default": "strong"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "Pulse": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "_matrix": "Treatment(3) x Size(3) = 9 (<=30). Pulse is a boolean."
+      }
     },
     {
       "id": "progress",
+      "level": "molecule",
       "label": "Progress",
+      "desc": "A determinate or indeterminate progress bar built on the native progress element, with role=progressbar and value semantics.",
       "category": "selection",
+      "class": "wire-progress",
+      "file": "css/components/progress.css",
       "ref": "components/selection-status/progress/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = determinate)",
+        "indeterminate (no value attr)",
+        "lg"
+      ],
+      "elements": [
+        "wire-progress__header",
+        "wire-progress__label",
+        "wire-progress__value",
+        "wire-progress__bar"
+      ],
+      "behaviors": [],
+      "slots": [
+        "label",
+        "value",
+        "bar (native <progress>)"
+      ],
+      "related": [
+        "meter",
+        "stepper",
+        "skeleton"
+      ],
+      "a11y": "Native <progress> supplies role=progressbar + value/max; name it with <label for> (determinate) or aria-label (indeterminate). Don't add redundant role/aria-valuenow. Keep the visible percent in sync with the value attribute. Indeterminate animation respects prefers-reduced-motion where the engine allows.",
+      "rationale": [
+        {
+          "decision": "Use the native <progress> element for role + value, so the percentage rides on an attribute (no inline styles)",
+          "citation_ids": [
+            "wcag-4.1.2-name-role-value",
+            "wcag-4.1.3-status-messages"
+          ]
+        },
+        {
+          "decision": "Show progress for waits long enough that silence reads as broken; never fake a determinate value",
+          "citation_ids": [
+            "nng-progress-indicators"
+          ]
+        },
+        {
+          "decision": "Indeterminate animation respects reduced-motion",
+          "citation_ids": [
+            "wcag-2.3.3-animation-from-interactions"
+          ]
+        }
+      ],
+      "notes": "Completion over time — distinct from Meter (a static measurement). Determinate vs indeterminate is the presence of a value attribute, not a class. Track height is fixed geometry in rem; fill is attribute-driven and styled via ::-webkit-progress-* / ::-moz-progress-bar in grayscale.",
+      "figma_props": {
+        "Type": {
+          "type": "VARIANT",
+          "values": [
+            "determinate",
+            "indeterminate"
+          ],
+          "default": "determinate"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Value": {
+          "type": "TEXT",
+          "slot": "value",
+          "optional": true,
+          "note": "determinate only"
+        }
+      }
     },
     {
       "id": "meter",
+      "level": "molecule",
       "label": "Meter",
+      "desc": "A scalar measurement within a known range — capacity, score, a fraction of a whole — built on the native meter element.",
       "category": "selection",
+      "class": "wire-meter",
+      "file": "css/components/meter.css",
       "ref": "components/selection-status/meter/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default)",
+        "lg"
+      ],
+      "elements": [
+        "wire-meter__header",
+        "wire-meter__label",
+        "wire-meter__value",
+        "wire-meter__bar"
+      ],
+      "behaviors": [],
+      "slots": [
+        "label",
+        "value",
+        "bar (native <meter>)"
+      ],
+      "related": [
+        "progress",
+        "kpi-stat",
+        "wait-time"
+      ],
+      "a11y": "Native <meter> supplies role + value/range; name it with <label for> and keep a text value reading beside it. The quality band (low/high/optimum) is visual reinforcement only and not reliably announced — put any good/bad judgement in the value text. Provide fallback text inside the element.",
+      "rationale": [
+        {
+          "decision": "Use the native <meter> element so value/min/max ride on attributes (no inline styles) and the role/value are exposed",
+          "citation_ids": [
+            "wcag-4.1.2-name-role-value"
+          ]
+        },
+        {
+          "decision": "Good/bad judgement lives in the text, never the grayscale band shading",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color"
+          ]
+        },
+        {
+          "decision": "Tabular figures keep stacked readings aligned and comparable",
+          "citation_ids": [
+            "bringhurst-elements-typographic-style"
+          ]
+        }
+      ],
+      "notes": "A static measurement within a range — distinct from Progress (completion over time); the page carries a Meter-vs-Progress table. low/high/optimum pick the quality band, mapped to grayscale density via ::-webkit-meter-*-value / ::-moz-meter-bar. Firefox can't style the three bands separately, so meaning must stay in text.",
+      "figma_props": {
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "Band": {
+          "type": "VARIANT",
+          "values": [
+            "optimum",
+            "suboptimum",
+            "poor"
+          ],
+          "default": "optimum",
+          "note": "from low/high/optimum; grayscale density, reinforcement only"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Value": {
+          "type": "TEXT",
+          "slot": "value"
+        }
+      }
     },
     {
       "id": "wait-time",
+      "level": "molecule",
       "label": "Wait time",
+      "desc": "A current wait estimate — a label, a large tabular figure with its unit, and a freshness note.",
       "category": "selection",
+      "class": "wire-wait-time",
+      "file": "css/components/wait-time.css",
       "ref": "components/selection-status/wait-time/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = block)",
+        "inline",
+        "lg"
+      ],
+      "elements": [
+        "wire-wait-time__label",
+        "wire-wait-time__amount",
+        "wire-wait-time__value",
+        "wire-wait-time__unit",
+        "wire-wait-time__meta"
+      ],
+      "behaviors": [],
+      "slots": [
+        "label",
+        "value",
+        "unit",
+        "meta"
+      ],
+      "related": [
+        "status-dot",
+        "kpi-stat",
+        "badge"
+      ],
+      "a11y": "Keep label/value/unit/meta as adjacent text so it reads as one phrase (\"Current ER wait, 12 min, updated 4 min ago\"); keep DOM order label → value → unit → meta. A leading status dot in the label is decorative. Wrap the block in aria-live=\"polite\" for runtime updates; expand \"min\" via aria-label if a clearer reading matters.",
+      "rationale": [
+        {
+          "decision": "Show the wait at all, dated — a visible, fresh estimate manages expectations and builds trust",
+          "citation_ids": [
+            "buell-operational-transparency"
+          ]
+        },
+        {
+          "decision": "One large, legible figure in tabular numerals so widths don't jump as the number changes",
+          "citation_ids": [
+            "nng-legibility",
+            "bringhurst-elements-typographic-style"
+          ]
+        },
+        {
+          "decision": "Runtime updates announced via an aria-live region; no meaning on colour",
+          "citation_ids": [
+            "wcag-4.1.3-status-messages",
+            "wcag-1.4.1-use-of-color"
+          ]
+        }
+      ],
+      "notes": "A specialised cousin of KPI stat tuned for wait estimates. Composes a Status dot in the label for presence. Value uses font-variant-numeric: tabular-nums; sizes are the type-scale tokens via three layout variants. The freshness note is load-bearing for trust — a stale figure is worse than none.",
+      "figma_props": {
+        "Layout": {
+          "type": "VARIANT",
+          "values": [
+            "block",
+            "inline",
+            "lg"
+          ],
+          "default": "block"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Value": {
+          "type": "TEXT",
+          "slot": "value"
+        },
+        "Unit": {
+          "type": "TEXT",
+          "slot": "unit"
+        },
+        "Meta": {
+          "type": "TEXT",
+          "slot": "meta",
+          "optional": true
+        }
+      }
     },
     {
       "id": "insurance-indicator",
+      "level": "molecule",
       "label": "Insurance indicator",
+      "desc": "Whether a provider or location accepts a visitor's plan — a marker icon, a plain status label, and the plan detail.",
       "category": "selection",
+      "class": "wire-insurance-indicator",
+      "file": "css/components/insurance-indicator.css",
       "ref": "components/selection-status/insurance-indicator/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = full emphasis)",
+        "muted"
+      ],
+      "elements": [
+        "wire-insurance-indicator__icon",
+        "wire-insurance-indicator__body",
+        "wire-insurance-indicator__label",
+        "wire-insurance-indicator__detail"
+      ],
+      "behaviors": [],
+      "slots": [
+        "icon",
+        "label",
+        "detail"
+      ],
+      "related": [
+        "status-dot",
+        "badge",
+        "callout"
+      ],
+      "a11y": "Marker icon is decorative (aria-hidden, focusable=false); the acceptance status is stated in the label text, never by colour or icon shape alone. Keep label + detail adjacent so the statement reads whole. Default to \"Verify your coverage\" when the plan is unknown; announce a post-load state via aria-live.",
+      "rationale": [
+        {
+          "decision": "Acceptance status is in the label wording (and marker shape), never colour",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "wcag-1.1.1-non-text-content"
+          ]
+        },
+        {
+          "decision": "Marker and label read as one statement by proximity",
+          "citation_ids": [
+            "gestalt-proximity"
+          ]
+        }
+      ],
+      "notes": "Healthcare top-task statement (in/out-of-network, verify). Three coverage states are content (marker shape check/slash/query + wording) plus the --muted emphasis step, not interactive states. Icon is 1.25rem fixed geometry in rem. A specialised, fuller cousin of Badge; for plan filtering use Tag in a facet panel, not this.",
+      "figma_props": {
+        "_normalized_from": "coverage state is content (marker shape + wording); only the emphasis step is a CSS axis.",
+        "Emphasis": {
+          "type": "VARIANT",
+          "values": [
+            "full",
+            "muted"
+          ],
+          "default": "full"
+        },
+        "Icon": {
+          "type": "INSTANCE_SWAP",
+          "child": "wire-insurance-indicator__icon",
+          "note": "marker shape: check / slash / query"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Detail": {
+          "type": "TEXT",
+          "slot": "detail",
+          "optional": true
+        }
+      }
     },
     {
       "id": "popover",
@@ -4689,56 +5227,42 @@
               "type": "page",
               "label": "Avatar",
               "ref": "components/selection-status/avatar/",
-              "status": "planned",
               "id": "avatar"
             },
             {
               "type": "page",
               "label": "Avatar group",
               "ref": "components/selection-status/avatar-group/",
-              "status": "planned",
               "id": "avatar-group"
-            },
-            {
-              "type": "page",
-              "label": "Filter chip",
-              "ref": "components/selection-status/filter-chip/",
-              "status": "planned",
-              "id": "filter-chip"
             },
             {
               "type": "page",
               "label": "Status dot",
               "ref": "components/selection-status/status-dot/",
-              "status": "planned",
               "id": "status-dot"
             },
             {
               "type": "page",
               "label": "Progress",
               "ref": "components/selection-status/progress/",
-              "status": "planned",
               "id": "progress"
             },
             {
               "type": "page",
               "label": "Meter",
               "ref": "components/selection-status/meter/",
-              "status": "planned",
               "id": "meter"
             },
             {
               "type": "page",
               "label": "Wait time",
               "ref": "components/selection-status/wait-time/",
-              "status": "planned",
               "id": "wait-time"
             },
             {
               "type": "page",
               "label": "Insurance indicator",
               "ref": "components/selection-status/insurance-indicator/",
-              "status": "planned",
               "id": "insurance-indicator"
             }
           ],

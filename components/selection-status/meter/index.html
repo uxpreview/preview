@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Meter — Preview Design System</title>
+  <meta name="description" content="A scalar measurement within a known range — capacity, score, a fraction of a whole — built on the native meter element. Usage, specs, and accessibility for the Meter component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -176,7 +177,6 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/tag/">Tag</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/avatar/">Avatar</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/avatar-group/">Avatar group</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/filter-chip/">Filter chip</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/status-dot/">Status dot</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/progress/">Progress</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../../components/selection-status/meter/">Meter</a></li>
@@ -398,20 +398,421 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Meter</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Meter</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A scalar measurement within a known range — beds available, a satisfaction score, a fraction of a quota used. Built on the native <code>&lt;meter&gt;</code> element. Unlike <a href="../progress/">Progress</a>, it isn't moving toward done; it sits at a value, and the label tells you whether that value is good.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/meter.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · native &lt;meter&gt;</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Meter documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Three measurements, each with its value spelled out in text beside the bar.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">capacity · score · quota</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-meter">
+                      <div class="wire-meter__header">
+                        <label class="wire-meter__label" for="met-beds">ICU beds available</label>
+                        <span class="wire-meter__value">3 of 20</span>
+                      </div>
+                      <meter class="wire-meter__bar" id="met-beds" min="0" max="20" low="4" high="10" optimum="20" value="3">3 of 20 beds</meter>
+                    </div>
+                    <div class="wire-meter">
+                      <div class="wire-meter__header">
+                        <label class="wire-meter__label" for="met-score">Patient satisfaction</label>
+                        <span class="wire-meter__value">4.2 / 5</span>
+                      </div>
+                      <meter class="wire-meter__bar" id="met-score" min="0" max="5" low="2.5" high="4" optimum="5" value="4.2">4.2 out of 5</meter>
+                    </div>
+                    <div class="wire-meter">
+                      <div class="wire-meter__header">
+                        <label class="wire-meter__label" for="met-quota">Records storage used</label>
+                        <span class="wire-meter__value">82%</span>
+                      </div>
+                      <meter class="wire-meter__bar" id="met-quota" min="0" max="100" high="80" optimum="0" value="82">82% used</meter>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Built on the native element; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Native semantics</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">A meter shows where a known quantity sits within its range — full to empty, poor to excellent. It is a <em>static reading</em>, not motion toward completion; that is the line between it and <a href="../progress/">Progress</a>. The native element can mark a value as optimal, sub-optimal, or poor via its <code>low</code>/<code>high</code>/<code>optimum</code> attributes, which here render as grayscale density — the actual judgement always belongs in the text.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Capacity: beds available, seats left, quota used.</li>
+                  <li>A score or rating against a fixed scale.</li>
+                  <li>Any fraction of a whole that is measured, not progressing.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a task advancing over time, use <a href="../progress/">Progress</a>.</li>
+                  <li>When "good vs bad" must be unmistakable, don't rely on the band shading — say it in words.</li>
+                  <li>For a single headline number with no range, a <a href="../../../components/content-display/kpi-stat/">KPI stat</a> reads better.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A header pairing the label with the value reading, over a native <code>&lt;meter&gt;</code> bar whose <code>min</code>/<code>max</code>/<code>value</code> place the fill.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">label · value · bar</span>
+                  <div class="wire-meter">
+                    <div class="wire-meter__header">
+                      <label class="wire-meter__label" for="met-anatomy">Seats remaining</label>
+                      <span class="wire-meter__value">12 of 30</span>
+                    </div>
+                    <meter class="wire-meter__bar" id="met-anatomy" min="0" max="30" low="6" high="15" optimum="30" value="12">12 of 30 seats</meter>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-meter</code></td><td>The wrapper; stacks the header over the bar.</td></tr>
+                    <tr><td>Header</td><td><code>.wire-meter__header</code></td><td>Lays the label and value reading on one row.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-meter__label</code></td><td>A real <code>&lt;label for&gt;</code> naming the meter.</td></tr>
+                    <tr><td>Value</td><td><code>.wire-meter__value</code></td><td>The reading in words ("3 of 20"), in tabular figures.</td></tr>
+                    <tr><td>Bar</td><td><code>.wire-meter__bar</code></td><td>The native <code>&lt;meter&gt;</code>; <code>min</code>/<code>max</code>/<code>value</code> (+ <code>low</code>/<code>high</code>/<code>optimum</code>) drive it.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Meter vs Progress ---------- -->
+              <section id="vs-progress" class="doc-section" aria-labelledby="h-vs-progress">
+                <h2 class="wire-h3" id="h-vs-progress">Meter vs Progress</h2>
+                <p class="u-text-muted u-mt-sm">They look alike and are easy to confuse; the difference is what the value means.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Question</th><th scope="col">Meter</th><th scope="col">Progress</th></tr></thead>
+                  <tbody>
+                    <tr><td>What is it?</td><td>A measurement within a range.</td><td>Completion of a task.</td></tr>
+                    <tr><td>Does it move toward an end?</td><td>No — it just reads where it is.</td><td>Yes — toward 100%.</td></tr>
+                    <tr><td>Example</td><td>"3 of 20 beds free".</td><td>"Upload 70% done".</td></tr>
+                    <tr><td>Element</td><td><code>&lt;meter&gt;</code></td><td><code>&lt;progress&gt;</code></td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">A compact reading that drops into cards, rows, and dashboards.</p>
+                <ul>
+                  <li><strong>In a location card</strong> — capacity at a glance ("beds available").</li>
+                  <li><strong>In a <a href="../../../components/table/">table</a> row</strong> — a score column across items.</li>
+                  <li><strong>With a <a href="../../../components/content-display/kpi-stat/">KPI stat</a></strong> — the stat is the headline, the meter shows it against its range.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">Capacity on a location card, with the judgement spelled out.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Location capacity</span>
+                  <div class="u-stack u-stack--sm">
+                    <span class="wire-h4">Riverside Urgent Care — Oak St</span>
+                    <div class="wire-meter">
+                      <div class="wire-meter__header">
+                        <label class="wire-meter__label" for="met-ctx">Capacity right now</label>
+                        <span class="wire-meter__value">Nearly full · 2 rooms open</span>
+                      </div>
+                      <meter class="wire-meter__bar" id="met-ctx" min="0" max="12" low="3" high="8" optimum="12" value="2">2 of 12 rooms open</meter>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <div class="wire-meter">
+                      <div class="wire-meter__header">
+                        <label class="wire-meter__label" for="met-do">Beds available</label>
+                        <span class="wire-meter__value">Low · 3 of 20</span>
+                      </div>
+                      <meter class="wire-meter__bar" id="met-do" min="0" max="20" low="4" high="10" optimum="20" value="3">3 of 20 beds</meter>
+                    </div>
+                    <p class="u-text-muted u-mt-md">Put the reading and the judgement ("Low") in text. The bar shading only reinforces it.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <div class="wire-meter">
+                      <meter class="wire-meter__bar" min="0" max="20" low="4" high="10" optimum="20" value="3"></meter>
+                    </div>
+                    <p class="u-text-muted u-mt-md">A bare bar leans entirely on shading to say "this is low" — which grayscale can't, and a screen reader won't.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Spell out the reading: "3 of 20", "4.2 / 5", "82% used".</li>
+                  <li>If a value is good or bad, name it in words — don't leave it to the band shading.</li>
+                  <li>State the unit and the whole, so the value has a frame ("of 20").</li>
+                  <li>Keep <code>low</code>/<code>high</code>/<code>optimum</code> meaningful — they drive the density bands and the native semantics.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../progress/">Progress</a> — completion over time, not a static reading.</li>
+                  <li><a href="../../../components/content-display/kpi-stat/">KPI stat</a> — a headline figure without a range bar.</li>
+                  <li><a href="../wait-time/">Wait time</a> — a specialised figure for current waits.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the native <code>&lt;meter&gt;</code> exposes its role and value to assistive tech; the label names it. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: whether a value is good or bad is in the text, not the band shading. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Convention</strong> — Bringhurst, <em>The Elements of Typographic Style</em>: tabular (lining) figures keep readings aligned and comparable. <em>Unverified — pending review.</em></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#vs-progress">Meter vs Progress</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-bg-muted</code></td><td>The unfilled track.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-muted</code> / <code>--color-text-subtle</code></td><td>The optimum / sub-optimum / poor value bands, as grayscale density.</td></tr>
+                    <tr><td><code>--weight-medium</code></td><td>The label weight.</td></tr>
+                    <tr><td><code>--text-sm</code></td><td>Label and value type size.</td></tr>
+                    <tr><td><code>--radius-pill</code></td><td>The rounded track and bar.</td></tr>
+                    <tr><td><code>--space-2xs</code> / <code>--space-md</code></td><td>Header–bar gap, and label–value gap.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Track height</td><td>0.5rem default; 0.75rem under <code>--lg</code>.</td></tr>
+                    <tr><td>Fill</td><td>Driven by native <code>min</code>/<code>max</code>/<code>value</code> — no inline styles.</td></tr>
+                    <tr><td>Quality bands</td><td><code>low</code>/<code>high</code>/<code>optimum</code> pick the band; the three map to grayscale density, never hue.</td></tr>
+                    <tr><td>Styling hooks</td><td><code>::-webkit-meter-bar</code>, <code>::-webkit-meter-optimum-value</code> / <code>-suboptimum-value</code> / <code>-even-less-good-value</code>, and <code>::-moz-meter-bar</code>.</td></tr>
+                    <tr><td>Value text</td><td><code>tabular-nums</code> so readings line up when stacked.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">The "state" is the value within its range and which quality band it falls in (set by <code>low</code>/<code>high</code>/<code>optimum</code>). There are no hover/focus/active states — a meter is read, not operated.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None in the component. The application sets the attributes and keeps the value text in sync; the native element reflects the reading to assistive tech. No <code>data-wire-*</code> hooks.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- low/high/optimum pick the quality band; value places the fill --&gt;
+&lt;div class="wire-meter"&gt;
+  &lt;div class="wire-meter__header"&gt;
+    &lt;label class="wire-meter__label" for="m1"&gt;ICU beds available&lt;/label&gt;
+    &lt;span class="wire-meter__value"&gt;3 of 20&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;meter class="wire-meter__bar" id="m1"
+         min="0" max="20" low="4" high="10" optimum="20" value="3"&gt;3 of 20 beds&lt;/meter&gt;
+&lt;/div&gt;
+
+&lt;!-- "less is better" (e.g. quota used): set optimum low --&gt;
+&lt;meter class="wire-meter__bar" min="0" max="100" high="80" optimum="0" value="82"&gt;82% used&lt;/meter&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use the native <code>&lt;meter&gt;</code>: it carries the meter role and exposes its value and range without extra ARIA.</li>
+                  <li>Name it with a <code>&lt;label for&gt;</code>, and keep a text value reading beside it.</li>
+                  <li>Don't rely on the quality band (optimum/sub-optimum/poor) to convey good-vs-bad — put that judgement in the value text.</li>
+                  <li>Provide fallback text inside the element for browsers without <code>&lt;meter&gt;</code> support.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None. A meter is an output, not a control — not focusable or operable. If users could change the value, that would be a slider.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Meter satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>The native element supplies role and value; the label supplies the name.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>The reading and any good/bad judgement live in text; the grayscale bands only reinforce.</td></tr>
+                    <tr><td>1.4.3 Contrast (Minimum)</td><td>Label <code>--color-text</code> and value <code>--color-text-muted</code> on the surface clear 4.5:1.</td></tr>
+                    <tr><td>1.4.11 Non-text Contrast</td><td>The bands are reinforcement, not the sole carrier of meaning, so the 3:1 graphic floor isn't load-bearing.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>Support for <code>&lt;meter&gt;</code> varies; the visible text reading is what guarantees the value is conveyed.</li>
+                  <li>The quality band is visual only — it is not reliably announced, so the judgement must be in the label or value text.</li>
+                  <li>Keep the value text ("3 of 20") authoritative; treat the bar as a visual aid to it.</li>
+                  <li>Provide fallback text inside <code>&lt;meter&gt;…&lt;/meter&gt;</code> for non-supporting browsers.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../progress/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Progress</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../wait-time/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Wait time</span>
+        </a>
+      </nav>
 
     </div>
   </section>

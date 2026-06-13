@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wait time — Preview Design System</title>
+  <meta name="description" content="A current wait estimate — a label, a large tabular figure with its unit, and a freshness note. Usage, specs, and accessibility for the Wait time component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -176,7 +177,6 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/tag/">Tag</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/avatar/">Avatar</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/avatar-group/">Avatar group</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/filter-chip/">Filter chip</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/status-dot/">Status dot</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/progress/">Progress</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/meter/">Meter</a></li>
@@ -398,20 +398,444 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Wait time</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Wait time</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A current wait estimate, shown plainly: a label, one large tabular figure with its unit, and a note saying how fresh it is. Built for emergency-department and urgent-care headers, where a clear number does more to settle a worried visitor than any reassurance.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/wait-time.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Wait time documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">The block form for a header, an inline form for a row, and a large form for a hero — each with a freshness note and an optional presence dot.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">block · inline · large</span>
+                  <div class="u-cluster u-cluster--xl u-cluster--start-align">
+                    <span class="wire-wait-time">
+                      <span class="wire-wait-time__label">Current ER wait</span>
+                      <span class="wire-wait-time__amount">
+                        <span class="wire-wait-time__value">12</span>
+                        <span class="wire-wait-time__unit">min</span>
+                      </span>
+                      <span class="wire-wait-time__meta">Updated 4 min ago</span>
+                    </span>
+
+                    <span class="wire-wait-time wire-wait-time--inline">
+                      <span class="wire-wait-time__label u-cluster u-cluster--xs"><span class="wire-status-dot" aria-hidden="true"></span>Urgent care</span>
+                      <span class="wire-wait-time__amount">
+                        <span class="wire-wait-time__value">25</span>
+                        <span class="wire-wait-time__unit">min</span>
+                      </span>
+                    </span>
+
+                    <span class="wire-wait-time wire-wait-time--lg">
+                      <span class="wire-wait-time__label">Emergency department</span>
+                      <span class="wire-wait-time__amount">
+                        <span class="wire-wait-time__value">8</span>
+                        <span class="wire-wait-time__unit">min</span>
+                      </span>
+                      <span class="wire-wait-time__meta">Estimated, updated continuously</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The component is non-interactive; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Tabular figures</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Wait time answers one anxious question — "how long?" — with a single legible number. Showing the estimate at all is the point: a visible, honestly-dated figure manages expectations far better than silence. The component keeps three things together: what is being measured, the figure itself, and how current it is.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Emergency-department and urgent-care headers and location pages.</li>
+                  <li>A row in a <a href="../../../components/lists/">list</a> of nearby locations, comparing current waits.</li>
+                  <li>Callback or appointment estimates — "next available", "typical hold".</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>Don't show a wait you can't keep reasonably fresh; a stale figure erodes trust faster than none.</li>
+                  <li>For a categorical state ("Open", "Closed"), use a <a href="../status-dot/">Status dot</a> with a label, not a number.</li>
+                  <li>For a generic count or metric unrelated to waiting, use a <a href="../../../components/content-display/kpi-stat/">KPI stat</a>.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A label on top, a large tabular figure with its unit, and a freshness note beneath. The figure dominates; the label and note give it meaning and credibility.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">label · value · unit · meta</span>
+                  <span class="wire-wait-time">
+                    <span class="wire-wait-time__label">Current ER wait</span>
+                    <span class="wire-wait-time__amount">
+                      <span class="wire-wait-time__value">12</span>
+                      <span class="wire-wait-time__unit">min</span>
+                    </span>
+                    <span class="wire-wait-time__meta">Updated 4 min ago</span>
+                  </span>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-wait-time</code></td><td>The wrapper. Stacks the three parts; carries the layout variant.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-wait-time__label</code></td><td>What is being measured. May hold a leading <a href="../status-dot/">status dot</a>.</td></tr>
+                    <tr><td>Amount</td><td><code>.wire-wait-time__amount</code></td><td>Baseline row holding the value and unit together.</td></tr>
+                    <tr><td>Value</td><td><code>.wire-wait-time__value</code></td><td>The figure, in bold tabular numerals so widths don't jump.</td></tr>
+                    <tr><td>Unit</td><td><code>.wire-wait-time__unit</code></td><td>The unit beside it — "min", "hr".</td></tr>
+                    <tr><td>Meta</td><td><code>.wire-wait-time__meta</code></td><td>Freshness or method: "Updated 4 min ago", "Estimated".</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <p class="u-text-muted u-mt-sm">One structure, three sizes for three placements.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-wait-time</code></td><td>Default. A stacked figure for a header or card.</td></tr>
+                    <tr><td>Inline</td><td><code>.wire-wait-time--inline</code></td><td>Label and figure on one row, for a list or table cell.</td></tr>
+                    <tr><td>Large</td><td><code>.wire-wait-time--lg</code></td><td>An oversized figure for a hero or stat band.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">Wait time owns the figure; presence and surrounding structure come from its neighbours.</p>
+                <ul>
+                  <li><strong>With <a href="../status-dot/">Status dot</a></strong> — a leading dot in the label shows open/closed alongside the wait.</li>
+                  <li><strong>In a <a href="../../../components/cards/">card</a> or hero</strong> — the block or large form anchors a location header.</li>
+                  <li><strong>In a <a href="../../../components/lists/">list</a> row</strong> — the inline form compares waits across locations.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A location header with presence, and two locations compared in a row.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Location header · compare row</span>
+                  <div class="u-stack u-stack--xl">
+                    <span class="wire-wait-time">
+                      <span class="wire-wait-time__label u-cluster u-cluster--xs"><span class="wire-status-dot" aria-hidden="true"></span>Riverside ER · Open 24 hours</span>
+                      <span class="wire-wait-time__amount">
+                        <span class="wire-wait-time__value">12</span>
+                        <span class="wire-wait-time__unit">min</span>
+                      </span>
+                      <span class="wire-wait-time__meta">Estimated wait, updated 4 min ago</span>
+                    </span>
+
+                    <div class="u-stack u-stack--md">
+                      <span class="wire-wait-time wire-wait-time--inline">
+                        <span class="wire-wait-time__label">Riverside Urgent Care — Oak St</span>
+                        <span class="wire-wait-time__amount"><span class="wire-wait-time__value">25</span> <span class="wire-wait-time__unit">min</span></span>
+                      </span>
+                      <span class="wire-wait-time wire-wait-time--inline">
+                        <span class="wire-wait-time__label">Riverside Urgent Care — Lake Ave</span>
+                        <span class="wire-wait-time__amount"><span class="wire-wait-time__value">5</span> <span class="wire-wait-time__unit">min</span></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <span class="wire-wait-time">
+                      <span class="wire-wait-time__label">Current ER wait</span>
+                      <span class="wire-wait-time__amount"><span class="wire-wait-time__value">12</span> <span class="wire-wait-time__unit">min</span></span>
+                      <span class="wire-wait-time__meta">Updated 4 min ago</span>
+                    </span>
+                    <p class="u-text-muted u-mt-md">Name what it measures and date it. The freshness note is what makes the number trustworthy.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <span class="wire-wait-time">
+                      <span class="wire-wait-time__amount"><span class="wire-wait-time__value">12</span></span>
+                    </span>
+                    <p class="u-text-muted u-mt-md">A bare number with no label or date answers nothing — 12 of what, measured when?</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Always pair the figure with a label and a freshness note.</li>
+                  <li>Round to a sensible unit — whole minutes, not "12.4".</li>
+                  <li>Say it's an estimate when it is; don't imply precision you don't have.</li>
+                  <li>Keep the label short and concrete: "Current ER wait", not "Approximate current waiting period".</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../status-dot/">Status dot</a> — presence (open/closed) to sit beside the wait.</li>
+                  <li><a href="../../../components/content-display/kpi-stat/">KPI stat</a> — the general figure-and-label display this is a specialised cousin of.</li>
+                  <li><a href="../../../components/badge/">Badge</a> — a short categorical status where a number is the wrong tool.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Empirical</strong> — Ryan W. Buell (Harvard Business School), research on operational transparency: making wait and progress visible can raise perceived value and trust. <em>Unverified — drafted, pending review.</em> <a href="https://www.hbs.edu/faculty/Pages/profile.aspx?facId=621464">hbs.edu</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: legibility — large, clearly set figures are read faster and with less effort. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/legibility-readability-comprehension/">nngroup.com</a></li>
+                  <li><strong>Convention</strong> — Bringhurst, <em>The Elements of Typographic Style</em>: tabular (lining) figures keep columns of numerals aligned and stable. <em>Unverified — pending review.</em></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.3 Status Messages: a wait that updates at runtime is announced via an <code>aria-live</code> region. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#status-messages">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--text-4xl</code> / <code>--text-xl</code> / <code>--text-6xl</code></td><td>The value size for block / inline / large.</td></tr>
+                    <tr><td><code>--text-lg</code> / <code>--text-md</code> / <code>--text-2xl</code></td><td>The matching unit size per variant.</td></tr>
+                    <tr><td><code>--text-sm</code> / <code>--text-xs</code></td><td>Label and meta type sizes.</td></tr>
+                    <tr><td><code>--weight-bold</code> / <code>--weight-medium</code></td><td>Value weight; label and unit weight.</td></tr>
+                    <tr><td><code>--leading-tight</code></td><td>Value line-height so the figure sits compact.</td></tr>
+                    <tr><td><code>--color-text-muted</code> / <code>--color-text-subtle</code></td><td>Label/unit, and the quieter meta note.</td></tr>
+                    <tr><td><code>--space-3xs</code> / <code>--space-2xs</code> / <code>--space-xs</code></td><td>Stack gap, value–unit gap, inline gap.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Layout</td><td><code>inline-flex</code> column; the amount is a baseline-aligned row.</td></tr>
+                    <tr><td>Figures</td><td><code>font-variant-numeric: tabular-nums</code> so the width doesn't shift as the number changes.</td></tr>
+                    <tr><td>Value size</td><td><code>--text-4xl</code> (block), <code>--text-xl</code> (inline), <code>--text-6xl</code> (large).</td></tr>
+                    <tr><td>Inline</td><td>Row direction, baseline-aligned, gap <code>--space-xs</code>.</td></tr>
+                    <tr><td>Colour</td><td>Value inherits text; unit and label are muted; meta is subtle. No fills.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">No interactive states. The figure is read, not operated. Its visual set is the three size variants in <a href="#usage">Usage &rsaquo; Types &amp; variants</a>; presence comes from a composed <a href="../status-dot/">Status dot</a>, not a state here.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None in the component. The figure and its freshness note are supplied and refreshed by the application; when the value updates at runtime, wrap the block in an <code>aria-live="polite"</code> region so the new wait is announced. No <code>data-wire-*</code> hooks.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Block (default). Wrap in aria-live if it updates at runtime. --&gt;
+&lt;span class="wire-wait-time" aria-live="polite"&gt;
+  &lt;span class="wire-wait-time__label"&gt;Current ER wait&lt;/span&gt;
+  &lt;span class="wire-wait-time__amount"&gt;
+    &lt;span class="wire-wait-time__value"&gt;12&lt;/span&gt;
+    &lt;span class="wire-wait-time__unit"&gt;min&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span class="wire-wait-time__meta"&gt;Updated 4 min ago&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Label with a presence dot from Status dot --&gt;
+&lt;span class="wire-wait-time__label"&gt;
+  &lt;span class="wire-status-dot" aria-hidden="true"&gt;&lt;/span&gt;Riverside ER · Open 24 hours
+&lt;/span&gt;
+
+&lt;!-- Inline (list row) and large (hero) --&gt;
+&lt;span class="wire-wait-time wire-wait-time--inline"&gt;…&lt;/span&gt;
+&lt;span class="wire-wait-time wire-wait-time--lg"&gt;…&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Keep the label, value, unit, and meta as adjacent text so the block reads as one phrase: "Current ER wait, 12 min, updated 4 min ago".</li>
+                  <li>Don't split the number from its unit or label with anything a screen reader announces between them.</li>
+                  <li>A leading <a href="../status-dot/">status dot</a> in the label is decorative (<code>aria-hidden</code>); its meaning is in the label text.</li>
+                  <li>For a live figure, wrap the block in <code>aria-live="polite"</code> so an update is announced once, calmly.</li>
+                  <li>If "min" is too terse, expand it for assistive tech (e.g. <code>aria-label</code> on the amount reading "12 minutes").</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None. Wait time is read-only and not in the tab order. If it sits inside a link to a location page, that link owns the keyboard behaviour and focus ring.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Wait time satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.4.1 Use of Color</td><td>The figure and its label carry everything; no meaning rides on colour. A composed status dot still depends on its text label.</td></tr>
+                    <tr><td>1.4.4 Resize Text</td><td>All sizes are token-based (<code>rem</code> type scale) and reflow without clipping when text is enlarged.</td></tr>
+                    <tr><td>1.4.10 Reflow</td><td>The inline variant wraps; the block variant stacks — neither needs horizontal scrolling.</td></tr>
+                    <tr><td>4.1.3 Status Messages</td><td>Runtime updates are announced through an <code>aria-live</code> region wrapping the block.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>Read in order, the block announces as "Current ER wait, 12 min, updated 4 min ago" — keep the DOM order label → value → unit → meta.</li>
+                  <li>"min" is typically read as "min"; expand to "minutes" via <code>aria-label</code> if a clearer reading matters.</li>
+                  <li>Inside an <code>aria-live="polite"</code> region, a change from 12 to 15 is announced once, without stealing focus.</li>
+                  <li>The decorative presence dot is skipped; the open/closed wording in the label is what is read.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../status-dot/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Status dot</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../insurance-indicator/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Insurance indicator</span>
+        </a>
+      </nav>
 
     </div>
   </section>

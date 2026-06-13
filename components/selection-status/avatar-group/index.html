@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Avatar group — Preview Design System</title>
+  <meta name="description" content="Overlapping avatars that summarise a set of people, with an optional +N overflow tile. Usage, specs, and accessibility for the Avatar group component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -176,7 +177,6 @@
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/tag/">Tag</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/avatar/">Avatar</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link is-current" aria-current="page" href="../../../components/selection-status/avatar-group/">Avatar group</a></li>
-          <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/filter-chip/">Filter chip</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/status-dot/">Status dot</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/progress/">Progress</a></li>
           <li class="wire-doc-nav__item"><a class="wire-doc-nav__link" href="../../../components/selection-status/meter/">Meter</a></li>
@@ -398,20 +398,442 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Avatar group</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Avatar group</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Overlapping avatars that summarise a set of people at a glance — a care team, a list of contributors — with an optional "+N" tile when there are more than fit. Composes <a href="../avatar/">Avatar</a> children; it adds the overlap and the ring, nothing else.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/avatar-group.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Avatar group documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Overlapping avatars with a surface-colour ring, closing on a "+N" overflow tile. The group carries the summary; the people are reachable from the adjacent link.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">overlap · ring · +N overflow</span>
+                  <div class="u-cluster u-cluster--md u-cluster--start-align">
+                    <span class="wire-avatar-group" role="group" aria-label="Care team, 9 people">
+                      <span class="wire-avatar" aria-hidden="true">ER</span>
+                      <span class="wire-avatar" aria-hidden="true">JM</span>
+                      <span class="wire-avatar" aria-hidden="true">AO</span>
+                      <span class="wire-avatar" aria-hidden="true">RH</span>
+                      <span class="wire-avatar wire-avatar-group__more" aria-hidden="true">+5</span>
+                    </span>
+                    <a href="#" class="u-text-default">View care team</a>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The group itself is non-interactive; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Contrast checked</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">An avatar group is a glanceable summary of who is involved, not a roster. It overlaps a handful of <a href="../avatar/">avatars</a> to signal "a group of people" and caps the visible set with a "+N" tile. The authoritative, named list lives elsewhere — a link, a roster, a tooltip.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Show a care team, project team, or set of authors compactly.</li>
+                  <li>Signal participation — who has commented, joined, or contributed.</li>
+                  <li>Preview a larger set, with a "+N" tile linking to the full list.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>Don't use it as the only way to reach people; pair it with a real, named list or link.</li>
+                  <li>Don't overlap more than about five before switching to "+N"; past that it is noise.</li>
+                  <li>Don't mix sizes within one group — keep every avatar the same size.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A flex row of <code>.wire-avatar</code> children with a negative inline margin so each tucks under the previous. The group paints a ring on every child; the last child is often the overflow tile.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">avatar · avatar · more</span>
+                  <span class="wire-avatar-group" role="group" aria-label="Example, 4 people">
+                    <span class="wire-avatar" aria-hidden="true">ER</span>
+                    <span class="wire-avatar" aria-hidden="true">JM</span>
+                    <span class="wire-avatar wire-avatar-group__more" aria-hidden="true">+2</span>
+                  </span>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Group</td><td><code>.wire-avatar-group</code></td><td>The flex row. Owns the overlap and rings its children.</td></tr>
+                    <tr><td>Member</td><td><code>.wire-avatar</code></td><td>Any avatar — image, initials, or icon — at one shared size.</td></tr>
+                    <tr><td>Overflow</td><td><code>.wire-avatar-group__more</code></td><td>A trailing "+N" tile, a quieter avatar standing for the rest.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Sizes &amp; overflow</h2>
+                <p class="u-text-muted u-mt-sm">The group has no size of its own; it inherits from the avatars inside it. Set the same size modifier on every member. The overflow tile is optional.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">small · medium · large</span>
+                  <div class="u-stack u-stack--lg">
+                    <span class="wire-avatar-group" role="group" aria-label="Small group, 4 people">
+                      <span class="wire-avatar wire-avatar--sm" aria-hidden="true">ER</span>
+                      <span class="wire-avatar wire-avatar--sm" aria-hidden="true">JM</span>
+                      <span class="wire-avatar wire-avatar--sm" aria-hidden="true">AO</span>
+                      <span class="wire-avatar wire-avatar--sm wire-avatar-group__more" aria-hidden="true">+1</span>
+                    </span>
+                    <span class="wire-avatar-group" role="group" aria-label="Medium group, 4 people">
+                      <span class="wire-avatar" aria-hidden="true">ER</span>
+                      <span class="wire-avatar" aria-hidden="true">JM</span>
+                      <span class="wire-avatar" aria-hidden="true">AO</span>
+                      <span class="wire-avatar wire-avatar-group__more" aria-hidden="true">+1</span>
+                    </span>
+                    <span class="wire-avatar-group" role="group" aria-label="Large group, 4 people">
+                      <span class="wire-avatar wire-avatar--lg" aria-hidden="true">ER</span>
+                      <span class="wire-avatar wire-avatar--lg" aria-hidden="true">JM</span>
+                      <span class="wire-avatar wire-avatar--lg" aria-hidden="true">AO</span>
+                      <span class="wire-avatar wire-avatar--lg wire-avatar-group__more" aria-hidden="true">+1</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">Avatar group is a thin wrapper: it composes <a href="../avatar/">Avatar</a> and adds two things — the overlap and a ring on each child. Everything else (size, shape, image vs initials) is the avatar's own.</p>
+                <ul>
+                  <li><strong>Members</strong> — any <code>.wire-avatar</code>; keep them one size and, for people, circular.</li>
+                  <li><strong>Overflow</strong> — a final <code>.wire-avatar-group__more</code> tile for the remainder.</li>
+                  <li><strong>Into cards and rows</strong> — drop a group into a project card or a list row to show participants.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A care team summary on a service card, and contributors on an article.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Care team · article contributors</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="u-stack u-stack--xs">
+                      <span class="wire-eyebrow">Cardiology care team</span>
+                      <div class="u-cluster u-cluster--sm u-cluster--start-align">
+                        <span class="wire-avatar-group" role="group" aria-label="Cardiology care team, 12 people">
+                          <span class="wire-avatar" aria-hidden="true">ER</span>
+                          <span class="wire-avatar" aria-hidden="true">JM</span>
+                          <span class="wire-avatar" aria-hidden="true">AO</span>
+                          <span class="wire-avatar wire-avatar-group__more" aria-hidden="true">+9</span>
+                        </span>
+                        <a href="#" class="u-text-default">Meet the team</a>
+                      </div>
+                    </div>
+                    <p class="u-text-default u-cluster u-cluster--xs u-cluster--start-align">
+                      <span class="wire-avatar-group" role="group" aria-label="Written by 2 authors">
+                        <span class="wire-avatar wire-avatar--sm" aria-hidden="true">ER</span>
+                        <span class="wire-avatar wire-avatar--sm" aria-hidden="true">JM</span>
+                      </span>
+                      <span class="wire-caption">By Dr. Elena Ruiz and Dr. James Mwangi</span>
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default">
+                      <span class="wire-avatar-group" role="group" aria-label="Team, 8 people" aria-hidden="true">
+                        <span class="wire-avatar" aria-hidden="true">ER</span>
+                        <span class="wire-avatar" aria-hidden="true">JM</span>
+                        <span class="wire-avatar" aria-hidden="true">AO</span>
+                        <span class="wire-avatar wire-avatar-group__more" aria-hidden="true">+5</span>
+                      </span>
+                    </p>
+                    <p class="u-text-muted u-mt-md">Cap the visible set at a few and let "+N" carry the rest. The group stays legible.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default">
+                      <span class="wire-avatar-group" aria-hidden="true">
+                        <span class="wire-avatar wire-avatar--sm">ER</span>
+                        <span class="wire-avatar">JM</span>
+                        <span class="wire-avatar wire-avatar--lg">AO</span>
+                        <span class="wire-avatar wire-avatar--sm">RH</span>
+                      </span>
+                    </p>
+                    <p class="u-text-muted u-mt-md">Don't mix sizes or show every member. Uneven tiles and a long row both read as clutter.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Show three to five faces, then "+N" for the remainder.</li>
+                  <li>The "+N" number is the count <em>not shown</em>, so visible + N equals the total.</li>
+                  <li>Give the group a plain summary name: "Cardiology care team, 12 people".</li>
+                  <li>Always offer a way to the full named list nearby ("Meet the team").</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../avatar/">Avatar</a> — the member this group is built from.</li>
+                  <li><a href="../../../components/badge/">Badge</a> — a count overlay for a single avatar, where a group is overkill.</li>
+                  <li><a href="../../../components/cards/">Cards</a> and <a href="../../../components/lists/">Lists</a> — common hosts.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Convention</strong> — GitHub Primer, Avatar / AvatarStack: overlapping avatars summarise a set of people; cap the visible count and show the remainder. <em>Unverified — pending review.</em> <a href="https://primer.style/product/components/avatar/">primer.style</a></li>
+                  <li><strong>Convention</strong> — Atlassian Design System, Avatar group: overlap with a "+N" overflow and a route to the full list. <em>Unverified — pending review.</em> <a href="https://atlassian.design/components/avatar-group/examples">atlassian.design</a></li>
+                  <li><strong>Convention</strong> — Gestalt principles of proximity and common region: overlapping, touching tiles are perceived as one set. <em>Unverified — pending review.</em></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: the grouping is conveyed by overlap and the summary label, never colour. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Sizes &amp; overflow</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--space-sm</code></td><td>The overlap amount (applied as a negative inline margin via <code>--avatar-group-overlap</code>).</td></tr>
+                    <tr><td><code>--border-md</code></td><td>Ring thickness on each member.</td></tr>
+                    <tr><td><code>--color-bg</code></td><td>Ring colour — the surface, so it reads as a cut between tiles.</td></tr>
+                    <tr><td><code>--color-bg-subtle</code></td><td>The overflow tile's fill, quieter than a person.</td></tr>
+                    <tr><td><code>--color-text-muted</code></td><td>The overflow tile's "+N" text.</td></tr>
+                    <tr><td><code>--text-2xs</code></td><td>The overflow tile's type size.</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Member sizing, shape, and fill come from <a href="../avatar/#specs">Avatar's tokens</a>, not this component.</p>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Layout</td><td><code>display: inline-flex</code>; members aligned centre.</td></tr>
+                    <tr><td>Overlap</td><td><code>margin-inline-start: calc(-1 * --avatar-group-overlap)</code> on every member after the first.</td></tr>
+                    <tr><td>Ring</td><td><code>box-shadow</code> ring at <code>--border-md</code> in <code>--color-bg</code> on each member; no layout box added.</td></tr>
+                    <tr><td>Stacking</td><td>Later members paint over earlier ones (DOM order); the ring keeps each readable.</td></tr>
+                    <tr><td>Overflow tile</td><td>A <code>.wire-avatar</code> with a subtle fill and muted "+N" text; same size as its peers.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">No interactive states. If members are links, each carries its own hover and focus per <a href="../avatar/#specs">Avatar</a>. The group has no hover, focus, or selected state of its own.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. Deciding how many avatars to show and computing the "+N" remainder is the application's job; the component renders the row it is given. No <code>data-wire-*</code> hooks.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Group summary on the wrapper; members are decorative;
+     the full named list lives in the adjacent link. --&gt;
+&lt;span class="wire-avatar-group" role="group" aria-label="Care team, 9 people"&gt;
+  &lt;span class="wire-avatar" aria-hidden="true"&gt;ER&lt;/span&gt;
+  &lt;span class="wire-avatar" aria-hidden="true"&gt;JM&lt;/span&gt;
+  &lt;span class="wire-avatar" aria-hidden="true"&gt;AO&lt;/span&gt;
+  &lt;span class="wire-avatar" aria-hidden="true"&gt;RH&lt;/span&gt;
+  &lt;span class="wire-avatar wire-avatar-group__more" aria-hidden="true"&gt;+5&lt;/span&gt;
+&lt;/span&gt;
+&lt;a href="/care-team"&gt;View care team&lt;/a&gt;
+
+&lt;!-- One shared size on every member --&gt;
+&lt;span class="wire-avatar-group" role="group" aria-label="Authors, 2 people"&gt;
+  &lt;span class="wire-avatar wire-avatar--sm" aria-hidden="true"&gt;ER&lt;/span&gt;
+  &lt;span class="wire-avatar wire-avatar--sm" aria-hidden="true"&gt;JM&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <p class="u-text-muted u-mt-sm">Treat the group as a summary with one accessible name, and route to the real people elsewhere. Spelling out four sets of initials helps no one.</p>
+                <ul>
+                  <li>Give the wrapper <code>role="group"</code> and an <code>aria-label</code> stating what it is and how many: "Cardiology care team, 12 people".</li>
+                  <li>Mark each member avatar and the "+N" tile <code>aria-hidden="true"</code> — the initials are decorative inside the summary.</li>
+                  <li>Provide a real, named destination nearby (a link or list). The group previews; the link delivers.</li>
+                  <li>If members must be individually actionable, make each a labelled link and drop the blanket <code>aria-hidden</code> — but prefer the summary pattern.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None for the group. In the summary pattern the only focus stop is the adjacent "view all" link. If members are individually linked, they enter the tab order in DOM order, each with its own focus ring per <a href="../avatar/#accessibility">Avatar</a>.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Avatar group satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.1.1 Non-text Content</td><td>Member avatars are decorative within the summary (<code>aria-hidden</code>); the group's name and the linked list carry the information.</td></tr>
+                    <tr><td>1.3.1 Info &amp; Relationships</td><td><code>role="group"</code> with a name associates the tiles as one set programmatically, matching the visual grouping.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>The set is conveyed by overlap, the ring, and the summary label — never colour.</td></tr>
+                    <tr><td>1.4.11 Non-text Contrast</td><td>The ring is decorative separation, not a meaning-bearing boundary, so no 3:1 edge is relied upon.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>In the summary pattern the group reads as its label, e.g. "Cardiology care team, 12 people, group", and the decorative tiles are skipped.</li>
+                  <li>The "+N" tile is not announced; the total is already in the group's name.</li>
+                  <li>The adjacent "view all" link is what a user follows to the named people.</li>
+                  <li>Avoid leaving member initials unhidden — they read as letter strings ("E, R, J, M") and add only noise.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../avatar/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Avatar</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../status-dot/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Status dot</span>
+        </a>
+      </nav>
 
     </div>
   </section>

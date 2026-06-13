@@ -11,6 +11,13 @@
 
 @import url("components/button.css");
 @import url("components/badge.css");
+@import url("components/avatar.css");
+@import url("components/avatar-group.css");
+@import url("components/status-dot.css");
+@import url("components/wait-time.css");
+@import url("components/insurance-indicator.css");
+@import url("components/progress.css");
+@import url("components/meter.css");
 @import url("components/tag.css");
 @import url("components/divider.css");
 @import url("components/breadcrumb.css");

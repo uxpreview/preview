@@ -1,0 +1,51 @@
+/* ============================================================
+   Status dot — a small filled circle marking presence or state.
+   Grayscale-only: the dot is decorative; the adjacent text label
+   carries the meaning. Fill treatments: strong (default), subtle,
+   outline. Optional pulse for a live indicator.
+   ============================================================ */
+
+.wire-status-dot {
+  --status-dot-size: 0.625rem;
+
+  display: inline-block;
+  flex: none;
+  inline-size: var(--status-dot-size);
+  block-size: var(--status-dot-size);
+  vertical-align: middle;
+
+  background-color: var(--color-text);
+  border-radius: var(--radius-pill);
+}
+
+/* ---------- Fill treatments ---------- */
+.wire-status-dot--subtle  { background-color: var(--color-text-muted); }
+.wire-status-dot--outline {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 var(--border-md) var(--color-border-strong);
+}
+
+/* ---------- Sizes ---------- */
+.wire-status-dot--sm { --status-dot-size: 0.5rem; }
+.wire-status-dot--lg { --status-dot-size: 0.875rem; }
+
+/* ---------- Live pulse ----------
+   A halo that fades outward to signal a live/active state. Decorative;
+   the label still carries the meaning. Respects reduced-motion. */
+.wire-status-dot--pulse { position: relative; }
+.wire-status-dot--pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: inherit;
+  animation: wire-status-dot-pulse var(--duration-slow) var(--ease-out) infinite;
+}
+
+@keyframes wire-status-dot-pulse {
+  to { transform: scale(2.5); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire-status-dot--pulse::after { animation: none; }
+}
