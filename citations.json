@@ -108,7 +108,8 @@
         "meter",
         "link",
         "disclosure",
-        "save-portal-link"
+        "save-portal-link",
+        "menu"
       ]
     },
     {
@@ -204,7 +205,8 @@
         "accordion",
         "megamenu",
         "drawer",
-        "disclosure"
+        "disclosure",
+        "menu"
       ]
     },
     {
@@ -221,7 +223,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "drawer",
-        "modal"
+        "modal",
+        "menu"
       ]
     },
     {
@@ -272,7 +275,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "layout-primitives"
+        "layout-primitives",
+        "menu"
       ]
     },
     {
@@ -410,7 +414,8 @@
         "icon-button",
         "button-group",
         "disclosure",
-        "save-portal-link"
+        "save-portal-link",
+        "menu"
       ]
     },
     {
@@ -489,7 +494,8 @@
         "icon-button",
         "button-group",
         "disclosure",
-        "save-portal-link"
+        "save-portal-link",
+        "menu"
       ]
     },
     {
@@ -2093,7 +2099,8 @@
       "verified_date": null,
       "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
       "supports": [
-        "disclosure"
+        "disclosure",
+        "menu"
       ]
     },
     {
@@ -2110,6 +2117,22 @@
       "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "save-portal-link"
+      ]
+    },
+    {
+      "id": "apg-menu-button",
+      "tier": "standard",
+      "finding": "A menu button (aria-haspopup + aria-expanded) opens a role=menu of menuitems; arrow keys move focus between items, Enter activates, Escape closes and returns focus to the trigger.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Menu Button Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from menu research, pending human review",
+      "supports": [
+        "menu"
       ]
     }
   ]

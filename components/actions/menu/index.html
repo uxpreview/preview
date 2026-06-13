@@ -397,20 +397,357 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Menu</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Menu</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">An action menu: a trigger button opens a popup list of commands. It follows the ARIA menu-button pattern — opening moves focus into the list, arrow keys roam it, Escape closes and returns focus. Use it to collect related actions behind one control, not for navigation or single-select input.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/menu.css</li>
+          <li class="wire-doc-header__meta-item">Organism · data-wire-menu</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Menu documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A labelled trigger and an icon-button overflow trigger. Open with click or <kbd>↓</kbd>, roam with the arrow keys, choose with <kbd>Enter</kbd>, close with <kbd>Esc</kbd>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">labelled trigger · overflow (icon) trigger</span>
+                  <div class="u-cluster u-cluster--lg">
+                    <div class="wire-menu" data-wire-menu>
+                      <button type="button" class="wire-button wire-button--secondary" data-wire-menu-trigger>
+                        Actions
+                        <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                      </button>
+                      <ul class="wire-menu__popup" role="menu" aria-label="Actions" data-wire-menu-popup>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item">
+                          <span class="wire-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span>
+                          Edit details
+                        </button></li>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item">
+                          <span class="wire-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+                          Download summary
+                        </button></li>
+                        <li role="none"><hr class="wire-menu__separator"></li>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item wire-menu__item--danger">
+                          <span class="wire-menu__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg></span>
+                          Cancel appointment
+                        </button></li>
+                      </ul>
+                    </div>
+
+                    <div class="wire-menu" data-wire-menu>
+                      <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" data-wire-menu-trigger aria-label="More actions">
+                        <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" focusable="false"><circle cx="12" cy="5" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle></svg></span>
+                      </button>
+                      <ul class="wire-menu__popup wire-menu__popup--end" role="menu" aria-label="More actions" data-wire-menu-popup>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item">Share</button></li>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item">Print</button></li>
+                        <li role="none"><button type="button" role="menuitem" class="wire-menu__item" aria-disabled="true">Export (unavailable)</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The menu-button interaction (open/close, arrow-key focus, Escape, outside-click) is implemented and self-tested, but a full screen-reader pass across NVDA / VoiceOver / JAWS is pending — interactive menus are where SR behaviour varies most. Treat the keyboard model as solid and the SR announcements as provisional. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Keyboard complete</span>
+                  <span class="wire-badge">Focus returns on close</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">A menu keeps a surface uncluttered by tucking secondary commands behind a single trigger. It is for <strong>actions</strong> — things that happen — arranged as a short list the user opens, scans, and dismisses. Because it overlays content and manages focus, it carries more weight than a button; reach for it only when a flat row of buttons would be too many.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>An overflow ("⋯") of secondary actions on a card, row, or toolbar.</li>
+                  <li>A small set (3–8) of related commands that don't all fit inline.</li>
+                  <li>A grouped action list with a separator and the occasional destructive item.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For navigation links — use a <a href="../../../components/top-nav/">nav</a> / <a href="../../../components/top-nav/">mega menu</a>; those are link lists, not action menus.</li>
+                  <li>For choosing a value in a form — use a <a href="../../../components/forms-inputs/select/">Select</a> or <a href="../../../components/forms-inputs/combobox/">Combobox</a> (a listbox, not a menu).</li>
+                  <li>For one or two actions — just show <a href="../../../components/buttons/">buttons</a> or a <a href="../button-group/">Button group</a>.</li>
+                  <li>For a large, blocking decision — use a <a href="../../../components/modal/">Modal</a>.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A positioning root, a trigger button, and a popup list of menuitems. The behaviour hooks tie the three together.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / hook</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Root</td><td><code>.wire-menu</code> + <code>data-wire-menu</code></td><td>Relative wrapper the popup positions against.</td></tr>
+                    <tr><td>Trigger</td><td><code>data-wire-menu-trigger</code> (a <a href="../../../components/buttons/">Button</a> or <a href="../icon-button/">Icon button</a>)</td><td>Toggles the menu; gets <code>aria-haspopup</code>/<code>aria-expanded</code>.</td></tr>
+                    <tr><td>Popup</td><td><code>.wire-menu__popup</code>, <code>role="menu"</code>, <code>data-wire-menu-popup</code></td><td>The overlay list. Hidden until open.</td></tr>
+                    <tr><td>Item</td><td><code>.wire-menu__item</code>, <code>role="menuitem"</code></td><td>One command. Use a real <code>&lt;button&gt;</code>.</td></tr>
+                    <tr><td>Separator</td><td><code>.wire-menu__separator</code></td><td>Groups items visually.</td></tr>
+                    <tr><td>Group label</td><td><code>.wire-menu__group-label</code></td><td>An optional quiet heading for a group.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Start-aligned</td><td><code>.wire-menu__popup</code></td><td>Default; aligns to the trigger's start edge.</td></tr>
+                    <tr><td>End-aligned</td><td><code>.wire-menu__popup--end</code></td><td>Aligns to the end edge — for a right-placed overflow.</td></tr>
+                    <tr><td>Danger item</td><td><code>.wire-menu__item--danger</code></td><td>A destructive command; emphasised by weight + icon, not colour.</td></tr>
+                    <tr><td>Disabled item</td><td><code>aria-disabled="true"</code></td><td>Present but not actionable; skipped by arrow keys.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default">Use <code>role="menu"</code> + <code>role="menuitem"</code> with real <code>&lt;button&gt;</code>s for a list of actions.</p>
+                    <p class="u-text-muted u-mt-md">The roles and the wired keyboard model are what make it a menu, not just a floating box.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default">Don't put navigation <code>&lt;a&gt;</code> links inside a <code>role="menu"</code>.</p>
+                    <p class="u-text-muted u-mt-md">Links that navigate belong in a nav, not an action menu; mixing them confuses the announced role.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../icon-button/">Icon button</a> — the usual overflow trigger.</li>
+                  <li><a href="../button-group/">Button group</a> — when a few actions can sit inline instead.</li>
+                  <li><a href="../../../components/forms-inputs/select/">Select</a> / <a href="../../../components/forms-inputs/combobox/">Combobox</a> — for choosing a value (a listbox, not a menu).</li>
+                  <li><a href="../../../components/drawer/">Drawer</a> and <a href="../../../components/modal/">Modal</a> — heavier overlays for larger tasks.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI-ARIA APG, Menu Button pattern: a button with <code>aria-haspopup</code>/<code>aria-expanded</code> opens a <code>role="menu"</code>; arrow keys move between menuitems, Escape closes and restores focus. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the trigger and items expose their roles and expanded state programmatically. <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.1.2 No Keyboard Trap: focus can always leave via Escape or Tab; the menu never traps. <a href="https://www.w3.org/TR/WCAG22/#no-keyboard-trap">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group, "Progressive Disclosure": disclosing secondary actions behind a trigger keeps the primary surface scannable. <em>Unverified — pending review.</em> <a href="https://www.nngroup.com/articles/progressive-disclosure/">nngroup.com</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-bg</code> / <code>--color-border</code></td><td>Popup surface and outline.</td></tr>
+                    <tr><td><code>--shadow-md</code></td><td>Lifts the popup off the page.</td></tr>
+                    <tr><td><code>--color-bg-muted</code></td><td>Active / hovered item wash.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-muted</code></td><td>Item text; disabled and group-label colour.</td></tr>
+                    <tr><td><code>--radius-md</code> / <code>--radius-sm</code></td><td>Popup corners; item corners.</td></tr>
+                    <tr><td><code>--z-dropdown</code></td><td>Stacking above page content.</td></tr>
+                    <tr><td><code>--space-2xs</code> / <code>--space-sm</code></td><td>Popup padding, item gap, and inline padding.</td></tr>
+                    <tr><td><code>--text-sm</code> / <code>--text-xs</code>, weights</td><td>Item and group-label type.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Popup width</td><td><code>min-inline-size: 12rem</code>; grows with the longest item.</td></tr>
+                    <tr><td>Offset</td><td><code>calc(100% + --space-2xs)</code> below the trigger.</td></tr>
+                    <tr><td>Item height</td><td><code>min-block-size: 2.75rem</code> — ≥44px target.</td></tr>
+                    <tr><td>Alignment</td><td>Start edge by default; <code>--end</code> flips to the end edge.</td></tr>
+                    <tr><td>Layer</td><td><code>--z-dropdown</code>; not modal, so no scroll lock.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">The popup is closed (<code>hidden</code>) or open (<code>aria-expanded="true"</code> on the trigger). Items show hover and <code>:focus-visible</code> with the same background wash, so the keyboard-focused item and the pointer-hovered item read identically. Disabled items (<code>aria-disabled="true"</code>) are dimmed and skipped by the arrow keys.</p>
+              </section>
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">Wired by <code>js/wire.js</code> via <code>data-wire-menu</code> on the root, <code>data-wire-menu-trigger</code> on the button, and <code>data-wire-menu-popup</code> on the list. The script manages <code>aria-haspopup</code>/<code>aria-expanded</code>, open/close, focus into and out of the list, arrow-key roaming, and outside-click / Escape / Tab-out dismissal. No application code needed beyond wiring each item's <code>click</code> to its action.</p>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;div class="wire-menu" data-wire-menu&gt;
+  &lt;button type="button" class="wire-button wire-button--secondary" data-wire-menu-trigger&gt;
+    Actions
+    &lt;span class="wire-button__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;ul class="wire-menu__popup" role="menu" aria-label="Actions" data-wire-menu-popup&gt;
+    &lt;li role="none"&gt;&lt;button type="button" role="menuitem" class="wire-menu__item"&gt;
+      &lt;span class="wire-menu__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt; Edit details
+    &lt;/button&gt;&lt;/li&gt;
+    &lt;li role="none"&gt;&lt;hr class="wire-menu__separator"&gt;&lt;/li&gt;
+    &lt;li role="none"&gt;&lt;button type="button" role="menuitem" class="wire-menu__item wire-menu__item--danger"&gt;
+      Cancel appointment
+    &lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- Right-aligned overflow: icon trigger + end-aligned popup --&gt;
+&lt;div class="wire-menu" data-wire-menu&gt;
+  &lt;button type="button" class="wire-button wire-button--ghost wire-button--icon-only"
+          data-wire-menu-trigger aria-label="More actions"&gt;...&lt;/button&gt;
+  &lt;ul class="wire-menu__popup wire-menu__popup--end" role="menu" aria-label="More actions" data-wire-menu-popup&gt;
+    &lt;li role="none"&gt;&lt;button type="button" role="menuitem" class="wire-menu__item"&gt;Share&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>The trigger carries <code>aria-haspopup="menu"</code> and <code>aria-expanded</code> (managed for you); give the popup a <code>role="menu"</code> and an <code>aria-label</code>.</li>
+                  <li>Each command is a <code>&lt;button role="menuitem"&gt;</code> wrapped in <code>&lt;li role="none"&gt;</code> so the list semantics don't double up.</li>
+                  <li>Mark an unavailable command with <code>aria-disabled="true"</code> (keeps it discoverable but inert) rather than removing it.</li>
+                  <li>This is an <em>action</em> menu — don't reuse the role for navigation links or for selecting a value (use a listbox/Select).</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>On the trigger: open the menu and focus the first item.</td></tr>
+                    <tr><td><kbd>↓</kbd> / <kbd>↑</kbd></td><td>On the trigger: open. In the menu: move to the next / previous item (wraps).</td></tr>
+                    <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Jump to the first / last item.</td></tr>
+                    <tr><td><kbd>Enter</kbd></td><td>Activate the focused item, then close and return focus to the trigger.</td></tr>
+                    <tr><td><kbd>Esc</kbd></td><td>Close the menu and return focus to the trigger.</td></tr>
+                    <tr><td><kbd>Tab</kbd></td><td>Close the menu and continue past the trigger (no trap).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Menu satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Trigger and items expose roles + expanded state; items have text names.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Fully operable: open, roam, activate, and close from the keyboard.</td></tr>
+                    <tr><td>2.1.2 No Keyboard Trap</td><td>Escape and Tab always release focus from the menu.</td></tr>
+                    <tr><td>2.4.3 Focus Order</td><td>Opening moves focus into the list; closing returns it to the trigger.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Active item and danger item read by wash / weight + icon, never hue.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>Items are ≥44px tall.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>The trigger reads e.g. "Actions, menu, collapsed"; activating it announces the menu and the first item.</li>
+                  <li>Items read as "Edit details, menu item, 1 of 3" as focus roams.</li>
+                  <li>A disabled item reads as dimmed/unavailable and is skipped by the arrow keys.</li>
+                  <li>Interactive menus are where SR behaviour diverges most across browsers — hence the pending audit noted under Usage.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../button-group/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Button group</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../link/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Link</span>
+        </a>
+      </nav>
 
     </div>
   </section>

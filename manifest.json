@@ -3189,10 +3189,38 @@
     },
     {
       "id": "menu",
-      "label": "Menu",
+      "level": "organism",
+      "rationale": [
+        {
+          "decision": "ARIA menu-button pattern: roles, arrow-key focus, Escape-to-close",
+          "citation_ids": ["apg-menu-button", "wcag-4.1.2-name-role-value", "wcag-2.4.3-focus-order"]
+        },
+        {
+          "decision": "Fully keyboard-operable with no trap",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-2.1.2-no-keyboard-trap"]
+        },
+        {
+          "decision": "Disclose secondary actions to keep the surface scannable",
+          "citation_ids": ["nng-progressive-disclosure"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-menu",
+      "file": "css/components/menu.css",
       "ref": "components/actions/menu/",
-      "status": "planned"
+      "ref_template": "components/actions/menu/",
+      "status": "beta",
+      "variants": ["(default = start-aligned)", "popup--end"],
+      "elements": ["wire-menu__popup", "wire-menu__item", "wire-menu__icon", "wire-menu__separator", "wire-menu__group-label"],
+      "modifiers": ["item--danger"],
+      "states": ["aria-expanded", "aria-disabled (item)"],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": ["data-wire-menu", "data-wire-menu-trigger", "data-wire-menu-popup"],
+      "slots": ["trigger", "items"],
+      "a11y": "ARIA menu-button: trigger gets aria-haspopup=menu + aria-expanded (managed by wire.js); popup is role=menu, items are <button role=menuitem> in <li role=none>. Open moves focus into the list; Up/Down/Home/End roam; Enter activates; Escape/Tab close and restore focus; outside click dismisses. No keyboard trap. Items ≥44px. Action menu only — not navigation or value-select.",
+      "notes": "For actions, not navigation (use a nav/mega menu) or value selection (use Select/Combobox). Non-modal: no scroll lock. Interactive SR behaviour varies across engines — audit pending before stable.",
+      "label": "Menu",
+      "desc": "An action menu: a trigger button opens a keyboard-navigable popup of commands."
     },
     {
       "id": "link",
@@ -5192,7 +5220,6 @@
               "type": "page",
               "label": "Menu",
               "ref": "components/actions/menu/",
-              "status": "planned",
               "id": "menu"
             },
             {
