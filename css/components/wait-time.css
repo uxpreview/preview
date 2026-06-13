@@ -1,0 +1,53 @@
+/* ============================================================
+   Wait time — a current wait estimate (ER, urgent care, callback).
+   A label, a large tabular figure with its unit, and a freshness note.
+   ============================================================ */
+
+.wire-wait-time {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.wire-wait-time__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+}
+
+.wire-wait-time__amount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+}
+
+.wire-wait-time__value {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  font-variant-numeric: tabular-nums;
+}
+
+.wire-wait-time__unit {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+}
+
+.wire-wait-time__meta {
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+/* ---------- Inline: label, figure, and unit on one baseline row ---------- */
+.wire-wait-time--inline {
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+.wire-wait-time--inline .wire-wait-time__value { font-size: var(--text-xl); }
+.wire-wait-time--inline .wire-wait-time__unit  { font-size: var(--text-md); }
+
+/* ---------- Large: a hero / stat-band figure ---------- */
+.wire-wait-time--lg .wire-wait-time__value { font-size: var(--text-6xl); }
+.wire-wait-time--lg .wire-wait-time__unit  { font-size: var(--text-2xl); }

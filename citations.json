@@ -98,7 +98,8 @@
         "status-pill",
         "avatar",
         "avatar-group",
-        "status-dot"
+        "status-dot",
+        "wait-time"
       ]
     },
     {
@@ -482,7 +483,8 @@
         "toast",
         "text-size-control",
         "skeleton",
-        "status-dot"
+        "status-dot",
+        "wait-time"
       ]
     },
     {
@@ -684,7 +686,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "base-typography"
+        "base-typography",
+        "wait-time"
       ],
       "notes": "Year not stated; confirm recency. research.html also cites WebAIM and iOS HIG default body for the same decision."
     },
@@ -1405,7 +1408,8 @@
         "divider",
         "quote",
         "table",
-        "two-column"
+        "two-column",
+        "wait-time"
       ],
       "notes": "Book reference, no checkable URL, and pre-2020 edition. Authoritative but not web-checkable; cite by page if used with a client."
     },
@@ -1957,6 +1961,22 @@
       "verification": "UNVERIFIED \u2014 candidate from avatar research brief, pending human review",
       "supports": [
         "avatar"
+      ]
+    },
+    {
+      "id": "buell-operational-transparency",
+      "tier": "empirical",
+      "finding": "Operational transparency \u2014 making waiting and behind-the-scenes effort visible to people \u2014 can increase perceived value, trust, and satisfaction, even when the wait itself is unchanged.",
+      "source": {
+        "org": "Harvard Business School",
+        "title": "Ryan W. Buell \u2014 research on operational transparency",
+        "year": null,
+        "url": "https://www.hbs.edu/faculty/Pages/profile.aspx?facId=621464"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from wait-time research brief; live-source check blocked by environment network policy, pending human review",
+      "supports": [
+        "wait-time"
       ]
     }
   ]

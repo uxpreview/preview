@@ -3590,10 +3590,90 @@
     },
     {
       "id": "wait-time",
+      "level": "molecule",
       "label": "Wait time",
+      "desc": "A current wait estimate — a label, a large tabular figure with its unit, and a freshness note.",
       "category": "selection",
+      "class": "wire-wait-time",
+      "file": "css/components/wait-time.css",
       "ref": "components/selection-status/wait-time/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = block)",
+        "inline",
+        "lg"
+      ],
+      "elements": [
+        "wire-wait-time__label",
+        "wire-wait-time__amount",
+        "wire-wait-time__value",
+        "wire-wait-time__unit",
+        "wire-wait-time__meta"
+      ],
+      "behaviors": [],
+      "slots": [
+        "label",
+        "value",
+        "unit",
+        "meta"
+      ],
+      "related": [
+        "status-dot",
+        "kpi-stat",
+        "badge"
+      ],
+      "a11y": "Keep label/value/unit/meta as adjacent text so it reads as one phrase (\"Current ER wait, 12 min, updated 4 min ago\"); keep DOM order label → value → unit → meta. A leading status dot in the label is decorative. Wrap the block in aria-live=\"polite\" for runtime updates; expand \"min\" via aria-label if a clearer reading matters.",
+      "rationale": [
+        {
+          "decision": "Show the wait at all, dated — a visible, fresh estimate manages expectations and builds trust",
+          "citation_ids": [
+            "buell-operational-transparency"
+          ]
+        },
+        {
+          "decision": "One large, legible figure in tabular numerals so widths don't jump as the number changes",
+          "citation_ids": [
+            "nng-legibility",
+            "bringhurst-elements-typographic-style"
+          ]
+        },
+        {
+          "decision": "Runtime updates announced via an aria-live region; no meaning on colour",
+          "citation_ids": [
+            "wcag-4.1.3-status-messages",
+            "wcag-1.4.1-use-of-color"
+          ]
+        }
+      ],
+      "notes": "A specialised cousin of KPI stat tuned for wait estimates. Composes a Status dot in the label for presence. Value uses font-variant-numeric: tabular-nums; sizes are the type-scale tokens via three layout variants. The freshness note is load-bearing for trust — a stale figure is worse than none.",
+      "figma_props": {
+        "Layout": {
+          "type": "VARIANT",
+          "values": [
+            "block",
+            "inline",
+            "lg"
+          ],
+          "default": "block"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Value": {
+          "type": "TEXT",
+          "slot": "value"
+        },
+        "Unit": {
+          "type": "TEXT",
+          "slot": "unit"
+        },
+        "Meta": {
+          "type": "TEXT",
+          "slot": "meta",
+          "optional": true
+        }
+      }
     },
     {
       "id": "insurance-indicator",
@@ -4971,7 +5051,6 @@
               "type": "page",
               "label": "Wait time",
               "ref": "components/selection-status/wait-time/",
-              "status": "planned",
               "id": "wait-time"
             },
             {
