@@ -397,20 +397,331 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Link</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Link</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A styled text link for navigation — taking the user somewhere, not performing an action. The base <code>&lt;a&gt;</code> already carries the system underline; <code>.wire-link</code> adds explicit treatments for a call-to-action, a quiet inline link, and links that carry a leading or trailing icon.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/link.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Link documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">An inline link, a quiet link, a standalone call-to-action with a trailing arrow, and one that opens in a new window.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">inline · quiet · standalone · new window</span>
+                  <div class="u-stack u-stack--md">
+                    <p class="u-text-default">Review your <a class="wire-link" href="#">visit summary</a> before the appointment.</p>
+                    <p class="u-text-default">See the <a class="wire-link wire-link--quiet" href="#">billing FAQ</a> for payment options.</p>
+                    <p><a class="wire-link wire-link--standalone" href="#">View all cardiology services<span class="wire-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a></p>
+                    <p><a class="wire-link" href="#">Patient rights (PDF)<span class="wire-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span><span class="u-visually-hidden"> (opens in a new window)</span></a></p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Link is static markup over the native anchor, so behaviour is well-trodden; a screen-reader pass on the icon and new-window patterns is pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Underline affordance</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">The dividing line is simple: a <strong>link navigates</strong>, a <strong>button acts</strong>. If it changes the address bar or moves the user to other content, it is a link. If it submits, toggles, opens a dialog, or mutates data, it is a <a href="../../../components/buttons/">Button</a>. Getting this right is the single most important link decision — it sets the right role, keyboard behaviour, and user expectation.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Inline within prose, to send the reader to a related page.</li>
+                  <li>As a standalone call-to-action ("View all results →") at the end of a section.</li>
+                  <li>For a download or a cross-site destination, with an icon that signals the change.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For an action — submitting, opening a <a href="../../../components/modal/">Modal</a>, toggling. Use a <a href="../../../components/buttons/">Button</a>.</li>
+                  <li>As a fake link (<code>&lt;a&gt;</code> with no <code>href</code> wired to JS). Use a real button.</li>
+                  <li>For a primary page action that needs prominence — that is a button's job.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">An anchor with the system underline, an optional icon child, and a real <code>href</code>.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / attribute</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Link</td><td><code>.wire-link</code> on <code>&lt;a href&gt;</code></td><td>The navigable text. Underlined by default.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-link__icon</code></td><td>An optional 1em <code>&lt;svg&gt;</code>, decorative; placed before or after the label by DOM order.</td></tr>
+                    <tr><td>New-window note</td><td><code>.u-visually-hidden</code> text</td><td>"(opens in a new window)" announced for <code>target="_blank"</code> links.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Default</td><td><code>.wire-link</code></td><td>Underlined inline link — the safe default.</td></tr>
+                    <tr><td>Quiet</td><td><code>.wire-link--quiet</code></td><td>No underline until hover/focus. Dense UI only, where context makes it clearly a link.</td></tr>
+                    <tr><td>Standalone</td><td><code>.wire-link--standalone</code></td><td>A heavier block call-to-action with an icon.</td></tr>
+                    <tr><td>Inverse</td><td><code>.wire-link--inverse</code></td><td>For a dark / inverse surface; keeps contrast.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <div class="doc-example">
+                  <span class="doc-example__label">Card footer CTA · inline prose</span>
+                  <div class="u-stack u-stack--lg">
+                    <p class="u-text-default">Our cardiology team treats the full range of heart conditions. <a class="wire-link" href="#">Meet the cardiologists</a> or <a class="wire-link" href="#">find a location near you</a>.</p>
+                    <a class="wire-link wire-link--standalone" href="#">Explore all specialties<span class="wire-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></a>
+                  </div>
+                </div>
+              </section>
+
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default">Read the <a class="wire-link" href="#">full visiting-hours policy</a>.</p>
+                    <p class="u-text-muted u-mt-md">Write link text that describes the destination, so it makes sense out of context (in a screen-reader links list).</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default">Visiting-hours policy. <a class="wire-link" href="#">Click here</a>.</p>
+                    <p class="u-text-muted u-mt-md">Don't use "click here" or a bare URL. The text alone should tell the user where they will land.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Front-load the meaningful words ("Download the intake form", not "To download the intake form, click here").</li>
+                  <li>Keep link text unique on a page when destinations differ; don't have three "Learn more" links to three different pages without context.</li>
+                  <li>Signal a file type or new window in the text or an icon plus hidden text, not by colour.</li>
+                  <li>Don't underline non-link text; reserve the underline for links.</li>
+                </ul>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../../components/buttons/">Button</a> — for actions; the link/button decision is covered in Overview.</li>
+                  <li><a href="../save-portal-link/">Save / portal link</a> — a specialised destination link for the patient portal.</li>
+                  <li><a href="../../../components/breadcrumb/">Breadcrumb</a> and <a href="../../../components/in-page-nav/">In-page nav</a> — links arranged into wayfinding.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.4.4 Link Purpose (In Context): the purpose of a link can be determined from its text (or text plus context). <a href="https://www.w3.org/TR/WCAG22/#link-purpose-in-context">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: a link is distinguishable by more than colour — here, the underline. <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: descriptive, front-loaded link text outperforms "click here" for scanning and screen-reader use. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/writing-links/">nngroup.com</a></li>
+                  <li><strong>Convention</strong> — Laws of UX (Jakob's Law): users expect underlined text to be a link and a link to navigate, not act. <a href="https://lawsofux.com/jakobs-law/">lawsofux.com</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-text</code></td><td>Link colour (inherits the surrounding text colour by default).</td></tr>
+                    <tr><td><code>--color-text-inverse</code></td><td>The inverse variant on dark surfaces.</td></tr>
+                    <tr><td><code>--weight-medium</code> / <code>--weight-semibold</code></td><td>Inline weight, and the heavier standalone CTA.</td></tr>
+                    <tr><td><code>--border-thin</code> / <code>--border-md</code></td><td>Underline thickness at rest and on hover.</td></tr>
+                    <tr><td><code>--space-2xs</code></td><td>Gap between a standalone link's label and icon.</td></tr>
+                    <tr><td><code>--radius-xs</code></td><td>Focus-ring corner on the inline box.</td></tr>
+                    <tr><td><code>--duration-fast</code> / <code>--ease-out</code></td><td>The underline-thickness transition (0ms under reduced motion).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Underline offset</td><td>0.18em, so descenders clear the line.</td></tr>
+                    <tr><td>Underline weight</td><td><code>--border-thin</code> at rest → <code>--border-md</code> on hover/focus.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-link__icon</code> at 1em, baseline-aligned (<code>-0.125em</code>).</td></tr>
+                    <tr><td>Standalone</td><td><code>inline-flex</code> with a <code>--space-2xs</code> gap so the icon tracks the label.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">Hover thickens the underline; <code>:focus-visible</code> draws the global focus ring; <code>:visited</code> is left to the browser default (still distinguished by underline, not colour). The quiet variant adds an underline on hover and focus so it is never colour-only.</p>
+              </section>
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. Link is a native anchor with no <code>data-wire-*</code> hooks.</p>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Inline link --&gt;
+&lt;a class="wire-link" href="/visit-summary"&gt;visit summary&lt;/a&gt;
+
+&lt;!-- Quiet link (dense UI) --&gt;
+&lt;a class="wire-link wire-link--quiet" href="/billing"&gt;billing FAQ&lt;/a&gt;
+
+&lt;!-- Standalone call-to-action with trailing arrow --&gt;
+&lt;a class="wire-link wire-link--standalone" href="/specialties"&gt;
+  Explore all specialties
+  &lt;span class="wire-link__icon" aria-hidden="true"&gt;&lt;svg ... focusable="false"&gt;...&lt;/svg&gt;&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- New window: announce the change with hidden text --&gt;
+&lt;a class="wire-link" href="/rights.pdf" target="_blank" rel="noopener"&gt;
+  Patient rights (PDF)
+  &lt;span class="wire-link__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="u-visually-hidden"&gt; (opens in a new window)&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use a real <code>&lt;a&gt;</code> with a valid <code>href</code> — that gives the link role and keyboard support for free.</li>
+                  <li>Never wire a JS action onto an <code>&lt;a&gt;</code> without an <code>href</code>; if it acts rather than navigates, it is a <a href="../../../components/buttons/">Button</a>.</li>
+                  <li>Mark the icon decorative (<code>aria-hidden</code>, <code>focusable="false"</code>); it adds emphasis, not meaning.</li>
+                  <li>For <code>target="_blank"</code>, include visually-hidden "(opens in a new window)" and <code>rel="noopener"</code>.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the link; the global focus ring appears.</td></tr>
+                    <tr><td><kbd>Enter</kbd></td><td>Follows the link. (Links activate on Enter only — not Space, unlike buttons.)</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Link satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>2.4.4 Link Purpose (In Context)</td><td>Guidance requires descriptive text; "click here" is called out as a Don't.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Links are underlined, so they are not distinguished by colour alone — and the system is grayscale regardless.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>Inherits the global focus ring; the inline box has a small radius so the ring is tidy.</td></tr>
+                    <tr><td>1.1.1 Non-text Content</td><td>Decorative icons are hidden; a meaningful new-window cue is given as text.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>A link reads its text and role, e.g. "visit summary, link".</li>
+                  <li>Users often pull up a list of links out of context — which is why the text must stand alone.</li>
+                  <li>The new-window cue is announced after the label: "Patient rights, PDF, opens in a new window, link".</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../menu/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Menu</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../disclosure/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Disclosure</span>
+        </a>
+      </nav>
 
     </div>
   </section>

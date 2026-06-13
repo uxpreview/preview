@@ -3196,10 +3196,36 @@
     },
     {
       "id": "link",
-      "label": "Link",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Links navigate, buttons act — distinct role and keyboard behaviour",
+          "citation_ids": ["laws-of-ux-jakob"]
+        },
+        {
+          "decision": "Links distinguished by underline, never colour alone",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Descriptive, front-loaded link text",
+          "citation_ids": ["wcag-2.4.4-link-purpose", "nng-writing-links"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-link",
+      "file": "css/components/link.css",
       "ref": "components/actions/link/",
-      "status": "planned"
+      "ref_template": "components/actions/link/",
+      "status": "beta",
+      "variants": ["(default = inline)", "quiet", "standalone", "inverse"],
+      "elements": ["wire-link__icon"],
+      "companions": ["wire-button"],
+      "behaviors": [],
+      "slots": ["label", "icon"],
+      "a11y": "Real <a href>; navigates (not acts). Underlined so it is not colour-only; quiet variant re-adds underline on hover/focus. Decorative icon aria-hidden. target=_blank carries visually-hidden 'opens in a new window' + rel=noopener. Activates on Enter only.",
+      "notes": "For actions use Button, not a link. Quiet variant is for dense UI only. Standalone is a heavier block CTA with a trailing icon.",
+      "label": "Link",
+      "desc": "A styled text link for navigation, with quiet, standalone, and icon-bearing treatments."
     },
     {
       "id": "disclosure",
@@ -5123,7 +5149,6 @@
               "type": "page",
               "label": "Link",
               "ref": "components/actions/link/",
-              "status": "planned",
               "id": "link"
             },
             {

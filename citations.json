@@ -39,7 +39,8 @@
         "gallery",
         "avatar",
         "insurance-indicator",
-        "icon-button"
+        "icon-button",
+        "link"
       ]
     },
     {
@@ -104,7 +105,8 @@
         "status-dot",
         "wait-time",
         "insurance-indicator",
-        "meter"
+        "meter",
+        "link"
       ]
     },
     {
@@ -286,7 +288,8 @@
         "linked-list",
         "article-list",
         "breadcrumb",
-        "button"
+        "button",
+        "link"
       ]
     },
     {
@@ -322,7 +325,8 @@
       "supports": [
         "tokens",
         "button",
-        "field"
+        "field",
+        "link"
       ]
     },
     {
@@ -550,7 +554,8 @@
       "supports": [
         "tabs",
         "breadcrumb",
-        "pagination"
+        "pagination",
+        "link"
       ],
       "notes": "Drafted for the Tabs migration. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
@@ -2032,6 +2037,22 @@
       "verification": "UNVERIFIED \u2014 candidate from button-group research, pending human review",
       "supports": [
         "button-group"
+      ]
+    },
+    {
+      "id": "nng-writing-links",
+      "tier": "empirical",
+      "finding": "Descriptive, front-loaded link text outperforms vague labels like 'click here' for scanning, comprehension, and screen-reader navigation.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Better Link Labels",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/writing-links/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from link research, pending human review",
+      "supports": [
+        "link"
       ]
     }
   ]
