@@ -96,7 +96,8 @@
         "badge",
         "tag",
         "status-pill",
-        "avatar"
+        "avatar",
+        "avatar-group"
       ]
     },
     {
@@ -1439,7 +1440,8 @@
         "tokens",
         "divider",
         "badge",
-        "avatar"
+        "avatar",
+        "avatar-group"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
     },
@@ -1457,7 +1459,8 @@
       "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "card",
-        "divider"
+        "divider",
+        "avatar-group"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },

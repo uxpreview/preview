@@ -1,0 +1,29 @@
+/* ============================================================
+   Avatar group — overlapping avatars showing a set of people.
+   Composes .wire-avatar children; the last child can be a "+N" more tile.
+   ============================================================ */
+
+.wire-avatar-group {
+  --avatar-group-overlap: var(--space-sm);
+
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Each avatar tucks under the previous one. */
+.wire-avatar-group > * + * {
+  margin-inline-start: calc(-1 * var(--avatar-group-overlap));
+}
+
+/* A surface-colour ring on every child so overlaps stay separated,
+   without repeating .wire-avatar--ring on each one. */
+.wire-avatar-group .wire-avatar {
+  box-shadow: 0 0 0 var(--border-md) var(--color-bg);
+}
+
+/* The trailing overflow tile: "+N more". Quieter than a person. */
+.wire-avatar-group__more {
+  font-size: var(--text-2xs);
+  color: var(--color-text-muted);
+  background-color: var(--color-bg-subtle);
+}

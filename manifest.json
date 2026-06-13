@@ -3419,10 +3419,70 @@
     },
     {
       "id": "avatar-group",
+      "level": "molecule",
       "label": "Avatar group",
+      "desc": "Overlapping avatars that summarise a set of people, with an optional +N overflow tile.",
       "category": "selection",
+      "class": "wire-avatar-group",
+      "file": "css/components/avatar-group.css",
       "ref": "components/selection-status/avatar-group/",
-      "status": "planned"
+      "status": "beta",
+      "elements": [
+        "wire-avatar-group__more"
+      ],
+      "behaviors": [],
+      "slots": [
+        "members (wire-avatar)",
+        "overflow (wire-avatar-group__more)"
+      ],
+      "related": [
+        "avatar",
+        "badge",
+        "card"
+      ],
+      "a11y": "Summary pattern: give the wrapper role=\"group\" + an aria-label with the count (\"Care team, 12 people\"), mark every member and the +N tile aria-hidden, and route to the named people via an adjacent link. role=group + name satisfies 1.3.1; the ring is decorative separation only.",
+      "rationale": [
+        {
+          "decision": "Overlapping avatars with a +N overflow as a people-set summary",
+          "citation_ids": [
+            "primer-avatar",
+            "atlassian-avatar"
+          ]
+        },
+        {
+          "decision": "Overlapping/touching tiles read as one set",
+          "citation_ids": [
+            "gestalt-proximity",
+            "gestalt-common-region"
+          ]
+        },
+        {
+          "decision": "Grouping conveyed by overlap + summary label, never colour",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color"
+          ]
+        }
+      ],
+      "notes": "Thin wrapper over Avatar: adds the overlap (negative inline margin via --avatar-group-overlap) and a surface-colour ring on each child; member size/shape/fill come from Avatar. Keep members one shared size. The +N tile is a .wire-avatar with .wire-avatar-group__more.",
+      "figma_props": {
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "default": "md",
+          "note": "applied to members; the group has no size of its own"
+        },
+        "Overflow": {
+          "type": "BOOLEAN",
+          "default": true,
+          "child": "wire-avatar-group__more"
+        },
+        "_note": "members[] -> repeated Avatar child instances, not a prop; count and remainder are author-computed."
+      }
     },
     {
       "id": "filter-chip",
@@ -4802,7 +4862,6 @@
               "type": "page",
               "label": "Avatar group",
               "ref": "components/selection-status/avatar-group/",
-              "status": "planned",
               "id": "avatar-group"
             },
             {
