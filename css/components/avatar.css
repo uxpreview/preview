@@ -1,0 +1,59 @@
+/* ============================================================
+   Avatar — a small thumbnail standing in for a person or entity.
+   Three fallbacks in priority order: image, initials, placeholder icon.
+   Sizes: sm, md (default), lg, xl. Shape: circle (default), square.
+   ============================================================ */
+
+.wire-avatar {
+  --avatar-size: 2.5rem;            /* md (default) */
+  --avatar-font: var(--text-sm);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+
+  inline-size: var(--avatar-size);
+  block-size: var(--avatar-size);
+
+  font-size: var(--avatar-font);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  text-transform: uppercase;
+
+  color: var(--color-text);
+  background-color: var(--color-bg-muted);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Image fallback — fills and crops to the circle. */
+.wire-avatar__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder icon fallback — a generic silhouette, quieter than initials. */
+.wire-avatar__icon {
+  inline-size: 60%;
+  block-size: 60%;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Sizes ---------- */
+.wire-avatar--sm { --avatar-size: 2rem;   --avatar-font: var(--text-2xs); }
+.wire-avatar--lg { --avatar-size: 3.5rem; --avatar-font: var(--text-lg); }
+.wire-avatar--xl { --avatar-size: 5rem;   --avatar-font: var(--text-2xl); }
+
+/* ---------- Shape ---------- */
+/* Square (rounded) for non-human entities — organizations, departments. */
+.wire-avatar--square { border-radius: var(--radius-md); }
+
+/* ---------- Ring ----------
+   A ring in the surface color so overlapping avatars (avatar-group) and
+   avatars placed on a busy background stay visually separated. */
+.wire-avatar--ring { box-shadow: 0 0 0 var(--border-md) var(--color-bg); }

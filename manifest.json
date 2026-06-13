@@ -3305,10 +3305,117 @@
     },
     {
       "id": "avatar",
+      "level": "atom",
       "label": "Avatar",
+      "desc": "A small thumbnail standing in for a person or entity, with image, initials, and placeholder-icon fallbacks.",
       "category": "selection",
+      "class": "wire-avatar",
+      "file": "css/components/avatar.css",
       "ref": "components/selection-status/avatar/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = circle)",
+        "square"
+      ],
+      "sizes": [
+        "(default = md)",
+        "sm",
+        "lg",
+        "xl"
+      ],
+      "modifiers": [
+        "ring"
+      ],
+      "elements": [
+        "wire-avatar__img",
+        "wire-avatar__icon"
+      ],
+      "behaviors": [],
+      "slots": [
+        "image | initials | icon"
+      ],
+      "related": [
+        "avatar-group",
+        "badge",
+        "byline",
+        "card"
+      ],
+      "a11y": "Name the person once: when the name is shown beside the avatar it is decorative (image alt=\"\", initials/icon aria-hidden); when it stands alone it carries the name via alt/aria-label. Initials are an abbreviation, never the sole accessible identity; the placeholder icon is always decorative.",
+      "rationale": [
+        {
+          "decision": "Image → initials → placeholder-icon fallback chain",
+          "citation_ids": [
+            "primer-avatar",
+            "atlassian-avatar"
+          ]
+        },
+        {
+          "decision": "Circle for people, rounded-square for non-human entities",
+          "citation_ids": [
+            "primer-avatar"
+          ]
+        },
+        {
+          "decision": "Image avatars carry a text alternative; decorative avatars are hidden so the adjacent name is announced once",
+          "citation_ids": [
+            "wcag-1.1.1-non-text-content",
+            "w3c-wai-decorative-images"
+          ]
+        },
+        {
+          "decision": "Identity is the name and shape, never hue; the avatar reads as belonging to the name beside it",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "gestalt-proximity"
+          ]
+        }
+      ],
+      "notes": "Three fallbacks in priority order; initials are direct text on .wire-avatar (no element). Diameters are fixed component geometry in rem via --avatar-size, mirroring Badge's dot/count, not spacing tokens. Composes as a host for Badge's count overlay (wire-badge-anchor) and stacks into Avatar group.",
+      "figma_props": {
+        "_normalized_from": "fallback is content, not a style; size and shape are the real axes.",
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ],
+          "default": "md"
+        },
+        "Shape": {
+          "type": "VARIANT",
+          "values": [
+            "circle",
+            "square"
+          ],
+          "default": "circle"
+        },
+        "Ring": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "Fallback": {
+          "type": "VARIANT",
+          "values": [
+            "image",
+            "initials",
+            "icon"
+          ],
+          "default": "initials",
+          "note": "which slot is filled; not a CSS modifier"
+        },
+        "Image": {
+          "type": "INSTANCE_SWAP",
+          "child": "wire-avatar__img",
+          "optional": true
+        },
+        "Initials": {
+          "type": "TEXT",
+          "optional": true
+        },
+        "_matrix": "Size(4) x Shape(2) x Fallback(3) = 24 (<=30). Ring is a boolean."
+      }
     },
     {
       "id": "avatar-group",
@@ -4689,7 +4796,6 @@
               "type": "page",
               "label": "Avatar",
               "ref": "components/selection-status/avatar/",
-              "status": "planned",
               "id": "avatar"
             },
             {

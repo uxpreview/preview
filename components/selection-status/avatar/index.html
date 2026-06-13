@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Avatar — Preview Design System</title>
+  <meta name="description" content="A small thumbnail standing in for a person or entity, with image, initials, and placeholder-icon fallbacks in four sizes. Usage, specs, and accessibility for the Avatar component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -398,20 +399,445 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Avatar</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Avatar</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A small thumbnail standing in for a person or entity. Three fallbacks in priority order — image, initials, then a generic placeholder icon — in four sizes and two shapes. The foundation that Avatar group, Byline, and person cards build on.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/avatar.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Avatar documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Four sizes, the three fallbacks, the square entity shape, and a count overlay borrowed from <a href="../../../components/badge/">Badge</a>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">sm · md · lg · xl · initials · icon · square · count</span>
+                  <div class="u-cluster u-cluster--md u-cluster--baseline">
+                    <span class="wire-avatar wire-avatar--sm">ER</span>
+                    <span class="wire-avatar">ER</span>
+                    <span class="wire-avatar wire-avatar--lg">ER</span>
+                    <span class="wire-avatar wire-avatar--xl">ER</span>
+                    <span class="wire-avatar" aria-hidden="true">
+                      <svg class="wire-avatar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                    </span>
+                    <span class="wire-avatar wire-avatar--square">RH</span>
+                    <span class="wire-badge-anchor">
+                      <a class="wire-avatar" href="#" aria-label="Dr. Elena Ruiz, 2 new messages">ER</a>
+                      <span class="wire-badge wire-badge--count" aria-hidden="true">2</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Avatar is non-interactive on its own, so it has no keyboard contract; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Contrast checked</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">An avatar puts a face — or a stand-in for one — next to a name, so a person or organisation is recognisable at a glance. In a grayscale wireframe the photo rarely exists yet, so the avatar usually renders as <strong>initials</strong> or a <strong>placeholder icon</strong>; the image slot is wired and ready for higher-fidelity stages.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Beside a person's name: a provider in a directory, an author <a href="../../../components/content-display/byline/">byline</a>, a comment.</li>
+                  <li>As a compact identity in a card, list row, or table cell.</li>
+                  <li>Stacked into an <a href="../avatar-group/">Avatar group</a> to show a care team or set of contributors.</li>
+                  <li>As a host for a count or status overlay (wrap it in a Badge anchor).</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>Don't use it as a decorative spot illustration; that is <a href="../../../components/media/">Media</a>.</li>
+                  <li>Don't put a multi-word label inside it — initials are one or two letters. Longer labels belong in a <a href="../../../components/badge/">Badge</a> or <a href="../../../components/tag/">Tag</a>.</li>
+                  <li>Don't rely on the avatar alone to identify someone; always pair it with the visible name.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A fixed-size circle that centres exactly one of three things: an image, initials text, or a placeholder icon. Pick the richest one available and fall back down the list.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">image fallback · initials fallback · icon fallback</span>
+                  <div class="u-cluster u-cluster--md">
+                    <span class="wire-avatar">ER</span>
+                    <span class="wire-avatar" aria-hidden="true">
+                      <svg class="wire-avatar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+                    </span>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-avatar</code></td><td>The fixed-size circle. Holds one fallback and carries size and shape.</td></tr>
+                    <tr><td>Image</td><td><code>.wire-avatar__img</code></td><td>An <code>&lt;img&gt;</code> cropped to fill the circle. The richest fallback.</td></tr>
+                    <tr><td>Initials</td><td>— (text)</td><td>One or two letters as the direct text of the block. No element needed.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-avatar__icon</code></td><td>A generic silhouette <code>&lt;svg&gt;</code>, the quietest fallback. Always decorative.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <p class="u-text-muted u-mt-sm">Size, shape, and an optional ring compose independently.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Medium</td><td><code>.wire-avatar</code></td><td>Default, 2.5rem. Lists, rows, bylines.</td></tr>
+                    <tr><td>Small</td><td><code>.wire-avatar--sm</code></td><td>2rem. Dense tables, inline mentions.</td></tr>
+                    <tr><td>Large</td><td><code>.wire-avatar--lg</code></td><td>3.5rem. Person cards.</td></tr>
+                    <tr><td>Extra large</td><td><code>.wire-avatar--xl</code></td><td>5rem. Profile headers.</td></tr>
+                    <tr><td>Square</td><td><code>.wire-avatar--square</code></td><td>Rounded square for non-human entities — an organisation or department.</td></tr>
+                    <tr><td>Ring</td><td><code>.wire-avatar--ring</code></td><td>A surface-colour ring so overlapping or on-photo avatars stay separated.</td></tr>
+                  </tbody>
+                </table>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">Circle (person) vs square (entity), with a ring</span>
+                  <div class="u-cluster u-cluster--md">
+                    <span class="wire-avatar wire-avatar--lg">ER</span>
+                    <span class="wire-avatar wire-avatar--lg wire-avatar--square">RH</span>
+                    <span class="wire-avatar wire-avatar--lg wire-avatar--ring">JM</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">Avatar is a leaf that other components lean on. It composes <em>into</em> larger parts rather than holding content of its own.</p>
+                <ul>
+                  <li><strong>Into <a href="../avatar-group/">Avatar group</a></strong> — overlapping avatars with a ring show a team or set of contributors.</li>
+                  <li><strong>Into <a href="../../../components/content-display/byline/">Byline</a> and person cards</strong> — the avatar sits beside the name and role.</li>
+                  <li><strong>As a Badge host</strong> — wrap it in <code>.wire-badge-anchor</code> and pin a <code>.wire-badge--count</code> for an unread count.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A provider byline and a large profile identity. The name carries the meaning; the avatar is the recognisable anchor beside it.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Byline · profile identity</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="u-cluster u-cluster--xs u-cluster--start-align">
+                      <span class="wire-avatar" aria-hidden="true">ER</span>
+                      <span class="u-stack u-stack--3xs">
+                        <span class="u-text-default">Dr. Elena Ruiz</span>
+                        <span class="wire-caption">Cardiology · Riverside Heart Institute</span>
+                      </span>
+                    </div>
+                    <div class="u-cluster u-cluster--md u-cluster--start-align">
+                      <span class="wire-avatar wire-avatar--xl" aria-hidden="true">ER</span>
+                      <span class="u-stack u-stack--2xs">
+                        <span class="wire-h4">Dr. Elena Ruiz, MD</span>
+                        <span class="u-text-muted">Interventional Cardiology</span>
+                        <span class="u-cluster u-cluster--xs u-mt-xs">
+                          <span class="wire-badge"><span class="wire-badge__dot" aria-hidden="true"></span>Accepting new patients</span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default"><span class="u-cluster u-cluster--xs u-cluster--start-align"><span class="wire-avatar" aria-hidden="true">ER</span> Dr. Elena Ruiz</span></p>
+                    <p class="u-text-muted u-mt-md">Pair the avatar with the visible name. Initials are a quiet anchor; the words identify the person.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default"><span class="wire-avatar">ER</span> <span class="wire-avatar" aria-hidden="true"><svg class="wire-avatar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span></p>
+                    <p class="u-text-muted u-mt-md">Don't leave an avatar floating with no name. On its own it identifies no one.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Initials are one or two letters — typically first + last. Avoid three.</li>
+                  <li>Derive initials from the displayed name so they always match what the user reads.</li>
+                  <li>Use the placeholder icon, not random initials, when no name is known.</li>
+                  <li>Reserve the square shape for non-human entities; people are circles.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../avatar-group/">Avatar group</a> — overlapping avatars for a team or set of people.</li>
+                  <li><a href="../../../components/badge/">Badge</a> — the count and status overlay an avatar can host.</li>
+                  <li><a href="../../../components/content-display/byline/">Byline</a> and <a href="../../../components/cards/">Cards</a> — common hosts.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.1.1 Non-text Content: an image avatar needs a text alternative; decorative ones take an empty <code>alt</code>. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#non-text-content">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: identity is never carried by colour alone; grayscale and the adjacent name guarantee this. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Convention</strong> — W3C WAI, Images Tutorial: decorative images get an empty <code>alt</code>; informative images get a description. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/tutorials/images/">w3.org</a></li>
+                  <li><strong>Convention</strong> — GitHub Primer, Avatar: circular avatars for people, rounded-square for non-human entities; provide a fallback. <em>Unverified — pending review.</em> <a href="https://primer.style/product/components/avatar/">primer.style</a></li>
+                  <li><strong>Convention</strong> — Atlassian Design System, Avatar: standard size steps and an image → initials → icon fallback chain. <em>Unverified — pending review.</em> <a href="https://atlassian.design/components/avatar/examples">atlassian.design</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: photos of real people draw attention and build trust more than generic imagery. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/photos-as-web-content/">nngroup.com</a></li>
+                  <li><strong>Convention</strong> — Gestalt principle of proximity: an avatar placed beside a name is perceived as belonging to it. <em>Unverified — pending review.</em></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-bg-muted</code></td><td>The circle fill behind initials and the icon.</td></tr>
+                    <tr><td><code>--color-text</code></td><td>Initials colour.</td></tr>
+                    <tr><td><code>--color-text-muted</code></td><td>Placeholder-icon colour, a step quieter than initials.</td></tr>
+                    <tr><td><code>--color-bg</code></td><td>The ring colour, so it reads as the surface cut between stacked avatars.</td></tr>
+                    <tr><td><code>--text-2xs</code> / <code>--text-sm</code> / <code>--text-lg</code> / <code>--text-2xl</code></td><td>Initials type scale per size.</td></tr>
+                    <tr><td><code>--weight-semibold</code></td><td>Initials weight.</td></tr>
+                    <tr><td><code>--radius-pill</code> / <code>--radius-md</code></td><td>Circle, and the square shape's corners.</td></tr>
+                    <tr><td><code>--border-md</code></td><td>Ring thickness.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <p class="u-text-muted u-mt-sm">Like Badge's dot and count, the avatar's diameters are fixed component geometry expressed in <code>rem</code> via the local <code>--avatar-size</code> custom property, not spacing tokens.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Size — sm / md / lg / xl</td><td>2rem · 2.5rem · 3.5rem · 5rem (<code>--avatar-size</code>).</td></tr>
+                    <tr><td>Image</td><td>Fills 100% and crops with <code>object-fit: cover</code>; clipped by <code>overflow: hidden</code>.</td></tr>
+                    <tr><td>Icon</td><td>60% of the circle, <code>--color-text-muted</code>.</td></tr>
+                    <tr><td>Shape</td><td><code>--radius-pill</code> (circle) or <code>--radius-md</code> (square).</td></tr>
+                    <tr><td>Ring</td><td><code>box-shadow</code> ring at <code>--border-md</code> in <code>--color-bg</code>; adds no layout box.</td></tr>
+                    <tr><td>Theming</td><td>Each size re-aliases <code>--avatar-size</code> / <code>--avatar-font</code> only.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">Avatar has no interactive states of its own (no hover, focus, active, or disabled). When it is the content of a link, the focus ring and hover belong to that link, per its own component. Its visual set is the sizes and shapes in <a href="#usage">Usage &rsaquo; Types &amp; variants</a>.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. Avatar is static markup with no <code>data-wire-*</code> hooks. Choosing the fallback (image vs initials vs icon) and deriving initials from a name are the application's job; the component only renders what it is given.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Image (richest fallback). Empty alt when the name is shown beside it. --&gt;
+&lt;span class="wire-avatar"&gt;
+  &lt;img class="wire-avatar__img" src="elena-ruiz.jpg" alt=""&gt;
+&lt;/span&gt;
+
+&lt;!-- Initials. Decorative when the name is adjacent. --&gt;
+&lt;span class="wire-avatar" aria-hidden="true"&gt;ER&lt;/span&gt;
+
+&lt;!-- Placeholder icon (quietest fallback, always decorative). --&gt;
+&lt;span class="wire-avatar" aria-hidden="true"&gt;
+  &lt;svg class="wire-avatar__icon" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+&lt;/span&gt;
+
+&lt;!-- Sizes and the square entity shape --&gt;
+&lt;span class="wire-avatar wire-avatar--sm"&gt;ER&lt;/span&gt;
+&lt;span class="wire-avatar wire-avatar--xl"&gt;ER&lt;/span&gt;
+&lt;span class="wire-avatar wire-avatar--square"&gt;RH&lt;/span&gt;
+
+&lt;!-- Standalone, no visible name: the avatar carries the name --&gt;
+&lt;a class="wire-avatar" href="/team/elena-ruiz" aria-label="Dr. Elena Ruiz"&gt;ER&lt;/a&gt;
+
+&lt;!-- As a count host (overlay from Badge) --&gt;
+&lt;span class="wire-badge-anchor"&gt;
+  &lt;a class="wire-avatar" href="/messages" aria-label="Dr. Elena Ruiz, 2 new messages"&gt;ER&lt;/a&gt;
+  &lt;span class="wire-badge wire-badge--count" aria-hidden="true"&gt;2&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <p class="u-text-muted u-mt-sm">The accessible name follows one rule: name the person <em>once</em>. Whether that happens on the avatar or beside it decides how the avatar is exposed.</p>
+                <ul>
+                  <li><strong>Name shown beside the avatar</strong> (the common case) — the avatar is decorative. An image takes <code>alt=""</code>; initials or an icon avatar takes <code>aria-hidden="true"</code> so "ER" is not spelled out.</li>
+                  <li><strong>Avatar stands alone</strong> (no visible name) — it must carry the name itself: a descriptive <code>alt</code> on the image, or <code>aria-label</code> on the link/element holding initials.</li>
+                  <li>The placeholder icon is always decorative — <code>aria-hidden="true"</code>, <code>focusable="false"</code>.</li>
+                  <li>Initials are an abbreviation, not the name; never let them be the only accessible identity.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None of its own. A bare avatar is not in the tab order. When wrapped in a link or button it inherits that control's keyboard behaviour and focus ring; the avatar adds nothing and removes nothing.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Avatar satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.1.1 Non-text Content</td><td>Image avatars take a text alternative — empty when the name is adjacent, descriptive when the avatar stands alone. Icon and initials fallbacks are marked decorative.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Identity is the name and the shape, never hue. Grayscale guarantees no colour-only meaning.</td></tr>
+                    <tr><td>1.4.3 Contrast (Minimum)</td><td>Default initials are <code>--color-text</code> on <code>--color-bg-muted</code>, which clears 4.5:1. The icon is decorative, so the 3:1 graphic floor is not relied upon.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>A standalone avatar exposes a name via <code>alt</code>/<code>aria-label</code>; a decorative one is hidden so the adjacent name is announced once.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>In the common "avatar + name" pattern only the name is announced; the decorative avatar is skipped.</li>
+                  <li>Unhidden initials are read letter by letter ("E, R"), which is why decorative initials must be <code>aria-hidden</code>.</li>
+                  <li>A standalone avatar link reads its accessible name and role, e.g. "Dr. Elena Ruiz, link".</li>
+                  <li>A count overlay is announced through the host's name (see <a href="../../../components/badge/">Badge</a>), e.g. "Dr. Elena Ruiz, 2 new messages, link".</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../../../components/tag/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Tag</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../avatar-group/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Avatar group</span>
+        </a>
+      </nav>
 
     </div>
   </section>

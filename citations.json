@@ -1,24 +1,24 @@
 {
-  "store": "Preview Design System — Evidence & Citation Store",
+  "store": "Preview Design System \u2014 Evidence & Citation Store",
   "schema_version": "1.0",
   "model": "EVIDENCE-MODEL.md",
   "_note": {
-    "purpose": "Single source of evidence for the system, mirroring the tokens pattern: one store, referenced everywhere by id. manifest.json `rationale` entries cite these by `id`. docs/research.html is the human-readable render of this store (kept in sync; not auto-generated yet — see follow_up).",
+    "purpose": "Single source of evidence for the system, mirroring the tokens pattern: one store, referenced everywhere by id. manifest.json `rationale` entries cite these by `id`. docs/research.html is the human-readable render of this store (kept in sync; not auto-generated yet \u2014 see follow_up).",
     "hard_rule": "NEVER invent a citation. The agent may DRAFT candidate citations but may never present an unverified one as fact, and never sets `verified` on its own authority. A fabricated source/finding/statistic shown to a client is a credibility-extinction event. Every verified citation must link to a real, checkable source.",
     "tiering_rule": "Never promote a claim to a higher tier than its evidence supports. A convention is not an empirical finding; a judgment is not a standard.",
     "verification_states": {
-      "from research.html — pending fidelity check": "Transcribed verbatim from docs/research.html WITH a checkable URL and not a pre-2020 dated source. Awaits a fast human fidelity check (confirm faithful transcription), after which the human sets verified_date.",
-      "UNVERIFIED — pending human review": "Needs full human verification. Applied to: paraphrased/extrapolated claims, any entry without a checkable URL, any pre-2020 dated source, and agent-drafted candidates not present in research.html.",
-      "judgment — design call, no external source claimed": "A tier=judgment entry: the system's own reasoned position. No external backing is claimed, so there is nothing external to verify; it is labeled honestly as judgment."
+      "from research.html \u2014 pending fidelity check": "Transcribed verbatim from docs/research.html WITH a checkable URL and not a pre-2020 dated source. Awaits a fast human fidelity check (confirm faithful transcription), after which the human sets verified_date.",
+      "UNVERIFIED \u2014 pending human review": "Needs full human verification. Applied to: paraphrased/extrapolated claims, any entry without a checkable URL, any pre-2020 dated source, and agent-drafted candidates not present in research.html.",
+      "judgment \u2014 design call, no external source claimed": "A tier=judgment entry: the system's own reasoned position. No external backing is claimed, so there is nothing external to verify; it is labeled honestly as judgment."
     },
     "verified_date_rule": "Always null on creation. Only a human sets it, after review. The agent leaves it null.",
-    "seeded_from": "docs/research.html (v1.2) — every distinct referenced source/finding, mapped from that page's 2-tag (Evidence/Convention) system into the 4-tier taxonomy below.",
+    "seeded_from": "docs/research.html (v1.2) \u2014 every distinct referenced source/finding, mapped from that page's 2-tag (Evidence/Convention) system into the 4-tier taxonomy below.",
     "follow_up": "Make docs/research.html render from this store so the two cannot drift. Not done this pass (research.html left untouched)."
   },
   "tiers": {
-    "standard": "Binding specifications — WCAG 2.2 success criteria, Section 508, ARIA APG, W3C CSS specs. Citable, not debatable, often legal weight. State as a requirement.",
-    "empirical": "Findings from studies — Nielsen Norman Group, Baymard Institute, Pew, peer-reviewed HCI, eye-tracking. Citable, but with context: sample, domain, and recency matter.",
-    "convention": "Established laws/heuristics and design-system consensus — Gestalt, Laws of UX, Material/Carbon/Primer, Bringhurst, citation-style guides, government usability guidance. Well-established practice, not measured fact.",
+    "standard": "Binding specifications \u2014 WCAG 2.2 success criteria, Section 508, ARIA APG, W3C CSS specs. Citable, not debatable, often legal weight. State as a requirement.",
+    "empirical": "Findings from studies \u2014 Nielsen Norman Group, Baymard Institute, Pew, peer-reviewed HCI, eye-tracking. Citable, but with context: sample, domain, and recency matter.",
+    "convention": "Established laws/heuristics and design-system consensus \u2014 Gestalt, Laws of UX, Material/Carbon/Primer, Bringhurst, citation-style guides, government usability guidance. Well-established practice, not measured fact.",
     "judgment": "Our reasoned call. Defensible by principle; no external backing claimed. Said plainly."
   },
   "citations": [
@@ -33,10 +33,11 @@
         "url": "https://www.w3.org/TR/WCAG22/#non-text-content"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "media",
-        "gallery"
+        "gallery",
+        "avatar"
       ]
     },
     {
@@ -50,7 +51,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#info-and-relationships"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "callout",
         "banner",
@@ -72,12 +73,12 @@
         "url": "https://www.w3.org/TR/WCAG22/#contrast-minimum"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tokens",
         "base-typography"
       ],
-      "notes": "Contains specific contrast ratios (4.6:1, 19:1) tied to exact ramp values — confirm against tokens.css during fidelity check."
+      "notes": "Contains specific contrast ratios (4.6:1, 19:1) tied to exact ramp values \u2014 confirm against tokens.css during fidelity check."
     },
     {
       "id": "wcag-1.4.1-use-of-color",
@@ -90,11 +91,12 @@
         "url": "https://www.w3.org/TR/WCAG22/#use-of-color"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — drafted; pending human review",
+      "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
         "badge",
         "tag",
-        "status-pill"
+        "status-pill",
+        "avatar"
       ]
     },
     {
@@ -108,7 +110,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#reflow"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "layout-primitives",
         "gallery",
@@ -128,7 +130,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#non-text-contrast"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field",
         "button",
@@ -148,7 +150,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#text-spacing"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography"
       ]
@@ -164,7 +166,7 @@
         "url": "https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "tooltip",
         "button"
@@ -182,7 +184,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#keyboard"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tabs",
         "accordion",
@@ -201,7 +203,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#no-keyboard-trap"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "drawer",
         "modal"
@@ -218,7 +220,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#pause-stop-hide"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "banner"
       ]
@@ -234,7 +236,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#animation-from-interactions"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tokens",
         "skeleton"
@@ -251,7 +253,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#focus-order"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "layout-primitives"
       ]
@@ -267,7 +269,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#link-purpose-in-context"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "linked-list",
         "article-list",
@@ -286,7 +288,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#headings-and-labels"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography",
         "hero",
@@ -304,7 +306,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#focus-visible"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tokens",
         "button",
@@ -322,7 +324,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#focus-not-obscured-minimum"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography",
         "inpagenav"
@@ -339,7 +341,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#focus-appearance"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tokens"
       ],
@@ -356,7 +358,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#target-size-enhanced"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "text-size-control",
         "button"
@@ -373,7 +375,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#target-size-minimum"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "button",
         "choice",
@@ -397,7 +399,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#language-of-page"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "foundations"
       ]
@@ -413,7 +415,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#error-identification"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field"
       ]
@@ -429,7 +431,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#labels-or-instructions"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field",
         "choice",
@@ -447,7 +449,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#name-role-value"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tabs",
         "megamenu",
@@ -470,7 +472,7 @@
         "url": "https://www.w3.org/TR/WCAG22/#status-messages"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "button",
         "toast",
@@ -484,12 +486,12 @@
       "finding": "Tabs keyboard model: arrow keys move between tabs, Home/End jump to ends, Enter/Space activates; roving tabindex, aria-selected, aria-controls.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Tabs Pattern",
+        "title": "ARIA Authoring Practices Guide \u2014 Tabs Pattern",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tabs"
       ]
@@ -505,7 +507,7 @@
         "url": "https://www.nngroup.com/articles/tabs-used-right/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — drafted; pending human review",
+      "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
         "tabs"
       ],
@@ -522,13 +524,13 @@
         "url": "https://lawsofux.com/jakobs-law/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — drafted; pending human review",
+      "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
         "tabs",
         "breadcrumb",
         "pagination"
       ],
-      "notes": "Drafted for the Tabs migration. URL is the canonical Laws of UX page — confirm before use."
+      "notes": "Drafted for the Tabs migration. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
     {
       "id": "apg-accordion",
@@ -536,12 +538,12 @@
       "finding": "Accordion disclosure pattern; single-open mode and +/- affordance. Built on native <details> for built-in semantics.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Accordion Pattern",
+        "title": "ARIA Authoring Practices Guide \u2014 Accordion Pattern",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "accordion"
       ],
@@ -553,12 +555,12 @@
       "finding": "Modal dialog pattern: role=dialog, aria-modal, focus trap, Esc to close, focus restored to trigger. Used for the mobile drawer and the modal.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Dialog (Modal) Pattern",
+        "title": "ARIA Authoring Practices Guide \u2014 Dialog (Modal) Pattern",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "drawer",
         "modal"
@@ -570,12 +572,12 @@
       "finding": "Tooltip pattern guidance; for icon-only buttons the tooltip is supplementary and aria-label is the accessible name.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Tooltip Pattern",
+        "title": "ARIA Authoring Practices Guide \u2014 Tooltip Pattern",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tooltip"
       ]
@@ -586,12 +588,12 @@
       "finding": "Table semantics: header scope, programmatic header/data association.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Table Pattern",
+        "title": "ARIA Authoring Practices Guide \u2014 Table Pattern",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/table/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "table"
       ]
@@ -602,12 +604,12 @@
       "finding": "Navigation-menu trigger compromise: the mega-menu keeps an <a href> trigger for a no-JS fallback; the JS upgrade adds aria-haspopup + aria-expanded. Mirrors the W3C WAI-ARIA 'Menubar (Editor)' navigation example.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA Authoring Practices Guide — Menubar example (navigation)",
+        "title": "ARIA Authoring Practices Guide \u2014 Menubar example (navigation)",
         "year": null,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "megamenu"
       ],
@@ -619,16 +621,16 @@
       "finding": "text-wrap: balance on headings; reduces orphan-line awkwardness in headlines.",
       "source": {
         "org": "W3C / Chrome (Adam Argyle)",
-        "title": "CSS Text Module Level 4 — text-wrap: balance",
+        "title": "CSS Text Module Level 4 \u2014 text-wrap: balance",
         "year": 2023,
         "url": "https://developer.chrome.com/docs/css-ui/css-text-wrap-balance"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography"
       ],
-      "notes": "The property is a W3C spec (standard); the 'measurably reduces' phrasing is a qualitative claim from the Chrome dev article — confirm wording."
+      "notes": "The property is a W3C spec (standard); the 'measurably reduces' phrasing is a qualitative claim from the Chrome dev article \u2014 confirm wording."
     },
     {
       "id": "nng-primary-secondary",
@@ -641,7 +643,7 @@
         "url": "https://www.nngroup.com/articles/primary-vs-secondary-actions/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "button"
       ],
@@ -658,7 +660,7 @@
         "url": "https://www.nngroup.com/articles/flat-ui-clickable/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "button"
       ],
@@ -675,7 +677,7 @@
         "url": "https://www.nngroup.com/articles/legibility/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography"
       ],
@@ -692,7 +694,7 @@
         "url": "https://www.nngroup.com/articles/line-length-readability/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography",
         "two-column"
@@ -710,7 +712,7 @@
         "url": "https://www.nngroup.com/articles/serif-vs-sans-serif-fonts-hd-screens/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography"
       ],
@@ -727,7 +729,7 @@
         "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "callout"
       ],
@@ -744,7 +746,7 @@
         "url": "https://www.nngroup.com/articles/cards-component/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "feature-grid",
         "card"
@@ -868,7 +870,7 @@
         "url": "https://www.nngroup.com/articles/category-pages/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "linked-list"
       ],
@@ -885,7 +887,7 @@
         "url": "https://www.nngroup.com/articles/pull-quotes/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "quote"
       ],
@@ -902,7 +904,7 @@
         "url": "https://www.nngroup.com/articles/timeline-ux/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "timeline"
       ],
@@ -919,7 +921,7 @@
         "url": "https://www.nngroup.com/articles/modal-nonmodal-dialog/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "modal"
       ],
@@ -936,7 +938,7 @@
         "url": "https://www.nngroup.com/articles/hamburger-menus/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "drawer"
       ],
@@ -953,7 +955,7 @@
         "url": "https://www.nngroup.com/articles/indicators-validations-notifications/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "toast"
       ],
@@ -970,7 +972,7 @@
         "url": "https://www.nngroup.com/articles/notifications-ux/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "banner"
       ],
@@ -987,7 +989,7 @@
         "url": "https://www.nngroup.com/articles/empty-state-interface-design/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "empty-state"
       ],
@@ -1004,7 +1006,7 @@
         "url": "https://www.nngroup.com/articles/progress-indicators/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "skeleton"
       ],
@@ -1021,7 +1023,7 @@
         "url": "https://www.nngroup.com/articles/mega-menus-work-well/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "megamenu"
       ],
@@ -1038,7 +1040,7 @@
         "url": "https://www.nngroup.com/articles/table-of-contents/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "inpagenav"
       ],
@@ -1055,7 +1057,7 @@
         "url": "https://www.nngroup.com/articles/required-fields/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field"
       ],
@@ -1072,7 +1074,7 @@
         "url": "https://www.nngroup.com/articles/form-design-placeholders/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "field"
       ],
@@ -1081,7 +1083,7 @@
     {
       "id": "nng-search-magnifier",
       "tier": "empirical",
-      "finding": "Search input pattern with a leading magnifier icon — the most recognized search icon globally.",
+      "finding": "Search input pattern with a leading magnifier icon \u2014 the most recognized search icon globally.",
       "source": {
         "org": "Nielsen Norman Group",
         "title": "The Magnifying-Glass Icon in Search Designs (Hodge)",
@@ -1089,7 +1091,7 @@
         "url": "https://www.nngroup.com/articles/search-visible-and-simple/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "search"
       ]
@@ -1105,7 +1107,7 @@
         "url": "https://baymard.com/blog/inline-form-validation"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field"
       ],
@@ -1122,7 +1124,7 @@
         "url": "https://baymard.com/blog/avoid-multi-column-forms"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field",
         "form-layout"
@@ -1140,7 +1142,7 @@
         "url": "https://baymard.com/blog/inline-form-validation"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "field"
       ]
@@ -1156,7 +1158,7 @@
         "url": "https://www.pewresearch.org/internet/2013/01/15/health-online-2013/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "help-bar",
         "phone-link"
@@ -1169,12 +1171,12 @@
       "finding": "Mobile-first hero scaling rationale. research.html states '60%+ of higher-ed inquiry traffic is mobile', attributed to the Web Almanac's Mobile Web chapter.",
       "source": {
         "org": "HTTP Archive",
-        "title": "Web Almanac 2024 — Mobile Web",
+        "title": "Web Almanac 2024 \u2014 Mobile Web",
         "year": 2024,
         "url": "https://almanac.httparchive.org/en/2024/mobile-web"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "hero",
         "base-typography"
@@ -1187,12 +1189,12 @@
       "finding": "Inline status-pill / badge convention.",
       "source": {
         "org": "Google",
-        "title": "Material Design 3 — Badges",
+        "title": "Material Design 3 \u2014 Badges",
         "year": null,
         "url": "https://m3.material.io/components/badges"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "badge"
       ]
@@ -1203,12 +1205,12 @@
       "finding": "Chip / removable-tag pattern.",
       "source": {
         "org": "Google",
-        "title": "Material Design 3 — Chips",
+        "title": "Material Design 3 \u2014 Chips",
         "year": null,
         "url": "https://m3.material.io/components/chips/overview"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tag"
       ]
@@ -1219,12 +1221,12 @@
       "finding": "Card pattern for grouping related content.",
       "source": {
         "org": "Google",
-        "title": "Material Design 3 — Cards",
+        "title": "Material Design 3 \u2014 Cards",
         "year": null,
         "url": "https://m3.material.io/components/cards/overview"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "card"
       ]
@@ -1235,12 +1237,12 @@
       "finding": "Step-indicator pattern for multi-step flows; ARIA via <ol> + aria-current=step.",
       "source": {
         "org": "Google",
-        "title": "Material Design 3 — Steppers",
+        "title": "Material Design 3 \u2014 Steppers",
         "year": null,
         "url": "https://m3.material.io/components/steppers/overview"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "stepper"
       ]
@@ -1251,12 +1253,12 @@
       "finding": "Component-page conventions (title+eyebrow+lead+meta header; status pills; prev/next pager).",
       "source": {
         "org": "Google",
-        "title": "Material Design 3 — Components",
+        "title": "Material Design 3 \u2014 Components",
         "year": null,
         "url": "https://m3.material.io/components"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "doc-header",
         "doc-pager",
@@ -1269,12 +1271,12 @@
       "finding": "Tag / status-pill conventions; in grayscale, fill density carries differentiation and the text label is load-bearing.",
       "source": {
         "org": "IBM",
-        "title": "Carbon Design System — Tag",
+        "title": "Carbon Design System \u2014 Tag",
         "year": null,
         "url": "https://carbondesignsystem.com/components/tag/usage/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tag",
         "badge",
@@ -1287,12 +1289,12 @@
       "finding": "Tile (card) pattern for grouping content.",
       "source": {
         "org": "IBM",
-        "title": "Carbon Design System — Tile",
+        "title": "Carbon Design System \u2014 Tile",
         "year": null,
         "url": "https://carbondesignsystem.com/components/tile/usage/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "card"
       ]
@@ -1303,12 +1305,12 @@
       "finding": "Side-nav hierarchy patterns (local / secondary / section tree).",
       "source": {
         "org": "IBM",
-        "title": "Carbon Design System — UI Shell Side Nav",
+        "title": "Carbon Design System \u2014 UI Shell Side Nav",
         "year": null,
         "url": "https://carbondesignsystem.com/components/UI-shell-side-nav/usage/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "sidenav"
       ]
@@ -1319,12 +1321,12 @@
       "finding": "Progress-indicator (stepper) pattern.",
       "source": {
         "org": "IBM",
-        "title": "Carbon Design System — Progress Indicator",
+        "title": "Carbon Design System \u2014 Progress Indicator",
         "year": null,
         "url": "https://carbondesignsystem.com/components/progress-indicator/usage/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "stepper"
       ]
@@ -1335,12 +1337,12 @@
       "finding": "Bordered empty-state pattern.",
       "source": {
         "org": "IBM",
-        "title": "Carbon Design System — Empty pattern",
+        "title": "Carbon Design System \u2014 Empty pattern",
         "year": null,
         "url": "https://carbondesignsystem.com/patterns/empty-pattern/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "empty-state"
       ]
@@ -1351,12 +1353,12 @@
       "finding": "Component-page header and status conventions.",
       "source": {
         "org": "GitHub",
-        "title": "Primer — Components",
+        "title": "Primer \u2014 Components",
         "year": null,
         "url": "https://primer.style/components"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "doc-header",
         "status-pill"
@@ -1373,7 +1375,7 @@
         "url": "https://ui.shadcn.com/docs"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "doc-shell",
         "doc-pager",
@@ -1392,7 +1394,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "base-typography",
         "divider",
@@ -1413,7 +1415,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "citation-list"
       ],
@@ -1430,15 +1432,16 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "card",
         "feature-grid",
         "tokens",
         "divider",
-        "badge"
+        "badge",
+        "avatar"
       ],
-      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
+      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
     },
     {
       "id": "gestalt-common-region",
@@ -1451,35 +1454,35 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "card",
         "divider"
       ],
-      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently in research.html. Needs a checkable source before use."
+      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },
     {
       "id": "gestalt-figure-ground",
       "tier": "convention",
-      "finding": "Figure–ground: a dimmed backdrop pushes the page back and brings the dialog panel forward, focusing attention on the decision. Underlies the modal and drawer scrim.",
+      "finding": "Figure\u2013ground: a dimmed backdrop pushes the page back and brings the dialog panel forward, focusing attention on the decision. Underlies the modal and drawer scrim.",
       "source": {
         "org": "Gestalt psychology",
-        "title": "Gestalt principle of figure–ground",
+        "title": "Gestalt principle of figure\u2013ground",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "modal",
         "drawer"
       ],
-      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently in research.html. Needs a checkable source before use."
+      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },
     {
       "id": "laws-of-ux-fitts",
       "tier": "convention",
-      "finding": "Fitts's law: time to acquire a target is a function of its size and distance — larger, closer targets are faster and lower-error. Reinforces the >=44px primary-control target sizing.",
+      "finding": "Fitts's law: time to acquire a target is a function of its size and distance \u2014 larger, closer targets are faster and lower-error. Reinforces the >=44px primary-control target sizing.",
       "source": {
         "org": "Laws of UX (Jon Yablonski)",
         "title": "Fitts's Law",
@@ -1487,14 +1490,14 @@
         "url": "https://lawsofux.com/fittss-law/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "button",
         "topnav",
         "text-size-control",
         "tag"
       ],
-      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (§7); not currently cited in research.html. URL is the canonical Laws of UX page — confirm before use."
+      "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
     {
       "id": "laws-of-ux-von-restorff",
@@ -1507,11 +1510,11 @@
         "url": "https://lawsofux.com/von-restorff-effect/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — drafted; pending human review",
+      "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
         "badge"
       ],
-      "notes": "Drafted for the Badge migration. URL is the canonical Laws of UX page — confirm before use."
+      "notes": "Drafted for the Badge migration. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
     {
       "id": "nng-filtering-faceted",
@@ -1524,7 +1527,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — drafted; pending human review",
+      "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
         "tag"
       ],
@@ -1533,7 +1536,7 @@
     {
       "id": "nia-senior-friendly",
       "tier": "convention",
-      "finding": "Persistent, high-contrast help/contact affordances (§2.4) and user-controllable text sizing (§3.1) for older-adult users. Healthcare audiences skew older.",
+      "finding": "Persistent, high-contrast help/contact affordances (\u00a72.4) and user-controllable text sizing (\u00a73.1) for older-adult users. Healthcare audiences skew older.",
       "source": {
         "org": "National Institute on Aging (NIH)",
         "title": "Making Your Website Senior Friendly",
@@ -1541,13 +1544,13 @@
         "url": "https://www.nia.nih.gov/health/making-your-website-senior-friendly"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "help-bar",
         "phone-link",
         "text-size-control"
       ],
-      "notes": "Vertical (healthcare) canon, already used since v1.1. Confirm the section numbers (§2.4, §3.1) against the current edition."
+      "notes": "Vertical (healthcare) canon, already used since v1.1. Confirm the section numbers (\u00a72.4, \u00a73.1) against the current edition."
     },
     {
       "id": "cdc-clear-communication-index",
@@ -1560,7 +1563,7 @@
         "url": "https://www.cdc.gov/ccindex/"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "print",
         "card"
@@ -1573,12 +1576,12 @@
       "finding": "Plain-language target: 6th-8th grade reading level on patient content. research.html states the average US adult reads at an 8th-grade level.",
       "source": {
         "org": "U.S. Dept. of Health & Human Services",
-        "title": "Healthy People 2030 — Health Literacy",
+        "title": "Healthy People 2030 \u2014 Health Literacy",
         "year": null,
         "url": "https://health.gov/healthypeople/priority-areas/health-literacy-healthy-people-2030"
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "base-typography"
       ],
@@ -1595,7 +1598,7 @@
         "url": "https://www.plainlanguage.gov/guidelines/"
       },
       "verified_date": null,
-      "verification": "from research.html — pending fidelity check",
+      "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "base-typography"
       ]
@@ -1611,7 +1614,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "card"
       ],
@@ -1628,7 +1631,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "tokens"
       ],
@@ -1645,7 +1648,7 @@
         "url": null
       },
       "verified_date": null,
-      "verification": "UNVERIFIED — pending human review",
+      "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "tokens"
       ],
@@ -1657,12 +1660,12 @@
       "finding": "Grayscale ramp granularity (12 steps). A designer call to provide enough hierarchy without overwhelming the file; Material uses 10, IBM Carbon 9.",
       "source": {
         "org": "Preview Design System",
-        "title": "Design judgment — ramp granularity",
+        "title": "Design judgment \u2014 ramp granularity",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "judgment — design call, no external source claimed",
+      "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "tokens"
       ]
@@ -1673,12 +1676,12 @@
       "finding": "Pill button radius. Aesthetic carry-over from the MotherDuck reference; no evidence pills outperform rounded rectangles for usability.",
       "source": {
         "org": "Preview Design System",
-        "title": "Design judgment — pill radius",
+        "title": "Design judgment \u2014 pill radius",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "judgment — design call, no external source claimed",
+      "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "button",
         "tokens"
@@ -1690,12 +1693,12 @@
       "finding": "Specific motion durations (150/250/400ms). Material-guideline-aligned but no peer-reviewed support for these exact numbers.",
       "source": {
         "org": "Preview Design System",
-        "title": "Design judgment — motion durations",
+        "title": "Design judgment \u2014 motion durations",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "judgment — design call, no external source claimed",
+      "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "tokens"
       ]
@@ -1703,15 +1706,15 @@
     {
       "id": "judgment-system-font-default",
       "tier": "judgment",
-      "finding": "System-font default over a custom face. Portability decision — every consumption surface (browser, Figma Make, artifacts) renders faithfully with no network dependency.",
+      "finding": "System-font default over a custom face. Portability decision \u2014 every consumption surface (browser, Figma Make, artifacts) renders faithfully with no network dependency.",
       "source": {
         "org": "Preview Design System",
-        "title": "Design judgment — system font",
+        "title": "Design judgment \u2014 system font",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "judgment — design call, no external source claimed",
+      "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "tokens",
         "base-typography"
@@ -1720,28 +1723,28 @@
     {
       "id": "judgment-grayscale-evidence-reinforcement",
       "tier": "judgment",
-      "finding": "Working in grayscale forces hierarchy to come from weight, scale, proximity, and contrast — the same perceptual mechanisms Gestalt and contrast-sensitivity research describe. The system is thus a live demonstration of the principles it cites. (Defensible framing; the supporting Gestalt/contrast claims are themselves tiered convention/standard.)",
+      "finding": "Working in grayscale forces hierarchy to come from weight, scale, proximity, and contrast \u2014 the same perceptual mechanisms Gestalt and contrast-sensitivity research describe. The system is thus a live demonstration of the principles it cites. (Defensible framing; the supporting Gestalt/contrast claims are themselves tiered convention/standard.)",
       "source": {
         "org": "Preview Design System",
-        "title": "Design judgment — grayscale + evidence reinforcement",
+        "title": "Design judgment \u2014 grayscale + evidence reinforcement",
         "year": null,
         "url": null
       },
       "verified_date": null,
-      "verification": "judgment — design call, no external source claimed",
+      "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "tokens",
         "foundations"
       ],
-      "notes": "EVIDENCE-MODEL §8 framing. Leans on gestalt-proximity and wcag-1.4.3 for its perceptual claims."
+      "notes": "EVIDENCE-MODEL \u00a78 framing. Leans on gestalt-proximity and wcag-1.4.3 for its perceptual claims."
     },
     {
       "id": "apg-combobox-select-only",
       "tier": "standard",
-      "finding": "Canonical pattern for a custom select — a combobox trigger with a listbox popup and a defined keyboard model. A native <select> needs no ARIA.",
+      "finding": "Canonical pattern for a custom select \u2014 a combobox trigger with a listbox popup and a defined keyboard model. A native <select> needs no ARIA.",
       "source": {
         "org": "W3C WAI",
-        "title": "ARIA APG — Select-Only Combobox Example",
+        "title": "ARIA APG \u2014 Select-Only Combobox Example",
         "year": 2025,
         "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/"
       },
@@ -1770,7 +1773,7 @@
     {
       "id": "uswds-select",
       "tier": "convention",
-      "finding": "Use a select for ~7–15 options with limited space; always provide a label; avoid auto-submission on change.",
+      "finding": "Use a select for ~7\u201315 options with limited space; always provide a label; avoid auto-submission on change.",
       "source": {
         "org": "U.S. Web Design System",
         "title": "Select",
@@ -1786,7 +1789,7 @@
     {
       "id": "va-select",
       "tier": "convention",
-      "finding": "Option-count ladder: 2–5 → radio, 6–15 → select, 16–100 → combobox, 101+ → search with typeahead.",
+      "finding": "Option-count ladder: 2\u20135 \u2192 radio, 6\u201315 \u2192 select, 16\u2013100 \u2192 combobox, 101+ \u2192 search with typeahead.",
       "source": {
         "org": "VA.gov Design System",
         "title": "Select",
@@ -1805,7 +1808,7 @@
       "finding": "Native vs. custom trade-off: native works more easily with form submission and is easier on mobile; custom enables design-system styling.",
       "source": {
         "org": "IBM Carbon",
-        "title": "Dropdown — usage & accessibility",
+        "title": "Dropdown \u2014 usage & accessibility",
         "year": 2024,
         "url": "https://carbondesignsystem.com/components/dropdown/usage/"
       },
@@ -1834,7 +1837,7 @@
     {
       "id": "nng-seniors",
       "tier": "empirical",
-      "finding": "Users aged 65 and older are 43% slower at using websites than users aged 21–55.",
+      "finding": "Users aged 65 and older are 43% slower at using websites than users aged 21\u201355.",
       "source": {
         "org": "Nielsen Norman Group",
         "title": "Usability for Senior Citizens",
@@ -1877,6 +1880,74 @@
       "verification": "Verified by Ryan McCarty, 2026-06-02",
       "supports": [
         "select"
+      ]
+    },
+    {
+      "id": "primer-avatar",
+      "tier": "convention",
+      "finding": "Avatar guidance: circular avatars for people and rounded-square avatars for non-human entities (organisations, bots); always provide a fallback when no image is available.",
+      "source": {
+        "org": "GitHub",
+        "title": "Primer Design System \u2014 Avatar",
+        "year": null,
+        "url": "https://primer.style/product/components/avatar/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from avatar research brief, pending human review",
+      "supports": [
+        "avatar",
+        "avatar-group"
+      ]
+    },
+    {
+      "id": "atlassian-avatar",
+      "tier": "convention",
+      "finding": "Avatar guidance: a fixed set of size steps and an image \u2192 initials \u2192 default-icon fallback chain; presence/status is layered as a separate indicator rather than baked into the avatar.",
+      "source": {
+        "org": "Atlassian",
+        "title": "Atlassian Design System \u2014 Avatar",
+        "year": null,
+        "url": "https://atlassian.design/components/avatar/examples"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from avatar research brief, pending human review",
+      "supports": [
+        "avatar",
+        "avatar-group"
+      ]
+    },
+    {
+      "id": "w3c-wai-decorative-images",
+      "tier": "convention",
+      "finding": "Decorative images that add no information take an empty alt (alt=\"\") so assistive technology skips them; informative images need a text alternative conveying their meaning.",
+      "source": {
+        "org": "W3C WAI",
+        "title": "Web Accessibility Tutorials \u2014 Images",
+        "year": null,
+        "url": "https://www.w3.org/WAI/tutorials/images/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from avatar research brief, pending human review",
+      "supports": [
+        "avatar",
+        "media",
+        "gallery"
+      ]
+    },
+    {
+      "id": "nng-photos-of-people",
+      "tier": "empirical",
+      "finding": "Photos of real, relevant people attract attention and can increase trust and engagement, whereas generic decorative stock imagery is frequently ignored.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Photos as Web Content",
+        "year": null,
+        "url": "https://www.nngroup.com/articles/photos-as-web-content/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from avatar research brief, pending human review",
+      "supports": [
+        "avatar"
       ]
     }
   ]
