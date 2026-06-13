@@ -97,7 +97,8 @@
         "tag",
         "status-pill",
         "avatar",
-        "avatar-group"
+        "avatar-group",
+        "status-dot"
       ]
     },
     {
@@ -137,7 +138,8 @@
         "button",
         "card",
         "tag",
-        "choice"
+        "choice",
+        "status-dot"
       ]
     },
     {
@@ -240,7 +242,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "tokens",
-        "skeleton"
+        "skeleton",
+        "status-dot"
       ]
     },
     {
@@ -478,7 +481,8 @@
         "button",
         "toast",
         "text-size-control",
-        "skeleton"
+        "skeleton",
+        "status-dot"
       ]
     },
     {
@@ -1441,7 +1445,8 @@
         "divider",
         "badge",
         "avatar",
-        "avatar-group"
+        "avatar-group",
+        "status-dot"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
     },
@@ -1515,7 +1520,8 @@
       "verified_date": null,
       "verification": "UNVERIFIED \u2014 drafted; pending human review",
       "supports": [
-        "badge"
+        "badge",
+        "status-dot"
       ],
       "notes": "Drafted for the Badge migration. URL is the canonical Laws of UX page \u2014 confirm before use."
     },

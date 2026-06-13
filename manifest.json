@@ -3493,10 +3493,86 @@
     },
     {
       "id": "status-dot",
+      "level": "atom",
       "label": "Status dot",
+      "desc": "A small filled circle marking presence or state, always paired with a text label that carries the meaning.",
       "category": "selection",
+      "class": "wire-status-dot",
+      "file": "css/components/status-dot.css",
       "ref": "components/selection-status/status-dot/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = strong)",
+        "subtle",
+        "outline"
+      ],
+      "sizes": [
+        "(default = md)",
+        "sm",
+        "lg"
+      ],
+      "modifiers": [
+        "pulse"
+      ],
+      "behaviors": [],
+      "slots": [
+        "(none — pairs with an adjacent text label)"
+      ],
+      "related": [
+        "badge",
+        "wait-time",
+        "avatar"
+      ],
+      "a11y": "The dot is always decorative (aria-hidden, no role, not focusable); the adjacent visible text label is the status and the accessible name. Never the only signal. Runtime changes are announced via an aria-live region on the label. The pulse is disabled under prefers-reduced-motion.",
+      "rationale": [
+        {
+          "decision": "Status is carried by the text label, never the dot's appearance (grayscale, no hue)",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color"
+          ]
+        },
+        {
+          "decision": "A small high-contrast mark draws the eye to the status beside it; the dot reads as belonging to its label",
+          "citation_ids": [
+            "laws-of-ux-von-restorff",
+            "gestalt-proximity"
+          ]
+        },
+        {
+          "decision": "Pulse disabled under reduced-motion; runtime status changes announced via aria-live",
+          "citation_ids": [
+            "wcag-2.3.3-animation-from-interactions",
+            "wcag-4.1.3-status-messages"
+          ]
+        }
+      ],
+      "notes": "Decorative leaf paired with text. Diameter is fixed component geometry in rem via --status-dot-size, mirroring Badge's dot. Fill treatments map to emphasis, not to fixed states; bind a treatment to a meaning consistently within a screen and let the label name the state. The pulse is an ::after halo, not an interaction state.",
+      "figma_props": {
+        "_normalized_from": "treatments are emphasis, not states; pulse and size are independent axes.",
+        "Treatment": {
+          "type": "VARIANT",
+          "values": [
+            "strong",
+            "subtle",
+            "outline"
+          ],
+          "default": "strong"
+        },
+        "Size": {
+          "type": "VARIANT",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "default": "md"
+        },
+        "Pulse": {
+          "type": "BOOLEAN",
+          "default": false
+        },
+        "_matrix": "Treatment(3) x Size(3) = 9 (<=30). Pulse is a boolean."
+      }
     },
     {
       "id": "progress",
@@ -4875,7 +4951,6 @@
               "type": "page",
               "label": "Status dot",
               "ref": "components/selection-status/status-dot/",
-              "status": "planned",
               "id": "status-dot"
             },
             {
