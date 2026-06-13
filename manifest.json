@@ -3321,10 +3321,37 @@
     },
     {
       "id": "chat-launcher",
-      "label": "Chat launcher",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "A persistent corner target is fast to reach from anywhere",
+          "citation_ids": ["laws-of-ux-fitts", "wcag-2.5.8-target-size-minimum"]
+        },
+        {
+          "decision": "Accessible name + haspopup/expanded when it opens a dialog",
+          "citation_ids": ["wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Modest, dismissable, never covering essential actions",
+          "citation_ids": ["preview-chat-launcher-pattern", "wcag-1.4.10-reflow"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-chat-launcher",
+      "file": "css/components/chat-launcher.css",
       "ref": "components/actions/chat-launcher/",
-      "status": "planned"
+      "ref_template": "components/actions/chat-launcher/",
+      "status": "beta",
+      "variants": ["(default = labelled)", "compact", "fixed"],
+      "elements": ["wire-chat-launcher__icon", "wire-chat-launcher__label"],
+      "states": ["aria-expanded"],
+      "companions": ["wire-modal", "wire-drawer"],
+      "behaviors": [],
+      "slots": ["icon", "label"],
+      "a11y": "Real <button> with a text name; compact (icon-only) needs aria-label. aria-haspopup=dialog + aria-expanded kept in sync by the app. Large floating target ≥44px. Prominence from fill + elevation, not colour. Must not cover footer / back-to-top; verify at reflow.",
+      "notes": "Launcher only — opening the chat surface (Modal/Drawer/app panel) is the app's job; no JS ships. Add --fixed for the bottom-end viewport placement. Not for emergency lines (use Emergency line) or one-off actions (use Button).",
+      "label": "Chat launcher",
+      "desc": "A floating action button that opens a chat or help experience."
     },
     {
       "id": "textarea",
@@ -5244,7 +5271,6 @@
               "type": "page",
               "label": "Chat launcher",
               "ref": "components/actions/chat-launcher/",
-              "status": "planned",
               "id": "chat-launcher"
             }
           ],

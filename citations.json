@@ -109,7 +109,8 @@
         "link",
         "disclosure",
         "save-portal-link",
-        "menu"
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -129,7 +130,8 @@
         "gallery",
         "inpagenav",
         "help-bar",
-        "doc-shell"
+        "doc-shell",
+        "chat-launcher"
       ]
     },
     {
@@ -415,7 +417,8 @@
         "button-group",
         "disclosure",
         "save-portal-link",
-        "menu"
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -495,7 +498,8 @@
         "button-group",
         "disclosure",
         "save-portal-link",
-        "menu"
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -1549,7 +1553,8 @@
         "topnav",
         "text-size-control",
         "tag",
-        "icon-button"
+        "icon-button",
+        "chat-launcher"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
@@ -2133,6 +2138,22 @@
       "verification": "UNVERIFIED \u2014 candidate from menu research, pending human review",
       "supports": [
         "menu"
+      ]
+    },
+    {
+      "id": "preview-chat-launcher-pattern",
+      "tier": "judgment",
+      "finding": "A modest, dismissable floating launcher suits patients seeking help mid-task, provided it never covers essential actions. Our reasoned position, no external study claimed.",
+      "source": {
+        "org": "Preview Design System",
+        "title": "Chat launcher design rationale",
+        "year": 2026,
+        "url": ""
+      },
+      "verified_date": null,
+      "verification": "judgment \u2014 design call, no external source claimed",
+      "supports": [
+        "chat-launcher"
       ]
     }
   ]

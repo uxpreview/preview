@@ -1,0 +1,68 @@
+/* ============================================================
+   Chat launcher — wire-chat-launcher
+   A floating action button that opens a chat / virtual-assistant or
+   help experience. Usually pinned to the bottom-end of the viewport
+   (--fixed). It is a launcher only: opening the actual chat panel
+   (a Modal, Drawer, or app surface) is the application's job.
+
+   Class:     wire-chat-launcher (on <button>)
+   Element:   wire-chat-launcher__icon, wire-chat-launcher__label
+   Variants:  --compact (round, icon-only), --fixed (pinned)
+   Grayscale: prominence from fill + elevation, never hue.
+   ============================================================ */
+
+.wire-chat-launcher {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-block-size: 3.25rem;
+  padding-inline: var(--space-lg);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-inverse);
+  background-color: var(--color-accent);
+  border: var(--border-thin) solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-chat-launcher:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.wire-chat-launcher__icon {
+  display: inline-flex;
+  inline-size: 1.5em;
+  block-size: 1.5em;
+  flex-shrink: 0;
+}
+.wire-chat-launcher__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.wire-chat-launcher__label {
+  white-space: nowrap;
+}
+
+/* ---------- Compact: round, icon-only ---------- */
+.wire-chat-launcher--compact {
+  inline-size: 3.25rem;
+  padding-inline: 0;
+  justify-content: center;
+}
+
+/* ---------- Fixed: pinned to the bottom-end of the viewport ----------
+   The production placement. Sits above page content but below modal
+   and toast layers so a dialog can still cover it. */
+.wire-chat-launcher--fixed {
+  position: fixed;
+  inset-block-end: var(--space-lg);
+  inset-inline-end: var(--space-lg);
+  z-index: var(--z-sticky);
+}
