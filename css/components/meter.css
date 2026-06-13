@@ -1,0 +1,54 @@
+/* ============================================================
+   Meter — a scalar measurement within a known range (capacity, score,
+   a fraction of a whole). Built on the native <meter> element, so the
+   value/min/max ride on attributes (no inline styles). Quality levels
+   render as grayscale density; the meaning stays in the text label.
+   ============================================================ */
+
+.wire-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.wire-meter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.wire-meter__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.wire-meter__value {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.wire-meter__bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  inline-size: 100%;
+  block-size: 0.5rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-muted);
+  overflow: hidden;
+}
+
+/* Track + the three quality bands, all grayscale (density, never hue);
+   which band is active is the browser's call from low/high/optimum. */
+.wire-meter__bar::-webkit-meter-bar { background-color: var(--color-bg-muted); border: none; border-radius: var(--radius-pill); }
+.wire-meter__bar::-webkit-meter-optimum-value { background-color: var(--color-text); border-radius: var(--radius-pill); }
+.wire-meter__bar::-webkit-meter-suboptimum-value { background-color: var(--color-text-muted); border-radius: var(--radius-pill); }
+.wire-meter__bar::-webkit-meter-even-less-good-value { background-color: var(--color-text-subtle); border-radius: var(--radius-pill); }
+.wire-meter__bar::-moz-meter-bar { background-color: var(--color-text); border-radius: var(--radius-pill); }
+
+/* Larger track for a more prominent placement. */
+.wire-meter--lg .wire-meter__bar { block-size: 0.75rem; }

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Progress — Preview Design System</title>
+  <meta name="description" content="A determinate or indeterminate progress bar built on the native progress element, with role=progressbar and value semantics. Usage, specs, and accessibility for the Progress component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -397,20 +398,426 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Progress</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Progress</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">How far along a task is — a form being submitted, a file uploading, a multi-step flow. Built on the native <code>&lt;progress&gt;</code> element so the percentage rides on an attribute and the role and value are announced for free. Determinate when you know the share done; indeterminate when you only know it's working.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/progress.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · native &lt;progress&gt;</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Progress documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A labelled determinate bar with its value, and an indeterminate bar for when the share isn't known.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">determinate · indeterminate</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-progress">
+                      <div class="wire-progress__header">
+                        <label class="wire-progress__label" for="prog-upload">Uploading records</label>
+                        <span class="wire-progress__value">70%</span>
+                      </div>
+                      <progress class="wire-progress__bar" id="prog-upload" max="100" value="70">70%</progress>
+                    </div>
+                    <div class="wire-progress">
+                      <div class="wire-progress__header">
+                        <label class="wire-progress__label" for="prog-working">Checking coverage</label>
+                      </div>
+                      <progress class="wire-progress__bar" id="prog-working" aria-label="Checking coverage, in progress"></progress>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Built on the native element, so role and value are browser-provided; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Native semantics</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Progress answers "how much longer?" for a task in motion. It is about <em>completion over time</em> — distinct from <a href="../meter/">Meter</a>, which shows a static measurement within a range. Use the determinate form whenever you can estimate the share done; reserve indeterminate for genuinely unknown durations.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>A file upload, a form submission, or a report being generated.</li>
+                  <li>Step <em>x</em> of <em>y</em> in a wizard, as a thin completion bar.</li>
+                  <li>Any wait long enough that silence would feel broken.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a fixed measurement (beds free, score out of 5), use <a href="../meter/">Meter</a>.</li>
+                  <li>For a very short, unmeasurable wait, a <a href="../../../components/skeleton/">Skeleton</a> or spinner fits better.</li>
+                  <li>Don't fake a determinate value you can't actually estimate — use indeterminate honestly.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A header pairing a label with the current value, over a native <code>&lt;progress&gt;</code> bar. The label is associated with the bar so the two are one control.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">label · value · bar</span>
+                  <div class="wire-progress">
+                    <div class="wire-progress__header">
+                      <label class="wire-progress__label" for="prog-anatomy">Application</label>
+                      <span class="wire-progress__value">40%</span>
+                    </div>
+                    <progress class="wire-progress__bar" id="prog-anatomy" max="100" value="40">40%</progress>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-progress</code></td><td>The wrapper; stacks the header over the bar.</td></tr>
+                    <tr><td>Header</td><td><code>.wire-progress__header</code></td><td>Lays the label and value on one row.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-progress__label</code></td><td>A real <code>&lt;label for&gt;</code> naming the bar.</td></tr>
+                    <tr><td>Value</td><td><code>.wire-progress__value</code></td><td>The visible percentage, in tabular figures.</td></tr>
+                    <tr><td>Bar</td><td><code>.wire-progress__bar</code></td><td>The native <code>&lt;progress&gt;</code>; <code>value</code>/<code>max</code> drive the fill and the announced value.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <p class="u-text-muted u-mt-sm">Determinate vs indeterminate is set by the presence of a <code>value</code> attribute, not a class. The only style variant is track height.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">How</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Determinate</td><td><code>&lt;progress value max&gt;</code></td><td>You know the share done. Pair with a visible percent.</td></tr>
+                    <tr><td>Indeterminate</td><td><code>&lt;progress&gt;</code> (no value)</td><td>Working, duration unknown. Give it an <code>aria-label</code>.</td></tr>
+                    <tr><td>Large</td><td><code>.wire-progress--lg</code></td><td>A thicker track for a prominent placement.</td></tr>
+                  </tbody>
+                </table>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">Large track</span>
+                  <div class="wire-progress wire-progress--lg">
+                    <div class="wire-progress__header">
+                      <label class="wire-progress__label" for="prog-lg">Generating report</label>
+                      <span class="wire-progress__value">85%</span>
+                    </div>
+                    <progress class="wire-progress__bar" id="prog-lg" max="100" value="85">85%</progress>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">A self-contained control that drops into flows and cards.</p>
+                <ul>
+                  <li><strong>In a <a href="../../../components/stepper/">stepper</a></strong> — a thin completion bar beneath the step labels.</li>
+                  <li><strong>In a <a href="../../../components/modal/">modal</a> or card</strong> — while an action runs.</li>
+                  <li><strong>Vs <a href="../meter/">Meter</a></strong> — progress moves toward done; meter sits at a measured value.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A multi-step application showing overall completion.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Application progress</span>
+                  <div class="u-stack u-stack--sm">
+                    <span class="wire-eyebrow">Step 3 of 5 · Insurance &amp; coverage</span>
+                    <div class="wire-progress">
+                      <div class="wire-progress__header">
+                        <label class="wire-progress__label" for="prog-ctx">Application complete</label>
+                        <span class="wire-progress__value">60%</span>
+                      </div>
+                      <progress class="wire-progress__bar" id="prog-ctx" max="100" value="60">60%</progress>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <div class="wire-progress">
+                      <div class="wire-progress__header">
+                        <label class="wire-progress__label" for="prog-do">Uploading</label>
+                        <span class="wire-progress__value">45%</span>
+                      </div>
+                      <progress class="wire-progress__bar" id="prog-do" max="100" value="45">45%</progress>
+                    </div>
+                    <p class="u-text-muted u-mt-md">Label the bar and show the value in text. The percentage shouldn't live only in the fill width.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <div class="wire-progress">
+                      <progress class="wire-progress__bar" max="100" value="45"></progress>
+                    </div>
+                    <p class="u-text-muted u-mt-md">A bare bar with no label or value names nothing — what's progressing, and how far?</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Name what is progressing ("Uploading records"), not just "Loading".</li>
+                  <li>Show the percentage as text alongside the bar for determinate progress.</li>
+                  <li>For indeterminate, the label says it's working; don't imply a measurable share.</li>
+                  <li>Round the value to whole percent — the bar isn't a precision instrument.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../meter/">Meter</a> — a static measurement within a range, not motion toward done.</li>
+                  <li><a href="../../../components/stepper/">Stepper</a> — named steps that a progress bar can summarise.</li>
+                  <li><a href="../../../components/skeleton/">Skeleton</a> — for short, unmeasurable content loads.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the native <code>&lt;progress&gt;</code> exposes role=progressbar and its value to assistive tech. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.3 Status Messages: progress changes are conveyed without moving focus. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#status-messages">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.3.3 Animation from Interactions: the indeterminate animation respects <code>prefers-reduced-motion</code>. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#animation-from-interactions">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: show a progress indicator for waits long enough that users would otherwise doubt the system is responding. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/progress-indicators/">nngroup.com</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-bg-muted</code></td><td>The unfilled track.</td></tr>
+                    <tr><td><code>--color-text</code></td><td>The filled value bar.</td></tr>
+                    <tr><td><code>--color-text-muted</code></td><td>The value text.</td></tr>
+                    <tr><td><code>--weight-medium</code></td><td>The label weight.</td></tr>
+                    <tr><td><code>--text-sm</code></td><td>Label and value type size.</td></tr>
+                    <tr><td><code>--radius-pill</code></td><td>The rounded track and bar.</td></tr>
+                    <tr><td><code>--space-2xs</code> / <code>--space-md</code></td><td>Header–bar gap, and label–value gap.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Track height</td><td>0.5rem default; 0.75rem under <code>--lg</code>.</td></tr>
+                    <tr><td>Fill</td><td>Driven by the native <code>value</code>/<code>max</code> attributes — no inline styles.</td></tr>
+                    <tr><td>Styling hooks</td><td><code>::-webkit-progress-bar</code> / <code>::-webkit-progress-value</code> / <code>::-moz-progress-bar</code>, all grayscale.</td></tr>
+                    <tr><td>Value text</td><td><code>font-variant-numeric: tabular-nums</code> so the percent doesn't shift width.</td></tr>
+                    <tr><td>Appearance</td><td><code>appearance: none</code> to drop the platform chrome before re-skinning.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">The meaningful "state" is the value itself, from 0 to <code>max</code>, plus the determinate/indeterminate distinction (presence of <code>value</code>). There are no hover/focus/active states — progress is read, not operated.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None in the component. The application updates the <code>value</code> attribute (and the visible percent text) as the task advances; the native element reflects the change to assistive tech. No <code>data-wire-*</code> hooks.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Determinate: value/max drive fill AND the announced value --&gt;
+&lt;div class="wire-progress"&gt;
+  &lt;div class="wire-progress__header"&gt;
+    &lt;label class="wire-progress__label" for="p1"&gt;Uploading records&lt;/label&gt;
+    &lt;span class="wire-progress__value"&gt;70%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;progress class="wire-progress__bar" id="p1" max="100" value="70"&gt;70%&lt;/progress&gt;
+&lt;/div&gt;
+
+&lt;!-- Indeterminate: no value attribute; give it an aria-label --&gt;
+&lt;progress class="wire-progress__bar" aria-label="Checking coverage, in progress"&gt;&lt;/progress&gt;
+
+&lt;!-- Large track --&gt;
+&lt;div class="wire-progress wire-progress--lg"&gt;…&lt;/div&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use the native <code>&lt;progress&gt;</code>: it carries <code>role="progressbar"</code> and exposes <code>value</code>/<code>max</code> with no ARIA needed.</li>
+                  <li>Name it: a <code>&lt;label for&gt;</code> for determinate bars, or an <code>aria-label</code> for an indeterminate bar with no visible label.</li>
+                  <li>Don't add a redundant <code>role</code> or <code>aria-valuenow</code> — the element already provides them.</li>
+                  <li>Keep the visible percent text in sync with the <code>value</code> attribute; both should change together.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None. Progress is an output, not a control — it isn't focusable or operable. (If users could set the value, that would be a slider, not progress.)</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Progress satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>The native element supplies role=progressbar and the current value; the label supplies the name.</td></tr>
+                    <tr><td>4.1.3 Status Messages</td><td>Value updates are reflected by the element without stealing focus.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Completion is in the value text and bar length, not hue. Grayscale guarantees no colour-only meaning.</td></tr>
+                    <tr><td>2.3.3 Animation from Interactions</td><td>The indeterminate animation is stilled under <code>prefers-reduced-motion</code> where the engine allows.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>A determinate bar is announced with its name and percentage, e.g. "Uploading records, 70%".</li>
+                  <li>An indeterminate bar is announced as busy; it has no percentage to read, so its label must say what's happening.</li>
+                  <li>Because the element is native, value changes are picked up without an explicit live region in most screen readers.</li>
+                  <li>The fallback text inside <code>&lt;progress&gt;…&lt;/progress&gt;</code> shows in legacy browsers that don't support the element.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../status-dot/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Status dot</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../meter/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Meter</span>
+        </a>
+      </nav>
 
     </div>
   </section>

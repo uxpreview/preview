@@ -1,0 +1,58 @@
+/* ============================================================
+   Progress — completion of a task over time. Built on the native
+   <progress> element for role=progressbar + value semantics, so the
+   percentage rides on an attribute (no inline styles). Grayscale fill.
+   ============================================================ */
+
+.wire-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.wire-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.wire-progress__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.wire-progress__value {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.wire-progress__bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  inline-size: 100%;
+  block-size: 0.5rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-bg-muted);
+  overflow: hidden;
+  color: var(--color-text); /* some engines tint the value via color */
+}
+
+/* Track (unfilled) and value (filled) — grayscale density, not hue. */
+.wire-progress__bar::-webkit-progress-bar { background-color: var(--color-bg-muted); border-radius: var(--radius-pill); }
+.wire-progress__bar::-webkit-progress-value { background-color: var(--color-text); border-radius: var(--radius-pill); }
+.wire-progress__bar::-moz-progress-bar { background-color: var(--color-text); border-radius: var(--radius-pill); }
+
+/* Larger track for a more prominent placement. */
+.wire-progress--lg .wire-progress__bar { block-size: 0.75rem; }
+
+/* Indeterminate is the native <progress> with no value attribute; where
+   motion must be reduced, still the browser's default animation. */
+@media (prefers-reduced-motion: reduce) {
+  .wire-progress__bar:indeterminate::-webkit-progress-value { animation: none; }
+  .wire-progress__bar:indeterminate::-moz-progress-bar { animation: none; }
+}

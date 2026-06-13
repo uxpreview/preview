@@ -101,7 +101,8 @@
         "avatar-group",
         "status-dot",
         "wait-time",
-        "insurance-indicator"
+        "insurance-indicator",
+        "meter"
       ]
     },
     {
@@ -246,7 +247,8 @@
       "supports": [
         "tokens",
         "skeleton",
-        "status-dot"
+        "status-dot",
+        "progress"
       ]
     },
     {
@@ -465,7 +467,9 @@
         "drawer",
         "modal",
         "sidenav",
-        "doc-nav"
+        "doc-nav",
+        "progress",
+        "meter"
       ]
     },
     {
@@ -486,7 +490,8 @@
         "text-size-control",
         "skeleton",
         "status-dot",
-        "wait-time"
+        "wait-time",
+        "progress"
       ]
     },
     {
@@ -1018,7 +1023,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "skeleton"
+        "skeleton",
+        "progress"
       ],
       "notes": "Year not stated; confirm recency."
     },
@@ -1411,7 +1417,8 @@
         "quote",
         "table",
         "two-column",
-        "wait-time"
+        "wait-time",
+        "meter"
       ],
       "notes": "Book reference, no checkable URL, and pre-2020 edition. Authoritative but not web-checkable; cite by page if used with a client."
     },
