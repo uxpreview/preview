@@ -3156,10 +3156,36 @@
     },
     {
       "id": "button-group",
-      "label": "Button group",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "A shared container + even gap signals the buttons are one related set",
+          "citation_ids": ["gestalt-proximity", "gestalt-common-region"]
+        },
+        {
+          "decision": "One clear primary; the rest quieter",
+          "citation_ids": ["nng-primary-secondary"]
+        },
+        {
+          "decision": "A toolbar set carries a group role + accessible name",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "apg-toolbar"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-button-group",
+      "file": "css/components/button.css",
       "ref": "components/actions/button-group/",
-      "status": "planned"
+      "ref_template": "components/actions/button-group/",
+      "status": "beta",
+      "variants": [],
+      "elements": [],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": [],
+      "slots": ["buttons"],
+      "a11y": "Presentational flex container by default (each button exposed on its own). For a deliberate toolbar add role=group/toolbar + aria-label; toggles carry aria-pressed. Gap keeps adjacent targets from colliding. No roving-focus toolbar behaviour in the base (system gap).",
+      "notes": "Thin layout-only wrapper in button.css: inline-flex, --space-xs gap, wraps. Adds no button styling; all emphasis/size/state come from the contained buttons. No segmented/attached variant yet (system gap).",
+      "label": "Button group",
+      "desc": "A thin container that lays out related buttons as one set, with even gap and wrapping."
     },
     {
       "id": "menu",
@@ -5084,7 +5110,6 @@
               "type": "page",
               "label": "Button group",
               "ref": "components/actions/button-group/",
-              "status": "planned",
               "id": "button-group"
             },
             {
