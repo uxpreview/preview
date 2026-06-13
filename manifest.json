@@ -3673,10 +3673,77 @@
     },
     {
       "id": "insurance-indicator",
+      "level": "molecule",
       "label": "Insurance indicator",
+      "desc": "Whether a provider or location accepts a visitor's plan — a marker icon, a plain status label, and the plan detail.",
       "category": "selection",
+      "class": "wire-insurance-indicator",
+      "file": "css/components/insurance-indicator.css",
       "ref": "components/selection-status/insurance-indicator/",
-      "status": "planned"
+      "status": "beta",
+      "variants": [
+        "(default = full emphasis)",
+        "muted"
+      ],
+      "elements": [
+        "wire-insurance-indicator__icon",
+        "wire-insurance-indicator__body",
+        "wire-insurance-indicator__label",
+        "wire-insurance-indicator__detail"
+      ],
+      "behaviors": [],
+      "slots": [
+        "icon",
+        "label",
+        "detail"
+      ],
+      "related": [
+        "status-dot",
+        "badge",
+        "callout"
+      ],
+      "a11y": "Marker icon is decorative (aria-hidden, focusable=false); the acceptance status is stated in the label text, never by colour or icon shape alone. Keep label + detail adjacent so the statement reads whole. Default to \"Verify your coverage\" when the plan is unknown; announce a post-load state via aria-live.",
+      "rationale": [
+        {
+          "decision": "Acceptance status is in the label wording (and marker shape), never colour",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "wcag-1.1.1-non-text-content"
+          ]
+        },
+        {
+          "decision": "Marker and label read as one statement by proximity",
+          "citation_ids": [
+            "gestalt-proximity"
+          ]
+        }
+      ],
+      "notes": "Healthcare top-task statement (in/out-of-network, verify). Three coverage states are content (marker shape check/slash/query + wording) plus the --muted emphasis step, not interactive states. Icon is 1.25rem fixed geometry in rem. A specialised, fuller cousin of Badge; for plan filtering use Tag in a facet panel, not this.",
+      "figma_props": {
+        "_normalized_from": "coverage state is content (marker shape + wording); only the emphasis step is a CSS axis.",
+        "Emphasis": {
+          "type": "VARIANT",
+          "values": [
+            "full",
+            "muted"
+          ],
+          "default": "full"
+        },
+        "Icon": {
+          "type": "INSTANCE_SWAP",
+          "child": "wire-insurance-indicator__icon",
+          "note": "marker shape: check / slash / query"
+        },
+        "Label": {
+          "type": "TEXT",
+          "slot": "label"
+        },
+        "Detail": {
+          "type": "TEXT",
+          "slot": "detail",
+          "optional": true
+        }
+      }
     },
     {
       "id": "popover",
@@ -5046,7 +5113,6 @@
               "type": "page",
               "label": "Insurance indicator",
               "ref": "components/selection-status/insurance-indicator/",
-              "status": "planned",
               "id": "insurance-indicator"
             }
           ],

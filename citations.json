@@ -37,7 +37,8 @@
       "supports": [
         "media",
         "gallery",
-        "avatar"
+        "avatar",
+        "insurance-indicator"
       ]
     },
     {
@@ -99,7 +100,8 @@
         "avatar",
         "avatar-group",
         "status-dot",
-        "wait-time"
+        "wait-time",
+        "insurance-indicator"
       ]
     },
     {
@@ -1450,7 +1452,8 @@
         "badge",
         "avatar",
         "avatar-group",
-        "status-dot"
+        "status-dot",
+        "insurance-indicator"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
     },

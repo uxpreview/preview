@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insurance indicator — Preview Design System</title>
+  <meta name="description" content="Whether a provider or location accepts a visitor's plan — a marker icon, a plain status label, and the plan detail. Usage, specs, and accessibility for the Insurance indicator component.">
   <link rel="stylesheet" href="../../../css/wire.css">
   <script>(function(){try{var t=localStorage.getItem('wire-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();</script>
 </head>
@@ -397,20 +398,432 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-indicators">Selection &amp; status</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Insurance indicator</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Insurance indicator</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Whether a provider or location accepts a visitor's plan — one of the first things people check before booking care. A marker icon, a plain status label, and the plan detail. The status is always stated in words; the icon and emphasis only reinforce it.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/insurance-indicator.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Insurance indicator documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Three states — accepted, not accepted, and unverified — each told in words, with a distinct marker shape and a step of emphasis.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">accepted · not accepted · verify</span>
+                  <div class="u-stack u-stack--md">
+                    <span class="wire-insurance-indicator">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 12.5l2.5 2.5 4.5-5"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">In-network — accepts your plan</span>
+                        <span class="wire-insurance-indicator__detail">Aetna · Blue Cross Blue Shield · Cigna · Medicare</span>
+                      </span>
+                    </span>
+                    <span class="wire-insurance-indicator wire-insurance-indicator--muted">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 15.5l7-7"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">Out-of-network for your plan</span>
+                        <span class="wire-insurance-indicator__detail">You may pay more, or your visit may not be covered.</span>
+                      </span>
+                    </span>
+                    <span class="wire-insurance-indicator wire-insurance-indicator--muted">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"></path><path d="M12 16.5v.5"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">Verify your coverage</span>
+                        <span class="wire-insurance-indicator__detail">Plan acceptance can change — confirm before your visit.</span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The component is non-interactive; a screen-reader audit is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Status in text</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">"Do they take my insurance?" is one of the first questions a patient asks, and a wrong answer is expensive. This indicator states the answer plainly and never hides it behind a colour: the label says the status outright, the marker shape reinforces it, and the detail names the plans or the caveat.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>On a <a href="../../../pages/hospital-provider.html">provider</a> or location page, near the booking action.</li>
+                  <li>In a find-a-doctor result row, so coverage is visible while comparing.</li>
+                  <li>Anywhere a plan-acceptance answer affects whether someone proceeds.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>Don't assert "accepts your plan" unless the plan is actually known; default to "Verify your coverage".</li>
+                  <li>For a generic one-word tag of status, use a <a href="../../../components/badge/">Badge</a>; this is a fuller statement with detail.</li>
+                  <li>Don't use it to list every accepted plan exhaustively — link to a full coverage page for that.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A marker icon beside a body that stacks the status label over its supporting detail.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">icon · label · detail</span>
+                  <span class="wire-insurance-indicator">
+                    <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 12.5l2.5 2.5 4.5-5"></path></svg>
+                    <span class="wire-insurance-indicator__body">
+                      <span class="wire-insurance-indicator__label">In-network — accepts your plan</span>
+                      <span class="wire-insurance-indicator__detail">Aetna · Blue Cross Blue Shield · Cigna</span>
+                    </span>
+                  </span>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Block</td><td><code>.wire-insurance-indicator</code></td><td>The row. Carries the emphasis variant.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-insurance-indicator__icon</code></td><td>A marker whose shape (check / slash / query) reinforces the state. Decorative.</td></tr>
+                    <tr><td>Body</td><td><code>.wire-insurance-indicator__body</code></td><td>Stacks the label over the detail.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-insurance-indicator__label</code></td><td>The status, stated in words. The load-bearing part.</td></tr>
+                    <tr><td>Detail</td><td><code>.wire-insurance-indicator__detail</code></td><td>Plan names, a caveat, or a verify prompt.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">States &amp; emphasis</h2>
+                <p class="u-text-muted u-mt-sm">There is no green/red here. The state lives in the label wording and the marker shape; <code>--muted</code> lowers emphasis for the non-affirmative states so the affirmative one reads first.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">State</th><th scope="col">Marker &amp; class</th><th scope="col">Wording</th></tr></thead>
+                  <tbody>
+                    <tr><td>Accepted</td><td>Check, full emphasis (<code>.wire-insurance-indicator</code>)</td><td>"In-network — accepts your plan".</td></tr>
+                    <tr><td>Not accepted</td><td>Slash, <code>.wire-insurance-indicator--muted</code></td><td>"Out-of-network for your plan".</td></tr>
+                    <tr><td>Unverified</td><td>Query, <code>.wire-insurance-indicator--muted</code></td><td>"Verify your coverage".</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">A self-contained statement that drops into the places a coverage answer is needed.</p>
+                <ul>
+                  <li><strong>On a provider card</strong> — beneath the name and specialty, above the booking button.</li>
+                  <li><strong>In a result row</strong> — the accepted state visible while a user scans options.</li>
+                  <li><strong>With a <a href="../../../components/callout/">callout</a></strong> — pair the "verify" state with a link to a coverage-check tool.</li>
+                  <li><strong>Not a filter</strong> — to let users filter by plan, that is a <a href="../../../components/tag/">Tag</a> in a facet panel, not this.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">On a provider summary, beside the booking action.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Provider summary</span>
+                  <div class="u-stack u-stack--sm">
+                    <span class="wire-h4">Dr. Elena Ruiz, MD</span>
+                    <span class="u-text-muted">Interventional Cardiology · Riverside Heart Institute</span>
+                    <span class="wire-insurance-indicator u-mt-sm">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 12.5l2.5 2.5 4.5-5"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">In-network — accepts your plan</span>
+                        <span class="wire-insurance-indicator__detail">Based on Aetna PPO · <a href="#">Check your plan</a></span>
+                      </span>
+                    </span>
+                    <span class="u-cluster u-cluster--xs u-mt-sm">
+                      <button class="wire-button" type="button">Book appointment</button>
+                    </span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <span class="wire-insurance-indicator">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"></path><path d="M12 16.5v.5"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">Verify your coverage</span>
+                        <span class="wire-insurance-indicator__detail">Plan acceptance can change — confirm before your visit.</span>
+                      </span>
+                    </span>
+                    <p class="u-text-muted u-mt-md">When the plan isn't known, say so and prompt a check. Honest uncertainty beats a confident wrong answer.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <span class="wire-insurance-indicator">
+                      <svg class="wire-insurance-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 12.5l2.5 2.5 4.5-5"></path></svg>
+                      <span class="wire-insurance-indicator__body">
+                        <span class="wire-insurance-indicator__label">Covered</span>
+                      </span>
+                    </span>
+                    <p class="u-text-muted u-mt-md">A bare "Covered" with no plan and no caveat over-promises. Name the basis or prompt a check.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>State the status in the label; never let the icon or emphasis be the only signal.</li>
+                  <li>Say what the answer is based on ("Based on Aetna PPO") so it's verifiable.</li>
+                  <li>Default to "Verify your coverage" whenever the plan is unknown.</li>
+                  <li>Keep the detail to the relevant plans or one caveat — link out for the full list.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../status-dot/">Status dot</a> — a lighter presence marker where no detail is needed.</li>
+                  <li><a href="../../../components/badge/">Badge</a> — a one-word categorical status.</li>
+                  <li><a href="../../../components/callout/">Callout</a> — to pair the "verify" state with a coverage-check tool.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: the acceptance status is conveyed by the label text and marker shape, never by colour alone. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.1.1 Non-text Content: the marker icon is decorative and the text carries the meaning. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#non-text-content">w3.org</a></li>
+                  <li><strong>Convention</strong> — Gestalt principle of proximity: the marker and the label read as one statement because they sit together. <em>Unverified — pending review.</em></li>
+                  <li><strong>Judgment</strong> — Preview Design System: default to "Verify your coverage" when the plan is unknown — an honest-uncertainty call, not an external finding. No external backing claimed.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">States &amp; emphasis</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-text</code></td><td>Icon and label in the affirmative (full-emphasis) state.</td></tr>
+                    <tr><td><code>--color-text-muted</code></td><td>The detail line, and the icon/label under <code>--muted</code>.</td></tr>
+                    <tr><td><code>--weight-semibold</code></td><td>The status label weight.</td></tr>
+                    <tr><td><code>--text-sm</code></td><td>The detail type size.</td></tr>
+                    <tr><td><code>--space-xs</code> / <code>--space-3xs</code></td><td>Icon–body gap, and the label–detail gap.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Layout</td><td><code>inline-flex</code>, top-aligned; icon fixed, body a stacked column.</td></tr>
+                    <tr><td>Icon</td><td>1.25rem square (fixed component geometry in <code>rem</code>), <code>currentColor</code>.</td></tr>
+                    <tr><td>Marker shapes</td><td>Check (accepted), slash (not accepted), query (unverified) — the shape, not colour, distinguishes them.</td></tr>
+                    <tr><td>Emphasis</td><td><code>--muted</code> drops the icon and label to <code>--color-text-muted</code>; the detail is already muted.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">No interactive states. The three coverage states are content (marker shape + wording) plus the <code>--muted</code> emphasis step, documented in <a href="#usage">Usage &rsaquo; States &amp; emphasis</a> — not hover/focus/active states.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None in the component. Resolving which plan the visitor has, and which state to render, is the application's job. No <code>data-wire-*</code> hooks. If coverage is determined after load, swap the rendered state and announce it in an <code>aria-live</code> region.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Accepted: full emphasis, check marker; status is in the label --&gt;
+&lt;span class="wire-insurance-indicator"&gt;
+  &lt;svg class="wire-insurance-indicator__icon" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+  &lt;span class="wire-insurance-indicator__body"&gt;
+    &lt;span class="wire-insurance-indicator__label"&gt;In-network — accepts your plan&lt;/span&gt;
+    &lt;span class="wire-insurance-indicator__detail"&gt;Aetna · Blue Cross Blue Shield · Cigna&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Not accepted / unverified: lower emphasis, different marker shape --&gt;
+&lt;span class="wire-insurance-indicator wire-insurance-indicator--muted"&gt;
+  &lt;svg class="wire-insurance-indicator__icon" aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+  &lt;span class="wire-insurance-indicator__body"&gt;
+    &lt;span class="wire-insurance-indicator__label"&gt;Verify your coverage&lt;/span&gt;
+    &lt;span class="wire-insurance-indicator__detail"&gt;Plan acceptance can change — confirm before your visit.&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>The marker icon is decorative: <code>aria-hidden="true"</code>, <code>focusable="false"</code>. The label text is the status.</li>
+                  <li>Never encode acceptance with colour or icon shape alone — the wording must state it, which is what makes it safe in grayscale.</li>
+                  <li>Keep the label and detail as adjacent text so the statement reads as a whole.</li>
+                  <li>If coverage resolves after load, render the new state inside an <code>aria-live="polite"</code> region so the change is announced.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">None for the indicator itself — it is read, not operated. Any "check your plan" link inside the detail is a normal link with its own focus ring and tab stop.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Insurance indicator satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.1.1 Non-text Content</td><td>The marker icon is decorative and hidden; the meaning is in the label and detail text.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Acceptance is in the wording and the marker shape, never colour. Grayscale guarantees no colour-only meaning.</td></tr>
+                    <tr><td>1.4.3 Contrast (Minimum)</td><td>Label is <code>--color-text</code> and detail <code>--color-text-muted</code> on the surface; both clear 4.5:1.</td></tr>
+                    <tr><td>4.1.3 Status Messages</td><td>A state resolved after load is announced via an <code>aria-live</code> region.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>The statement reads as its text, e.g. "In-network — accepts your plan. Aetna, Blue Cross Blue Shield, Cigna"; the marker is skipped.</li>
+                  <li>Because the status is in words, the accepted and not-accepted states are unambiguous without seeing the icon.</li>
+                  <li>The "verify" state reads its prompt, guiding the user to confirm rather than implying a definite answer.</li>
+                  <li>A post-load change inside <code>aria-live="polite"</code> is announced once, without moving focus.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../wait-time/">
+          <span class="wire-doc-pager__direction">In Selection &amp; status</span>
+          <span class="wire-doc-pager__title">Wait time</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../">
+          <span class="wire-doc-pager__direction">All components</span>
+          <span class="wire-doc-pager__title">Back to index</span>
+        </a>
+      </nav>
 
     </div>
   </section>

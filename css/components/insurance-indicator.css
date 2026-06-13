@@ -1,0 +1,41 @@
+/* ============================================================
+   Insurance indicator — whether a provider or location accepts a
+   visitor's plan. Grayscale: the marker icon + the label carry the
+   status; never colour. Emphasis lowers for out-of-network / unknown.
+   ============================================================ */
+
+.wire-insurance-indicator {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.wire-insurance-indicator__icon {
+  flex: none;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  color: var(--color-text);
+}
+
+.wire-insurance-indicator__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+}
+
+.wire-insurance-indicator__label {
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.wire-insurance-indicator__detail {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Out-of-network or unknown: lower the emphasis (fill density, not hue).
+   The marker icon and label text still state the status outright. */
+.wire-insurance-indicator--muted .wire-insurance-indicator__icon,
+.wire-insurance-indicator--muted .wire-insurance-indicator__label {
+  color: var(--color-text-muted);
+}
