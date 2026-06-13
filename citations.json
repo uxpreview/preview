@@ -107,7 +107,8 @@
         "insurance-indicator",
         "meter",
         "link",
-        "disclosure"
+        "disclosure",
+        "save-portal-link"
       ]
     },
     {
@@ -328,7 +329,8 @@
         "tokens",
         "button",
         "field",
-        "link"
+        "link",
+        "save-portal-link"
       ]
     },
     {
@@ -407,7 +409,8 @@
         "megamenu",
         "icon-button",
         "button-group",
-        "disclosure"
+        "disclosure",
+        "save-portal-link"
       ]
     },
     {
@@ -485,7 +488,8 @@
         "meter",
         "icon-button",
         "button-group",
-        "disclosure"
+        "disclosure",
+        "save-portal-link"
       ]
     },
     {
@@ -1892,7 +1896,8 @@
       "verified_date": "2026-06-02",
       "verification": "Verified by Ryan McCarty, 2026-06-02",
       "supports": [
-        "select"
+        "select",
+        "save-portal-link"
       ]
     },
     {
@@ -2089,6 +2094,22 @@
       "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
       "supports": [
         "disclosure"
+      ]
+    },
+    {
+      "id": "preview-save-portal-pattern",
+      "tier": "judgment",
+      "finding": "A labelled 'save for later' toggle plus a single recognisable portal entry door fit how patients compare care across visits and devices. Our reasoned position, no external study claimed.",
+      "source": {
+        "org": "Preview Design System",
+        "title": "Save / portal link design rationale",
+        "year": 2026,
+        "url": ""
+      },
+      "verified_date": null,
+      "verification": "judgment \u2014 design call, no external source claimed",
+      "supports": [
+        "save-portal-link"
       ]
     }
   ]

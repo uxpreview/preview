@@ -3259,10 +3259,37 @@
     },
     {
       "id": "save-portal-link",
-      "label": "Save / portal link",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Saved state via aria-pressed and a non-colour cue",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Comfortable ≥44px target for older audiences",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum", "nng-seniors"]
+        },
+        {
+          "decision": "Save-for-later + a single portal door fits patient journeys",
+          "citation_ids": ["preview-save-portal-pattern"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-save-link",
+      "file": "css/components/save-portal-link.css",
       "ref": "components/actions/save-portal-link/",
-      "status": "planned"
+      "ref_template": "components/actions/save-portal-link/",
+      "status": "beta",
+      "variants": ["(default = save)", "portal"],
+      "elements": ["wire-save-link__icon", "wire-save-link__label"],
+      "states": ["aria-pressed (saved)"],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": [],
+      "slots": ["icon", "label"],
+      "a11y": "Save is a toggle <button> with aria-pressed (it acts); portal is an <a href> (it navigates). Label is real text (always-present name); icon decorative. Saved shown by label + filled icon + border, never colour. Pill ≥44px tall.",
+      "notes": "Healthcare save-for-later toggle + patient-portal entry link in one pill family. App toggles aria-pressed/label/icon and persists saves; no JS ships. For dense favouriting use an Icon-button toggle instead.",
+      "label": "Save / portal link",
+      "desc": "A save-for-later toggle and a patient-portal entry link sharing one pill control."
     },
     {
       "id": "chat-launcher",
@@ -5184,7 +5211,6 @@
               "type": "page",
               "label": "Save / portal link",
               "ref": "components/actions/save-portal-link/",
-              "status": "planned",
               "id": "save-portal-link"
             },
             {

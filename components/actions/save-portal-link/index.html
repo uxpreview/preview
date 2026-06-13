@@ -397,20 +397,337 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Save / portal link</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Save / portal link</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Two related healthcare affordances in one small family. <strong>Save for later</strong> is a toggle that bookmarks a provider, location, or article so a patient can return to it. <strong>Patient-portal entry</strong> is a prominent link into the logged-in portal. Both share one pill control; the save toggle carries a persistent state that a plain <a href="../../../components/buttons/">Button</a> does not.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/save-portal-link.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Save / portal link documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A save toggle in both states, and the portal-entry link. The save control is a real <code>&lt;button&gt;</code> with <code>aria-pressed</code>; the portal link is an <code>&lt;a&gt;</code>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">save (off) · saved (on) · portal entry</span>
+                  <div class="u-cluster u-cluster--md u-cluster--baseline">
+                    <button type="button" class="wire-save-link" aria-pressed="false">
+                      <span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                      <span class="wire-save-link__label">Save</span>
+                    </button>
+                    <button type="button" class="wire-save-link" aria-pressed="true">
+                      <span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                      <span class="wire-save-link__label">Saved</span>
+                    </button>
+                    <a class="wire-save-link wire-save-link--portal" href="#">
+                      <span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+                      <span class="wire-save-link__label">Log in to patient portal</span>
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The save toggle's pressed state and the portal link are static markup; persistence (remembering what's saved) and the actual portal auth are the application's job. A screen-reader pass on the toggle wording is pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Target ≥44px</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Choosing care takes time, and patients compare across visits and devices. A save control lets them set a provider or location aside without committing; a portal link gives a single, recognisable door into their account. Both are small but high-traffic, so they read clearly and meet a comfortable target size for older hands.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li><strong>Save</strong> — on a provider card, location, or article a patient may want to revisit.</li>
+                  <li><strong>Portal</strong> — in the header or a prominent banner, as the entry to the logged-in experience.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a generic primary action — use a <a href="../../../components/buttons/">Button</a>.</li>
+                  <li>For a one-off icon control with no persistent state — use an <a href="../icon-button/">Icon button</a>.</li>
+                  <li>For favouriting many items in a dense grid where labels won't fit — an <a href="../icon-button/">Icon button</a> toggle may suit better.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / attribute</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Control</td><td><code>.wire-save-link</code></td><td>The pill. A <code>&lt;button&gt;</code> for save, an <code>&lt;a&gt;</code> for portal.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-save-link__icon</code></td><td>Bookmark (save) or lock (portal). Decorative.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-save-link__label</code></td><td>"Save" / "Saved", or the portal label.</td></tr>
+                    <tr><td>Saved state</td><td><code>aria-pressed="true"</code></td><td>Toggles the saved styling; the label flips to "Saved".</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Save (default)</td><td><code>.wire-save-link</code> on <code>&lt;button&gt;</code></td><td>The save-for-later toggle.</td></tr>
+                    <tr><td>Saved</td><td><code>[aria-pressed="true"]</code></td><td>The on-state: filled bookmark, firmer border, "Saved".</td></tr>
+                    <tr><td>Portal</td><td><code>.wire-save-link--portal</code> on <code>&lt;a&gt;</code></td><td>The prominent portal-entry link.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A save toggle on a provider card, and the portal link in a utility position.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Provider card action · header utility</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="u-cluster u-cluster--between u-cluster--start-align">
+                      <span class="u-stack u-stack--2xs">
+                        <span class="wire-h4">Dr. Elena Ruiz, MD</span>
+                        <span class="u-text-muted">Interventional Cardiology</span>
+                      </span>
+                      <button type="button" class="wire-save-link" aria-pressed="false">
+                        <span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                        <span class="wire-save-link__label">Save</span>
+                      </button>
+                    </div>
+                    <a class="wire-save-link wire-save-link--portal" href="#">
+                      <span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+                      <span class="wire-save-link__label">Log in to patient portal</span>
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default"><span class="wire-save-link" aria-pressed="true"><span class="wire-save-link__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span><span class="wire-save-link__label">Saved</span></span></p>
+                    <p class="u-text-muted u-mt-md">Flip the label and fill the icon when saved, and carry the state on <code>aria-pressed</code>. The change is visible and announced.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default"><span class="wire-save-link"><span class="wire-save-link__label">Save</span></span></p>
+                    <p class="u-text-muted u-mt-md">Don't show only a colour change for "saved", and don't leave off <code>aria-pressed</code> — the state would be invisible to assistive tech and in grayscale.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../../components/buttons/">Button</a> and <a href="../icon-button/">Icon button</a> — the general action controls; save-link adds a persistent saved state.</li>
+                  <li><a href="../link/">Link</a> — for plain navigation without the pill treatment.</li>
+                  <li><a href="../../../foundations/ux-guidance/compare-save.html">Compare &amp; save</a> — the wider pattern this supports.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: a toggle exposes its state via <code>aria-pressed</code>, so "saved" is programmatically determinable. <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: the saved state is shown by label and a filled icon, not colour alone. <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): the pill clears the 24px floor and meets the comfortable size for older audiences. <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
+                  <li><strong>Judgment</strong> — Preview Design System: a labelled "Save for later" plus a single recognisable portal door fits how patients compare care across visits and devices. <em>Design call, no external source claimed.</em></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border-strong</code></td><td>The resting pill border.</td></tr>
+                    <tr><td><code>--color-accent</code> / <code>--color-accent-hover</code></td><td>Saved-state border, and the portal link's fill.</td></tr>
+                    <tr><td><code>--color-bg-muted</code> / <code>--color-bg-subtle</code></td><td>Hover wash, and the saved fill.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-inverse</code></td><td>Label colour; inverse on the filled portal link.</td></tr>
+                    <tr><td><code>--text-sm</code>, <code>--weight-medium</code>/<code>--weight-semibold</code></td><td>Label type; heavier when saved or portal.</td></tr>
+                    <tr><td><code>--radius-pill</code>, <code>--border-thin</code>, <code>--space-2xs</code>/<code>--space-md</code></td><td>Shape, border width, icon gap, inline padding.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Height</td><td><code>min-block-size: 2.75rem</code> — ≥44px target.</td></tr>
+                    <tr><td>Layout</td><td><code>inline-flex</code>, icon + label with a <code>--space-2xs</code> gap.</td></tr>
+                    <tr><td>Icon</td><td>1.25em; filled when saved, outline when not.</td></tr>
+                    <tr><td>Shape</td><td>Pill (<code>--radius-pill</code>) with a 1px border.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">Rest, hover (background wash), <code>:focus-visible</code> (global ring), and saved (<code>[aria-pressed="true"]</code>: firmer border + subtle fill + "Saved"). The portal variant has its own filled rest and hover. Disabled is rare here; if needed, use the native <code>disabled</code> attribute on the button.</p>
+              </section>
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None ships with the component. The application toggles <code>aria-pressed</code> and the label/icon, and persists what is saved. No <code>data-wire-*</code> hook.</p>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Save toggle (off). Flip aria-pressed + label + icon fill on save. --&gt;
+&lt;button type="button" class="wire-save-link" aria-pressed="false"&gt;
+  &lt;span class="wire-save-link__icon" aria-hidden="true"&gt;&lt;svg ... focusable="false"&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="wire-save-link__label"&gt;Save&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Saved (on) --&gt;
+&lt;button type="button" class="wire-save-link" aria-pressed="true"&gt;
+  &lt;span class="wire-save-link__icon" aria-hidden="true"&gt;&lt;svg fill="currentColor" ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="wire-save-link__label"&gt;Saved&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Portal entry: an anchor, not a button --&gt;
+&lt;a class="wire-save-link wire-save-link--portal" href="/portal"&gt;
+  &lt;span class="wire-save-link__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="wire-save-link__label"&gt;Log in to patient portal&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li><strong>Save</strong> is a toggle <code>&lt;button&gt;</code> with <code>aria-pressed</code> — it acts (changes state), so it must be a button, not a link.</li>
+                  <li><strong>Portal</strong> is an <code>&lt;a href&gt;</code> — it navigates, so it must be a link, not a button.</li>
+                  <li>The label is real text inside the control, so the accessible name is always present; the icon is decorative.</li>
+                  <li>Keep the label honest with the state: "Save" when off, "Saved" when on (don't make the user infer it from the icon alone).</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Focuses the control; global focus ring appears.</td></tr>
+                    <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Toggles save (button) — links follow on Enter only.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Save / portal link satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Save exposes <code>aria-pressed</code>; portal exposes the link role; both have a text name.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Saved is shown by label + filled icon + border, never hue.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>The pill is ≥44px tall.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>Inherits the global focus ring.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>The save toggle reads "Save, toggle button, not pressed" → "Saved, toggle button, pressed" after activation.</li>
+                  <li>The portal link reads "Log in to patient portal, link".</li>
+                  <li>Because the label text changes with state, the change is announced even without relying on <code>aria-pressed</code> alone.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../disclosure/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Disclosure</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../chat-launcher/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Chat launcher</span>
+        </a>
+      </nav>
 
     </div>
   </section>
