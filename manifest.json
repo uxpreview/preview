@@ -1178,7 +1178,10 @@
         "choice",
         "button"
       ],
-      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list.",
+      "notes": "Two modes: interactive (button/a) and read-only metadata (span). No JS ships; the app wires selection (aria-pressed + .is-selected) and removal. Selected state is a dark accent fill (structural via fill density, not hue). Group with wire-tag-list. Covers the filter-chip pattern — a toggleable/removable selection chip is Tag with .is-selected + aria-pressed, so 'filter-chip' was removed as a separate component (folded here) rather than duplicating this.",
+      "supersedes": [
+        "filter-chip"
+      ],
       "label": "Tag",
       "desc": "An interactive filter / removable chip and a read-only metadata label, in two sizes.",
       "figma_props": {
@@ -3485,13 +3488,6 @@
       }
     },
     {
-      "id": "filter-chip",
-      "label": "Filter chip",
-      "category": "selection",
-      "ref": "components/selection-status/filter-chip/",
-      "status": "planned"
-    },
-    {
       "id": "status-dot",
       "level": "atom",
       "label": "Status dot",
@@ -5019,13 +5015,6 @@
               "label": "Avatar group",
               "ref": "components/selection-status/avatar-group/",
               "id": "avatar-group"
-            },
-            {
-              "type": "page",
-              "label": "Filter chip",
-              "ref": "components/selection-status/filter-chip/",
-              "status": "planned",
-              "id": "filter-chip"
             },
             {
               "type": "page",
