@@ -1,0 +1,69 @@
+/* ============================================================
+   Disclosure — wire-disclosure
+   A single, independent show/hide built on the native
+   <details>/<summary> elements — so the expanded state, keyboard
+   support, and find-in-page all come from the platform with no
+   JavaScript. For a coordinated set (one-open-at-a-time, animated)
+   use Accordion instead.
+
+   Class:     wire-disclosure (on <details>)
+   Elements:  wire-disclosure__summary (on <summary>),
+              wire-disclosure__icon, wire-disclosure__body
+   Variant:   --bordered
+   Grayscale: open/closed shown by the chevron + native state.
+   ============================================================ */
+
+.wire-disclosure {
+  border-block-end: var(--border-thin) solid var(--color-border);
+}
+
+.wire-disclosure__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  min-block-size: 2.75rem;
+  padding-block: var(--space-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Hide the platform's default disclosure triangle in all engines. */
+.wire-disclosure__summary::-webkit-details-marker {
+  display: none;
+}
+
+.wire-disclosure__icon {
+  display: inline-flex;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  flex-shrink: 0;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.wire-disclosure__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.wire-disclosure[open] .wire-disclosure__icon {
+  transform: rotate(180deg);
+}
+
+.wire-disclosure__body {
+  padding-block-end: var(--space-md);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Bordered: a self-contained card ---------- */
+.wire-disclosure--bordered {
+  border: var(--border-thin) solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.wire-disclosure--bordered .wire-disclosure__summary {
+  padding-inline: var(--space-md);
+}
+.wire-disclosure--bordered .wire-disclosure__body {
+  padding-inline: var(--space-md);
+}

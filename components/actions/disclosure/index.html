@@ -397,20 +397,336 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Disclosure</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Disclosure</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A single show/hide for one chunk of secondary content. Built on the native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> elements, so the expanded state, keyboard support, and browser find-in-page work with no JavaScript. For a coordinated set of panels, use <a href="../../../components/accordion/">Accordion</a>.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/disclosure.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · native, no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Disclosure documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A minimal disclosure and a bordered one. Click or focus the summary and press Enter or Space to toggle.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">minimal · bordered</span>
+                  <div class="u-stack u-stack--lg">
+                    <details class="wire-disclosure">
+                      <summary class="wire-disclosure__summary">
+                        What should I bring to my appointment?
+                        <span class="wire-disclosure__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                      </summary>
+                      <div class="wire-disclosure__body">
+                        <p>Bring a photo ID, your insurance card, a list of current medications, and any referral paperwork. Arrive 15 minutes early to complete check-in.</p>
+                      </div>
+                    </details>
+                    <details class="wire-disclosure wire-disclosure--bordered" open>
+                      <summary class="wire-disclosure__summary">
+                        How do I prepare for a blood test?
+                        <span class="wire-disclosure__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                      </summary>
+                      <div class="wire-disclosure__body">
+                        <p>Some tests require fasting for 8–12 hours beforehand. Your care team will tell you if yours does. Drink water as normal unless told otherwise.</p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Disclosure leans on the native <code>&lt;details&gt;</code> element, so its state and keyboard model are the platform's; a screen-reader pass across engines is pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Native state</span>
+                  <span class="wire-badge">Find-in-page friendly</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Progressive disclosure keeps a page calm by hiding detail until it is asked for. A disclosure is the smallest form of that: one trigger, one panel, fully independent of any other. Because it is native, it never traps content from search — the browser can still find text inside a closed panel.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>A single "Show more" / "Details" reveal beneath a summary.</li>
+                  <li>An optional advanced section in a form that most users can skip.</li>
+                  <li>One stand-alone FAQ item that isn't part of a set.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a group of related panels — use <a href="../../../components/accordion/">Accordion</a>, which coordinates them.</li>
+                  <li>For switching between peer views — that is <a href="../../../components/tabs/">Tabs</a>.</li>
+                  <li>For an overlay or transient panel — that is a <a href="../menu/">Menu</a>, <a href="../../../components/modal/">Modal</a>, or <a href="../../../components/drawer/">Drawer</a>.</li>
+                  <li>To hide content essential to every user; disclosure is for secondary detail.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A <code>&lt;details&gt;</code> wrapping a <code>&lt;summary&gt;</code> trigger and the revealed body. The chevron is ours; the open/closed state is the browser's.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Root</td><td><code>.wire-disclosure</code> on <code>&lt;details&gt;</code></td><td>Holds the open state natively; <code>open</code> attribute = expanded.</td></tr>
+                    <tr><td>Summary</td><td><code>.wire-disclosure__summary</code> on <code>&lt;summary&gt;</code></td><td>The always-visible trigger. Focusable; ≥44px tall.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-disclosure__icon</code></td><td>A chevron that rotates 180° when open. Decorative.</td></tr>
+                    <tr><td>Body</td><td><code>.wire-disclosure__body</code></td><td>The revealed content.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Minimal</td><td><code>.wire-disclosure</code></td><td>A bottom rule only — for stacking in a list or under prose.</td></tr>
+                    <tr><td>Bordered</td><td><code>.wire-disclosure--bordered</code></td><td>A self-contained card with padding — for a standalone reveal.</td></tr>
+                    <tr><td>Open by default</td><td><code>open</code> attribute</td><td>Start expanded when the detail is usually wanted.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">An optional section inside a form — most patients skip it, so it stays collapsed until needed.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Optional form section</span>
+                  <details class="wire-disclosure wire-disclosure--bordered">
+                    <summary class="wire-disclosure__summary">
+                      Add accessibility or interpreter needs (optional)
+                      <span class="wire-disclosure__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                    </summary>
+                    <div class="wire-disclosure__body">
+                      <p>Tell us if you need a wheelchair-accessible room, a sign-language or spoken-language interpreter, or other support for your visit.</p>
+                    </div>
+                  </details>
+                </div>
+              </section>
+
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default">Use a native <code>&lt;details&gt;</code> so the panel toggles, takes focus, and is findable in-page for free.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default">Don't rebuild a disclosure from a <code>&lt;div&gt;</code> + JS when the native element already does it accessibly.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../../components/accordion/">Accordion</a> — a coordinated set of disclosures.</li>
+                  <li><a href="../../../components/tabs/">Tabs</a> — for switching between peer views.</li>
+                  <li><a href="../menu/">Menu</a> and <a href="../../../components/drawer/">Drawer</a> — for transient, overlaying panels.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI-ARIA APG, Disclosure pattern: a trigger toggles the visibility of a section and exposes its expanded state (native <code>&lt;details&gt;</code> provides this). <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group, "Progressive Disclosure": deferring secondary detail until requested reduces visible complexity and cognitive load. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/progressive-disclosure/">nngroup.com</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the trigger's expanded/collapsed state is programmatically exposed (here by the native element). <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border</code></td><td>The bottom rule and the bordered card outline.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-muted</code></td><td>Summary text, and the quieter body.</td></tr>
+                    <tr><td><code>--weight-semibold</code></td><td>Summary weight.</td></tr>
+                    <tr><td><code>--space-sm</code> / <code>--space-md</code></td><td>Summary gap and the block/inline padding.</td></tr>
+                    <tr><td><code>--radius-md</code></td><td>Bordered card corners.</td></tr>
+                    <tr><td><code>--border-thin</code></td><td>Rule / border width.</td></tr>
+                    <tr><td><code>--duration-fast</code> / <code>--ease-out</code></td><td>Chevron rotation (0ms under reduced motion).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Summary height</td><td><code>min-block-size: 2.75rem</code> — a comfortable ≥44px target.</td></tr>
+                    <tr><td>Marker</td><td>Native triangle hidden (incl. <code>::-webkit-details-marker</code>); our chevron replaces it.</td></tr>
+                    <tr><td>Chevron</td><td>1.25em, rotates 180° via <code>[open]</code>.</td></tr>
+                    <tr><td>Layout</td><td>Summary is a flex row: label left, chevron right (<code>space-between</code>).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">Closed and open are the native <code>&lt;details&gt;</code> states (the <code>open</code> attribute). Hover and <code>:focus-visible</code> apply to the summary; focus uses the global ring. The chevron reflects state by rotation — never by colour.</p>
+              </section>
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None — and that is the point. The native element handles toggling, state, keyboard, and find-in-page. No <code>data-wire-*</code> hook. (Animating the open/close height would require script and is intentionally omitted.)</p>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;details class="wire-disclosure"&gt;
+  &lt;summary class="wire-disclosure__summary"&gt;
+    What should I bring to my appointment?
+    &lt;span class="wire-disclosure__icon" aria-hidden="true"&gt;&lt;svg ... focusable="false"&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;div class="wire-disclosure__body"&gt;
+    &lt;p&gt;Bring a photo ID, your insurance card, and a list of medications.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;!-- Bordered, open by default --&gt;
+&lt;details class="wire-disclosure wire-disclosure--bordered" open&gt;
+  &lt;summary class="wire-disclosure__summary"&gt;Title &lt;span class="wire-disclosure__icon" aria-hidden="true"&gt;...&lt;/span&gt;&lt;/summary&gt;
+  &lt;div class="wire-disclosure__body"&gt;...&lt;/div&gt;
+&lt;/details&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> already expose the disclosure role and expanded state — no ARIA to add.</li>
+                  <li>Keep the chevron decorative (<code>aria-hidden</code>, <code>focusable="false"</code>); the summary text is the accessible name.</li>
+                  <li>Put a clear, self-describing label in the summary so its purpose is obvious when collapsed.</li>
+                  <li>Don't override the element's behaviour with conflicting ARIA (e.g. a manual <code>aria-expanded</code> that can desync).</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the summary; the global focus ring appears.</td></tr>
+                    <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Toggles the panel open or closed.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Disclosure satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Role and expanded state come from the native element; the summary is the name.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Enter/Space toggle natively; the summary is in the tab order.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Open/closed is shown by the chevron and revealed content, not hue.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>The summary is ≥44px tall.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>The summary reads as a disclosure/button with its expanded state, e.g. "What should I bring, collapsed".</li>
+                  <li>Toggling announces the new state; the revealed body then reads in normal flow.</li>
+                  <li>Because content is real DOM (not removed when closed), find-in-page can still locate it and expand it.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../link/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Link</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../save-portal-link/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Save / portal link</span>
+        </a>
+      </nav>
 
     </div>
   </section>

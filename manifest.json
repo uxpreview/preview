@@ -3229,10 +3229,33 @@
     },
     {
       "id": "disclosure",
-      "label": "Disclosure",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native <details>/<summary> for state, keyboard, and find-in-page",
+          "citation_ids": ["apg-disclosure", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Defer secondary detail until requested",
+          "citation_ids": ["nng-progressive-disclosure"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-disclosure",
+      "file": "css/components/disclosure.css",
       "ref": "components/actions/disclosure/",
-      "status": "planned"
+      "ref_template": "components/actions/disclosure/",
+      "status": "beta",
+      "variants": ["(default = minimal)", "bordered"],
+      "elements": ["wire-disclosure__summary", "wire-disclosure__icon", "wire-disclosure__body"],
+      "states": ["open"],
+      "companions": ["wire-accordion"],
+      "behaviors": [],
+      "slots": ["summary", "body"],
+      "a11y": "Built on native <details>/<summary>: role, expanded state, keyboard (Enter/Space), and browser find-in-page come from the platform with no JS. Chevron decorative; summary is the accessible name and ≥44px tall. Don't add conflicting ARIA.",
+      "notes": "A single independent show/hide. For a coordinated set use Accordion. No height animation (would require JS, intentionally omitted).",
+      "label": "Disclosure",
+      "desc": "A single native show/hide for secondary content, with no JavaScript."
     },
     {
       "id": "save-portal-link",
@@ -5155,7 +5178,6 @@
               "type": "page",
               "label": "Disclosure",
               "ref": "components/actions/disclosure/",
-              "status": "planned",
               "id": "disclosure"
             },
             {

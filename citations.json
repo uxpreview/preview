@@ -106,7 +106,8 @@
         "wait-time",
         "insurance-indicator",
         "meter",
-        "link"
+        "link",
+        "disclosure"
       ]
     },
     {
@@ -201,7 +202,8 @@
         "tabs",
         "accordion",
         "megamenu",
-        "drawer"
+        "drawer",
+        "disclosure"
       ]
     },
     {
@@ -404,7 +406,8 @@
         "inpagenav",
         "megamenu",
         "icon-button",
-        "button-group"
+        "button-group",
+        "disclosure"
       ]
     },
     {
@@ -481,7 +484,8 @@
         "progress",
         "meter",
         "icon-button",
-        "button-group"
+        "button-group",
+        "disclosure"
       ]
     },
     {
@@ -2053,6 +2057,38 @@
       "verification": "UNVERIFIED \u2014 candidate from link research, pending human review",
       "supports": [
         "link"
+      ]
+    },
+    {
+      "id": "apg-disclosure",
+      "tier": "standard",
+      "finding": "A disclosure is a button that controls visibility of a section of content, toggling aria-expanded; the native <details>/<summary> element implements this pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Disclosure (Show/Hide) Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
+      "supports": [
+        "disclosure"
+      ]
+    },
+    {
+      "id": "nng-progressive-disclosure",
+      "tier": "empirical",
+      "finding": "Progressive disclosure \u2014 deferring secondary or advanced content until requested \u2014 reduces visible complexity and cognitive load while keeping detail reachable.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Progressive Disclosure",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/progressive-disclosure/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
+      "supports": [
+        "disclosure"
       ]
     }
   ]
