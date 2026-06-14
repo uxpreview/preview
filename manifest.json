@@ -3355,10 +3355,32 @@
     },
     {
       "id": "textarea",
-      "label": "Textarea",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Native <textarea> in a Field for label/hint/error wiring",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Size to the expected answer; vertical resize allowed",
+          "citation_ids": ["nng-form-field-sizing"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-textarea",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/textarea/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-field__label", "wire-field__hint", "wire-field__error"],
+      "states": ["is-invalid", "disabled"],
+      "companions": ["wire-field", "wire-select"],
+      "behaviors": [],
+      "slots": ["label", "hint", "error"],
+      "a11y": "Native <textarea> with <label for>; hint/error tied via aria-describedby; aria-invalid carries the error state (not colour-only). Enter inserts a newline. No placeholder-as-label.",
+      "notes": "For free-form multi-line text only; short structured values use Field. min-block-size 7rem, resize:vertical. No auto-grow (would need JS).",
+      "label": "Textarea",
+      "desc": "A multi-line text input — the native textarea styled to match Field."
     },
     {
       "id": "select",
@@ -3444,10 +3466,36 @@
     },
     {
       "id": "toggle",
-      "label": "Toggle",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Native checkbox + role=switch for on/off state",
+          "citation_ids": ["apg-switch", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Switch = immediate effect; checkbox = submitted later",
+          "citation_ids": ["ds-switch-vs-checkbox"]
+        },
+        {
+          "decision": "≥44px label+switch target for older audiences",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-toggle",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/toggle/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-toggle__input"],
+      "states": ["checked", "disabled"],
+      "companions": ["wire-fieldset"],
+      "behaviors": [],
+      "slots": ["label"],
+      "a11y": "Native <input type=checkbox role=switch> inside a wrapping <label> (the accessible name). On/off via knob position, not colour. Space toggles; ≥44px target. Keep the label static and descriptive; don't make it the state.",
+      "notes": "For settings that take effect immediately. A value submitted with a form is a checkbox (Choice), not a switch. No JS ships; app listens for change.",
+      "label": "Toggle",
+      "desc": "An on/off switch for an immediate setting — a native checkbox with role=switch."
     },
     {
       "id": "slider",
@@ -3479,10 +3527,32 @@
     },
     {
       "id": "fieldset",
-      "label": "Fieldset",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native fieldset/legend so grouping is programmatic, not just visual",
+          "citation_ids": ["wcag-1.3.1-info-relationships", "wcag-3.3.2-labels-or-instructions"]
+        },
+        {
+          "decision": "Shared boundary signals the controls answer one question",
+          "citation_ids": ["gestalt-common-region"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-fieldset",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/fieldset/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-fieldset__legend"],
+      "states": [],
+      "companions": ["wire-checkbox", "wire-radio", "wire-field"],
+      "behaviors": [],
+      "slots": ["legend", "controls"],
+      "a11y": "Native <fieldset> + <legend> (legend must be first child) groups related controls and names the group; each control reads with the legend prepended. Always wrap radio groups. Keep legends short (repeated per control). Adds no keyboard behaviour of its own.",
+      "notes": "Semantic grouping wrapper; visual treatment intentionally light. Not for a single control (use Field) or as a generic visual box (use Card).",
+      "label": "Fieldset",
+      "desc": "Groups related form controls under a shared legend — the native fieldset/legend."
     },
     {
       "id": "error-summary",
@@ -5309,7 +5379,6 @@
               "type": "page",
               "label": "Textarea",
               "ref": "components/forms-inputs/textarea/",
-              "status": "planned",
               "id": "textarea"
             },
             {
@@ -5336,7 +5405,6 @@
               "type": "page",
               "label": "Toggle",
               "ref": "components/forms-inputs/toggle/",
-              "status": "planned",
               "id": "toggle"
             },
             {
@@ -5371,7 +5439,6 @@
               "type": "page",
               "label": "Fieldset",
               "ref": "components/forms-inputs/fieldset/",
-              "status": "planned",
               "id": "fieldset"
             },
             {

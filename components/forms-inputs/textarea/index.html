@@ -397,20 +397,295 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Textarea</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Textarea</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A multi-line text input for free-form entry — a message to a care team, a reason for a visit, notes on a form. It's the native <code>&lt;textarea&gt;</code>, styled to match the single-line <a href="../../field/">Field</a> input and used inside the same field wrapper for its label, hint, and error.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">Since v1.0 · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Textarea documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A labelled textarea with a hint, and one in the invalid state. Each sits in a <code>.wire-field</code> so the label, hint, and error are wired to the control.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">default · invalid</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="ta-msg">Message to your care team</label>
+                      <textarea class="wire-textarea" id="ta-msg" rows="4" aria-describedby="ta-msg-hint" placeholder="Describe your symptoms or question…"></textarea>
+                      <p class="wire-field__hint" id="ta-msg-hint">Please don't include urgent or emergency information here.</p>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="ta-reason">Reason for visit</label>
+                      <textarea class="wire-textarea is-invalid" id="ta-reason" rows="3" aria-invalid="true" aria-describedby="ta-reason-err"></textarea>
+                      <p class="wire-field__error" id="ta-reason-err">Please tell us the reason for your visit.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Textarea is the native element styled to match the Field input; it has shipped since v1.0. A formal screen-reader pass on the field wiring (label/hint/error association) is pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Native element</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Reach for a textarea only when the answer is genuinely multi-line and open-ended. For a name, an email, or a date, a single-line <a href="../../field/">Field</a> input (or a more specific control) sets clearer expectations and is easier to complete. A textarea invites longer prose, so give it room and a label that tells the user what belongs there.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Free-form messages, descriptions, or notes that may run to several lines.</li>
+                  <li>Anywhere the user can't predict the length and a single line would feel cramped.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For short, structured values (name, phone, date) — use a single-line <a href="../../field/">Field</a>.</li>
+                  <li>For choosing from known options — use <a href="../select/">Select</a> or <a href="../../choice/">Choice</a>.</li>
+                  <li>For rich formatting — that's a rich-text editor, out of scope for the wireframe system.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A native <code>&lt;textarea&gt;</code> inside a Field, which supplies the label, optional hint, and error.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Wrapper</td><td><code>.wire-field</code></td><td>Stacks label, control, and message; owns spacing.</td></tr>
+                    <tr><td>Label</td><td><code>.wire-field__label</code> + <code>for</code></td><td>Always-visible, programmatically tied to the control.</td></tr>
+                    <tr><td>Control</td><td><code>.wire-textarea</code> on <code>&lt;textarea&gt;</code></td><td>The multi-line input. Vertically resizable.</td></tr>
+                    <tr><td>Hint</td><td><code>.wire-field__hint</code> + <code>aria-describedby</code></td><td>Optional guidance, announced with the field.</td></tr>
+                    <tr><td>Error</td><td><code>.wire-field__error</code> + <code>aria-describedby</code></td><td>Shown with <code>.is-invalid</code> / <code>aria-invalid</code>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">States</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">State</th><th scope="col">Selector / attribute</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Default</td><td><code>.wire-textarea</code></td><td>Resting; shares the input border and focus ring.</td></tr>
+                    <tr><td>Invalid</td><td><code>.is-invalid</code> + <code>aria-invalid="true"</code></td><td>Pairs with a <code>.wire-field__error</code> message.</td></tr>
+                    <tr><td>Disabled</td><td><code>disabled</code></td><td>Dimmed and non-interactive.</td></tr>
+                    <tr><td>Sizing</td><td><code>rows</code> attribute</td><td>Sets the initial height; the user can resize vertically.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Size the initial height (<code>rows</code>) to the expected answer, so a one-line reply doesn't sit in a huge box and a long one isn't cramped.</li>
+                  <li>Use the hint for scope and limits ("Please don't include urgent information here"), not to restate the label.</li>
+                  <li>If there's a character limit, state it in the hint and enforce it accessibly — never silently truncate.</li>
+                  <li>Don't disable resizing; let users make room for their own text.</li>
+                </ul>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../field/">Field</a> — the single-line input and the wrapper Textarea reuses.</li>
+                  <li><a href="../select/">Select</a> / <a href="../../choice/">Choice</a> — for choosing from known options instead of free text.</li>
+                  <li><a href="../../form-layout/">Form layout</a> — arranging fields into a form.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 3.3.2 Labels or Instructions: every control has a visible, associated label (and hint where useful). <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#labels-or-instructions">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: the textarea's name, role, and value (incl. <code>aria-invalid</code>) are programmatically exposed. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: form fields sized to their expected answer reduce uncertainty and error. <em>Unverified — pending review.</em> <a href="https://www.nngroup.com/articles/form-design-white-space/">nngroup.com</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <p class="u-text-muted u-mt-sm">Textarea inherits the shared input rule (border, padding, radius, focus, disabled, invalid) and adds only its multi-line sizing. The relevant tokens:</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border</code> / <code>--color-border-strong</code></td><td>Resting and hover border.</td></tr>
+                    <tr><td><code>--color-focus</code></td><td>Focus ring (global <code>:focus-visible</code>).</td></tr>
+                    <tr><td><code>--space-sm</code> / <code>--space-md</code></td><td>Inner padding (block / inline).</td></tr>
+                    <tr><td><code>--radius-sm</code></td><td>Corner radius, matching the input.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Min height</td><td><code>min-block-size: 7rem</code> — a comfortable multi-line default.</td></tr>
+                    <tr><td>Resize</td><td><code>resize: vertical</code> — users can grow it, not break the layout horizontally.</td></tr>
+                    <tr><td>Initial rows</td><td>Set per use via the <code>rows</code> attribute.</td></tr>
+                    <tr><td>Shared base</td><td>Border, focus, hover, disabled, and <code>.is-invalid</code> come from the <code>.wire-input, .wire-textarea</code> rule.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. The native element handles input, resizing, and value. No <code>data-wire-*</code> hook. (Auto-grow on input would require script and is intentionally omitted.)</p>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="msg"&gt;Message to your care team&lt;/label&gt;
+  &lt;textarea class="wire-textarea" id="msg" rows="4" aria-describedby="msg-hint"&gt;&lt;/textarea&gt;
+  &lt;p class="wire-field__hint" id="msg-hint"&gt;Please don't include urgent information here.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Invalid --&gt;
+&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="reason"&gt;Reason for visit&lt;/label&gt;
+  &lt;textarea class="wire-textarea is-invalid" id="reason" rows="3"
+            aria-invalid="true" aria-describedby="reason-err"&gt;&lt;/textarea&gt;
+  &lt;p class="wire-field__error" id="reason-err"&gt;Please tell us the reason for your visit.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use a native <code>&lt;textarea&gt;</code> with a real <code>&lt;label for&gt;</code> — that gives name and role with no ARIA.</li>
+                  <li>Tie hint and error with <code>aria-describedby</code> so both are announced with the field.</li>
+                  <li>Set <code>aria-invalid="true"</code> alongside <code>.is-invalid</code> so the error state isn't visual-only.</li>
+                  <li>Never use a placeholder as the label; placeholders vanish on input and fail contrast.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the textarea; the global focus ring appears.</td></tr>
+                    <tr><td><kbd>Enter</kbd></td><td>Inserts a new line (unlike a single-line input, it does not submit).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Textarea satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>3.3.2 Labels or Instructions</td><td>Visible label, plus an optional hint for scope/limits.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Native element exposes name/role/value; <code>aria-invalid</code> carries the error state.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Invalid is shown by an icon + message, not colour alone.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>Inherits the global focus ring.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>Reads as "Message to your care team, edit text, multi-line" with its hint appended.</li>
+                  <li>When invalid, it announces "invalid" and reads the associated error message.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../../form-layout/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Form layout</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../select/">
+          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Select</span>
+        </a>
+      </nav>
 
     </div>
   </section>

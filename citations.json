@@ -63,7 +63,8 @@
         "linked-list",
         "article-list",
         "deflist",
-        "button-group"
+        "button-group",
+        "fieldset"
       ]
     },
     {
@@ -110,7 +111,9 @@
         "disclosure",
         "save-portal-link",
         "menu",
-        "chat-launcher"
+        "chat-launcher",
+        "textarea",
+        "toggle"
       ]
     },
     {
@@ -208,7 +211,8 @@
         "megamenu",
         "drawer",
         "disclosure",
-        "menu"
+        "menu",
+        "toggle"
       ]
     },
     {
@@ -336,7 +340,8 @@
         "button",
         "field",
         "link",
-        "save-portal-link"
+        "save-portal-link",
+        "textarea"
       ]
     },
     {
@@ -418,7 +423,8 @@
         "disclosure",
         "save-portal-link",
         "menu",
-        "chat-launcher"
+        "chat-launcher",
+        "toggle"
       ]
     },
     {
@@ -468,7 +474,9 @@
       "supports": [
         "field",
         "choice",
-        "search"
+        "search",
+        "textarea",
+        "fieldset"
       ]
     },
     {
@@ -499,7 +507,10 @@
         "disclosure",
         "save-portal-link",
         "menu",
-        "chat-launcher"
+        "chat-launcher",
+        "textarea",
+        "toggle",
+        "fieldset"
       ]
     },
     {
@@ -1514,7 +1525,8 @@
         "card",
         "divider",
         "avatar-group",
-        "button-group"
+        "button-group",
+        "fieldset"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },
@@ -2154,6 +2166,54 @@
       "verification": "judgment \u2014 design call, no external source claimed",
       "supports": [
         "chat-launcher"
+      ]
+    },
+    {
+      "id": "nng-form-field-sizing",
+      "tier": "empirical",
+      "finding": "Sizing a form field to the length of its expected answer reduces uncertainty and entry error; oversized or undersized fields mislead users about what is wanted.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Website Forms Usability",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/form-design-white-space/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from textarea research, pending human review",
+      "supports": [
+        "textarea"
+      ]
+    },
+    {
+      "id": "apg-switch",
+      "tier": "standard",
+      "finding": "A switch is an on/off control that exposes its state via role=switch plus the checked state and is toggled with Space (or Enter); a native checkbox with role=switch satisfies the pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Switch Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
+      "supports": [
+        "toggle"
+      ]
+    },
+    {
+      "id": "ds-switch-vs-checkbox",
+      "tier": "convention",
+      "finding": "Established design-system practice (Material, Carbon, USWDS): a switch signals a setting that takes effect immediately, whereas a checkbox signals a value collected and submitted later.",
+      "source": {
+        "org": "Material Design / IBM Carbon / USWDS",
+        "title": "Switch vs. checkbox guidance",
+        "year": 2024,
+        "url": "https://m3.material.io/components/switch/guidelines"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
+      "supports": [
+        "toggle"
       ]
     }
   ]
