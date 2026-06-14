@@ -397,20 +397,332 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Rating</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Rating</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A star score, in two modes. <strong>Display</strong> shows an existing rating — a provider's average on a directory card — read-only. <strong>Input</strong> lets someone leave a rating, as a star-styled radio group. Filled versus outline stars carry the value by shape, so it survives grayscale.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">data-wire-rating (input mode)</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Rating documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Top: a read-only display rating with its value and review count. Bottom: an input rating — hover, focus, or arrow through the stars to set a score.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">display</span>
+                  <span class="wire-rating" role="img" aria-label="Rated 4 out of 5 stars, 128 reviews">
+                    <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <span class="wire-rating__value" aria-hidden="true">4.0 (128)</span>
+                  </span>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">input</span>
+                  <fieldset class="wire-fieldset">
+                    <legend class="wire-fieldset__legend">Rate your visit</legend>
+                    <div class="wire-rating wire-rating--input" data-wire-rating>
+                      <label class="wire-rating__option">
+                        <input type="radio" name="rate-visit" value="1" class="u-visually-hidden">
+                        <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="u-visually-hidden">1 star</span>
+                      </label>
+                      <label class="wire-rating__option">
+                        <input type="radio" name="rate-visit" value="2" class="u-visually-hidden">
+                        <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="u-visually-hidden">2 stars</span>
+                      </label>
+                      <label class="wire-rating__option">
+                        <input type="radio" name="rate-visit" value="3" class="u-visually-hidden">
+                        <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="u-visually-hidden">3 stars</span>
+                      </label>
+                      <label class="wire-rating__option">
+                        <input type="radio" name="rate-visit" value="4" class="u-visually-hidden">
+                        <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="u-visually-hidden">4 stars</span>
+                      </label>
+                      <label class="wire-rating__option">
+                        <input type="radio" name="rate-visit" value="5" class="u-visually-hidden">
+                        <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="u-visually-hidden">5 stars</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">A new beta component. Display mode is static markup with an <code>aria-label</code> carrying the score — robust and JS-free. Input mode is a native radio group (the source of truth) with JavaScript only painting the hover/focus preview, so keyboard and AT fall back to plain radios. Pending: confirming each radio's per-star label is announced clearly and the preview never desyncs from the checked value. Half-star display is out of scope. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Display: no JS</span>
+                  <span class="wire-badge">Input: native radios</span>
+                  <span class="wire-badge">Shape-based (grayscale)</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Pick the mode by intent. Showing an existing score? Use display — it's read-only, so it must never look or behave like something you can click. Collecting a score? Use input, and treat it as exactly what it is: a single-choice question, built on radios. Either way, the number must never live in colour alone — filled and outline stars differ in shape, and display mode pairs the stars with the figure in text so the score is unambiguous to everyone.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li><strong>Display:</strong> average ratings on directory or product cards (a provider's 4.0 from 128 reviews).</li>
+                  <li><strong>Input:</strong> letting a patient rate a visit, a course, or an article.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a longer satisfaction scale or labelled options — use a <a href="../../choice/">Choice</a> (radio) group with text.</li>
+                  <li>For yes/no helpfulness ("Was this useful?") — two buttons are clearer than stars.</li>
+                  <li>Don't make a display rating focusable or clickable; it isn't a control.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Group</td><td><code>.wire-rating</code> (+ <code>--input</code>)</td><td>Row of stars; <code>role="img"</code> + <code>aria-label</code> in display mode.</td></tr>
+                    <tr><td>Star</td><td><code>.wire-rating__star</code> (+ <code>--filled</code>)</td><td>Outline vs solid by shape; <code>aria-hidden</code>.</td></tr>
+                    <tr><td>Value</td><td><code>.wire-rating__value</code></td><td>Visible score/count text (display mode).</td></tr>
+                    <tr><td>Option</td><td><code>.wire-rating__option</code> + radio</td><td>One ≥44px target per star (input mode).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../choice/">Choice</a> — radios/checkboxes for labelled scales and options.</li>
+                  <li><a href="../../fieldset/">Fieldset</a> — groups the input rating under a legend.</li>
+                  <li><a href="../../../components/badge/">Badge</a> — pairs with a display rating on cards.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.1 Use of Color: the score is shown by star shape (filled vs outline) and a text value, never colour alone. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#use-of-color">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: display mode exposes the score via <code>role="img"</code> + <code>aria-label</code>; input mode uses native radios. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Convention</strong> — Common pattern (radio-based star inputs): build a star rating input on radio buttons so it's a single-choice control with real keyboard support. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="states" class="doc-section" aria-labelledby="h-states">
+                <h2 class="wire-h3" id="h-states">Display values</h2>
+                <div class="doc-example">
+                  <span class="doc-example__label">5.0 · 3.0 · 0.0</span>
+                  <div class="u-stack u-stack--md">
+                    <span class="wire-rating" role="img" aria-label="Rated 5 out of 5 stars">
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </span>
+                    <span class="wire-rating" role="img" aria-label="Rated 3 out of 5 stars">
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </span>
+                    <span class="wire-rating" role="img" aria-label="Not yet rated">
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="wire-rating__value" aria-hidden="true">No reviews yet</span>
+                    </span>
+                  </div>
+                </div>
+              </section>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border-strong</code></td><td>Outline (unfilled) star.</td></tr>
+                    <tr><td><code>--color-text</code></td><td>Filled star.</td></tr>
+                    <tr><td><code>--color-text-muted</code></td><td>Value / count text.</td></tr>
+                    <tr><td><code>--space-2xs</code> / <code>--space-xs</code></td><td>Star gap; gap before the value.</td></tr>
+                    <tr><td><code>--focus-ring-width</code> / <code>--color-focus</code></td><td>Focus ring on the option (input mode).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; behaviour</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Star (display)</td><td>1.25rem; filled = solid, unfilled = outline (shape difference).</td></tr>
+                    <tr><td>Star (input)</td><td>1.75rem inside a ≥2.75rem option target.</td></tr>
+                    <tr><td>Fill control</td><td>CSS <code>fill</code>/<code>stroke</code> on <code>--filled</code>; the SVG carries no presentation attributes.</td></tr>
+                    <tr><td>JS (input)</td><td><code>data-wire-rating</code> paints fill up to the hovered/focused/checked star; radios stay the value.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Display (read-only) --&gt;
+&lt;span class="wire-rating" role="img" aria-label="Rated 4 out of 5 stars, 128 reviews"&gt;
+  &lt;svg class="wire-rating__star wire-rating__star--filled" viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="…star…"/&gt;&lt;/svg&gt;
+  &lt;!-- four filled, one outline --&gt;
+  &lt;svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="…star…"/&gt;&lt;/svg&gt;
+  &lt;span class="wire-rating__value" aria-hidden="true"&gt;4.0 (128)&lt;/span&gt;
+&lt;/span&gt;
+
+&lt;!-- Input (radio group) --&gt;
+&lt;fieldset class="wire-fieldset"&gt;
+  &lt;legend class="wire-fieldset__legend"&gt;Rate your visit&lt;/legend&gt;
+  &lt;div class="wire-rating wire-rating--input" data-wire-rating&gt;
+    &lt;label class="wire-rating__option"&gt;
+      &lt;input type="radio" name="rate-visit" value="1" class="u-visually-hidden"&gt;
+      &lt;svg class="wire-rating__star" viewBox="0 0 24 24" aria-hidden="true"&gt;&lt;path d="…star…"/&gt;&lt;/svg&gt;
+      &lt;span class="u-visually-hidden"&gt;1 star&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;!-- …repeat for 2–5 stars… --&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">Display values</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; behaviour</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li><strong>Display:</strong> wrap the stars in <code>role="img"</code> with an <code>aria-label</code> that states the score ("Rated 4 out of 5 stars, 128 reviews"); the star SVGs are <code>aria-hidden</code>.</li>
+                  <li><strong>Input:</strong> use a radio per star inside a <a href="../../fieldset/">Fieldset</a> with a legend; each radio carries a visually-hidden text label ("3 stars").</li>
+                  <li>Never use colour as the only cue — the shape (filled/outline) and, in display, the text value carry the score.</li>
+                  <li>The JS preview is decorative; if it fails, the radios still work.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions (input mode)</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves into the rating group (to the checked star, or the first).</td></tr>
+                    <tr><td><kbd>←</kbd> / <kbd>→</kbd>, <kbd>↑</kbd> / <kbd>↓</kbd></td><td>Move between stars and select (native radio behaviour).</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Display mode is not focusable — it's an image, not a control.</p>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Rating satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>1.4.1 Use of Color</td><td>Shape (filled/outline) + text value carry the score.</td></tr>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Display: role=img + label. Input: native radios.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Input mode fully operable via radio arrow keys.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>Each input star sits in a ≥44px option target.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>Display reads as a single image: "Rated 4 out of 5 stars, 128 reviews" — not five separate stars.</li>
+                  <li>Input reads as a radio group: "Rate your visit, 3 stars, radio button, 3 of 5".</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../file-upload/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">File upload</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../fieldset/">
+          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Fieldset</span>
+        </a>
+      </nav>
 
     </div>
   </section>

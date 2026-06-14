@@ -113,7 +113,13 @@
         "menu",
         "chat-launcher",
         "textarea",
-        "toggle"
+        "toggle",
+        "slider",
+        "number-stepper",
+        "rating",
+        "error-summary",
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -212,7 +218,13 @@
         "drawer",
         "disclosure",
         "menu",
-        "toggle"
+        "toggle",
+        "slider",
+        "number-stepper",
+        "file-upload",
+        "rating",
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -282,7 +294,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "layout-primitives",
-        "menu"
+        "menu",
+        "error-summary"
       ]
     },
     {
@@ -341,7 +354,8 @@
         "field",
         "link",
         "save-portal-link",
-        "textarea"
+        "textarea",
+        "file-upload"
       ]
     },
     {
@@ -424,7 +438,11 @@
         "save-portal-link",
         "menu",
         "chat-launcher",
-        "toggle"
+        "toggle",
+        "slider",
+        "number-stepper",
+        "rating",
+        "combobox"
       ]
     },
     {
@@ -456,7 +474,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "field"
+        "field",
+        "error-summary"
       ]
     },
     {
@@ -476,7 +495,9 @@
         "choice",
         "search",
         "textarea",
-        "fieldset"
+        "fieldset",
+        "file-upload",
+        "date-picker"
       ]
     },
     {
@@ -510,7 +531,13 @@
         "chat-launcher",
         "textarea",
         "toggle",
-        "fieldset"
+        "fieldset",
+        "slider",
+        "number-stepper",
+        "file-upload",
+        "rating",
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -2214,6 +2241,198 @@
       "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
       "supports": [
         "toggle"
+      ]
+    },
+    {
+      "id": "apg-slider",
+      "tier": "standard",
+      "finding": "A slider exposes its current value via role=slider with aria-valuenow/valuemin/valuemax and is operable with arrow keys, Page Up/Down, and Home/End; a native input[type=range] satisfies the pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Slider Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from slider research, pending human review",
+      "supports": [
+        "slider"
+      ]
+    },
+    {
+      "id": "nng-slider-controls",
+      "tier": "empirical",
+      "finding": "Sliders work for approximate, low-stakes values but make precise input hard and are error-prone on touch; provide a typed alternative when accuracy matters.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Slider Design: Rules of Thumb",
+        "year": 2021,
+        "url": "https://www.nngroup.com/articles/gui-slider-controls/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from slider research, pending human review",
+      "supports": [
+        "slider"
+      ]
+    },
+    {
+      "id": "apg-spinbutton",
+      "tier": "standard",
+      "finding": "A spinbutton lets users select from a range of discrete values via increase/decrease affordances and direct entry, exposing its current value to AT; a native input[type=number] provides the role and keyboard model.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Spinbutton Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from number-stepper research, pending human review",
+      "supports": [
+        "number-stepper"
+      ]
+    },
+    {
+      "id": "nng-input-steppers",
+      "tier": "empirical",
+      "finding": "Steppers work well for small quantities; for large ranges, forcing repeated taps is slow and frustrating, so keep direct numeric entry available.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Steppers in UX Design",
+        "year": 2022,
+        "url": "https://www.nngroup.com/articles/input-steppers/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from number-stepper research, pending human review",
+      "supports": [
+        "number-stepper"
+      ]
+    },
+    {
+      "id": "govuk-file-upload",
+      "tier": "convention",
+      "finding": "Keep file upload native: provide a clear button and filename feedback, and avoid drag-only drop zones that exclude keyboard and assistive-tech users.",
+      "source": {
+        "org": "GOV.UK Design System",
+        "title": "File upload component",
+        "year": 2024,
+        "url": "https://design-system.service.gov.uk/components/file-upload/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from file-upload research, pending human review",
+      "supports": [
+        "file-upload"
+      ]
+    },
+    {
+      "id": "apg-radio",
+      "tier": "convention",
+      "finding": "Building a star-rating input on native radio buttons (one per star) gives it real single-choice semantics and keyboard support, rather than reinventing the control.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Radio Group Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from rating research, pending human review",
+      "supports": [
+        "rating"
+      ]
+    },
+    {
+      "id": "wcag-3.3.3-error-suggestion",
+      "tier": "standard",
+      "finding": "When an input error is detected and suggestions are known, they are provided to the user.",
+      "source": {
+        "org": "W3C WAI",
+        "title": "WCAG 2.2 SC 3.3.3 Error Suggestion",
+        "year": 2023,
+        "url": "https://www.w3.org/TR/WCAG22/#error-suggestion"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from error-summary research, pending human review",
+      "supports": [
+        "error-summary"
+      ]
+    },
+    {
+      "id": "govuk-error-summary",
+      "tier": "convention",
+      "finding": "On a failed submit, show an error summary at the top of the page, move focus to it, and link each entry to the field it describes using matching text.",
+      "source": {
+        "org": "GOV.UK Design System",
+        "title": "Error summary component",
+        "year": 2024,
+        "url": "https://design-system.service.gov.uk/components/error-summary/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from error-summary research, pending human review",
+      "supports": [
+        "error-summary"
+      ]
+    },
+    {
+      "id": "nng-date-input",
+      "tier": "empirical",
+      "finding": "Many custom date pickers harm usability; allowing direct typing is faster for known dates, and calendars are best reserved for when day-of-week or nearby dates matter.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Date-Input Form Fields",
+        "year": 2022,
+        "url": "https://www.nngroup.com/articles/date-input/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from date-picker research, pending human review",
+      "supports": [
+        "date-picker"
+      ]
+    },
+    {
+      "id": "govuk-dates",
+      "tier": "convention",
+      "finding": "For a known date such as a date of birth, plain typed entry generally beats a calendar widget; reserve calendars for choosing a day in relation to others.",
+      "source": {
+        "org": "GOV.UK Design System",
+        "title": "Dates pattern",
+        "year": 2024,
+        "url": "https://design-system.service.gov.uk/patterns/dates/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from date-picker research, pending human review",
+      "supports": [
+        "date-picker"
+      ]
+    },
+    {
+      "id": "apg-combobox",
+      "tier": "standard",
+      "finding": "The combobox pattern (list autocomplete) puts role=combobox on the text input with aria-expanded and aria-controls to a role=listbox popup of role=option items, tracking the active option via aria-activedescendant while focus stays on the input.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Combobox Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from combobox research, pending human review",
+      "supports": [
+        "combobox"
+      ]
+    },
+    {
+      "id": "nng-autocomplete",
+      "tier": "empirical",
+      "finding": "Autocomplete/typeahead helps users select from large sets, but only when matching is forgiving and the suggestions are clearly presented and easy to navigate.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Search Autocomplete",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/site-search-autocomplete/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from combobox research, pending human review",
+      "supports": [
+        "combobox"
       ]
     }
   ]

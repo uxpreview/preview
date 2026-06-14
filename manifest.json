@@ -3452,17 +3452,69 @@
     },
     {
       "id": "combobox",
-      "label": "Combobox",
+      "level": "organism",
+      "rationale": [
+        {
+          "decision": "ARIA combobox pattern (role=combobox + listbox, aria-activedescendant)",
+          "citation_ids": ["apg-combobox", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Only for long lists where filtering helps; else use Select",
+          "citation_ids": ["nng-autocomplete"]
+        },
+        {
+          "decision": "Full keyboard operation; active option not colour-only",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-1.4.1-use-of-color"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-combobox",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/combobox/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["list autocomplete (default)"],
+      "elements": ["wire-combobox__input", "wire-combobox__toggle", "wire-combobox__toggle-icon", "wire-combobox__listbox", "wire-combobox__option", "wire-combobox__empty"],
+      "states": ["expanded", "is-active (activedescendant)", "aria-selected"],
+      "companions": ["wire-field", "wire-input", "wire-select"],
+      "behaviors": ["data-wire-combobox"],
+      "slots": ["label", "hint", "options"],
+      "a11y": "input role=combobox + aria-expanded/controls/autocomplete with a real <label for>; popup role=listbox of role=option; active option via aria-activedescendant (focus stays on input). Selection sets aria-selected. Active highlight = tint + inset edge bar (not colour-only). Toggle tabindex=-1. Esc closes. Options ≥44px. Beta pending cross-AT audit of activedescendant.",
+      "notes": "The one non-native control in the set — held to the APG to the letter. Use only for long lists; short stable sets use Select. Single-select only (multi-select out of scope).",
+      "label": "Combobox",
+      "desc": "A text input that filters a list as you type — the ARIA combobox pattern."
     },
     {
       "id": "date-picker",
-      "label": "Date picker",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=date], not a custom calendar grid",
+          "citation_ids": ["nng-date-input", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Allow typing; for known dates (DOB) typing beats a calendar",
+          "citation_ids": ["govuk-dates"]
+        },
+        {
+          "decision": "State format and bounds in the hint",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-input",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/date-picker/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["date (native)", "from/to range (two inputs in a fieldset)"],
+      "elements": ["wire-field__label", "wire-field__hint", "wire-field__error"],
+      "states": ["is-invalid", "disabled"],
+      "companions": ["wire-field", "wire-fieldset"],
+      "behaviors": [],
+      "slots": ["label", "hint"],
+      "a11y": "Native <input type=date> with <label for>; typed segments + the browser's accessible calendar. Bound with min/max; state format in the hint; aria-invalid for errors. No div-based calendar.",
+      "notes": "Native-first by design — a custom calendar grid is intentionally out of scope (flag if mandated). Uses .wire-input with type=date; only the picker indicator is styled. Range = two date inputs in a Fieldset.",
+      "label": "Date picker",
+      "desc": "Enter a date via the native date input — type it or use the browser calendar."
     },
     {
       "id": "toggle",
@@ -3499,31 +3551,135 @@
     },
     {
       "id": "slider",
-      "label": "Slider",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=range] for role/value/keyboard",
+          "citation_ids": ["apg-slider", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "For approximate values only; offer a typed alternative for precision",
+          "citation_ids": ["nng-slider-controls"]
+        },
+        {
+          "decision": "≥44px control row even with a thin track",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-slider",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/slider/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-slider__row", "wire-slider__range", "wire-slider__output"],
+      "states": ["disabled"],
+      "companions": ["wire-field", "wire-number-stepper"],
+      "behaviors": ["data-wire-slider", "data-wire-slider-suffix"],
+      "slots": ["label", "hint"],
+      "a11y": "Native range = role=slider with aria-valuemin/max/now from the browser; real <label for>. Operable with arrows, Page keys, Home/End. Add aria-valuetext when units matter; state min/max in label or hint. Output is supplementary, not the label.",
+      "notes": "For approximate, bounded values. Exact figures use Number stepper or Field. JS mirrors value into <output>; min/max/step are native attributes.",
+      "label": "Slider",
+      "desc": "Pick a number from a continuous range by dragging — the native range input, styled."
     },
     {
       "id": "number-stepper",
-      "label": "Number stepper",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=number] as the value carrier, with −/+ buttons added",
+          "citation_ids": ["apg-spinbutton", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Small counts only; keep typed entry — don't force taps on large ranges",
+          "citation_ids": ["nng-input-steppers"]
+        },
+        {
+          "decision": "≥44px −/+ buttons",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-number-stepper",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/number-stepper/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-number-stepper__btn", "wire-number-stepper__btn--dec", "wire-number-stepper__btn--inc", "wire-number-stepper__field"],
+      "states": ["disabled", "at-bound (button disabled)"],
+      "companions": ["wire-field", "wire-slider"],
+      "behaviors": ["data-wire-number-stepper"],
+      "slots": ["label", "hint"],
+      "a11y": "Native number input (spinbutton) with <label for> is the value; −/+ are type=button with aria-label, glyphs aria-hidden. Field stays typeable and arrow-key operable. Buttons disable at min/max. Never remove the typed field.",
+      "notes": "For small whole-number counts with clear bounds. Large/wide ranges use a plain Field; approximate values use Slider. JS rounds to the step grid and fires input/change.",
+      "label": "Number stepper",
+      "desc": "A number input with −/+ buttons for small, exact counts."
     },
     {
       "id": "file-upload",
-      "label": "File upload",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native file input restyled, not a custom drop zone",
+          "citation_ids": ["govuk-file-upload", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Input hidden with .u-visually-hidden so it stays keyboard-operable",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-2.4.7-focus-visible"]
+        },
+        {
+          "decision": "State accepted types and size limit up front",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-file",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/file-upload/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-file__button", "wire-file__input", "wire-file__icon", "wire-file__status"],
+      "states": ["empty", "file-chosen", "disabled"],
+      "companions": ["wire-field", "u-visually-hidden"],
+      "behaviors": ["data-wire-file", "data-wire-file-status"],
+      "slots": ["label", "hint"],
+      "a11y": "Native <input type=file> hidden with .u-visually-hidden (focusable, NOT display:none), labelled by the field label; icon aria-hidden. Focus ring on the button via :focus-within. Status is aria-live=polite. No drag-only path.",
+      "notes": "Keep upload native — platform picker, cloud/AV integration, keyboard support. Drag-and-drop intentionally out of scope. JS echoes the filename into the status.",
+      "label": "File upload",
+      "desc": "Attach a file via the native picker behind a styled button, with filename feedback."
     },
     {
       "id": "rating",
-      "label": "Rating",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Score by star shape (filled/outline) + text value, never colour",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Display = role=img + aria-label; input = native radios",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "apg-radio"]
+        },
+        {
+          "decision": "Each input star sits in a ≥44px target",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-rating",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/rating/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["display (read-only)", "input (--input, radio group)"],
+      "elements": ["wire-rating__star", "wire-rating__star--filled", "wire-rating__value", "wire-rating__option"],
+      "states": ["filled", "empty"],
+      "companions": ["wire-fieldset", "wire-badge", "u-visually-hidden"],
+      "behaviors": ["data-wire-rating"],
+      "slots": ["stars", "value"],
+      "a11y": "Display: role=img + aria-label states the score; star SVGs aria-hidden. Input: radio per star in a Fieldset/legend, each with a visually-hidden text label. Shape (not colour) carries fill; JS preview is decorative and degrades to plain radios.",
+      "notes": "Two modes — display (no JS) and input (--input, data-wire-rating). Half-star display out of scope. Don't make display focusable/clickable.",
+      "label": "Rating",
+      "desc": "A star score — read-only display, or an input built on radios."
     },
     {
       "id": "fieldset",
@@ -3556,10 +3712,36 @@
     },
     {
       "id": "error-summary",
-      "label": "Error summary",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Summary at top on failed submit, move focus to it, links to fields",
+          "citation_ids": ["govuk-error-summary", "wcag-2.4.3-focus-order"]
+        },
+        {
+          "decision": "Each error identified in text with a fix suggestion, matching the inline error",
+          "citation_ids": ["wcag-3.3.1-error-identification", "wcag-3.3.3-error-suggestion"]
+        },
+        {
+          "decision": "Severity from border + icon + heading, never colour",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-error-summary",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/error-summary/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-error-summary__title", "wire-error-summary__icon", "wire-error-summary__list", "wire-error-summary__item", "wire-error-summary__link"],
+      "states": [],
+      "companions": ["wire-field", "wire-form"],
+      "behaviors": ["data-wire-error-summary", "data-wire-error-summary-focus"],
+      "slots": ["title", "errors"],
+      "a11y": "Render only when errors exist; on failed submit move focus to it (tabindex=-1) so it announces. aria-labelledby the title; icon aria-hidden. Each link text matches its field's inline error and focuses that field. Prefer focus-move over role=alert (not both).",
+      "notes": "Pairs with inline Field errors (summary for orientation/recovery, field for detail). GOV.UK model. JS focuses the named field on click; opt-in focus-on-submit.",
+      "label": "Error summary",
+      "desc": "Gathers a form's validation errors at the top, each link focusing its field."
     },
     {
       "id": "avatar",
@@ -5391,14 +5573,12 @@
               "type": "page",
               "label": "Combobox",
               "ref": "components/forms-inputs/combobox/",
-              "status": "planned",
               "id": "combobox"
             },
             {
               "type": "page",
               "label": "Date picker",
               "ref": "components/forms-inputs/date-picker/",
-              "status": "planned",
               "id": "date-picker"
             },
             {
@@ -5411,28 +5591,24 @@
               "type": "page",
               "label": "Slider",
               "ref": "components/forms-inputs/slider/",
-              "status": "planned",
               "id": "slider"
             },
             {
               "type": "page",
               "label": "Number stepper",
               "ref": "components/forms-inputs/number-stepper/",
-              "status": "planned",
               "id": "number-stepper"
             },
             {
               "type": "page",
               "label": "File upload",
               "ref": "components/forms-inputs/file-upload/",
-              "status": "planned",
               "id": "file-upload"
             },
             {
               "type": "page",
               "label": "Rating",
               "ref": "components/forms-inputs/rating/",
-              "status": "planned",
               "id": "rating"
             },
             {
@@ -5445,7 +5621,6 @@
               "type": "page",
               "label": "Error summary",
               "ref": "components/forms-inputs/error-summary/",
-              "status": "planned",
               "id": "error-summary"
             }
           ],

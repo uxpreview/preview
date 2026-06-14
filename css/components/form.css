@@ -298,3 +298,422 @@
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ---------- Slider (range input) ----------
+   Native <input type="range"> styled grayscale. The native element carries
+   role=slider with aria-valuemin/max/now for free; the <output> is a visible
+   echo of the value, kept in sync by data-wire-slider. */
+.wire-slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.wire-slider__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.wire-slider__range {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 auto;
+  inline-size: 100%;
+  block-size: 2.75rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.wire-slider__range:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.wire-slider__output {
+  min-inline-size: 4ch;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  text-align: end;
+}
+
+.wire-slider__range::-webkit-slider-runnable-track {
+  block-size: 0.375rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-border-strong);
+}
+
+.wire-slider__range::-moz-range-track {
+  block-size: 0.375rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-border-strong);
+}
+
+.wire-slider__range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  margin-block-start: -0.5625rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  border: var(--border-md) solid var(--color-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.wire-slider__range::-moz-range-thumb {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border: var(--border-md) solid var(--color-bg);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Number stepper ----------
+   Native <input type="number"> (role=spinbutton, arrow-key operable) flanked
+   by −/+ buttons for mouse/touch/older users. Shared borders collapse with
+   negative margins so the focus ring is never clipped. */
+.wire-number-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  max-inline-size: 100%;
+}
+
+.wire-number-stepper__btn {
+  flex: 0 0 auto;
+  inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-number-stepper__btn--dec {
+  border-start-start-radius: var(--radius-md);
+  border-end-start-radius: var(--radius-md);
+}
+
+.wire-number-stepper__btn--inc {
+  border-start-end-radius: var(--radius-md);
+  border-end-end-radius: var(--radius-md);
+}
+
+.wire-number-stepper__btn:hover:not(:disabled) {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text);
+}
+
+.wire-number-stepper__btn:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.wire-number-stepper__field {
+  inline-size: 4rem;
+  min-block-size: 2.75rem;
+  margin-inline: calc(-1 * var(--border-thin));
+  text-align: center;
+  font-family: inherit;
+  font-size: var(--text-md);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.wire-number-stepper__field:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+
+.wire-number-stepper__field::-webkit-outer-spin-button,
+.wire-number-stepper__field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ---------- File upload ----------
+   A native <input type="file"> hidden with .u-visually-hidden (still focusable)
+   inside a <label> styled as a button; focus-within draws the ring on the
+   button. A live status echoes the chosen filename. */
+.wire-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.wire-file__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-block-size: 2.75rem;
+  padding-inline: var(--space-lg);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-file__button:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text);
+}
+
+.wire-file__button:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-file__icon {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  flex: 0 0 auto;
+}
+
+/* Hidden via .u-visually-hidden in markup (stays focusable); this rule keeps
+   the class defined and the hit cursor consistent. */
+.wire-file__input {
+  cursor: pointer;
+}
+
+.wire-file__status {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Rating (stars) ----------
+   Two modes. Read-only display: filled vs outline stars carry the score by
+   shape (grayscale-safe), with an aria-label and optional visible value.
+   Interactive: a radio group (one star per radio) in natural DOM order, with
+   data-wire-rating painting fill on hover/focus/select. */
+.wire-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.wire-rating__star {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex: 0 0 auto;
+  color: var(--color-border-strong);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.wire-rating__star--filled {
+  color: var(--color-text);
+  fill: currentColor;
+}
+
+.wire-rating__value {
+  margin-inline-start: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Interactive variant */
+.wire-rating__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.wire-rating__option:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: calc(-1 * var(--focus-ring-offset));
+}
+
+.wire-rating--input .wire-rating__star {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+}
+
+/* ---------- Error summary ----------
+   A focusable box listing every validation error as a link to the field it
+   names. Severity reads from a strong border + warning icon + heading, never
+   colour. The app moves focus here on a failed submit (data-wire-error-
+   summary-focus); each link focuses its field. */
+.wire-error-summary {
+  padding: var(--space-lg);
+  border: var(--border-thick) solid var(--color-text);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+
+.wire-error-summary:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-error-summary__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.wire-error-summary__icon {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  flex: 0 0 auto;
+}
+
+.wire-error-summary__list {
+  margin: 0;
+  margin-block-start: var(--space-md);
+  padding-inline-start: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.wire-error-summary__item {
+  margin: 0;
+}
+
+/* ---------- Date input ----------
+   A native <input type="date"> wearing the shared .wire-input styling. The
+   browser's own calendar popup is accessible, localized, and robust; we only
+   tune the grayscale calendar indicator. A custom calendar grid is out of
+   scope by design. */
+.wire-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.65;
+}
+
+.wire-input[type="date"]:hover::-webkit-calendar-picker-indicator,
+.wire-input[type="date"]:focus-visible::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
+
+/* ---------- Combobox (editable autocomplete) ----------
+   APG combobox: a text input (role=combobox) over a filtered listbox popup.
+   Typing filters; arrows move aria-activedescendant; Enter selects. The input
+   reuses .wire-input. data-wire-combobox drives it. */
+.wire-combobox {
+  position: relative;
+}
+
+.wire-combobox__input {
+  padding-inline-end: calc(var(--space-md) * 2 + 1rem);
+}
+
+.wire-combobox__toggle {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  block-size: 100%;
+  inline-size: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.wire-combobox__toggle:hover {
+  color: var(--color-text);
+}
+
+.wire-combobox__toggle-icon {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.wire-combobox__listbox {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: calc(100% + var(--space-2xs));
+  z-index: 20;
+  margin: 0;
+  padding: var(--space-2xs);
+  list-style: none;
+  max-block-size: 16rem;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.wire-combobox__listbox[hidden] {
+  display: none;
+}
+
+.wire-combobox__option {
+  display: flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.wire-combobox__option[hidden] {
+  display: none;
+}
+
+.wire-combobox__option:hover,
+.wire-combobox__option.is-active {
+  background-color: var(--color-bg-subtle);
+}
+
+.wire-combobox__option.is-active {
+  box-shadow: inset 0.1875rem 0 0 var(--color-text);
+}
+
+.wire-combobox__option[aria-selected="true"] {
+  font-weight: var(--weight-semibold);
+}
+
+.wire-combobox__empty {
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  color: var(--color-text-muted);
+}
+
+.wire-combobox__empty[hidden] {
+  display: none;
+}
+
+.wire-error-summary__link {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.wire-error-summary__link:hover {
+  text-decoration: none;
+}

@@ -733,8 +733,240 @@
     });
   }
 
+  /* ---------- Slider (range) ----------
+     Keeps a visible <output> in sync with a native range input. The input
+     already exposes role=slider + aria-valuenow to AT; the output is a
+     sighted convenience. Optional data-wire-slider-suffix appends a unit. */
+  function initSlider(root) {
+    const range = root.querySelector(".wire-slider__range");
+    const output = root.querySelector(".wire-slider__output");
+    if (!range || !output) return;
+    const suffix = root.getAttribute("data-wire-slider-suffix") || "";
+    const sync = () => { output.textContent = range.value + suffix; };
+    range.addEventListener("input", sync);
+    sync();
+  }
+
+  /* ---------- Number stepper ----------
+     −/+ buttons drive a native number input. The input itself stays the value
+     carrier (role=spinbutton, arrow-key operable); buttons are a pointer/touch
+     convenience. Buttons disable at the min/max bound. */
+  function initNumberStepper(root) {
+    const field = root.querySelector(".wire-number-stepper__field");
+    if (!field) return;
+    const dec = root.querySelector(".wire-number-stepper__btn--dec");
+    const inc = root.querySelector(".wire-number-stepper__btn--inc");
+    const step = parseFloat(field.step) || 1;
+    const min = field.min !== "" ? parseFloat(field.min) : -Infinity;
+    const max = field.max !== "" ? parseFloat(field.max) : Infinity;
+
+    function nudge(delta) {
+      const cur = parseFloat(field.value);
+      let v = (isNaN(cur) ? (isFinite(min) ? min : 0) : cur) + delta;
+      v = Math.min(max, Math.max(min, v));
+      // round to the step grid to avoid float drift (0.1 + 0.2 …)
+      if (isFinite(step) && step > 0) v = Math.round(v / step) * step;
+      field.value = String(parseFloat(v.toFixed(10)));
+      field.dispatchEvent(new Event("input", { bubbles: true }));
+      field.dispatchEvent(new Event("change", { bubbles: true }));
+      syncBounds();
+    }
+    function syncBounds() {
+      const cur = parseFloat(field.value);
+      if (dec) dec.disabled = !isNaN(cur) && cur <= min;
+      if (inc) inc.disabled = !isNaN(cur) && cur >= max;
+    }
+    if (dec) dec.addEventListener("click", () => nudge(-step));
+    if (inc) inc.addEventListener("click", () => nudge(step));
+    field.addEventListener("input", syncBounds);
+    syncBounds();
+  }
+
+  /* ---------- File upload ----------
+     Echoes the chosen filename(s) into a visible status next to the styled
+     button. The native input keeps its own value for AT; the status is the
+     sighted mirror (and is aria-live so the change is also announced). */
+  function initFileUpload(root) {
+    const input = root.querySelector(".wire-file__input");
+    const status = root.querySelector("[data-wire-file-status]");
+    if (!input || !status) return;
+    const empty = status.getAttribute("data-wire-file-empty") || status.textContent.trim() || "No file chosen";
+    input.addEventListener("change", () => {
+      const files = input.files;
+      if (!files || !files.length) { status.textContent = empty; return; }
+      status.textContent = files.length === 1 ? files[0].name : files.length + " files selected";
+    });
+  }
+
+  /* ---------- Rating (interactive) ----------
+     A radio group in natural DOM order (so arrow keys behave), styled as
+     stars. Fill is painted up to the hovered/focused/selected star; the radios
+     remain the source of truth and the accessible control. */
+  function initRating(root) {
+    const options = Array.from(root.querySelectorAll(".wire-rating__option"));
+    if (!options.length) return;
+    const inputs = options.map((o) => o.querySelector("input"));
+    const stars = options.map((o) => o.querySelector(".wire-rating__star"));
+    const paint = (level) => stars.forEach((s, i) =>
+      s.classList.toggle("wire-rating__star--filled", i < level));
+    const current = () => {
+      const idx = inputs.findIndex((i) => i && i.checked);
+      return idx < 0 ? 0 : idx + 1;
+    };
+    options.forEach((o, i) => {
+      o.addEventListener("mouseenter", () => paint(i + 1));
+      if (inputs[i]) {
+        inputs[i].addEventListener("focus", () => paint(i + 1));
+        inputs[i].addEventListener("change", () => paint(current()));
+        inputs[i].addEventListener("blur", () => paint(current()));
+      }
+    });
+    root.addEventListener("mouseleave", () => paint(current()));
+    paint(current());
+  }
+
+  /* ---------- Error summary ----------
+     Each link focuses the field it names (not just scrolls to it), so keyboard
+     and SR users land on the input. The app opts into moving focus to the
+     summary on a failed submit via data-wire-error-summary-focus; we don't
+     steal focus on load otherwise. */
+  function initErrorSummary(root) {
+    if (root.hasAttribute("data-wire-error-summary-focus")) {
+      if (!root.hasAttribute("tabindex")) root.setAttribute("tabindex", "-1");
+      root.focus();
+    }
+    root.addEventListener("click", (e) => {
+      const link = e.target.closest(".wire-error-summary__link");
+      if (!link) return;
+      const id = (link.getAttribute("href") || "").replace(/^#/, "");
+      const target = id && document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const focusable = target.matches("input, select, textarea, button, [tabindex]")
+        ? target
+        : target.querySelector("input, select, textarea, button, [tabindex]");
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (focusable) focusable.focus({ preventScroll: true });
+    });
+  }
+
+  /* ---------- Combobox (editable autocomplete) ----------
+     APG combobox with list autocomplete. The text input (role=combobox) owns
+     focus and keyboard; the listbox is a popup whose active option is tracked
+     with aria-activedescendant (no roving focus). Typing filters; Arrow/Home/
+     End move; Enter selects; Esc closes; outside click closes. */
+  function initCombobox(root) {
+    const input = root.querySelector(".wire-combobox__input");
+    const listbox = root.querySelector(".wire-combobox__listbox");
+    if (!input || !listbox) return;
+    const toggle = root.querySelector(".wire-combobox__toggle");
+    const empty = listbox.querySelector(".wire-combobox__empty");
+    const allOptions = () => Array.from(listbox.querySelectorAll('[role="option"]'));
+    const shownOptions = () => allOptions().filter((o) => !o.hidden);
+    let activeId = null;
+
+    function open() {
+      if (!listbox.hidden) return;
+      listbox.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+    }
+    function close() {
+      if (listbox.hidden) return;
+      listbox.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      setActive(null);
+    }
+    function setActive(opt) {
+      allOptions().forEach((o) => o.classList.remove("is-active"));
+      if (opt) {
+        opt.classList.add("is-active");
+        input.setAttribute("aria-activedescendant", opt.id);
+        activeId = opt.id;
+        opt.scrollIntoView({ block: "nearest" });
+      } else {
+        input.removeAttribute("aria-activedescendant");
+        activeId = null;
+      }
+    }
+    function filter() {
+      const q = input.value.trim().toLowerCase();
+      let any = false;
+      allOptions().forEach((o) => {
+        const hay = (o.dataset.value || o.textContent).toLowerCase();
+        const match = !q || hay.indexOf(q) !== -1;
+        o.hidden = !match;
+        if (match) any = true;
+      });
+      if (empty) empty.hidden = any;
+      return any;
+    }
+    function selectOption(opt) {
+      input.value = opt.dataset.value || opt.textContent.trim();
+      allOptions().forEach((o) => o.setAttribute("aria-selected", "false"));
+      opt.setAttribute("aria-selected", "true");
+      filter();
+      close();
+      input.focus();
+    }
+
+    input.addEventListener("input", () => { filter(); open(); setActive(null); });
+    input.addEventListener("keydown", (e) => {
+      const opts = shownOptions();
+      const curIdx = opts.findIndex((o) => o.id === activeId);
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          if (listbox.hidden) { filter(); open(); }
+          setActive(opts[curIdx + 1] || opts[0]);
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          if (listbox.hidden) { filter(); open(); }
+          setActive(curIdx > 0 ? opts[curIdx - 1] : opts[opts.length - 1]);
+          break;
+        case "Enter":
+          if (!listbox.hidden && activeId) {
+            e.preventDefault();
+            const o = document.getElementById(activeId);
+            if (o) selectOption(o);
+          }
+          break;
+        case "Escape":
+          if (!listbox.hidden) { e.preventDefault(); close(); }
+          break;
+        case "Home":
+          if (!listbox.hidden) { e.preventDefault(); setActive(opts[0]); }
+          break;
+        case "End":
+          if (!listbox.hidden) { e.preventDefault(); setActive(opts[opts.length - 1]); }
+          break;
+      }
+    });
+    listbox.addEventListener("click", (e) => {
+      const o = e.target.closest('[role="option"]');
+      if (o) selectOption(o);
+    });
+    listbox.addEventListener("mousemove", (e) => {
+      const o = e.target.closest('[role="option"]');
+      if (o && o.id !== activeId) setActive(o);
+    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        if (listbox.hidden) { filter(); open(); } else { close(); }
+        input.focus();
+      });
+    }
+    document.addEventListener("click", (e) => { if (!root.contains(e.target)) close(); });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
+    document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
+    document.querySelectorAll("[data-wire-number-stepper]").forEach(initNumberStepper);
+    document.querySelectorAll("[data-wire-file]").forEach(initFileUpload);
+    document.querySelectorAll("[data-wire-rating]").forEach(initRating);
+    document.querySelectorAll("[data-wire-error-summary]").forEach(initErrorSummary);
+    document.querySelectorAll("[data-wire-combobox]").forEach(initCombobox);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);

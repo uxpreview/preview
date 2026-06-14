@@ -397,20 +397,285 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Slider</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Slider</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">Lets someone pick a number from a continuous range by dragging — a budget, a distance, a comfort level. It's the native <code>&lt;input type="range"&gt;</code> styled grayscale, with a visible value readout. Best when the rough position matters more than the exact figure; for a precise number, pair it with — or use — a <a href="../number-stepper/">Number stepper</a>.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">data-wire-slider</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Slider documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Drag the handle or use the arrow keys; the readout updates live. A native range in a Field, with the value echoed in an <code>&lt;output&gt;</code>.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">default</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="sl-budget">Monthly premium budget</label>
+                    <div class="wire-slider" data-wire-slider data-wire-slider-suffix=" / mo">
+                      <div class="wire-slider__row">
+                        <input type="range" class="wire-slider__range" id="sl-budget" min="0" max="600" step="25" value="250" aria-describedby="sl-budget-hint">
+                        <output class="wire-slider__output" for="sl-budget">250 / mo</output>
+                      </div>
+                    </div>
+                    <p class="wire-field__hint" id="sl-budget-hint">Set the most you'd like to pay each month, in dollars.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">A new beta component. The control is a native range input, so its role, value, and keyboard model come from the platform; the JavaScript only mirrors the value into a visible readout. A formal cross-screen-reader pass and a check of the custom thumb/track at high zoom are pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Native control</span>
+                  <span class="wire-badge">Keyboard-operable</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">A slider trades precision for feel: it's quick and tangible for setting an approximate value, but hard to land on an exact one, fiddly on touch, and invisible to anyone who needs to type a figure. Use it where "about here" is good enough and the range is bounded and meaningful. When the exact number matters — a dose, an age, a dollar amount someone knows — give them a field to type into instead.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Approximate, bounded values where dragging feels natural (budget ceiling, distance radius, brightness).</li>
+                  <li>Filters where users explore a range and see results respond.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For an exact figure the user already knows — use a <a href="../number-stepper/">Number stepper</a> or <a href="../../field/">Field</a>.</li>
+                  <li>For an unbounded value (no sensible min/max) — sliders need both ends.</li>
+                  <li>For a yes/no or small option set — use a <a href="../toggle/">Toggle</a> or <a href="../../choice/">Choice</a>.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Field</td><td><code>.wire-field</code> + <code>.wire-field__label</code></td><td>Wraps and labels the control.</td></tr>
+                    <tr><td>Group</td><td><code>.wire-slider</code> + <code>data-wire-slider</code></td><td>Hook the readout syncs against.</td></tr>
+                    <tr><td>Row</td><td><code>.wire-slider__row</code></td><td>Lays the track and readout side by side.</td></tr>
+                    <tr><td>Track + thumb</td><td><code>.wire-slider__range</code> on <code>&lt;input type="range"&gt;</code></td><td>The draggable control.</td></tr>
+                    <tr><td>Readout</td><td><code>.wire-slider__output</code> on <code>&lt;output&gt;</code></td><td>Live, sighted echo of the value.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../number-stepper/">Number stepper</a> — for an exact number; often the better default.</li>
+                  <li><a href="../../field/">Field</a> — a plain numeric input.</li>
+                  <li><a href="../toggle/">Toggle</a> — for a binary setting rather than a range.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI-ARIA APG, Slider pattern: a slider exposes value via role=slider + aria-valuenow/min/max and is operable with arrow keys; a native range satisfies it. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: sliders suit approximate, low-stakes values but hinder precise input and are error-prone on touch; offer a typed alternative when accuracy matters. <em>Unverified — pending review.</em> <a href="https://www.nngroup.com/articles/gui-slider-controls/">nngroup.com</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): the handle/track row meets the ≥44px target. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="states" class="doc-section" aria-labelledby="h-states">
+                <h2 class="wire-h3" id="h-states">States</h2>
+                <div class="doc-example">
+                  <span class="doc-example__label">default · disabled</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-slider" data-wire-slider>
+                      <div class="wire-slider__row">
+                        <input type="range" class="wire-slider__range" id="sl-a" min="0" max="10" step="1" value="6" aria-label="Example slider">
+                        <output class="wire-slider__output" for="sl-a">6</output>
+                      </div>
+                    </div>
+                    <div class="wire-slider" data-wire-slider>
+                      <div class="wire-slider__row">
+                        <input type="range" class="wire-slider__range" id="sl-b" min="0" max="10" step="1" value="3" disabled aria-label="Disabled example slider">
+                        <output class="wire-slider__output" for="sl-b">3</output>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border-strong</code></td><td>The track.</td></tr>
+                    <tr><td><code>--color-accent</code></td><td>The thumb (grayscale accent).</td></tr>
+                    <tr><td><code>--color-bg</code></td><td>Thumb ring, lifting it off the track.</td></tr>
+                    <tr><td><code>--radius-pill</code></td><td>Track shape.</td></tr>
+                    <tr><td><code>--shadow-sm</code></td><td>Thumb elevation.</td></tr>
+                    <tr><td><code>--space-md</code> / <code>--space-xs</code></td><td>Gap to the readout; field spacing.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; behaviour</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Hit area</td><td>2.75rem tall row (≥44px) even though the track is thin.</td></tr>
+                    <tr><td>Thumb</td><td>1.5rem circle with a background-coloured ring.</td></tr>
+                    <tr><td>Track</td><td>0.375rem pill.</td></tr>
+                    <tr><td>JS</td><td><code>data-wire-slider</code> mirrors <code>value</code> into <code>.wire-slider__output</code>; optional <code>data-wire-slider-suffix</code> appends a unit. Step/min/max are native attributes.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="budget"&gt;Monthly premium budget&lt;/label&gt;
+  &lt;div class="wire-slider" data-wire-slider data-wire-slider-suffix=" / mo"&gt;
+    &lt;div class="wire-slider__row"&gt;
+      &lt;input type="range" class="wire-slider__range" id="budget"
+             min="0" max="600" step="25" value="250"
+             aria-describedby="budget-hint"&gt;
+      &lt;output class="wire-slider__output" for="budget"&gt;250 / mo&lt;/output&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p class="wire-field__hint" id="budget-hint"&gt;Set the most you'd like to pay each month.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; behaviour</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use the native range input — it is <code>role="slider"</code> with <code>aria-valuemin/max/now</code> maintained by the browser.</li>
+                  <li>Give it a real <code>&lt;label for&gt;</code>; the <code>&lt;output&gt;</code> is supplementary, not the label.</li>
+                  <li>If the number needs units to make sense ("250 dollars", not "250"), set <code>aria-valuetext</code> so AT speaks the unit too.</li>
+                  <li>State the min and max in the label or hint so the scale is clear without sight of the track.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>←</kbd> / <kbd>→</kbd>, <kbd>↑</kbd> / <kbd>↓</kbd></td><td>Move by one step.</td></tr>
+                    <tr><td><kbd>Page Up</kbd> / <kbd>Page Down</kbd></td><td>Move by a larger increment.</td></tr>
+                    <tr><td><kbd>Home</kbd> / <kbd>End</kbd></td><td>Jump to min / max.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Slider satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Native range exposes role and live value.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Fully operable with arrows, Page keys, Home/End.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>The control row is ≥44px tall.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Position and the numeric readout carry the value, not colour.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>Reads as "Monthly premium budget, slider, 250" and re-announces the value as it changes.</li>
+                  <li>Without <code>aria-valuetext</code>, only the bare number is spoken — add it when units matter.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../toggle/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Toggle</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../number-stepper/">
+          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Number stepper</span>
+        </a>
+      </nav>
 
     </div>
   </section>
