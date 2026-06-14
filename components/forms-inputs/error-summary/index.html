@@ -397,20 +397,274 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Error summary</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Error summary</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">When a form is submitted with errors, this box gathers them at the top — one link per problem, each jumping focus straight to the field that needs fixing. It's the reliable way to recover from a failed submit, especially on long forms and for screen-reader and keyboard users who'd otherwise have to hunt for what went wrong.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">data-wire-error-summary</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Error summary documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A summary above two invalid fields. Activate a link to jump focus to the field it names. (On a real form the summary appears only after a failed submit, and focus moves to it then.)</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">summary + fields</span>
+                  <div class="wire-error-summary" aria-labelledby="es-title" data-wire-error-summary>
+                    <h3 class="wire-error-summary__title" id="es-title">
+                      <svg class="wire-error-summary__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                      There's a problem
+                    </h3>
+                    <ul class="wire-error-summary__list">
+                      <li class="wire-error-summary__item"><a class="wire-error-summary__link" href="#es-dob">Enter your date of birth</a></li>
+                      <li class="wire-error-summary__item"><a class="wire-error-summary__link" href="#es-email">Enter an email address in the correct format</a></li>
+                    </ul>
+                  </div>
+                  <div class="wire-form u-mt-xl">
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="es-dob">Date of birth</label>
+                      <input type="text" class="wire-input is-invalid" id="es-dob" inputmode="numeric" placeholder="DD/MM/YYYY" aria-invalid="true" aria-describedby="es-dob-err">
+                      <p class="wire-field__error" id="es-dob-err">Enter your date of birth.</p>
+                    </div>
+                    <div class="wire-field">
+                      <label class="wire-field__label" for="es-email">Email address</label>
+                      <input type="email" class="wire-input is-invalid" id="es-email" value="patient@" aria-invalid="true" aria-describedby="es-email-err">
+                      <p class="wire-field__error" id="es-email-err">Enter an email address in the correct format, like name@example.com.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">A new beta component. The pattern (summary at the top, links that focus their fields) follows the well-trodden GOV.UK model; the JavaScript focuses the named field on click and can move focus to the summary on a failed submit. Pending: a screen-reader pass on the focus-move-then-announce sequence, and confirming the link text matches each field's inline error wording. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Focus management</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Keyboard-operable</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">Inline errors tell you what's wrong once you reach a field; a summary tells you everything that's wrong at once, up front, and gets you there. Use both: the summary for orientation and recovery, the <a href="../../field/">field</a> error for the detail. The two must agree — each summary link repeats its field's message word for word, so there's no second guessing. Show the summary only when there are errors, place it at the very top of the form, and move focus to it the moment the submit fails.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Any form that can fail validation — especially longer ones where errors scroll off-screen.</li>
+                  <li>Wherever recovering from a failed submit should be quick for keyboard and screen-reader users.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For a single-field form — the inline <a href="../../field/">field</a> error alone is enough.</li>
+                  <li>For success or neutral messages — that's a <a href="../../../components/banner/">Banner</a> or inline note, not an error summary.</li>
+                  <li>Don't show it pre-emptively before the user has submitted.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Box</td><td><code>.wire-error-summary</code> + <code>data-wire-error-summary</code></td><td>Focusable container; <code>aria-labelledby</code> the title.</td></tr>
+                    <tr><td>Title</td><td><code>.wire-error-summary__title</code> + <code>.wire-error-summary__icon</code></td><td>Heading + warning glyph ("There's a problem").</td></tr>
+                    <tr><td>List</td><td><code>.wire-error-summary__list</code> / <code>__item</code></td><td>One entry per error.</td></tr>
+                    <tr><td>Link</td><td><code>.wire-error-summary__link</code> → <code>#field-id</code></td><td>Focuses the field; text matches its inline error.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../field/">Field</a> — owns the inline per-field error the summary mirrors.</li>
+                  <li><a href="../../form-layout/">Form layout</a> — where the summary sits, at the top.</li>
+                  <li><a href="../../../components/banner/">Banner</a> — for non-error, page-level messages.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Convention</strong> — GOV.UK Design System: show an error summary at the top of the page on a failed submit, move focus to it, and link each entry to its field. <em>Unverified — pending review.</em> <a href="https://design-system.service.gov.uk/components/error-summary/">design-system.service.gov.uk</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 3.3.1 Error Identification: errors are identified and described in text to the user. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#error-identification">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 3.3.3 Error Suggestion: each message says how to fix the problem ("…like name@example.com"). <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#error-suggestion">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.4.3 Focus Order: moving focus to the summary, then to the chosen field, keeps a logical recovery order. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#focus-order">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--border-thick</code> / <code>--color-text</code></td><td>The strong border that signals severity (not colour).</td></tr>
+                    <tr><td><code>--radius-md</code></td><td>Box corners.</td></tr>
+                    <tr><td><code>--text-lg</code> / <code>--weight-semibold</code></td><td>Title type.</td></tr>
+                    <tr><td><code>--space-lg</code> / <code>--space-md</code> / <code>--space-xs</code></td><td>Padding; gap to the list; gap between items.</td></tr>
+                    <tr><td><code>--color-text</code></td><td>Link colour (with underline for affordance).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Behaviour</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Aspect</th><th scope="col">Detail</th></tr></thead>
+                  <tbody>
+                    <tr><td>Severity cue</td><td>Thick border + warning icon + heading — no red, no colour dependence.</td></tr>
+                    <tr><td>Link → field</td><td>Each link focuses the field by id (not just scrolls), bringing it into view.</td></tr>
+                    <tr><td>Focus on submit</td><td>Add <code>data-wire-error-summary-focus</code> so the app can move focus to the summary when it appears.</td></tr>
+                    <tr><td>Announcement</td><td>On a failed submit, move focus here (preferred) or add <code>role="alert"</code>; don't do both.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;div class="wire-error-summary" aria-labelledby="es-title" data-wire-error-summary&gt;
+  &lt;h2 class="wire-error-summary__title" id="es-title"&gt;
+    &lt;svg class="wire-error-summary__icon" viewBox="0 0 24 24" aria-hidden="true"&gt;…&lt;/svg&gt;
+    There's a problem
+  &lt;/h2&gt;
+  &lt;ul class="wire-error-summary__list"&gt;
+    &lt;li class="wire-error-summary__item"&gt;&lt;a class="wire-error-summary__link" href="#dob"&gt;Enter your date of birth&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="wire-error-summary__item"&gt;&lt;a class="wire-error-summary__link" href="#email"&gt;Enter an email address in the correct format&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- On a failed submit: add data-wire-error-summary-focus to move focus here. --&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Behaviour</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Render the summary only when there are errors; on a failed submit, move focus to it (it takes <code>tabindex="-1"</code>) so it's announced.</li>
+                  <li>Give it an accessible name via <code>aria-labelledby</code> pointing at the title; the icon is <code>aria-hidden</code>.</li>
+                  <li>Each link's text must match its field's inline error word for word, and point to the field's <code>id</code>.</li>
+                  <li>Prefer moving focus over <code>role="alert"</code>; using both can double-announce.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves through the error links in order.</td></tr>
+                    <tr><td><kbd>Enter</kbd></td><td>Activates a link and moves focus to the named field.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Error summary satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>3.3.1 Error Identification</td><td>Lists each error in text, up front.</td></tr>
+                    <tr><td>3.3.3 Error Suggestion</td><td>Messages say how to fix the problem.</td></tr>
+                    <tr><td>2.4.3 Focus Order</td><td>Focus moves to the summary, then to the chosen field.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Severity from border + icon + text, not colour.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>When focus moves to the summary, it reads "There's a problem" then the list of errors.</li>
+                  <li>Activating a link announces the field's label and its inline error as focus lands.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../fieldset/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Fieldset</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../../badge/">
+          <span class="wire-doc-pager__direction">Next in Selection</span>
+          <span class="wire-doc-pager__title">Badge</span>
+        </a>
+      </nav>
 
     </div>
   </section>

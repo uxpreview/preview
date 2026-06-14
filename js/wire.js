@@ -825,12 +825,38 @@
     paint(current());
   }
 
+  /* ---------- Error summary ----------
+     Each link focuses the field it names (not just scrolls to it), so keyboard
+     and SR users land on the input. The app opts into moving focus to the
+     summary on a failed submit via data-wire-error-summary-focus; we don't
+     steal focus on load otherwise. */
+  function initErrorSummary(root) {
+    if (root.hasAttribute("data-wire-error-summary-focus")) {
+      if (!root.hasAttribute("tabindex")) root.setAttribute("tabindex", "-1");
+      root.focus();
+    }
+    root.addEventListener("click", (e) => {
+      const link = e.target.closest(".wire-error-summary__link");
+      if (!link) return;
+      const id = (link.getAttribute("href") || "").replace(/^#/, "");
+      const target = id && document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const focusable = target.matches("input, select, textarea, button, [tabindex]")
+        ? target
+        : target.querySelector("input, select, textarea, button, [tabindex]");
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+      if (focusable) focusable.focus({ preventScroll: true });
+    });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
     document.querySelectorAll("[data-wire-number-stepper]").forEach(initNumberStepper);
     document.querySelectorAll("[data-wire-file]").forEach(initFileUpload);
     document.querySelectorAll("[data-wire-rating]").forEach(initRating);
+    document.querySelectorAll("[data-wire-error-summary]").forEach(initErrorSummary);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);

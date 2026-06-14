@@ -3660,10 +3660,36 @@
     },
     {
       "id": "error-summary",
-      "label": "Error summary",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Summary at top on failed submit, move focus to it, links to fields",
+          "citation_ids": ["govuk-error-summary", "wcag-2.4.3-focus-order"]
+        },
+        {
+          "decision": "Each error identified in text with a fix suggestion, matching the inline error",
+          "citation_ids": ["wcag-3.3.1-error-identification", "wcag-3.3.3-error-suggestion"]
+        },
+        {
+          "decision": "Severity from border + icon + heading, never colour",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-error-summary",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/error-summary/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-error-summary__title", "wire-error-summary__icon", "wire-error-summary__list", "wire-error-summary__item", "wire-error-summary__link"],
+      "states": [],
+      "companions": ["wire-field", "wire-form"],
+      "behaviors": ["data-wire-error-summary", "data-wire-error-summary-focus"],
+      "slots": ["title", "errors"],
+      "a11y": "Render only when errors exist; on failed submit move focus to it (tabindex=-1) so it announces. aria-labelledby the title; icon aria-hidden. Each link text matches its field's inline error and focuses that field. Prefer focus-move over role=alert (not both).",
+      "notes": "Pairs with inline Field errors (summary for orientation/recovery, field for detail). GOV.UK model. JS focuses the named field on click; opt-in focus-on-submit.",
+      "label": "Error summary",
+      "desc": "Gathers a form's validation errors at the top, each link focusing its field."
     },
     {
       "id": "avatar",
@@ -5545,7 +5571,6 @@
               "type": "page",
               "label": "Error summary",
               "ref": "components/forms-inputs/error-summary/",
-              "status": "planned",
               "id": "error-summary"
             }
           ],

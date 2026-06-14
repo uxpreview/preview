@@ -116,7 +116,8 @@
         "toggle",
         "slider",
         "number-stepper",
-        "rating"
+        "rating",
+        "error-summary"
       ]
     },
     {
@@ -289,7 +290,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "layout-primitives",
-        "menu"
+        "menu",
+        "error-summary"
       ]
     },
     {
@@ -467,7 +469,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "field"
+        "field",
+        "error-summary"
       ]
     },
     {
@@ -2326,6 +2329,38 @@
       "verification": "UNVERIFIED \u2014 candidate from rating research, pending human review",
       "supports": [
         "rating"
+      ]
+    },
+    {
+      "id": "wcag-3.3.3-error-suggestion",
+      "tier": "standard",
+      "finding": "When an input error is detected and suggestions are known, they are provided to the user.",
+      "source": {
+        "org": "W3C WAI",
+        "title": "WCAG 2.2 SC 3.3.3 Error Suggestion",
+        "year": 2023,
+        "url": "https://www.w3.org/TR/WCAG22/#error-suggestion"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from error-summary research, pending human review",
+      "supports": [
+        "error-summary"
+      ]
+    },
+    {
+      "id": "govuk-error-summary",
+      "tier": "convention",
+      "finding": "On a failed submit, show an error summary at the top of the page, move focus to it, and link each entry to the field it describes using matching text.",
+      "source": {
+        "org": "GOV.UK Design System",
+        "title": "Error summary component",
+        "year": 2024,
+        "url": "https://design-system.service.gov.uk/components/error-summary/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from error-summary research, pending human review",
+      "supports": [
+        "error-summary"
       ]
     }
   ]
