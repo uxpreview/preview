@@ -397,20 +397,282 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
-          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../#cat-forms">Forms &amp; inputs</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Number stepper</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Number stepper</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A number input with −/+ buttons for small, exact whole-number values — how many refills, how many dependents, how many guests. The native <code>&lt;input type="number"&gt;</code> stays the value; the buttons are a faster path for mouse, touch, and anyone who finds typing fiddly. Use it for small counts with clear limits, not open-ended figures.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/form.css</li>
+          <li class="wire-doc-header__meta-item">data-wire-number-stepper</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Number stepper documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Use the buttons, or focus the field and press the arrow keys. The buttons disable at the limits.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">default</span>
+                  <div class="wire-field">
+                    <label class="wire-field__label" for="ns-refills">Number of refills</label>
+                    <div class="wire-number-stepper" data-wire-number-stepper>
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--dec" aria-label="Decrease number of refills"><span aria-hidden="true">−</span></button>
+                      <input type="number" class="wire-number-stepper__field" id="ns-refills" value="2" min="0" max="6" step="1" inputmode="numeric" aria-describedby="ns-refills-hint">
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--inc" aria-label="Increase number of refills"><span aria-hidden="true">+</span></button>
+                    </div>
+                    <p class="wire-field__hint" id="ns-refills-hint">Choose between 0 and 6 refills.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">A new beta component. The field is a native number input, so its role (spinbutton), value, and arrow-key behaviour are the platform's; the JavaScript only wires the −/+ buttons and disables them at the bounds. Pending: confirming the button-driven value change is announced consistently across screen readers (the arrow-key path on the field is the reliable one). Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Native field</span>
+                  <span class="wire-badge">Targets ≥44px</span>
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">A stepper shines for small whole numbers with obvious limits, where tapping up or down beats summoning a keyboard. It stops being the right tool as the range grows: nobody wants to tap "+" forty times. Keep the typed field fully usable — never lock people into the buttons — and set <code>min</code>, <code>max</code>, and <code>step</code> so the value can't go out of bounds.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Small counts with clear bounds (refills, dependents, tickets, guests).</li>
+                  <li>Touch contexts where ±1 taps are quicker than typing.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For large or wide-ranging numbers — use a plain <a href="../../field/">Field</a> (numeric) instead.</li>
+                  <li>For an approximate value where the feel matters more than the figure — use a <a href="../slider/">Slider</a>.</li>
+                  <li>For a value with no sensible step (free decimals, currency to the cent) — a typed field is clearer.</li>
+                </ul>
+              </section>
+
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / element</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Group</td><td><code>.wire-number-stepper</code> + <code>data-wire-number-stepper</code></td><td>Container; the JS hook.</td></tr>
+                    <tr><td>Decrease</td><td><code>.wire-number-stepper__btn--dec</code></td><td>Steps down; needs an <code>aria-label</code>.</td></tr>
+                    <tr><td>Field</td><td><code>.wire-number-stepper__field</code> on <code>&lt;input type="number"&gt;</code></td><td>The value carrier; typed and arrow-key editable.</td></tr>
+                    <tr><td>Increase</td><td><code>.wire-number-stepper__btn--inc</code></td><td>Steps up; needs an <code>aria-label</code>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../slider/">Slider</a> — for an approximate value across a wide range.</li>
+                  <li><a href="../../field/">Field</a> — a plain numeric input for larger numbers.</li>
+                  <li><a href="../../form-layout/">Form layout</a> — placing steppers within a form.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI-ARIA APG, Spinbutton pattern: an input/decrease/increase control exposes its value and is operable by keyboard; a native number input provides this. <em>Unverified — pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/">w3.org</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: steppers fit small quantities; for large ranges, requiring repeated taps frustrates users — let them type. <em>Unverified — pending review.</em> <a href="https://www.nngroup.com/articles/input-steppers/">nngroup.com</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): the −/+ buttons are ≥44px. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="states" class="doc-section" aria-labelledby="h-states">
+                <h2 class="wire-h3" id="h-states">States</h2>
+                <div class="doc-example">
+                  <span class="doc-example__label">at minimum (decrease disabled) · mid · disabled</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-number-stepper" data-wire-number-stepper>
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--dec" aria-label="Decrease"><span aria-hidden="true">−</span></button>
+                      <input type="number" class="wire-number-stepper__field" value="0" min="0" max="6" step="1" inputmode="numeric" aria-label="At minimum example">
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--inc" aria-label="Increase"><span aria-hidden="true">+</span></button>
+                    </div>
+                    <div class="wire-number-stepper" data-wire-number-stepper>
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--dec" aria-label="Decrease"><span aria-hidden="true">−</span></button>
+                      <input type="number" class="wire-number-stepper__field" value="3" min="0" max="6" step="1" inputmode="numeric" aria-label="Mid example">
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--inc" aria-label="Increase"><span aria-hidden="true">+</span></button>
+                    </div>
+                    <div class="wire-number-stepper">
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--dec" aria-label="Decrease" disabled><span aria-hidden="true">−</span></button>
+                      <input type="number" class="wire-number-stepper__field" value="2" min="0" max="6" step="1" inputmode="numeric" disabled aria-label="Disabled example">
+                      <button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--inc" aria-label="Increase" disabled><span aria-hidden="true">+</span></button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--color-border-strong</code></td><td>Button and field borders.</td></tr>
+                    <tr><td><code>--color-bg</code> / <code>--color-bg-subtle</code></td><td>Resting and hover fill.</td></tr>
+                    <tr><td><code>--color-text</code> / <code>--color-text-subtle</code></td><td>Glyphs and the disabled state.</td></tr>
+                    <tr><td><code>--radius-md</code></td><td>Rounded outer corners of the group.</td></tr>
+                    <tr><td><code>--border-thin</code></td><td>Border width; collapsed between parts via negative margin.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; behaviour</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Buttons</td><td>2.75rem × 2.75rem (≥44px), outer corners rounded.</td></tr>
+                    <tr><td>Field</td><td>4rem wide, centred; native spin arrows hidden.</td></tr>
+                    <tr><td>Borders</td><td>Collapsed with <code>margin-inline: calc(-1 * --border-thin)</code>; the focused field raises its <code>z-index</code> so the ring is never clipped.</td></tr>
+                    <tr><td>JS</td><td><code>data-wire-number-stepper</code> reads <code>min/max/step</code>, rounds to the step grid, fires <code>input</code>/<code>change</code>, and disables a button at its bound.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;div class="wire-field"&gt;
+  &lt;label class="wire-field__label" for="refills"&gt;Number of refills&lt;/label&gt;
+  &lt;div class="wire-number-stepper" data-wire-number-stepper&gt;
+    &lt;button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--dec" aria-label="Decrease number of refills"&gt;&lt;span aria-hidden="true"&gt;−&lt;/span&gt;&lt;/button&gt;
+    &lt;input type="number" class="wire-number-stepper__field" id="refills"
+           value="2" min="0" max="6" step="1" inputmode="numeric"&gt;
+    &lt;button type="button" class="wire-number-stepper__btn wire-number-stepper__btn--inc" aria-label="Increase number of refills"&gt;&lt;span aria-hidden="true"&gt;+&lt;/span&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; behaviour</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Keep the native number input as the value carrier — it is a spinbutton with a real <code>&lt;label for&gt;</code>.</li>
+                  <li>Give each button a clear <code>aria-label</code> ("Decrease number of refills"); the −/+ glyphs are <code>aria-hidden</code> decoration.</li>
+                  <li>Buttons are <code>type="button"</code> so they never submit the surrounding form.</li>
+                  <li>Never remove the typed field; it's the reliable path for keyboard and screen-reader users.</li>
+                </ul>
+              </section>
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>↑</kbd> / <kbd>↓</kbd> (on field)</td><td>Step the value up / down by <code>step</code>.</td></tr>
+                    <tr><td>Type a number</td><td>Enter the value directly.</td></tr>
+                    <tr><td><kbd>Tab</kbd>, <kbd>Enter</kbd>/<kbd>Space</kbd> (on buttons)</td><td>Focus and activate the −/+ buttons.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Number stepper satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Native spinbutton field; buttons named via <code>aria-label</code>.</td></tr>
+                    <tr><td>2.1.1 Keyboard</td><td>Typeable and arrow-key operable; buttons reachable by Tab.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>−/+ buttons are ≥44px.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>The disabled bound is shown by the disabled attribute and dimming, not colour alone.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>The field reads as "Number of refills, spin button, 2"; arrow keys announce each new value.</li>
+                  <li>The buttons read by their labels ("Decrease number of refills, button"); when one disables at a bound, it's announced as dimmed/unavailable.</li>
+                </ul>
+              </section>
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../slider/">
+          <span class="wire-doc-pager__direction">Previous in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">Slider</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../file-upload/">
+          <span class="wire-doc-pager__direction">Next in Forms &amp; inputs</span>
+          <span class="wire-doc-pager__title">File upload</span>
+        </a>
+      </nav>
 
     </div>
   </section>

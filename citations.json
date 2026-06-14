@@ -114,7 +114,8 @@
         "chat-launcher",
         "textarea",
         "toggle",
-        "slider"
+        "slider",
+        "number-stepper"
       ]
     },
     {
@@ -214,7 +215,8 @@
         "disclosure",
         "menu",
         "toggle",
-        "slider"
+        "slider",
+        "number-stepper"
       ]
     },
     {
@@ -427,7 +429,8 @@
         "menu",
         "chat-launcher",
         "toggle",
-        "slider"
+        "slider",
+        "number-stepper"
       ]
     },
     {
@@ -514,7 +517,8 @@
         "textarea",
         "toggle",
         "fieldset",
-        "slider"
+        "slider",
+        "number-stepper"
       ]
     },
     {
@@ -2250,6 +2254,38 @@
       "verification": "UNVERIFIED \u2014 candidate from slider research, pending human review",
       "supports": [
         "slider"
+      ]
+    },
+    {
+      "id": "apg-spinbutton",
+      "tier": "standard",
+      "finding": "A spinbutton lets users select from a range of discrete values via increase/decrease affordances and direct entry, exposing its current value to AT; a native input[type=number] provides the role and keyboard model.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Spinbutton Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from number-stepper research, pending human review",
+      "supports": [
+        "number-stepper"
+      ]
+    },
+    {
+      "id": "nng-input-steppers",
+      "tier": "empirical",
+      "finding": "Steppers work well for small quantities; for large ranges, forcing repeated taps is slow and frustrating, so keep direct numeric entry available.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Steppers in UX Design",
+        "year": 2022,
+        "url": "https://www.nngroup.com/articles/input-steppers/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from number-stepper research, pending human review",
+      "supports": [
+        "number-stepper"
       ]
     }
   ]

@@ -371,3 +371,75 @@
   background-color: var(--color-accent);
   box-shadow: var(--shadow-sm);
 }
+
+/* ---------- Number stepper ----------
+   Native <input type="number"> (role=spinbutton, arrow-key operable) flanked
+   by −/+ buttons for mouse/touch/older users. Shared borders collapse with
+   negative margins so the focus ring is never clipped. */
+.wire-number-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  max-inline-size: 100%;
+}
+
+.wire-number-stepper__btn {
+  flex: 0 0 auto;
+  inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-number-stepper__btn--dec {
+  border-start-start-radius: var(--radius-md);
+  border-end-start-radius: var(--radius-md);
+}
+
+.wire-number-stepper__btn--inc {
+  border-start-end-radius: var(--radius-md);
+  border-end-end-radius: var(--radius-md);
+}
+
+.wire-number-stepper__btn:hover:not(:disabled) {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text);
+}
+
+.wire-number-stepper__btn:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.wire-number-stepper__field {
+  inline-size: 4rem;
+  min-block-size: 2.75rem;
+  margin-inline: calc(-1 * var(--border-thin));
+  text-align: center;
+  font-family: inherit;
+  font-size: var(--text-md);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.wire-number-stepper__field:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+
+.wire-number-stepper__field::-webkit-outer-spin-button,
+.wire-number-stepper__field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -747,9 +747,45 @@
     sync();
   }
 
+  /* ---------- Number stepper ----------
+     −/+ buttons drive a native number input. The input itself stays the value
+     carrier (role=spinbutton, arrow-key operable); buttons are a pointer/touch
+     convenience. Buttons disable at the min/max bound. */
+  function initNumberStepper(root) {
+    const field = root.querySelector(".wire-number-stepper__field");
+    if (!field) return;
+    const dec = root.querySelector(".wire-number-stepper__btn--dec");
+    const inc = root.querySelector(".wire-number-stepper__btn--inc");
+    const step = parseFloat(field.step) || 1;
+    const min = field.min !== "" ? parseFloat(field.min) : -Infinity;
+    const max = field.max !== "" ? parseFloat(field.max) : Infinity;
+
+    function nudge(delta) {
+      const cur = parseFloat(field.value);
+      let v = (isNaN(cur) ? (isFinite(min) ? min : 0) : cur) + delta;
+      v = Math.min(max, Math.max(min, v));
+      // round to the step grid to avoid float drift (0.1 + 0.2 …)
+      if (isFinite(step) && step > 0) v = Math.round(v / step) * step;
+      field.value = String(parseFloat(v.toFixed(10)));
+      field.dispatchEvent(new Event("input", { bubbles: true }));
+      field.dispatchEvent(new Event("change", { bubbles: true }));
+      syncBounds();
+    }
+    function syncBounds() {
+      const cur = parseFloat(field.value);
+      if (dec) dec.disabled = !isNaN(cur) && cur <= min;
+      if (inc) inc.disabled = !isNaN(cur) && cur >= max;
+    }
+    if (dec) dec.addEventListener("click", () => nudge(-step));
+    if (inc) inc.addEventListener("click", () => nudge(step));
+    field.addEventListener("input", syncBounds);
+    syncBounds();
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
+    document.querySelectorAll("[data-wire-number-stepper]").forEach(initNumberStepper);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);

@@ -3532,10 +3532,36 @@
     },
     {
       "id": "number-stepper",
-      "label": "Number stepper",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=number] as the value carrier, with −/+ buttons added",
+          "citation_ids": ["apg-spinbutton", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Small counts only; keep typed entry — don't force taps on large ranges",
+          "citation_ids": ["nng-input-steppers"]
+        },
+        {
+          "decision": "≥44px −/+ buttons",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-number-stepper",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/number-stepper/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-number-stepper__btn", "wire-number-stepper__btn--dec", "wire-number-stepper__btn--inc", "wire-number-stepper__field"],
+      "states": ["disabled", "at-bound (button disabled)"],
+      "companions": ["wire-field", "wire-slider"],
+      "behaviors": ["data-wire-number-stepper"],
+      "slots": ["label", "hint"],
+      "a11y": "Native number input (spinbutton) with <label for> is the value; −/+ are type=button with aria-label, glyphs aria-hidden. Field stays typeable and arrow-key operable. Buttons disable at min/max. Never remove the typed field.",
+      "notes": "For small whole-number counts with clear bounds. Large/wide ranges use a plain Field; approximate values use Slider. JS rounds to the step grid and fires input/change.",
+      "label": "Number stepper",
+      "desc": "A number input with −/+ buttons for small, exact counts."
     },
     {
       "id": "file-upload",
@@ -5443,7 +5469,6 @@
               "type": "page",
               "label": "Number stepper",
               "ref": "components/forms-inputs/number-stepper/",
-              "status": "planned",
               "id": "number-stepper"
             },
             {
