@@ -10,6 +10,11 @@
 @import url("utilities.css");
 
 @import url("components/button.css");
+@import url("components/link.css");
+@import url("components/disclosure.css");
+@import url("components/menu.css");
+@import url("components/save-portal-link.css");
+@import url("components/chat-launcher.css");
 @import url("components/badge.css");
 @import url("components/avatar.css");
 @import url("components/avatar-group.css");

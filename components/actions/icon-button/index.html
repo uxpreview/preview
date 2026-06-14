@@ -397,20 +397,520 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Icon button</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Icon button</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A compact, label-free button whose meaning rides entirely on a single icon. It is not a separate component — it is the <strong>icon-only application of <a href="../../../components/buttons/">Button</a></strong> (<code>.wire-button--icon-only</code>), so it keeps the same square ≥44px target, the same three emphasis levels, and the same states. The one rule it adds: because there are no visible words, it <em>must</em> carry an accessible name in text.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/button.css</li>
+          <li class="wire-doc-header__meta-item">Atom · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Icon button documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">The three emphasis levels and three sizes, plus disabled, loading, a pressed toggle, and one paired with a <a href="../../../components/tooltip/">Tooltip</a>. Every example carries an <code>aria-label</code> — hover or focus to confirm the name.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">primary · secondary · ghost</span>
+                  <div class="u-cluster u-cluster--md u-cluster--baseline">
+                    <button type="button" class="wire-button wire-button--icon-only" aria-label="Add patient">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Edit">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" aria-label="More actions">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" focusable="false"><circle cx="12" cy="5" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle></svg></span>
+                    </button>
+                  </div>
+                </div>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">sm · md · lg · disabled · loading · pressed · tooltip</span>
+                  <div class="u-cluster u-cluster--md u-cluster--baseline">
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--sm" aria-label="Close">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" aria-label="Close">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--lg" aria-label="Close">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Delete" disabled>
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6"></path></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Saving" aria-busy="true">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg></span>
+                      <span class="u-visually-hidden">Saving…</span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" aria-pressed="true" aria-label="Save to my list">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" data-wire-tooltip="Print this page" aria-label="Print this page">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg></span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. Icon button reuses <a href="../../../components/buttons/">Button</a>'s shipped, stable styles, so the visual and keyboard contract is well-trodden; what is new here is the documentation and the accessible-name guidance. A screen-reader audit of the worked examples is still pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Target ≥44px</span>
+                  <span class="wire-badge">Keyboard (inherits Button)</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">An icon button trades a visible label for space. It earns its place only where the action is <strong>frequent, space-constrained, and represented by a near-universal icon</strong> — closing a dialog, opening an overflow menu, stepping a carousel. Everywhere else, a labelled <a href="../../../components/buttons/">Button</a> is clearer, especially for the older and lower-vision audiences this system serves.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>A toolbar or table-row action set where labels would not fit (edit, delete, more).</li>
+                  <li>A universally understood control: close (×), search, print, share, expand.</li>
+                  <li>The overflow trigger that opens a <a href="../menu/">Menu</a> of named actions.</li>
+                  <li>A compact toggle — bookmark / save — paired with <code>aria-pressed</code>.</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>The primary action of a page or form. That should be a labelled <a href="../../../components/buttons/">Button</a> — never make the main call-to-action icon-only.</li>
+                  <li>An action whose icon is ambiguous (a single icon meaning "export" vs "share" vs "upload"). If you would have to explain it, label it.</li>
+                  <li>Navigation. A link that looks like an icon button is still a link — use an <code>&lt;a&gt;</code>, and see the <a href="../../../components/#cat-navigation">Navigation family</a>.</li>
+                  <li>Anything where you cannot supply a real accessible name. No name, no icon button.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A square <code>.wire-button--icon-only</code> box centring one <code>.wire-button__icon</code>, plus an accessible name that lives in an attribute rather than on screen. The name is part of the anatomy, not an optional extra.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">box · icon · (named) accessible label</span>
+                  <div class="u-cluster u-cluster--md">
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Edit">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span>
+                    </button>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class / attribute</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Box</td><td><code>.wire-button.wire-button--icon-only</code></td><td>The square, pill-radius target. Carries emphasis, size, and state.</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-button__icon</code></td><td>A single <code>&lt;svg&gt;</code>, always decorative (<code>aria-hidden</code>, <code>focusable="false"</code>).</td></tr>
+                    <tr><td>Accessible name</td><td><code>aria-label</code> (or <code>aria-labelledby</code>)</td><td>The verb the icon stands for. Required — it replaces the missing visible label.</td></tr>
+                    <tr><td>Optional tooltip</td><td><code>data-wire-tooltip</code></td><td>A visible hint on hover/focus. Complements the name; never replaces it.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Types & variants ---------- -->
+              <section id="types-variants" class="doc-section" aria-labelledby="h-types-variants">
+                <h2 class="wire-h3" id="h-types-variants">Types &amp; variants</h2>
+                <p class="u-text-muted u-mt-sm">Emphasis and size are inherited from <a href="../../../components/buttons/">Button</a> unchanged — <code>--icon-only</code> only swaps the shape to a fixed square. Ghost is the most common for dense toolbars; primary is reserved for a single prominent action.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Variant</th><th scope="col">Selector</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Primary</td><td><code>.wire-button--icon-only</code></td><td>One prominent icon action; use sparingly.</td></tr>
+                    <tr><td>Secondary</td><td><code>.wire-button--secondary.wire-button--icon-only</code></td><td>A bordered action that needs more weight than ghost.</td></tr>
+                    <tr><td>Ghost</td><td><code>.wire-button--ghost.wire-button--icon-only</code></td><td>The toolbar / row default — quiet until hovered.</td></tr>
+                    <tr><td>Small</td><td><code>.wire-button--icon-only.wire-button--sm</code></td><td>2.25rem. Dense tables and inline rows.</td></tr>
+                    <tr><td>Large</td><td><code>.wire-button--icon-only.wire-button--lg</code></td><td>3.25rem. Touch-first or prominent placements.</td></tr>
+                    <tr><td>Toggle</td><td><code>aria-pressed="true|false"</code></td><td>A two-state control (save, bookmark, mute).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Composability ---------- -->
+              <section id="composability" class="doc-section" aria-labelledby="h-composability">
+                <h2 class="wire-h3" id="h-composability">Composability</h2>
+                <p class="u-text-muted u-mt-sm">The icon button is a connector. It rarely stands alone — it sits inside larger parts.</p>
+                <ul>
+                  <li><strong>In a <a href="../button-group/">Button group</a></strong> — several icon buttons form a toolbar or segmented action set.</li>
+                  <li><strong>As a <a href="../menu/">Menu</a> trigger</strong> — the overflow "⋯" opens a list of named actions.</li>
+                  <li><strong>With a <a href="../../../components/tooltip/">Tooltip</a></strong> — <code>data-wire-tooltip</code> adds a visible hint for the icon's meaning.</li>
+                  <li><strong>As a count host</strong> — wrap it in <code>.wire-badge-anchor</code> and pin a <code>.wire-badge--count</code> (e.g. notifications).</li>
+                  <li><strong>In a <a href="../../../components/cards/">Card</a> header or <a href="../../../components/modal/">Modal</a></strong> — the close and overflow controls are icon buttons.</li>
+                </ul>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">Notification trigger with a count overlay</span>
+                  <span class="wire-badge-anchor">
+                    <button type="button" class="wire-button wire-button--ghost wire-button--icon-only" aria-label="Notifications, 3 unread">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.7 21a2 2 0 0 1-3.4 0"></path></svg></span>
+                    </button>
+                    <span class="wire-badge wire-badge--count" aria-hidden="true">3</span>
+                  </span>
+                </div>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A card header with overflow and close, and a table-row action set. The icons are quiet ghost buttons; each still announces a full name.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Card header · row actions</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="u-cluster u-cluster--between u-cluster--start-align">
+                      <span class="wire-h4">Visit summary</span>
+                      <span class="u-cluster u-cluster--xs">
+                        <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--sm" aria-label="More actions for visit summary">
+                          <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none" focusable="false"><circle cx="12" cy="5" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle></svg></span>
+                        </button>
+                        <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--sm" aria-label="Dismiss visit summary">
+                          <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="6" y1="18" x2="18" y2="6"></line></svg></span>
+                        </button>
+                      </span>
+                    </div>
+                    <div class="u-cluster u-cluster--between u-cluster--start-align">
+                      <span class="u-text-default">Lab results — 14 May 2026</span>
+                      <span class="u-cluster u-cluster--xs">
+                        <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--sm" data-wire-tooltip="Download" aria-label="Download lab results">
+                          <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+                        </button>
+                        <button type="button" class="wire-button wire-button--ghost wire-button--icon-only wire-button--sm" data-wire-tooltip="Print" aria-label="Print lab results">
+                          <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default"><button type="button" class="wire-button wire-button--ghost wire-button--icon-only" data-wire-tooltip="Edit profile" aria-label="Edit profile"><span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span></button></p>
+                    <p class="u-text-muted u-mt-md">Give every icon button a specific <code>aria-label</code> ("Edit profile", not "Edit") and a matching tooltip. The name does the work the missing label would.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default"><button type="button" class="wire-button wire-button--ghost wire-button--icon-only"><span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></span></button></p>
+                    <p class="u-text-muted u-mt-md">Don't ship a nameless icon button. A screen reader announces only "button", and the icon's meaning is lost to anyone who doesn't recognise the glyph.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>The accessible name is a <strong>verb phrase for the action</strong>, not a description of the icon — "Download results", not "Down arrow".</li>
+                  <li>Make it specific when several siblings share a verb: "Edit profile" / "Edit address", so a screen-reader list of controls is unambiguous.</li>
+                  <li>Keep the tooltip text and the <code>aria-label</code> in agreement, so sighted and screen-reader users hear the same thing.</li>
+                  <li>For a toggle, name the action, not the state ("Save to my list"); the pressed state is carried by <code>aria-pressed</code>.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../../components/buttons/">Button</a> — the labelled base this is an application of; use it whenever a label fits.</li>
+                  <li><a href="../button-group/">Button group</a> — clusters icon buttons into a toolbar or segmented set.</li>
+                  <li><a href="../menu/">Menu</a> — what an overflow icon button opens.</li>
+                  <li><a href="../../../components/tooltip/">Tooltip</a> — the visible hint that names the icon on hover/focus.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: an icon button must expose an accessible name; without a visible label that name comes from <code>aria-label</code>/<code>aria-labelledby</code>. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 2.5.8 Target Size (Minimum): the 2.75rem square clears the 24×24px floor with room to spare. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#target-size-minimum">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.1.1 Non-text Content: the icon is decorative (<code>aria-hidden</code>) because the button itself carries the text alternative. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#non-text-content">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 1.4.13 Content on Hover or Focus: a tooltip hint must be dismissable, hoverable, and persistent. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#content-on-hover-or-focus">w3.org</a></li>
+                  <li><strong>Convention</strong> — Laws of UX (Fitts's Law): a larger, well-spaced target is faster and more reliable to hit. <em>Unverified — pending review.</em> <a href="https://lawsofux.com/fittss-law/">lawsofux.com</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group, "Icon Usability": most icons are ambiguous without a text label; pairing icon with label (visible or accessible) measurably improves recognition. <em>Unverified — drafted, pending review.</em> <a href="https://www.nngroup.com/articles/icon-usability/">nngroup.com</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#types-variants">Types &amp; variants</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#composability">Composability</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <p class="u-text-muted u-mt-sm">Identical to <a href="../../../components/buttons/">Button</a> — the icon-only variant adds no tokens of its own, only fixes the box to a square. See Button's Specs for the full surface, hover, and focus token set.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--space-sm</code></td><td>Inline padding the icon sits within (<code>--btn-pad-x</code>).</td></tr>
+                    <tr><td><code>--radius-pill</code></td><td>The fully-rounded square corners.</td></tr>
+                    <tr><td><code>--border-md</code></td><td>Secondary border and the loading spinner stroke.</td></tr>
+                    <tr><td>Button's colour tokens</td><td>Foreground/background per emphasis — inherited unchanged from <code>button.css</code>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <p class="u-text-muted u-mt-sm">The box is a fixed square so the icon is optically centred at every size. Like Button, these diameters are fixed component geometry in <code>rem</code>, not spacing tokens.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Box — sm / md / lg</td><td>2.25rem · 2.75rem · 3.25rem (square).</td></tr>
+                    <tr><td>Icon</td><td><code>.wire-button__icon</code> at 1.25em; the SVG fills it 100%.</td></tr>
+                    <tr><td>Shape</td><td><code>--radius-pill</code>; padding collapses to 0 with the fixed box.</td></tr>
+                    <tr><td>Target floor</td><td>The default md (2.75rem ≈ 44px) meets AAA enhanced target size; sm (2.25rem ≈ 36px) still clears the 24px AA minimum.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">All states are <a href="../../../components/buttons/">Button</a>'s, unchanged: hover background fill, a visible focus ring with offset, active press, <code>disabled</code>, and a loading state via <code>aria-busy="true"</code> (which swaps the icon for a spinner and announces busy). The only addition is <code>aria-pressed</code> for toggles.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">default · disabled · loading · pressed</span>
+                  <div class="u-cluster u-cluster--md u-cluster--baseline">
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Bookmark">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Bookmark" disabled>
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-label="Bookmarking" aria-busy="true">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                      <span class="u-visually-hidden">Working…</span>
+                    </button>
+                    <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="true" aria-label="Bookmark">
+                      <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg></span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None of its own. The button is static markup. An optional <a href="../../../components/tooltip/">Tooltip</a> uses the CSS-only <code>data-wire-tooltip</code> attribute; <code>js/wire.js</code> only adds Escape-to-dismiss for it. Toggling <code>aria-pressed</code> and showing/hiding a busy spinner are the application's job.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Ghost icon button — the toolbar default. Name is REQUIRED. --&gt;
+&lt;button type="button" class="wire-button wire-button--ghost wire-button--icon-only" aria-label="Edit profile"&gt;
+  &lt;span class="wire-button__icon" aria-hidden="true"&gt;&lt;svg ... focusable="false"&gt;...&lt;/svg&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- With a visible tooltip hint (matches the aria-label) --&gt;
+&lt;button type="button" class="wire-button wire-button--ghost wire-button--icon-only"
+        data-wire-tooltip="Print" aria-label="Print lab results"&gt;
+  &lt;span class="wire-button__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;button class="wire-button wire-button--icon-only wire-button--sm" aria-label="Close"&gt;...&lt;/button&gt;
+&lt;button class="wire-button wire-button--icon-only wire-button--lg" aria-label="Close"&gt;...&lt;/button&gt;
+
+&lt;!-- Toggle: name the action, let aria-pressed carry the state --&gt;
+&lt;button type="button" class="wire-button wire-button--ghost wire-button--icon-only"
+        aria-pressed="false" aria-label="Save to my list"&gt;...&lt;/button&gt;
+
+&lt;!-- Loading: aria-busy swaps the icon for a spinner and announces busy --&gt;
+&lt;button type="button" class="wire-button wire-button--secondary wire-button--icon-only"
+        aria-busy="true" aria-label="Saving"&gt;
+  &lt;span class="wire-button__icon" aria-hidden="true"&gt;&lt;svg ...&gt;...&lt;/svg&gt;&lt;/span&gt;
+  &lt;span class="u-visually-hidden"&gt;Saving…&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- As a count host (overlay from Badge) --&gt;
+&lt;span class="wire-badge-anchor"&gt;
+  &lt;button class="wire-button wire-button--ghost wire-button--icon-only" aria-label="Notifications, 3 unread"&gt;...&lt;/button&gt;
+  &lt;span class="wire-badge wire-badge--count" aria-hidden="true"&gt;3&lt;/span&gt;
+&lt;/span&gt;</code></pre>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Accessible name (the central rule) ---------- -->
+              <section id="accessible-name" class="doc-section" aria-labelledby="h-accessible-name">
+                <h2 class="wire-h3" id="h-accessible-name">The accessible name</h2>
+                <p class="u-text-muted u-mt-sm">This is the whole reason an icon button is documented apart from <a href="../../../components/buttons/">Button</a>. A labelled button gets its name from its text; an icon button has none, so you supply it.</p>
+                <ul>
+                  <li>Put the name on the <code>&lt;button&gt;</code> via <code>aria-label="Edit profile"</code>, or point <code>aria-labelledby</code> at visible text elsewhere.</li>
+                  <li>Mark the icon decorative — <code>aria-hidden="true"</code> on the wrapper and <code>focusable="false"</code> on the SVG — so it is never announced or focused.</li>
+                  <li>A <a href="../../../components/tooltip/">Tooltip</a> (<code>data-wire-tooltip</code>) is a <em>visible</em> aid for sighted users. It is not guaranteed to be the accessible name, so always set <code>aria-label</code> too.</li>
+                  <li>Avoid relying on the native <code>title</code> attribute as the name — its screen-reader and keyboard support is inconsistent.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>Use a real <code>&lt;button type="button"&gt;</code>. Never an icon-button styled <code>&lt;div&gt;</code> or bare <code>&lt;svg&gt;</code> — you would lose role, focus, and keyboard for free.</li>
+                  <li>For a two-state control, add <code>aria-pressed="true|false"</code>; keep the name the action ("Mute"), not the state.</li>
+                  <li>For an overflow trigger that opens a <a href="../menu/">Menu</a>, pair it with <code>aria-haspopup="menu"</code> and <code>aria-expanded</code>.</li>
+                  <li>The busy state uses <code>aria-busy="true"</code>; pair it with a visually-hidden status word so the change is announced (SC 4.1.3).</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">Inherited from the native button, unchanged.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves focus to the button; a visible focus ring appears.</td></tr>
+                    <tr><td><kbd>Enter</kbd></td><td>Activates the button.</td></tr>
+                    <tr><td><kbd>Space</kbd></td><td>Activates the button.</td></tr>
+                    <tr><td><kbd>Esc</kbd></td><td>Dismisses a visible tooltip, if present (leaves focus in place).</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Inside a <a href="../button-group/">Button group</a> acting as a toolbar, arrow-key roving focus may apply — see that page.</p>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Icon button satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>Role from <code>&lt;button&gt;</code>; name from <code>aria-label</code>/<code>aria-labelledby</code>; toggle value from <code>aria-pressed</code>.</td></tr>
+                    <tr><td>1.1.1 Non-text Content</td><td>The button carries the text alternative; the icon itself is marked decorative.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>The default square (2.75rem) clears the 24px floor; md also meets the AAA enhanced size.</td></tr>
+                    <tr><td>2.4.7 Focus Visible</td><td>Inherits Button's focus ring with offset — never <code>outline:none</code> without a replacement.</td></tr>
+                    <tr><td>1.4.13 Content on Hover or Focus</td><td>The optional tooltip is dismissable (Esc), hoverable, and persistent.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Emphasis and state read through fill, weight, and shape — never hue. Grayscale guarantees it.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>A well-named button reads "Edit profile, button". A nameless one reads only "button" — the failure this page exists to prevent.</li>
+                  <li>The decorative icon is skipped entirely, which is correct; the name carries the meaning.</li>
+                  <li>A toggle reads its pressed state, e.g. "Save to my list, toggle button, pressed".</li>
+                  <li>When several icon buttons share a verb, the per-item name ("Edit profile" vs "Edit address") keeps the rotor / elements list unambiguous.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#accessible-name">The accessible name</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../phone-link/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Phone link</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../button-group/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Button group</span>
+        </a>
+      </nav>
 
     </div>
   </section>

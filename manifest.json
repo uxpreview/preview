@@ -3121,52 +3121,237 @@
     },
     {
       "id": "icon-button",
-      "label": "Icon button",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Icon-only controls must carry an accessible name",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "wcag-1.1.1-non-text-content", "nng-icon-usability"]
+        },
+        {
+          "decision": ">=44px square target for a label-free control",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum", "wcag-2.5.5-target-size-enhanced", "laws-of-ux-fitts"]
+        },
+        {
+          "decision": "Optional tooltip hint complements, never replaces, the accessible name",
+          "citation_ids": ["wcag-1.4.13-content-on-hover-or-focus", "apg-tooltip"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-button--icon-only",
+      "file": "css/components/button.css",
       "ref": "components/actions/icon-button/",
-      "status": "planned"
+      "ref_template": "components/actions/icon-button/",
+      "status": "beta",
+      "variants": ["(default = primary)", "secondary", "ghost"],
+      "sizes": ["(default = md)", "sm", "lg"],
+      "states": ["disabled", "aria-busy", "aria-pressed (toggle)"],
+      "elements": ["wire-button__icon"],
+      "companions": ["wire-button-group", "wire-tooltip", "wire-badge"],
+      "behaviors": [],
+      "slots": ["icon", "aria-label"],
+      "a11y": "Not a separate CSS component — the icon-only application of Button. Requires an accessible name (aria-label/aria-labelledby); the icon is decorative (aria-hidden, focusable=false). 2.75rem square target, inherits Button's focus ring. Toggle via aria-pressed; busy via aria-busy.",
+      "notes": "Shares button.css and all of Button's emphasis/size/state surface; --icon-only only fixes the box to a square. Pair with Tooltip (data-wire-tooltip) for a visible hint. See components/buttons/ for the labelled base.",
+      "label": "Icon button",
+      "desc": "A compact, label-free button — Button's icon-only variant, with a required accessible name."
     },
     {
       "id": "button-group",
-      "label": "Button group",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "A shared container + even gap signals the buttons are one related set",
+          "citation_ids": ["gestalt-proximity", "gestalt-common-region"]
+        },
+        {
+          "decision": "One clear primary; the rest quieter",
+          "citation_ids": ["nng-primary-secondary"]
+        },
+        {
+          "decision": "A toolbar set carries a group role + accessible name",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "apg-toolbar"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-button-group",
+      "file": "css/components/button.css",
       "ref": "components/actions/button-group/",
-      "status": "planned"
+      "ref_template": "components/actions/button-group/",
+      "status": "beta",
+      "variants": [],
+      "elements": [],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": [],
+      "slots": ["buttons"],
+      "a11y": "Presentational flex container by default (each button exposed on its own). For a deliberate toolbar add role=group/toolbar + aria-label; toggles carry aria-pressed. Gap keeps adjacent targets from colliding. No roving-focus toolbar behaviour in the base (system gap).",
+      "notes": "Thin layout-only wrapper in button.css: inline-flex, --space-xs gap, wraps. Adds no button styling; all emphasis/size/state come from the contained buttons. No segmented/attached variant yet (system gap).",
+      "label": "Button group",
+      "desc": "A thin container that lays out related buttons as one set, with even gap and wrapping."
     },
     {
       "id": "menu",
-      "label": "Menu",
+      "level": "organism",
+      "rationale": [
+        {
+          "decision": "ARIA menu-button pattern: roles, arrow-key focus, Escape-to-close",
+          "citation_ids": ["apg-menu-button", "wcag-4.1.2-name-role-value", "wcag-2.4.3-focus-order"]
+        },
+        {
+          "decision": "Fully keyboard-operable with no trap",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-2.1.2-no-keyboard-trap"]
+        },
+        {
+          "decision": "Disclose secondary actions to keep the surface scannable",
+          "citation_ids": ["nng-progressive-disclosure"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-menu",
+      "file": "css/components/menu.css",
       "ref": "components/actions/menu/",
-      "status": "planned"
+      "ref_template": "components/actions/menu/",
+      "status": "beta",
+      "variants": ["(default = start-aligned)", "popup--end"],
+      "elements": ["wire-menu__popup", "wire-menu__item", "wire-menu__icon", "wire-menu__separator", "wire-menu__group-label"],
+      "modifiers": ["item--danger"],
+      "states": ["aria-expanded", "aria-disabled (item)"],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": ["data-wire-menu", "data-wire-menu-trigger", "data-wire-menu-popup"],
+      "slots": ["trigger", "items"],
+      "a11y": "ARIA menu-button: trigger gets aria-haspopup=menu + aria-expanded (managed by wire.js); popup is role=menu, items are <button role=menuitem> in <li role=none>. Open moves focus into the list; Up/Down/Home/End roam; Enter activates; Escape/Tab close and restore focus; outside click dismisses. No keyboard trap. Items ≥44px. Action menu only — not navigation or value-select.",
+      "notes": "For actions, not navigation (use a nav/mega menu) or value selection (use Select/Combobox). Non-modal: no scroll lock. Interactive SR behaviour varies across engines — audit pending before stable.",
+      "label": "Menu",
+      "desc": "An action menu: a trigger button opens a keyboard-navigable popup of commands."
     },
     {
       "id": "link",
-      "label": "Link",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Links navigate, buttons act — distinct role and keyboard behaviour",
+          "citation_ids": ["laws-of-ux-jakob"]
+        },
+        {
+          "decision": "Links distinguished by underline, never colour alone",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Descriptive, front-loaded link text",
+          "citation_ids": ["wcag-2.4.4-link-purpose", "nng-writing-links"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-link",
+      "file": "css/components/link.css",
       "ref": "components/actions/link/",
-      "status": "planned"
+      "ref_template": "components/actions/link/",
+      "status": "beta",
+      "variants": ["(default = inline)", "quiet", "standalone", "inverse"],
+      "elements": ["wire-link__icon"],
+      "companions": ["wire-button"],
+      "behaviors": [],
+      "slots": ["label", "icon"],
+      "a11y": "Real <a href>; navigates (not acts). Underlined so it is not colour-only; quiet variant re-adds underline on hover/focus. Decorative icon aria-hidden. target=_blank carries visually-hidden 'opens in a new window' + rel=noopener. Activates on Enter only.",
+      "notes": "For actions use Button, not a link. Quiet variant is for dense UI only. Standalone is a heavier block CTA with a trailing icon.",
+      "label": "Link",
+      "desc": "A styled text link for navigation, with quiet, standalone, and icon-bearing treatments."
     },
     {
       "id": "disclosure",
-      "label": "Disclosure",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native <details>/<summary> for state, keyboard, and find-in-page",
+          "citation_ids": ["apg-disclosure", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Defer secondary detail until requested",
+          "citation_ids": ["nng-progressive-disclosure"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-disclosure",
+      "file": "css/components/disclosure.css",
       "ref": "components/actions/disclosure/",
-      "status": "planned"
+      "ref_template": "components/actions/disclosure/",
+      "status": "beta",
+      "variants": ["(default = minimal)", "bordered"],
+      "elements": ["wire-disclosure__summary", "wire-disclosure__icon", "wire-disclosure__body"],
+      "states": ["open"],
+      "companions": ["wire-accordion"],
+      "behaviors": [],
+      "slots": ["summary", "body"],
+      "a11y": "Built on native <details>/<summary>: role, expanded state, keyboard (Enter/Space), and browser find-in-page come from the platform with no JS. Chevron decorative; summary is the accessible name and ≥44px tall. Don't add conflicting ARIA.",
+      "notes": "A single independent show/hide. For a coordinated set use Accordion. No height animation (would require JS, intentionally omitted).",
+      "label": "Disclosure",
+      "desc": "A single native show/hide for secondary content, with no JavaScript."
     },
     {
       "id": "save-portal-link",
-      "label": "Save / portal link",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Saved state via aria-pressed and a non-colour cue",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Comfortable ≥44px target for older audiences",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum", "nng-seniors"]
+        },
+        {
+          "decision": "Save-for-later + a single portal door fits patient journeys",
+          "citation_ids": ["preview-save-portal-pattern"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-save-link",
+      "file": "css/components/save-portal-link.css",
       "ref": "components/actions/save-portal-link/",
-      "status": "planned"
+      "ref_template": "components/actions/save-portal-link/",
+      "status": "beta",
+      "variants": ["(default = save)", "portal"],
+      "elements": ["wire-save-link__icon", "wire-save-link__label"],
+      "states": ["aria-pressed (saved)"],
+      "companions": ["wire-button", "wire-button--icon-only"],
+      "behaviors": [],
+      "slots": ["icon", "label"],
+      "a11y": "Save is a toggle <button> with aria-pressed (it acts); portal is an <a href> (it navigates). Label is real text (always-present name); icon decorative. Saved shown by label + filled icon + border, never colour. Pill ≥44px tall.",
+      "notes": "Healthcare save-for-later toggle + patient-portal entry link in one pill family. App toggles aria-pressed/label/icon and persists saves; no JS ships. For dense favouriting use an Icon-button toggle instead.",
+      "label": "Save / portal link",
+      "desc": "A save-for-later toggle and a patient-portal entry link sharing one pill control."
     },
     {
       "id": "chat-launcher",
-      "label": "Chat launcher",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "A persistent corner target is fast to reach from anywhere",
+          "citation_ids": ["laws-of-ux-fitts", "wcag-2.5.8-target-size-minimum"]
+        },
+        {
+          "decision": "Accessible name + haspopup/expanded when it opens a dialog",
+          "citation_ids": ["wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Modest, dismissable, never covering essential actions",
+          "citation_ids": ["preview-chat-launcher-pattern", "wcag-1.4.10-reflow"]
+        }
+      ],
       "category": "actions",
+      "class": "wire-chat-launcher",
+      "file": "css/components/chat-launcher.css",
       "ref": "components/actions/chat-launcher/",
-      "status": "planned"
+      "ref_template": "components/actions/chat-launcher/",
+      "status": "beta",
+      "variants": ["(default = labelled)", "compact", "fixed"],
+      "elements": ["wire-chat-launcher__icon", "wire-chat-launcher__label"],
+      "states": ["aria-expanded"],
+      "companions": ["wire-modal", "wire-drawer"],
+      "behaviors": [],
+      "slots": ["icon", "label"],
+      "a11y": "Real <button> with a text name; compact (icon-only) needs aria-label. aria-haspopup=dialog + aria-expanded kept in sync by the app. Large floating target ≥44px. Prominence from fill + elevation, not colour. Must not cover footer / back-to-top; verify at reflow.",
+      "notes": "Launcher only — opening the chat surface (Modal/Drawer/app panel) is the app's job; no JS ships. Add --fixed for the bottom-end viewport placement. Not for emergency lines (use Emergency line) or one-off actions (use Button).",
+      "label": "Chat launcher",
+      "desc": "A floating action button that opens a chat or help experience."
     },
     {
       "id": "textarea",
@@ -5050,49 +5235,42 @@
               "type": "page",
               "label": "Icon button",
               "ref": "components/actions/icon-button/",
-              "status": "planned",
               "id": "icon-button"
             },
             {
               "type": "page",
               "label": "Button group",
               "ref": "components/actions/button-group/",
-              "status": "planned",
               "id": "button-group"
             },
             {
               "type": "page",
               "label": "Menu",
               "ref": "components/actions/menu/",
-              "status": "planned",
               "id": "menu"
             },
             {
               "type": "page",
               "label": "Link",
               "ref": "components/actions/link/",
-              "status": "planned",
               "id": "link"
             },
             {
               "type": "page",
               "label": "Disclosure",
               "ref": "components/actions/disclosure/",
-              "status": "planned",
               "id": "disclosure"
             },
             {
               "type": "page",
               "label": "Save / portal link",
               "ref": "components/actions/save-portal-link/",
-              "status": "planned",
               "id": "save-portal-link"
             },
             {
               "type": "page",
               "label": "Chat launcher",
               "ref": "components/actions/chat-launcher/",
-              "status": "planned",
               "id": "chat-launcher"
             }
           ],

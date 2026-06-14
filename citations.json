@@ -38,7 +38,9 @@
         "media",
         "gallery",
         "avatar",
-        "insurance-indicator"
+        "insurance-indicator",
+        "icon-button",
+        "link"
       ]
     },
     {
@@ -60,7 +62,8 @@
         "field",
         "linked-list",
         "article-list",
-        "deflist"
+        "deflist",
+        "button-group"
       ]
     },
     {
@@ -102,7 +105,12 @@
         "status-dot",
         "wait-time",
         "insurance-indicator",
-        "meter"
+        "meter",
+        "link",
+        "disclosure",
+        "save-portal-link",
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -122,7 +130,8 @@
         "gallery",
         "inpagenav",
         "help-bar",
-        "doc-shell"
+        "doc-shell",
+        "chat-launcher"
       ]
     },
     {
@@ -176,7 +185,8 @@
       "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
         "tooltip",
-        "button"
+        "button",
+        "icon-button"
       ],
       "notes": "Source criterion is from WCAG 2.1 (2018, pre-2020) per research.html; flagged for full review although it is a stable normative criterion carried into 2.2."
     },
@@ -196,7 +206,9 @@
         "tabs",
         "accordion",
         "megamenu",
-        "drawer"
+        "drawer",
+        "disclosure",
+        "menu"
       ]
     },
     {
@@ -213,7 +225,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "drawer",
-        "modal"
+        "modal",
+        "menu"
       ]
     },
     {
@@ -264,7 +277,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "layout-primitives"
+        "layout-primitives",
+        "menu"
       ]
     },
     {
@@ -283,7 +297,8 @@
         "linked-list",
         "article-list",
         "breadcrumb",
-        "button"
+        "button",
+        "link"
       ]
     },
     {
@@ -319,7 +334,9 @@
       "supports": [
         "tokens",
         "button",
-        "field"
+        "field",
+        "link",
+        "save-portal-link"
       ]
     },
     {
@@ -370,7 +387,8 @@
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
         "text-size-control",
-        "button"
+        "button",
+        "icon-button"
       ]
     },
     {
@@ -394,7 +412,13 @@
         "pagination",
         "footer",
         "inpagenav",
-        "megamenu"
+        "megamenu",
+        "icon-button",
+        "button-group",
+        "disclosure",
+        "save-portal-link",
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -469,7 +493,13 @@
         "sidenav",
         "doc-nav",
         "progress",
-        "meter"
+        "meter",
+        "icon-button",
+        "button-group",
+        "disclosure",
+        "save-portal-link",
+        "menu",
+        "chat-launcher"
       ]
     },
     {
@@ -542,7 +572,8 @@
       "supports": [
         "tabs",
         "breadcrumb",
-        "pagination"
+        "pagination",
+        "link"
       ],
       "notes": "Drafted for the Tabs migration. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
@@ -593,7 +624,8 @@
       "verified_date": null,
       "verification": "from research.html \u2014 pending fidelity check",
       "supports": [
-        "tooltip"
+        "tooltip",
+        "icon-button"
       ]
     },
     {
@@ -659,7 +691,8 @@
       "verified_date": null,
       "verification": "UNVERIFIED \u2014 pending human review",
       "supports": [
-        "button"
+        "button",
+        "button-group"
       ],
       "notes": "Pre-2020 source (2015)."
     },
@@ -1460,7 +1493,8 @@
         "avatar",
         "avatar-group",
         "status-dot",
-        "insurance-indicator"
+        "insurance-indicator",
+        "button-group"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. Needs a checkable source (e.g. Laws of UX / a Gestalt reference) before use."
     },
@@ -1479,7 +1513,8 @@
       "supports": [
         "card",
         "divider",
-        "avatar-group"
+        "avatar-group",
+        "button-group"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },
@@ -1517,7 +1552,9 @@
         "button",
         "topnav",
         "text-size-control",
-        "tag"
+        "tag",
+        "icon-button",
+        "chat-launcher"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently cited in research.html. URL is the canonical Laws of UX page \u2014 confirm before use."
     },
@@ -1870,7 +1907,8 @@
       "verified_date": "2026-06-02",
       "verification": "Verified by Ryan McCarty, 2026-06-02",
       "supports": [
-        "select"
+        "select",
+        "save-portal-link"
       ]
     },
     {
@@ -1987,6 +2025,135 @@
       "verification": "UNVERIFIED \u2014 candidate from wait-time research brief; live-source check blocked by environment network policy, pending human review",
       "supports": [
         "wait-time"
+      ]
+    },
+    {
+      "id": "nng-icon-usability",
+      "tier": "empirical",
+      "finding": "Most UI icons are ambiguous without an accompanying text label; pairing an icon with a label (visible or accessible) measurably improves recognition and reduces user errors.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Icon Usability",
+        "year": 2024,
+        "url": "https://www.nngroup.com/articles/icon-usability/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from icon-button research, pending human review",
+      "supports": [
+        "icon-button"
+      ]
+    },
+    {
+      "id": "apg-toolbar",
+      "tier": "standard",
+      "finding": "A toolbar groups a set of controls and manages focus with arrow keys (roving tabindex), exposing role=toolbar with an accessible name.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Toolbar Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from button-group research, pending human review",
+      "supports": [
+        "button-group"
+      ]
+    },
+    {
+      "id": "nng-writing-links",
+      "tier": "empirical",
+      "finding": "Descriptive, front-loaded link text outperforms vague labels like 'click here' for scanning, comprehension, and screen-reader navigation.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Better Link Labels",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/writing-links/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from link research, pending human review",
+      "supports": [
+        "link"
+      ]
+    },
+    {
+      "id": "apg-disclosure",
+      "tier": "standard",
+      "finding": "A disclosure is a button that controls visibility of a section of content, toggling aria-expanded; the native <details>/<summary> element implements this pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Disclosure (Show/Hide) Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
+      "supports": [
+        "disclosure"
+      ]
+    },
+    {
+      "id": "nng-progressive-disclosure",
+      "tier": "empirical",
+      "finding": "Progressive disclosure \u2014 deferring secondary or advanced content until requested \u2014 reduces visible complexity and cognitive load while keeping detail reachable.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Progressive Disclosure",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/progressive-disclosure/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from disclosure research, pending human review",
+      "supports": [
+        "disclosure",
+        "menu"
+      ]
+    },
+    {
+      "id": "preview-save-portal-pattern",
+      "tier": "judgment",
+      "finding": "A labelled 'save for later' toggle plus a single recognisable portal entry door fit how patients compare care across visits and devices. Our reasoned position, no external study claimed.",
+      "source": {
+        "org": "Preview Design System",
+        "title": "Save / portal link design rationale",
+        "year": 2026,
+        "url": ""
+      },
+      "verified_date": null,
+      "verification": "judgment \u2014 design call, no external source claimed",
+      "supports": [
+        "save-portal-link"
+      ]
+    },
+    {
+      "id": "apg-menu-button",
+      "tier": "standard",
+      "finding": "A menu button (aria-haspopup + aria-expanded) opens a role=menu of menuitems; arrow keys move focus between items, Enter activates, Escape closes and returns focus to the trigger.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Menu Button Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from menu research, pending human review",
+      "supports": [
+        "menu"
+      ]
+    },
+    {
+      "id": "preview-chat-launcher-pattern",
+      "tier": "judgment",
+      "finding": "A modest, dismissable floating launcher suits patients seeking help mid-task, provided it never covers essential actions. Our reasoned position, no external study claimed.",
+      "source": {
+        "org": "Preview Design System",
+        "title": "Chat launcher design rationale",
+        "year": 2026,
+        "url": ""
+      },
+      "verified_date": null,
+      "verification": "judgment \u2014 design call, no external source claimed",
+      "supports": [
+        "chat-launcher"
       ]
     }
   ]

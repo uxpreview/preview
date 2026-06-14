@@ -1,0 +1,76 @@
+/* ============================================================
+   Link — wire-link
+   A standalone, styled text link with optional leading/trailing
+   icon and a few emphasis treatments. The base <a> already carries
+   the system underline; this component is for links that need an
+   explicit affordance (a call-to-action, a quiet inline link, an
+   icon-bearing link) without restyling every anchor.
+
+   Class:     wire-link
+   Variants:  --quiet, --standalone, --inverse
+   Element:   wire-link__icon
+   States:    :hover, :focus-visible (global ring), :visited
+   Grayscale: emphasis from weight + underline, never hue.
+   ============================================================ */
+
+.wire-link {
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-thin);
+  text-underline-offset: 0.18em;
+  border-radius: var(--radius-xs);
+  transition: text-decoration-thickness var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.wire-link:hover {
+  text-decoration-thickness: var(--border-md);
+}
+
+/* ---------- Icon child (leading or trailing by DOM order) ---------- */
+.wire-link__icon {
+  display: inline-flex;
+  inline-size: 1em;
+  block-size: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+.wire-link__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* ---------- Quiet: no underline until hover/focus ----------
+   For dense UI (table cells, cards) where a full set of underlines
+   would be noisy. Still underlines on hover and focus so the
+   affordance is never colour-only. */
+.wire-link--quiet {
+  text-decoration: none;
+}
+.wire-link--quiet:hover,
+.wire-link--quiet:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-md);
+}
+
+/* ---------- Standalone: a block call-to-action link ----------
+   Heavier weight, icon aligned with the label, underline on
+   interaction. Use for "Read more →", "View all results →". */
+.wire-link--standalone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+}
+.wire-link--standalone:hover,
+.wire-link--standalone:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-md);
+}
+
+/* ---------- Inverse: on a dark / inverse surface ---------- */
+.wire-link--inverse {
+  color: var(--color-text-inverse);
+}

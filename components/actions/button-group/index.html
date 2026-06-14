@@ -397,20 +397,406 @@
   <section class="u-section">
     <div class="u-container u-container--wide">
 
+      <!-- ===================== BREADCRUMB ===================== -->
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Button group</span></li>
         </ol>
       </nav>
 
+      <!-- ===================== DOC HEADER (component masthead) ===================== -->
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Button group</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A thin container that lays out related <a href="../../../components/buttons/">buttons</a> as one set — consistent gap, sensible wrapping, a clear reading order. It adds no button styling of its own; it groups buttons that already belong together, like Save / Cancel or a row of icon actions.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/components/button.css</li>
+          <li class="wire-doc-header__meta-item">Molecule · no JavaScript</li>
+        </ul>
       </header>
+
+      <!-- ===================== TABS: Usage / Specs / Accessibility ===================== -->
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Button group documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- TAB 1 — USAGE                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Live demo ---------- -->
+              <section id="live-demo" class="doc-section" aria-labelledby="h-live-demo">
+                <h2 class="wire-h3" id="h-live-demo">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">Form actions, an overflow pair, and a row of <a href="../icon-button/">icon buttons</a>. The group only handles layout — each button keeps its own emphasis and target size.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Form actions · icon toolbar</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-button-group">
+                      <button type="button" class="wire-button">Save changes</button>
+                      <button type="button" class="wire-button wire-button--ghost">Cancel</button>
+                    </div>
+                    <div class="wire-button-group" role="group" aria-label="Text formatting">
+                      <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="true" aria-label="Bold">
+                        <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M7 5h7a4 4 0 0 1 0 8H7z"></path><path d="M7 13h8a4 4 0 0 1 0 8H7z"></path></svg></span>
+                      </button>
+                      <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="false" aria-label="Italic">
+                        <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><line x1="19" y1="5" x2="11" y2="5"></line><line x1="13" y1="19" x2="5" y2="19"></line><line x1="15" y1="5" x2="9" y2="19"></line></svg></span>
+                      </button>
+                      <button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="false" aria-label="Underline">
+                        <span class="wire-button__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M6 4v6a6 6 0 0 0 12 0V4"></path><line x1="4" y1="21" x2="20" y2="21"></line></svg></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Testing status ---------- -->
+              <section id="testing-status" class="doc-section" aria-labelledby="h-testing-status">
+                <h2 class="wire-h3" id="h-testing-status">Testing status</h2>
+                <p class="u-text-muted u-mt-sm">An honest snapshot for this beta page. The group is a presentational flex container reusing <a href="../../../components/buttons/">Button</a>'s shipped styles, so there is little new surface to break; the new work is documentation and the grouping/labeling guidance. A screen-reader audit of the labelled-toolbar example is pending. Methodology lives in <a href="../../../docs/validation.html">Validation</a>.</p>
+                <div class="u-cluster u-cluster--xs u-mt-md">
+                  <span class="wire-badge">Color-independent</span>
+                  <span class="wire-badge">Wraps without overlap</span>
+                  <span class="wire-badge wire-badge--subtle">SR audit pending</span>
+                </div>
+                <p class="u-text-muted u-mt-md"><a href="../../../docs/validation.html">See the validation log →</a></p>
+              </section>
+
+              <!-- ---------- Overview ---------- -->
+              <section id="overview" class="doc-section" aria-labelledby="h-overview">
+                <h2 class="wire-h3" id="h-overview">Overview</h2>
+                <p class="u-text-muted u-mt-sm">When two or more buttons act on the same thing, grouping them signals that relationship and keeps spacing even. The group is deliberately minimal — a flex row with a token gap that wraps on narrow screens. All meaning still comes from the buttons inside it: one clear primary, the rest quieter.</p>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when">When to use</h3>
+                <ul>
+                  <li>Form or dialog actions — a primary plus one or two secondaries (Save / Cancel).</li>
+                  <li>A small set of related <a href="../icon-button/">icon buttons</a> forming a toolbar.</li>
+                  <li>A compact set of mutually related choices rendered as toggle buttons (<code>aria-pressed</code>).</li>
+                </ul>
+
+                <h3 class="wire-h4 u-mt-xl" id="h-when-not">When not to use</h3>
+                <ul>
+                  <li>For many filter chips or removable selections — that is <a href="../../../components/tag/">Tag</a>, not a button group.</li>
+                  <li>For a single-select control with many options — use a <a href="../../../components/forms-inputs/select/">Select</a> or radio <a href="../../../components/choice/">Choice</a>.</li>
+                  <li>To stack more than one primary button — a group should still have a single most-important action.</li>
+                  <li>For navigation links dressed as buttons — keep those as links; see the <a href="../../../components/#cat-navigation">Navigation family</a>.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Anatomy ---------- -->
+              <section id="anatomy" class="doc-section" aria-labelledby="h-anatomy">
+                <h2 class="wire-h3" id="h-anatomy">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">One container, two or more buttons. The container owns only the gap and wrapping; it never restyles its children.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">container · buttons</span>
+                  <div class="wire-button-group">
+                    <button type="button" class="wire-button">Confirm</button>
+                    <button type="button" class="wire-button wire-button--ghost">Go back</button>
+                  </div>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Class</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><td>Group</td><td><code>.wire-button-group</code></td><td>The flex container. Holds the gap and wrap behaviour; carries an optional <code>role</code> + label.</td></tr>
+                    <tr><td>Buttons</td><td><code>.wire-button</code> (+ variants)</td><td>Two or more related <a href="../../../components/buttons/">buttons</a>, including <a href="../icon-button/">icon buttons</a>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Composition patterns ---------- -->
+              <section id="patterns" class="doc-section" aria-labelledby="h-patterns">
+                <h2 class="wire-h3" id="h-patterns">Composition patterns</h2>
+                <p class="u-text-muted u-mt-sm">The group has no style variants — the patterns come from the buttons you put in it.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Pattern</th><th scope="col">Composition</th><th scope="col">Use</th></tr></thead>
+                  <tbody>
+                    <tr><td>Primary + dismiss</td><td>One <code>.wire-button</code> + a <code>.wire-button--ghost</code></td><td>Form / dialog actions.</td></tr>
+                    <tr><td>Icon toolbar</td><td>Several <code>.wire-button--icon-only</code>, <code>role="group"</code> + label</td><td>A compact set of icon actions.</td></tr>
+                    <tr><td>Toggle set</td><td>Buttons with <code>aria-pressed</code></td><td>A few related on/off choices.</td></tr>
+                  </tbody>
+                </table>
+                <div class="doc-example u-mt-xl">
+                  <span class="doc-example__label">Primary + dismiss · toggle set</span>
+                  <div class="u-stack u-stack--lg">
+                    <div class="wire-button-group">
+                      <button type="button" class="wire-button">Book appointment</button>
+                      <button type="button" class="wire-button wire-button--ghost">Not now</button>
+                    </div>
+                    <div class="wire-button-group" role="group" aria-label="List view">
+                      <button type="button" class="wire-button wire-button--secondary" aria-pressed="true">List</button>
+                      <button type="button" class="wire-button wire-button--secondary" aria-pressed="false">Map</button>
+                    </div>
+                  </div>
+                </div>
+                <p class="u-text-muted u-mt-md"><strong>Note —</strong> a <em>visually attached / segmented</em> group (buttons sharing borders with no gap) is not in the base today; this group is gap-separated. See the system gap noted in <a href="#code">Code</a>.</p>
+              </section>
+
+              <!-- ---------- In context ---------- -->
+              <section id="in-context" class="doc-section" aria-labelledby="h-in-context">
+                <h2 class="wire-h3" id="h-in-context">In context</h2>
+                <p class="u-text-muted u-mt-sm">A dialog footer. The primary commits; the ghost backs out. On a narrow screen the pair wraps without overlapping.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Dialog footer</span>
+                  <div class="u-stack u-stack--md">
+                    <p class="wire-h4">Cancel this appointment?</p>
+                    <p class="u-text-muted">Your 14 May slot with Dr. Ruiz will be released. This can't be undone.</p>
+                    <div class="wire-button-group u-mt-md">
+                      <button type="button" class="wire-button">Cancel appointment</button>
+                      <button type="button" class="wire-button wire-button--ghost">Keep it</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Do / Don't ---------- -->
+              <section id="do-dont" class="doc-section" aria-labelledby="h-do-dont">
+                <h2 class="wire-h3" id="h-do-dont">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <p class="u-text-default"><span class="wire-button-group"><span class="wire-button">Save</span> <span class="wire-button wire-button--ghost">Cancel</span></span></p>
+                    <p class="u-text-muted u-mt-md">Keep one clear primary and make the rest quieter. The group shows the actions belong together; emphasis shows which comes first.</p>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <p class="u-text-default"><span class="wire-button-group"><span class="wire-button">Save</span> <span class="wire-button">Submit</span> <span class="wire-button">Send</span></span></p>
+                    <p class="u-text-muted u-mt-md">Don't stack several primaries. Competing emphasis removes the hierarchy the group is meant to make obvious.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- ---------- Content guidelines ---------- -->
+              <section id="content-guidelines" class="doc-section" aria-labelledby="h-content-guidelines">
+                <h2 class="wire-h3" id="h-content-guidelines">Content guidelines</h2>
+                <ul>
+                  <li>Order by importance: the primary action comes first in reading order (and DOM order), the dismiss last.</li>
+                  <li>Keep the set small — two or three actions. Move the rest into a <a href="../menu/">Menu</a>.</li>
+                  <li>Label a toolbar group so its purpose is announced (e.g. "Text formatting").</li>
+                  <li>Use parallel, specific verbs ("Save changes" / "Discard"), not vague pairs ("OK" / "No").</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Related ---------- -->
+              <section id="related" class="doc-section" aria-labelledby="h-related">
+                <h2 class="wire-h3" id="h-related">Related</h2>
+                <ul>
+                  <li><a href="../../../components/buttons/">Button</a> and <a href="../icon-button/">Icon button</a> — what a group contains.</li>
+                  <li><a href="../menu/">Menu</a> — where extra or lower-priority actions belong.</li>
+                  <li><a href="../../../components/tag/">Tag</a> — for filter / removable selection sets, not action buttons.</li>
+                  <li><a href="../../../components/choice/">Choice</a> — radio/checkbox groups for single- or multi-select input.</li>
+                  <li><a href="../">All components</a> — the full library.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- References ---------- -->
+              <section id="references" class="doc-section" aria-labelledby="h-references">
+                <h2 class="wire-h3" id="h-references">References</h2>
+                <p class="u-text-muted u-mt-sm">Citations supporting this component, each labeled by evidence tier. Items marked <em>unverified — pending review</em> are drafts and must not be presented as established fact.</p>
+                <ul>
+                  <li><strong>Convention</strong> — Gestalt principle of proximity: items placed close together are read as a related set, which is what the group's even gap signals. <em>Unverified — pending review.</em> <a href="https://lawsofux.com/laws/law-of-proximity/">lawsofux.com</a></li>
+                  <li><strong>Convention</strong> — Gestalt common region: a shared container reinforces that the buttons belong to one operation. <em>Unverified — pending review.</em> <a href="https://lawsofux.com/laws/law-of-common-region/">lawsofux.com</a></li>
+                  <li><strong>Empirical</strong> — Nielsen Norman Group: a clear primary-vs-secondary emphasis helps users choose the intended action; competing primaries blunt it. <em>Unverified — pending review.</em> <a href="https://www.nngroup.com/articles/primary-secondary-action-buttons/">nngroup.com</a></li>
+                  <li><strong>Standard</strong> — W3C WAI, WCAG 2.2 SC 4.1.2 Name, Role, Value: a toolbar set carries a group name (<code>role="group"</code>/<code>"toolbar"</code> + label) so its purpose is exposed. <em>Unverified — pending review.</em> <a href="https://www.w3.org/TR/WCAG22/#name-role-value">w3.org</a></li>
+                  <li><strong>Standard</strong> — W3C WAI-ARIA APG, Toolbar pattern: a toolbar groups controls and manages focus with arrow keys (roving tabindex). Base ships no JS for this; see the system gap. <em>Unverified — drafted, pending review.</em> <a href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/">w3.org</a></li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== USAGE TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#testing-status">Testing status</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#overview">Overview</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#patterns">Composition patterns</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#content-guidelines">Content guidelines</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#related">Related</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#references">References</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 2 — SPECS                                                 -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- Tokens used ---------- -->
+              <section id="tokens" class="doc-section" aria-labelledby="h-tokens">
+                <h2 class="wire-h3" id="h-tokens">Tokens used</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--space-xs</code></td><td>The gap between buttons in the group.</td></tr>
+                    <tr><td>Button's tokens</td><td>All emphasis, size, and state values come from the buttons inside — see <a href="../../../components/buttons/">Button</a>.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Measurements & structure ---------- -->
+              <section id="measurements" class="doc-section" aria-labelledby="h-measurements">
+                <h2 class="wire-h3" id="h-measurements">Measurements &amp; structure</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Value</th></tr></thead>
+                  <tbody>
+                    <tr><td>Display</td><td><code>inline-flex</code>, so the group is only as wide as its buttons.</td></tr>
+                    <tr><td>Gap</td><td><code>--space-xs</code> between each child.</td></tr>
+                    <tr><td>Wrap</td><td><code>flex-wrap: wrap</code> — buttons drop to the next line rather than overflow or shrink.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- States (visual spec) ---------- -->
+              <section id="states" class="doc-section" aria-labelledby="h-spec-states">
+                <h2 class="wire-h3" id="h-spec-states">States</h2>
+                <p class="u-text-muted u-mt-sm">The group has no states of its own. Hover, focus, active, disabled, loading, and pressed all belong to the individual <a href="../../../components/buttons/">buttons</a>; the container only positions them.</p>
+              </section>
+
+              <!-- ---------- JavaScript ---------- -->
+              <section id="javascript" class="doc-section" aria-labelledby="h-javascript">
+                <h2 class="wire-h3" id="h-javascript">JavaScript</h2>
+                <p class="u-text-muted u-mt-sm">None. The base group is static layout. A true ARIA <em>toolbar</em> with arrow-key roving focus would need a behaviour the system does not ship yet (no <code>data-wire-*</code> hook) — flagged as a system gap below. Until then, a group is keyboard-navigated as a normal sequence of buttons via <kbd>Tab</kbd>.</p>
+              </section>
+
+              <!-- ---------- Code ---------- -->
+              <section id="code" class="doc-section" aria-labelledby="h-code">
+                <h2 class="wire-h3" id="h-code">Code</h2>
+                <pre class="doc-snippet"><code>&lt;!-- Form actions: one primary, one ghost --&gt;
+&lt;div class="wire-button-group"&gt;
+  &lt;button type="button" class="wire-button"&gt;Save changes&lt;/button&gt;
+  &lt;button type="button" class="wire-button wire-button--ghost"&gt;Cancel&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Labelled icon toolbar --&gt;
+&lt;div class="wire-button-group" role="group" aria-label="Text formatting"&gt;
+  &lt;button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="true" aria-label="Bold"&gt;...&lt;/button&gt;
+  &lt;button type="button" class="wire-button wire-button--secondary wire-button--icon-only" aria-pressed="false" aria-label="Italic"&gt;...&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                <p class="u-text-muted u-mt-md"><strong>System gap —</strong> there is no <em>segmented / attached</em> group variant (shared borders, no gap) and no roving-focus toolbar behaviour in the base. Both recur across products; noting them here so they can be promoted into the core deliberately rather than improvised per project.</p>
+              </section>
+
+            </div>
+
+            <!-- ===================== SPECS TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens used</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#measurements">Measurements &amp; structure</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#javascript">JavaScript</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#code">Code</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TAB 3 — ACCESSIBILITY                                         -->
+        <!-- ============================================================ -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <!-- ---------- ARIA & semantics ---------- -->
+              <section id="aria-semantics" class="doc-section" aria-labelledby="h-aria">
+                <h2 class="wire-h3" id="h-aria">ARIA &amp; semantics</h2>
+                <ul>
+                  <li>By default the container is presentational — each button is exposed on its own, which is correct for a Save / Cancel pair.</li>
+                  <li>When the set is a deliberate toolbar (especially icon buttons), give it <code>role="group"</code> (or <code>role="toolbar"</code>) and an <code>aria-label</code> so its purpose is announced.</li>
+                  <li>For mutually exclusive choices rendered as toggles, carry the state on each button with <code>aria-pressed</code>; the group name describes the choice.</li>
+                  <li>Don't add a group role with no label — an unnamed group adds noise without meaning.</li>
+                </ul>
+              </section>
+
+              <!-- ---------- Keyboard interactions ---------- -->
+              <section id="keyboard" class="doc-section" aria-labelledby="h-keyboard">
+                <h2 class="wire-h3" id="h-keyboard">Keyboard interactions</h2>
+                <p class="u-text-muted u-mt-sm">The base group is a normal tab sequence.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><td><kbd>Tab</kbd></td><td>Moves to each button in turn; each shows its own focus ring.</td></tr>
+                    <tr><td><kbd>Enter</kbd> / <kbd>Space</kbd></td><td>Activates the focused button.</td></tr>
+                    <tr><td><kbd>← →</kbd></td><td><em>Toolbar only</em> — roving focus between controls. Requires the toolbar behaviour the base does not yet ship (see Specs &rsaquo; JavaScript).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- WCAG 2.2 criteria mapped ---------- -->
+              <section id="wcag" class="doc-section" aria-labelledby="h-wcag">
+                <h2 class="wire-h3" id="h-wcag">WCAG 2.2 criteria mapped</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">SC</th><th scope="col">How Button group satisfies it</th></tr></thead>
+                  <tbody>
+                    <tr><td>4.1.2 Name, Role, Value</td><td>A toolbar set exposes a group role and an accessible name; toggle buttons expose <code>aria-pressed</code>.</td></tr>
+                    <tr><td>2.5.8 Target Size (Min)</td><td>Spacing comes from a real gap, so adjacent targets never collide; each button keeps its own ≥24px size.</td></tr>
+                    <tr><td>1.3.1 Info &amp; Relationships</td><td>The container groups related controls; reading and DOM order put the primary first.</td></tr>
+                    <tr><td>1.4.1 Use of Color</td><td>Priority is shown by button emphasis and order, never hue. Grayscale guarantees it.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <!-- ---------- Screen reader notes ---------- -->
+              <section id="screen-readers" class="doc-section" aria-labelledby="h-screen-reader">
+                <h2 class="wire-h3" id="h-screen-reader">Screen reader notes</h2>
+                <ul>
+                  <li>An unlabelled group reads as its individual buttons, in order — fine for a simple action pair.</li>
+                  <li>A labelled toolbar announces the group name first ("Text formatting, group"), then each control.</li>
+                  <li>Toggle buttons read their pressed state, e.g. "Bold, toggle button, pressed".</li>
+                  <li>Putting the primary first means it is reached first by both tabbing and reading order.</li>
+                </ul>
+              </section>
+
+            </div>
+
+            <!-- ===================== ACCESSIBILITY TOC ===================== -->
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#aria-semantics">ARIA &amp; semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard interactions</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#wcag">WCAG 2.2 criteria mapped</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#screen-readers">Screen reader notes</a></li>
+              </ul>
+            </nav>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Pager -->
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../icon-button/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Icon button</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../menu/">
+          <span class="wire-doc-pager__direction">In Actions</span>
+          <span class="wire-doc-pager__title">Menu</span>
+        </a>
+      </nav>
 
     </div>
   </section>

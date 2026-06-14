@@ -129,6 +129,101 @@
     });
   }
 
+  /* ---------- Menu (action menu / dropdown) — ARIA APG menu button ----------
+     A trigger button (aria-haspopup="menu", aria-expanded) controls a popup
+     list of menuitems. Opening moves focus into the list; Up/Down/Home/End
+     roam it; Escape closes and returns focus to the trigger; an outside click
+     or activating an item closes it. The popup is plain DOM toggled with the
+     hidden attribute — no portal, no scroll lock (it is not modal).
+       Reads: data-wire-menu (root), data-wire-menu-trigger, data-wire-menu-popup */
+  function initMenu(root) {
+    const trigger = root.querySelector("[data-wire-menu-trigger]");
+    const popup = root.querySelector("[data-wire-menu-popup]");
+    if (!trigger || !popup) return;
+
+    const items = () =>
+      Array.from(popup.querySelectorAll('[role="menuitem"]')).filter(
+        (el) => el.getAttribute("aria-disabled") !== "true" && !el.hasAttribute("disabled")
+      );
+
+    trigger.setAttribute("aria-haspopup", "menu");
+    trigger.setAttribute("aria-expanded", "false");
+    popup.hidden = true;
+
+    function isOpen() {
+      return trigger.getAttribute("aria-expanded") === "true";
+    }
+
+    function setOpen(open, focusFirst) {
+      trigger.setAttribute("aria-expanded", String(open));
+      popup.hidden = !open;
+      if (open) {
+        document.addEventListener("click", onDocClick, true);
+        document.addEventListener("keydown", onKey);
+        if (focusFirst !== false) {
+          const list = items();
+          if (list.length) list[0].focus();
+        }
+      } else {
+        document.removeEventListener("click", onDocClick, true);
+        document.removeEventListener("keydown", onKey);
+      }
+    }
+
+    function onDocClick(e) {
+      if (!root.contains(e.target)) setOpen(false, false);
+    }
+
+    function onKey(e) {
+      const list = items();
+      const idx = list.indexOf(document.activeElement);
+      switch (e.key) {
+        case "Escape":
+          setOpen(false, false);
+          trigger.focus();
+          break;
+        case "ArrowDown":
+          e.preventDefault();
+          (list[idx + 1] || list[0]).focus();
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          (list[idx - 1] || list[list.length - 1]).focus();
+          break;
+        case "Home":
+          e.preventDefault();
+          if (list[0]) list[0].focus();
+          break;
+        case "End":
+          e.preventDefault();
+          if (list.length) list[list.length - 1].focus();
+          break;
+        case "Tab":
+          // Moving out of the menu closes it (focus naturally leaves).
+          setOpen(false, false);
+          break;
+      }
+    }
+
+    trigger.addEventListener("click", () => setOpen(!isOpen()));
+
+    trigger.addEventListener("keydown", (e) => {
+      if (!isOpen() && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
+        e.preventDefault();
+        setOpen(true);
+      }
+    });
+
+    // Activating an item closes the menu and returns focus to the trigger.
+    popup.addEventListener("click", (e) => {
+      const item = e.target.closest('[role="menuitem"]');
+      if (item && item.getAttribute("aria-disabled") !== "true") {
+        setOpen(false, false);
+        trigger.focus();
+      }
+    });
+  }
+
   /* ---------- Mobile drawer / off-canvas rail (focus trap — WCAG 2.1.2) ----------
      The same element can be a persistent <nav> at desktop and an off-canvas
      slide-over at mobile (the shell rail). So modal semantics — role=dialog,
@@ -643,6 +738,7 @@
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);
+    document.querySelectorAll("[data-wire-menu]").forEach(initMenu);
     initDrawer();
     initInPageNav();
     initTextSize();
