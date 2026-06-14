@@ -599,6 +599,21 @@
   margin: 0;
 }
 
+/* ---------- Date input ----------
+   A native <input type="date"> wearing the shared .wire-input styling. The
+   browser's own calendar popup is accessible, localized, and robust; we only
+   tune the grayscale calendar indicator. A custom calendar grid is out of
+   scope by design. */
+.wire-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.65;
+}
+
+.wire-input[type="date"]:hover::-webkit-calendar-picker-indicator,
+.wire-input[type="date"]:focus-visible::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
+
 .wire-error-summary__link {
   color: var(--color-text);
   font-weight: var(--weight-semibold);

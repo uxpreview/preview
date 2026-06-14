@@ -117,7 +117,8 @@
         "slider",
         "number-stepper",
         "rating",
-        "error-summary"
+        "error-summary",
+        "date-picker"
       ]
     },
     {
@@ -220,7 +221,8 @@
         "slider",
         "number-stepper",
         "file-upload",
-        "rating"
+        "rating",
+        "date-picker"
       ]
     },
     {
@@ -491,7 +493,8 @@
         "search",
         "textarea",
         "fieldset",
-        "file-upload"
+        "file-upload",
+        "date-picker"
       ]
     },
     {
@@ -529,7 +532,8 @@
         "slider",
         "number-stepper",
         "file-upload",
-        "rating"
+        "rating",
+        "date-picker"
       ]
     },
     {
@@ -2361,6 +2365,38 @@
       "verification": "UNVERIFIED \u2014 candidate from error-summary research, pending human review",
       "supports": [
         "error-summary"
+      ]
+    },
+    {
+      "id": "nng-date-input",
+      "tier": "empirical",
+      "finding": "Many custom date pickers harm usability; allowing direct typing is faster for known dates, and calendars are best reserved for when day-of-week or nearby dates matter.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Date-Input Form Fields",
+        "year": 2022,
+        "url": "https://www.nngroup.com/articles/date-input/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from date-picker research, pending human review",
+      "supports": [
+        "date-picker"
+      ]
+    },
+    {
+      "id": "govuk-dates",
+      "tier": "convention",
+      "finding": "For a known date such as a date of birth, plain typed entry generally beats a calendar widget; reserve calendars for choosing a day in relation to others.",
+      "source": {
+        "org": "GOV.UK Design System",
+        "title": "Dates pattern",
+        "year": 2024,
+        "url": "https://design-system.service.gov.uk/patterns/dates/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from date-picker research, pending human review",
+      "supports": [
+        "date-picker"
       ]
     }
   ]

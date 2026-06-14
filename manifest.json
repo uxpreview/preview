@@ -3459,10 +3459,36 @@
     },
     {
       "id": "date-picker",
-      "label": "Date picker",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=date], not a custom calendar grid",
+          "citation_ids": ["nng-date-input", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Allow typing; for known dates (DOB) typing beats a calendar",
+          "citation_ids": ["govuk-dates"]
+        },
+        {
+          "decision": "State format and bounds in the hint",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-input",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/date-picker/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["date (native)", "from/to range (two inputs in a fieldset)"],
+      "elements": ["wire-field__label", "wire-field__hint", "wire-field__error"],
+      "states": ["is-invalid", "disabled"],
+      "companions": ["wire-field", "wire-fieldset"],
+      "behaviors": [],
+      "slots": ["label", "hint"],
+      "a11y": "Native <input type=date> with <label for>; typed segments + the browser's accessible calendar. Bound with min/max; state format in the hint; aria-invalid for errors. No div-based calendar.",
+      "notes": "Native-first by design — a custom calendar grid is intentionally out of scope (flag if mandated). Uses .wire-input with type=date; only the picker indicator is styled. Range = two date inputs in a Fieldset.",
+      "label": "Date picker",
+      "desc": "Enter a date via the native date input — type it or use the browser calendar."
     },
     {
       "id": "toggle",
@@ -5528,7 +5554,6 @@
               "type": "page",
               "label": "Date picker",
               "ref": "components/forms-inputs/date-picker/",
-              "status": "planned",
               "id": "date-picker"
             },
             {
