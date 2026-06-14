@@ -3355,10 +3355,32 @@
     },
     {
       "id": "textarea",
-      "label": "Textarea",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Native <textarea> in a Field for label/hint/error wiring",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Size to the expected answer; vertical resize allowed",
+          "citation_ids": ["nng-form-field-sizing"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-textarea",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/textarea/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-field__label", "wire-field__hint", "wire-field__error"],
+      "states": ["is-invalid", "disabled"],
+      "companions": ["wire-field", "wire-select"],
+      "behaviors": [],
+      "slots": ["label", "hint", "error"],
+      "a11y": "Native <textarea> with <label for>; hint/error tied via aria-describedby; aria-invalid carries the error state (not colour-only). Enter inserts a newline. No placeholder-as-label.",
+      "notes": "For free-form multi-line text only; short structured values use Field. min-block-size 7rem, resize:vertical. No auto-grow (would need JS).",
+      "label": "Textarea",
+      "desc": "A multi-line text input — the native textarea styled to match Field."
     },
     {
       "id": "select",
@@ -5309,7 +5331,6 @@
               "type": "page",
               "label": "Textarea",
               "ref": "components/forms-inputs/textarea/",
-              "status": "planned",
               "id": "textarea"
             },
             {
