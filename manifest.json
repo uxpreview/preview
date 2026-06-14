@@ -3466,10 +3466,36 @@
     },
     {
       "id": "toggle",
-      "label": "Toggle",
+      "level": "atom",
+      "rationale": [
+        {
+          "decision": "Native checkbox + role=switch for on/off state",
+          "citation_ids": ["apg-switch", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Switch = immediate effect; checkbox = submitted later",
+          "citation_ids": ["ds-switch-vs-checkbox"]
+        },
+        {
+          "decision": "≥44px label+switch target for older audiences",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-toggle",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/toggle/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-toggle__input"],
+      "states": ["checked", "disabled"],
+      "companions": ["wire-fieldset"],
+      "behaviors": [],
+      "slots": ["label"],
+      "a11y": "Native <input type=checkbox role=switch> inside a wrapping <label> (the accessible name). On/off via knob position, not colour. Space toggles; ≥44px target. Keep the label static and descriptive; don't make it the state.",
+      "notes": "For settings that take effect immediately. A value submitted with a form is a checkbox (Choice), not a switch. No JS ships; app listens for change.",
+      "label": "Toggle",
+      "desc": "An on/off switch for an immediate setting — a native checkbox with role=switch."
     },
     {
       "id": "slider",
@@ -5357,7 +5383,6 @@
               "type": "page",
               "label": "Toggle",
               "ref": "components/forms-inputs/toggle/",
-              "status": "planned",
               "id": "toggle"
             },
             {

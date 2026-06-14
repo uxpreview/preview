@@ -111,7 +111,8 @@
         "save-portal-link",
         "menu",
         "chat-launcher",
-        "textarea"
+        "textarea",
+        "toggle"
       ]
     },
     {
@@ -209,7 +210,8 @@
         "megamenu",
         "drawer",
         "disclosure",
-        "menu"
+        "menu",
+        "toggle"
       ]
     },
     {
@@ -420,7 +422,8 @@
         "disclosure",
         "save-portal-link",
         "menu",
-        "chat-launcher"
+        "chat-launcher",
+        "toggle"
       ]
     },
     {
@@ -503,7 +506,8 @@
         "save-portal-link",
         "menu",
         "chat-launcher",
-        "textarea"
+        "textarea",
+        "toggle"
       ]
     },
     {
@@ -2174,6 +2178,38 @@
       "verification": "UNVERIFIED \u2014 candidate from textarea research, pending human review",
       "supports": [
         "textarea"
+      ]
+    },
+    {
+      "id": "apg-switch",
+      "tier": "standard",
+      "finding": "A switch is an on/off control that exposes its state via role=switch plus the checked state and is toggled with Space (or Enter); a native checkbox with role=switch satisfies the pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Switch Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
+      "supports": [
+        "toggle"
+      ]
+    },
+    {
+      "id": "ds-switch-vs-checkbox",
+      "tier": "convention",
+      "finding": "Established design-system practice (Material, Carbon, USWDS): a switch signals a setting that takes effect immediately, whereas a checkbox signals a value collected and submitted later.",
+      "source": {
+        "org": "Material Design / IBM Carbon / USWDS",
+        "title": "Switch vs. checkbox guidance",
+        "year": 2024,
+        "url": "https://m3.material.io/components/switch/guidelines"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
+      "supports": [
+        "toggle"
       ]
     }
   ]
