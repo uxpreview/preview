@@ -3565,10 +3565,36 @@
     },
     {
       "id": "file-upload",
-      "label": "File upload",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native file input restyled, not a custom drop zone",
+          "citation_ids": ["govuk-file-upload", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Input hidden with .u-visually-hidden so it stays keyboard-operable",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-2.4.7-focus-visible"]
+        },
+        {
+          "decision": "State accepted types and size limit up front",
+          "citation_ids": ["wcag-3.3.2-labels-or-instructions"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-file",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/file-upload/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-file__button", "wire-file__input", "wire-file__icon", "wire-file__status"],
+      "states": ["empty", "file-chosen", "disabled"],
+      "companions": ["wire-field", "u-visually-hidden"],
+      "behaviors": ["data-wire-file", "data-wire-file-status"],
+      "slots": ["label", "hint"],
+      "a11y": "Native <input type=file> hidden with .u-visually-hidden (focusable, NOT display:none), labelled by the field label; icon aria-hidden. Focus ring on the button via :focus-within. Status is aria-live=polite. No drag-only path.",
+      "notes": "Keep upload native — platform picker, cloud/AV integration, keyboard support. Drag-and-drop intentionally out of scope. JS echoes the filename into the status.",
+      "label": "File upload",
+      "desc": "Attach a file via the native picker behind a styled button, with filename feedback."
     },
     {
       "id": "rating",
@@ -5475,7 +5501,6 @@
               "type": "page",
               "label": "File upload",
               "ref": "components/forms-inputs/file-upload/",
-              "status": "planned",
               "id": "file-upload"
             },
             {

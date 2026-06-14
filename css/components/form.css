@@ -443,3 +443,58 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* ---------- File upload ----------
+   A native <input type="file"> hidden with .u-visually-hidden (still focusable)
+   inside a <label> styled as a button; focus-within draws the ring on the
+   button. A live status echoes the chosen filename. */
+.wire-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.wire-file__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-block-size: 2.75rem;
+  padding-inline: var(--space-lg);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-thin) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.wire-file__button:hover {
+  background-color: var(--color-bg-subtle);
+  border-color: var(--color-text);
+}
+
+.wire-file__button:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.wire-file__icon {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  flex: 0 0 auto;
+}
+
+/* Hidden via .u-visually-hidden in markup (stays focusable); this rule keeps
+   the class defined and the hit cursor consistent. */
+.wire-file__input {
+  cursor: pointer;
+}
+
+.wire-file__status {
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}

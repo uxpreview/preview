@@ -782,10 +782,27 @@
     syncBounds();
   }
 
+  /* ---------- File upload ----------
+     Echoes the chosen filename(s) into a visible status next to the styled
+     button. The native input keeps its own value for AT; the status is the
+     sighted mirror (and is aria-live so the change is also announced). */
+  function initFileUpload(root) {
+    const input = root.querySelector(".wire-file__input");
+    const status = root.querySelector("[data-wire-file-status]");
+    if (!input || !status) return;
+    const empty = status.getAttribute("data-wire-file-empty") || status.textContent.trim() || "No file chosen";
+    input.addEventListener("change", () => {
+      const files = input.files;
+      if (!files || !files.length) { status.textContent = empty; return; }
+      status.textContent = files.length === 1 ? files[0].name : files.length + " files selected";
+    });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
     document.querySelectorAll("[data-wire-number-stepper]").forEach(initNumberStepper);
+    document.querySelectorAll("[data-wire-file]").forEach(initFileUpload);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);
