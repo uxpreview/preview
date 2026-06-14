@@ -115,7 +115,8 @@
         "textarea",
         "toggle",
         "slider",
-        "number-stepper"
+        "number-stepper",
+        "rating"
       ]
     },
     {
@@ -217,7 +218,8 @@
         "toggle",
         "slider",
         "number-stepper",
-        "file-upload"
+        "file-upload",
+        "rating"
       ]
     },
     {
@@ -432,7 +434,8 @@
         "chat-launcher",
         "toggle",
         "slider",
-        "number-stepper"
+        "number-stepper",
+        "rating"
       ]
     },
     {
@@ -522,7 +525,8 @@
         "fieldset",
         "slider",
         "number-stepper",
-        "file-upload"
+        "file-upload",
+        "rating"
       ]
     },
     {
@@ -2306,6 +2310,22 @@
       "verification": "UNVERIFIED \u2014 candidate from file-upload research, pending human review",
       "supports": [
         "file-upload"
+      ]
+    },
+    {
+      "id": "apg-radio",
+      "tier": "convention",
+      "finding": "Building a star-rating input on native radio buttons (one per star) gives it real single-choice semantics and keyboard support, rather than reinventing the control.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Radio Group Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from rating research, pending human review",
+      "supports": [
+        "rating"
       ]
     }
   ]

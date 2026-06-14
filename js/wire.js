@@ -798,11 +798,39 @@
     });
   }
 
+  /* ---------- Rating (interactive) ----------
+     A radio group in natural DOM order (so arrow keys behave), styled as
+     stars. Fill is painted up to the hovered/focused/selected star; the radios
+     remain the source of truth and the accessible control. */
+  function initRating(root) {
+    const options = Array.from(root.querySelectorAll(".wire-rating__option"));
+    if (!options.length) return;
+    const inputs = options.map((o) => o.querySelector("input"));
+    const stars = options.map((o) => o.querySelector(".wire-rating__star"));
+    const paint = (level) => stars.forEach((s, i) =>
+      s.classList.toggle("wire-rating__star--filled", i < level));
+    const current = () => {
+      const idx = inputs.findIndex((i) => i && i.checked);
+      return idx < 0 ? 0 : idx + 1;
+    };
+    options.forEach((o, i) => {
+      o.addEventListener("mouseenter", () => paint(i + 1));
+      if (inputs[i]) {
+        inputs[i].addEventListener("focus", () => paint(i + 1));
+        inputs[i].addEventListener("change", () => paint(current()));
+        inputs[i].addEventListener("blur", () => paint(current()));
+      }
+    });
+    root.addEventListener("mouseleave", () => paint(current()));
+    paint(current());
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
     document.querySelectorAll("[data-wire-number-stepper]").forEach(initNumberStepper);
     document.querySelectorAll("[data-wire-file]").forEach(initFileUpload);
+    document.querySelectorAll("[data-wire-rating]").forEach(initRating);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);

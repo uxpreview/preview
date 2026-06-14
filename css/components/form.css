@@ -498,3 +498,57 @@
   font-size: var(--text-md);
   color: var(--color-text-muted);
 }
+
+/* ---------- Rating (stars) ----------
+   Two modes. Read-only display: filled vs outline stars carry the score by
+   shape (grayscale-safe), with an aria-label and optional visible value.
+   Interactive: a radio group (one star per radio) in natural DOM order, with
+   data-wire-rating painting fill on hover/focus/select. */
+.wire-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.wire-rating__star {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  flex: 0 0 auto;
+  color: var(--color-border-strong);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.wire-rating__star--filled {
+  color: var(--color-text);
+  fill: currentColor;
+}
+
+.wire-rating__value {
+  margin-inline-start: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* Interactive variant */
+.wire-rating__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.wire-rating__option:focus-within {
+  outline: var(--focus-ring-width) solid var(--color-focus);
+  outline-offset: calc(-1 * var(--focus-ring-offset));
+}
+
+.wire-rating--input .wire-rating__star {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+}

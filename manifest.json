@@ -3598,10 +3598,36 @@
     },
     {
       "id": "rating",
-      "label": "Rating",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Score by star shape (filled/outline) + text value, never colour",
+          "citation_ids": ["wcag-1.4.1-use-of-color"]
+        },
+        {
+          "decision": "Display = role=img + aria-label; input = native radios",
+          "citation_ids": ["wcag-4.1.2-name-role-value", "apg-radio"]
+        },
+        {
+          "decision": "Each input star sits in a ≥44px target",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-rating",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/rating/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["display (read-only)", "input (--input, radio group)"],
+      "elements": ["wire-rating__star", "wire-rating__star--filled", "wire-rating__value", "wire-rating__option"],
+      "states": ["filled", "empty"],
+      "companions": ["wire-fieldset", "wire-badge", "u-visually-hidden"],
+      "behaviors": ["data-wire-rating"],
+      "slots": ["stars", "value"],
+      "a11y": "Display: role=img + aria-label states the score; star SVGs aria-hidden. Input: radio per star in a Fieldset/legend, each with a visually-hidden text label. Shape (not colour) carries fill; JS preview is decorative and degrades to plain radios.",
+      "notes": "Two modes — display (no JS) and input (--input, data-wire-rating). Half-star display out of scope. Don't make display focusable/clickable.",
+      "label": "Rating",
+      "desc": "A star score — read-only display, or an input built on radios."
     },
     {
       "id": "fieldset",
@@ -5507,7 +5533,6 @@
               "type": "page",
               "label": "Rating",
               "ref": "components/forms-inputs/rating/",
-              "status": "planned",
               "id": "rating"
             },
             {
