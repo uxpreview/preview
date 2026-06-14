@@ -118,7 +118,8 @@
         "number-stepper",
         "rating",
         "error-summary",
-        "date-picker"
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -222,7 +223,8 @@
         "number-stepper",
         "file-upload",
         "rating",
-        "date-picker"
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -439,7 +441,8 @@
         "toggle",
         "slider",
         "number-stepper",
-        "rating"
+        "rating",
+        "combobox"
       ]
     },
     {
@@ -533,7 +536,8 @@
         "number-stepper",
         "file-upload",
         "rating",
-        "date-picker"
+        "date-picker",
+        "combobox"
       ]
     },
     {
@@ -2397,6 +2401,38 @@
       "verification": "UNVERIFIED \u2014 candidate from date-picker research, pending human review",
       "supports": [
         "date-picker"
+      ]
+    },
+    {
+      "id": "apg-combobox",
+      "tier": "standard",
+      "finding": "The combobox pattern (list autocomplete) puts role=combobox on the text input with aria-expanded and aria-controls to a role=listbox popup of role=option items, tracking the active option via aria-activedescendant while focus stays on the input.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Combobox Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from combobox research, pending human review",
+      "supports": [
+        "combobox"
+      ]
+    },
+    {
+      "id": "nng-autocomplete",
+      "tier": "empirical",
+      "finding": "Autocomplete/typeahead helps users select from large sets, but only when matching is forgiving and the suggestions are clearly presented and easy to navigate.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Search Autocomplete",
+        "year": 2023,
+        "url": "https://www.nngroup.com/articles/site-search-autocomplete/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from combobox research, pending human review",
+      "supports": [
+        "combobox"
       ]
     }
   ]

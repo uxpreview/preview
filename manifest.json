@@ -3452,10 +3452,36 @@
     },
     {
       "id": "combobox",
-      "label": "Combobox",
+      "level": "organism",
+      "rationale": [
+        {
+          "decision": "ARIA combobox pattern (role=combobox + listbox, aria-activedescendant)",
+          "citation_ids": ["apg-combobox", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "Only for long lists where filtering helps; else use Select",
+          "citation_ids": ["nng-autocomplete"]
+        },
+        {
+          "decision": "Full keyboard operation; active option not colour-only",
+          "citation_ids": ["wcag-2.1.1-keyboard", "wcag-1.4.1-use-of-color"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-combobox",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/combobox/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["list autocomplete (default)"],
+      "elements": ["wire-combobox__input", "wire-combobox__toggle", "wire-combobox__toggle-icon", "wire-combobox__listbox", "wire-combobox__option", "wire-combobox__empty"],
+      "states": ["expanded", "is-active (activedescendant)", "aria-selected"],
+      "companions": ["wire-field", "wire-input", "wire-select"],
+      "behaviors": ["data-wire-combobox"],
+      "slots": ["label", "hint", "options"],
+      "a11y": "input role=combobox + aria-expanded/controls/autocomplete with a real <label for>; popup role=listbox of role=option; active option via aria-activedescendant (focus stays on input). Selection sets aria-selected. Active highlight = tint + inset edge bar (not colour-only). Toggle tabindex=-1. Esc closes. Options ≥44px. Beta pending cross-AT audit of activedescendant.",
+      "notes": "The one non-native control in the set — held to the APG to the letter. Use only for long lists; short stable sets use Select. Single-select only (multi-select out of scope).",
+      "label": "Combobox",
+      "desc": "A text input that filters a list as you type — the ARIA combobox pattern."
     },
     {
       "id": "date-picker",
@@ -5547,7 +5573,6 @@
               "type": "page",
               "label": "Combobox",
               "ref": "components/forms-inputs/combobox/",
-              "status": "planned",
               "id": "combobox"
             },
             {

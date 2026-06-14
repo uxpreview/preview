@@ -850,6 +850,115 @@
     });
   }
 
+  /* ---------- Combobox (editable autocomplete) ----------
+     APG combobox with list autocomplete. The text input (role=combobox) owns
+     focus and keyboard; the listbox is a popup whose active option is tracked
+     with aria-activedescendant (no roving focus). Typing filters; Arrow/Home/
+     End move; Enter selects; Esc closes; outside click closes. */
+  function initCombobox(root) {
+    const input = root.querySelector(".wire-combobox__input");
+    const listbox = root.querySelector(".wire-combobox__listbox");
+    if (!input || !listbox) return;
+    const toggle = root.querySelector(".wire-combobox__toggle");
+    const empty = listbox.querySelector(".wire-combobox__empty");
+    const allOptions = () => Array.from(listbox.querySelectorAll('[role="option"]'));
+    const shownOptions = () => allOptions().filter((o) => !o.hidden);
+    let activeId = null;
+
+    function open() {
+      if (!listbox.hidden) return;
+      listbox.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+    }
+    function close() {
+      if (listbox.hidden) return;
+      listbox.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      setActive(null);
+    }
+    function setActive(opt) {
+      allOptions().forEach((o) => o.classList.remove("is-active"));
+      if (opt) {
+        opt.classList.add("is-active");
+        input.setAttribute("aria-activedescendant", opt.id);
+        activeId = opt.id;
+        opt.scrollIntoView({ block: "nearest" });
+      } else {
+        input.removeAttribute("aria-activedescendant");
+        activeId = null;
+      }
+    }
+    function filter() {
+      const q = input.value.trim().toLowerCase();
+      let any = false;
+      allOptions().forEach((o) => {
+        const hay = (o.dataset.value || o.textContent).toLowerCase();
+        const match = !q || hay.indexOf(q) !== -1;
+        o.hidden = !match;
+        if (match) any = true;
+      });
+      if (empty) empty.hidden = any;
+      return any;
+    }
+    function selectOption(opt) {
+      input.value = opt.dataset.value || opt.textContent.trim();
+      allOptions().forEach((o) => o.setAttribute("aria-selected", "false"));
+      opt.setAttribute("aria-selected", "true");
+      filter();
+      close();
+      input.focus();
+    }
+
+    input.addEventListener("input", () => { filter(); open(); setActive(null); });
+    input.addEventListener("keydown", (e) => {
+      const opts = shownOptions();
+      const curIdx = opts.findIndex((o) => o.id === activeId);
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          if (listbox.hidden) { filter(); open(); }
+          setActive(opts[curIdx + 1] || opts[0]);
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          if (listbox.hidden) { filter(); open(); }
+          setActive(curIdx > 0 ? opts[curIdx - 1] : opts[opts.length - 1]);
+          break;
+        case "Enter":
+          if (!listbox.hidden && activeId) {
+            e.preventDefault();
+            const o = document.getElementById(activeId);
+            if (o) selectOption(o);
+          }
+          break;
+        case "Escape":
+          if (!listbox.hidden) { e.preventDefault(); close(); }
+          break;
+        case "Home":
+          if (!listbox.hidden) { e.preventDefault(); setActive(opts[0]); }
+          break;
+        case "End":
+          if (!listbox.hidden) { e.preventDefault(); setActive(opts[opts.length - 1]); }
+          break;
+      }
+    });
+    listbox.addEventListener("click", (e) => {
+      const o = e.target.closest('[role="option"]');
+      if (o) selectOption(o);
+    });
+    listbox.addEventListener("mousemove", (e) => {
+      const o = e.target.closest('[role="option"]');
+      if (o && o.id !== activeId) setActive(o);
+    });
+    if (toggle) {
+      toggle.addEventListener("click", () => {
+        if (listbox.hidden) { filter(); open(); } else { close(); }
+        input.focus();
+      });
+    }
+    document.addEventListener("click", (e) => { if (!root.contains(e.target)) close(); });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
@@ -857,6 +966,7 @@
     document.querySelectorAll("[data-wire-file]").forEach(initFileUpload);
     document.querySelectorAll("[data-wire-rating]").forEach(initRating);
     document.querySelectorAll("[data-wire-error-summary]").forEach(initErrorSummary);
+    document.querySelectorAll("[data-wire-combobox]").forEach(initCombobox);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);
