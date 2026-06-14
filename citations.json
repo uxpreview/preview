@@ -63,7 +63,8 @@
         "linked-list",
         "article-list",
         "deflist",
-        "button-group"
+        "button-group",
+        "fieldset"
       ]
     },
     {
@@ -474,7 +475,8 @@
         "field",
         "choice",
         "search",
-        "textarea"
+        "textarea",
+        "fieldset"
       ]
     },
     {
@@ -507,7 +509,8 @@
         "menu",
         "chat-launcher",
         "textarea",
-        "toggle"
+        "toggle",
+        "fieldset"
       ]
     },
     {
@@ -1522,7 +1525,8 @@
         "card",
         "divider",
         "avatar-group",
-        "button-group"
+        "button-group",
+        "fieldset"
       ],
       "notes": "Agent-drafted candidate from the EVIDENCE-MODEL canon (\u00a77); not currently in research.html. Needs a checkable source before use."
     },

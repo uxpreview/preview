@@ -3527,10 +3527,32 @@
     },
     {
       "id": "fieldset",
-      "label": "Fieldset",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native fieldset/legend so grouping is programmatic, not just visual",
+          "citation_ids": ["wcag-1.3.1-info-relationships", "wcag-3.3.2-labels-or-instructions"]
+        },
+        {
+          "decision": "Shared boundary signals the controls answer one question",
+          "citation_ids": ["gestalt-common-region"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-fieldset",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/fieldset/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-fieldset__legend"],
+      "states": [],
+      "companions": ["wire-checkbox", "wire-radio", "wire-field"],
+      "behaviors": [],
+      "slots": ["legend", "controls"],
+      "a11y": "Native <fieldset> + <legend> (legend must be first child) groups related controls and names the group; each control reads with the legend prepended. Always wrap radio groups. Keep legends short (repeated per control). Adds no keyboard behaviour of its own.",
+      "notes": "Semantic grouping wrapper; visual treatment intentionally light. Not for a single control (use Field) or as a generic visual box (use Card).",
+      "label": "Fieldset",
+      "desc": "Groups related form controls under a shared legend — the native fieldset/legend."
     },
     {
       "id": "error-summary",
@@ -5417,7 +5439,6 @@
               "type": "page",
               "label": "Fieldset",
               "ref": "components/forms-inputs/fieldset/",
-              "status": "planned",
               "id": "fieldset"
             },
             {
