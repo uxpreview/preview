@@ -113,7 +113,8 @@
         "menu",
         "chat-launcher",
         "textarea",
-        "toggle"
+        "toggle",
+        "slider"
       ]
     },
     {
@@ -212,7 +213,8 @@
         "drawer",
         "disclosure",
         "menu",
-        "toggle"
+        "toggle",
+        "slider"
       ]
     },
     {
@@ -424,7 +426,8 @@
         "save-portal-link",
         "menu",
         "chat-launcher",
-        "toggle"
+        "toggle",
+        "slider"
       ]
     },
     {
@@ -510,7 +513,8 @@
         "chat-launcher",
         "textarea",
         "toggle",
-        "fieldset"
+        "fieldset",
+        "slider"
       ]
     },
     {
@@ -2214,6 +2218,38 @@
       "verification": "UNVERIFIED \u2014 candidate from toggle research, pending human review",
       "supports": [
         "toggle"
+      ]
+    },
+    {
+      "id": "apg-slider",
+      "tier": "standard",
+      "finding": "A slider exposes its current value via role=slider with aria-valuenow/valuemin/valuemax and is operable with arrow keys, Page Up/Down, and Home/End; a native input[type=range] satisfies the pattern.",
+      "source": {
+        "org": "W3C WAI-ARIA APG",
+        "title": "Slider Pattern",
+        "year": 2024,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from slider research, pending human review",
+      "supports": [
+        "slider"
+      ]
+    },
+    {
+      "id": "nng-slider-controls",
+      "tier": "empirical",
+      "finding": "Sliders work for approximate, low-stakes values but make precise input hard and are error-prone on touch; provide a typed alternative when accuracy matters.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Slider Design: Rules of Thumb",
+        "year": 2021,
+        "url": "https://www.nngroup.com/articles/gui-slider-controls/"
+      },
+      "verified_date": null,
+      "verification": "UNVERIFIED \u2014 candidate from slider research, pending human review",
+      "supports": [
+        "slider"
       ]
     }
   ]

@@ -733,8 +733,23 @@
     });
   }
 
+  /* ---------- Slider (range) ----------
+     Keeps a visible <output> in sync with a native range input. The input
+     already exposes role=slider + aria-valuenow to AT; the output is a
+     sighted convenience. Optional data-wire-slider-suffix appends a unit. */
+  function initSlider(root) {
+    const range = root.querySelector(".wire-slider__range");
+    const output = root.querySelector(".wire-slider__output");
+    if (!range || !output) return;
+    const suffix = root.getAttribute("data-wire-slider-suffix") || "";
+    const sync = () => { output.textContent = range.value + suffix; };
+    range.addEventListener("input", sync);
+    sync();
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
+    document.querySelectorAll("[data-wire-slider]").forEach(initSlider);
     document.querySelectorAll("[data-wire-tabs]").forEach(initTabs);
     document.querySelectorAll("[data-wire-accordion]").forEach(initAccordion);
     document.querySelectorAll("[data-wire-megamenu]").forEach(initMegamenu);

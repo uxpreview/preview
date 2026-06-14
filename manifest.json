@@ -3499,10 +3499,36 @@
     },
     {
       "id": "slider",
-      "label": "Slider",
+      "level": "molecule",
+      "rationale": [
+        {
+          "decision": "Native input[type=range] for role/value/keyboard",
+          "citation_ids": ["apg-slider", "wcag-4.1.2-name-role-value"]
+        },
+        {
+          "decision": "For approximate values only; offer a typed alternative for precision",
+          "citation_ids": ["nng-slider-controls"]
+        },
+        {
+          "decision": "≥44px control row even with a thin track",
+          "citation_ids": ["wcag-2.5.8-target-size-minimum"]
+        }
+      ],
       "category": "forms",
+      "class": "wire-slider",
+      "file": "css/components/form.css",
       "ref": "components/forms-inputs/slider/",
-      "status": "planned"
+      "status": "beta",
+      "variants": ["(default)"],
+      "elements": ["wire-slider__row", "wire-slider__range", "wire-slider__output"],
+      "states": ["disabled"],
+      "companions": ["wire-field", "wire-number-stepper"],
+      "behaviors": ["data-wire-slider", "data-wire-slider-suffix"],
+      "slots": ["label", "hint"],
+      "a11y": "Native range = role=slider with aria-valuemin/max/now from the browser; real <label for>. Operable with arrows, Page keys, Home/End. Add aria-valuetext when units matter; state min/max in label or hint. Output is supplementary, not the label.",
+      "notes": "For approximate, bounded values. Exact figures use Number stepper or Field. JS mirrors value into <output>; min/max/step are native attributes.",
+      "label": "Slider",
+      "desc": "Pick a number from a continuous range by dragging — the native range input, styled."
     },
     {
       "id": "number-stepper",
@@ -5411,7 +5437,6 @@
               "type": "page",
               "label": "Slider",
               "ref": "components/forms-inputs/slider/",
-              "status": "planned",
               "id": "slider"
             },
             {
