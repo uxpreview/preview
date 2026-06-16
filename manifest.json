@@ -3228,15 +3228,23 @@
       "rationale": [
         {
           "decision": "Links navigate, buttons act — distinct role and keyboard behaviour",
-          "citation_ids": ["laws-of-ux-jakob"]
+          "citation_ids": ["laws-of-ux-jakob", "mdn-anchor-element", "apg-button-pattern"]
         },
         {
           "decision": "Links distinguished by underline, never colour alone",
-          "citation_ids": ["wcag-1.4.1-use-of-color"]
+          "citation_ids": ["wcag-1.4.1-use-of-color", "nng-visualizing-links"]
         },
         {
           "decision": "Descriptive, front-loaded link text",
-          "citation_ids": ["wcag-2.4.4-link-purpose", "nng-writing-links"]
+          "citation_ids": ["wcag-2.4.4-link-purpose", "nng-writing-links", "wcag-2.4.9-link-purpose-link-only", "webaim-link-text"]
+        },
+        {
+          "decision": "A new tab or window opens only on request and is signaled in the link text",
+          "citation_ids": ["wcag-3.2.5-change-on-request", "nng-new-browser-windows"]
+        },
+        {
+          "decision": "Visible focus, keyboard operable, ≥44px standalone target",
+          "citation_ids": ["wcag-2.4.7-focus-visible", "wcag-2.1.1-keyboard", "wcag-2.5.8-target-size-minimum"]
         }
       ],
       "category": "actions",
