@@ -94,7 +94,8 @@
       "supports": [
         "badge",
         "tag",
-        "status-pill"
+        "status-pill",
+        "link"
       ]
     },
     {
@@ -187,7 +188,8 @@
         "tabs",
         "accordion",
         "megamenu",
-        "drawer"
+        "drawer",
+        "link"
       ]
     },
     {
@@ -272,7 +274,8 @@
         "linked-list",
         "article-list",
         "breadcrumb",
-        "button"
+        "button",
+        "link"
       ]
     },
     {
@@ -308,7 +311,8 @@
       "supports": [
         "tokens",
         "button",
-        "field"
+        "field",
+        "link"
       ]
     },
     {
@@ -383,7 +387,8 @@
         "pagination",
         "footer",
         "inpagenav",
-        "megamenu"
+        "megamenu",
+        "link"
       ]
     },
     {
@@ -1878,6 +1883,136 @@
       "supports": [
         "select"
       ]
+    },
+    {
+      "id": "wcag-2.4.9-link-purpose-link-only",
+      "tier": "standard",
+      "finding": "Link purpose can be identified from the link text alone (AAA) — a stronger form of 2.4.4 that asks for self-contained, descriptive link text that makes sense without surrounding context.",
+      "source": {
+        "org": "W3C WAI",
+        "title": "WCAG 2.2 SC 2.4.9 Link Purpose (Link Only)",
+        "year": 2023,
+        "url": "https://www.w3.org/TR/WCAG22/#link-purpose-link-only"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "wcag-3.2.5-change-on-request",
+      "tier": "standard",
+      "finding": "Changes of context such as a link opening a new window or tab occur only on user request, or a mechanism is available to turn them off (AAA). Links that open a new tab must signal it in the link text.",
+      "source": {
+        "org": "W3C WAI",
+        "title": "WCAG 2.2 SC 3.2.5 Change on Request",
+        "year": 2023,
+        "url": "https://www.w3.org/TR/WCAG22/#change-on-request"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "nng-writing-links",
+      "tier": "empirical",
+      "finding": "Front-load link labels with the most meaningful words; users mostly read the first two words of a link. Avoid generic labels like \"Read more\" or \"Click here\".",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Writing Hyperlinks: Salient, Descriptive, Start with Keyword",
+        "year": 2014,
+        "url": "https://www.nngroup.com/articles/writing-links/"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "nng-visualizing-links",
+      "tier": "convention",
+      "finding": "Make links visually distinct and never style non-link text to look like a link; underlines aid low-vision users. (2004 guideline; a 2026 editor note flags that the in-body underline convention has since evolved.)",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Guidelines for Visualizing Links",
+        "year": 2004,
+        "url": "https://www.nngroup.com/articles/guidelines-for-visualizing-links/"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "nng-new-browser-windows",
+      "tier": "convention",
+      "finding": "Default to opening links in the same tab or window; new windows/tabs are not inclusive for blind and low-vision users, especially outside the magnified area. Reserve for narrow side-by-side reference cases and signal it.",
+      "source": {
+        "org": "Nielsen Norman Group",
+        "title": "Opening Links in New Browser Windows and Tabs",
+        "year": 2020,
+        "url": "https://www.nngroup.com/articles/new-browser-windows-and-tabs/"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "webaim-link-text",
+      "tier": "convention",
+      "finding": "Link text should make sense out of context and stay short and concise; screen-reader users navigate by a list of links and cannot visually skim lengthy link text.",
+      "source": {
+        "org": "WebAIM",
+        "title": "Links and Hypertext: Link Text and Appearance",
+        "year": 2019,
+        "url": "https://webaim.org/techniques/hypertext/link_text"
+      },
+      "supports": [
+        "link"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "mdn-anchor-element",
+      "tier": "convention",
+      "finding": "Use an anchor only for navigation to a real URL; anchors abused as fake buttons (href=\"#\", javascript:void(0)) convey incorrect semantics to assistive technology. Use a button for in-page actions.",
+      "source": {
+        "org": "MDN Web Docs",
+        "title": "<a>: The Anchor element",
+        "year": 2026,
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a"
+      },
+      "supports": [
+        "link",
+        "button"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
+    },
+    {
+      "id": "apg-button-pattern",
+      "tier": "convention",
+      "finding": "Both the appearance and role of a control should match its function; the actions performed by buttons are distinctly different from the navigation function of a link.",
+      "source": {
+        "org": "W3C WAI ARIA APG",
+        "title": "Button Pattern",
+        "year": 2026,
+        "url": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
+      },
+      "supports": [
+        "link",
+        "button"
+      ],
+      "verified_date": null,
+      "verification": "UNVERIFIED — candidate from link research brief, pending human review"
     }
   ]
 }

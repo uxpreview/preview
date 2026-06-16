@@ -401,6 +401,7 @@
       <nav class="wire-breadcrumb" aria-label="Breadcrumb">
         <ol class="wire-breadcrumb__list">
           <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/">Components</a></li>
+          <li class="wire-breadcrumb__item"><a class="wire-breadcrumb__link" href="../../../components/#cat-actions">Actions</a></li>
           <li class="wire-breadcrumb__item"><span class="wire-breadcrumb__current" aria-current="page">Link</span></li>
         </ol>
       </nav>
@@ -408,10 +409,245 @@
       <header class="wire-doc-header">
         <div class="wire-doc-header__row">
           <h1 class="wire-doc-header__title">Link</h1>
-          <span class="wire-doc-header__status"><span class="wire-status-pill">Planned</span></span>
+          <span class="wire-doc-header__status"><span class="wire-status-pill wire-status-pill--pending">Beta</span></span>
         </div>
-        <p class="wire-doc-header__lead">This page is planned. It is part of the target information architecture; documentation is in progress.</p>
+        <p class="wire-doc-header__lead">A text hyperlink: an <code>&lt;a href&gt;</code> that navigates to another page, resource, or location. Underlined and inheriting the text color, it is the system's quietest action. Use a link to <em>go somewhere</em>; use a <a href="../../buttons/">Button</a> to <em>do something</em>.</p>
+        <ul class="wire-doc-header__meta" role="list">
+          <li class="wire-doc-header__meta-item">css/base.css (bare <code>a</code>)</li>
+          <li class="wire-doc-header__meta-item">Since v1.0</li>
+        </ul>
       </header>
+
+      <div class="wire-tabs wire-tabs--sticky" data-wire-tabs data-wire-tabs-hash>
+        <div role="tablist" class="wire-tabs__list" aria-label="Link documentation">
+          <button role="tab" id="tab-usage" class="wire-tabs__tab" aria-controls="usage" aria-selected="true" tabindex="0">Usage</button>
+          <button role="tab" id="tab-specs" class="wire-tabs__tab" aria-controls="specs" aria-selected="false" tabindex="-1">Specs</button>
+          <button role="tab" id="tab-accessibility" class="wire-tabs__tab" aria-controls="accessibility" aria-selected="false" tabindex="-1">Accessibility</button>
+        </div>
+
+        <!-- ===== TAB 1 — USAGE ===== -->
+        <section role="tabpanel" id="usage" aria-labelledby="tab-usage" class="wire-tabs__panel">
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="live-demo" class="doc-section">
+                <h2 class="wire-h3">Live demo</h2>
+                <p class="u-text-muted u-mt-sm">A link is a plain <code>&lt;a href&gt;</code>. It is underlined and uses the body text color, so it reads as a link without relying on hue.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Inline and standalone</span>
+                  <div class="u-stack u-stack--md">
+                    <p>Stroke rehabilitation begins with an assessment from our <a href="#">inpatient therapy team</a>, usually within 24 hours of admission.</p>
+                    <p><a href="#">View all rehabilitation services</a></p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="anatomy" class="doc-section">
+                <h2 class="wire-h3">Anatomy</h2>
+                <p class="u-text-muted u-mt-sm">A link has no component wrapper or class — it is the native anchor styled in the base layer. Its meaning lives in the <code>href</code> and the text between the tags.</p>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Part</th><th scope="col">Markup</th><th scope="col">Role</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Anchor</th><td><code>&lt;a href="…"&gt;</code></td><td>The native link element; the <code>href</code> is the destination.</td></tr>
+                    <tr><th scope="row">Link text</th><td>text content</td><td>The accessible name and the visible label — it must describe the destination.</td></tr>
+                    <tr><th scope="row">Underline</th><td>base style</td><td>The non-color signal that the text is a link (added in <code>css/base.css</code>).</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="when" class="doc-section">
+                <h2 class="wire-h3">When to use</h2>
+                <ul>
+                  <li>Use a <strong>link</strong> to navigate — to another page, a document, an anchor on the page, or an external site.</li>
+                  <li>Use a <a href="../../buttons/">Button</a> to perform an action — submit, open a dialog, save, delete. The element should match the behavior, so keyboard and screen-reader users get the right semantics.</li>
+                  <li>Use a <a href="../phone-link/">Phone link</a> for a tap-to-call number, and a <a href="../../lists/">Linked list</a> when links form a scannable, large-target set of rows.</li>
+                </ul>
+                <p class="u-text-muted u-mt-md">If a control looks like a link but acts like a button (or the reverse), the underlying element still has to match what it does.</p>
+              </section>
+
+              <section id="in-context" class="doc-section">
+                <h2 class="wire-h3">In context</h2>
+                <p class="u-text-muted u-mt-sm">The same anchor serves inline prose, standalone calls to action, list rows, and external destinations.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Inline within body text</span>
+                  <p>Most plans cover therapy after a qualifying stay. Check your <a href="#">coverage and referral requirements</a> before scheduling.</p>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">As a row in a linked list</span>
+                  <ul class="wire-linked-list" role="list">
+                    <li class="wire-linked-list__item">
+                      <a class="wire-linked-list__link" href="#"><span>Spinal cord injury</span><span class="wire-linked-list__meta">14 conditions</span></a>
+                    </li>
+                    <li class="wire-linked-list__item">
+                      <a class="wire-linked-list__link" href="#"><span>Stroke</span><span class="wire-linked-list__meta">22 conditions</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">External link, with an in-text cue</span>
+                  <p>Eligibility follows the state program: read the <a href="#" target="_blank" rel="noopener">benefits handbook <span aria-hidden="true">↗</span> (opens in a new tab)</a>.</p>
+                </div>
+                <div class="doc-example">
+                  <span class="doc-example__label">Tap-to-call number (Phone link)</span>
+                  <p>Questions about a bill? Call <a class="wire-phone-link" href="tel:+13125550142"><span class="wire-phone-link__icon" aria-hidden="true">☏</span>(312) 555-0142</a>.</p>
+                </div>
+              </section>
+
+              <section id="do-dont" class="doc-section">
+                <h2 class="wire-h3">Do / Don't</h2>
+                <div class="doc-do-dont">
+                  <div class="doc-do-dont__cell doc-do-dont__cell--do">
+                    <p class="doc-do-dont__label">Do</p>
+                    <ul>
+                      <li>Write link text that describes its destination and front-loads the meaningful words.</li>
+                      <li>Keep underlines on links inside body text so they're distinguishable without color.</li>
+                      <li>Say when a link opens a new tab or a file, in the link text itself.</li>
+                    </ul>
+                  </div>
+                  <div class="doc-do-dont__cell doc-do-dont__cell--dont">
+                    <p class="doc-do-dont__label">Don't</p>
+                    <ul>
+                      <li>Use "click here", "read more", or a bare URL as the link text.</li>
+                      <li>Underline or color non-link text so it looks clickable.</li>
+                      <li>Open new tabs by default, or trigger an action from a link.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#live-demo">Live demo</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#anatomy">Anatomy</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#when">When to use</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#in-context">In context</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#do-dont">Do / Don't</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 2 — SPECS ===== -->
+        <section role="tabpanel" id="specs" aria-labelledby="tab-specs" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="states" class="doc-section">
+                <h2 class="wire-h3">States</h2>
+                <p class="u-text-muted u-mt-sm">A link carries state through weight and a focus ring, never hue. Hover and focus are shown here for reference; move through the demo with the keyboard to see the focus treatment.</p>
+                <div class="doc-example">
+                  <span class="doc-example__label">Rest</span>
+                  <p>An appointment with the <a href="#">neurology intake team</a> can be booked online.</p>
+                </div>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">State</th><th scope="col">Treatment</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Rest</th><td>Body text color, 1px underline offset from the baseline.</td></tr>
+                    <tr><th scope="row">Hover</th><td>Underline thickens to 2px — a weight change, not a color change.</td></tr>
+                    <tr><th scope="row">Focus-visible</th><td>The global focus ring; visible on keyboard focus.</td></tr>
+                    <tr><th scope="row">Visited</th><td>Not restyled by default; the system relies on text and context, not a visited hue.</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="tokens" class="doc-section">
+                <h2 class="wire-h3">Tokens</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Property</th><th scope="col">Token / value</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Text color</th><td><code>--color-text</code> (inherits surrounding text)</td></tr>
+                    <tr><th scope="row">Decoration</th><td>underline · 1px rest / 2px hover</td></tr>
+                    <tr><th scope="row">Underline offset</th><td>0.18em</td></tr>
+                    <tr><th scope="row">Transition</th><td><code>--duration-fast</code> · <code>--ease-out</code></td></tr>
+                    <tr><th scope="row">Focus ring</th><td>inherits the global <code>:focus-visible</code> outline</td></tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section id="snippet" class="doc-section">
+                <h2 class="wire-h3">Snippet</h2>
+                <pre class="doc-snippet">&lt;!-- Inline, descriptive link text --&gt;
+&lt;a href="/services/rehabilitation"&gt;rehabilitation services&lt;/a&gt;
+
+&lt;!-- External link: signal the new tab in the text --&gt;
+&lt;a href="https://example.gov/benefits" target="_blank" rel="noopener"&gt;
+  benefits handbook &lt;span aria-hidden="true"&gt;↗&lt;/span&gt; (opens in a new tab)
+&lt;/a&gt;</pre>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#states">States</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#tokens">Tokens</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#snippet">Snippet</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <!-- ===== TAB 3 — ACCESSIBILITY ===== -->
+        <section role="tabpanel" id="accessibility" aria-labelledby="tab-accessibility" class="wire-tabs__panel" hidden>
+          <div class="wire-shell__doc">
+            <div>
+
+              <section id="labeling" class="doc-section">
+                <h2 class="wire-h3">Labeling</h2>
+                <ul>
+                  <li>The link's purpose should be clear from its text alone, so it makes sense when read out of context — a screen reader can list every link on the page with no surrounding sentence.</li>
+                  <li>Keep link text short and specific. Avoid "click here", "read more", and bare URLs, which give no destination.</li>
+                  <li>If a link is unavoidably ambiguous, add a clarifying <code>aria-label</code> or visually-hidden text rather than leaving the bare phrase.</li>
+                </ul>
+              </section>
+
+              <section id="semantics" class="doc-section">
+                <h2 class="wire-h3">Semantics</h2>
+                <ul>
+                  <li>Use <code>&lt;a href&gt;</code> for navigation and <code>&lt;button&gt;</code> for in-page actions; don't fake one with the other (<code>href="#"</code> handlers report the wrong role to assistive tech).</li>
+                  <li>A link must be distinguishable from surrounding text by more than color — the underline carries that signal, which is essential in this grayscale system.</li>
+                  <li>If a link opens a new tab or window, signal it in the link text; an unexpected context change is disorienting, especially for screen-magnifier users.</li>
+                </ul>
+              </section>
+
+              <section id="keyboard" class="doc-section">
+                <h2 class="wire-h3">Keyboard</h2>
+                <table class="doc-spec-table">
+                  <thead><tr><th scope="col">Key</th><th scope="col">Action</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Tab</th><td>Moves focus to and from the link in source order.</td></tr>
+                    <tr><th scope="row">Enter</th><td>Activates the link and navigates to its destination.</td></tr>
+                  </tbody>
+                </table>
+                <p class="u-text-muted u-mt-md">Focus stays visible on keyboard navigation. A standalone link keeps a target of at least 44px; inline links within a sentence are exempt from the minimum target size.</p>
+              </section>
+
+            </div>
+            <nav class="wire-inpagenav" data-wire-inpagenav aria-label="On this page">
+              <p class="wire-inpagenav__title">On this page</p>
+              <ul class="wire-inpagenav__list" role="list">
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#labeling">Labeling</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#semantics">Semantics</a></li>
+                <li class="wire-inpagenav__item"><a class="wire-inpagenav__link" href="#keyboard">Keyboard</a></li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+      </div>
+
+      <nav class="wire-doc-pager" aria-label="Component pagination">
+        <a class="wire-doc-pager__link wire-doc-pager__link--prev" href="../menu/">
+          <span class="wire-doc-pager__direction">Previous in Actions</span>
+          <span class="wire-doc-pager__title">Menu</span>
+        </a>
+        <a class="wire-doc-pager__link wire-doc-pager__link--next" href="../disclosure/">
+          <span class="wire-doc-pager__direction">Next in Actions</span>
+          <span class="wire-doc-pager__title">Disclosure</span>
+        </a>
+      </nav>
 
     </div>
   </section>

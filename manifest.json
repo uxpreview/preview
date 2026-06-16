@@ -1681,7 +1681,9 @@
         "wire-sidenav__link--parent",
         "wire-sidenav__sublist"
       ],
-      "modifiers": ["wire-sidenav--sticky"],
+      "modifiers": [
+        "wire-sidenav--sticky"
+      ],
       "states": [
         "is-current"
       ],
@@ -1699,8 +1701,14 @@
       "ref": "components/subnav/",
       "status": "stable",
       "desc": "A horizontal row of sibling links for one level of local navigation, under the global top nav (the inverted-L).",
-      "elements": ["wire-subnav__list", "wire-subnav__item", "wire-subnav__link"],
-      "states": ["is-current"],
+      "elements": [
+        "wire-subnav__list",
+        "wire-subnav__item",
+        "wire-subnav__link"
+      ],
+      "states": [
+        "is-current"
+      ],
       "rationale": [
         {
           "decision": "Horizontal section nav for shallow, content-first IAs",
@@ -3142,7 +3150,59 @@
       "label": "Link",
       "category": "actions",
       "ref": "components/actions/link/",
-      "status": "planned"
+      "status": "beta",
+      "level": "atom",
+      "class": null,
+      "file": "css/base.css",
+      "variants": [],
+      "elements": [],
+      "behaviors": [],
+      "slots": [
+        "text",
+        "href"
+      ],
+      "desc": "A text hyperlink that navigates to another page, resource, or location. Underlined and color-free: the quietest action.",
+      "notes": "Bare native <a> styled in css/base.css; no wire- class. Use <a href> for navigation, <button> for actions.",
+      "rationale": [
+        {
+          "decision": "Link navigates, button acts — the element must match the behavior",
+          "citation_ids": [
+            "mdn-anchor-element",
+            "apg-button-pattern"
+          ]
+        },
+        {
+          "decision": "Link text describes its destination and makes sense read out of context",
+          "citation_ids": [
+            "wcag-2.4.4-link-purpose",
+            "wcag-2.4.9-link-purpose-link-only",
+            "nng-writing-links",
+            "webaim-link-text"
+          ]
+        },
+        {
+          "decision": "Underline, not color, distinguishes a link (grayscale system)",
+          "citation_ids": [
+            "wcag-1.4.1-use-of-color",
+            "nng-visualizing-links"
+          ]
+        },
+        {
+          "decision": "A new tab/window opens only on request and is signaled in the link text",
+          "citation_ids": [
+            "wcag-3.2.5-change-on-request",
+            "nng-new-browser-windows"
+          ]
+        },
+        {
+          "decision": "Visible focus, keyboard operable, >=44px standalone target",
+          "citation_ids": [
+            "wcag-2.4.7-focus-visible",
+            "wcag-2.1.1-keyboard",
+            "wcag-2.5.8-target-size-minimum"
+          ]
+        }
+      ]
     },
     {
       "id": "disclosure",
@@ -4533,7 +4593,6 @@
               "type": "page",
               "label": "Link",
               "ref": "components/actions/link/",
-              "status": "planned",
               "id": "link"
             },
             {
