@@ -167,6 +167,23 @@ never dress an unverified or judgment-tier call up as confirmed research.
   end of your reply so I can decide whether to promote it into the core (the
   promote-pattern habit). Flag it; don't quietly work around it.
 
+## Tooling and skills
+
+The `preview-ds` plugin (`tools/preview-ds/`) packages this system's enforcement and
+authoring workflow. When installed it adds: two guard hooks (house style on every
+`.html`/`.css` write — no raw color, no color in inline styles, no doc-chrome on a client
+page; and a block on editing generated files like `partials/nav.html`), the `/validate`
+gate, the `/author-component <id>` orchestrator, the `ux-research` skill (drafts UNVERIFIED
+candidate citations), and the `manifest-integrity` and `citation-auditor` review sub-agents.
+
+Match other skills to the artifact you are working on:
+- **This core grayscale system** — discipline skills only (verification, brainstorming,
+  writing-plans). Keep visual-craft skills (`frontend-design`, `impeccable`,
+  `ui-ux-pro-max`) **off** here: they introduce color and inline styles the house-style
+  hook rejects.
+- **Client / pitch work** (higher-fidelity or branded deliverables) — visual-craft skills
+  and `concept-studio-pro` are fine; that is a different artifact, not this system.
+
 ---
 
 ## PROJECT BRIEF (the variable — fill per engagement)

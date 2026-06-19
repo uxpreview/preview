@@ -1,0 +1,11 @@
+{
+  "name": "preview",
+  "owner": { "name": "Ryan McCarty" },
+  "plugins": [
+    {
+      "name": "preview-ds",
+      "source": "./tools/preview-ds",
+      "description": "Authoring, evidence, and enforcement workflow for the Preview grayscale design system."
+    }
+  ]
+}
