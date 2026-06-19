@@ -132,6 +132,26 @@ don't quietly work around it.
   engine.
 - **Hand-editing the rail or `partials/nav.html`.** The nav is generated from
   `manifest.json` by `build-ia.mjs`; edit the manifest and re-run.
+- **Scoping a CSS edit by class usage, not rule declaration.** When changing or removing
+  a shared rule across pages, match the structural form (`\.selector\s*\{`), not the bare
+  class name — a usage grep (`grep -l "doc-example__label"`) returns far more files than
+  actually declare the rule. Usage and declaration are different populations.
+- **Removing a local fallback before confirming the canonical source loads.** Before
+  deleting an inline copy of a shared rule, verify the file it falls back to (e.g.
+  `doc-helpers.css`, `@import`-ed in `wire.css`) actually loads at that point — an
+  `@import` placed after any rule is silently dropped, and each page must link `wire.css`
+  before its inline `<style>`.
+
+## Closing checklist (before you call it done)
+
+- [ ] `manifest.json`: `status` flipped off `planned`; `desc` set; `class`/`variants`/
+  `slots`/`behaviors` filled; the nav leaf's `status:"planned"` removed.
+- [ ] `citations.json`: every new source drafted as an UNVERIFIED entry, no `verified_date`
+  set, no duplicates (grepped first).
+- [ ] `node scripts/build-ia.mjs` run; the landing card flipped from "Planned" to the real
+  status.
+- [ ] `validate` gate clean (house style, contrast, links, axe); candidate citations
+  surfaced to the user to verify.
 
 ## Bundled resources
 

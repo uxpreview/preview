@@ -1,0 +1,7 @@
+{
+  "name": "preview-ds",
+  "displayName": "Preview Design System",
+  "description": "Authoring, evidence, and enforcement workflow for the Preview grayscale design system.",
+  "version": "0.1.0",
+  "author": { "name": "Ryan McCarty" }
+}
